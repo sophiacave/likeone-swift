@@ -18,6 +18,45 @@
 <div class="lesson-section">
   <span class="section-label">The Big Idea</span>
   <h2 class="section-title">Words have coordinates in a universe of meaning.</h2>
+  <div class="lesson-visual" aria-label="Diagram showing similar words clustered together in vector space: happy/joyful/delighted near each other, sad far away">
+    <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="gridE" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="480" height="200" fill="url(#gridE)"/>
+      <!-- Axes -->
+      <line x1="60" y1="180" x2="460" y2="180" stroke="#3f3f46" stroke-width="0.5"/>
+      <line x1="60" y1="20" x2="60" y2="180" stroke="#3f3f46" stroke-width="0.5"/>
+      <text x="470" y="184" fill="#52525b" font-size="8" font-family="SF Mono,monospace">meaning</text>
+      <text x="40" y="20" fill="#52525b" font-size="8" font-family="SF Mono,monospace">feeling</text>
+      <!-- Happy cluster (green) -->
+      <circle cx="320" cy="50" r="40" fill="rgba(52,211,153,.04)" stroke="rgba(52,211,153,.1)" stroke-width="1" stroke-dasharray="3,3"/>
+      <circle cx="310" cy="45" r="4" fill="#34d399"/>
+      <text x="310" y="38" text-anchor="middle" fill="#34d399" font-size="10" font-weight="600" font-family="SF Mono,monospace">happy</text>
+      <circle cx="340" cy="55" r="3" fill="#34d399" opacity="0.7"/>
+      <text x="340" y="48" text-anchor="middle" fill="#34d399" font-size="8" font-family="SF Mono,monospace">joyful</text>
+      <circle cx="300" cy="65" r="3" fill="#34d399" opacity="0.7"/>
+      <text x="300" y="78" text-anchor="middle" fill="#34d399" font-size="8" font-family="SF Mono,monospace">delighted</text>
+      <!-- Sad (far away, red) -->
+      <circle cx="130" cy="150" r="4" fill="#f87171"/>
+      <text x="130" y="143" text-anchor="middle" fill="#f87171" font-size="10" font-weight="600" font-family="SF Mono,monospace">sad</text>
+      <!-- King/Queen cluster (purple) -->
+      <circle cx="400" cy="130" r="3" fill="#c084fc"/>
+      <text x="400" y="123" text-anchor="middle" fill="#c084fc" font-size="9" font-family="SF Mono,monospace">king</text>
+      <circle cx="420" cy="145" r="3" fill="#c084fc"/>
+      <text x="420" y="158" text-anchor="middle" fill="#c084fc" font-size="9" font-family="SF Mono,monospace">queen</text>
+      <!-- Dog/Cat cluster (blue) -->
+      <circle cx="200" cy="80" r="3" fill="#38bdf8"/>
+      <text x="200" y="73" text-anchor="middle" fill="#38bdf8" font-size="9" font-family="SF Mono,monospace">cat</text>
+      <circle cx="220" cy="90" r="3" fill="#38bdf8"/>
+      <text x="220" y="83" text-anchor="middle" fill="#38bdf8" font-size="9" font-family="SF Mono,monospace">dog</text>
+      <!-- Label -->
+      <text x="240" y="195" text-anchor="middle" fill="#52525b" font-size="8" font-family="SF Mono,monospace">similar words cluster together in vector space</text>
+    </svg>
+  </div>
+
   <p class="section-text">AI cannot read words the way you do. It reads numbers. So every word gets converted into a list of numbers that captures its meaning. This list of numbers is called a <strong>vector</strong> — think of it as GPS coordinates, but instead of pinpointing a place on Earth, they pinpoint a word's meaning in a universe of concepts.</p>
   <p class="section-text">"Cat" might have coordinates like [0.2, 0.8, -0.1, ...] across hundreds of <strong>dimensions</strong>. A dimension is just one aspect of meaning — one might roughly capture "is it alive?", another "is it big?", another "is it domestic?" The more dimensions, the more nuance the AI can express.</p>
   <p class="section-text">The magic: words that mean similar things end up close together on this map. "Happy," "joyful," and "delighted" are neighbors. "Sad" is far away. The map itself encodes meaning — and AI uses this map to understand language.</p>
