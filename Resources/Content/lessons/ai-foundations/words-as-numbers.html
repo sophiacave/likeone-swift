@@ -66,6 +66,27 @@
 <div class="lesson-section">
   <span class="section-label">From Text to Numbers</span>
   <h2 class="section-title">Three ways machines have tried to read words.</h2>
+
+  <div class="lesson-visual" aria-label="Evolution: One-Hot (every word equally far), Bag of Words (lost order), Embeddings (meaning preserved)">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:16px;font-family:'SF Mono','JetBrains Mono',monospace;">
+      <div style="text-align:center;padding:12px 8px;border-radius:8px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1);">
+        <div style="font-size:.7rem;color:#f87171;font-weight:600;">ONE-HOT</div>
+        <div style="font-size:.6rem;color:#52525b;margin-top:4px;">[1,0,0,0...]</div>
+        <div style="font-size:.6rem;color:#3f3f46;margin-top:2px;">no meaning</div>
+      </div>
+      <div style="text-align:center;padding:12px 8px;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1);">
+        <div style="font-size:.7rem;color:#fb923c;font-weight:600;">BAG OF WORDS</div>
+        <div style="font-size:.6rem;color:#52525b;margin-top:4px;">{cat:1, sat:1}</div>
+        <div style="font-size:.6rem;color:#3f3f46;margin-top:2px;">lost order</div>
+      </div>
+      <div style="text-align:center;padding:12px 8px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);">
+        <div style="font-size:.7rem;color:#34d399;font-weight:600;">EMBEDDINGS</div>
+        <div style="font-size:.6rem;color:#52525b;margin-top:4px;">[0.2, 0.8, -0.1]</div>
+        <div style="font-size:.6rem;color:#34d399;margin-top:2px;">meaning preserved</div>
+      </div>
+    </div>
+  </div>
+
   <p class="section-text">Before embeddings, researchers tried simpler approaches. Understanding these older methods makes it clear why embeddings are such a breakthrough:</p>
 
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
@@ -153,6 +174,18 @@ The AI learned these relationships from patterns in billions of sentences.</div>
 <div class="lesson-section">
   <span class="section-label">The Code</span>
   <h2 class="section-title">Embeddings in real Python.</h2>
+
+  <div class="lesson-visual" aria-label="The famous equation: king minus man plus woman equals queen">
+    <div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:18px 20px;font-family:'SF Mono','JetBrains Mono',monospace;flex-wrap:wrap;">
+      <span style="padding:8px 14px;border-radius:8px;background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.15);color:#c084fc;font-size:.95rem;font-weight:600;">king</span>
+      <span style="color:#f87171;font-size:1.1rem;font-weight:700;">&minus;</span>
+      <span style="padding:8px 14px;border-radius:8px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.15);color:#38bdf8;font-size:.95rem;font-weight:600;">man</span>
+      <span style="color:#34d399;font-size:1.1rem;font-weight:700;">+</span>
+      <span style="padding:8px 14px;border-radius:8px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.15);color:#fb923c;font-size:.95rem;font-weight:600;">woman</span>
+      <span style="color:#71717a;font-size:1.1rem;">=</span>
+      <span style="padding:8px 14px;border-radius:8px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.2);color:#34d399;font-size:1.1rem;font-weight:700;">queen</span>
+    </div>
+  </div>
   <p class="section-text">Now let's look at how vocabulary works in modern AI. A <strong style="color:#e5e5e5">vocabulary</strong> is the complete set of tokens the model knows. Every word you type gets matched against this vocabulary. Common words like "the" are single tokens. Rare words get split into pieces. Words outside the vocabulary get broken into known subword pieces — so the model can handle any text, even words it has never seen during training.</p>
   <p class="section-text">Here is how to generate embeddings and compute similarity in Python. <em>If you are not a coder, you can skip the code — the concepts above are what matter. The code is here for learners who want to see the mechanics behind the scenes.</em></p>
 
@@ -264,6 +297,17 @@ nearest = words[np.argmax(similarities)]
 <div class="quiz-block">
 <h3 class="quiz-title">Embeddings Mastery</h3>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Happy and joyful are neighbors in vector space because they appear in similar contexts">
+  <div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;">
+    <span style="color:#34d399;font-weight:600;">happy</span>
+    <span style="color:#52525b;">&#x2194;</span>
+    <span style="color:#34d399;font-weight:600;">joyful</span>
+    <span style="color:#52525b;font-size:.7rem;margin-left:8px;">nearby</span>
+    <span style="color:#52525b;margin:0 8px;">|</span>
+    <span style="color:#f87171;font-weight:600;">sad</span>
+    <span style="color:#52525b;font-size:.7rem;margin-left:8px;">far away</span>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">1</span>Why do similar words end up close together in embedding space?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
@@ -282,6 +326,11 @@ nearest = words[np.argmax(similarities)]
 <div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Embeddings are learned from text. Words that appear in similar contexts (you can pet a cat / you can pet a dog) develop similar vectors. The AI discovers meaning from usage patterns.</div>
 </div>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Vector arithmetic: king minus man plus woman equals queen">
+  <div style="display:flex;align-items:center;justify-content:center;gap:4px;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;">
+    <span style="color:#c084fc;">king</span><span style="color:#f87171;">&minus;</span><span style="color:#38bdf8;">man</span><span style="color:#34d399;">+</span><span style="color:#fb923c;">woman</span><span style="color:#52525b;">=</span><span style="color:#34d399;font-weight:700;">queen</span>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">2</span>What makes vector arithmetic like king - man + woman = queen possible?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
@@ -300,6 +349,13 @@ nearest = words[np.argmax(similarities)]
 <div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The direction from man to king captures royalty. The direction from man to woman captures gender. These are consistent directions in the space — so you can combine them mathematically.</div>
 </div>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Search: query becomes a vector, finds nearest document vectors">
+  <div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;">
+    <span style="padding:4px 8px;border-radius:6px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.12);color:#38bdf8;">query</span>
+    <span style="color:#3f3f46;">&rarr; vector &rarr;</span>
+    <span style="padding:4px 8px;border-radius:6px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);color:#34d399;">nearest docs</span>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">3</span>How do search engines use embeddings?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
