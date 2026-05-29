@@ -53,7 +53,8 @@ let package = Package(
         // Content engine — courses, blog, products
         .target(
             name: "LOContent",
-            dependencies: ["LOCore", "LOBrain"]
+            dependencies: ["LOCore", "LOBrain"],
+            resources: [.copy("Data")]
         ),
 
         // Vapor web server — API + SSR + HTMX
