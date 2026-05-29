@@ -596,6 +596,101 @@ a:focus-visible, button:focus-visible {
     font-size: 0.9rem;
 }
 
+/* ============================================
+   BLOG
+   ============================================ */
+.blog-list { display: flex; flex-direction: column; gap: 16px; }
+.blog-card {
+    display: block;
+    padding: 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+}
+.blog-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(168, 85, 247, 0.25);
+}
+.blog-card:focus-visible {
+    outline: 2px solid var(--purple-400);
+    outline-offset: 3px;
+}
+.blog-card-meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.blog-card-date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+.blog-card-author {
+    font-size: 0.8rem;
+    color: var(--purple-400);
+    font-weight: 500;
+}
+.blog-card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+}
+.blog-card-desc {
+    font-size: 0.9rem;
+    color: #b4b4be;
+    line-height: 1.55;
+    margin-bottom: 12px;
+}
+.blog-card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.blog-tag {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    padding: 3px 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 9999px;
+    text-transform: lowercase;
+}
+.blog-content {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #d4d4dc;
+}
+.blog-content h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 2rem 0 0.75rem;
+    letter-spacing: -0.015em;
+}
+.blog-content h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.5rem;
+}
+.blog-content p { margin-bottom: 1rem; }
+.blog-content ul, .blog-content ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+.blog-content li { margin-bottom: 0.5rem; }
+.blog-content code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.875em;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+.blog-content a {
+    color: var(--purple-400);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
 /* Lesson List */
 .lesson-list { display: flex; flex-direction: column; gap: 2px; }
 .lesson-row {

@@ -14,6 +14,7 @@ func routes(_ app: Application) throws {
     try app.register(collection: AcademyController(courses: courses, lessons: lessons))
     try app.register(collection: APIController(courses: courses, blog: blog, catalog: catalog, lessons: lessons))
     try app.register(collection: BrainController(brain: brain))
+    try app.register(collection: BlogController(blog: blog))
     try app.register(collection: AuthController())
     try app.register(collection: GoogleAuthController())
     try app.register(collection: AccountController())

@@ -25,6 +25,7 @@
                 <a class="header-site-brand" href="/">like<span class="accent">one</span></a>
                 <div class="site-nav-links">
                     <a class="header-site-link" href="/academy">Academy</a>
+                    <a class="header-site-link" href="/blog">Blog</a>
                     <a class="header-signin-btn" href="/signin">Sign In</a>
                 </div>
             </nav>

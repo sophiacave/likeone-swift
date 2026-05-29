@@ -1,0 +1,33 @@
+#extend("layout"):
+    #export("content"):
+        <section class="academy-hero">
+            <div class="site-container">
+                <span class="academy-tag">BLOG</span>
+                <h1 class="academy-title">Insights</h1>
+                <p class="academy-subtitle">#(description)</p>
+            </div>
+        </section>
+
+        <section class="site-section" style="padding-top: 0;">
+            <div class="site-container" style="max-width: 800px;">
+                <div class="blog-list">
+                    #for(post in posts):
+                        <a href="/blog/#(post.slug)" class="blog-card">
+                            <div class="blog-card-meta">
+                                <span class="blog-card-date">#(post.date)</span>
+                                <span class="blog-card-author">#(post.author)</span>
+                            </div>
+                            <h2 class="blog-card-title">#(post.title)</h2>
+                            <p class="blog-card-desc">#(post.description)</p>
+                            <div class="blog-card-tags">
+                                #for(tag in post.tags):
+                                    <span class="blog-tag">#(tag)</span>
+                                #endfor
+                            </div>
+                        </a>
+                    #endfor
+                </div>
+            </div>
+        </section>
+    #endexport
+#endextend
