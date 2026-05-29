@@ -2,6 +2,10 @@ import Foundation
 import LOCore
 import CSQLite3
 
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
+
 // MARK: - Brain Client Protocol
 
 public protocol BrainClient: Sendable {
