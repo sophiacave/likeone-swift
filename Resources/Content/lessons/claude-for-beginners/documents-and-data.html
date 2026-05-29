@@ -20,6 +20,16 @@
 <div class="lesson-section">
   <span class="section-label">Hands-On</span>
   <h2 class="section-title">Summarize anything in seconds.</h2>
+
+  <div class="lesson-visual" aria-label="4 summary styles: Executive, Bullet Points, Technical, Action Items">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:14px;font-family:'SF Mono','JetBrains Mono',monospace;">
+      <div style="text-align:center;padding:8px 4px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);"><div style="font-size:.65rem;color:#34d399;font-weight:600;">EXECUTIVE</div></div>
+      <div style="text-align:center;padding:8px 4px;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.12);"><div style="font-size:.65rem;color:#8b5cf6;font-weight:600;">BULLETS</div></div>
+      <div style="text-align:center;padding:8px 4px;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.12);"><div style="font-size:.65rem;color:#fb923c;font-weight:600;">TECHNICAL</div></div>
+      <div style="text-align:center;padding:8px 4px;border-radius:8px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.12);"><div style="font-size:.65rem;color:#38bdf8;font-weight:600;">ACTIONS</div></div>
+    </div>
+  </div>
+
   <p class="section-text">You have a 20-page report and 5 minutes before a meeting. Instead of skimming and praying, <strong>paste the document into Claude and ask for exactly the summary you need.</strong> The secret: different situations need different summary styles.</p>
 
 <div class="flash-block">
@@ -93,6 +103,17 @@ Give me your top 3 recommendations ranked by impact.</code></pre>
 <div class="lesson-section">
   <span class="section-label">Superpower</span>
   <h2 class="section-title">Analyze data without a single formula.</h2>
+
+  <div class="lesson-visual" aria-label="No formulas needed: paste data, ask in English, get insights">
+    <div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;">
+      <span style="padding:6px 10px;border-radius:6px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.12);color:#38bdf8;">paste data</span>
+      <span style="color:#3f3f46;">&rarr;</span>
+      <span style="padding:6px 10px;border-radius:6px;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);color:#8b5cf6;">ask in English</span>
+      <span style="color:#3f3f46;">&rarr;</span>
+      <span style="padding:6px 10px;border-radius:6px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);color:#34d399;font-weight:600;">insights</span>
+    </div>
+  </div>
+
   <p class="section-text">You don't need to know VLOOKUP, pivot tables, or Python. <strong>Paste your data into Claude and ask questions in plain English.</strong> Claude finds the story in your numbers.</p>
 
 <div class="flash-block">
@@ -159,6 +180,16 @@ Claude transforms 5 messy bullets into a structured summary with headers, action
 <div class="lesson-section">
   <span class="section-label">Files</span>
   <h2 class="section-title">Working with uploaded files.</h2>
+
+  <div class="lesson-visual" aria-label="Claude handles: PDFs, spreadsheets, code files, images">
+    <div style="display:flex;gap:6px;padding:12px 16px;justify-content:center;flex-wrap:wrap;font-family:'SF Mono','JetBrains Mono',monospace;">
+      <span style="padding:5px 10px;border-radius:20px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.12);color:#f87171;font-size:.65rem;font-weight:600;">PDF</span>
+      <span style="padding:5px 10px;border-radius:20px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);color:#34d399;font-size:.65rem;font-weight:600;">CSV/Excel</span>
+      <span style="padding:5px 10px;border-radius:20px;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);color:#8b5cf6;font-size:.65rem;font-weight:600;">Code</span>
+      <span style="padding:5px 10px;border-radius:20px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.12);color:#38bdf8;font-size:.65rem;font-weight:600;">Images</span>
+      <span style="padding:5px 10px;border-radius:20px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);color:#fb923c;font-size:.65rem;font-weight:600;">Text</span>
+    </div>
+  </div>
   <p class="section-text">Claude can read PDFs, images, spreadsheets, and more. But there are limits. Know what works and what needs a different approach.</p>
 
 
@@ -323,6 +354,7 @@ Format as a table sorted by importance.
 <div class="quiz-block">
 <h3 class="quiz-title">Quiz</h3>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="CEO needs quick summary"><div style="text-align:center;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;"><span style="color:#52525b;">40 pages &rarr; CEO &rarr;</span> <span style="color:#34d399;font-weight:600;">which style?</span></div></div>
 <p class="quiz-q"><span class="quiz-num">1</span>You need to send your CEO a quick summary of a 40-page report. Which summary style?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
@@ -341,6 +373,7 @@ Format as a table sorted by importance.
 <div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Executive Summary is built for leadership. It leads with the bottom line, highlights key findings, and flags what needs attention — exactly what a CEO wants in 30 seconds.</div>
 </div>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Long document strategy"><div style="text-align:center;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;"><span style="color:#fb923c;">too long?</span> <span style="color:#52525b;">&rarr; split into</span> <span style="color:#34d399;font-weight:600;">chunks</span></div></div>
 <p class="quiz-q"><span class="quiz-num">2</span>What is the chunk strategy for long documents?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
@@ -359,6 +392,7 @@ Format as a table sorted by importance.
 <div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The chunk strategy gives Claude focused context per section for deeper analysis, then synthesizes across all chunks for a unified view. Best approach for very large documents.</div>
 </div>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Claude error: verify and correct"><div style="text-align:center;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;"><span style="color:#f87171;">wrong answer?</span> <span style="color:#52525b;">&rarr;</span> <span style="color:#34d399;font-weight:600;">verify + correct</span></div></div>
 <p class="quiz-q"><span class="quiz-num">3</span>Claude says something wrong in a data analysis. What should you do?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
