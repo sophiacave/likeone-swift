@@ -73,6 +73,7 @@ let package = Package(
         // Tests
         .testTarget(name: "LOCoreTests", dependencies: ["LOCore"]),
         .testTarget(name: "LOBrainTests", dependencies: ["LOBrain"]),
+        .testTarget(name: "LOContentTests", dependencies: ["LOContent"]),
         .testTarget(name: "LOServerTests", dependencies: ["LOServer"]),
     ],
     swiftLanguageModes: [.v6]
