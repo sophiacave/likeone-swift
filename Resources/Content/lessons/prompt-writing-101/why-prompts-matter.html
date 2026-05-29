@@ -18,6 +18,61 @@
 <div class="lesson-section">
   <span class="section-label">The Truth</span>
   <h2 class="section-title">AI is only as good as the question you ask.</h2>
+  <div class="lesson-visual" aria-label="Flow diagram comparing a vague prompt producing generic output versus a specific prompt producing precise output, with the same AI processing node in both paths">
+    <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="pw-grid1" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="480" height="200" fill="url(#pw-grid1)"/>
+      <!-- TOP ROW: Vague path -->
+      <text x="240" y="18" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace" letter-spacing="0.5">SAME AI, DIFFERENT INPUT</text>
+      <!-- Vague prompt -->
+      <rect x="20" y="38" width="120" height="40" rx="8" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
+      <text x="80" y="54" text-anchor="middle" fill="#ef4444" font-size="8" font-weight="600" font-family="SF Mono,monospace" opacity="0.7">VAGUE PROMPT</text>
+      <text x="80" y="68" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">"Write an email"</text>
+      <!-- Arrow -->
+      <line x1="142" y1="58" x2="190" y2="58" stroke="#71717a" stroke-width="1" opacity="0.3"/>
+      <polygon points="188,55 195,58 188,61" fill="#71717a" opacity="0.3"/>
+      <!-- AI node (top) -->
+      <circle cx="225" cy="58" r="22" fill="none" stroke="#c084fc" stroke-width="1.5" opacity="0.5"/>
+      <text x="225" y="55" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="600" font-family="SF Mono,monospace" opacity="0.6">AI</text>
+      <text x="225" y="65" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace" opacity="0.5">guesses</text>
+      <!-- Arrow -->
+      <line x1="249" y1="58" x2="300" y2="58" stroke="#71717a" stroke-width="1" opacity="0.3"/>
+      <polygon points="298,55 305,58 298,61" fill="#71717a" opacity="0.3"/>
+      <!-- Generic output -->
+      <rect x="310" y="38" width="150" height="40" rx="8" fill="none" stroke="#71717a" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+      <text x="385" y="54" text-anchor="middle" fill="#71717a" font-size="8" font-weight="600" font-family="SF Mono,monospace" opacity="0.5">GENERIC OUTPUT</text>
+      <text x="385" y="68" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.4">"Dear valued customer..."</text>
+      <!-- Divider -->
+      <line x1="40" y1="100" x2="440" y2="100" stroke="#71717a" stroke-width="0.5" stroke-dasharray="2,4" opacity="0.15"/>
+      <!-- BOTTOM ROW: Specific path -->
+      <!-- Specific prompt -->
+      <rect x="20" y="118" width="120" height="52" rx="8" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="80" y="134" text-anchor="middle" fill="#34d399" font-size="8" font-weight="600" font-family="SF Mono,monospace">SPECIFIC PROMPT</text>
+      <text x="80" y="148" text-anchor="middle" fill="#34d399" font-size="6.5" font-family="SF Mono,monospace" opacity="0.8">role + context +</text>
+      <text x="80" y="160" text-anchor="middle" fill="#34d399" font-size="6.5" font-family="SF Mono,monospace" opacity="0.8">format + constraints</text>
+      <!-- Arrow -->
+      <line x1="142" y1="144" x2="190" y2="144" stroke="#34d399" stroke-width="1.5" opacity="0.5"/>
+      <polygon points="188,141 195,144 188,147" fill="#34d399" opacity="0.5"/>
+      <!-- AI node (bottom) -->
+      <circle cx="225" cy="144" r="22" fill="none" stroke="#c084fc" stroke-width="2"/>
+      <text x="225" y="141" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="600" font-family="SF Mono,monospace">AI</text>
+      <text x="225" y="151" text-anchor="middle" fill="#c084fc" font-size="6" font-family="SF Mono,monospace">delivers</text>
+      <!-- Arrow -->
+      <line x1="249" y1="144" x2="300" y2="144" stroke="#34d399" stroke-width="1.5" opacity="0.5"/>
+      <polygon points="298,141 305,144 298,147" fill="#34d399" opacity="0.5"/>
+      <!-- Precise output -->
+      <rect x="310" y="124" width="150" height="40" rx="8" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="385" y="140" text-anchor="middle" fill="#34d399" font-size="8" font-weight="600" font-family="SF Mono,monospace">PRECISE OUTPUT</text>
+      <text x="385" y="154" text-anchor="middle" fill="#34d399" font-size="7" font-family="SF Mono,monospace" opacity="0.8">exactly what you need</text>
+      <!-- Bottom insight -->
+      <text x="240" y="192" text-anchor="middle" fill="#71717a" font-size="9" font-family="SF Mono,monospace">the AI didn't change — your INPUT did</text>
+    </svg>
+  </div>
+
   <p class="section-text">You've probably heard people say AI is overhyped. That it gives generic answers. That it can't do their job. And honestly? With the prompts most people write, they're right.</p>
   <p class="section-text">Here's what's actually happening: AI is a mirror. It reflects the clarity of your thinking back at you. A vague question gets a vague answer. A precise, thoughtful prompt gets output that makes you wonder if the AI read your mind.</p>
   <p class="section-text">This isn't magic. It's communication. And like any form of communication, it's a skill you can learn.</p>
@@ -27,6 +82,44 @@
 <div class="lesson-section">
   <span class="section-label">The Mental Model</span>
   <h2 class="section-title">Think of AI as the world's most capable intern.</h2>
+  <div class="lesson-visual" aria-label="Diagram showing AI has vast general knowledge represented as a large circle, with a missing wedge representing your specific context that only your prompt can fill">
+    <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="pw-grid2" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="480" height="220" fill="url(#pw-grid2)"/>
+      <!-- Main knowledge circle -->
+      <circle cx="200" cy="115" r="80" fill="none" stroke="#c084fc" stroke-width="1.5" opacity="0.3"/>
+      <!-- Fill the circle with knowledge labels -->
+      <text x="200" y="60" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace" opacity="0.4">books</text>
+      <text x="162" y="80" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace" opacity="0.35">code</text>
+      <text x="230" y="78" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace" opacity="0.35">research</text>
+      <text x="155" y="105" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace" opacity="0.3">languages</text>
+      <text x="240" y="100" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace" opacity="0.3">science</text>
+      <text x="175" y="130" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace" opacity="0.35">articles</text>
+      <text x="228" y="128" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace" opacity="0.35">history</text>
+      <text x="200" y="150" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace" opacity="0.3">math</text>
+      <text x="170" y="168" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace" opacity="0.25">law</text>
+      <text x="230" y="165" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace" opacity="0.25">medicine</text>
+      <!-- Main label -->
+      <text x="200" y="30" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="600" font-family="SF Mono,monospace">AI'S KNOWLEDGE</text>
+      <text x="200" y="210" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">(everything ever published)</text>
+      <!-- Missing wedge — the gap -->
+      <path d="M 200 115 L 265 70 A 80 80 0 0 1 275 130 Z" fill="rgba(251,146,60,.06)" stroke="#fb923c" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <text x="262" y="102" text-anchor="middle" fill="#fb923c" font-size="7" font-weight="600" font-family="SF Mono,monospace">YOUR</text>
+      <text x="262" y="114" text-anchor="middle" fill="#fb923c" font-size="7" font-weight="600" font-family="SF Mono,monospace">CONTEXT</text>
+      <!-- Prompt arrow bridging the gap -->
+      <line x1="370" y1="100" x2="290" y2="100" stroke="#34d399" stroke-width="1.5"/>
+      <polygon points="292,97 285,100 292,103" fill="#34d399"/>
+      <!-- Prompt box -->
+      <rect x="370" y="78" width="95" height="44" rx="8" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="417" y="96" text-anchor="middle" fill="#34d399" font-size="8" font-weight="600" font-family="SF Mono,monospace">YOUR PROMPT</text>
+      <text x="417" y="112" text-anchor="middle" fill="#34d399" font-size="7" font-family="SF Mono,monospace" opacity="0.7">fills the gap</text>
+    </svg>
+  </div>
+
   <p class="section-text">Imagine you hired a new team member who:</p>
   <ul class="section-text" style="padding-left:1.5rem;margin-top:.5rem;margin-bottom:1rem">
     <li>Has read virtually everything ever published</li>
@@ -60,6 +153,22 @@ Write a marketing email for <span style="color:#4ade80">[product name]</span> ta
 <div class="quiz-block">
 <h3 class="quiz-title">Check Your Understanding</h3>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Two users sending different quality prompts to the same AI, getting different quality outputs">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;">
+    <div style="text-align:center;padding:10px 8px;border-radius:8px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1);">
+      <div style="font-size:.7rem;font-weight:600;color:#ef4444;margin-bottom:6px;">USER A</div>
+      <div style="font-size:.65rem;color:#71717a;padding:4px 6px;border-radius:4px;background:rgba(255,255,255,.02);">"Write something"</div>
+      <div style="color:#3f3f46;font-size:.8rem;margin:6px 0;">&darr;</div>
+      <div style="font-size:.65rem;color:#3f3f46;">generic, useless</div>
+    </div>
+    <div style="text-align:center;padding:10px 8px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1);">
+      <div style="font-size:.7rem;font-weight:600;color:#34d399;margin-bottom:6px;">USER B</div>
+      <div style="font-size:.65rem;color:#71717a;padding:4px 6px;border-radius:4px;background:rgba(255,255,255,.02);">"Write a 3-line Slack..."</div>
+      <div style="color:#34d399;font-size:.8rem;margin:6px 0;">&darr;</div>
+      <div style="font-size:.65rem;color:#34d399;">precise, ready to use</div>
+    </div>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">1</span>Why does the same AI model give different quality results to different people?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
@@ -209,6 +318,49 @@ Every detail you add is one less thing the AI has to guess.</div>
 <div class="lesson-section">
   <span class="section-label">The One Thing</span>
   <h2 class="section-title">Every great prompt has this in common: specificity.</h2>
+  <div class="lesson-visual" aria-label="Specificity spectrum showing vague prompts on the left producing AI guesswork and specific prompts on the right producing precise delivery, separated by only 60 seconds of effort">
+    <svg viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="pw-grid3" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+        </pattern>
+        <linearGradient id="spec-grad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#ef4444" stop-opacity="0.15"/>
+          <stop offset="100%" stop-color="#34d399" stop-opacity="0.15"/>
+        </linearGradient>
+      </defs>
+      <rect width="480" height="180" fill="url(#pw-grid3)"/>
+      <!-- Title -->
+      <text x="240" y="22" text-anchor="middle" fill="#71717a" font-size="8" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">THE SPECIFICITY SPECTRUM</text>
+      <!-- Main bar -->
+      <rect x="40" y="60" width="400" height="24" rx="12" fill="url(#spec-grad)" stroke="none"/>
+      <rect x="40" y="60" width="400" height="24" rx="12" fill="none" stroke="#71717a" stroke-width="0.5" opacity="0.2"/>
+      <!-- Left label -->
+      <text x="60" y="76" fill="#ef4444" font-size="9" font-weight="600" font-family="SF Mono,monospace">VAGUE</text>
+      <!-- Right label -->
+      <text x="400" y="76" text-anchor="end" fill="#34d399" font-size="9" font-weight="600" font-family="SF Mono,monospace">SPECIFIC</text>
+      <!-- Markers -->
+      <circle cx="90" cy="72" r="4" fill="#ef4444" opacity="0.6"/>
+      <text x="90" y="52" text-anchor="middle" fill="#ef4444" font-size="6.5" font-family="SF Mono,monospace" opacity="0.6">"Help me"</text>
+      <circle cx="200" cy="72" r="4" fill="#fb923c" opacity="0.6"/>
+      <text x="200" y="52" text-anchor="middle" fill="#fb923c" font-size="6.5" font-family="SF Mono,monospace" opacity="0.6">"Write an email"</text>
+      <circle cx="330" cy="72" r="4" fill="#34d399" opacity="0.8"/>
+      <text x="330" y="52" text-anchor="middle" fill="#34d399" font-size="6.5" font-family="SF Mono,monospace" opacity="0.8">"Write a 3-sentence</text>
+      <text x="330" y="42" text-anchor="middle" fill="#34d399" font-size="6.5" font-family="SF Mono,monospace" opacity="0.8">Slack update, warm tone"</text>
+      <!-- Below: outcome labels -->
+      <text x="90" y="100" text-anchor="middle" fill="#ef4444" font-size="7" font-family="SF Mono,monospace" opacity="0.5">AI guesses</text>
+      <text x="90" y="112" text-anchor="middle" fill="#ef4444" font-size="7" font-family="SF Mono,monospace" opacity="0.5">everything</text>
+      <text x="330" y="100" text-anchor="middle" fill="#34d399" font-size="7" font-family="SF Mono,monospace" opacity="0.7">AI delivers</text>
+      <text x="330" y="112" text-anchor="middle" fill="#34d399" font-size="7" font-family="SF Mono,monospace" opacity="0.7">exactly this</text>
+      <!-- 60 seconds arrow -->
+      <line x1="140" y1="140" x2="280" y2="140" stroke="#c084fc" stroke-width="1" opacity="0.5"/>
+      <polygon points="138,137 132,140 138,143" fill="#c084fc" opacity="0.5"/>
+      <polygon points="282,137 288,140 282,143" fill="#c084fc" opacity="0.5"/>
+      <text x="210" y="155" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="600" font-family="SF Mono,monospace">60 seconds</text>
+      <text x="210" y="170" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">the highest-leverage minute in your workday</text>
+    </svg>
+  </div>
+
   <p class="section-text">Not length. Not fancy words. Not tricks or hacks. <strong>Specificity.</strong></p>
   <p class="section-text">The more specific you are about what you want, the less the AI has to guess. And every guess is a chance for the output to go sideways.</p>
   <p class="section-text">Specificity means answering the questions the AI can't ask you:</p>
