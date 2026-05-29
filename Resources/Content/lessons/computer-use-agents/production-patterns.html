@@ -17,6 +17,18 @@
 <div class="lesson-section">
   <span class="section-label">Architecture</span>
   <h2 class="section-title">Headless Browser Execution</h2>
+<div class="lo-vis" role="figure" aria-label="Headless Browser Execution">
+<div class="lo-vis__title">Headless Browser Execution</div>
+<div class="lo-steps" data-count="3">
+<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
+<span class="lo-steps__arrow">&rarr;</span>
+<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
+<span class="lo-steps__arrow">&rarr;</span>
+<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
+</div>
+<div class="lo-vis__caption">Master <strong>headless browser execution</strong> step by step.</div>
+</div>
+
   <p class="section-text">In production, you do not want a visible browser window. Headless browsers run without a display, executing everything in memory. The screenshots are still captured -- they are just never shown on a physical screen.</p>
   <p class="section-text"><strong style="color: var(--blue);">Xvfb (X Virtual Frame Buffer).</strong> Creates a virtual display in memory. Applications think they have a screen, but the pixels are only in RAM. This is the standard approach for Linux servers. Run your browser against Xvfb and capture screenshots from the virtual display.</p>
   <p class="section-text"><strong style="color: var(--purple);">Playwright headless mode.</strong> Playwright can run Chromium in headless mode -- no virtual display needed. Screenshots are captured directly from the browser's rendering engine. Simpler setup, but some websites detect headless browsers and block them.</p>

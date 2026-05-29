@@ -17,6 +17,18 @@
 <div class="lesson-section">
   <span class="section-label">Concept</span>
   <h2 class="section-title">Task Decomposition</h2>
+<div class="lo-vis" role="figure" aria-label="Task Decomposition">
+<div class="lo-vis__title">Task Decomposition</div>
+<div class="lo-steps" data-count="3">
+<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
+<span class="lo-steps__arrow">&rarr;</span>
+<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
+<span class="lo-steps__arrow">&rarr;</span>
+<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
+</div>
+<div class="lo-vis__caption">Master <strong>task decomposition</strong> step by step.</div>
+</div>
+
   <p class="section-text">Every multi-step workflow starts as a human description: "Book a flight from SFO to JFK for next Friday." But a vision agent cannot execute that as one action. It needs to break it down into atomic steps:</p>
   <p class="section-text">1. Navigate to the airline website. 2. Find the search form. 3. Enter departure city. 4. Enter destination city. 5. Select the date. 6. Click search. 7. Wait for results. 8. Compare options. 9. Select a flight. 10. Fill passenger details. 11. Enter payment. 12. Confirm booking.</p>
   <p class="section-text">Each of these is a screenshot-analyze-act cycle. The key insight is that the agent does not need to plan all 12 steps upfront. It needs to know the goal and execute one step at a time, using the current screenshot to decide the next action. This is how humans do it too -- you do not memorize every click before starting.</p>

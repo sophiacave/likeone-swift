@@ -16,6 +16,18 @@
 <div class="lesson-section">
   <span class="section-label">The Pipeline</span>
   <h2 class="section-title">Git Push to Production</h2>
+<div class="lo-vis" role="figure" aria-label="Git Push to Production">
+<div class="lo-vis__title">Git Push to Production</div>
+<div class="lo-steps" data-count="3">
+<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
+<span class="lo-steps__arrow">&rarr;</span>
+<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
+<span class="lo-steps__arrow">&rarr;</span>
+<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
+</div>
+<div class="lo-vis__caption">Master <strong>git push to production</strong> step by step.</div>
+</div>
+
   <p class="section-text">The simplest CI/CD pipeline for AI apps: push to main, auto-deploy. Vercel does this out of the box. Your GitHub repository connects to Vercel, and every merge to main triggers a production deployment. Preview deployments happen on every pull request.</p>
   <p class="section-text">For edge functions (Supabase), deployment is a CLI command: <code>supabase functions deploy function-name</code>. Automate this with a GitHub Action that triggers on changes to your functions directory.</p>
   <p class="section-text">The critical addition for AI apps: your pipeline needs to verify that API keys are set, rate limits are configured, and your AI providers are reachable — before traffic hits the new deployment.</p>

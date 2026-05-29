@@ -17,6 +17,18 @@
 <div class="lesson-section">
   <span class="section-label">Architecture</span>
   <h2 class="section-title">The Monitoring Stack</h2>
+<div class="lo-vis" role="figure" aria-label="The Monitoring Stack">
+<div class="lo-vis__title">The Monitoring Stack</div>
+<div class="lo-steps" data-count="3">
+<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
+<span class="lo-steps__arrow">&rarr;</span>
+<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
+<span class="lo-steps__arrow">&rarr;</span>
+<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
+</div>
+<div class="lo-vis__caption">Master <strong>the monitoring stack</strong> step by step.</div>
+</div>
+
   <p class="section-text">Effective monitoring has three layers:</p>
   <p class="section-text"><strong style="color: var(--blue);">Health checks (is it alive?).</strong> Periodic pings to every service. Is Ollama responding? Is the brain database accessible? Is the website up? Binary alive/dead status, checked every 30-60 seconds.</p>
   <p class="section-text"><strong style="color: var(--purple);">Metrics (how is it performing?).</strong> Response times, CPU usage, RAM consumption, queue depths, error rates. Not just alive, but healthy. A service with 99% CPU usage is alive but about to crash.</p>

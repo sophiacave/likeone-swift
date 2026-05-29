@@ -16,6 +16,18 @@
 <div class="lesson-section">
   <span class="section-label">Security First</span>
   <h2 class="section-title">API Key Management</h2>
+<div class="lo-vis" role="figure" aria-label="API Key Management">
+<div class="lo-vis__title">API Key Management</div>
+<div class="lo-steps" data-count="3">
+<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
+<span class="lo-steps__arrow">&rarr;</span>
+<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
+<span class="lo-steps__arrow">&rarr;</span>
+<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
+</div>
+<div class="lo-vis__caption">Master <strong>api key management</strong> step by step.</div>
+</div>
+
   <p class="section-text">An exposed OpenAI or Anthropic API key can rack up thousands of dollars in minutes. This isn't theoretical — it happens constantly. Keys get committed to GitHub, hardcoded in frontend JavaScript, or left in plain text configs.</p>
   <p class="section-text"><strong>Rule 1:</strong> API keys live in environment variables, never in code. Every platform (Vercel, Supabase, AWS) has a secure way to store env vars. Use it.</p>
   <p class="section-text"><strong>Rule 2:</strong> AI API calls happen server-side only. Never call OpenAI or Anthropic from the browser. Your edge function or backend makes the call; the frontend gets the result.</p>
