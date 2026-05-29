@@ -1,4 +1,4 @@
-FROM swift:6.0-jammy as build
+FROM swift:6.1-jammy as build
 RUN apt-get update && apt-get install -y libsqlite3-dev && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY Package.swift Package.resolved ./
@@ -13,7 +13,7 @@ RUN swift build -c release -Xswiftc -cross-module-optimization \
     && find .build -name "*.resources" -type d -exec cp -r {} /output/ \; \
     && ls -la /output/
 
-FROM swift:6.0-jammy-slim
+FROM swift:6.1-jammy-slim
 RUN apt-get update && apt-get install -y \
     ca-certificates \
     libsqlite3-0 \
