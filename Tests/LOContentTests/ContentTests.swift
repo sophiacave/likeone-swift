@@ -105,4 +105,59 @@ struct ContentTests {
             #expect(product.stripeProductID != nil, "\(product.slug) missing Stripe product ID")
         }
     }
+
+    // MARK: - Lesson Provider
+
+    @Test("LessonProvider loads 518 lessons across 52 courses")
+    func lessonCount() {
+        let provider = LessonProvider()
+        let courses = CourseProvider()
+        var total = 0
+        for course in courses.allCourses() {
+            total += provider.lessonCount(forCourse: course.slug)
+        }
+        #expect(total == 518, "Expected 518 lessons, got \(total)")
+    }
+
+    @Test("AI Foundations has 9 lessons")
+    func aiFoundationsLessons() {
+        let provider = LessonProvider()
+        let lessons = provider.lessons(forCourse: "ai-foundations")
+        #expect(lessons.count == 9)
+        #expect(lessons.first?.title == "What Is a Neuron?")
+        #expect(lessons.first?.order == 1)
+    }
+
+    @Test("Lesson lookup by slug works")
+    func lessonLookup() {
+        let provider = LessonProvider()
+        let lesson = provider.lesson(courseSlug: "ai-foundations", lessonSlug: "what-is-a-neuron")
+        #expect(lesson != nil)
+        #expect(lesson?.title == "What Is a Neuron?")
+        #expect(lesson?.isFree == true)
+    }
+
+    @Test("All lessons have ordered, non-empty titles")
+    func lessonFieldsValid() {
+        let provider = LessonProvider()
+        let courses = CourseProvider()
+        for course in courses.allCourses() {
+            let lessons = provider.lessons(forCourse: course.slug)
+            for lesson in lessons {
+                #expect(!lesson.slug.isEmpty, "Lesson has empty slug in \(course.slug)")
+                #expect(!lesson.title.isEmpty, "Lesson has empty title in \(course.slug)")
+                #expect(lesson.order > 0, "Lesson has invalid order in \(course.slug)")
+            }
+        }
+    }
+
+    @Test("Lessons are sorted by order")
+    func lessonsSorted() {
+        let provider = LessonProvider()
+        let lessons = provider.lessons(forCourse: "advanced-prompt-engineering")
+        for i in 1..<lessons.count {
+            #expect(lessons[i].order >= lessons[i-1].order,
+                    "Lessons not sorted: \(lessons[i-1].title) before \(lessons[i].title)")
+        }
+    }
 }

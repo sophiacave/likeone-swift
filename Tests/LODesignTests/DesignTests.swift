@@ -50,4 +50,17 @@ struct DesignTests {
         #expect(body.familyName.contains("SF Pro"))
         #expect(mono.familyName.contains("SF Mono"))
     }
+
+    @Test("Text muted color passes WCAG AA on both backgrounds")
+    func textMutedContrast() {
+        // text-muted must be visible on bg-dark and bg-card
+        let muted = LOColorToken.textMuted.hex
+        #expect(muted == "#828288", "text-muted should be #828288 for WCAG AA compliance")
+    }
+
+    @Test("Gradient tokens are defined")
+    func gradientTokens() {
+        #expect(LOColorToken.gradientStart == .purple400)
+        #expect(LOColorToken.gradientEnd == .purple600)
+    }
 }

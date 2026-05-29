@@ -6,6 +6,14 @@
     <meta name="theme-color" content="#c084fc">
     <title>#(title)</title>
     <meta name="description" content="#(description)">
+    <meta property="og:title" content="#(title)">
+    <meta property="og:description" content="#(description)">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Like One">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="#(title)">
+    <meta name="twitter:description" content="#(description)">
+    <link rel="canonical" href="https://likeone.ai">
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://unpkg.com/htmx.org@2.0.4" defer></script>
 </head>
@@ -13,12 +21,11 @@
     <div class="site-page">
         <a href="#main-content" class="skip-link">Skip to content</a>
         <header class="header-site">
-            <nav class="header-site-nav">
+            <nav class="header-site-nav" aria-label="Main navigation">
                 <a class="header-site-brand" href="/">like<span class="accent">one</span></a>
                 <div class="site-nav-links">
                     <a class="header-site-link" href="/academy">Academy</a>
-                    <a class="header-site-link" href="/api/info">API</a>
-                    <a class="header-signin-btn" href="/account">Sign In</a>
+                    <a class="header-signin-btn" href="/signin">Sign In</a>
                 </div>
             </nav>
         </header>
@@ -35,5 +42,13 @@
             </div>
         </footer>
     </div>
+    <script>
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.academy-filter-btn')) {
+            document.querySelectorAll('.academy-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+            e.target.closest('.academy-filter-btn').classList.add('active');
+        }
+    });
+    </script>
 </body>
 </html>

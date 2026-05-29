@@ -1,0 +1,3940 @@
+{
+  "advanced-prompt-engineering": {
+    "course_slug": "advanced-prompt-engineering",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "01-beyond-basic-prompts",
+        "title": "Beyond Basic Prompts",
+        "order": 1,
+        "free": true,
+        "content_length": 18468
+      },
+      {
+        "slug": "02-system-prompts-and-personas",
+        "title": "System Prompts and Personas",
+        "order": 2,
+        "free": true,
+        "content_length": 15838
+      },
+      {
+        "slug": "03-chain-of-thought",
+        "title": "Chain of Thought",
+        "order": 3,
+        "free": true,
+        "content_length": 15484
+      },
+      {
+        "slug": "04-few-shot-and-examples",
+        "title": "Few-Shot and Examples",
+        "order": 4,
+        "free": false,
+        "content_length": 14071
+      },
+      {
+        "slug": "05-structured-output",
+        "title": "Structured Output",
+        "order": 5,
+        "free": false,
+        "content_length": 11924
+      },
+      {
+        "slug": "06-prompt-chaining",
+        "title": "Prompt Chaining",
+        "order": 6,
+        "free": false,
+        "content_length": 16815
+      },
+      {
+        "slug": "07-context-window-mastery",
+        "title": "Context Window Mastery",
+        "order": 7,
+        "free": false,
+        "content_length": 15685
+      },
+      {
+        "slug": "08-debugging-bad-outputs",
+        "title": "Debugging Bad Outputs",
+        "order": 8,
+        "free": false,
+        "content_length": 17754
+      },
+      {
+        "slug": "09-domain-specific-prompts",
+        "title": "Domain-Specific Prompts",
+        "order": 9,
+        "free": false,
+        "content_length": 17388
+      },
+      {
+        "slug": "10-your-prompt-library",
+        "title": "Your Prompt Library",
+        "order": 10,
+        "free": false,
+        "content_length": 14674
+      }
+    ]
+  },
+  "ai-cinema": {
+    "course_slug": "ai-cinema",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "the-ai-cinema-revolution",
+        "title": "The AI Cinema Revolution",
+        "order": 1,
+        "free": true,
+        "content_length": 8539
+      },
+      {
+        "slug": "script-and-story",
+        "title": "Script & Story Development with AI",
+        "order": 2,
+        "free": false,
+        "content_length": 10206
+      },
+      {
+        "slug": "storyboarding",
+        "title": "AI Storyboarding & Shot Planning",
+        "order": 3,
+        "free": false,
+        "content_length": 9694
+      },
+      {
+        "slug": "video-generation",
+        "title": "Video Generation: Kling, Runway, Pika, Veo",
+        "order": 4,
+        "free": false,
+        "content_length": 10488
+      },
+      {
+        "slug": "character-consistency",
+        "title": "Character Consistency Across Scenes",
+        "order": 5,
+        "free": false,
+        "content_length": 10619
+      },
+      {
+        "slug": "audio-and-soundtrack",
+        "title": "Audio, Music & Soundtrack Production",
+        "order": 6,
+        "free": false,
+        "content_length": 9842
+      },
+      {
+        "slug": "editing-and-post",
+        "title": "Editing & Post-Production",
+        "order": 7,
+        "free": false,
+        "content_length": 10059
+      },
+      {
+        "slug": "visual-effects",
+        "title": "Visual Effects & Motion Graphics",
+        "order": 8,
+        "free": false,
+        "content_length": 10323
+      },
+      {
+        "slug": "distribution",
+        "title": "Distribution: YouTube, Film Festivals, Streaming",
+        "order": 9,
+        "free": false,
+        "content_length": 10116
+      },
+      {
+        "slug": "cinema-studio",
+        "title": "Building Your AI Cinema Studio",
+        "order": 10,
+        "free": false,
+        "content_length": 11511
+      }
+    ]
+  },
+  "ai-content-studio": {
+    "course_slug": "ai-content-studio",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "the-content-studio-mindset",
+        "title": "The Content Studio Mindset",
+        "order": 1,
+        "free": true,
+        "content_length": 23168
+      },
+      {
+        "slug": "content-strategy-with-ai",
+        "title": "Content Strategy with AI",
+        "order": 2,
+        "free": true,
+        "content_length": 21859
+      },
+      {
+        "slug": "long-form-writing",
+        "title": "Long-Form Writing",
+        "order": 3,
+        "free": true,
+        "content_length": 20726
+      },
+      {
+        "slug": "short-form-mastery",
+        "title": "Short-Form Mastery",
+        "order": 4,
+        "free": false,
+        "content_length": 23441
+      },
+      {
+        "slug": "email-sequences-that-convert",
+        "title": "Email Sequences That Convert",
+        "order": 5,
+        "free": false,
+        "content_length": 19455
+      },
+      {
+        "slug": "repurposing-content",
+        "title": "Repurposing Content",
+        "order": 6,
+        "free": false,
+        "content_length": 21098
+      },
+      {
+        "slug": "brand-voice-consistency",
+        "title": "Brand Voice Consistency",
+        "order": 7,
+        "free": false,
+        "content_length": 18439
+      },
+      {
+        "slug": "seo-content-optimization",
+        "title": "SEO Content Optimization",
+        "order": 8,
+        "free": false,
+        "content_length": 22699
+      },
+      {
+        "slug": "content-workflows-and-batching",
+        "title": "Content Workflows & Batching",
+        "order": 9,
+        "free": false,
+        "content_length": 22191
+      },
+      {
+        "slug": "launching-your-content-engine",
+        "title": "Launching Your Content Engine",
+        "order": 10,
+        "free": false,
+        "content_length": 26168
+      }
+    ]
+  },
+  "ai-enterprise-strategy": {
+    "course_slug": "ai-enterprise-strategy",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "01-ai-strategy-landscape",
+        "title": "The AI Strategy Landscape",
+        "order": 1,
+        "free": true,
+        "content_length": 22589
+      },
+      {
+        "slug": "02-building-the-business-case",
+        "title": "Building the Business Case",
+        "order": 2,
+        "free": true,
+        "content_length": 26231
+      },
+      {
+        "slug": "03-ai-readiness-assessment",
+        "title": "AI Readiness Assessment",
+        "order": 3,
+        "free": true,
+        "content_length": 34967
+      },
+      {
+        "slug": "04-data-strategy",
+        "title": "Data Strategy",
+        "order": 4,
+        "free": true,
+        "content_length": 25836
+      },
+      {
+        "slug": "05-team-and-talent",
+        "title": "Team and Talent",
+        "order": 5,
+        "free": true,
+        "content_length": 22976
+      },
+      {
+        "slug": "06-vendor-evaluation",
+        "title": "Vendor Evaluation",
+        "order": 6,
+        "free": true,
+        "content_length": 23023
+      },
+      {
+        "slug": "07-governance-and-ethics",
+        "title": "Governance and Ethics",
+        "order": 7,
+        "free": true,
+        "content_length": 22207
+      },
+      {
+        "slug": "08-change-management",
+        "title": "Change Management",
+        "order": 8,
+        "free": true,
+        "content_length": 21014
+      },
+      {
+        "slug": "09-measuring-ai-impact",
+        "title": "Measuring AI Impact",
+        "order": 9,
+        "free": true,
+        "content_length": 21430
+      },
+      {
+        "slug": "10-your-enterprise-ai-roadmap",
+        "title": "Your Enterprise AI Roadmap",
+        "order": 10,
+        "free": true,
+        "content_length": 26117
+      }
+    ]
+  },
+  "ai-ethics-and-safety": {
+    "course_slug": "ai-ethics-and-safety",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "why-ai-ethics-matter",
+        "title": "Why AI Ethics Matter",
+        "order": 1,
+        "free": true,
+        "content_length": 21729
+      },
+      {
+        "slug": "bias-in-ai",
+        "title": "Bias in AI",
+        "order": 2,
+        "free": true,
+        "content_length": 22816
+      },
+      {
+        "slug": "privacy-and-data-protection",
+        "title": "Privacy and Data Protection",
+        "order": 3,
+        "free": true,
+        "content_length": 20204
+      },
+      {
+        "slug": "misinformation-and-hallucinations",
+        "title": "Misinformation and Hallucinations",
+        "order": 4,
+        "free": false,
+        "content_length": 22349
+      },
+      {
+        "slug": "transparency-and-disclosure",
+        "title": "Transparency and Disclosure",
+        "order": 5,
+        "free": false,
+        "content_length": 18667
+      },
+      {
+        "slug": "intellectual-property-and-copyright",
+        "title": "Intellectual Property and Copyright",
+        "order": 6,
+        "free": false,
+        "content_length": 19530
+      },
+      {
+        "slug": "responsible-ai-at-work",
+        "title": "Responsible AI at Work",
+        "order": 7,
+        "free": false,
+        "content_length": 20710
+      },
+      {
+        "slug": "ai-and-society",
+        "title": "AI and Society",
+        "order": 8,
+        "free": false,
+        "content_length": 19413
+      },
+      {
+        "slug": "building-trustworthy-ai-systems",
+        "title": "Building Trustworthy AI Systems",
+        "order": 9,
+        "free": false,
+        "content_length": 19971
+      },
+      {
+        "slug": "ai-ethics-assessment",
+        "title": "AI Ethics Assessment",
+        "order": 10,
+        "free": false,
+        "content_length": 20484
+      }
+    ]
+  },
+  "ai-finance": {
+    "course_slug": "ai-finance",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "ai-meets-money",
+        "title": "AI Meets Money: What's Actually Possible",
+        "order": 1,
+        "free": true,
+        "content_length": 8030
+      },
+      {
+        "slug": "budgeting-automation",
+        "title": "Automated Budgeting & Expense Tracking",
+        "order": 2,
+        "free": false,
+        "content_length": 7968
+      },
+      {
+        "slug": "debt-payoff",
+        "title": "Debt Payoff Strategies with AI",
+        "order": 3,
+        "free": false,
+        "content_length": 8189
+      },
+      {
+        "slug": "investing-basics",
+        "title": "Investing Basics: AI-Powered Research",
+        "order": 4,
+        "free": false,
+        "content_length": 8535
+      },
+      {
+        "slug": "tax-preparation",
+        "title": "Tax Preparation & Optimization",
+        "order": 5,
+        "free": false,
+        "content_length": 8921
+      },
+      {
+        "slug": "credit-building",
+        "title": "Credit Building & Score Optimization",
+        "order": 6,
+        "free": false,
+        "content_length": 8528
+      },
+      {
+        "slug": "retirement-planning",
+        "title": "Retirement Planning with AI",
+        "order": 7,
+        "free": false,
+        "content_length": 8604
+      },
+      {
+        "slug": "side-income-tracking",
+        "title": "Side Income & Business Finance",
+        "order": 8,
+        "free": false,
+        "content_length": 8220
+      },
+      {
+        "slug": "financial-literacy",
+        "title": "Financial Literacy: What Schools Don't Teach",
+        "order": 9,
+        "free": false,
+        "content_length": 8631
+      },
+      {
+        "slug": "your-money-system",
+        "title": "Your AI-Powered Money System",
+        "order": 10,
+        "free": false,
+        "content_length": 9139
+      }
+    ]
+  },
+  "ai-for-business": {
+    "course_slug": "ai-for-business",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "ai-without-jargon",
+        "title": "AI Without Jargon",
+        "order": 1,
+        "free": true,
+        "content_length": 31206
+      },
+      {
+        "slug": "what-ai-can-and-cannot-do",
+        "title": "What AI Can and Cannot Do",
+        "order": 2,
+        "free": true,
+        "content_length": 26476
+      },
+      {
+        "slug": "the-roi-calculator",
+        "title": "The ROI Calculator",
+        "order": 3,
+        "free": true,
+        "content_length": 20572
+      },
+      {
+        "slug": "find-your-ai-opportunities",
+        "title": "Find Your AI Opportunities",
+        "order": 4,
+        "free": false,
+        "content_length": 25148
+      },
+      {
+        "slug": "build-vs-buy",
+        "title": "Build vs. Buy",
+        "order": 5,
+        "free": false,
+        "content_length": 23519
+      },
+      {
+        "slug": "ai-tools-landscape",
+        "title": "The AI Tools Landscape",
+        "order": 6,
+        "free": false,
+        "content_length": 23460
+      },
+      {
+        "slug": "your-first-week-with-ai",
+        "title": "Your First Week with AI",
+        "order": 7,
+        "free": false,
+        "content_length": 23242
+      },
+      {
+        "slug": "ai-policy-template",
+        "title": "AI Policy Template",
+        "order": 8,
+        "free": false,
+        "content_length": 28573
+      },
+      {
+        "slug": "measuring-ai-success",
+        "title": "Measuring AI Success",
+        "order": 9,
+        "free": false,
+        "content_length": 26134
+      },
+      {
+        "slug": "business-ai-quiz",
+        "title": "Business AI Readiness Quiz",
+        "order": 10,
+        "free": false,
+        "content_length": 30415
+      }
+    ]
+  },
+  "ai-for-creatives": {
+    "course_slug": "ai-for-creatives",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "ai-wont-replace-your-creativity",
+        "title": "AI Won't Replace Your Creativity",
+        "order": 1,
+        "free": true,
+        "content_length": 16843
+      },
+      {
+        "slug": "your-first-ai-creative-session",
+        "title": "Your First AI Creative Session",
+        "order": 2,
+        "free": true,
+        "content_length": 20140
+      },
+      {
+        "slug": "ai-for-writers",
+        "title": "AI for Writers",
+        "order": 3,
+        "free": true,
+        "content_length": 22063
+      },
+      {
+        "slug": "ai-for-visual-artists",
+        "title": "AI for Visual Artists & Designers",
+        "order": 4,
+        "free": false,
+        "content_length": 23270
+      },
+      {
+        "slug": "ai-for-musicians",
+        "title": "AI for Musicians & Audio",
+        "order": 5,
+        "free": false,
+        "content_length": 23847
+      },
+      {
+        "slug": "building-your-creative-ai-toolkit",
+        "title": "Building Your Creative AI Toolkit",
+        "order": 6,
+        "free": false,
+        "content_length": 15909
+      },
+      {
+        "slug": "the-art-of-creative-prompting",
+        "title": "The Art of Creative Prompting",
+        "order": 7,
+        "free": false,
+        "content_length": 19632
+      },
+      {
+        "slug": "ai-powered-content-creation-pipeline",
+        "title": "AI-Powered Content Creation Pipeline",
+        "order": 8,
+        "free": false,
+        "content_length": 18523
+      },
+      {
+        "slug": "ethics-originality-and-your-creative-identity",
+        "title": "Ethics, Originality & Your Creative Identity",
+        "order": 9,
+        "free": false,
+        "content_length": 17932
+      },
+      {
+        "slug": "creative-ai-assessment",
+        "title": "Creative AI Assessment",
+        "order": 10,
+        "free": false,
+        "content_length": 22139
+      }
+    ]
+  },
+  "ai-for-data-analysis": {
+    "course_slug": "ai-for-data-analysis",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "01-data-analysis-meets-ai",
+        "title": "Data Analysis Meets AI",
+        "order": 1,
+        "free": true,
+        "content_length": 20169
+      },
+      {
+        "slug": "02-asking-the-right-questions",
+        "title": "Asking the Right Questions",
+        "order": 2,
+        "free": true,
+        "content_length": 17291
+      },
+      {
+        "slug": "03-spreadsheet-analysis",
+        "title": "Spreadsheet Analysis",
+        "order": 3,
+        "free": true,
+        "content_length": 17115
+      },
+      {
+        "slug": "04-visualization-and-charts",
+        "title": "Visualization and Charts",
+        "order": 4,
+        "free": false,
+        "content_length": 15980
+      },
+      {
+        "slug": "05-cleaning-messy-data",
+        "title": "Cleaning Messy Data",
+        "order": 5,
+        "free": false,
+        "content_length": 17975
+      },
+      {
+        "slug": "06-pattern-recognition",
+        "title": "Pattern Recognition",
+        "order": 6,
+        "free": false,
+        "content_length": 18174
+      },
+      {
+        "slug": "07-survey-and-feedback-analysis",
+        "title": "Survey and Feedback Analysis",
+        "order": 7,
+        "free": false,
+        "content_length": 19245
+      },
+      {
+        "slug": "08-financial-data-analysis",
+        "title": "Financial Data Analysis",
+        "order": 8,
+        "free": false,
+        "content_length": 17330
+      },
+      {
+        "slug": "09-reporting-and-dashboards",
+        "title": "Reporting and Dashboards",
+        "order": 9,
+        "free": false,
+        "content_length": 21272
+      },
+      {
+        "slug": "10-building-your-analysis-workflow",
+        "title": "Building Your Analysis Workflow",
+        "order": 10,
+        "free": false,
+        "content_length": 17752
+      }
+    ]
+  },
+  "ai-for-executives": {
+    "course_slug": "ai-for-executives",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "the-executives-ai-reality-check",
+        "title": "The Executive's AI Reality Check",
+        "order": 1,
+        "free": true,
+        "content_length": 16935
+      },
+      {
+        "slug": "ai-strategy-without-the-jargon",
+        "title": "AI Strategy Without the Jargon",
+        "order": 2,
+        "free": true,
+        "content_length": 18903
+      },
+      {
+        "slug": "leading-ai-transformation",
+        "title": "Leading AI Transformation",
+        "order": 3,
+        "free": true,
+        "content_length": 20168
+      },
+      {
+        "slug": "ai-risk-and-governance",
+        "title": "AI Risk & Governance",
+        "order": 4,
+        "free": false,
+        "content_length": 20616
+      },
+      {
+        "slug": "measuring-ai-roi",
+        "title": "Measuring AI ROI",
+        "order": 5,
+        "free": false,
+        "content_length": 21510
+      },
+      {
+        "slug": "ai-vendor-selection-playbook",
+        "title": "AI Vendor Selection Playbook",
+        "order": 6,
+        "free": false,
+        "content_length": 15220
+      },
+      {
+        "slug": "ai-for-your-industry",
+        "title": "AI for Your Industry",
+        "order": 7,
+        "free": false,
+        "content_length": 14611
+      },
+      {
+        "slug": "building-your-ai-team",
+        "title": "Building Your AI Team",
+        "order": 8,
+        "free": false,
+        "content_length": 15273
+      },
+      {
+        "slug": "the-ai-ready-organization",
+        "title": "The AI-Ready Organization",
+        "order": 9,
+        "free": false,
+        "content_length": 15812
+      },
+      {
+        "slug": "executive-ai-assessment",
+        "title": "Executive AI Assessment",
+        "order": 10,
+        "free": false,
+        "content_length": 26375
+      }
+    ]
+  },
+  "ai-for-independence": {
+    "course_slug": "ai-for-independence",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "ai-as-your-hands",
+        "title": "AI as Your Hands",
+        "order": 1,
+        "free": true,
+        "content_length": 9934
+      },
+      {
+        "slug": "voice-control",
+        "title": "Voice Control: Your AI Listens",
+        "order": 2,
+        "free": false,
+        "content_length": 11767
+      },
+      {
+        "slug": "forms-documents-paperwork",
+        "title": "Forms, Documents & Paperwork",
+        "order": 3,
+        "free": false,
+        "content_length": 11160
+      },
+      {
+        "slug": "email-and-communication",
+        "title": "Email & Communication",
+        "order": 4,
+        "free": false,
+        "content_length": 9375
+      },
+      {
+        "slug": "scheduling-and-planning",
+        "title": "Scheduling & Planning",
+        "order": 5,
+        "free": false,
+        "content_length": 10252
+      },
+      {
+        "slug": "financial-management",
+        "title": "Financial Management",
+        "order": 6,
+        "free": false,
+        "content_length": 11867
+      },
+      {
+        "slug": "medical-advocacy",
+        "title": "Medical Advocacy",
+        "order": 7,
+        "free": false,
+        "content_length": 10605
+      },
+      {
+        "slug": "social-media-and-self-advocacy",
+        "title": "Social Media & Self-Advocacy",
+        "order": 8,
+        "free": false,
+        "content_length": 9596
+      },
+      {
+        "slug": "building-your-ai-toolkit",
+        "title": "Building Your AI Toolkit",
+        "order": 9,
+        "free": false,
+        "content_length": 11738
+      },
+      {
+        "slug": "your-sovereign-ai-life",
+        "title": "Your Sovereign AI Life",
+        "order": 10,
+        "free": false,
+        "content_length": 14688
+      }
+    ]
+  },
+  "ai-for-marketing": {
+    "course_slug": "ai-for-marketing",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "the-ai-marketing-revolution",
+        "title": "The AI Marketing Revolution",
+        "order": 1,
+        "free": true,
+        "content_length": 18285
+      },
+      {
+        "slug": "ai-powered-email-marketing",
+        "title": "AI-Powered Email Marketing",
+        "order": 2,
+        "free": true,
+        "content_length": 17091
+      },
+      {
+        "slug": "social-media-content-with-ai",
+        "title": "Social Media Content with AI",
+        "order": 3,
+        "free": true,
+        "content_length": 18169
+      },
+      {
+        "slug": "blog-content-and-seo",
+        "title": "Blog Content and SEO",
+        "order": 4,
+        "free": false,
+        "content_length": 17620
+      },
+      {
+        "slug": "ad-copy-that-converts",
+        "title": "Ad Copy That Converts",
+        "order": 5,
+        "free": false,
+        "content_length": 16178
+      },
+      {
+        "slug": "competitive-analysis-with-ai",
+        "title": "Competitive Analysis with AI",
+        "order": 6,
+        "free": false,
+        "content_length": 15470
+      },
+      {
+        "slug": "content-calendars-and-planning",
+        "title": "Content Calendars and Planning",
+        "order": 7,
+        "free": false,
+        "content_length": 17381
+      },
+      {
+        "slug": "analytics-and-reporting",
+        "title": "Analytics and Reporting",
+        "order": 8,
+        "free": false,
+        "content_length": 18394
+      },
+      {
+        "slug": "landing-pages-and-conversion",
+        "title": "Landing Pages and Conversion",
+        "order": 9,
+        "free": false,
+        "content_length": 19201
+      },
+      {
+        "slug": "ai-marketing-assessment",
+        "title": "AI Marketing Assessment",
+        "order": 10,
+        "free": false,
+        "content_length": 18615
+      }
+    ]
+  },
+  "ai-for-nonprofits": {
+    "course_slug": "ai-for-nonprofits",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "ai-for-good",
+        "title": "AI for Good: The Nonprofit Advantage",
+        "order": 1,
+        "free": true,
+        "content_length": 8807
+      },
+      {
+        "slug": "grant-writing",
+        "title": "Grant Writing with AI",
+        "order": 2,
+        "free": false,
+        "content_length": 8875
+      },
+      {
+        "slug": "fundraising-automation",
+        "title": "Fundraising & Donor Management",
+        "order": 3,
+        "free": false,
+        "content_length": 8891
+      },
+      {
+        "slug": "impact-measurement",
+        "title": "Impact Measurement & Reporting",
+        "order": 4,
+        "free": false,
+        "content_length": 8794
+      },
+      {
+        "slug": "volunteer-management",
+        "title": "Volunteer Management & Engagement",
+        "order": 5,
+        "free": false,
+        "content_length": 8573
+      },
+      {
+        "slug": "marketing-on-zero-budget",
+        "title": "Marketing on a Zero-Dollar Budget",
+        "order": 6,
+        "free": false,
+        "content_length": 8793
+      },
+      {
+        "slug": "program-delivery",
+        "title": "Program Delivery & Operations",
+        "order": 7,
+        "free": false,
+        "content_length": 8239
+      },
+      {
+        "slug": "board-management",
+        "title": "Board Management & Governance",
+        "order": 8,
+        "free": false,
+        "content_length": 8626
+      },
+      {
+        "slug": "advocacy-and-policy",
+        "title": "Advocacy, Policy & Campaigns",
+        "order": 9,
+        "free": false,
+        "content_length": 9834
+      },
+      {
+        "slug": "scaling-impact",
+        "title": "Scaling Impact with AI",
+        "order": 10,
+        "free": false,
+        "content_length": 9758
+      }
+    ]
+  },
+  "ai-for-parents": {
+    "course_slug": "ai-for-parents",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "ai-and-your-kids",
+        "title": "AI and Your Kids: What You Need to Know",
+        "order": 1,
+        "free": true,
+        "content_length": 6222
+      },
+      {
+        "slug": "age-appropriate-tools",
+        "title": "Age-Appropriate AI Tools",
+        "order": 2,
+        "free": false,
+        "content_length": 6704
+      },
+      {
+        "slug": "homework-help",
+        "title": "Homework Help Without Doing It For Them",
+        "order": 3,
+        "free": false,
+        "content_length": 6768
+      },
+      {
+        "slug": "learning-differences",
+        "title": "AI for Learning Differences & Disabilities",
+        "order": 4,
+        "free": false,
+        "content_length": 7100
+      },
+      {
+        "slug": "screen-time-and-safety",
+        "title": "Screen Time, Safety & Privacy",
+        "order": 5,
+        "free": false,
+        "content_length": 6895
+      },
+      {
+        "slug": "critical-thinking",
+        "title": "Teaching AI Critical Thinking",
+        "order": 6,
+        "free": false,
+        "content_length": 6316
+      },
+      {
+        "slug": "creative-play",
+        "title": "Creative Play with AI",
+        "order": 7,
+        "free": false,
+        "content_length": 6993
+      },
+      {
+        "slug": "school-policies",
+        "title": "Understanding School AI Policies",
+        "order": 8,
+        "free": false,
+        "content_length": 6803
+      },
+      {
+        "slug": "ai-for-educators",
+        "title": "AI for Teachers & Educators",
+        "order": 9,
+        "free": false,
+        "content_length": 7021
+      },
+      {
+        "slug": "family-ai-plan",
+        "title": "Your Family AI Plan",
+        "order": 10,
+        "free": false,
+        "content_length": 7106
+      }
+    ]
+  },
+  "ai-for-personal-productivity": {
+    "course_slug": "ai-for-personal-productivity",
+    "lesson_count": 11,
+    "lessons": [
+      {
+        "slug": "ai-as-your-personal-assistant",
+        "title": "AI as Your Personal Assistant",
+        "order": 1,
+        "free": true,
+        "content_length": 16389
+      },
+      {
+        "slug": "morning-routines-with-ai",
+        "title": "Morning Routines with AI",
+        "order": 2,
+        "free": true,
+        "content_length": 17042
+      },
+      {
+        "slug": "email-and-communication",
+        "title": "Email and Communication",
+        "order": 3,
+        "free": true,
+        "content_length": 17100
+      },
+      {
+        "slug": "task-management-and-prioritization",
+        "title": "Task Management and Prioritization",
+        "order": 4,
+        "free": false,
+        "content_length": 17898
+      },
+      {
+        "slug": "research-and-learning",
+        "title": "Research and Learning",
+        "order": 5,
+        "free": false,
+        "content_length": 16472
+      },
+      {
+        "slug": "meal-planning-and-health",
+        "title": "Meal Planning and Health",
+        "order": 6,
+        "free": false,
+        "content_length": 16919
+      },
+      {
+        "slug": "financial-planning-basics",
+        "title": "Financial Planning Basics",
+        "order": 7,
+        "free": false,
+        "content_length": 18052
+      },
+      {
+        "slug": "travel-and-event-planning",
+        "title": "Travel and Event Planning",
+        "order": 8,
+        "free": false,
+        "content_length": 17501
+      },
+      {
+        "slug": "creative-projects-and-hobbies",
+        "title": "Creative Projects and Hobbies",
+        "order": 9,
+        "free": false,
+        "content_length": 18582
+      },
+      {
+        "slug": "building-your-ai-productivity-system",
+        "title": "Building Your AI Productivity System",
+        "order": 10,
+        "free": false,
+        "content_length": 19412
+      },
+      {
+        "slug": "productivity-ai-assessment",
+        "title": "Productivity AI Assessment",
+        "order": 11,
+        "free": false,
+        "content_length": 23616
+      }
+    ]
+  },
+  "ai-for-research": {
+    "course_slug": "ai-for-research",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "ai-in-research",
+        "title": "AI in Scientific Research",
+        "order": 1,
+        "free": true,
+        "content_length": 10301
+      },
+      {
+        "slug": "literature-review",
+        "title": "Literature Review at Scale",
+        "order": 2,
+        "free": false,
+        "content_length": 10568
+      },
+      {
+        "slug": "hypothesis-generation",
+        "title": "Hypothesis Generation & Exploration",
+        "order": 3,
+        "free": false,
+        "content_length": 11454
+      },
+      {
+        "slug": "data-analysis",
+        "title": "AI-Powered Data Analysis",
+        "order": 4,
+        "free": false,
+        "content_length": 11357
+      },
+      {
+        "slug": "experiment-design",
+        "title": "Experiment Design & Methodology",
+        "order": 5,
+        "free": false,
+        "content_length": 11386
+      },
+      {
+        "slug": "visualization",
+        "title": "Data Visualization & Figures",
+        "order": 6,
+        "free": false,
+        "content_length": 10840
+      },
+      {
+        "slug": "paper-writing",
+        "title": "Paper Writing & Structure",
+        "order": 7,
+        "free": false,
+        "content_length": 11223
+      },
+      {
+        "slug": "peer-review",
+        "title": "Navigating Peer Review with AI",
+        "order": 8,
+        "free": false,
+        "content_length": 10804
+      },
+      {
+        "slug": "collaboration",
+        "title": "Research Collaboration with AI",
+        "order": 9,
+        "free": false,
+        "content_length": 10889
+      },
+      {
+        "slug": "lab-automation",
+        "title": "Lab Automation & Reproducibility",
+        "order": 10,
+        "free": false,
+        "content_length": 12361
+      }
+    ]
+  },
+  "ai-for-sales": {
+    "course_slug": "ai-for-sales",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "01-ai-sales-revolution",
+        "title": "The AI Sales Revolution",
+        "order": 1,
+        "free": true,
+        "content_length": 17894
+      },
+      {
+        "slug": "02-lead-research-and-qualification",
+        "title": "Lead Research & Qualification",
+        "order": 2,
+        "free": true,
+        "content_length": 18977
+      },
+      {
+        "slug": "03-outreach-that-converts",
+        "title": "Outreach That Converts",
+        "order": 3,
+        "free": true,
+        "content_length": 17471
+      },
+      {
+        "slug": "04-sales-calls-and-meetings",
+        "title": "Sales Calls & Meetings",
+        "order": 4,
+        "free": false,
+        "content_length": 17366
+      },
+      {
+        "slug": "05-proposal-and-pitch-creation",
+        "title": "Proposal & Pitch Creation",
+        "order": 5,
+        "free": false,
+        "content_length": 17344
+      },
+      {
+        "slug": "06-objection-handling",
+        "title": "Objection Handling",
+        "order": 6,
+        "free": false,
+        "content_length": 17612
+      },
+      {
+        "slug": "07-pipeline-management",
+        "title": "Pipeline Management",
+        "order": 7,
+        "free": false,
+        "content_length": 17487
+      },
+      {
+        "slug": "08-customer-success-with-ai",
+        "title": "Customer Success with AI",
+        "order": 8,
+        "free": false,
+        "content_length": 18087
+      },
+      {
+        "slug": "09-sales-analytics",
+        "title": "Sales Analytics",
+        "order": 9,
+        "free": false,
+        "content_length": 17824
+      },
+      {
+        "slug": "10-your-ai-sales-system",
+        "title": "Your AI Sales System",
+        "order": 10,
+        "free": false,
+        "content_length": 18688
+      }
+    ]
+  },
+  "ai-for-students": {
+    "course_slug": "ai-for-students",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "ai-in-school",
+        "title": "AI in School: What's OK, What's Not",
+        "order": 1,
+        "free": true,
+        "content_length": 8043
+      },
+      {
+        "slug": "research-superpowers",
+        "title": "Research Superpowers",
+        "order": 2,
+        "free": false,
+        "content_length": 8369
+      },
+      {
+        "slug": "study-with-ai",
+        "title": "Study with AI",
+        "order": 3,
+        "free": false,
+        "content_length": 8268
+      },
+      {
+        "slug": "better-writing",
+        "title": "Better Writing, Not AI Writing",
+        "order": 4,
+        "free": false,
+        "content_length": 8376
+      },
+      {
+        "slug": "math-and-science",
+        "title": "Math & Science Problem Solving with AI",
+        "order": 5,
+        "free": false,
+        "content_length": 8353
+      },
+      {
+        "slug": "presentations",
+        "title": "Killer Presentations with AI",
+        "order": 6,
+        "free": false,
+        "content_length": 8056
+      },
+      {
+        "slug": "time-management",
+        "title": "Time Management & Focus Tools",
+        "order": 7,
+        "free": false,
+        "content_length": 8228
+      },
+      {
+        "slug": "group-projects",
+        "title": "Group Projects & Collaboration with AI",
+        "order": 8,
+        "free": false,
+        "content_length": 8648
+      },
+      {
+        "slug": "college-applications",
+        "title": "College Applications & Resumes",
+        "order": 9,
+        "free": false,
+        "content_length": 9011
+      },
+      {
+        "slug": "your-ai-study-system",
+        "title": "Building Your AI Study System",
+        "order": 10,
+        "free": false,
+        "content_length": 9442
+      }
+    ]
+  },
+  "ai-foundations": {
+    "course_slug": "ai-foundations",
+    "lesson_count": 9,
+    "lessons": [
+      {
+        "slug": "what-is-a-neuron",
+        "title": "What Is a Neuron?",
+        "order": 1,
+        "free": true,
+        "content_length": 19260
+      },
+      {
+        "slug": "build-a-network",
+        "title": "Build a Network",
+        "order": 2,
+        "free": true,
+        "content_length": 19306
+      },
+      {
+        "slug": "neural-net-quiz",
+        "title": "Neural Net Quiz",
+        "order": 3,
+        "free": true,
+        "content_length": 23152
+      },
+      {
+        "slug": "anatomy-of-a-prompt",
+        "title": "Anatomy of a Prompt",
+        "order": 4,
+        "free": false,
+        "content_length": 19504
+      },
+      {
+        "slug": "prompt-playground",
+        "title": "Prompt Playground",
+        "order": 5,
+        "free": false,
+        "content_length": 16692
+      },
+      {
+        "slug": "prompt-battle",
+        "title": "Prompt Battle",
+        "order": 6,
+        "free": false,
+        "content_length": 21078
+      },
+      {
+        "slug": "words-as-numbers",
+        "title": "Words as Numbers",
+        "order": 7,
+        "free": false,
+        "content_length": 18884
+      },
+      {
+        "slug": "embedding-explorer",
+        "title": "Embedding Explorer",
+        "order": 8,
+        "free": false,
+        "content_length": 19043
+      },
+      {
+        "slug": "similarity-challenge",
+        "title": "Similarity Challenge",
+        "order": 9,
+        "free": false,
+        "content_length": 20942
+      }
+    ]
+  },
+  "ai-freelancer": {
+    "course_slug": "ai-freelancer",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "the-ai-freelancer",
+        "title": "The AI-Powered Freelancer",
+        "order": 1,
+        "free": true,
+        "content_length": 7040
+      },
+      {
+        "slug": "finding-your-niche",
+        "title": "Finding Your AI-Enhanced Niche",
+        "order": 2,
+        "free": false,
+        "content_length": 7611
+      },
+      {
+        "slug": "proposals-that-win",
+        "title": "Proposals That Win",
+        "order": 3,
+        "free": false,
+        "content_length": 7227
+      },
+      {
+        "slug": "client-communication",
+        "title": "Client Communication & Management",
+        "order": 4,
+        "free": false,
+        "content_length": 7419
+      },
+      {
+        "slug": "project-delivery",
+        "title": "Project Delivery at 10x Speed",
+        "order": 5,
+        "free": false,
+        "content_length": 7304
+      },
+      {
+        "slug": "pricing-strategies",
+        "title": "Pricing Strategies for AI-Enhanced Work",
+        "order": 6,
+        "free": false,
+        "content_length": 7677
+      },
+      {
+        "slug": "contracts-and-legal",
+        "title": "Contracts, Legal & IP Protection",
+        "order": 7,
+        "free": false,
+        "content_length": 7994
+      },
+      {
+        "slug": "portfolio-building",
+        "title": "Building a Portfolio That Sells",
+        "order": 8,
+        "free": false,
+        "content_length": 7507
+      },
+      {
+        "slug": "scaling-operations",
+        "title": "Scaling: From Solo to Small Agency",
+        "order": 9,
+        "free": false,
+        "content_length": 7735
+      },
+      {
+        "slug": "the-10k-month",
+        "title": "The $10K Month Blueprint",
+        "order": 10,
+        "free": false,
+        "content_length": 7805
+      }
+    ]
+  },
+  "ai-game-dev": {
+    "course_slug": "ai-game-dev",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "games-meet-ai",
+        "title": "When Games Meet AI",
+        "order": 1,
+        "free": true,
+        "content_length": 5745
+      },
+      {
+        "slug": "your-first-game",
+        "title": "Your First Game in 10 Minutes",
+        "order": 2,
+        "free": false,
+        "content_length": 6710
+      },
+      {
+        "slug": "game-mechanics",
+        "title": "Core Game Mechanics Explained Simply",
+        "order": 3,
+        "free": false,
+        "content_length": 6663
+      },
+      {
+        "slug": "art-and-sprites",
+        "title": "Game Art, Sprites & Animation with AI",
+        "order": 4,
+        "free": false,
+        "content_length": 7033
+      },
+      {
+        "slug": "sound-and-music",
+        "title": "Sound Effects & Music for Games",
+        "order": 5,
+        "free": false,
+        "content_length": 6794
+      },
+      {
+        "slug": "levels-and-difficulty",
+        "title": "Level Design & Difficulty Curves",
+        "order": 6,
+        "free": false,
+        "content_length": 6836
+      },
+      {
+        "slug": "multiplayer-basics",
+        "title": "Multiplayer & Leaderboards",
+        "order": 7,
+        "free": false,
+        "content_length": 7185
+      },
+      {
+        "slug": "mobile-games",
+        "title": "Building Mobile Games",
+        "order": 8,
+        "free": false,
+        "content_length": 6978
+      },
+      {
+        "slug": "publishing",
+        "title": "Publishing to Web, itch.io & App Stores",
+        "order": 9,
+        "free": false,
+        "content_length": 7295
+      },
+      {
+        "slug": "game-studio",
+        "title": "Your AI Game Studio",
+        "order": 10,
+        "free": false,
+        "content_length": 7180
+      }
+    ]
+  },
+  "ai-images-and-video": {
+    "course_slug": "ai-images-and-video",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "the-visual-ai-revolution",
+        "title": "The Visual AI Revolution",
+        "order": 1,
+        "free": true,
+        "content_length": 23450
+      },
+      {
+        "slug": "understanding-ai-image-tools",
+        "title": "Understanding AI Image Tools",
+        "order": 2,
+        "free": true,
+        "content_length": 23423
+      },
+      {
+        "slug": "your-first-ai-image",
+        "title": "Your First AI Image",
+        "order": 3,
+        "free": true,
+        "content_length": 22207
+      },
+      {
+        "slug": "prompt-craft-for-images",
+        "title": "Prompt Craft for Images",
+        "order": 4,
+        "free": false,
+        "content_length": 21512
+      },
+      {
+        "slug": "editing-and-refining",
+        "title": "Editing and Refining",
+        "order": 5,
+        "free": false,
+        "content_length": 23859
+      },
+      {
+        "slug": "ai-for-social-media-visuals",
+        "title": "AI for Social Media Visuals",
+        "order": 6,
+        "free": false,
+        "content_length": 21159
+      },
+      {
+        "slug": "ai-video-basics",
+        "title": "AI Video Basics",
+        "order": 7,
+        "free": false,
+        "content_length": 21486
+      },
+      {
+        "slug": "practical-use-cases",
+        "title": "Practical Use Cases",
+        "order": 8,
+        "free": false,
+        "content_length": 22749
+      },
+      {
+        "slug": "ethics-and-copyright",
+        "title": "Ethics and Copyright",
+        "order": 9,
+        "free": false,
+        "content_length": 23580
+      },
+      {
+        "slug": "building-your-visual-workflow",
+        "title": "Building Your Visual Workflow",
+        "order": 10,
+        "free": false,
+        "content_length": 22052
+      }
+    ]
+  },
+  "ai-infrastructure": {
+    "course_slug": "ai-infrastructure",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "01-infrastructure-for-ai",
+        "title": "Why AI Needs Different Infrastructure",
+        "order": 1,
+        "free": true,
+        "content_length": 16504
+      },
+      {
+        "slug": "02-cloud-platforms-overview",
+        "title": "Cloud Platforms Overview",
+        "order": 2,
+        "free": true,
+        "content_length": 14201
+      },
+      {
+        "slug": "03-api-management",
+        "title": "API Management",
+        "order": 3,
+        "free": true,
+        "content_length": 15205
+      },
+      {
+        "slug": "04-database-choices",
+        "title": "Database Choices",
+        "order": 4,
+        "free": true,
+        "content_length": 15348
+      },
+      {
+        "slug": "05-deployment-strategies",
+        "title": "Deployment Strategies",
+        "order": 5,
+        "free": true,
+        "content_length": 15073
+      },
+      {
+        "slug": "06-monitoring-and-observability",
+        "title": "Monitoring and Observability",
+        "order": 6,
+        "free": true,
+        "content_length": 13619
+      },
+      {
+        "slug": "07-cost-optimization",
+        "title": "Cost Optimization",
+        "order": 7,
+        "free": true,
+        "content_length": 14506
+      },
+      {
+        "slug": "08-security-and-compliance",
+        "title": "Security and Compliance",
+        "order": 8,
+        "free": true,
+        "content_length": 15201
+      },
+      {
+        "slug": "09-scaling-patterns",
+        "title": "Scaling Patterns",
+        "order": 9,
+        "free": true,
+        "content_length": 14861
+      },
+      {
+        "slug": "10-your-ai-infrastructure-stack",
+        "title": "Your AI Infrastructure Stack",
+        "order": 10,
+        "free": true,
+        "content_length": 17771
+      }
+    ]
+  },
+  "ai-mental-wellness": {
+    "course_slug": "ai-mental-wellness",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "ai-as-companion",
+        "title": "AI as a Wellness Companion",
+        "order": 1,
+        "free": true,
+        "content_length": 6970
+      },
+      {
+        "slug": "journaling-with-ai",
+        "title": "AI-Powered Journaling",
+        "order": 2,
+        "free": false,
+        "content_length": 6867
+      },
+      {
+        "slug": "habit-tracking",
+        "title": "Habit Tracking & Accountability",
+        "order": 3,
+        "free": false,
+        "content_length": 6725
+      },
+      {
+        "slug": "mindfulness-and-meditation",
+        "title": "Mindfulness & Meditation with AI",
+        "order": 4,
+        "free": false,
+        "content_length": 6655
+      },
+      {
+        "slug": "emotional-regulation",
+        "title": "Emotional Regulation Tools",
+        "order": 5,
+        "free": false,
+        "content_length": 7072
+      },
+      {
+        "slug": "sleep-and-energy",
+        "title": "Sleep, Energy & Routine Optimization",
+        "order": 6,
+        "free": false,
+        "content_length": 6838
+      },
+      {
+        "slug": "social-connection",
+        "title": "Social Connection & Loneliness",
+        "order": 7,
+        "free": false,
+        "content_length": 7031
+      },
+      {
+        "slug": "crisis-resources",
+        "title": "Crisis Resources & When to Get Human Help",
+        "order": 8,
+        "free": false,
+        "content_length": 8203
+      },
+      {
+        "slug": "building-resilience",
+        "title": "Building Resilience with AI",
+        "order": 9,
+        "free": false,
+        "content_length": 7346
+      },
+      {
+        "slug": "your-wellness-system",
+        "title": "Your Personal Wellness System",
+        "order": 10,
+        "free": false,
+        "content_length": 8228
+      }
+    ]
+  },
+  "ai-music-producer": {
+    "course_slug": "ai-music-producer",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "the-ai-music-revolution",
+        "title": "The AI Music Revolution",
+        "order": 1,
+        "free": true,
+        "content_length": 9445
+      },
+      {
+        "slug": "your-first-beat",
+        "title": "Your First Beat in 5 Minutes",
+        "order": 2,
+        "free": false,
+        "content_length": 8896
+      },
+      {
+        "slug": "lyrics-and-songwriting",
+        "title": "AI-Powered Lyrics & Songwriting",
+        "order": 3,
+        "free": false,
+        "content_length": 9499
+      },
+      {
+        "slug": "genres-and-styles",
+        "title": "Mastering Genres & Styles with AI",
+        "order": 4,
+        "free": false,
+        "content_length": 9507
+      },
+      {
+        "slug": "stems-and-mixing",
+        "title": "Stems, Mixing & Mastering with AI",
+        "order": 5,
+        "free": false,
+        "content_length": 9367
+      },
+      {
+        "slug": "vocal-production",
+        "title": "Vocal Production & Voice Cloning",
+        "order": 6,
+        "free": false,
+        "content_length": 10027
+      },
+      {
+        "slug": "building-an-album",
+        "title": "Building an Album Track by Track",
+        "order": 7,
+        "free": false,
+        "content_length": 9876
+      },
+      {
+        "slug": "distribution",
+        "title": "Getting on Spotify, Apple Music & YouTube",
+        "order": 8,
+        "free": false,
+        "content_length": 10492
+      },
+      {
+        "slug": "music-videos",
+        "title": "AI Music Videos",
+        "order": 9,
+        "free": false,
+        "content_length": 10151
+      },
+      {
+        "slug": "the-ai-artist",
+        "title": "The AI Artist: Brand, Rights & Revenue",
+        "order": 10,
+        "free": false,
+        "content_length": 10987
+      }
+    ]
+  },
+  "ai-personal-brand": {
+    "course_slug": "ai-personal-brand",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "why-personal-brand",
+        "title": "Why Personal Brand Matters Now",
+        "order": 1,
+        "free": true,
+        "content_length": 6685
+      },
+      {
+        "slug": "finding-your-voice",
+        "title": "Finding Your Voice with AI",
+        "order": 2,
+        "free": false,
+        "content_length": 6928
+      },
+      {
+        "slug": "portfolio-website",
+        "title": "Building Your Portfolio Website",
+        "order": 3,
+        "free": false,
+        "content_length": 7130
+      },
+      {
+        "slug": "content-strategy",
+        "title": "Content Strategy & Calendar",
+        "order": 4,
+        "free": false,
+        "content_length": 7001
+      },
+      {
+        "slug": "linkedin-and-professional",
+        "title": "LinkedIn & Professional Networking",
+        "order": 5,
+        "free": false,
+        "content_length": 7731
+      },
+      {
+        "slug": "public-speaking",
+        "title": "Public Speaking & Presentation with AI",
+        "order": 6,
+        "free": false,
+        "content_length": 7634
+      },
+      {
+        "slug": "newsletter-and-email",
+        "title": "Newsletter & Email Building",
+        "order": 7,
+        "free": false,
+        "content_length": 8134
+      },
+      {
+        "slug": "thought-leadership",
+        "title": "Thought Leadership & Writing",
+        "order": 8,
+        "free": false,
+        "content_length": 8562
+      },
+      {
+        "slug": "monetizing-expertise",
+        "title": "Monetizing Your Expertise",
+        "order": 9,
+        "free": false,
+        "content_length": 8640
+      },
+      {
+        "slug": "the-brand-machine",
+        "title": "Your AI Brand Machine",
+        "order": 10,
+        "free": false,
+        "content_length": 9035
+      }
+    ]
+  },
+  "ai-powered-workflows": {
+    "course_slug": "ai-powered-workflows",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "01-why-workflows-matter",
+        "title": "Why Workflows Matter",
+        "order": 1,
+        "free": true,
+        "content_length": 19655
+      },
+      {
+        "slug": "02-mapping-your-processes",
+        "title": "Mapping Your Processes",
+        "order": 2,
+        "free": true,
+        "content_length": 18973
+      },
+      {
+        "slug": "03-trigger-based-workflows",
+        "title": "Trigger-Based Workflows",
+        "order": 3,
+        "free": true,
+        "content_length": 19828
+      },
+      {
+        "slug": "04-data-flow-design",
+        "title": "Data Flow Design",
+        "order": 4,
+        "free": false,
+        "content_length": 18663
+      },
+      {
+        "slug": "05-error-handling-and-fallbacks",
+        "title": "Error Handling and Fallbacks",
+        "order": 5,
+        "free": false,
+        "content_length": 18877
+      },
+      {
+        "slug": "06-human-in-the-loop",
+        "title": "Human-in-the-Loop",
+        "order": 6,
+        "free": false,
+        "content_length": 21306
+      },
+      {
+        "slug": "07-integration-patterns",
+        "title": "Integration Patterns",
+        "order": 7,
+        "free": false,
+        "content_length": 20694
+      },
+      {
+        "slug": "08-testing-workflows",
+        "title": "Testing Workflows",
+        "order": 8,
+        "free": false,
+        "content_length": 20780
+      },
+      {
+        "slug": "09-monitoring-and-maintenance",
+        "title": "Monitoring and Maintenance",
+        "order": 9,
+        "free": false,
+        "content_length": 19844
+      },
+      {
+        "slug": "10-your-workflow-portfolio",
+        "title": "Your Workflow Portfolio",
+        "order": 10,
+        "free": false,
+        "content_length": 22562
+      }
+    ]
+  },
+  "ai-project-management": {
+    "course_slug": "ai-project-management",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "01-ai-meets-project-management",
+        "title": "AI Meets Project Management",
+        "order": 1,
+        "free": true,
+        "content_length": 22645
+      },
+      {
+        "slug": "02-project-planning-with-ai",
+        "title": "Project Planning with AI",
+        "order": 2,
+        "free": true,
+        "content_length": 20936
+      },
+      {
+        "slug": "03-meeting-notes-and-action-items",
+        "title": "Meeting Notes & Action Items",
+        "order": 3,
+        "free": true,
+        "content_length": 21930
+      },
+      {
+        "slug": "04-status-reports-and-updates",
+        "title": "Status Reports & Updates",
+        "order": 4,
+        "free": false,
+        "content_length": 20327
+      },
+      {
+        "slug": "05-risk-assessment",
+        "title": "Risk Assessment",
+        "order": 5,
+        "free": false,
+        "content_length": 19908
+      },
+      {
+        "slug": "06-resource-allocation",
+        "title": "Resource Allocation",
+        "order": 6,
+        "free": false,
+        "content_length": 17984
+      },
+      {
+        "slug": "07-documentation-and-sops",
+        "title": "Documentation & SOPs",
+        "order": 7,
+        "free": false,
+        "content_length": 19563
+      },
+      {
+        "slug": "08-agile-with-ai",
+        "title": "Agile with AI",
+        "order": 8,
+        "free": false,
+        "content_length": 19525
+      },
+      {
+        "slug": "09-stakeholder-communication",
+        "title": "Stakeholder Communication",
+        "order": 9,
+        "free": false,
+        "content_length": 22195
+      },
+      {
+        "slug": "10-your-ai-pm-toolkit",
+        "title": "Your AI PM Toolkit",
+        "order": 10,
+        "free": false,
+        "content_length": 21596
+      }
+    ]
+  },
+  "ai-red-team": {
+    "course_slug": "ai-red-team",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "threat-landscape",
+        "title": "The Threat Landscape",
+        "order": 1,
+        "free": true,
+        "content_length": 14139
+      },
+      {
+        "slug": "prompt-injection-101",
+        "title": "Prompt Injection 101",
+        "order": 2,
+        "free": false,
+        "content_length": 11833
+      },
+      {
+        "slug": "jailbreak-patterns",
+        "title": "Jailbreak Patterns",
+        "order": 3,
+        "free": false,
+        "content_length": 12843
+      },
+      {
+        "slug": "output-manipulation",
+        "title": "Output Manipulation",
+        "order": 4,
+        "free": false,
+        "content_length": 10753
+      },
+      {
+        "slug": "data-exfiltration",
+        "title": "Data Exfiltration",
+        "order": 5,
+        "free": false,
+        "content_length": 11952
+      },
+      {
+        "slug": "guardrail-architecture",
+        "title": "Guardrail Architecture",
+        "order": 6,
+        "free": false,
+        "content_length": 14486
+      },
+      {
+        "slug": "input-validation",
+        "title": "Input Validation for AI",
+        "order": 7,
+        "free": false,
+        "content_length": 12672
+      },
+      {
+        "slug": "red-team-methodology",
+        "title": "Red Team Methodology",
+        "order": 8,
+        "free": false,
+        "content_length": 11338
+      },
+      {
+        "slug": "monitoring-detection",
+        "title": "Monitoring & Detection",
+        "order": 9,
+        "free": false,
+        "content_length": 13037
+      },
+      {
+        "slug": "security-first-architecture",
+        "title": "Security-First Architecture",
+        "order": 10,
+        "free": false,
+        "content_length": 15034
+      }
+    ]
+  },
+  "ai-side-hustles": {
+    "course_slug": "ai-side-hustles",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "the-ai-money-landscape",
+        "title": "The AI Money Landscape",
+        "order": 1,
+        "free": true,
+        "content_length": 8701
+      },
+      {
+        "slug": "content-that-pays",
+        "title": "Content That Pays",
+        "order": 2,
+        "free": false,
+        "content_length": 8991
+      },
+      {
+        "slug": "freelancing-with-ai",
+        "title": "AI-Powered Freelancing",
+        "order": 3,
+        "free": false,
+        "content_length": 9551
+      },
+      {
+        "slug": "print-on-demand",
+        "title": "Print-on-Demand & Digital Products with AI",
+        "order": 4,
+        "free": false,
+        "content_length": 9099
+      },
+      {
+        "slug": "micro-saas",
+        "title": "Micro-SaaS: Build & Sell Tiny Tools",
+        "order": 5,
+        "free": false,
+        "content_length": 9653
+      },
+      {
+        "slug": "ai-tutoring",
+        "title": "AI Tutoring & Coaching Services",
+        "order": 6,
+        "free": false,
+        "content_length": 9768
+      },
+      {
+        "slug": "automation-for-hire",
+        "title": "Automation for Hire",
+        "order": 7,
+        "free": false,
+        "content_length": 9771
+      },
+      {
+        "slug": "pricing-and-packaging",
+        "title": "Pricing & Packaging Your AI Services",
+        "order": 8,
+        "free": false,
+        "content_length": 9538
+      },
+      {
+        "slug": "finding-clients",
+        "title": "Finding & Keeping Clients",
+        "order": 9,
+        "free": false,
+        "content_length": 9163
+      },
+      {
+        "slug": "scaling-to-1k",
+        "title": "Your First $1K: The 30-Day Plan",
+        "order": 10,
+        "free": false,
+        "content_length": 10378
+      }
+    ]
+  },
+  "ai-social-media": {
+    "course_slug": "ai-social-media",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "the-creator-landscape",
+        "title": "The Creator Landscape in 2026",
+        "order": 1,
+        "free": true,
+        "content_length": 9119
+      },
+      {
+        "slug": "content-ideas-machine",
+        "title": "The AI Content Ideas Machine",
+        "order": 2,
+        "free": false,
+        "content_length": 8819
+      },
+      {
+        "slug": "short-form-video",
+        "title": "Short-Form Video: TikTok, Reels, Shorts",
+        "order": 3,
+        "free": false,
+        "content_length": 9441
+      },
+      {
+        "slug": "long-form-youtube",
+        "title": "Long-Form YouTube with AI",
+        "order": 4,
+        "free": false,
+        "content_length": 8920
+      },
+      {
+        "slug": "captions-and-copy",
+        "title": "Captions, Hooks & Copy That Converts",
+        "order": 5,
+        "free": false,
+        "content_length": 9132
+      },
+      {
+        "slug": "visual-content",
+        "title": "Visual Content: Thumbnails, Carousels & Graphics",
+        "order": 6,
+        "free": false,
+        "content_length": 9576
+      },
+      {
+        "slug": "scheduling-and-analytics",
+        "title": "Scheduling, Analytics & Growth Hacking",
+        "order": 7,
+        "free": false,
+        "content_length": 9749
+      },
+      {
+        "slug": "building-community",
+        "title": "Building Community, Not Just Followers",
+        "order": 8,
+        "free": false,
+        "content_length": 9604
+      },
+      {
+        "slug": "monetization",
+        "title": "Monetization: Brand Deals, Products & Revenue",
+        "order": 9,
+        "free": false,
+        "content_length": 9893
+      },
+      {
+        "slug": "your-content-machine",
+        "title": "Building Your AI Content Machine",
+        "order": 10,
+        "free": false,
+        "content_length": 10012
+      }
+    ]
+  },
+  "ai-stack-builder": {
+    "course_slug": "ai-stack-builder",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "stack-anatomy",
+        "title": "Stack Anatomy",
+        "order": 1,
+        "free": true,
+        "content_length": 24280
+      },
+      {
+        "slug": "supabase-101",
+        "title": "Supabase 101",
+        "order": 2,
+        "free": true,
+        "content_length": 24100
+      },
+      {
+        "slug": "make-com-101",
+        "title": "Make.com 101",
+        "order": 3,
+        "free": true,
+        "content_length": 24850
+      },
+      {
+        "slug": "edge-functions",
+        "title": "Edge Functions",
+        "order": 4,
+        "free": false,
+        "content_length": 23925
+      },
+      {
+        "slug": "webhooks-deep-dive",
+        "title": "Webhooks Deep Dive",
+        "order": 5,
+        "free": false,
+        "content_length": 26408
+      },
+      {
+        "slug": "auth-and-tokens",
+        "title": "Auth and Tokens",
+        "order": 6,
+        "free": false,
+        "content_length": 27263
+      },
+      {
+        "slug": "database-patterns",
+        "title": "Database Patterns",
+        "order": 7,
+        "free": false,
+        "content_length": 29699
+      },
+      {
+        "slug": "vercel-deploy",
+        "title": "Vercel Deploy",
+        "order": 8,
+        "free": false,
+        "content_length": 22315
+      },
+      {
+        "slug": "wire-it-all",
+        "title": "Wire It All",
+        "order": 9,
+        "free": false,
+        "content_length": 31468
+      },
+      {
+        "slug": "launch-checklist",
+        "title": "Launch Checklist",
+        "order": 10,
+        "free": false,
+        "content_length": 26736
+      }
+    ]
+  },
+  "ai-systems-design": {
+    "course_slug": "ai-systems-design",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "thinking-in-systems",
+        "title": "Thinking in Systems",
+        "order": 1,
+        "free": true,
+        "content_length": 8239
+      },
+      {
+        "slug": "architecture-patterns",
+        "title": "AI Architecture Patterns",
+        "order": 2,
+        "free": false,
+        "content_length": 9943
+      },
+      {
+        "slug": "reliability-engineering",
+        "title": "Reliability & Fault Tolerance",
+        "order": 3,
+        "free": false,
+        "content_length": 10137
+      },
+      {
+        "slug": "observability",
+        "title": "Observability & Monitoring",
+        "order": 4,
+        "free": false,
+        "content_length": 10641
+      },
+      {
+        "slug": "cost-optimization",
+        "title": "Cost Optimization at Scale",
+        "order": 5,
+        "free": false,
+        "content_length": 10663
+      },
+      {
+        "slug": "caching-strategies",
+        "title": "Caching & Latency Optimization",
+        "order": 6,
+        "free": false,
+        "content_length": 11652
+      },
+      {
+        "slug": "security-patterns",
+        "title": "Security Patterns for AI Systems",
+        "order": 7,
+        "free": false,
+        "content_length": 11472
+      },
+      {
+        "slug": "scaling-strategies",
+        "title": "Scaling Strategies",
+        "order": 8,
+        "free": false,
+        "content_length": 10517
+      },
+      {
+        "slug": "multi-model-routing",
+        "title": "Multi-Model Routing & Fallbacks",
+        "order": 9,
+        "free": false,
+        "content_length": 12395
+      },
+      {
+        "slug": "production-checklist",
+        "title": "The Production AI Checklist",
+        "order": 10,
+        "free": false,
+        "content_length": 10052
+      }
+    ]
+  },
+  "ai-voice-audio": {
+    "course_slug": "ai-voice-audio",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "01-the-voice-revolution",
+        "title": "The Voice Revolution",
+        "order": 1,
+        "free": true,
+        "content_length": 22758
+      },
+      {
+        "slug": "02-text-to-speech-basics",
+        "title": "Text-to-Speech Basics",
+        "order": 2,
+        "free": true,
+        "content_length": 19447
+      },
+      {
+        "slug": "03-voice-cloning-and-custom-voices",
+        "title": "Voice Cloning & Custom Voices",
+        "order": 3,
+        "free": true,
+        "content_length": 20690
+      },
+      {
+        "slug": "04-podcast-production",
+        "title": "Podcast Production",
+        "order": 4,
+        "free": true,
+        "content_length": 19387
+      },
+      {
+        "slug": "05-audiobook-creation",
+        "title": "Audiobook Creation",
+        "order": 5,
+        "free": true,
+        "content_length": 20065
+      },
+      {
+        "slug": "06-music-and-sound-design",
+        "title": "Music & Sound Design",
+        "order": 6,
+        "free": true,
+        "content_length": 20875
+      },
+      {
+        "slug": "07-transcription-and-analysis",
+        "title": "Transcription & Analysis",
+        "order": 7,
+        "free": true,
+        "content_length": 20248
+      },
+      {
+        "slug": "08-voice-interfaces",
+        "title": "Voice Interfaces",
+        "order": 8,
+        "free": true,
+        "content_length": 18246
+      },
+      {
+        "slug": "09-audio-editing-with-ai",
+        "title": "Audio Editing with AI",
+        "order": 9,
+        "free": true,
+        "content_length": 18914
+      },
+      {
+        "slug": "10-your-audio-studio",
+        "title": "Your Audio Studio",
+        "order": 10,
+        "free": true,
+        "content_length": 17311
+      }
+    ]
+  },
+  "automation-architect": {
+    "course_slug": "automation-architect",
+    "lesson_count": 9,
+    "lessons": [
+      {
+        "slug": "triggers-and-actions",
+        "title": "Triggers and Actions",
+        "order": 1,
+        "free": true,
+        "content_length": 20723
+      },
+      {
+        "slug": "your-first-automation",
+        "title": "Your First Automation",
+        "order": 2,
+        "free": true,
+        "content_length": 38030
+      },
+      {
+        "slug": "automation-quiz",
+        "title": "Automation Quiz",
+        "order": 3,
+        "free": true,
+        "content_length": 20592
+      },
+      {
+        "slug": "what-is-an-api",
+        "title": "What Is an API?",
+        "order": 4,
+        "free": false,
+        "content_length": 19462
+      },
+      {
+        "slug": "api-playground",
+        "title": "API Playground",
+        "order": 5,
+        "free": false,
+        "content_length": 21523
+      },
+      {
+        "slug": "api-quiz",
+        "title": "API Quiz",
+        "order": 6,
+        "free": false,
+        "content_length": 22282
+      },
+      {
+        "slug": "smart-routing",
+        "title": "Smart Routing",
+        "order": 7,
+        "free": false,
+        "content_length": 41284
+      },
+      {
+        "slug": "build-ai-workflow",
+        "title": "Build AI Workflow",
+        "order": 8,
+        "free": false,
+        "content_length": 20513
+      },
+      {
+        "slug": "workflow-quiz",
+        "title": "Workflow Quiz",
+        "order": 9,
+        "free": false,
+        "content_length": 19858
+      }
+    ]
+  },
+  "building-ai-products": {
+    "course_slug": "building-ai-products",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "01-the-ai-product-mindset",
+        "title": "The AI Product Mindset",
+        "order": 1,
+        "free": true,
+        "content_length": 23820
+      },
+      {
+        "slug": "02-finding-ai-product-ideas",
+        "title": "Finding AI Product Ideas",
+        "order": 2,
+        "free": true,
+        "content_length": 26192
+      },
+      {
+        "slug": "03-validation-and-prototyping",
+        "title": "Validation and Prototyping",
+        "order": 3,
+        "free": true,
+        "content_length": 24823
+      },
+      {
+        "slug": "04-architecture-decisions",
+        "title": "Architecture Decisions",
+        "order": 4,
+        "free": false,
+        "content_length": 26652
+      },
+      {
+        "slug": "05-building-the-mvp",
+        "title": "Building the MVP",
+        "order": 5,
+        "free": false,
+        "content_length": 20231
+      },
+      {
+        "slug": "06-user-experience-for-ai",
+        "title": "User Experience for AI",
+        "order": 6,
+        "free": false,
+        "content_length": 24226
+      },
+      {
+        "slug": "07-pricing-and-monetization",
+        "title": "Pricing and Monetization",
+        "order": 7,
+        "free": false,
+        "content_length": 24480
+      },
+      {
+        "slug": "08-launch-and-distribution",
+        "title": "Launch and Distribution",
+        "order": 8,
+        "free": false,
+        "content_length": 25991
+      },
+      {
+        "slug": "09-measuring-and-iterating",
+        "title": "Measuring and Iterating",
+        "order": 9,
+        "free": false,
+        "content_length": 24877
+      },
+      {
+        "slug": "10-scaling-your-ai-product",
+        "title": "Scaling Your AI Product",
+        "order": 10,
+        "free": false,
+        "content_length": 26572
+      }
+    ]
+  },
+  "claude-agent-sdk": {
+    "course_slug": "claude-agent-sdk",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "why-agent-sdk",
+        "title": "Why Agent SDK?",
+        "order": 1,
+        "free": true,
+        "content_length": 15682
+      },
+      {
+        "slug": "install-first-query",
+        "title": "Install & First Query",
+        "order": 2,
+        "free": false,
+        "content_length": 17356
+      },
+      {
+        "slug": "streaming-events",
+        "title": "Streaming & Events",
+        "order": 3,
+        "free": false,
+        "content_length": 16122
+      },
+      {
+        "slug": "tool-use",
+        "title": "Tool Use",
+        "order": 4,
+        "free": false,
+        "content_length": 15869
+      },
+      {
+        "slug": "mcp-integration",
+        "title": "MCP Integration",
+        "order": 5,
+        "free": false,
+        "content_length": 13203
+      },
+      {
+        "slug": "sub-agents",
+        "title": "Sub-Agents & Delegation",
+        "order": 6,
+        "free": false,
+        "content_length": 13000
+      },
+      {
+        "slug": "session-management",
+        "title": "Session Management",
+        "order": 7,
+        "free": false,
+        "content_length": 13316
+      },
+      {
+        "slug": "hooks-lifecycle",
+        "title": "Hooks & Lifecycle",
+        "order": 8,
+        "free": false,
+        "content_length": 13686
+      },
+      {
+        "slug": "testing-safety",
+        "title": "Testing & Safety",
+        "order": 9,
+        "free": false,
+        "content_length": 14075
+      },
+      {
+        "slug": "production-deployment",
+        "title": "Production Deployment",
+        "order": 10,
+        "free": false,
+        "content_length": 16290
+      }
+    ]
+  },
+  "claude-for-beginners": {
+    "course_slug": "claude-for-beginners",
+    "lesson_count": 9,
+    "lessons": [
+      {
+        "slug": "what-claude-can-do",
+        "title": "What Claude Can Do For You",
+        "order": 1,
+        "free": true,
+        "content_length": 16347
+      },
+      {
+        "slug": "your-first-conversation",
+        "title": "Your First Conversation",
+        "order": 2,
+        "free": true,
+        "content_length": 17127
+      },
+      {
+        "slug": "basics-quiz",
+        "title": "Check Your Understanding",
+        "order": 3,
+        "free": true,
+        "content_length": 18477
+      },
+      {
+        "slug": "email-calendar-magic",
+        "title": "Email & Calendar Magic",
+        "order": 4,
+        "free": false,
+        "content_length": 15286
+      },
+      {
+        "slug": "documents-and-data",
+        "title": "Documents & Data",
+        "order": 5,
+        "free": false,
+        "content_length": 17855
+      },
+      {
+        "slug": "workflow-quiz",
+        "title": "Workflow Knowledge Check",
+        "order": 6,
+        "free": false,
+        "content_length": 19004
+      },
+      {
+        "slug": "custom-instructions",
+        "title": "Claude Custom Instructions & Memory: Make Claude Remember You",
+        "order": 7,
+        "free": false,
+        "content_length": 19607
+      },
+      {
+        "slug": "build-your-assistant",
+        "title": "Build Your Personal Assistant",
+        "order": 8,
+        "free": false,
+        "content_length": 17517
+      },
+      {
+        "slug": "final-assessment",
+        "title": "Final Assessment",
+        "order": 9,
+        "free": false,
+        "content_length": 19693
+      }
+    ]
+  },
+  "claude-mastery": {
+    "course_slug": "claude-mastery",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "meet-claude",
+        "title": "Meet Claude",
+        "order": 1,
+        "free": true,
+        "content_length": 29569
+      },
+      {
+        "slug": "context-window-explorer",
+        "title": "Context Window",
+        "order": 2,
+        "free": true,
+        "content_length": 21598
+      },
+      {
+        "slug": "temperature-lab",
+        "title": "Temperature Lab",
+        "order": 3,
+        "free": true,
+        "content_length": 19008
+      },
+      {
+        "slug": "system-prompts",
+        "title": "System Prompts",
+        "order": 4,
+        "free": false,
+        "content_length": 20943
+      },
+      {
+        "slug": "chain-of-thought",
+        "title": "Chain of Thought",
+        "order": 5,
+        "free": false,
+        "content_length": 19636
+      },
+      {
+        "slug": "few-shot-mastery",
+        "title": "Few-Shot Prompting",
+        "order": 6,
+        "free": false,
+        "content_length": 20556
+      },
+      {
+        "slug": "prompt-engineering-game",
+        "title": "Prompt Game",
+        "order": 7,
+        "free": false,
+        "content_length": 25746
+      },
+      {
+        "slug": "tool-use-basics",
+        "title": "Tool Use",
+        "order": 8,
+        "free": false,
+        "content_length": 22381
+      },
+      {
+        "slug": "mcp-servers",
+        "title": "MCP Servers",
+        "order": 9,
+        "free": false,
+        "content_length": 17626
+      },
+      {
+        "slug": "building-agents",
+        "title": "Building Agents",
+        "order": 10,
+        "free": false,
+        "content_length": 23085
+      }
+    ]
+  },
+  "computer-use-agents": {
+    "course_slug": "computer-use-agents",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "the-vision-agent",
+        "title": "The Vision Agent",
+        "order": 1,
+        "free": true,
+        "content_length": 15447
+      },
+      {
+        "slug": "computer-use-api",
+        "title": "Computer Use API",
+        "order": 2,
+        "free": false,
+        "content_length": 14314
+      },
+      {
+        "slug": "screenshot-analysis",
+        "title": "Screenshot Analysis",
+        "order": 3,
+        "free": false,
+        "content_length": 11975
+      },
+      {
+        "slug": "click-type-navigate",
+        "title": "Click, Type & Navigate",
+        "order": 4,
+        "free": false,
+        "content_length": 13137
+      },
+      {
+        "slug": "multi-step-workflows",
+        "title": "Multi-Step Workflows",
+        "order": 5,
+        "free": false,
+        "content_length": 13162
+      },
+      {
+        "slug": "error-recovery-resilience",
+        "title": "Error Recovery & Resilience",
+        "order": 6,
+        "free": false,
+        "content_length": 13738
+      },
+      {
+        "slug": "browser-agent-architecture",
+        "title": "Browser Agent Architecture",
+        "order": 7,
+        "free": false,
+        "content_length": 15270
+      },
+      {
+        "slug": "mcp-plus-computer-use",
+        "title": "MCP + Computer Use",
+        "order": 8,
+        "free": false,
+        "content_length": 13919
+      },
+      {
+        "slug": "testing-visual-agents",
+        "title": "Testing Visual Agents",
+        "order": 9,
+        "free": false,
+        "content_length": 13942
+      },
+      {
+        "slug": "production-patterns",
+        "title": "Production Patterns",
+        "order": 10,
+        "free": false,
+        "content_length": 16706
+      }
+    ]
+  },
+  "content-generation-pipeline": {
+    "course_slug": "content-generation-pipeline",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "01-pipeline-thinking",
+        "title": "Pipeline Thinking",
+        "order": 1,
+        "free": true,
+        "content_length": 19332
+      },
+      {
+        "slug": "02-content-architecture",
+        "title": "Content Architecture",
+        "order": 2,
+        "free": true,
+        "content_length": 19304
+      },
+      {
+        "slug": "03-template-engines",
+        "title": "Template Engines",
+        "order": 3,
+        "free": true,
+        "content_length": 17889
+      },
+      {
+        "slug": "04-multi-format-output",
+        "title": "Multi-Format Output",
+        "order": 4,
+        "free": true,
+        "content_length": 20263
+      },
+      {
+        "slug": "05-quality-control-systems",
+        "title": "Quality Control Systems",
+        "order": 5,
+        "free": true,
+        "content_length": 19162
+      },
+      {
+        "slug": "06-personalization-at-scale",
+        "title": "Personalization at Scale",
+        "order": 6,
+        "free": true,
+        "content_length": 20770
+      },
+      {
+        "slug": "07-multimedia-pipelines",
+        "title": "Multimedia Pipelines",
+        "order": 7,
+        "free": true,
+        "content_length": 22338
+      },
+      {
+        "slug": "08-scheduling-and-distribution",
+        "title": "Scheduling and Distribution",
+        "order": 8,
+        "free": true,
+        "content_length": 22021
+      },
+      {
+        "slug": "09-analytics-driven-content",
+        "title": "Analytics-Driven Content",
+        "order": 9,
+        "free": true,
+        "content_length": 18151
+      },
+      {
+        "slug": "10-your-content-machine",
+        "title": "Your Content Machine",
+        "order": 10,
+        "free": true,
+        "content_length": 19397
+      }
+    ]
+  },
+  "fine-tuning-models": {
+    "course_slug": "fine-tuning-models",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "why-fine-tune",
+        "title": "Why Fine-Tune (and When NOT to)",
+        "order": 1,
+        "free": true,
+        "content_length": 10145
+      },
+      {
+        "slug": "data-preparation",
+        "title": "Data Preparation & Curation",
+        "order": 2,
+        "free": false,
+        "content_length": 11740
+      },
+      {
+        "slug": "lora-basics",
+        "title": "LoRA: Efficient Fine-Tuning Explained",
+        "order": 3,
+        "free": false,
+        "content_length": 10480
+      },
+      {
+        "slug": "qlora-and-quantization",
+        "title": "QLoRA & Quantization",
+        "order": 4,
+        "free": false,
+        "content_length": 10763
+      },
+      {
+        "slug": "training-infrastructure",
+        "title": "Training Infrastructure & Compute",
+        "order": 5,
+        "free": false,
+        "content_length": 9714
+      },
+      {
+        "slug": "evaluation-metrics",
+        "title": "Evaluation Metrics & Benchmarks",
+        "order": 6,
+        "free": false,
+        "content_length": 12521
+      },
+      {
+        "slug": "rlhf-and-dpo",
+        "title": "RLHF & DPO: Alignment Techniques",
+        "order": 7,
+        "free": false,
+        "content_length": 11987
+      },
+      {
+        "slug": "deployment",
+        "title": "Deploying Fine-Tuned Models",
+        "order": 8,
+        "free": false,
+        "content_length": 9892
+      },
+      {
+        "slug": "continuous-training",
+        "title": "Continuous Training & Data Flywheels",
+        "order": 9,
+        "free": false,
+        "content_length": 12920
+      },
+      {
+        "slug": "production-patterns",
+        "title": "Production Fine-Tuning Patterns",
+        "order": 10,
+        "free": false,
+        "content_length": 13166
+      }
+    ]
+  },
+  "first-ai-agent": {
+    "course_slug": "first-ai-agent",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "chatbot-vs-agent",
+        "title": "Chatbot vs Agent",
+        "order": 1,
+        "free": true,
+        "content_length": 19566
+      },
+      {
+        "slug": "the-agent-loop",
+        "title": "The Agent Loop",
+        "order": 2,
+        "free": true,
+        "content_length": 21203
+      },
+      {
+        "slug": "tools-and-capabilities",
+        "title": "Tools and Capabilities",
+        "order": 3,
+        "free": true,
+        "content_length": 21688
+      },
+      {
+        "slug": "design-your-agent",
+        "title": "Design Your Agent",
+        "order": 4,
+        "free": false,
+        "content_length": 20858
+      },
+      {
+        "slug": "the-system-prompt",
+        "title": "The System Prompt",
+        "order": 5,
+        "free": false,
+        "content_length": 19263
+      },
+      {
+        "slug": "memory-matters",
+        "title": "Memory Matters",
+        "order": 6,
+        "free": false,
+        "content_length": 22642
+      },
+      {
+        "slug": "tool-calling-basics",
+        "title": "Tool Calling Basics",
+        "order": 7,
+        "free": false,
+        "content_length": 26907
+      },
+      {
+        "slug": "error-handling",
+        "title": "Error Handling",
+        "order": 8,
+        "free": false,
+        "content_length": 23401
+      },
+      {
+        "slug": "evaluating-your-agent",
+        "title": "Evaluating Your Agent",
+        "order": 9,
+        "free": false,
+        "content_length": 29485
+      },
+      {
+        "slug": "agent-quiz",
+        "title": "Agent Quiz",
+        "order": 10,
+        "free": false,
+        "content_length": 24307
+      }
+    ]
+  },
+  "local-ai-privacy": {
+    "course_slug": "local-ai-privacy",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "why-local",
+        "title": "Why Local AI Matters",
+        "order": 1,
+        "free": true,
+        "content_length": 8842
+      },
+      {
+        "slug": "ollama-setup",
+        "title": "Ollama: Your Local AI Lab",
+        "order": 2,
+        "free": false,
+        "content_length": 7564
+      },
+      {
+        "slug": "choosing-models",
+        "title": "Choosing the Right Model",
+        "order": 3,
+        "free": false,
+        "content_length": 9003
+      },
+      {
+        "slug": "private-embeddings",
+        "title": "Private Embeddings & Vector Search",
+        "order": 4,
+        "free": false,
+        "content_length": 9453
+      },
+      {
+        "slug": "local-rag",
+        "title": "Building Local RAG Systems",
+        "order": 5,
+        "free": false,
+        "content_length": 9258
+      },
+      {
+        "slug": "gpu-optimization",
+        "title": "GPU Optimization & Performance Tuning",
+        "order": 6,
+        "free": false,
+        "content_length": 9316
+      },
+      {
+        "slug": "local-agents",
+        "title": "Local AI Agents",
+        "order": 7,
+        "free": false,
+        "content_length": 10070
+      },
+      {
+        "slug": "privacy-architecture",
+        "title": "Privacy-First Architecture Patterns",
+        "order": 8,
+        "free": false,
+        "content_length": 9631
+      },
+      {
+        "slug": "hybrid-systems",
+        "title": "Hybrid Local + Cloud Systems",
+        "order": 9,
+        "free": false,
+        "content_length": 9453
+      },
+      {
+        "slug": "sovereign-ai",
+        "title": "The Sovereign AI Stack",
+        "order": 10,
+        "free": false,
+        "content_length": 10284
+      }
+    ]
+  },
+  "mcp-masterclass": {
+    "course_slug": "mcp-masterclass",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "what-is-mcp",
+        "title": "What Is MCP?",
+        "order": 1,
+        "free": true,
+        "content_length": 18624
+      },
+      {
+        "slug": "mcp-architecture",
+        "title": "MCP Architecture: How Hosts, Clients, and Servers Work Together",
+        "order": 2,
+        "free": true,
+        "content_length": 25553
+      },
+      {
+        "slug": "servers-vs-tools",
+        "title": "Servers vs Tools",
+        "order": 3,
+        "free": true,
+        "content_length": 14568
+      },
+      {
+        "slug": "your-first-server",
+        "title": "Your First Server",
+        "order": 4,
+        "free": false,
+        "content_length": 25367
+      },
+      {
+        "slug": "tool-definitions",
+        "title": "Tool Definitions",
+        "order": 5,
+        "free": false,
+        "content_length": 19938
+      },
+      {
+        "slug": "resources-and-prompts",
+        "title": "Resources and Prompts",
+        "order": 6,
+        "free": false,
+        "content_length": 19141
+      },
+      {
+        "slug": "connecting-to-claude",
+        "title": "Connecting to Claude",
+        "order": 7,
+        "free": false,
+        "content_length": 14443
+      },
+      {
+        "slug": "real-world-servers",
+        "title": "Real-World Servers",
+        "order": 8,
+        "free": false,
+        "content_length": 22842
+      },
+      {
+        "slug": "security-and-best-practices",
+        "title": "Security and Best Practices",
+        "order": 9,
+        "free": false,
+        "content_length": 23531
+      },
+      {
+        "slug": "mcp-quiz",
+        "title": "MCP Quiz",
+        "order": 10,
+        "free": false,
+        "content_length": 25154
+      }
+    ]
+  },
+  "multi-agent-orchestration": {
+    "course_slug": "multi-agent-orchestration",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "01-why-multiple-agents",
+        "title": "Why Multiple Agents",
+        "order": 1,
+        "free": true,
+        "content_length": 18520
+      },
+      {
+        "slug": "02-agent-roles-and-specialization",
+        "title": "Agent Roles and Specialization",
+        "order": 2,
+        "free": true,
+        "content_length": 17462
+      },
+      {
+        "slug": "03-communication-patterns",
+        "title": "Communication Patterns",
+        "order": 3,
+        "free": true,
+        "content_length": 23881
+      },
+      {
+        "slug": "04-orchestration-architectures",
+        "title": "Orchestration Architectures",
+        "order": 4,
+        "free": false,
+        "content_length": 18402
+      },
+      {
+        "slug": "05-shared-memory-and-state",
+        "title": "Shared Memory and State",
+        "order": 5,
+        "free": false,
+        "content_length": 18661
+      },
+      {
+        "slug": "06-conflict-resolution",
+        "title": "Conflict Resolution",
+        "order": 6,
+        "free": false,
+        "content_length": 21151
+      },
+      {
+        "slug": "07-scaling-agent-systems",
+        "title": "Scaling Agent Systems",
+        "order": 7,
+        "free": false,
+        "content_length": 20207
+      },
+      {
+        "slug": "08-human-oversight-patterns",
+        "title": "Human Oversight Patterns",
+        "order": 8,
+        "free": false,
+        "content_length": 18501
+      },
+      {
+        "slug": "09-real-world-multi-agent-systems",
+        "title": "Real-World Multi-Agent Systems",
+        "order": 9,
+        "free": false,
+        "content_length": 23782
+      },
+      {
+        "slug": "10-building-your-agent-team",
+        "title": "Building Your Agent Team",
+        "order": 10,
+        "free": false,
+        "content_length": 21756
+      }
+    ]
+  },
+  "prompt-writing-101": {
+    "course_slug": "prompt-writing-101",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "why-prompts-matter",
+        "title": "Why Prompts Matter",
+        "order": 1,
+        "free": true,
+        "content_length": 18093
+      },
+      {
+        "slug": "the-anatomy-of-a-great-prompt",
+        "title": "The Anatomy of a Great Prompt",
+        "order": 2,
+        "free": true,
+        "content_length": 16760
+      },
+      {
+        "slug": "roles-and-personas",
+        "title": "Roles and Personas",
+        "order": 3,
+        "free": true,
+        "content_length": 18271
+      },
+      {
+        "slug": "context-is-everything",
+        "title": "Context Is Everything",
+        "order": 4,
+        "free": false,
+        "content_length": 16975
+      },
+      {
+        "slug": "output-formats-that-work",
+        "title": "Output Formats That Work",
+        "order": 5,
+        "free": false,
+        "content_length": 16497
+      },
+      {
+        "slug": "the-art-of-constraints",
+        "title": "The Art of Constraints",
+        "order": 6,
+        "free": false,
+        "content_length": 18980
+      },
+      {
+        "slug": "iteration-and-refinement",
+        "title": "Iteration and Refinement",
+        "order": 7,
+        "free": false,
+        "content_length": 18722
+      },
+      {
+        "slug": "prompt-templates-for-work",
+        "title": "Prompt Templates for Work",
+        "order": 8,
+        "free": false,
+        "content_length": 15901
+      },
+      {
+        "slug": "common-mistakes",
+        "title": "Common Mistakes",
+        "order": 9,
+        "free": false,
+        "content_length": 20361
+      },
+      {
+        "slug": "prompt-writing-assessment",
+        "title": "Prompt Writing Assessment",
+        "order": 10,
+        "free": false,
+        "content_length": 28238
+      }
+    ]
+  },
+  "rag-vector-search": {
+    "course_slug": "rag-vector-search",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "what-are-embeddings",
+        "title": "What Are Embeddings?",
+        "order": 1,
+        "free": true,
+        "content_length": 25337
+      },
+      {
+        "slug": "vector-databases-101",
+        "title": "Vector Databases 101",
+        "order": 2,
+        "free": true,
+        "content_length": 20476
+      },
+      {
+        "slug": "chunking-strategies",
+        "title": "Chunking Strategies",
+        "order": 3,
+        "free": true,
+        "content_length": 18869
+      },
+      {
+        "slug": "the-rag-loop",
+        "title": "The RAG Loop",
+        "order": 4,
+        "free": false,
+        "content_length": 19988
+      },
+      {
+        "slug": "build-your-first-rag",
+        "title": "Build Your First RAG",
+        "order": 5,
+        "free": false,
+        "content_length": 21531
+      },
+      {
+        "slug": "prompt-augmentation",
+        "title": "Prompt Augmentation",
+        "order": 6,
+        "free": false,
+        "content_length": 18019
+      },
+      {
+        "slug": "hybrid-search",
+        "title": "Hybrid Search",
+        "order": 7,
+        "free": false,
+        "content_length": 20443
+      },
+      {
+        "slug": "evaluation-metrics",
+        "title": "Evaluation Metrics",
+        "order": 8,
+        "free": false,
+        "content_length": 17774
+      },
+      {
+        "slug": "advanced-patterns",
+        "title": "Advanced Patterns",
+        "order": 9,
+        "free": false,
+        "content_length": 19095
+      },
+      {
+        "slug": "rag-quiz",
+        "title": "RAG Mastery Quiz",
+        "order": 10,
+        "free": false,
+        "content_length": 33983
+      }
+    ]
+  },
+  "the-automation-lab": {
+    "course_slug": "the-automation-lab",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "what-is-an-agent",
+        "title": "What Is an Agent?",
+        "order": 1,
+        "free": true,
+        "content_length": 19107
+      },
+      {
+        "slug": "agent-anatomy",
+        "title": "Agent Anatomy",
+        "order": 2,
+        "free": true,
+        "content_length": 18892
+      },
+      {
+        "slug": "memory-systems",
+        "title": "Memory Systems",
+        "order": 3,
+        "free": true,
+        "content_length": 19939
+      },
+      {
+        "slug": "agent-communication",
+        "title": "Agent Communication",
+        "order": 4,
+        "free": false,
+        "content_length": 20086
+      },
+      {
+        "slug": "orchestration-patterns",
+        "title": "Orchestration Patterns",
+        "order": 5,
+        "free": false,
+        "content_length": 19474
+      },
+      {
+        "slug": "conflict-resolution",
+        "title": "Conflict Resolution",
+        "order": 6,
+        "free": false,
+        "content_length": 21250
+      },
+      {
+        "slug": "build-a-team",
+        "title": "Build a Team",
+        "order": 7,
+        "free": false,
+        "content_length": 19923
+      },
+      {
+        "slug": "cron-and-scheduling",
+        "title": "Cron and Scheduling",
+        "order": 8,
+        "free": false,
+        "content_length": 19616
+      },
+      {
+        "slug": "monitoring-and-healing",
+        "title": "Monitoring and Healing",
+        "order": 9,
+        "free": false,
+        "content_length": 19914
+      },
+      {
+        "slug": "the-conscience-layer",
+        "title": "The Conscience Layer",
+        "order": 10,
+        "free": false,
+        "content_length": 21843
+      }
+    ]
+  },
+  "the-convergence-lab": {
+    "course_slug": "the-convergence-lab",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "what-is-convergence",
+        "title": "What Is Convergence?",
+        "order": 1,
+        "free": true,
+        "content_length": 19294
+      },
+      {
+        "slug": "persistent-memory-architecture",
+        "title": "Persistent Memory Architecture",
+        "order": 2,
+        "free": true,
+        "content_length": 20067
+      },
+      {
+        "slug": "autonomous-agent-design",
+        "title": "Autonomous Agent Design",
+        "order": 3,
+        "free": true,
+        "content_length": 19832
+      },
+      {
+        "slug": "values-alignment-in-practice",
+        "title": "Values Alignment in Practice",
+        "order": 4,
+        "free": false,
+        "content_length": 19492
+      },
+      {
+        "slug": "the-digital-twin",
+        "title": "The Digital Twin",
+        "order": 5,
+        "free": false,
+        "content_length": 19117
+      },
+      {
+        "slug": "life-operating-systems",
+        "title": "Life Operating Systems",
+        "order": 6,
+        "free": false,
+        "content_length": 19180
+      },
+      {
+        "slug": "emotional-intelligence-for-ai",
+        "title": "Emotional Intelligence for AI",
+        "order": 7,
+        "free": false,
+        "content_length": 19409
+      },
+      {
+        "slug": "privacy-and-trust",
+        "title": "Privacy and Trust",
+        "order": 8,
+        "free": false,
+        "content_length": 18790
+      },
+      {
+        "slug": "the-future-of-human-ai",
+        "title": "The Future of Human-AI",
+        "order": 9,
+        "free": false,
+        "content_length": 19468
+      },
+      {
+        "slug": "your-convergence-project",
+        "title": "Your Convergence Project",
+        "order": 10,
+        "free": false,
+        "content_length": 20638
+      }
+    ]
+  },
+  "the-sovereign-stack": {
+    "course_slug": "the-sovereign-stack",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "the-sovereign-mindset",
+        "title": "The Sovereign Mindset",
+        "order": 1,
+        "free": true,
+        "content_length": 12819
+      },
+      {
+        "slug": "local-ai-ollama",
+        "title": "Local AI: Ollama & Open Models",
+        "order": 2,
+        "free": false,
+        "content_length": 14343
+      },
+      {
+        "slug": "brain-architecture",
+        "title": "Brain Architecture",
+        "order": 3,
+        "free": false,
+        "content_length": 14456
+      },
+      {
+        "slug": "email-communication-agents",
+        "title": "Email & Communication Agents",
+        "order": 4,
+        "free": false,
+        "content_length": 13056
+      },
+      {
+        "slug": "financial-automation",
+        "title": "Financial Automation",
+        "order": 5,
+        "free": false,
+        "content_length": 13400
+      },
+      {
+        "slug": "content-pipeline",
+        "title": "Content Pipeline",
+        "order": 6,
+        "free": false,
+        "content_length": 12538
+      },
+      {
+        "slug": "fleet-orchestration",
+        "title": "Fleet Orchestration",
+        "order": 7,
+        "free": false,
+        "content_length": 13147
+      },
+      {
+        "slug": "monitoring-self-healing",
+        "title": "Monitoring & Self-Healing",
+        "order": 8,
+        "free": false,
+        "content_length": 14168
+      },
+      {
+        "slug": "cost-optimization",
+        "title": "Cost Optimization",
+        "order": 9,
+        "free": false,
+        "content_length": 13724
+      },
+      {
+        "slug": "the-fully-autonomous-business",
+        "title": "The Fully Autonomous Business",
+        "order": 10,
+        "free": false,
+        "content_length": 18880
+      }
+    ]
+  },
+  "vibe-coding": {
+    "course_slug": "vibe-coding",
+    "lesson_count": 10,
+    "lessons": [
+      {
+        "slug": "what-is-vibe-coding",
+        "title": "What Is Vibe Coding?",
+        "order": 1,
+        "free": true,
+        "content_length": 11158
+      },
+      {
+        "slug": "your-ai-coding-partner",
+        "title": "Your AI Coding Partner",
+        "order": 2,
+        "free": false,
+        "content_length": 11991
+      },
+      {
+        "slug": "your-first-app-in-10-minutes",
+        "title": "Your First App in 10 Minutes",
+        "order": 3,
+        "free": false,
+        "content_length": 10050
+      },
+      {
+        "slug": "thinking-in-features",
+        "title": "Thinking in Features, Not Code",
+        "order": 4,
+        "free": false,
+        "content_length": 11017
+      },
+      {
+        "slug": "debugging-with-ai",
+        "title": "Debugging With AI",
+        "order": 5,
+        "free": false,
+        "content_length": 11669
+      },
+      {
+        "slug": "making-it-beautiful",
+        "title": "Making It Beautiful",
+        "order": 6,
+        "free": false,
+        "content_length": 9925
+      },
+      {
+        "slug": "adding-a-database",
+        "title": "Adding a Database",
+        "order": 7,
+        "free": false,
+        "content_length": 10445
+      },
+      {
+        "slug": "deploy-to-the-world",
+        "title": "Deploy to the World",
+        "order": 8,
+        "free": false,
+        "content_length": 11047
+      },
+      {
+        "slug": "accessible-by-default",
+        "title": "Accessible by Default",
+        "order": 9,
+        "free": false,
+        "content_length": 10035
+      },
+      {
+        "slug": "from-prototype-to-product",
+        "title": "From Prototype to Product",
+        "order": 10,
+        "free": false,
+        "content_length": 10807
+      }
+    ]
+  }
+}

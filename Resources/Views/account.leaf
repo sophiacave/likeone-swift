@@ -1,0 +1,20 @@
+#extend("layout"):
+    #export("content"):
+        <section class="site-section">
+            <div class="site-container" style="max-width: 600px;">
+                <h1 class="site-section-title">Your Account</h1>
+                <div class="site-card" style="margin-top: 2rem;">
+                    <div style="padding: 2rem;">
+                        <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Signed in as</p>
+                        <h2 style="color: var(--text-primary); margin-bottom: 0.25rem;">#(name)</h2>
+                        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">#(email)</p>
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem;">
+                            <span style="background: var(--purple-900); color: var(--purple-400); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; text-transform: capitalize;">#(subscription)</span>
+                        </div>
+                        <a href="/auth/logout" class="site-btn-secondary" style="display: inline-block;">Sign Out</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    #endexport
+#endextend

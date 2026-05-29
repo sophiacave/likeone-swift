@@ -10,7 +10,9 @@ struct ServerTests {
     private func withApp(_ test: (Application) async throws -> Void) async throws {
         let app = try await Application.make(.testing)
         try routes(app)
-        try await test(app)
+        try await XCTVaporContext.$emitWarningIfCurrentTestInfoIsAvailable.withValue(false) {
+            try await test(app)
+        }
         try await app.asyncShutdown()
     }
 
@@ -88,9 +90,31 @@ struct ServerTests {
             }
         }
     }
+
+    @Test("API course lessons returns lesson list")
+    func apiCourseLessons() async throws {
+        try await withApp { app in
+            try await app.test(.GET, "api/v1/courses/ai-foundations/lessons") { res async throws in
+                #expect(res.status == .ok)
+                let lessons = try res.content.decode([CodableLesson].self)
+                #expect(lessons.count == 9)
+                #expect(lessons.first?.title == "What Is a Neuron?")
+            }
+        }
+    }
+
+    @Test("Auth me without session returns 401")
+    func authMeUnauthorized() async throws {
+        try await withApp { app in
+            try await app.test(.GET, "auth/me") { res async in
+                #expect(res.status == .unauthorized)
+            }
+        }
+    }
 }
 
 // Decodable structs for testing
 struct CodableCourse: Content { let slug: String; let title: String }
 struct CodableBlogPost: Content { let slug: String; let title: String }
 struct CodableProduct: Content { let slug: String; let name: String }
+struct CodableLesson: Content { let slug: String; let title: String; let order: Int }

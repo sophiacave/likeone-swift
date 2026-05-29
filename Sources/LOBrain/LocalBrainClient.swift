@@ -2,28 +2,8 @@ import Foundation
 import LOCore
 import CSQLite3
 
-#if canImport(FoundationNetworking)
-import FoundationNetworking
-#endif
-
-// MARK: - Brain Client Protocol
-
-public protocol BrainClient: Sendable {
-    func read(key: String) async throws -> BrainEntry?
-    func write(_ entry: BrainEntry) async throws
-    func search(query: String, limit: Int) async throws -> [BrainEntry]
-    func boot() async throws -> [BrainEntry]
-}
-
-// MARK: - SQLite Error
-
-public enum BrainError: Error {
-    case databaseNotFound(String)
-    case queryFailed(String)
-    case writeFailed(String)
-}
-
-// MARK: - Local Brain Client (SQLite)
+// SQLITE_TRANSIENT tells SQLite to copy the string immediately
+private let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
 
 public final class LocalBrainClient: BrainClient, @unchecked Sendable {
     public let dbPath: String
@@ -58,7 +38,6 @@ public final class LocalBrainClient: BrainClient, @unchecked Sendable {
     }
 
     public func search(query searchTerm: String, limit: Int = 5) async throws -> [BrainEntry] {
-        // Use FTS5 if available, fall back to LIKE
         let sql = """
             SELECT id, key, category, description, value, priority, updated_at FROM brain_context
             WHERE key LIKE ? OR description LIKE ? OR value LIKE ?
@@ -104,7 +83,7 @@ public final class LocalBrainClient: BrainClient, @unchecked Sendable {
             defer { sqlite3_finalize(stmt) }
 
             for (i, param) in params.enumerated() {
-                sqlite3_bind_text(stmt, Int32(i + 1), param, -1, unsafeBitCast(-1, to: sqlite3_destructor_type.self))
+                sqlite3_bind_text(stmt, Int32(i + 1), param, -1, SQLITE_TRANSIENT)
             }
 
             let formatter = ISO8601DateFormatter()
@@ -145,7 +124,7 @@ public final class LocalBrainClient: BrainClient, @unchecked Sendable {
             defer { sqlite3_finalize(stmt) }
 
             for (i, param) in params.enumerated() {
-                sqlite3_bind_text(stmt, Int32(i + 1), param, -1, unsafeBitCast(-1, to: sqlite3_destructor_type.self))
+                sqlite3_bind_text(stmt, Int32(i + 1), param, -1, SQLITE_TRANSIENT)
             }
 
             guard sqlite3_step(stmt) == SQLITE_DONE else {
@@ -158,45 +137,5 @@ public final class LocalBrainClient: BrainClient, @unchecked Sendable {
     private func col(_ stmt: OpaquePointer?, _ index: Int32) -> String {
         guard let cStr = sqlite3_column_text(stmt, index) else { return "" }
         return String(cString: cStr)
-    }
-}
-
-// MARK: - Remote Brain Client (Vapor API)
-
-public final class RemoteBrainClient: BrainClient, @unchecked Sendable {
-    private let baseURL: URL
-
-    public init(baseURL: URL = URL(string: "https://likeone-swift.fly.dev")!) {
-        self.baseURL = baseURL
-    }
-
-    public func read(key: String) async throws -> BrainEntry? {
-        let url = baseURL.appendingPathComponent("api/v1/brain/\(key)")
-        let (data, _) = try await URLSession.shared.data(from: url)
-        return try? JSONDecoder().decode(BrainEntry.self, from: data)
-    }
-
-    public func write(_ entry: BrainEntry) async throws {
-        var request = URLRequest(url: baseURL.appendingPathComponent("api/v1/brain"))
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try JSONEncoder().encode(entry)
-        _ = try await URLSession.shared.data(for: request)
-    }
-
-    public func search(query: String, limit: Int = 5) async throws -> [BrainEntry] {
-        var components = URLComponents(url: baseURL.appendingPathComponent("api/v1/brain/search"), resolvingAgainstBaseURL: false)!
-        components.queryItems = [
-            URLQueryItem(name: "q", value: query),
-            URLQueryItem(name: "limit", value: String(limit)),
-        ]
-        let (data, _) = try await URLSession.shared.data(from: components.url!)
-        return (try? JSONDecoder().decode([BrainEntry].self, from: data)) ?? []
-    }
-
-    public func boot() async throws -> [BrainEntry] {
-        let url = baseURL.appendingPathComponent("api/v1/brain/boot")
-        let (data, _) = try await URLSession.shared.data(from: url)
-        return (try? JSONDecoder().decode([BrainEntry].self, from: data)) ?? []
     }
 }

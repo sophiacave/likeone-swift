@@ -21,6 +21,8 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", from: "4.110.0"),
         .package(url: "https://github.com/vapor/leaf.git", from: "4.4.0"),
+        .package(url: "https://github.com/vapor/fluent.git", from: "4.12.0"),
+        .package(url: "https://github.com/vapor/fluent-sqlite-driver.git", from: "4.8.0"),
     ],
     targets: [
         // SQLite3 C bridge
@@ -73,6 +75,8 @@ let package = Package(
                 "LOContent",
                 .product(name: "Vapor", package: "vapor"),
                 .product(name: "Leaf", package: "leaf"),
+                .product(name: "Fluent", package: "fluent"),
+                .product(name: "FluentSQLiteDriver", package: "fluent-sqlite-driver"),
             ]
         ),
 

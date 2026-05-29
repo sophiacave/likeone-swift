@@ -1,0 +1,12 @@
+#for(course in courses):
+    <a href="/academy/#(course.slug)" class="course-card" aria-label="#(course.title) — #(course.lessonCount) lessons">
+        <div class="course-card-emoji">#(course.emoji)</div>
+        <span class="course-card-level">#(course.level)</span>
+        <h3 class="course-card-title">#(course.title)</h3>
+        <p class="course-card-desc">#(course.description)</p>
+        <div class="course-card-meta">
+            <span class="course-card-lessons">#(course.lessonCount) lessons</span>
+            <span class="course-card-tier">#(course.tier)</span>
+        </div>
+    </a>
+#endfor

@@ -1,14 +1,13 @@
 import Vapor
 import Foundation
 import LOCore
-
-// MARK: - Apple Sign in with Apple
+import Crypto
 
 public struct AppleAuthConfig: Sendable {
     public static let teamID = "MW42T97LV9"
     public static let keyID = "B9DSKAL85T"
-    public static let clientID = "ai.likeone.web"   // Services ID (web)
-    public static let bundleID = "ai.likeone.app"   // App ID (native)
+    public static let clientID = "ai.likeone.web"
+    public static let bundleID = "ai.likeone.app"
 
     public static func clientSecret(keyPath: String? = nil) throws -> String {
         let path = keyPath ?? defaultKeyPath()
@@ -19,13 +18,11 @@ public struct AppleAuthConfig: Sendable {
             .replacingOccurrences(of: "\n", with: "")
 
         let now = Date()
-        let expiry = now.addingTimeInterval(15_777_000) // ~6 months
+        let expiry = now.addingTimeInterval(15_777_000)
 
-        // JWT header
         let header: [String: String] = ["alg": "ES256", "kid": keyID, "typ": "JWT"]
         let headerB64 = try jsonBase64URL(header)
 
-        // JWT claims
         let claims: [String: Any] = [
             "iss": teamID,
             "iat": Int(now.timeIntervalSince1970),
@@ -41,8 +38,7 @@ public struct AppleAuthConfig: Sendable {
             throw Abort(.internalServerError, reason: "Invalid Apple private key encoding")
         }
 
-        // Sign with ES256 using swift-crypto (available via Vapor)
-        let privateKey = try Crypto.P256.Signing.PrivateKey(derRepresentation: derBytes)
+        let privateKey = try P256.Signing.PrivateKey(derRepresentation: derBytes)
         let signature = try privateKey.signature(for: Data(message.utf8))
         let sigB64 = signature.rawRepresentation.base64URLEncoded()
 
@@ -62,16 +58,5 @@ public struct AppleAuthConfig: Sendable {
     private static func dictBase64URL(_ dict: [String: Any]) throws -> String {
         let data = try JSONSerialization.data(withJSONObject: dict)
         return data.base64URLEncoded()
-    }
-}
-
-import Crypto
-
-extension Data {
-    public func base64URLEncoded() -> String {
-        base64EncodedString()
-            .replacingOccurrences(of: "+", with: "-")
-            .replacingOccurrences(of: "/", with: "_")
-            .replacingOccurrences(of: "=", with: "")
     }
 }

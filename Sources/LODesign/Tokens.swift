@@ -14,7 +14,7 @@ public enum LOColorToken: String, CaseIterable, Sendable {
     case bgCard = "#1a1a24"
     case textPrimary = "#f5f5f7"
     case textSecondary = "#a1a1aa"
-    case textMuted = "#71717a"
+    case textMuted = "#828288"
     case border = "#27272a"
 
     public var hex: String { rawValue }
