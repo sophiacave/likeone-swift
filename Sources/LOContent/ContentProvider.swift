@@ -104,32 +104,117 @@ public struct CourseProvider: Sendable {
     }
 }
 
+// MARK: - Raw Blog JSON Models
+
+private struct RawBlogData: Codable {
+    let posts: [RawBlogPost]
+}
+
+private struct RawBlogPost: Codable {
+    let slug: String
+    let title: String
+    let description: String
+    let author: String
+    let date: String
+    let category: String
+    let tags: [String]
+    let image: String
+    let content: String
+}
+
 // MARK: - Blog Provider
 
 public struct BlogProvider: Sendable {
-    public init() {}
+    private let posts: [BlogPost]
 
-    public func allPosts() -> [BlogPost] {
-        // TODO: load from markdown files
-        []
+    public init() {
+        self.posts = Self.loadPosts()
     }
+
+    public func allPosts() -> [BlogPost] { posts }
 
     public func post(slug: String) -> BlogPost? {
-        allPosts().first { $0.slug == slug }
+        posts.first { $0.slug == slug }
     }
+
+    public func posts(tagged tag: String) -> [BlogPost] {
+        posts.filter { $0.tags.contains(tag) }
+    }
+
+    public var tags: [String] {
+        Array(Set(posts.flatMap { $0.tags })).sorted()
+    }
+
+    private static func loadPosts() -> [BlogPost] {
+        guard let url = Bundle.module.url(forResource: "blogs", withExtension: "json", subdirectory: "Data"),
+              let data = try? Data(contentsOf: url),
+              let raw = try? JSONDecoder().decode(RawBlogData.self, from: data)
+        else { return [] }
+
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+
+        return raw.posts.compactMap { post in
+            BlogPost(
+                slug: post.slug,
+                title: post.title,
+                description: post.description,
+                content: post.content,
+                author: post.author,
+                publishedAt: formatter.date(from: post.date) ?? Date(),
+                tags: post.tags
+            )
+        }
+    }
+}
+
+// MARK: - Raw Product JSON Models
+
+private struct RawProductData: Codable {
+    let products: [RawProduct]
+}
+
+private struct RawProduct: Codable {
+    let slug: String
+    let name: String
+    let description: String
+    let stripeProductID: String?
+    let stripePriceID: String?
+    let price: Double?
+    let emoji: String
 }
 
 // MARK: - Product Catalog
 
 public struct ProductCatalog: Sendable {
-    public init() {}
+    private let products: [Product]
 
-    public func allProducts() -> [Product] {
-        // TODO: load from data + Stripe product IDs
-        []
+    public init() {
+        self.products = Self.loadProducts()
     }
 
+    public func allProducts() -> [Product] { products }
+
     public func product(slug: String) -> Product? {
-        allProducts().first { $0.slug == slug }
+        products.first { $0.slug == slug }
+    }
+
+    private static func loadProducts() -> [Product] {
+        guard let url = Bundle.module.url(forResource: "products", withExtension: "json", subdirectory: "Data"),
+              let data = try? Data(contentsOf: url),
+              let raw = try? JSONDecoder().decode(RawProductData.self, from: data)
+        else { return [] }
+
+        return raw.products.map { p in
+            Product(
+                slug: p.slug,
+                name: p.name,
+                description: p.description,
+                stripeProductID: p.stripeProductID,
+                stripePriceID: p.stripePriceID,
+                price: p.price.map { Decimal($0) },
+                emoji: p.emoji
+            )
+        }
     }
 }

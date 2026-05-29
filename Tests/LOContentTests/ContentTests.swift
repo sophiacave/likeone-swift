@@ -45,4 +45,64 @@ struct ContentTests {
         let total = summary.reduce(0) { $0 + $1.count }
         #expect(total == 52)
     }
+
+    // MARK: - Blog Provider
+
+    @Test("BlogProvider loads 16 posts from embedded JSON")
+    func blogCount() {
+        let provider = BlogProvider()
+        let posts = provider.allPosts()
+        #expect(posts.count == 16, "Expected 16 blog posts, got \(posts.count)")
+    }
+
+    @Test("Blog post lookup by slug works")
+    func blogLookup() {
+        let provider = BlogProvider()
+        let post = provider.post(slug: "ai-agent-frameworks-compared-claude-langchain-crewai-2026")
+        #expect(post != nil)
+        #expect(post?.title.contains("AI Agent Frameworks") == true)
+    }
+
+    @Test("All blog posts have non-empty fields")
+    func blogFieldsValid() {
+        let provider = BlogProvider()
+        for post in provider.allPosts() {
+            #expect(!post.slug.isEmpty, "Post has empty slug")
+            #expect(!post.title.isEmpty, "Post has empty title")
+            #expect(!post.content.isEmpty, "Post has empty content")
+            #expect(!post.author.isEmpty, "Post has empty author")
+        }
+    }
+
+    @Test("Blog tags are collected correctly")
+    func blogTags() {
+        let provider = BlogProvider()
+        let tags = provider.tags
+        #expect(tags.count > 5, "Expected many tags, got \(tags.count)")
+    }
+
+    // MARK: - Product Catalog
+
+    @Test("ProductCatalog loads 10 products from embedded JSON")
+    func productCount() {
+        let catalog = ProductCatalog()
+        let products = catalog.allProducts()
+        #expect(products.count == 10, "Expected 10 products, got \(products.count)")
+    }
+
+    @Test("Product lookup by slug works")
+    func productLookup() {
+        let catalog = ProductCatalog()
+        let product = catalog.product(slug: "academy-pro-monthly")
+        #expect(product != nil)
+        #expect(product?.stripeProductID == "prod_UCoTPM3jRCrn2I")
+    }
+
+    @Test("All products have Stripe product IDs")
+    func productStripeIDs() {
+        let catalog = ProductCatalog()
+        for product in catalog.allProducts() {
+            #expect(product.stripeProductID != nil, "\(product.slug) missing Stripe product ID")
+        }
+    }
 }

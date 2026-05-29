@@ -1,0 +1,94 @@
+{
+  "products": [
+    {
+      "slug": "academy-pro-monthly",
+      "name": "Like One Academy Pro — Monthly",
+      "description": "Full access to all 52 interactive AI courses, 520+ lessons, downloads, certificates, community, and priority support.",
+      "stripeProductID": "prod_UCoTPM3jRCrn2I",
+      "stripePriceID": "price_1Ta5j02L9FGg4gn2oLjgZmg3",
+      "price": 19.00,
+      "emoji": "🎓"
+    },
+    {
+      "slug": "academy-pro-annual",
+      "name": "Like One Academy Pro — Annual",
+      "description": "Full annual access to Like One Academy. All courses, all lessons, all downloads, certificates, community. Save vs monthly.",
+      "stripeProductID": "prod_UCoTIktpprci4U",
+      "stripePriceID": "price_1Ta5j22L9FGg4gn2fqqskmYV",
+      "price": 149.00,
+      "emoji": "🏆"
+    },
+    {
+      "slug": "consulting-retainer",
+      "name": "LO Consulting — Retainer",
+      "description": "Done-with-you. 4 hrs/wk synchronous + unlimited async. 14-day time-to-first-deploy guarantee.",
+      "stripeProductID": "prod_UPs2rJms8sE7Og",
+      "stripePriceID": "price_1TR2Ii2L9FGg4gn2gqepMtKT",
+      "price": 5000.00,
+      "emoji": "🤝"
+    },
+    {
+      "slug": "consulting-starter",
+      "name": "LO Consulting — Starter",
+      "description": "Async access to Sophie + the Faye stack. 24h turnaround, monthly strategy call. Cancel anytime.",
+      "stripeProductID": "prod_UPs2eSjYsWsxLi",
+      "stripePriceID": "price_1TR2Ih2L9FGg4gn2bgv4kJ50",
+      "price": 500.00,
+      "emoji": "💬"
+    },
+    {
+      "slug": "donation",
+      "name": "Support Like One — Donation",
+      "description": "One-time contribution to support Like One's mission: convergence technology, HIV research, trans visibility, and AI accessibility.",
+      "stripeProductID": "prod_UD1kNlDzgVQYzb",
+      "stripePriceID": null,
+      "price": null,
+      "emoji": "💜"
+    },
+    {
+      "slug": "ai-quick-start",
+      "name": "AI Quick Start Guide",
+      "description": "The 5 tools and 3 automations you need to start your AI journey today. No fluff. Just the exact stack we use.",
+      "stripeProductID": "prod_UCjbQmz5e8YVvh",
+      "stripePriceID": null,
+      "price": null,
+      "emoji": "⚡"
+    },
+    {
+      "slug": "consulting-session",
+      "name": "AI Consulting Session",
+      "description": "Strategic AI assessment, custom implementation roadmap, tool selection guidance, ROI projections.",
+      "stripeProductID": "prod_U8zJL8lrVNlAnB",
+      "stripePriceID": null,
+      "price": null,
+      "emoji": "🧠"
+    },
+    {
+      "slug": "ai-retainer",
+      "name": "Monthly AI Retainer",
+      "description": "Ongoing AI operations management, continuous optimization, priority support, monthly performance reports.",
+      "stripeProductID": "prod_U8zJxZCyksZc7D",
+      "stripePriceID": null,
+      "price": null,
+      "emoji": "🔄"
+    },
+    {
+      "slug": "automation-setup",
+      "name": "AI Automation Setup",
+      "description": "End-to-end automation architecture. Custom workflow development, integration with your existing tools, testing and deployment.",
+      "stripeProductID": "prod_U8zJNrrM1tGqrI",
+      "stripePriceID": null,
+      "price": null,
+      "emoji": "🛠️"
+    },
+    {
+      "slug": "ai-playbook",
+      "name": "AI Playbook",
+      "description": "Complete AI implementation frameworks, tool recommendations, step-by-step automation workflows, ROI calculation templates. Lifetime updates.",
+      "stripeProductID": "prod_U8zJn0kvFPy4Kr",
+      "stripePriceID": null,
+      "price": null,
+      "emoji": "📖"
+    }
+  ]
+}

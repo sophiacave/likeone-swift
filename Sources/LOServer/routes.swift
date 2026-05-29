@@ -5,6 +5,8 @@ import LOContent
 
 func routes(_ app: Application) throws {
     let courses = CourseProvider()
+    let blog = BlogProvider()
+    let catalog = ProductCatalog()
 
     // Health check
     app.get("health") { req async -> String in
@@ -62,6 +64,42 @@ func routes(_ app: Application) throws {
         }
         let response = Response(status: .ok)
         try response.content.encode(course)
+        return response
+    }
+
+    // API: blog posts
+    app.get("api", "v1", "blog") { req async throws -> Response in
+        let posts = blog.allPosts()
+        let response = Response(status: .ok)
+        try response.content.encode(posts)
+        return response
+    }
+
+    app.get("api", "v1", "blog", ":slug") { req async throws -> Response in
+        guard let slug = req.parameters.get("slug"),
+              let post = blog.post(slug: slug) else {
+            throw Abort(.notFound, reason: "Blog post not found")
+        }
+        let response = Response(status: .ok)
+        try response.content.encode(post)
+        return response
+    }
+
+    // API: products
+    app.get("api", "v1", "products") { req async throws -> Response in
+        let products = catalog.allProducts()
+        let response = Response(status: .ok)
+        try response.content.encode(products)
+        return response
+    }
+
+    app.get("api", "v1", "products", ":slug") { req async throws -> Response in
+        guard let slug = req.parameters.get("slug"),
+              let product = catalog.product(slug: slug) else {
+            throw Abort(.notFound, reason: "Product not found")
+        }
+        let response = Response(status: .ok)
+        try response.content.encode(product)
         return response
     }
 }

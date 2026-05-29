@@ -23,6 +23,12 @@ let package = Package(
         .package(url: "https://github.com/vapor/leaf.git", from: "4.4.0"),
     ],
     targets: [
+        // SQLite3 C bridge
+        .target(
+            name: "CSQLite3",
+            linkerSettings: [.linkedLibrary("sqlite3")]
+        ),
+
         // Foundation — models, protocols, utilities
         .target(
             name: "LOCore",
@@ -32,7 +38,7 @@ let package = Package(
         // Brain interface — read/write/search
         .target(
             name: "LOBrain",
-            dependencies: ["LOCore"]
+            dependencies: ["LOCore", "CSQLite3"]
         ),
 
         // Authentication — Sign in with Apple, Google, magic links
