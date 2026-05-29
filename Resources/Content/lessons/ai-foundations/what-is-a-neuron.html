@@ -18,6 +18,56 @@
 <div class="lesson-section">
   <span class="section-label">The Concept</span>
   <h2 class="section-title">A voting booth in your brain.</h2>
+  <div class="lesson-visual" aria-label="Diagram showing a neuron as three weighted inputs summed with a bias, passed through an activation function to produce an output">
+    <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Grid -->
+      <defs>
+        <pattern id="grid1" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="480" height="200" fill="url(#grid1)"/>
+      <!-- Input signals -->
+      <circle cx="60" cy="50" r="18" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="60" y="54" text-anchor="middle" fill="#34d399" font-size="11" font-weight="600" font-family="SF Mono,monospace">x1</text>
+      <text x="60" y="24" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace">SIGNAL</text>
+      <circle cx="60" cy="100" r="18" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+      <text x="60" y="104" text-anchor="middle" fill="#8b5cf6" font-size="11" font-weight="600" font-family="SF Mono,monospace">x2</text>
+      <circle cx="60" cy="150" r="18" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="60" y="154" text-anchor="middle" fill="#38bdf8" font-size="11" font-weight="600" font-family="SF Mono,monospace">x3</text>
+      <!-- Weight arrows -->
+      <line x1="80" y1="50" x2="175" y2="90" stroke="#34d399" stroke-width="1.5" opacity="0.6"/>
+      <text x="120" y="62" fill="#34d399" font-size="8" font-family="SF Mono,monospace" opacity="0.7">w1</text>
+      <line x1="80" y1="100" x2="175" y2="100" stroke="#8b5cf6" stroke-width="1.5" opacity="0.6"/>
+      <text x="125" y="95" fill="#8b5cf6" font-size="8" font-family="SF Mono,monospace" opacity="0.7">w2</text>
+      <line x1="80" y1="150" x2="175" y2="110" stroke="#38bdf8" stroke-width="1.5" opacity="0.6"/>
+      <text x="120" y="140" fill="#38bdf8" font-size="8" font-family="SF Mono,monospace" opacity="0.7">w3</text>
+      <!-- Summation node -->
+      <circle cx="200" cy="100" r="26" fill="none" stroke="#c084fc" stroke-width="2"/>
+      <text x="200" y="107" text-anchor="middle" fill="#c084fc" font-size="20" font-weight="300">&#x03A3;</text>
+      <text x="200" y="68" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace" letter-spacing="0.5">WEIGHTED SUM</text>
+      <!-- Bias -->
+      <line x1="200" y1="128" x2="200" y2="155" stroke="#c084fc" stroke-width="1" opacity="0.5"/>
+      <text x="200" y="168" text-anchor="middle" fill="#c084fc" font-size="8" font-family="SF Mono,monospace" opacity="0.8">+ bias</text>
+      <!-- Arrow to activation -->
+      <line x1="228" y1="100" x2="290" y2="100" stroke="#71717a" stroke-width="1.5" opacity="0.4"/>
+      <polygon points="288,96 296,100 288,104" fill="#71717a" opacity="0.4"/>
+      <!-- Activation function -->
+      <rect x="296" y="78" width="68" height="44" rx="10" fill="none" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="330" y="98" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="600" font-family="SF Mono,monospace">f(z)</text>
+      <text x="330" y="112" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">ACTIVATE</text>
+      <!-- Arrow to output -->
+      <line x1="366" y1="100" x2="400" y2="100" stroke="#71717a" stroke-width="1.5" opacity="0.4"/>
+      <polygon points="398,96 406,100 398,104" fill="#71717a" opacity="0.4"/>
+      <!-- Output -->
+      <circle cx="426" cy="100" r="18" fill="none" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="426" y="104" text-anchor="middle" fill="#fb923c" font-size="10" font-weight="600" font-family="SF Mono,monospace">out</text>
+      <text x="426" y="72" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace" letter-spacing="0.5">FIRE?</text>
+      <!-- Formula at bottom -->
+      <text x="240" y="192" text-anchor="middle" fill="#71717a" font-size="9" font-family="SF Mono,monospace">output = f( x1*w1 + x2*w2 + x3*w3 + bias )</text>
+    </svg>
+  </div>
+
   <p class="section-text">Think of it like a voting booth. Three friends each send you a signal — maybe weak, maybe strong. You multiply each signal by how much you trust that friend (that's the <strong>weight</strong>). You add up all the votes, plus a little nudge called the <strong>bias</strong> (your default mood). Then you decide: do I fire, or stay quiet? That decision is the <strong>activation function</strong>.</p>
   <p class="section-text">That's it. That's the entire computation a neuron does. And AI is made of millions of these.</p>
 </div>
@@ -60,10 +110,94 @@
   </div>
 </div>
 
-<!-- SECTION 2: INTERACTIVE NEURON SIMULATOR -->
+<!-- SECTION 2: NEURON ANATOMY -->
 <div class="lesson-section">
-  <span class="section-label">Play With It</span>
-  <h2 class="section-title">Live neuron — move the sliders and watch.</h2>
+  <span class="section-label">The Full Picture</span>
+  <h2 class="section-title">Inside a single artificial neuron.</h2>
+
+  <div class="lesson-visual" aria-label="Step-by-step neuron computation: multiply inputs by weights, add up with bias, activate with ReLU to get 0.80" style="padding:20px 16px;">
+    <!-- CSS Grid layout — pixel-perfect alignment -->
+    <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0;align-items:center;font-family:'SF Mono','JetBrains Mono',monospace;">
+
+      <!-- COLUMN 1: MULTIPLY -->
+      <div>
+        <div style="text-align:center;font-size:.7rem;font-weight:600;color:#71717a;letter-spacing:.08em;margin-bottom:10px;">MULTIPLY</div>
+
+        <div style="display:flex;align-items:center;gap:6px;padding:8px 10px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);margin-bottom:6px;">
+          <span style="color:#34d399;font-size:.85rem;font-weight:600;">0.50</span>
+          <span style="color:#3f3f46;font-size:.8rem;">&times;</span>
+          <span style="color:#34d399;font-size:.85rem;">0.80</span>
+          <span style="color:#3f3f46;font-size:.8rem;">=</span>
+          <span style="color:#e5e5e5;font-size:.85rem;font-weight:700;">0.40</span>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:6px;padding:8px 10px;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.12);margin-bottom:6px;">
+          <span style="color:#8b5cf6;font-size:.85rem;font-weight:600;">0.30</span>
+          <span style="color:#3f3f46;font-size:.8rem;">&times;</span>
+          <span style="color:#8b5cf6;font-size:.85rem;">-.40</span>
+          <span style="color:#3f3f46;font-size:.8rem;">=</span>
+          <span style="color:#f87171;font-size:.85rem;font-weight:700;">-.12</span>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:6px;padding:8px 10px;border-radius:8px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.12);">
+          <span style="color:#38bdf8;font-size:.85rem;font-weight:600;">0.70</span>
+          <span style="color:#3f3f46;font-size:.8rem;">&times;</span>
+          <span style="color:#38bdf8;font-size:.85rem;">0.60</span>
+          <span style="color:#3f3f46;font-size:.8rem;">=</span>
+          <span style="color:#e5e5e5;font-size:.85rem;font-weight:700;">0.42</span>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;padding:4px 10px;margin-top:4px;">
+          <span style="color:#3f3f46;font-size:.65rem;">input</span>
+          <span style="color:#3f3f46;font-size:.65rem;">weight</span>
+          <span style="color:#3f3f46;font-size:.65rem;">result</span>
+        </div>
+      </div>
+
+      <!-- ARROW 1 -->
+      <div style="padding:0 8px;color:#c084fc;font-size:1.1rem;opacity:.5;">&rarr;</div>
+
+      <!-- COLUMN 2: ADD UP -->
+      <div>
+        <div style="text-align:center;font-size:.7rem;font-weight:600;color:#71717a;letter-spacing:.08em;margin-bottom:10px;">ADD UP</div>
+
+        <div style="padding:12px 14px;border-radius:10px;background:rgba(192,132,252,.04);border:1px solid rgba(192,132,252,.15);text-align:center;">
+          <div style="color:#34d399;font-size:.85rem;margin-bottom:4px;">+ 0.40</div>
+          <div style="color:#f87171;font-size:.85rem;margin-bottom:4px;">- 0.12</div>
+          <div style="color:#38bdf8;font-size:.85rem;margin-bottom:8px;">+ 0.42</div>
+          <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:8px;">
+            <div style="color:#e5e5e5;font-size:.85rem;">= 0.70</div>
+            <div style="color:#c084fc;font-size:.8rem;margin-top:4px;">+ 0.10 bias</div>
+          </div>
+          <div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.08);">
+            <span style="color:#e5e5e5;font-size:1rem;font-weight:700;">z = 0.80</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARROW 2 -->
+      <div style="padding:0 8px;color:#fb923c;font-size:1.1rem;opacity:.5;">&rarr;</div>
+
+      <!-- COLUMN 3: DECIDE -->
+      <div>
+        <div style="text-align:center;font-size:.7rem;font-weight:600;color:#71717a;letter-spacing:.08em;margin-bottom:10px;">DECIDE</div>
+
+        <div style="padding:14px;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.15);text-align:center;">
+          <div style="color:#fb923c;font-size:.9rem;font-weight:600;">ReLU(0.80)</div>
+          <div style="color:#71717a;font-size:.8rem;margin-top:6px;">Is 0.80 &gt; 0?</div>
+          <div style="color:#34d399;font-size:.85rem;font-weight:600;margin-top:2px;">YES</div>
+
+          <div style="margin-top:10px;padding:10px;border-radius:8px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.3);">
+            <div style="color:#34d399;font-size:1.5rem;font-weight:700;line-height:1;">0.80</div>
+          </div>
+          <div style="color:#34d399;font-size:.7rem;font-weight:600;letter-spacing:.1em;margin-top:6px;">FIRES</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="section-text">This diagram shows the exact math from the code example below. Each input is multiplied by its weight, the products are summed, bias is added, and the activation function makes the final decision. The neuron fires because 0.80 is positive — ReLU lets it through unchanged.</p>
 </div>
 
 <!-- SECTION 3: CORE CONCEPTS + CODE -->
@@ -135,6 +269,68 @@ output = max(<span style="color:#fb923c">0</span>, z)
 <div class="lesson-section">
   <span class="section-label">Deep Dive</span>
   <h2 class="section-title">Three activation functions you need to know.</h2>
+
+  <div class="lesson-visual" aria-label="Graph comparing Step, ReLU, and Sigmoid activation functions. Step is binary (0 or 1). ReLU clips negatives to zero and passes positives. Sigmoid smoothly maps to 0-1 range.">
+    <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid3" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="480" height="220" fill="url(#grid3)"/>
+      <!-- STEP FUNCTION -->
+      <text x="80" y="22" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="600" font-family="SF Mono,monospace">STEP</text>
+      <text x="80" y="34" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">1957 / Binary</text>
+      <!-- Axes -->
+      <line x1="30" y1="120" x2="135" y2="120" stroke="#71717a" stroke-width="0.5" opacity="0.4"/>
+      <line x1="80" y1="48" x2="80" y2="170" stroke="#71717a" stroke-width="0.5" opacity="0.4"/>
+      <text x="138" y="124" fill="#71717a" font-size="8" font-family="SF Mono,monospace">z</text>
+      <text x="68" y="58" fill="#71717a" font-size="8" font-family="SF Mono,monospace">1</text>
+      <text x="68" y="124" fill="#71717a" font-size="8" font-family="SF Mono,monospace">0</text>
+      <!-- Step curve: flat at 0 for negative z, jumps to 1 at z=0 -->
+      <line x1="30" y1="120" x2="80" y2="120" stroke="#ef4444" stroke-width="2.5" opacity="0.5"/>
+      <line x1="80" y1="120" x2="80" y2="55" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.3"/>
+      <line x1="80" y1="55" x2="135" y2="55" stroke="#ef4444" stroke-width="2.5"/>
+      <circle cx="80" cy="55" r="3" fill="#ef4444"/>
+      <circle cx="80" cy="120" r="3" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+      <text x="80" y="188" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace">0 or 1 only</text>
+      <!-- RELU -->
+      <text x="240" y="22" text-anchor="middle" fill="#fb923c" font-size="10" font-weight="600" font-family="SF Mono,monospace">ReLU</text>
+      <text x="240" y="34" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">Modern / Standard</text>
+      <!-- Axes -->
+      <line x1="190" y1="120" x2="295" y2="120" stroke="#71717a" stroke-width="0.5" opacity="0.4"/>
+      <line x1="240" y1="48" x2="240" y2="170" stroke="#71717a" stroke-width="0.5" opacity="0.4"/>
+      <text x="298" y="124" fill="#71717a" font-size="8" font-family="SF Mono,monospace">z</text>
+      <!-- ReLU curve -->
+      <line x1="190" y1="120" x2="240" y2="120" stroke="#fb923c" stroke-width="2.5" opacity="0.5"/>
+      <line x1="240" y1="120" x2="295" y2="55" stroke="#fb923c" stroke-width="2.5"/>
+      <circle cx="240" cy="120" r="3" fill="#fb923c"/>
+      <text x="206" y="114" fill="#71717a" font-size="8" font-family="SF Mono,monospace">flat 0</text>
+      <text x="276" y="64" fill="#fb923c" font-size="8" font-family="SF Mono,monospace">z</text>
+      <text x="240" y="188" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace">max(0, z)</text>
+      <!-- SIGMOID -->
+      <text x="400" y="22" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="600" font-family="SF Mono,monospace">SIGMOID</text>
+      <text x="400" y="34" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">Probability / 0 to 1</text>
+      <!-- Axes -->
+      <line x1="350" y1="120" x2="455" y2="120" stroke="#71717a" stroke-width="0.5" opacity="0.4"/>
+      <line x1="400" y1="48" x2="400" y2="170" stroke="#71717a" stroke-width="0.5" opacity="0.4"/>
+      <text x="458" y="124" fill="#71717a" font-size="8" font-family="SF Mono,monospace">z</text>
+      <text x="388" y="58" fill="#71717a" font-size="8" font-family="SF Mono,monospace">1</text>
+      <!-- Sigmoid S-curve -->
+      <polyline points="350,158 358,156 366,152 374,146 382,136 390,125 400,105 410,85 418,74 426,66 434,62 442,58 450,56" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+      <!-- 0.5 dashed line -->
+      <line x1="355" y1="105" x2="445" y2="105" stroke="#38bdf8" stroke-width="0.5" stroke-dasharray="3,3" opacity="0.3"/>
+      <text x="448" y="102" fill="#38bdf8" font-size="7" font-family="SF Mono,monospace" opacity="0.7">0.5</text>
+      <text x="400" y="188" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace">smooth curve</text>
+      <!-- Bottom comparison bar -->
+      <rect x="20" y="200" width="140" height="16" rx="4" fill="rgba(239,68,68,.04)"/>
+      <text x="90" y="211" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace">HISTORICAL</text>
+      <rect x="170" y="200" width="140" height="16" rx="4" fill="rgba(251,146,60,.04)"/>
+      <text x="240" y="211" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace">WORKHORSE</text>
+      <rect x="320" y="200" width="140" height="16" rx="4" fill="rgba(56,189,248,.04)"/>
+      <text x="390" y="211" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace">PROBABILITY</text>
+    </svg>
+  </div>
 
   <p class="section-text">Every activation function takes the weighted sum <em>z</em> and transforms it. Here they are in Python — copy this code and run it yourself:</p>
 
@@ -215,6 +411,33 @@ USED TODAY: Final layer of binary classifiers. Replaced by ReLU in hidden layers
 <div class="quiz-block">
 <h3 class="quiz-title">Neuron Mastery</h3>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Diagram showing a weight as the connection between an input and a neuron">
+  <div style="display:flex;align-items:center;justify-content:center;gap:0;padding:16px 20px;font-family:'SF Mono','JetBrains Mono',monospace;">
+    <div style="text-align:center;">
+      <div style="width:40px;height:40px;border-radius:50%;border:2px solid #38bdf8;display:flex;align-items:center;justify-content:center;">
+        <span style="color:#38bdf8;font-size:.85rem;font-weight:600;">x1</span>
+      </div>
+      <div style="font-size:.6rem;color:#52525b;margin-top:4px;">input</div>
+    </div>
+    <div style="flex:1;max-width:200px;text-align:center;padding:0 12px;">
+      <div style="height:3px;background:#c084fc;border-radius:2px;opacity:.7;"></div>
+      <div style="color:#c084fc;font-size:.9rem;font-weight:700;margin-top:6px;">weight = ?</div>
+      <div style="color:#52525b;font-size:.7rem;margin-top:2px;">how much this input matters</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:40px;height:40px;border-radius:50%;border:2px solid #34d399;display:flex;align-items:center;justify-content:center;">
+        <span style="color:#34d399;font-size:1rem;">&#x03A3;</span>
+      </div>
+      <div style="font-size:.6rem;color:#52525b;margin-top:4px;">neuron</div>
+    </div>
+    <div style="width:24px;text-align:center;color:#52525b;font-size:.8rem;">&rarr;</div>
+    <div style="text-align:center;">
+      <div style="width:36px;height:36px;border-radius:50%;border:1.5px solid #fb923c;display:flex;align-items:center;justify-content:center;">
+        <span style="color:#fb923c;font-size:.75rem;">out</span>
+      </div>
+    </div>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">1</span>What does a weight in a neural network control?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
@@ -233,6 +456,28 @@ USED TODAY: Final layer of binary classifiers. Replaced by ReLU in hidden layers
 <div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Weights determine how much each input contributes to the neuron output. Higher weights mean more influence. Training a neural network means finding the right weights.</div>
 </div>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Comparison: without activation functions only straight lines are possible, with activation functions the network can learn curves">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:16px 20px;font-family:'SF Mono','JetBrains Mono',monospace;">
+    <div style="text-align:center;padding:12px;border-radius:8px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1);">
+      <div style="font-size:.75rem;font-weight:600;color:#f87171;margin-bottom:8px;">WITHOUT ACTIVATION</div>
+      <svg viewBox="0 0 120 50" style="width:100%;max-width:120px;height:auto;display:inline-block;">
+        <line x1="10" y1="45" x2="110" y2="45" stroke="#3f3f46" stroke-width="0.5"/>
+        <line x1="10" y1="5" x2="10" y2="45" stroke="#3f3f46" stroke-width="0.5"/>
+        <line x1="15" y1="40" x2="105" y2="10" stroke="#f87171" stroke-width="2.5" opacity="0.6"/>
+      </svg>
+      <div style="font-size:.7rem;color:#52525b;margin-top:6px;">only straight lines</div>
+    </div>
+    <div style="text-align:center;padding:12px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1);">
+      <div style="font-size:.75rem;font-weight:600;color:#34d399;margin-bottom:8px;">WITH ACTIVATION</div>
+      <svg viewBox="0 0 120 50" style="width:100%;max-width:120px;height:auto;display:inline-block;">
+        <line x1="10" y1="45" x2="110" y2="45" stroke="#3f3f46" stroke-width="0.5"/>
+        <line x1="10" y1="5" x2="10" y2="45" stroke="#3f3f46" stroke-width="0.5"/>
+        <polyline points="15,40 30,38 50,30 70,18 90,12 105,10" fill="none" stroke="#34d399" stroke-width="2.5"/>
+      </svg>
+      <div style="font-size:.7rem;color:#52525b;margin-top:6px;">curves and complexity</div>
+    </div>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">2</span>Why are activation functions necessary?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
@@ -251,6 +496,35 @@ USED TODAY: Final layer of binary classifiers. Replaced by ReLU in hidden layers
 <div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Without activation functions, a neural network is just a linear equation — no matter how many layers you stack. Non-linearity is what allows networks to learn curves, edges, language, and everything else.</div>
 </div>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Three activation functions side by side: Step (dimmed), ReLU (highlighted as the modern standard), Sigmoid (dimmed)">
+  <div style="display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:10px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;">
+    <div style="text-align:center;padding:10px 8px;border-radius:8px;opacity:.45;">
+      <div style="font-size:.75rem;color:#71717a;margin-bottom:6px;">Step</div>
+      <svg viewBox="0 0 80 40" style="width:100%;max-width:80px;height:auto;display:inline-block;">
+        <line x1="5" y1="35" x2="40" y2="35" stroke="#71717a" stroke-width="2"/>
+        <line x1="40" y1="35" x2="40" y2="8" stroke="#71717a" stroke-width="1" stroke-dasharray="2,2" opacity="0.4"/>
+        <line x1="40" y1="8" x2="75" y2="8" stroke="#71717a" stroke-width="2"/>
+      </svg>
+      <div style="font-size:.6rem;color:#3f3f46;margin-top:4px;">1957</div>
+    </div>
+    <div style="text-align:center;padding:10px 8px;border-radius:8px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.2);">
+      <div style="font-size:.8rem;font-weight:700;color:#fb923c;margin-bottom:6px;">ReLU</div>
+      <svg viewBox="0 0 80 40" style="width:100%;max-width:80px;height:auto;display:inline-block;">
+        <line x1="5" y1="32" x2="40" y2="32" stroke="#fb923c" stroke-width="2.5" opacity="0.5"/>
+        <line x1="40" y1="32" x2="75" y2="6" stroke="#fb923c" stroke-width="2.5"/>
+        <circle cx="40" cy="32" r="2.5" fill="#fb923c"/>
+      </svg>
+      <div style="font-size:.65rem;color:#71717a;margin-top:4px;">modern standard</div>
+    </div>
+    <div style="text-align:center;padding:10px 8px;border-radius:8px;opacity:.45;">
+      <div style="font-size:.75rem;color:#71717a;margin-bottom:6px;">Sigmoid</div>
+      <svg viewBox="0 0 80 40" style="width:100%;max-width:80px;height:auto;display:inline-block;">
+        <polyline points="5,34 15,32 25,28 40,18 55,10 65,7 75,6" fill="none" stroke="#71717a" stroke-width="2"/>
+      </svg>
+      <div style="font-size:.6rem;color:#3f3f46;margin-top:4px;">probability</div>
+    </div>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">3</span>Which activation function is used in most modern neural networks?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">

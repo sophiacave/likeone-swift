@@ -122,8 +122,9 @@ a:focus-visible, button:focus-visible {
 .site-hero {
     padding: 96px 24px 64px;
     text-align: center;
+    overflow: hidden;
 }
-.site-hero-inner { max-width: 720px; margin: 0 auto; }
+.site-hero-inner { max-width: 720px; margin: 0 auto; will-change: transform, opacity; }
 .site-hero-title {
     font-size: clamp(2.5rem, 5.5vw, 4rem);
     font-weight: 800;
@@ -886,7 +887,7 @@ a:focus-visible, button:focus-visible {
 .lesson-content .learn-card h3 {
     font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin: 0 0 10px;
     color: var(--text-primary);
 }
 .lesson-content .learn-card ul {
@@ -922,6 +923,34 @@ a:focus-visible, button:focus-visible {
     line-height: 1.7;
     color: #d4d4dc;
     margin-bottom: 12px;
+}
+
+/* Lesson Visual Aids */
+.lesson-visual {
+    margin: 16px 0;
+    background: #0a0a0f;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius);
+    padding: 16px;
+    overflow: hidden;
+}
+.lesson-visual svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.quiz-visual {
+    margin-bottom: 12px;
+    background: #0a0a0f;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    padding: 12px;
+    overflow: hidden;
+}
+.quiz-visual svg {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* Lesson Navigation */
@@ -1084,6 +1113,65 @@ a:focus-visible, button:focus-visible {
 }
 .quiz-options.revealed .quiz-option { pointer-events: none; }
 
+/* Sequential quiz mode — one question at a time */
+.quiz-block.quiz-sequential .quiz-question { display: none; }
+.quiz-block.quiz-sequential .quiz-question.quiz-active { display: block; }
+.quiz-progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+.quiz-progress-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+}
+.quiz-progress-dots {
+    display: flex;
+    gap: 6px;
+}
+.quiz-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    transition: background 0.3s var(--ease-out);
+}
+.quiz-dot.dot-correct { background: #34d399; }
+.quiz-dot.dot-wrong { background: #f87171; }
+.quiz-dot.dot-current { background: var(--purple-400); }
+.quiz-next-btn {
+    display: none;
+    width: 100%;
+    padding: 12px;
+    margin-top: 16px;
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    border-radius: 10px;
+    color: var(--purple-400);
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out);
+    min-height: 48px;
+}
+.quiz-next-btn:hover {
+    background: rgba(168, 85, 247, 0.18);
+    border-color: rgba(168, 85, 247, 0.4);
+}
+.quiz-next-btn.visible { display: block; }
+.quiz-complete-msg {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+.quiz-complete-msg strong { color: #34d399; }
+
 /* Quiz Explanation */
 .quiz-explanation {
     margin-top: 12px;
@@ -1141,6 +1229,148 @@ a:focus-visible, button:focus-visible {
     padding-top: 12px;
 }
 
+/* Quiz Score Counter */
+.quiz-score {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    transition: border-color 0.3s var(--ease-out);
+}
+.quiz-score-label { font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.7rem; }
+.quiz-score-correct { color: #34d399; font-weight: 700; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+.quiz-score-wrong { color: #f87171; font-weight: 700; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+.quiz-score-divider { color: var(--border); }
+.quiz-score-total { color: var(--text-muted); font-size: 0.8rem; }
+.quiz-score.quiz-score-perfect { border-color: rgba(52, 211, 153, 0.3); background: rgba(52, 211, 153, 0.04); }
+.quiz-score-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 2px;
+    overflow: hidden;
+}
+.quiz-score-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #34d399, #34d399);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.5s var(--ease-out);
+}
+
+/* Wrong Answer Shake */
+@keyframes quiz-shake {
+    0%, 100% { transform: translateX(0); }
+    15% { transform: translateX(-6px); }
+    30% { transform: translateX(5px); }
+    45% { transform: translateX(-4px); }
+    60% { transform: translateX(3px); }
+    75% { transform: translateX(-2px); }
+    90% { transform: translateX(1px); }
+}
+.quiz-option.quiz-wrong {
+    animation: quiz-shake 0.5s var(--ease-out);
+    border-color: #f87171;
+    background: rgba(248, 113, 113, 0.08);
+}
+
+/* Correct Answer Pulse */
+@keyframes quiz-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.3); }
+    50% { box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+.quiz-option.quiz-correct {
+    animation: quiz-pulse 0.6s var(--ease-out);
+}
+
+/* Flashcard Study Mode */
+.flash-study-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.flash-study-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 9999px;
+    color: var(--purple-400);
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out);
+    min-height: 36px;
+}
+.flash-study-btn:hover {
+    background: rgba(168, 85, 247, 0.15);
+    border-color: rgba(168, 85, 247, 0.35);
+}
+.flash-study-btn:focus-visible {
+    outline: 2px solid var(--purple-400);
+    outline-offset: 2px;
+}
+.flash-study-btn.active {
+    background: var(--purple-500);
+    border-color: var(--purple-500);
+    color: white;
+}
+.flash-study-progress {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+}
+.flash-block.study-mode .flash-card {
+    display: none;
+}
+.flash-block.study-mode .flash-card.study-active {
+    display: block;
+}
+.flash-study-nav {
+    display: none;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+.flash-block.study-mode .flash-study-nav {
+    display: flex;
+}
+.flash-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out);
+    min-height: 44px;
+}
+.flash-nav-btn:hover {
+    border-color: rgba(168, 85, 247, 0.3);
+    color: var(--text-primary);
+}
+.flash-nav-btn:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
 /* Quiz Error */
 .quiz-error {
     padding: 16px;
@@ -1150,6 +1380,18 @@ a:focus-visible, button:focus-visible {
     color: #f87171;
     font-size: 0.9rem;
 }
+
+/* Narration Block (used in lessons) */
+.lesson-content .narration {
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #b4b4be;
+}
+.lesson-content .narration strong { color: var(--text-primary); }
 
 /* ============================================
    RESPONSIVE

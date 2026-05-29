@@ -4,8 +4,14 @@ import Fluent
 import FluentSQLiteDriver
 
 func configure(_ app: Application) async throws {
-    // Database — SQLite for now, swap to Postgres when scale demands
-    app.databases.use(.sqlite(.file("likeone.db")), as: .sqlite)
+    // Database — SQLite with persistent volume on Fly.io, local file in dev
+    let dbPath: String
+    if FileManager.default.isWritableFile(atPath: "/data") {
+        dbPath = "/data/likeone.db"
+    } else {
+        dbPath = "likeone.db"
+    }
+    app.databases.use(.sqlite(.file(dbPath)), as: .sqlite)
 
     // Migrations
     app.migrations.add(CreateUsers())

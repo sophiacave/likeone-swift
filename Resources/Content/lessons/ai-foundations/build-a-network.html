@@ -131,31 +131,93 @@ probs = model(X)
 <div class="lesson-section">
   <span class="section-label">See It</span>
   <h2 class="section-title">What a neural network looks like.</h2>
+  <div class="lesson-visual" aria-label="Neural network with 3 input neurons connected to 4 hidden neurons connected to 2 output neurons. Every input connects to every hidden neuron. Outputs show cat 82% and dog 18%.">
+    <svg viewBox="0 0 480 260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="gridN" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="480" height="260" fill="url(#gridN)"/>
+
+      <!-- Column headers -->
+      <text x="70" y="22" text-anchor="middle" fill="#38bdf8" font-size="9" font-weight="600" font-family="SF Mono,monospace">INPUT</text>
+      <text x="70" y="34" text-anchor="middle" fill="#52525b" font-size="7" font-family="SF Mono,monospace">3 neurons</text>
+      <text x="240" y="22" text-anchor="middle" fill="#34d399" font-size="9" font-weight="600" font-family="SF Mono,monospace">HIDDEN</text>
+      <text x="240" y="34" text-anchor="middle" fill="#52525b" font-size="7" font-family="SF Mono,monospace">4 neurons</text>
+      <text x="410" y="22" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="600" font-family="SF Mono,monospace">OUTPUT</text>
+      <text x="410" y="34" text-anchor="middle" fill="#52525b" font-size="7" font-family="SF Mono,monospace">2 neurons</text>
+
+      <!-- Connection lines: input → hidden (faint, show fully-connected) -->
+      <!-- x1 to all hidden -->
+      <line x1="88" y1="72" x2="222" y2="64" stroke="#38bdf8" stroke-width="0.7" opacity="0.15"/>
+      <line x1="88" y1="72" x2="222" y2="104" stroke="#38bdf8" stroke-width="0.7" opacity="0.15"/>
+      <line x1="88" y1="72" x2="222" y2="144" stroke="#38bdf8" stroke-width="0.7" opacity="0.15"/>
+      <line x1="88" y1="72" x2="222" y2="184" stroke="#38bdf8" stroke-width="0.7" opacity="0.15"/>
+      <!-- x2 to all hidden -->
+      <line x1="88" y1="128" x2="222" y2="64" stroke="#38bdf8" stroke-width="0.7" opacity="0.15"/>
+      <line x1="88" y1="128" x2="222" y2="104" stroke="#38bdf8" stroke-width="0.7" opacity="0.15"/>
+      <line x1="88" y1="128" x2="222" y2="144" stroke="#38bdf8" stroke-width="0.7" opacity="0.15"/>
+      <line x1="88" y1="128" x2="222" y2="184" stroke="#38bdf8" stroke-width="0.7" opacity="0.15"/>
+      <!-- x3 to all hidden -->
+      <line x1="88" y1="184" x2="222" y2="64" stroke="#38bdf8" stroke-width="0.7" opacity="0.15"/>
+      <line x1="88" y1="184" x2="222" y2="104" stroke="#38bdf8" stroke-width="0.7" opacity="0.15"/>
+      <line x1="88" y1="184" x2="222" y2="144" stroke="#38bdf8" stroke-width="0.7" opacity="0.15"/>
+      <line x1="88" y1="184" x2="222" y2="184" stroke="#38bdf8" stroke-width="0.7" opacity="0.15"/>
+
+      <!-- Connection lines: hidden → output -->
+      <line x1="258" y1="64" x2="392" y2="100" stroke="#34d399" stroke-width="0.7" opacity="0.15"/>
+      <line x1="258" y1="64" x2="392" y2="156" stroke="#34d399" stroke-width="0.7" opacity="0.15"/>
+      <line x1="258" y1="104" x2="392" y2="100" stroke="#34d399" stroke-width="0.7" opacity="0.15"/>
+      <line x1="258" y1="104" x2="392" y2="156" stroke="#34d399" stroke-width="0.7" opacity="0.15"/>
+      <line x1="258" y1="144" x2="392" y2="100" stroke="#34d399" stroke-width="0.7" opacity="0.15"/>
+      <line x1="258" y1="144" x2="392" y2="156" stroke="#34d399" stroke-width="0.7" opacity="0.15"/>
+      <line x1="258" y1="184" x2="392" y2="100" stroke="#34d399" stroke-width="0.7" opacity="0.15"/>
+      <line x1="258" y1="184" x2="392" y2="156" stroke="#34d399" stroke-width="0.7" opacity="0.15"/>
+
+      <!-- Input neurons (blue) -->
+      <circle cx="70" cy="72" r="16" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="70" y="76" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="600" font-family="SF Mono,monospace">x1</text>
+      <circle cx="70" cy="128" r="16" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="70" y="132" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="600" font-family="SF Mono,monospace">x2</text>
+      <circle cx="70" cy="184" r="16" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="70" y="188" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="600" font-family="SF Mono,monospace">x3</text>
+
+      <!-- Hidden neurons (green) -->
+      <circle cx="240" cy="64" r="16" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="240" y="68" text-anchor="middle" fill="#34d399" font-size="10" font-weight="600" font-family="SF Mono,monospace">h1</text>
+      <circle cx="240" cy="104" r="16" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="240" y="108" text-anchor="middle" fill="#34d399" font-size="10" font-weight="600" font-family="SF Mono,monospace">h2</text>
+      <circle cx="240" cy="144" r="16" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="240" y="148" text-anchor="middle" fill="#34d399" font-size="10" font-weight="600" font-family="SF Mono,monospace">h3</text>
+      <circle cx="240" cy="184" r="16" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="240" y="188" text-anchor="middle" fill="#34d399" font-size="10" font-weight="600" font-family="SF Mono,monospace">h4</text>
+
+      <!-- Output neurons (orange) with results -->
+      <circle cx="410" cy="100" r="16" fill="none" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="410" y="104" text-anchor="middle" fill="#fb923c" font-size="10" font-weight="600" font-family="SF Mono,monospace">y1</text>
+      <text x="444" y="96" fill="#34d399" font-size="8" font-weight="600" font-family="SF Mono,monospace">cat</text>
+      <text x="444" y="108" fill="#34d399" font-size="9" font-weight="700" font-family="SF Mono,monospace">82%</text>
+      <circle cx="410" cy="156" r="16" fill="none" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="410" y="160" text-anchor="middle" fill="#fb923c" font-size="10" font-weight="600" font-family="SF Mono,monospace">y2</text>
+      <text x="444" y="152" fill="#71717a" font-size="8" font-family="SF Mono,monospace">dog</text>
+      <text x="444" y="164" fill="#71717a" font-size="9" font-family="SF Mono,monospace">18%</text>
+
+      <!-- Layer annotations -->
+      <text x="70" y="220" text-anchor="middle" fill="#52525b" font-size="8" font-family="SF Mono,monospace">receives data</text>
+      <text x="240" y="220" text-anchor="middle" fill="#52525b" font-size="8" font-family="SF Mono,monospace">finds patterns</text>
+      <text x="410" y="220" text-anchor="middle" fill="#52525b" font-size="8" font-family="SF Mono,monospace">makes decision</text>
+
+      <!-- Flow arrows between layers -->
+      <text x="155" y="130" text-anchor="middle" fill="#52525b" font-size="9" font-family="SF Mono,monospace">fully</text>
+      <text x="155" y="142" text-anchor="middle" fill="#52525b" font-size="9" font-family="SF Mono,monospace">connected</text>
+
+      <!-- Bottom note -->
+      <text x="240" y="248" text-anchor="middle" fill="#52525b" font-size="8" font-family="SF Mono,monospace">every input connects to every hidden neuron (3 x 4 = 12 weights)</text>
+    </svg>
+  </div>
+
   <p class="section-text">Every neural network follows this pattern: data enters the input layer, flows through hidden layers that find patterns, and arrives at the output layer which makes the decision.</p>
-
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.5;overflow-x:auto">
-<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">         INPUT          HIDDEN          OUTPUT</span>
-<span style="color:#71717a">        (3 neurons)    (4 neurons)     (2 neurons)</span>
-
-        ┌───┐
-<span style="color:#38bdf8">  x₁</span> ──▶│ <span style="color:#34d399">h₁</span> │──┐
-        └───┘  │      ┌───┐
-        ┌───┐  ├─────▶│ <span style="color:#fb923c">y₁</span> │  <span style="color:#71717a">← P(cat) = 0.82</span>
-<span style="color:#38bdf8">  x₂</span> ──▶│ <span style="color:#34d399">h₂</span> │──┤      └───┘
-        └───┘  │
-        ┌───┐  │      ┌───┐
-<span style="color:#38bdf8">  x₃</span> ──▶│ <span style="color:#34d399">h₃</span> │──┼─────▶│ <span style="color:#fb923c">y₂</span> │  <span style="color:#71717a">← P(dog) = 0.18</span>
-        └───┘  │      └───┘
-        ┌───┐  │
-        │ <span style="color:#34d399">h₄</span> │──┘
-        └───┘
-
-<span style="color:#71717a">  ↑ Each input          ↑ Each hidden         ↑ Output neurons</span>
-<span style="color:#71717a">    connects to            neuron finds           give the final</span>
-<span style="color:#71717a">    EVERY hidden           a different            prediction as</span>
-<span style="color:#71717a">    neuron (fully          pattern in             probabilities</span>
-<span style="color:#71717a">    connected)             the data               that sum to 1</span></code></pre>
-</div>
 
   <p class="section-text">Every arrow represents a <strong style="color:#e5e5e5">weight</strong> — a number that gets adjusted during training. In the code above, <code>W1</code> contains 12 weights (3 inputs × 4 hidden neurons) and <code>W2</code> contains 8 weights (4 hidden × 2 outputs). Training means finding the right values for all 20 weights.</p>
 </div>

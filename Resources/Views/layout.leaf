@@ -50,6 +50,276 @@
             e.target.closest('.academy-filter-btn').classList.add('active');
         }
     });
+
+    /* Count-up animation for stats */
+    function countUp(el, target, duration) {
+        var start = 0, startTime = null;
+        function step(ts) {
+            if (!startTime) startTime = ts;
+            var progress = Math.min((ts - startTime) / duration, 1);
+            var ease = 1 - Math.pow(1 - progress, 3);
+            el.textContent = el.dataset.prefix + Math.floor(ease * target) + el.dataset.suffix;
+            if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
+    /* Hero parallax via scroll */
+    function initParallax() {
+        var hero = document.querySelector('.site-hero-inner');
+        if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                ticking = true;
+                requestAnimationFrame(function() {
+                    var y = window.scrollY;
+                    if (y < 800) {
+                        hero.style.transform = 'translateY(' + (y * 0.15) + 'px)';
+                        hero.style.opacity = Math.max(1 - y / 600, 0);
+                    }
+                    ticking = false;
+                });
+            }
+        }, { passive: true });
+    }
+
+    /* Quiz Score Counter + Flashcard Study Mode */
+    document.addEventListener('DOMContentLoaded', function() {
+        initParallax();
+
+        // Stats count-up on scroll into view
+        var statEls = document.querySelectorAll('.site-stat-number');
+        if (statEls.length > 0) {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (!entry.isIntersecting) return;
+                    var el = entry.target;
+                    if (el.dataset.counted) return;
+                    el.dataset.counted = '1';
+                    var text = el.textContent.trim();
+                    var prefix = text.match(/^[^0-9]*/)[0] || '';
+                    var suffix = text.match(/[^0-9]*$/)[0] || '';
+                    var num = parseInt(text.replace(/[^0-9]/g, ''), 10);
+                    el.dataset.prefix = prefix;
+                    el.dataset.suffix = suffix;
+                    if (num > 0) {
+                        el.textContent = prefix + '0' + suffix;
+                        countUp(el, num, 1200);
+                    }
+                    observer.unobserve(el);
+                });
+            }, { threshold: 0.5 });
+            statEls.forEach(function(el) { observer.observe(el); });
+        }
+
+        // Initialize sequential quiz for each quiz block
+        document.querySelectorAll('.quiz-block').forEach(function(block) {
+            var questions = block.querySelectorAll('.quiz-question');
+            if (questions.length === 0) return;
+
+            var title = block.querySelector('.quiz-title');
+            var currentIdx = 0, correct = 0, wrong = 0;
+
+            // Enable sequential mode
+            block.classList.add('quiz-sequential');
+
+            // Progress bar with dots
+            var progressEl = document.createElement('div');
+            progressEl.className = 'quiz-progress';
+            var dotsHtml = '';
+            for (var d = 0; d < questions.length; d++) {
+                dotsHtml += '<div class="quiz-dot' + (d === 0 ? ' dot-current' : '') + '"></div>';
+            }
+            progressEl.innerHTML = '<span class="quiz-progress-text">Question 1 of ' + questions.length + '</span>' +
+                '<div class="quiz-progress-dots">' + dotsHtml + '</div>';
+            if (title && title.nextSibling) {
+                title.parentNode.insertBefore(progressEl, title.nextSibling);
+            } else {
+                block.insertBefore(progressEl, block.firstChild);
+            }
+
+            var dots = progressEl.querySelectorAll('.quiz-dot');
+            var progText = progressEl.querySelector('.quiz-progress-text');
+
+            // Score bar (below progress)
+            var scoreEl = document.createElement('div');
+            scoreEl.className = 'quiz-score';
+            scoreEl.innerHTML = '<span class="quiz-score-label">Score</span>' +
+                '<span class="quiz-score-correct">0</span>' +
+                '<span class="quiz-score-divider">/</span>' +
+                '<span class="quiz-score-wrong">0</span>' +
+                '<span class="quiz-score-total">of ' + questions.length + '</span>' +
+                '<div class="quiz-score-bar"><div class="quiz-score-fill"></div></div>';
+            progressEl.parentNode.insertBefore(scoreEl, progressEl.nextSibling);
+
+            // Next button (appended after each question)
+            var nextBtn = document.createElement('button');
+            nextBtn.className = 'quiz-next-btn';
+            nextBtn.textContent = 'Next Question \u2192';
+
+            // Show first question
+            showQuestion(0);
+
+            function showQuestion(idx) {
+                questions.forEach(function(q) { q.classList.remove('quiz-active'); });
+                if (idx < questions.length) {
+                    questions[idx].classList.add('quiz-active');
+                    progText.textContent = 'Question ' + (idx + 1) + ' of ' + questions.length;
+                    dots.forEach(function(dot, i) {
+                        dot.classList.toggle('dot-current', i === idx);
+                    });
+                    nextBtn.classList.remove('visible');
+                    // Move next button into current question
+                    questions[idx].appendChild(nextBtn);
+                } else {
+                    // Quiz complete
+                    var pct = Math.round((correct / questions.length) * 100);
+                    var msg = document.createElement('div');
+                    msg.className = 'quiz-complete-msg';
+                    if (wrong === 0) {
+                        msg.innerHTML = '<strong>Perfect score!</strong> ' + correct + ' of ' + questions.length + ' correct.';
+                    } else {
+                        msg.innerHTML = '<strong>' + correct + ' of ' + questions.length + '</strong> correct (' + pct + '%)';
+                    }
+                    // Retry button
+                    var retryBtn = document.createElement('button');
+                    retryBtn.className = 'quiz-next-btn visible';
+                    retryBtn.textContent = 'Try Again';
+                    retryBtn.style.marginTop = '12px';
+                    retryBtn.addEventListener('click', function() {
+                        // Reset everything
+                        correct = 0; wrong = 0; currentIdx = 0;
+                        answered = {};
+                        scoreEl.querySelector('.quiz-score-correct').textContent = '0';
+                        scoreEl.querySelector('.quiz-score-wrong').textContent = '0';
+                        scoreEl.querySelector('.quiz-score-fill').style.width = '0%';
+                        scoreEl.classList.remove('quiz-score-perfect');
+                        dots.forEach(function(dot) {
+                            dot.className = 'quiz-dot';
+                        });
+                        // Reset all question states
+                        questions.forEach(function(q) {
+                            q.querySelectorAll('.quiz-option').forEach(function(opt) {
+                                opt.classList.remove('quiz-correct', 'quiz-wrong');
+                                opt.style.pointerEvents = '';
+                            });
+                            q.querySelectorAll('.quiz-options').forEach(function(opts) {
+                                opts.classList.remove('revealed');
+                            });
+                            q.querySelectorAll('.quiz-explanation').forEach(function(exp) {
+                                exp.style.display = 'none';
+                            });
+                        });
+                        // Remove complete message
+                        if (msg.parentNode) msg.parentNode.removeChild(msg);
+                        if (retryBtn.parentNode) retryBtn.parentNode.removeChild(retryBtn);
+                        showQuestion(0);
+                    });
+                    block.appendChild(msg);
+                    block.appendChild(retryBtn);
+                    progText.textContent = 'Complete';
+                    if (wrong === 0) scoreEl.classList.add('quiz-score-perfect');
+                }
+            }
+
+            nextBtn.addEventListener('click', function() {
+                currentIdx++;
+                showQuestion(currentIdx);
+            });
+
+            var answered = {};
+            block.addEventListener('click', function(ev) {
+                var btn = ev.target.closest('.quiz-option');
+                if (!btn) return;
+                if (answered[currentIdx]) return;
+                answered[currentIdx] = true;
+
+                var isCorrect = btn.classList.contains('quiz-correct');
+                if (isCorrect) {
+                    correct++;
+                    dots[currentIdx].classList.remove('dot-current');
+                    dots[currentIdx].classList.add('dot-correct');
+                } else {
+                    wrong++;
+                    dots[currentIdx].classList.remove('dot-current');
+                    dots[currentIdx].classList.add('dot-wrong');
+                }
+
+                scoreEl.querySelector('.quiz-score-correct').textContent = correct;
+                scoreEl.querySelector('.quiz-score-wrong').textContent = wrong;
+                var pct = Math.round((correct / questions.length) * 100);
+                scoreEl.querySelector('.quiz-score-fill').style.width = pct + '%';
+
+                // Show next button (or auto-complete if last question)
+                if (currentIdx < questions.length - 1) {
+                    nextBtn.textContent = 'Next Question \u2192';
+                    nextBtn.classList.add('visible');
+                } else {
+                    nextBtn.textContent = 'See Results';
+                    nextBtn.classList.add('visible');
+                }
+            });
+        });
+
+        // Flashcard study mode
+        document.querySelectorAll('.flash-block').forEach(function(block) {
+            var cards = block.querySelectorAll('.flash-card');
+            if (cards.length < 2) return;
+
+            var title = block.querySelector('.quiz-title');
+            var controls = document.createElement('div');
+            controls.className = 'flash-study-controls';
+            controls.innerHTML = '<button class="flash-study-btn" aria-label="Toggle study mode">Study Mode</button>' +
+                '<span class="flash-study-progress"></span>';
+            if (title && title.nextSibling) {
+                title.parentNode.insertBefore(controls, title.nextSibling);
+            } else {
+                block.insertBefore(controls, block.firstChild);
+            }
+
+            var nav = document.createElement('div');
+            nav.className = 'flash-study-nav';
+            nav.innerHTML = '<button class="flash-nav-btn flash-prev" aria-label="Previous card" disabled>&larr; Prev</button>' +
+                '<button class="flash-nav-btn flash-next" aria-label="Next card">Next &rarr;</button>';
+            block.appendChild(nav);
+
+            var idx = 0;
+            var btn = controls.querySelector('.flash-study-btn');
+            var progress = controls.querySelector('.flash-study-progress');
+            var prevBtn = nav.querySelector('.flash-prev');
+            var nextBtn = nav.querySelector('.flash-next');
+
+            function updateStudy() {
+                cards.forEach(function(c, i) {
+                    c.classList.toggle('study-active', i === idx);
+                    if (i === idx) c.removeAttribute('open');
+                });
+                progress.textContent = (idx + 1) + ' / ' + cards.length;
+                prevBtn.disabled = idx === 0;
+                nextBtn.disabled = idx === cards.length - 1;
+            }
+
+            btn.addEventListener('click', function() {
+                var active = block.classList.toggle('study-mode');
+                btn.classList.toggle('active', active);
+                btn.textContent = active ? 'Browse All' : 'Study Mode';
+                if (active) {
+                    idx = 0;
+                    updateStudy();
+                } else {
+                    progress.textContent = '';
+                }
+            });
+
+            prevBtn.addEventListener('click', function() {
+                if (idx > 0) { idx--; updateStudy(); }
+            });
+            nextBtn.addEventListener('click', function() {
+                if (idx < cards.length - 1) { idx++; updateStudy(); }
+            });
+        });
+    });
     </script>
 </body>
 </html>
