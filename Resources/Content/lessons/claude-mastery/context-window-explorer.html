@@ -8,16 +8,16 @@
 
 <div class="card">
 <h2>What Is a Context Window?</h2>
-<div class="lo-vis" role="figure" aria-label="What Is a Context Window?">
-<div class="lo-vis__title">What Is a Context Window?</div>
+<div class="lo-vis" role="figure" aria-label="The context window is shared between input and output tokens">
+<div class="lo-vis__title">Context Window = Input + Output</div>
 <div class="lo-steps" data-count="3">
-<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
+<div class="lo-step lo-step--purple"><span class="lo-step__num">IN</span><span class="lo-step__label">System Prompt</span><span class="lo-step__desc">Identity, rules, instructions</span></div>
+<span class="lo-steps__arrow">+</span>
+<div class="lo-step lo-step--green"><span class="lo-step__num">IN</span><span class="lo-step__label">Messages</span><span class="lo-step__desc">Conversation history + user query</span></div>
+<span class="lo-steps__arrow">+</span>
+<div class="lo-step lo-step--orange"><span class="lo-step__num">OUT</span><span class="lo-step__label">Response</span><span class="lo-step__desc">Claude's generated output</span></div>
 </div>
-<div class="lo-vis__caption">Master <strong>what is a context window?</strong> step by step.</div>
+<div class="lo-vis__caption">All three share the <strong>200K token window</strong> -- budget for output or the response gets cut off.</div>
 </div>
 
 <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="padding:6px 10px;border-radius:6px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.12);color:#38bdf8;font-weight:600;">context window</span><span style="color:#52525b;">=</span><span style="color:#52525b;">everything the model sees at once</span></div></div>

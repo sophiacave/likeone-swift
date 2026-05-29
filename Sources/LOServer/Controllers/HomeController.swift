@@ -5,6 +5,7 @@ import LOContent
 struct HomeController: RouteCollection {
     let courses: CourseProvider
     let blog: BlogProvider
+    let lessons: LessonProvider
 
     func boot(routes: RoutesBuilder) throws {
         routes.get(use: index)
@@ -38,12 +39,14 @@ struct HomeController: RouteCollection {
             BlogPreview(slug: post.slug, title: post.title, description: post.description, date: formatter.string(from: post.publishedAt))
         }
 
+        let totalLessons = allCourses.reduce(0) { $0 + max(lessons.lessonCount(forCourse: $1.slug), 1) }
+
         let context = HomeContext(
             title: "Like One | Free AI Academy",
-            description: "52 free courses. 520+ hands-on lessons. From your first AI conversation to building autonomous systems.",
+            description: "\(allCourses.count) free courses. \(totalLessons)+ hands-on lessons. From your first AI conversation to building autonomous systems.",
             stats: [
-                Stat(number: "52", label: "Courses"),
-                Stat(number: "521", label: "Lessons"),
+                Stat(number: "\(allCourses.count)", label: "Courses"),
+                Stat(number: "\(totalLessons)", label: "Lessons"),
                 Stat(number: "$0", label: "To Start"),
                 Stat(number: "7", label: "Levels"),
             ],

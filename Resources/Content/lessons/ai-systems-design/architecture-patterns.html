@@ -16,17 +16,7 @@
 
 <div class="lesson-section">
 <h2>Pattern 1: The Gateway</h2>
-<div class="lo-vis" role="figure" aria-label="Pattern 1: The Gateway">
-<div class="lo-vis__title">Pattern 1: The Gateway</div>
-<div class="lo-steps" data-count="3">
-<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
-</div>
-<div class="lo-vis__caption">Master <strong>pattern 1: the gateway</strong> step by step.</div>
-</div>
+<div class="lo-vis" role="figure" aria-label="Four architecture patterns for AI systems"><div class="lo-vis__title">AI Architecture Patterns</div><div class="lo-steps" data-count="4"><div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Gateway</span><span class="lo-step__desc">Auth, rate limit, validate inputs</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Router</span><span class="lo-step__desc">Direct to the right model</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Pipeline</span><span class="lo-step__desc">Fixed stages, predictable flow</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--purple"><span class="lo-step__num">04</span><span class="lo-step__label">Orchestrator</span><span class="lo-step__desc">Dynamic replanning per step</span></div></div><div class="lo-vis__caption">Production systems <strong>compose all four</strong> -- Gateway fronts, Router dispatches, Pipelines handle known work, Orchestrators handle the unknown.</div></div>
 
 
 The Gateway pattern is your front door. Every request enters through a single point that handles authentication, rate limiting, input validation, and request normalization before anything touches a model.

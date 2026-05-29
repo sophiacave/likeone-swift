@@ -1635,3 +1635,106 @@ a:focus-visible, button:focus-visible {
   .lo-compute { grid-template-columns: 1fr !important; gap: .5rem; }
   .lo-compute__arrow { transform: rotate(90deg); padding: .25rem 0; }
 }
+
+/* ═══════════════════════════════════════════
+   INTERACTIVE ELEMENTS (Alpine.js)
+   ═══════════════════════════════════════════ */
+
+.lo-interactive {
+  margin: 1.5rem 0;
+  background: #0a0a0f;
+  border: 1px solid rgba(192,132,252,.12);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  overflow: hidden;
+}
+.lo-interactive__title {
+  font-family: 'SF Mono','JetBrains Mono',monospace;
+  font-size: .7rem;
+  font-weight: 700;
+  color: #c084fc;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 1rem;
+}
+.lo-interactive__body {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+.lo-interactive label {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  font-size: .85rem;
+  color: #a1a1aa;
+  font-family: 'SF Mono','JetBrains Mono',monospace;
+}
+.lo-interactive input[type="range"] {
+  flex: 1;
+  accent-color: #c084fc;
+  height: 4px;
+  cursor: pointer;
+}
+.lo-interactive__result {
+  margin-top: .5rem;
+  padding: .75rem 1rem;
+  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 10px;
+  font-family: 'SF Mono','JetBrains Mono',monospace;
+  font-size: .9rem;
+  color: #e5e5e5;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.lo-interactive__result .fires { color: #34d399; font-weight: 700; }
+.lo-interactive__result .silent { color: #ef4444; font-weight: 700; }
+
+/* Step-through nav */
+.lo-interactive__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding-top: .75rem;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.lo-interactive__nav button {
+  background: rgba(192,132,252,.08);
+  border: 1px solid rgba(192,132,252,.2);
+  color: #c084fc;
+  padding: .4rem 1rem;
+  border-radius: 8px;
+  font-size: .8rem;
+  cursor: pointer;
+  transition: background .15s;
+}
+.lo-interactive__nav button:hover:not(:disabled) {
+  background: rgba(192,132,252,.15);
+}
+.lo-interactive__nav button:disabled {
+  opacity: .3;
+  cursor: not-allowed;
+}
+.lo-interactive__nav span {
+  font-size: .75rem;
+  color: #71717a;
+  font-family: 'SF Mono','JetBrains Mono',monospace;
+}
+
+/* Value display for sliders */
+.lo-interactive .value-display {
+  min-width: 3rem;
+  text-align: right;
+  font-weight: 600;
+  color: #e5e5e5;
+  font-size: .85rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .lo-interactive { padding: 1rem; }
+  .lo-interactive label { flex-wrap: wrap; }
+}

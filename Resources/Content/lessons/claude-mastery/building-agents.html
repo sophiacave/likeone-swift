@@ -7,16 +7,18 @@
 <div class="content">
 <div class="card">
 <h2>What Is an AI Agent?</h2>
-<div class="lo-vis" role="figure" aria-label="What Is an AI Agent?">
-<div class="lo-vis__title">What Is an AI Agent?</div>
-<div class="lo-steps" data-count="3">
-<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
+<div class="lo-vis" role="figure" aria-label="The Agent Loop: how Claude becomes autonomous">
+<div class="lo-vis__title">The Agent Loop</div>
+<div class="lo-steps" data-count="4">
+<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Goal</span><span class="lo-step__desc">System prompt defines the mission</span></div>
 <span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
+<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Call Claude</span><span class="lo-step__desc">Send messages + tools to the API</span></div>
 <span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
+<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Execute Tools</span><span class="lo-step__desc">Run tool calls, return results</span></div>
+<span class="lo-steps__arrow">&rarr;</span>
+<div class="lo-step lo-step--purple"><span class="lo-step__num">04</span><span class="lo-step__label">Repeat</span><span class="lo-step__desc">Loop until stop_reason = end_turn</span></div>
 </div>
-<div class="lo-vis__caption">Master <strong>what is an ai agent?</strong> step by step.</div>
+<div class="lo-vis__caption">An agent is just a <strong>tool loop</strong> -- call Claude, execute tools, send results back, repeat.</div>
 </div>
 
 <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:4px;padding:14px 12px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;flex-wrap:wrap;"><span style="padding:5px 8px;border-radius:6px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);color:#34d399;font-weight:600;">goal</span><span style="color:#3f3f46;">+</span><span style="padding:5px 8px;border-radius:6px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);color:#fb923c;font-weight:600;">tools</span><span style="color:#3f3f46;">+</span><span style="padding:5px 8px;border-radius:6px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.12);color:#38bdf8;font-weight:600;">memory</span><span style="color:#3f3f46;">+</span><span style="padding:5px 8px;border-radius:6px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.12);color:#f87171;font-weight:600;">guardrails</span><span style="color:#52525b;">=</span><span style="color:#c084fc;font-weight:700;">agent</span></div></div>

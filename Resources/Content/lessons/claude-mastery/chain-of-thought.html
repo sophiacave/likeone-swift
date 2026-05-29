@@ -7,16 +7,21 @@
 <div class="content">
 <div class="card">
 <h2>The Power of "Think Step by Step"</h2>
-<div class="lo-vis" role="figure" aria-label="The Power of "Think Step by Step"">
-<div class="lo-vis__title">The Power of "Think Step by Step"</div>
-<div class="lo-steps" data-count="3">
-<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
+<div class="lo-vis" role="figure" aria-label="Without CoT vs With CoT: how reasoning steps prevent wrong answers">
+<div class="lo-vis__title">Direct Answer vs Chain-of-Thought</div>
+<div class="lo-versus">
+<div class="lo-versus__side lo-versus__side--before">
+<div class="lo-versus__tag">Without CoT</div>
+<div class="lo-versus__body">Question &rarr; Jump to answer</div>
+<div class="lo-versus__result" style="color:var(--vis-red)">25% + 10% = 35% (wrong)</div>
 </div>
-<div class="lo-vis__caption">Master <strong>the power of "think step by step"</strong> step by step.</div>
+<div class="lo-versus__side lo-versus__side--after">
+<div class="lo-versus__tag">With CoT</div>
+<div class="lo-versus__body">Question &rarr; Step 1 &rarr; Step 2 &rarr; Step 3 &rarr; Answer</div>
+<div class="lo-versus__result" style="color:var(--vis-green)">0.75 x 0.90 = 32.5% (correct)</div>
+</div>
+</div>
+<div class="lo-vis__caption">Each reasoning step becomes <strong>context for the next</strong> -- catching errors mid-thought.</div>
 </div>
 
 

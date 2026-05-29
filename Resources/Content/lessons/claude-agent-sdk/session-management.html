@@ -8,16 +8,21 @@
 
 <div class="card">
 <h2>Why Sessions Matter</h2>
-<div class="lo-vis" role="figure" aria-label="Why Sessions Matter">
-<div class="lo-vis__title">Why Sessions Matter</div>
-<div class="lo-steps" data-count="3">
-<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
+<div class="lo-vis" role="figure" aria-label="Without sessions agent forgets, with sessions agent remembers">
+<div class="lo-vis__title">Memory for Agents</div>
+<div class="lo-versus">
+  <div class="lo-versus__side lo-versus__side--before">
+    <div class="lo-versus__tag">No Session</div>
+    <div class="lo-versus__body">Each query starts fresh<br>No context<br>No continuity</div>
+    <div class="lo-versus__result" style="color:var(--vis-red)">&rarr; Forgets everything</div>
+  </div>
+  <div class="lo-versus__side lo-versus__side--after">
+    <div class="lo-versus__tag">With Session</div>
+    <div class="lo-versus__body">Conversation persists<br>Picks up where it left off<br>Survives restarts</div>
+    <div class="lo-versus__result" style="color:var(--vis-green)">&rarr; Remembers</div>
+  </div>
 </div>
-<div class="lo-vis__caption">Master <strong>why sessions matter</strong> step by step.</div>
+<div class="lo-vis__caption">Sessions give agents <strong>continuity</strong>.</div>
 </div>
 
 <p>By default, each <code>query()</code> call starts fresh — Claude has no memory of previous interactions. That works for one-off tasks, but real-world agents need <strong style="color:#e5e5e5">continuity</strong>. A coding assistant should remember what file it was working on. A research agent should build on previous findings. A customer service bot should know the conversation history.</p>

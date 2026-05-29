@@ -19,14 +19,26 @@
   <h2 class="section-title">Why Visual Testing Is Different</h2>
 <div class="lo-vis" role="figure" aria-label="Why Visual Testing Is Different">
 <div class="lo-vis__title">Why Visual Testing Is Different</div>
-<div class="lo-steps" data-count="3">
-<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
+<div class="lo-versus">
+<div class="lo-versus__side lo-versus__side--green">
+<div class="lo-versus__heading">Unit Tests</div>
+<ul class="lo-versus__list">
+<li>Deterministic</li>
+<li>Fast</li>
+<li>Exact match</li>
+</ul>
 </div>
-<div class="lo-vis__caption">Master <strong>why visual testing is different</strong> step by step.</div>
+<div class="lo-versus__divider">vs</div>
+<div class="lo-versus__side lo-versus__side--purple">
+<div class="lo-versus__heading">Visual Tests</div>
+<ul class="lo-versus__list">
+<li>Probabilistic</li>
+<li>Slower</li>
+<li>Fuzzy match</li>
+</ul>
+</div>
+</div>
+<div class="lo-vis__caption">Visual agents need <strong>visual testing</strong>.</div>
 </div>
 
   <p class="section-text">Code tests are deterministic. Given the same input, you get the same output. Visual agent tests are not. The same webpage can look different at different times -- ads change, layouts shift, content updates, sessions expire. A test that passed yesterday can fail today because a banner appeared or a button moved.</p>

@@ -18,16 +18,18 @@
 <div class="lesson-section">
   <span class="section-label">The Concept</span>
   <h2 class="section-title">A voting booth in your brain.</h2>
-<div class="lo-vis" role="figure" aria-label="A voting booth in your brain.">
-<div class="lo-vis__title">A voting booth in your brain.</div>
-<div class="lo-steps" data-count="3">
-<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
+<div class="lo-vis" role="figure" aria-label="How a neuron computes: inputs, weighted sum, activation, output">
+<div class="lo-vis__title">Inside a Single Neuron</div>
+<div class="lo-steps" data-count="4">
+<div class="lo-step lo-step--green"><span class="lo-step__num">01</span><span class="lo-step__label">Inputs</span><span class="lo-step__desc">Receive signals (x1, x2, x3)</span></div>
 <span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
+<div class="lo-step lo-step--purple"><span class="lo-step__num">02</span><span class="lo-step__label">Weighted Sum</span><span class="lo-step__desc">Multiply each input by its weight, add bias</span></div>
 <span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
+<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Activation</span><span class="lo-step__desc">ReLU / Sigmoid decides: fire or stay silent</span></div>
+<span class="lo-steps__arrow">&rarr;</span>
+<div class="lo-step lo-step--green"><span class="lo-step__num">04</span><span class="lo-step__label">Output</span><span class="lo-step__desc">One number passed to the next layer</span></div>
 </div>
-<div class="lo-vis__caption">Master <strong>a voting booth in your brain.</strong> step by step.</div>
+<div class="lo-vis__caption">A neuron is just <strong>multiply, add, decide</strong> -- repeated millions of times.</div>
 </div>
 
   <div class="lesson-visual" aria-label="Diagram showing a neuron as three weighted inputs summed with a bias, passed through an activation function to produce an output">
@@ -413,6 +415,57 @@ USED TODAY: Final layer of binary classifiers. Replaced by ReLU in hidden layers
 </details>
 </div>
 
+</div>
+
+<!-- SECTION 4B: PLAY WITH IT -->
+<div class="lesson-section">
+  <span class="section-label">Play With It</span>
+  <h2 class="section-title">Live neuron &mdash; move the sliders and watch.</h2>
+
+  <div class="lo-interactive" x-data="{ w1: 0.5, w2: 0.3, w3: 0.7, b: -0.2, x1: 0.8, x2: 0.6, x3: 0.4 }">
+    <div class="lo-interactive__title">Interactive Neuron Simulator</div>
+    <div class="lo-interactive__body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div>
+          <div style="font-size:.7rem;font-weight:600;color:#34d399;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">Inputs</div>
+          <label><span style="color:#34d399;min-width:1.5rem;">x1</span> <input type="range" min="0" max="1" step="0.1" x-model.number="x1"> <span class="value-display" x-text="x1.toFixed(1)"></span></label>
+          <label><span style="color:#8b5cf6;min-width:1.5rem;">x2</span> <input type="range" min="0" max="1" step="0.1" x-model.number="x2"> <span class="value-display" x-text="x2.toFixed(1)"></span></label>
+          <label><span style="color:#38bdf8;min-width:1.5rem;">x3</span> <input type="range" min="0" max="1" step="0.1" x-model.number="x3"> <span class="value-display" x-text="x3.toFixed(1)"></span></label>
+        </div>
+        <div>
+          <div style="font-size:.7rem;font-weight:600;color:#c084fc;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">Weights &amp; Bias</div>
+          <label><span style="color:#34d399;min-width:1.5rem;">w1</span> <input type="range" min="-1" max="1" step="0.1" x-model.number="w1"> <span class="value-display" x-text="w1.toFixed(1)"></span></label>
+          <label><span style="color:#8b5cf6;min-width:1.5rem;">w2</span> <input type="range" min="-1" max="1" step="0.1" x-model.number="w2"> <span class="value-display" x-text="w2.toFixed(1)"></span></label>
+          <label><span style="color:#38bdf8;min-width:1.5rem;">w3</span> <input type="range" min="-1" max="1" step="0.1" x-model.number="w3"> <span class="value-display" x-text="w3.toFixed(1)"></span></label>
+          <label><span style="color:#fb923c;min-width:1.5rem;">b</span> <input type="range" min="-1" max="1" step="0.1" x-model.number="b"> <span class="value-display" x-text="b.toFixed(1)"></span></label>
+        </div>
+      </div>
+
+      <div class="lo-interactive__result">
+        <div style="flex:1;">
+          <div style="font-size:.7rem;color:#71717a;margin-bottom:.25rem;">WEIGHTED SUM + BIAS</div>
+          <div style="font-size:1rem;color:#c084fc;font-weight:600;" x-text="'z = ' + (x1*w1 + x2*w2 + x3*w3 + b).toFixed(2)"></div>
+        </div>
+        <div style="width:1px;height:32px;background:rgba(255,255,255,.06);"></div>
+        <div style="flex:1;">
+          <div style="font-size:.7rem;color:#71717a;margin-bottom:.25rem;">ReLU OUTPUT</div>
+          <div style="font-size:1rem;font-weight:600;" :style="'color:' + (Math.max(0, x1*w1 + x2*w2 + x3*w3 + b) > 0 ? '#34d399' : '#ef4444')" x-text="Math.max(0, x1*w1 + x2*w2 + x3*w3 + b).toFixed(2)"></div>
+        </div>
+        <div style="width:1px;height:32px;background:rgba(255,255,255,.06);"></div>
+        <div style="text-align:center;">
+          <template x-if="Math.max(0, x1*w1 + x2*w2 + x3*w3 + b) > 0">
+            <div style="font-size:1.2rem;" title="Neuron fires!">&#x1F7E2;</div>
+          </template>
+          <template x-if="Math.max(0, x1*w1 + x2*w2 + x3*w3 + b) <= 0">
+            <div style="font-size:1.2rem;" title="Neuron stays silent">&#x1F534;</div>
+          </template>
+          <div style="font-size:.65rem;color:#71717a;margin-top:.15rem;" x-text="Math.max(0, x1*w1 + x2*w2 + x3*w3 + b) > 0 ? 'FIRES' : 'SILENT'"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="section-text" style="margin-top:1rem;font-size:.85rem;color:#71717a;">Try setting all weights to 0. Then try a large negative bias. Notice how the ReLU activation clips negative values to zero &mdash; this is the &ldquo;fire or stay silent&rdquo; decision.</p>
 </div>
 
 <!-- SECTION 5: KNOWLEDGE CHECK -->

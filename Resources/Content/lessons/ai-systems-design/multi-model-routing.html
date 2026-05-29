@@ -16,17 +16,7 @@
 
 <div class="lesson-section">
 <h2>The Model Abstraction Layer</h2>
-<div class="lo-vis" role="figure" aria-label="The Model Abstraction Layer">
-<div class="lo-vis__title">The Model Abstraction Layer</div>
-<div class="lo-steps" data-count="3">
-<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
-</div>
-<div class="lo-vis__caption">Master <strong>the model abstraction layer</strong> step by step.</div>
-</div>
+<div class="lo-vis" role="figure" aria-label="Three routing strategies for multi-model systems"><div class="lo-vis__title">Three Routing Strategies</div><div class="lo-steps" data-count="3"><div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Rule-Based</span><span class="lo-step__desc">Map task types to models statically</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Classifier</span><span class="lo-step__desc">ML scores complexity, picks tier</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Cascading</span><span class="lo-step__desc">Start cheap, escalate if quality fails</span></div></div><div class="lo-vis__caption">Rule-based is fastest. Classifier is smartest. Cascading <strong>guarantees quality</strong> but adds latency for hard requests.</div></div>
 
 
 Coupling your application to a single model is a business risk. Models get deprecated, pricing changes, quality fluctuates, and outages happen. A model abstraction layer decouples your application logic from any specific provider.

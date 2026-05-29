@@ -17,16 +17,16 @@
 <div class="lesson-section">
   <span class="section-label">Mindset</span>
   <h2 class="section-title">Errors Are Not Failures</h2>
-<div class="lo-vis" role="figure" aria-label="Errors Are Not Failures">
-<div class="lo-vis__title">Errors Are Not Failures</div>
+<div class="lo-vis" role="figure" aria-label="The retry-fallback-alert error handling pattern">
+<div class="lo-vis__title">The Retry-Fallback-Alert Pattern</div>
 <div class="lo-steps" data-count="3">
-<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
+<div class="lo-step lo-step--green"><span class="lo-step__num">01</span><span class="lo-step__label">Retry</span><span class="lo-step__desc">Wait 5s, 15s, 45s — most transient errors self-resolve</span></div>
 <span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
+<div class="lo-step lo-step--orange"><span class="lo-step__num">02</span><span class="lo-step__label">Fallback</span><span class="lo-step__desc">Switch to Plan B — backup service or safe default</span></div>
 <span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
+<div class="lo-step lo-step--purple"><span class="lo-step__num">03</span><span class="lo-step__label">Alert</span><span class="lo-step__desc">Notify with what failed, when, and what needs attention</span></div>
 </div>
-<div class="lo-vis__caption">Master <strong>errors are not failures</strong> step by step.</div>
+<div class="lo-vis__caption">Errors are <strong>expected</strong> — resilient workflows recover gracefully.</div>
 </div>
 
   <p class="section-text">APIs go down. Data arrives malformed. Rate limits get hit. Network connections drop. These aren't signs your workflow is broken — they're normal operating conditions. The difference between an amateur workflow and a production-grade one is how it handles the unexpected.</p>

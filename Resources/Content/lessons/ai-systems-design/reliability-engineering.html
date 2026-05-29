@@ -16,17 +16,7 @@
 
 <div class="lesson-section">
 <h2>The Reliability Imperative</h2>
-<div class="lo-vis" role="figure" aria-label="The Reliability Imperative">
-<div class="lo-vis__title">The Reliability Imperative</div>
-<div class="lo-steps" data-count="3">
-<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
-</div>
-<div class="lo-vis__caption">Master <strong>the reliability imperative</strong> step by step.</div>
-</div>
+<div class="lo-vis" role="figure" aria-label="Three reliability patterns for AI API calls"><div class="lo-vis__title">Three Reliability Patterns</div><div class="lo-steps" data-count="3"><div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Retry + Jitter</span><span class="lo-step__desc">Backoff with randomization to avoid thundering herd</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Circuit Breaker</span><span class="lo-step__desc">Closed &rarr; Open &rarr; Half-Open recovery cycle</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Fallback Chain</span><span class="lo-step__desc">Cross-provider &rarr; cheaper model &rarr; cache</span></div></div><div class="lo-vis__caption">A degraded response beats an error message. Design fallbacks on a spectrum from <strong>best to acceptable</strong>.</div></div>
 
 
 AI APIs fail. OpenAI has outages. Anthropic rate-limits you. Your vector database hiccups during peak load. Network partitions happen. The question is never "will my system fail?" -- it's "what happens when it does?"

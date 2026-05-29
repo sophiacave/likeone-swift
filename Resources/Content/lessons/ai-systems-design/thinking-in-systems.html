@@ -16,17 +16,7 @@
 
 <div class="lesson-section">
 <h2>The Demo Trap</h2>
-<div class="lo-vis" role="figure" aria-label="The Demo Trap">
-<div class="lo-vis__title">The Demo Trap</div>
-<div class="lo-steps" data-count="3">
-<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
-</div>
-<div class="lo-vis__caption">Master <strong>the demo trap</strong> step by step.</div>
-</div>
+<div class="lo-vis" role="figure" aria-label="Demo-quality vs production-quality AI"><div class="lo-vis__title">Demo vs. Production AI</div><div class="lo-versus"><div class="lo-versus__side lo-versus__side--before"><div class="lo-versus__tag">Demo</div><div class="lo-versus__body">One API call. One prompt. No error handling, no caching, no monitoring.</div><div class="lo-versus__result" style="color:var(--vis-red)">Breaks under real usage</div></div><div class="lo-versus__side lo-versus__side--after"><div class="lo-versus__tag">Production</div><div class="lo-versus__body">Ingress + Processing + Egress + Feedback. 80% of code is infrastructure.</div><div class="lo-versus__result" style="color:var(--vis-green)">Serves 10K users reliably</div></div></div><div class="lo-vis__caption">The model is the engine, not the car. <strong>Systems thinking</strong> builds the car.</div></div>
 
 
 Every AI product starts the same way: a single API call that feels like magic. You string together a prompt, hit the endpoint, and get a result that impresses everyone in the room. Then you ship it.

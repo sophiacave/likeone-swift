@@ -7,16 +7,21 @@
 <div class="content">
 <div class="card">
 <h2>What Is Tool Use?</h2>
-<div class="lo-vis" role="figure" aria-label="What Is Tool Use?">
-<div class="lo-vis__title">What Is Tool Use?</div>
-<div class="lo-steps" data-count="3">
-<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
+<div class="lo-vis" role="figure" aria-label="The Tool Use Flow: you define tools, Claude decides when, your code executes">
+<div class="lo-vis__title">The Tool Use Flow</div>
+<div class="lo-versus">
+<div class="lo-versus__side lo-versus__side--before">
+<div class="lo-versus__tag">Without Tools</div>
+<div class="lo-versus__body">Claude can only <strong>describe</strong> what it would do. "I would look up the weather..." but cannot actually fetch data, call APIs, or take action.</div>
+<div class="lo-versus__result" style="color:var(--vis-red)">Talk only, no action</div>
 </div>
-<div class="lo-vis__caption">Master <strong>what is tool use?</strong> step by step.</div>
+<div class="lo-versus__side lo-versus__side--after">
+<div class="lo-versus__tag">With Tools</div>
+<div class="lo-versus__body">Claude outputs a <strong>structured tool call</strong>. Your code executes it and returns the result. Claude responds with real data.</div>
+<div class="lo-versus__result" style="color:var(--vis-green)">Real actions, real results</div>
+</div>
+</div>
+<div class="lo-vis__caption">Tools give Claude <strong>hands</strong> -- you define them, Claude decides when, your app executes.</div>
 </div>
 
 <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#c084fc;">you define tools</span><span style="color:#3f3f46;">&rarr;</span><span style="color:#fb923c;">Claude decides when</span><span style="color:#3f3f46;">&rarr;</span><span style="color:#34d399;font-weight:600;">real actions happen</span></div></div>

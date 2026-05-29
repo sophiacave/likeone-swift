@@ -8,17 +8,7 @@
 
 <div class="card">
 <h2>Why Authentication Matters</h2>
-<div class="lo-vis" role="figure" aria-label="Why Authentication Matters">
-<div class="lo-vis__title">Why Authentication Matters</div>
-<div class="lo-steps" data-count="3">
-<div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Concept</span><span class="lo-step__desc">Understand the core idea</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Apply</span><span class="lo-step__desc">See it in practice</span></div>
-<span class="lo-steps__arrow">&rarr;</span>
-<div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Build</span><span class="lo-step__desc">Use it in your projects</span></div>
-</div>
-<div class="lo-vis__caption">Master <strong>why authentication matters</strong> step by step.</div>
-</div>
+<div class="lo-vis" role="figure" aria-label="JWT auth flow in 3 steps"><div class="lo-vis__title">How JWT Authentication Works</div><div class="lo-steps" data-count="3"><div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Login</span><span class="lo-step__desc">User sends credentials, Supabase returns a signed JWT</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Request</span><span class="lo-step__desc">JWT travels in every API call as Bearer token</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Enforce</span><span class="lo-step__desc">RLS extracts auth.uid() and scopes rows to that user</span></div></div><div class="lo-vis__caption">JWT + RLS = <strong>database-level security that even buggy code cannot bypass</strong>.</div></div>
 
 <p>Without authentication, every request to your app is anonymous. Anyone can read anyone's data. Anyone can modify anyone's records. <strong style="color:#e5e5e5">Authentication proves identity</strong> — it answers "who is making this request?" before your app does anything.</p>
 

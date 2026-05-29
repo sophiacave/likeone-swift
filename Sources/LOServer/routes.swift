@@ -10,7 +10,7 @@ func routes(_ app: Application) throws {
     let brain = LocalBrainClient()
 
     try app.register(collection: HealthController())
-    try app.register(collection: HomeController(courses: courses, blog: blog))
+    try app.register(collection: HomeController(courses: courses, blog: blog, lessons: lessons))
     try app.register(collection: AcademyController(courses: courses, lessons: lessons))
     try app.register(collection: APIController(courses: courses, blog: blog, catalog: catalog, lessons: lessons))
     try app.register(collection: BrainController(brain: brain))
