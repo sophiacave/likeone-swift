@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "ai-foundations-path",
+    "title": "AI Foundations Path",
+    "description": "Master the fundamentals. From your first prompt to understanding how AI actually works.",
+    "emoji": "\ud83e\udde0",
+    "courses": ["claude-for-beginners", "ai-foundations", "prompt-writing-101"],
+    "estimatedHours": 6,
+    "difficulty": "beginner",
+    "badgeColor": "#c084fc"
+  },
+  {
+    "slug": "automation-builder",
+    "title": "Automation Builder",
+    "description": "Build real workflows that save hours every week. Connect AI to your tools.",
+    "emoji": "\u26a1",
+    "courses": ["ai-powered-workflows", "zapier-ai-automation", "browser-automation-ai"],
+    "estimatedHours": 8,
+    "difficulty": "intermediate",
+    "badgeColor": "#34d399"
+  },
+  {
+    "slug": "agent-architect",
+    "title": "Agent Architect",
+    "description": "Design and deploy autonomous AI agents that work while you sleep.",
+    "emoji": "\ud83e\udd16",
+    "courses": ["claude-agent-sdk", "computer-use-agents", "multi-agent-systems"],
+    "estimatedHours": 10,
+    "difficulty": "advanced",
+    "badgeColor": "#60a5fa"
+  },
+  {
+    "slug": "content-creator",
+    "title": "Content Creator",
+    "description": "Write, produce, and publish AI-powered content across every medium.",
+    "emoji": "\ud83c\udfa8",
+    "courses": ["ai-content-studio", "ai-cinema", "ai-music-production"],
+    "estimatedHours": 9,
+    "difficulty": "intermediate",
+    "badgeColor": "#fb923c"
+  },
+  {
+    "slug": "full-stack-ai",
+    "title": "Full Stack AI",
+    "description": "Complete all beginner and intermediate courses. Prove you can build with AI.",
+    "emoji": "\ud83c\udfc6",
+    "courses": ["claude-for-beginners", "ai-foundations", "prompt-writing-101", "ai-for-business", "ai-for-writers", "ai-for-developers", "ai-ethics-practical", "ai-career-skills", "ai-powered-workflows", "zapier-ai-automation", "browser-automation-ai", "claude-mastery", "advanced-prompt-engineering", "ai-content-studio", "data-analysis-with-ai", "ai-customer-experience", "ai-for-educators", "ai-personal-productivity", "ai-research-assistant", "ai-sales-marketing"],
+    "estimatedHours": 20,
+    "difficulty": "intermediate",
+    "badgeColor": "#fbbf24"
+  },
+  {
+    "slug": "ai-master",
+    "title": "AI Master",
+    "description": "Complete every course in the academy. The ultimate credential.",
+    "emoji": "\ud83d\udc8e",
+    "courses": [],
+    "estimatedHours": 80,
+    "difficulty": "advanced",
+    "badgeColor": "#e879f9"
+  }
+]

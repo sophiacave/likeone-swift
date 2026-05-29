@@ -13,3 +13,5 @@ extension User: Content {}
 extension BrainEntry: Content {}
 extension LearningProgress: Content {}
 extension LessonSummary: Content {}
+extension LearningTrack: Content {}
+extension Certificate: Content {}

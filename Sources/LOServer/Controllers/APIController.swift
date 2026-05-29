@@ -7,6 +7,7 @@ struct APIController: RouteCollection {
     let blog: BlogProvider
     let catalog: ProductCatalog
     let lessons: LessonProvider
+    let tracks: TrackProvider
 
     func boot(routes: RoutesBuilder) throws {
         let api = routes.grouped("api")
@@ -29,6 +30,10 @@ struct APIController: RouteCollection {
         // Products
         v1.get("products", use: allProducts)
         v1.get("products", ":slug", use: getProduct)
+
+        // Tracks
+        v1.get("tracks", use: allTracks)
+        v1.get("tracks", ":slug", use: getTrack)
     }
 
     @Sendable
@@ -107,6 +112,24 @@ struct APIController: RouteCollection {
         }
         let response = Response(status: .ok)
         try response.content.encode(product)
+        return response
+    }
+
+    @Sendable
+    func allTracks(req: Request) async throws -> Response {
+        let response = Response(status: .ok)
+        try response.content.encode(tracks.allTracks())
+        return response
+    }
+
+    @Sendable
+    func getTrack(req: Request) async throws -> Response {
+        guard let slug = req.parameters.get("slug"),
+              let track = tracks.track(bySlug: slug) else {
+            throw Abort(.notFound, reason: "Learning track not found")
+        }
+        let response = Response(status: .ok)
+        try response.content.encode(track)
         return response
     }
 }

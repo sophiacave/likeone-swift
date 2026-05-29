@@ -143,6 +143,29 @@ struct ServerTests {
             }
         }
     }
+
+    @Test("API tracks returns 6 learning tracks")
+    func apiTracks() async throws {
+        try await withApp { app in
+            try await app.test(.GET, "api/v1/tracks") { res async throws in
+                #expect(res.status == .ok)
+                let tracks = try res.content.decode([CodableTrack].self)
+                #expect(tracks.count == 6)
+            }
+        }
+    }
+
+    @Test("API track by slug returns correct track")
+    func apiTrackBySlug() async throws {
+        try await withApp { app in
+            try await app.test(.GET, "api/v1/tracks/ai-foundations-path") { res async throws in
+                #expect(res.status == .ok)
+                let track = try res.content.decode(CodableTrack.self)
+                #expect(track.slug == "ai-foundations-path")
+                #expect(track.courses.count == 3)
+            }
+        }
+    }
 }
 
 // Decodable structs for testing
@@ -150,3 +173,4 @@ struct CodableCourse: Content { let slug: String; let title: String }
 struct CodableBlogPost: Content { let slug: String; let title: String }
 struct CodableProduct: Content { let slug: String; let name: String }
 struct CodableLesson: Content { let slug: String; let title: String; let order: Int }
+struct CodableTrack: Content { let slug: String; let title: String; let courses: [String] }
