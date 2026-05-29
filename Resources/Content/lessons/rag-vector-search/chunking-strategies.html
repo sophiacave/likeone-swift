@@ -6,6 +6,39 @@
 
   <div class="section">
     <h2>Why Chunk at All?</h2>
+    <div class="lesson-visual" aria-label="Chunking spectrum from small chunks (high precision, low context) to large chunks (low precision, high context), with medium chunks as the sweet spot">
+      <svg viewBox="0 0 480 140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="chunk-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="480" height="140" fill="url(#chunk-grid)"/>
+        <text x="240" y="16" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">CHUNK SIZE TRADEOFF</text>
+        <!-- Small chunks -->
+        <rect x="30" y="28" width="120" height="60" rx="8" fill="none" stroke="#34d399" stroke-width="1.5"/>
+        <text x="90" y="46" text-anchor="middle" fill="#34d399" font-size="8" font-weight="600" font-family="SF Mono,monospace">SMALL</text>
+        <text x="90" y="60" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">50-200 words</text>
+        <text x="90" y="74" text-anchor="middle" fill="#34d399" font-size="6.5" font-family="SF Mono,monospace" opacity="0.6">high precision</text>
+        <text x="90" y="84" text-anchor="middle" fill="#ef4444" font-size="6.5" font-family="SF Mono,monospace" opacity="0.4">low context</text>
+        <!-- Medium chunks (highlighted) -->
+        <rect x="175" y="24" width="130" height="68" rx="8" fill="none" stroke="#c084fc" stroke-width="2"/>
+        <text x="240" y="42" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="700" font-family="SF Mono,monospace">MEDIUM</text>
+        <text x="240" y="56" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace">200-500 words</text>
+        <text x="240" y="70" text-anchor="middle" fill="#34d399" font-size="6.5" font-family="SF Mono,monospace" opacity="0.7">good precision</text>
+        <text x="240" y="82" text-anchor="middle" fill="#34d399" font-size="6.5" font-family="SF Mono,monospace" opacity="0.7">good context</text>
+        <text x="240" y="100" text-anchor="middle" fill="#c084fc" font-size="6" font-family="SF Mono,monospace" opacity="0.5">START HERE</text>
+        <!-- Large chunks -->
+        <rect x="330" y="28" width="120" height="60" rx="8" fill="none" stroke="#fb923c" stroke-width="1.5"/>
+        <text x="390" y="46" text-anchor="middle" fill="#fb923c" font-size="8" font-weight="600" font-family="SF Mono,monospace">LARGE</text>
+        <text x="390" y="60" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">500-1000 words</text>
+        <text x="390" y="74" text-anchor="middle" fill="#ef4444" font-size="6.5" font-family="SF Mono,monospace" opacity="0.4">low precision</text>
+        <text x="390" y="84" text-anchor="middle" fill="#34d399" font-size="6.5" font-family="SF Mono,monospace" opacity="0.6">high context</text>
+        <!-- Bottom -->
+        <text x="240" y="125" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace">too small = lost context &middot; too large = diluted relevance</text>
+      </svg>
+    </div>
+
     <p>Embedding models have token limits — typically 512 to 8,192 tokens (a token is roughly 3/4 of a word, so 1,000 tokens is about 750 words). A 50-page document has ~15,000 words — far too long to embed as a single vector. Even if you could fit it, a single vector for 50 pages would be so diluted that it would vaguely match everything and precisely match nothing.</p>
 
     <p>Chunking solves both problems. By splitting documents into smaller pieces — typically 100 to 500 words each — you create focused vectors that represent specific ideas. When a user searches for "refund policy for international orders," the search finds the specific chunk about international refunds, not a 50-page document that mentions refunds once on page 37.</p>

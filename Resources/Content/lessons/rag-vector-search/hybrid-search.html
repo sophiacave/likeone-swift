@@ -6,6 +6,40 @@
 
   <div class="section">
     <h2>The Problem with Pure Approaches</h2>
+    <div class="lesson-visual" aria-label="Three search approaches compared: keyword search fails on synonyms, vector search fails on exact terms, hybrid search handles both by combining the strengths">
+      <svg viewBox="0 0 480 150" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="hyb-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="480" height="150" fill="url(#hyb-grid)"/>
+        <!-- Keyword -->
+        <rect x="20" y="20" width="130" height="55" rx="8" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+        <text x="85" y="38" text-anchor="middle" fill="#ef4444" font-size="7" font-weight="600" font-family="SF Mono,monospace" opacity="0.6">KEYWORD ONLY</text>
+        <text x="85" y="52" text-anchor="middle" fill="#34d399" font-size="6" font-family="SF Mono,monospace" opacity="0.5">exact terms</text>
+        <text x="85" y="66" text-anchor="middle" fill="#ef4444" font-size="6" font-family="SF Mono,monospace" opacity="0.4">fails on synonyms</text>
+        <!-- Vector -->
+        <rect x="170" y="20" width="130" height="55" rx="8" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+        <text x="235" y="38" text-anchor="middle" fill="#ef4444" font-size="7" font-weight="600" font-family="SF Mono,monospace" opacity="0.6">VECTOR ONLY</text>
+        <text x="235" y="52" text-anchor="middle" fill="#34d399" font-size="6" font-family="SF Mono,monospace" opacity="0.5">meaning match</text>
+        <text x="235" y="66" text-anchor="middle" fill="#ef4444" font-size="6" font-family="SF Mono,monospace" opacity="0.4">fails on exact IDs</text>
+        <!-- Plus -->
+        <text x="155" y="95" fill="#71717a" font-size="8" opacity="0.3">+</text>
+        <!-- Arrows converging -->
+        <line x1="85" y1="80" x2="165" y2="110" stroke="#71717a" stroke-width="0.5" opacity="0.2"/>
+        <line x1="235" y1="80" x2="230" y2="110" stroke="#71717a" stroke-width="0.5" opacity="0.2"/>
+        <!-- Hybrid -->
+        <rect x="320" y="20" width="140" height="55" rx="8" fill="none" stroke="#34d399" stroke-width="2"/>
+        <text x="390" y="38" text-anchor="middle" fill="#34d399" font-size="8" font-weight="700" font-family="SF Mono,monospace">HYBRID</text>
+        <text x="390" y="52" text-anchor="middle" fill="#34d399" font-size="6" font-family="SF Mono,monospace">exact + meaning</text>
+        <text x="390" y="66" text-anchor="middle" fill="#34d399" font-size="6" font-family="SF Mono,monospace" opacity="0.7">handles everything</text>
+        <!-- Bottom -->
+        <text x="240" y="110" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace">real queries mix exact terms + semantic intent</text>
+        <text x="240" y="128" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.4">"how to fix error 404 in React" = keyword(404,React) + semantic(how to fix)</text>
+      </svg>
+    </div>
+
     <p><strong>Pure keyword search</strong> fails on synonyms. A user searches for "joyful" but the document says "happy." Zero results. The user searches for "fixing broken CI/CD" but the document says "troubleshooting deployment failures." Zero results. Keywords match characters, not meaning.</p>
 
     <p><strong>Pure vector search</strong> fails on exact terms. A user searches for "error code 404" and vector search returns generic pages about web errors — because semantically, all error pages are similar. But the user wanted the <em>specific</em> page about 404 errors. Vector search also struggles with proper nouns, product IDs, and technical identifiers that have no semantic content.</p>

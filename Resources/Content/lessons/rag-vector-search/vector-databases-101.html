@@ -6,6 +6,53 @@
 
   <div class="section">
     <h2>The Problem with Traditional Search</h2>
+    <div class="lesson-visual" aria-label="Vector database architecture: documents are embedded into vectors, stored with an HNSW index, and queried by converting the search to a vector and finding nearest neighbors">
+      <svg viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="vdb-grid1" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="480" height="180" fill="url(#vdb-grid1)"/>
+        <text x="240" y="16" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">VECTOR DATABASE — 3 OPERATIONS</text>
+        <!-- Store -->
+        <rect x="20" y="30" width="130" height="55" rx="8" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+        <text x="85" y="48" text-anchor="middle" fill="#8b5cf6" font-size="9" font-weight="600" font-family="SF Mono,monospace">1. STORE</text>
+        <text x="85" y="62" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">text &rarr; vector</text>
+        <text x="85" y="76" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">+ metadata</text>
+        <!-- Arrow -->
+        <line x1="155" y1="58" x2="175" y2="58" stroke="#71717a" stroke-width="1" opacity="0.3"/>
+        <polygon points="173,55 179,58 173,61" fill="#71717a" opacity="0.3"/>
+        <!-- Index -->
+        <rect x="180" y="30" width="130" height="55" rx="8" fill="none" stroke="#34d399" stroke-width="1.5"/>
+        <text x="245" y="48" text-anchor="middle" fill="#34d399" font-size="9" font-weight="600" font-family="SF Mono,monospace">2. INDEX</text>
+        <text x="245" y="62" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">HNSW graph</text>
+        <text x="245" y="76" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">organize by proximity</text>
+        <!-- Arrow -->
+        <line x1="315" y1="58" x2="335" y2="58" stroke="#71717a" stroke-width="1" opacity="0.3"/>
+        <polygon points="333,55 339,58 333,61" fill="#71717a" opacity="0.3"/>
+        <!-- Search -->
+        <rect x="340" y="30" width="120" height="55" rx="8" fill="none" stroke="#fb923c" stroke-width="1.5"/>
+        <text x="400" y="48" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="600" font-family="SF Mono,monospace">3. SEARCH</text>
+        <text x="400" y="62" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">find nearest</text>
+        <text x="400" y="76" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">vectors (ms)</text>
+        <!-- Bottom: Popular DBs -->
+        <text x="240" y="110" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.4">popular vector databases</text>
+        <rect x="50" y="118" width="70" height="22" rx="5" fill="none" stroke="#c084fc" stroke-width="1" opacity="0.4"/>
+        <text x="85" y="133" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace" opacity="0.5">ChromaDB</text>
+        <rect x="135" y="118" width="70" height="22" rx="5" fill="none" stroke="#c084fc" stroke-width="1" opacity="0.4"/>
+        <text x="170" y="133" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace" opacity="0.5">Pinecone</text>
+        <rect x="220" y="118" width="70" height="22" rx="5" fill="none" stroke="#c084fc" stroke-width="1" opacity="0.4"/>
+        <text x="255" y="133" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace" opacity="0.5">Weaviate</text>
+        <rect x="305" y="118" width="70" height="22" rx="5" fill="none" stroke="#c084fc" stroke-width="1" opacity="0.4"/>
+        <text x="340" y="133" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace" opacity="0.5">Qdrant</text>
+        <rect x="390" y="118" width="60" height="22" rx="5" fill="none" stroke="#c084fc" stroke-width="1" opacity="0.4"/>
+        <text x="420" y="133" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace" opacity="0.5">pgvector</text>
+        <!-- Bottom insight -->
+        <text x="240" y="160" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace">store meaning as geometry &middot; search by direction, not keywords</text>
+      </svg>
+    </div>
+
     <p>You have a database of support documents. A customer searches for "joyful experience with your product." Traditional SQL: <code>SELECT * FROM docs WHERE content LIKE '%joyful%'</code>. Result: zero rows. The documents say "happy," "satisfied," "positive" — never "joyful." The customer gets nothing, even though dozens of relevant documents exist.</p>
 
     <p>Full-text search is better — it handles stemming ("running" matches "run") and stop words. But it still fundamentally matches <em>words</em>, not <em>meaning</em>. A search for "fixing broken deployment pipelines" will not find a document titled "Troubleshooting CI/CD failures" unless they share keywords.</p>

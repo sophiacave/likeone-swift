@@ -6,6 +6,38 @@
 
   <div class="section">
     <h2>The RAG Quality Triangle</h2>
+    <div class="lesson-visual" aria-label="The RAG quality triangle: three tests every answer must pass — Relevance (did we find the right context?), Faithfulness (does the answer match the context?), and Completeness (did we cover everything?)">
+      <svg viewBox="0 0 480 170" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="eval-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="480" height="170" fill="url(#eval-grid)"/>
+        <text x="240" y="16" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">THE RAG QUALITY TRIANGLE</text>
+        <!-- Triangle -->
+        <polygon points="240,30 120,140 360,140" fill="none" stroke="#c084fc" stroke-width="1" opacity="0.2"/>
+        <!-- Top: Relevance -->
+        <circle cx="240" cy="38" r="20" fill="none" stroke="#34d399" stroke-width="1.5"/>
+        <text x="240" y="36" text-anchor="middle" fill="#34d399" font-size="6" font-weight="600" font-family="SF Mono,monospace">RELE-</text>
+        <text x="240" y="46" text-anchor="middle" fill="#34d399" font-size="6" font-weight="600" font-family="SF Mono,monospace">VANCE</text>
+        <text x="240" y="22" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace" opacity="0.4">right context?</text>
+        <!-- Bottom left: Faithfulness -->
+        <circle cx="128" cy="132" r="20" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+        <text x="128" y="130" text-anchor="middle" fill="#8b5cf6" font-size="6" font-weight="600" font-family="SF Mono,monospace">FAITH-</text>
+        <text x="128" y="140" text-anchor="middle" fill="#8b5cf6" font-size="6" font-weight="600" font-family="SF Mono,monospace">FULNESS</text>
+        <text x="128" y="158" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace" opacity="0.4">matches context?</text>
+        <!-- Bottom right: Completeness -->
+        <circle cx="352" cy="132" r="20" fill="none" stroke="#fb923c" stroke-width="1.5"/>
+        <text x="352" y="130" text-anchor="middle" fill="#fb923c" font-size="6" font-weight="600" font-family="SF Mono,monospace">COMPLE-</text>
+        <text x="352" y="140" text-anchor="middle" fill="#fb923c" font-size="6" font-weight="600" font-family="SF Mono,monospace">TENESS</text>
+        <text x="352" y="158" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace" opacity="0.4">covers everything?</text>
+        <!-- Center: Good RAG -->
+        <text x="240" y="100" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="600" font-family="SF Mono,monospace" opacity="0.5">GOOD RAG</text>
+        <text x="240" y="115" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace" opacity="0.3">all three must pass</text>
+      </svg>
+    </div>
+
     <p>A good RAG answer must pass three tests. Failing any one of them makes the answer unreliable:</p>
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
