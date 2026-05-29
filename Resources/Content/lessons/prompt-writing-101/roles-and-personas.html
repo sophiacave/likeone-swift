@@ -18,6 +18,49 @@
 <div class="lesson-section">
   <span class="section-label">The Psychology</span>
   <h2 class="section-title">Why "You are a..." changes everything.</h2>
+  <div class="lesson-visual" aria-label="Comparison showing the same AI without a role producing generic assistant output versus with a role producing expert-level output drawn from specialized knowledge">
+    <svg viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="role-grid1" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="480" height="180" fill="url(#role-grid1)"/>
+      <!-- Left: No role -->
+      <text x="120" y="20" text-anchor="middle" fill="#ef4444" font-size="7" font-weight="600" font-family="SF Mono,monospace" opacity="0.6">WITHOUT ROLE</text>
+      <circle cx="120" cy="65" r="26" fill="none" stroke="#71717a" stroke-width="1.5" opacity="0.4"/>
+      <text x="120" y="62" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace" opacity="0.5">AI</text>
+      <text x="120" y="72" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace" opacity="0.4">general</text>
+      <!-- Arrow down -->
+      <line x1="120" y1="93" x2="120" y2="118" stroke="#71717a" stroke-width="1" opacity="0.3"/>
+      <polygon points="117,116 120,122 123,116" fill="#71717a" opacity="0.3"/>
+      <!-- Generic output -->
+      <rect x="60" y="125" width="120" height="30" rx="6" fill="none" stroke="#71717a" stroke-width="1" stroke-dasharray="3,2" opacity="0.3"/>
+      <text x="120" y="144" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.4">generic assistant</text>
+      <!-- Divider -->
+      <line x1="240" y1="15" x2="240" y2="165" stroke="#71717a" stroke-width="0.5" stroke-dasharray="2,4" opacity="0.15"/>
+      <!-- Right: With role -->
+      <text x="360" y="20" text-anchor="middle" fill="#34d399" font-size="7" font-weight="600" font-family="SF Mono,monospace">WITH ROLE</text>
+      <!-- Role label -->
+      <rect x="300" y="30" width="120" height="22" rx="6" fill="none" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="360" y="45" text-anchor="middle" fill="#fb923c" font-size="7" font-weight="600" font-family="SF Mono,monospace">"You are a senior..."</text>
+      <!-- Arrow -->
+      <line x1="360" y1="54" x2="360" y2="58" stroke="#fb923c" stroke-width="1" opacity="0.4"/>
+      <!-- AI with role -->
+      <circle cx="360" cy="82" r="26" fill="none" stroke="#c084fc" stroke-width="2"/>
+      <text x="360" y="79" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="600" font-family="SF Mono,monospace">AI</text>
+      <text x="360" y="89" text-anchor="middle" fill="#c084fc" font-size="6" font-family="SF Mono,monospace">expert mode</text>
+      <!-- Arrow down -->
+      <line x1="360" y1="110" x2="360" y2="118" stroke="#34d399" stroke-width="1.5" opacity="0.5"/>
+      <polygon points="357,116 360,122 363,116" fill="#34d399" opacity="0.5"/>
+      <!-- Expert output -->
+      <rect x="300" y="125" width="120" height="30" rx="6" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="360" y="144" text-anchor="middle" fill="#34d399" font-size="7" font-weight="600" font-family="SF Mono,monospace">expert-level output</text>
+      <!-- Bottom insight -->
+      <text x="240" y="174" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace">same AI, same knowledge — the role selects which pool to draw from</text>
+    </svg>
+  </div>
+
   <p class="section-text">When you tell AI "You are a senior marketing strategist with 15 years of experience in B2B SaaS," something shifts. The vocabulary changes. The suggestions become more specific. The advice carries the weight of implied experience.</p>
   <p class="section-text">This isn't magic — it's pattern matching. AI has learned from millions of texts written by experts in every field. When you set a role, you're telling it: "Draw from <em>that</em> pool of knowledge. Use <em>that</em> vocabulary. Think at <em>that</em> level."</p>
   <p class="section-text">Without a role, AI defaults to "helpful general assistant." That's fine for quick questions. But for anything that requires expertise, you're leaving quality on the table.</p>
@@ -27,6 +70,39 @@
 <div class="lesson-section">
   <span class="section-label">The Structure</span>
   <h2 class="section-title">The 3 elements of an effective role.</h2>
+  <div class="lesson-visual" aria-label="The role formula shown as three connected elements: seniority level plus job title plus specialization niche, combining into a complete role assignment">
+    <svg viewBox="0 0 480 130" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="role-grid2" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="480" height="130" fill="url(#role-grid2)"/>
+      <text x="240" y="18" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">THE ROLE FORMULA</text>
+      <!-- Element 1: Seniority -->
+      <rect x="30" y="35" width="110" height="40" rx="8" fill="none" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="85" y="52" text-anchor="middle" fill="#fb923c" font-size="8" font-weight="600" font-family="SF Mono,monospace">SENIORITY</text>
+      <text x="85" y="66" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">"senior" / "expert"</text>
+      <!-- Plus -->
+      <text x="158" y="60" text-anchor="middle" fill="#71717a" font-size="14" opacity="0.3">+</text>
+      <!-- Element 2: Title -->
+      <rect x="175" y="35" width="110" height="40" rx="8" fill="none" stroke="#c084fc" stroke-width="1.5"/>
+      <text x="230" y="52" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="600" font-family="SF Mono,monospace">TITLE</text>
+      <text x="230" y="66" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">"UX researcher"</text>
+      <!-- Plus -->
+      <text x="303" y="60" text-anchor="middle" fill="#71717a" font-size="14" opacity="0.3">+</text>
+      <!-- Element 3: Niche -->
+      <rect x="320" y="35" width="130" height="40" rx="8" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="385" y="52" text-anchor="middle" fill="#34d399" font-size="8" font-weight="600" font-family="SF Mono,monospace">SPECIALIZATION</text>
+      <text x="385" y="66" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">"mobile e-commerce"</text>
+      <!-- Result line -->
+      <line x1="80" y1="80" x2="400" y2="80" stroke="#71717a" stroke-width="0.5" opacity="0.2"/>
+      <!-- Combined example -->
+      <text x="240" y="100" text-anchor="middle" fill="#e5e5e5" font-size="8" font-family="SF Mono,monospace">"You are a <tspan fill="#fb923c">senior</tspan> <tspan fill="#c084fc">UX researcher</tspan> specializing in <tspan fill="#34d399">mobile e-commerce</tspan>"</text>
+      <text x="240" y="120" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.5">seniority sets depth &middot; title sets vocabulary &middot; niche sets relevance</text>
+    </svg>
+  </div>
+
   <p class="section-text">A great role assignment has three parts:</p>
 <div class="demo-container" style="padding:1.5rem;margin-top:1rem">
     <div style="font-size:.7rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Formula</div>
@@ -126,6 +202,41 @@ Be brutally honest. I can take it.</code></pre>
 <div class="lesson-section">
   <span class="section-label">Patterns</span>
   <h2 class="section-title">3 role patterns for different situations.</h2>
+  <div class="lesson-visual" aria-label="Three role patterns shown as different shapes: Expert Advisor for deep knowledge, Peer Reviewer for honest feedback, and Audience Simulator for testing reactions">
+    <svg viewBox="0 0 480 140" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="role-grid3" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="480" height="140" fill="url(#role-grid3)"/>
+      <!-- Pattern 1: Expert Advisor -->
+      <rect x="20" y="25" width="130" height="70" rx="8" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="85" y="44" text-anchor="middle" fill="#34d399" font-size="8" font-weight="600" font-family="SF Mono,monospace">EXPERT ADVISOR</text>
+      <text x="85" y="60" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">deep specialized</text>
+      <text x="85" y="72" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">knowledge</text>
+      <text x="85" y="88" text-anchor="middle" fill="#34d399" font-size="6" font-family="SF Mono,monospace" opacity="0.6">"senior tax accountant"</text>
+      <!-- Pattern 2: Peer Reviewer -->
+      <rect x="170" y="25" width="130" height="70" rx="8" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+      <text x="235" y="44" text-anchor="middle" fill="#8b5cf6" font-size="8" font-weight="600" font-family="SF Mono,monospace">PEER REVIEWER</text>
+      <text x="235" y="60" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">honest critical</text>
+      <text x="235" y="72" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">feedback</text>
+      <text x="235" y="88" text-anchor="middle" fill="#8b5cf6" font-size="6" font-family="SF Mono,monospace" opacity="0.6">"senior editor at..."</text>
+      <!-- Pattern 3: Audience Simulator -->
+      <rect x="320" y="25" width="140" height="70" rx="8" fill="none" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="390" y="44" text-anchor="middle" fill="#fb923c" font-size="8" font-weight="600" font-family="SF Mono,monospace">AUDIENCE SIM</text>
+      <text x="390" y="60" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">test real-world</text>
+      <text x="390" y="72" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">reaction</text>
+      <text x="390" y="88" text-anchor="middle" fill="#fb923c" font-size="6" font-family="SF Mono,monospace" opacity="0.6">"busy parent at 9pm"</text>
+      <!-- When to use labels -->
+      <text x="85" y="116" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace" opacity="0.4">need: expertise</text>
+      <text x="235" y="116" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace" opacity="0.4">need: criticism</text>
+      <text x="390" y="116" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace" opacity="0.4">need: validation</text>
+      <!-- Bottom -->
+      <text x="240" y="134" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">choose the pattern that matches what kind of output you need</text>
+    </svg>
+  </div>
+
   <p class="section-text">Not all roles work the same way. Here are three patterns you can use depending on what kind of output you need.</p>
 
   <div class="demo-container" style="padding:1.5rem">
@@ -154,6 +265,18 @@ Be brutally honest. I can take it.</code></pre>
 <div class="quiz-block">
 <h3 class="quiz-title">Role Matching</h3>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="A task 'review contract' with three role options at different expertise levels">
+  <div style="display:flex;align-items:center;justify-content:center;gap:10px;padding:12px 16px;font-family:'SF Mono','JetBrains Mono',monospace;">
+    <div style="padding:6px 10px;border-radius:6px;border:1px solid rgba(56,189,248,.15);background:rgba(56,189,248,.03);">
+      <span style="color:#38bdf8;font-size:.65rem;">TASK</span>
+      <div style="color:#e5e5e5;font-size:.7rem;margin-top:2px;">review contract</div>
+    </div>
+    <div style="color:#71717a;font-size:.8rem;">&rarr;</div>
+    <div style="padding:6px 10px;border-radius:6px;border:2px solid rgba(192,132,252,.3);background:rgba(192,132,252,.04);">
+      <span style="color:#c084fc;font-size:.65rem;">BEST ROLE = ?</span>
+    </div>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">1</span>You need to review a legal contract for your freelance business. Which role?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
