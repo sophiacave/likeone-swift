@@ -44,6 +44,7 @@ struct HomeController: RouteCollection {
         let context = HomeContext(
             title: "Like One | Free AI Academy",
             description: "\(allCourses.count) free courses. \(totalLessons)+ hands-on lessons. From your first AI conversation to building autonomous systems.",
+            canonicalUrl: siteBaseURL,
             stats: [
                 Stat(number: "\(allCourses.count)", label: "Courses"),
                 Stat(number: "\(totalLessons)", label: "Lessons"),
@@ -65,6 +66,7 @@ struct HomeController: RouteCollection {
 struct HomeContext: Content {
     let title: String
     let description: String
+    let canonicalUrl: String?
     let stats: [Stat]
     let featured: [FeaturedCourse]
     let tiers: [TierPreview]

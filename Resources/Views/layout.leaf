@@ -13,8 +13,23 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="#(title)">
     <meta name="twitter:description" content="#(description)">
-    <link rel="canonical" href="https://likeone.ai">
+    #if(canonicalUrl):<link rel="canonical" href="#(canonicalUrl)">#endif
     <link rel="stylesheet" href="/css/style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Like One",
+        "url": "https://likeone-swift.fly.dev",
+        "description": "Free AI education for everyone. 52 courses, 521 lessons.",
+        "sameAs": ["https://github.com/sophiacave/likeone-swift"],
+        "founder": {
+            "@type": "Person",
+            "name": "Sophia Cave"
+        },
+        "nonprofitStatus": "Nonprofit501c3"
+    }
+    </script>
     <script src="https://unpkg.com/htmx.org@2.0.4" defer></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
 </head>
