@@ -1,0 +1,477 @@
+<!--
+  LIKE ONE ACADEMY — Visual Aid System v2
+  CSS-first. No SVG text. Responsive. Readable.
+
+  Three component patterns:
+  1. lo-flow    — step-by-step process diagrams
+  2. lo-compare — before/after or side-by-side
+  3. lo-compute — data walkthrough with real values
+-->
+
+<style>
+/* ============================================
+   VISUAL AID SYSTEM v2 — CSS Variables
+   ============================================ */
+.lo-visual {
+  --v-bg: #0a0a0f;
+  --v-surface: #111116;
+  --v-border: rgba(255,255,255,.06);
+  --v-border2: rgba(255,255,255,.1);
+  --v-text: #e5e5e5;
+  --v-dim: #a1a1aa;
+  --v-muted: #71717a;
+  --v-faint: #3f3f46;
+  --v-green: #34d399;
+  --v-purple: #c084fc;
+  --v-blue: #38bdf8;
+  --v-orange: #fb923c;
+  --v-red: #ef4444;
+  --v-green-bg: rgba(52,211,153,.06);
+  --v-purple-bg: rgba(192,132,252,.06);
+  --v-blue-bg: rgba(56,189,248,.06);
+  --v-orange-bg: rgba(251,146,60,.06);
+  --v-red-bg: rgba(239,68,68,.06);
+  --v-green-border: rgba(52,211,153,.15);
+  --v-purple-border: rgba(192,132,252,.15);
+  --v-blue-border: rgba(56,189,248,.15);
+  --v-orange-border: rgba(251,146,60,.15);
+  --v-red-border: rgba(239,68,68,.15);
+  --v-radius: 12px;
+  --v-radius-sm: 8px;
+  --v-font: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+
+  font-family: var(--v-font);
+  background: var(--v-bg);
+  border: 1px solid var(--v-border);
+  border-radius: var(--v-radius);
+  padding: 1.5rem;
+  margin: 1.25rem 0;
+  overflow: hidden;
+}
+
+.lo-visual * {
+  box-sizing: border-box;
+}
+
+/* Title bar */
+.lo-visual__title {
+  font-size: .65rem;
+  font-weight: 700;
+  color: var(--v-muted);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+/* Caption below */
+.lo-visual__caption {
+  font-size: .75rem;
+  color: var(--v-muted);
+  text-align: center;
+  margin-top: 1rem;
+  line-height: 1.5;
+}
+.lo-visual__caption strong {
+  color: var(--v-dim);
+}
+
+
+/* ============================================
+   COMPONENT 1: lo-flow
+   Step-by-step process diagram
+   ============================================ */
+.lo-flow {
+  display: grid;
+  gap: 0;
+  align-items: stretch;
+}
+
+/* Auto columns based on step count */
+.lo-flow[data-steps="3"] { grid-template-columns: 1fr auto 1fr auto 1fr; }
+.lo-flow[data-steps="4"] { grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; }
+.lo-flow[data-steps="5"] { grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr auto 1fr; }
+.lo-flow[data-steps="6"] { grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr auto 1fr auto 1fr; }
+
+.lo-flow__step {
+  padding: 1rem;
+  border-radius: var(--v-radius-sm);
+  text-align: center;
+  position: relative;
+}
+
+.lo-flow__step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  font-size: .85rem;
+  font-weight: 800;
+  margin-bottom: .5rem;
+}
+
+.lo-flow__step-label {
+  font-size: .8rem;
+  font-weight: 700;
+  margin-bottom: .35rem;
+  letter-spacing: .03em;
+}
+
+.lo-flow__step-detail {
+  font-size: .7rem;
+  color: var(--v-dim);
+  line-height: 1.5;
+}
+
+/* Arrow connector */
+.lo-flow__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 .25rem;
+  color: var(--v-faint);
+  font-size: 1.2rem;
+}
+
+/* Color variants */
+.lo-flow__step--green  { color: var(--v-green);  background: var(--v-green-bg);  border: 1px solid var(--v-green-border); }
+.lo-flow__step--purple { color: var(--v-purple); background: var(--v-purple-bg); border: 1px solid var(--v-purple-border); }
+.lo-flow__step--blue   { color: var(--v-blue);   background: var(--v-blue-bg);   border: 1px solid var(--v-blue-border); }
+.lo-flow__step--orange { color: var(--v-orange); background: var(--v-orange-bg); border: 1px solid var(--v-orange-border); }
+.lo-flow__step--red    { color: var(--v-red);    background: var(--v-red-bg);    border: 1px solid var(--v-red-border); }
+
+/* Responsive: stack on mobile */
+@media (max-width: 600px) {
+  .lo-flow { grid-template-columns: 1fr !important; gap: .5rem; }
+  .lo-flow__arrow { transform: rotate(90deg); padding: .25rem 0; }
+}
+
+
+/* ============================================
+   COMPONENT 2: lo-compare
+   Before/after or side-by-side
+   ============================================ */
+.lo-compare {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+
+.lo-compare__side {
+  padding: 1.25rem;
+  border-radius: var(--v-radius-sm);
+}
+
+.lo-compare__side--before {
+  background: var(--v-red-bg);
+  border: 1px solid var(--v-red-border);
+}
+
+.lo-compare__side--after {
+  background: var(--v-green-bg);
+  border: 1px solid var(--v-green-border);
+}
+
+.lo-compare__badge {
+  display: inline-block;
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .2rem .6rem;
+  border-radius: 4px;
+  margin-bottom: .75rem;
+}
+
+.lo-compare__side--before .lo-compare__badge {
+  color: var(--v-red);
+  background: rgba(239,68,68,.1);
+}
+
+.lo-compare__side--after .lo-compare__badge {
+  color: var(--v-green);
+  background: rgba(52,211,153,.1);
+}
+
+.lo-compare__content {
+  font-size: .8rem;
+  color: var(--v-dim);
+  line-height: 1.6;
+}
+
+.lo-compare__content strong {
+  color: var(--v-text);
+}
+
+.lo-compare__divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 .75rem;
+  color: var(--v-faint);
+  font-size: 1.5rem;
+}
+
+.lo-compare__result {
+  font-size: .75rem;
+  font-weight: 600;
+  margin-top: .75rem;
+  padding-top: .5rem;
+  border-top: 1px solid var(--v-border);
+}
+
+@media (max-width: 600px) {
+  .lo-compare { grid-template-columns: 1fr; gap: .75rem; }
+  .lo-compare__divider { transform: rotate(90deg); padding: .5rem 0; }
+}
+
+
+/* ============================================
+   COMPONENT 3: lo-compute
+   Data walkthrough with real values
+   ============================================ */
+.lo-compute {
+  display: grid;
+  gap: 0;
+  align-items: stretch;
+}
+
+.lo-compute[data-cols="3"] { grid-template-columns: 1fr auto 1fr auto 1fr; }
+.lo-compute[data-cols="4"] { grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; }
+
+.lo-compute__col {
+  padding: 1rem;
+  border-radius: var(--v-radius-sm);
+  text-align: center;
+}
+
+.lo-compute__col-title {
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: .75rem;
+  color: var(--v-muted);
+}
+
+.lo-compute__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  padding: .4rem .5rem;
+  border-radius: 6px;
+  margin-bottom: .35rem;
+  font-size: .8rem;
+}
+
+.lo-compute__row--green  { background: var(--v-green-bg);  border: 1px solid var(--v-green-border); }
+.lo-compute__row--purple { background: var(--v-purple-bg); border: 1px solid var(--v-purple-border); }
+.lo-compute__row--blue   { background: var(--v-blue-bg);   border: 1px solid var(--v-blue-border); }
+.lo-compute__row--orange { background: var(--v-orange-bg); border: 1px solid var(--v-orange-border); }
+
+.lo-compute__val {
+  font-weight: 700;
+}
+
+.lo-compute__op {
+  color: var(--v-faint);
+  font-size: .75rem;
+}
+
+.lo-compute__label {
+  font-size: .6rem;
+  color: var(--v-muted);
+}
+
+.lo-compute__result {
+  margin-top: .5rem;
+  padding: .6rem;
+  border-radius: 6px;
+  font-size: .95rem;
+  font-weight: 800;
+}
+
+.lo-compute__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 .35rem;
+  color: var(--v-faint);
+  font-size: 1.1rem;
+}
+
+@media (max-width: 600px) {
+  .lo-compute { grid-template-columns: 1fr !important; gap: .5rem; }
+  .lo-compute__arrow { transform: rotate(90deg); padding: .25rem 0; }
+}
+</style>
+
+
+<!-- ============================================
+     EXAMPLE 1: lo-flow
+     RAG Pipeline — 4 steps
+     ============================================ -->
+<div class="lo-visual" role="figure" aria-label="The RAG pipeline in 4 steps: embed the query, search the vector database, augment the prompt with context, then generate a grounded answer">
+  <div class="lo-visual__title">The RAG Pipeline</div>
+
+  <div class="lo-flow" data-steps="4">
+    <div class="lo-flow__step lo-flow__step--green">
+      <div class="lo-flow__step-num">1</div>
+      <div class="lo-flow__step-label">Embed</div>
+      <div class="lo-flow__step-detail">Convert question<br>to a vector</div>
+    </div>
+    <div class="lo-flow__arrow">→</div>
+    <div class="lo-flow__step lo-flow__step--purple">
+      <div class="lo-flow__step-num">2</div>
+      <div class="lo-flow__step-label">Search</div>
+      <div class="lo-flow__step-detail">Find similar<br>vectors in DB</div>
+    </div>
+    <div class="lo-flow__arrow">→</div>
+    <div class="lo-flow__step lo-flow__step--blue">
+      <div class="lo-flow__step-num">3</div>
+      <div class="lo-flow__step-label">Augment</div>
+      <div class="lo-flow__step-detail">Insert context<br>into prompt</div>
+    </div>
+    <div class="lo-flow__arrow">→</div>
+    <div class="lo-flow__step lo-flow__step--orange">
+      <div class="lo-flow__step-num">4</div>
+      <div class="lo-flow__step-label">Generate</div>
+      <div class="lo-flow__step-detail">LLM answers from<br>real data</div>
+    </div>
+  </div>
+
+  <div class="lo-visual__caption">
+    Without retrieval, the LLM guesses. With retrieval, it <strong>cites your documents</strong>.
+  </div>
+</div>
+
+
+<!-- ============================================
+     EXAMPLE 2: lo-compare
+     Bad prompt vs Good prompt
+     ============================================ -->
+<div class="lo-visual" role="figure" aria-label="Comparison of a vague prompt that produces generic output versus a specific prompt with role, context, and constraints that produces precise, usable output">
+  <div class="lo-visual__title">The Prompt Quality Gap</div>
+
+  <div class="lo-compare">
+    <div class="lo-compare__side lo-compare__side--before">
+      <div class="lo-compare__badge">Vague</div>
+      <div class="lo-compare__content">
+        "Write me a marketing email."
+      </div>
+      <div class="lo-compare__result" style="color: var(--v-red)">
+        → Generic, unusable output.<br>
+        <span style="color: var(--v-muted); font-weight: 400; font-size: .7rem">AI guesses audience, tone, length, goal.</span>
+      </div>
+    </div>
+
+    <div class="lo-compare__divider">→</div>
+
+    <div class="lo-compare__side lo-compare__side--after">
+      <div class="lo-compare__badge">Specific</div>
+      <div class="lo-compare__content">
+        "<strong>You are</strong> a conversion copywriter.<br>
+        Write a 3-sentence email to <strong>SaaS CTOs</strong><br>
+        about our new security feature.<br>
+        <strong>Tone:</strong> confident, not pushy.<br>
+        <strong>CTA:</strong> book a demo."
+      </div>
+      <div class="lo-compare__result" style="color: var(--v-green)">
+        → Ready to send. Zero edits needed.
+      </div>
+    </div>
+  </div>
+
+  <div class="lo-visual__caption">
+    Same AI. Same model. The <strong>only difference is 60 seconds</strong> of specificity.
+  </div>
+</div>
+
+
+<!-- ============================================
+     EXAMPLE 3: lo-compute
+     Neuron computation walkthrough
+     ============================================ -->
+<div class="lo-visual" role="figure" aria-label="Step-by-step neuron computation: three inputs multiplied by weights, summed with bias to get 0.80, then passed through ReLU activation which outputs 0.80 because it is positive">
+  <div class="lo-visual__title">Inside a Neuron — Real Numbers</div>
+
+  <div class="lo-compute" data-cols="3">
+    <!-- Column 1: Multiply -->
+    <div class="lo-compute__col" style="background: var(--v-surface); border: 1px solid var(--v-border);">
+      <div class="lo-compute__col-title">Multiply</div>
+      <div class="lo-compute__row lo-compute__row--green">
+        <span class="lo-compute__val" style="color: var(--v-green)">0.50</span>
+        <span class="lo-compute__op">×</span>
+        <span style="color: var(--v-green)">0.80</span>
+        <span class="lo-compute__op">=</span>
+        <span class="lo-compute__val" style="color: var(--v-text)">0.40</span>
+      </div>
+      <div class="lo-compute__row lo-compute__row--purple">
+        <span class="lo-compute__val" style="color: var(--v-purple)">0.30</span>
+        <span class="lo-compute__op">×</span>
+        <span style="color: var(--v-purple)">-0.40</span>
+        <span class="lo-compute__op">=</span>
+        <span class="lo-compute__val" style="color: var(--v-red)">-0.12</span>
+      </div>
+      <div class="lo-compute__row lo-compute__row--blue">
+        <span class="lo-compute__val" style="color: var(--v-blue)">0.70</span>
+        <span class="lo-compute__op">×</span>
+        <span style="color: var(--v-blue)">0.60</span>
+        <span class="lo-compute__op">=</span>
+        <span class="lo-compute__val" style="color: var(--v-text)">0.42</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; margin-top:.35rem;">
+        <span class="lo-compute__label">input</span>
+        <span class="lo-compute__label">weight</span>
+        <span class="lo-compute__label">result</span>
+      </div>
+    </div>
+
+    <div class="lo-compute__arrow">→</div>
+
+    <!-- Column 2: Sum -->
+    <div class="lo-compute__col" style="background: var(--v-surface); border: 1px solid var(--v-border);">
+      <div class="lo-compute__col-title">Add Up</div>
+      <div style="text-align:center; font-size:.85rem; line-height:1.8;">
+        <div style="color: var(--v-green)">+ 0.40</div>
+        <div style="color: var(--v-red)">− 0.12</div>
+        <div style="color: var(--v-blue)">+ 0.42</div>
+        <div style="border-top: 1px solid var(--v-border); padding-top:.4rem; margin-top:.3rem;">
+          <span style="color: var(--v-text)">=&nbsp;0.70</span>
+        </div>
+        <div style="color: var(--v-purple); font-size:.8rem; margin-top:.25rem;">+ 0.10 bias</div>
+      </div>
+      <div class="lo-compute__result" style="background: var(--v-purple-bg); border: 1px solid var(--v-purple-border); color: var(--v-text);">
+        z = 0.80
+      </div>
+    </div>
+
+    <div class="lo-compute__arrow">→</div>
+
+    <!-- Column 3: Activate -->
+    <div class="lo-compute__col" style="background: var(--v-surface); border: 1px solid var(--v-border);">
+      <div class="lo-compute__col-title">Decide</div>
+      <div style="text-align:center; padding:.5rem 0;">
+        <div style="color: var(--v-orange); font-size:.85rem; font-weight:600;">ReLU(0.80)</div>
+        <div style="color: var(--v-muted); font-size:.75rem; margin-top:.5rem;">Is 0.80 &gt; 0?</div>
+        <div style="color: var(--v-green); font-size:.85rem; font-weight:700; margin-top:.2rem;">YES</div>
+      </div>
+      <div class="lo-compute__result" style="background: var(--v-green-bg); border: 2px solid var(--v-green-border); color: var(--v-green); font-size: 1.3rem;">
+        0.80
+      </div>
+      <div style="text-align:center; margin-top:.4rem;">
+        <span style="color: var(--v-green); font-size:.65rem; font-weight:700; letter-spacing:.15em;">FIRES</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="lo-visual__caption">
+    <strong>output = f( x₁·w₁ + x₂·w₂ + x₃·w₃ + bias )</strong><br>
+    Every AI is made of millions of these. The math is always the same.
+  </div>
+</div>
