@@ -18,22 +18,22 @@
 <div class="lesson-section">
   <span class="section-label">The Truth</span>
   <h2 class="section-title">AI is only as good as the question you ask.</h2>
-  <div class="lo-visual" role="figure" aria-label="Input Quality = Output Quality">
-  <div class="lo-visual__title">Input Quality = Output Quality</div>
-  <div class="lo-compare">
-    <div class="lo-compare__side lo-compare__side--before">
-      <div class="lo-compare__badge">Vague</div>
-      <div class="lo-compare__content">"Write an email"</div>
-      <div class="lo-compare__result" style="color:var(--v-red)">&rarr; Generic, unusable.<br><span style="font-size:.7rem;color:var(--v-muted)">AI guesses everything.</span></div>
+  <div class="lo-vis" role="figure" aria-label="Input Quality = Output Quality">
+  <div class="lo-vis__title">Input Quality = Output Quality</div>
+  <div class="lo-versus">
+    <div class="lo-versus__side lo-compare__side--before">
+      <div class="lo-versus__tag">Vague</div>
+      <div class="lo-versus__body">"Write an email"</div>
+      <div class="lo-versus__result" style="color:var(--v-red)">&rarr; Generic, unusable.<br><span style="font-size:.7rem;color:var(--v-muted)">AI guesses everything.</span></div>
     </div>
-    <div class="lo-compare__divider">&rarr;</div>
-    <div class="lo-compare__side lo-compare__side--after">
-      <div class="lo-compare__badge">Specific</div>
-      <div class="lo-compare__content">Role + context +<br>format + constraints</div>
-      <div class="lo-compare__result" style="color:var(--v-green)">&rarr; Exactly what you need.</div>
+    <div class="lo-versus__divider">&rarr;</div>
+    <div class="lo-versus__side lo-compare__side--after">
+      <div class="lo-versus__tag">Specific</div>
+      <div class="lo-versus__body">Role + context +<br>format + constraints</div>
+      <div class="lo-versus__result" style="color:var(--v-green)">&rarr; Exactly what you need.</div>
     </div>
   </div>
-  <div class="lo-visual__caption">The AI didn't change &mdash; your <strong>input</strong> did.</div>
+  <div class="lo-vis__caption">The AI didn't change &mdash; your <strong>input</strong> did.</div>
 </div>
 
   <p class="section-text">You've probably heard people say AI is overhyped. That it gives generic answers. That it can't do their job. And honestly? With the prompts most people write, they're right.</p>
@@ -45,8 +45,8 @@
 <div class="lesson-section">
   <span class="section-label">The Mental Model</span>
   <h2 class="section-title">Think of AI as the world's most capable intern.</h2>
-  <div class="lo-visual" role="figure" aria-label="AI has vast knowledge but zero context about your specific situation">
-  <div class="lo-visual__title">The Knowledge Gap</div>
+  <div class="lo-vis" role="figure" aria-label="AI has vast knowledge but zero context about your specific situation">
+  <div class="lo-vis__title">The Knowledge Gap</div>
   <div style="display:grid;grid-template-columns:2fr auto 1fr;gap:0;align-items:center;">
     <div style="text-align:center;padding:1rem;">
       <div style="font-size:2.5rem;color:var(--v-purple);opacity:.3;line-height:1;">&#x221E;</div>
@@ -60,7 +60,7 @@
       <div style="font-size:.7rem;color:var(--v-dim);margin-top:.25rem;">your situation,<br>your audience, your goal</div>
     </div>
   </div>
-  <div class="lo-visual__caption">Your prompt <strong>fills the gap</strong>. That&#39;s the entire game.</div>
+  <div class="lo-vis__caption">Your prompt <strong>fills the gap</strong>. That&#39;s the entire game.</div>
 </div>
 
   <p class="section-text">Imagine you hired a new team member who:</p>
@@ -261,28 +261,28 @@ Every detail you add is one less thing the AI has to guess.</div>
 <div class="lesson-section">
   <span class="section-label">The One Thing</span>
   <h2 class="section-title">Every great prompt has this in common: specificity.</h2>
-  <div class="lo-visual" role="figure" aria-label="The Specificity Spectrum">
-  <div class="lo-visual__title">The Specificity Spectrum</div>
-  <div class="lo-flow" data-steps="3">
-    <div class="lo-flow__step lo-flow__step--red">
-      <div class="lo-flow__step-num">1</div>
-      <div class="lo-flow__step-label">Vague</div>
-      <div class="lo-flow__step-detail">"Help me"<br>AI guesses all</div>
+  <div class="lo-vis" role="figure" aria-label="The Specificity Spectrum">
+  <div class="lo-vis__title">The Specificity Spectrum</div>
+  <div class="lo-steps" data-count="3">
+    <div class="lo-step lo-step--red">
+      <div class="lo-step__num">1</div>
+      <div class="lo-step__label">Vague</div>
+      <div class="lo-step__desc">"Help me"<br>AI guesses all</div>
     </div>
-    <div class="lo-flow__arrow">&rarr;</div>
-    <div class="lo-flow__step lo-flow__step--orange">
-      <div class="lo-flow__step-num">2</div>
-      <div class="lo-flow__step-label">Better</div>
-      <div class="lo-flow__step-detail">"Write an email"<br>AI guesses most</div>
+    <div class="lo-steps__arrow">&rarr;</div>
+    <div class="lo-step lo-step--orange">
+      <div class="lo-step__num">2</div>
+      <div class="lo-step__label">Better</div>
+      <div class="lo-step__desc">"Write an email"<br>AI guesses most</div>
     </div>
-    <div class="lo-flow__arrow">&rarr;</div>
-    <div class="lo-flow__step lo-flow__step--green">
-      <div class="lo-flow__step-num">3</div>
-      <div class="lo-flow__step-label">Specific</div>
-      <div class="lo-flow__step-detail">"3-sentence Slack,<br>warm tone"<br>AI delivers</div>
+    <div class="lo-steps__arrow">&rarr;</div>
+    <div class="lo-step lo-step--green">
+      <div class="lo-step__num">3</div>
+      <div class="lo-step__label">Specific</div>
+      <div class="lo-step__desc">"3-sentence Slack,<br>warm tone"<br>AI delivers</div>
     </div>
   </div>
-  <div class="lo-visual__caption"><strong>60 seconds</strong> of specificity separates generic from precise.</div>
+  <div class="lo-vis__caption"><strong>60 seconds</strong> of specificity separates generic from precise.</div>
 </div>
 
   <p class="section-text">Not length. Not fancy words. Not tricks or hacks. <strong>Specificity.</strong></p>
