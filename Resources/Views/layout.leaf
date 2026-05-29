@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#c084fc">
+    <title>#(title)</title>
+    <meta name="description" content="#(description)">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://unpkg.com/htmx.org@2.0.4" defer></script>
+</head>
+<body>
+    <div class="site-page">
+        <a href="#main-content" class="skip-link">Skip to content</a>
+        <header class="header-site">
+            <nav class="header-site-nav">
+                <a class="header-site-brand" href="/">like<span class="accent">one</span></a>
+                <div class="site-nav-links">
+                    <a class="header-site-link" href="/academy">Academy</a>
+                    <a class="header-site-link" href="/api/info">API</a>
+                    <a class="header-signin-btn" href="/account">Sign In</a>
+                </div>
+            </nav>
+        </header>
+        <main id="main-content">
+            #import("content")
+        </main>
+        <footer class="footer-site">
+            <div class="footer-site-inner">
+                <p class="footer-site-text">
+                    &copy; 2026 Like One. All rights reserved.
+                    &bull; <a href="mailto:hello@likeone.ai">hello@likeone.ai</a>
+                    &bull; Powered by Swift + Vapor
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+#extend("layout"):
+    #export("content"):
+        <section class="site-hero">
+            <div class="site-hero-inner">
+                <h1 class="site-hero-title">#(heading)</h1>
+                <p class="site-hero-desc">#(description)</p>
+            </div>
+        </section>
+        <section class="site-section">
+            <div class="site-container text-center">
+                <span class="site-section-tag">COMING TO SWIFT</span>
+                <h2 class="site-section-title">Academy is migrating to Swift.</h2>
+                <p class="site-section-desc">Full course catalog coming soon. For now, visit <a href="https://likeone.ai/academy/" class="accent">likeone.ai/academy</a>.</p>
+            </div>
+        </section>
+    #endexport
+#endextend

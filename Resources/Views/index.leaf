@@ -1,0 +1,64 @@
+#extend("layout"):
+    #export("content"):
+        <section class="site-hero">
+            <div class="site-hero-inner">
+                <h1 class="site-hero-title">Your brain,<br><span class="accent-gradient">extended.</span></h1>
+                <p class="site-hero-desc">#(description)</p>
+                <div class="site-cta-row">
+                    <a class="site-btn-primary" href="/academy">Start Free</a>
+                    <a class="site-btn-secondary" href="#stats">See The Path</a>
+                </div>
+            </div>
+        </section>
+        <section id="stats" class="site-stats-bar">
+            <div class="site-stats-grid">
+                #for(stat in stats):
+                    <div>
+                        <div class="site-stat-number">#(stat.number)</div>
+                        <div class="site-stat-label">#(stat.label)</div>
+                    </div>
+                #endfor
+            </div>
+        </section>
+        <section class="site-section">
+            <div class="site-container text-center">
+                <span class="site-section-tag">BUILT IN PUBLIC</span>
+                <h2 class="site-section-title">This isn't theory. It's running.</h2>
+                <p class="site-section-desc">Like One is built on real infrastructure. Everything we teach, we use every day.</p>
+                <div class="site-card-grid"
+                     hx-get="/api/info"
+                     hx-trigger="revealed"
+                     hx-target="#api-status"
+                     hx-swap="innerHTML">
+                    <div class="site-card">
+                        <div class="site-card-emoji">&#x1F9E0;</div>
+                        <div class="site-card-title">Persistent AI Memory</div>
+                        <div class="site-card-desc">Your AI remembers everything. Across conversations. Forever.</div>
+                    </div>
+                    <div class="site-card">
+                        <div class="site-card-emoji">&#x26A1;</div>
+                        <div class="site-card-title">Always Running</div>
+                        <div class="site-card-desc">Automations that work while you sleep.</div>
+                    </div>
+                    <div class="site-card">
+                        <div class="site-card-emoji">&#x1F512;</div>
+                        <div class="site-card-title">Your Values Protected</div>
+                        <div class="site-card-desc">AI that knows your boundaries and respects them.</div>
+                    </div>
+                    <div class="site-card">
+                        <div class="site-card-emoji">&#x1F4DA;</div>
+                        <div class="site-card-title">52 Courses</div>
+                        <div class="site-card-desc">Interactive. Hands-on. Start free today.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="site-section-alt text-center">
+            <div class="site-container">
+                <h2 class="site-section-title">Swift-powered. Brain-driven.</h2>
+                <p class="site-section-desc">This page is served by Vapor + Leaf with HTMX progressive enhancement. The future of likeone.ai.</p>
+                <div id="api-status" class="api-status"></div>
+            </div>
+        </section>
+    #endexport
+#endextend
