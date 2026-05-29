@@ -85,6 +85,31 @@
   <span class="section-label">The Four Techniques</span>
   <h2 class="section-title">Each one solves a different problem.</h2>
 
+  <div class="lesson-visual" aria-label="Four prompt techniques: Zero-Shot, Few-Shot, Chain-of-Thought, Role-Play">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:14px;font-family:'SF Mono','JetBrains Mono',monospace;">
+      <div style="text-align:center;padding:10px 6px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);">
+        <div style="font-size:.9rem;margin-bottom:4px;">&#x1F3AF;</div>
+        <div style="font-size:.7rem;color:#34d399;font-weight:600;">ZERO-SHOT</div>
+        <div style="font-size:.6rem;color:#52525b;margin-top:3px;">no examples</div>
+      </div>
+      <div style="text-align:center;padding:10px 6px;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.12);">
+        <div style="font-size:.9rem;margin-bottom:4px;">&#x1F4CB;</div>
+        <div style="font-size:.7rem;color:#8b5cf6;font-weight:600;">FEW-SHOT</div>
+        <div style="font-size:.6rem;color:#52525b;margin-top:3px;">show examples</div>
+      </div>
+      <div style="text-align:center;padding:10px 6px;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.12);">
+        <div style="font-size:.9rem;margin-bottom:4px;">&#x1F9E0;</div>
+        <div style="font-size:.7rem;color:#fb923c;font-weight:600;">CHAIN-OF-THOUGHT</div>
+        <div style="font-size:.6rem;color:#52525b;margin-top:3px;">step by step</div>
+      </div>
+      <div style="text-align:center;padding:10px 6px;border-radius:8px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.12);">
+        <div style="font-size:.9rem;margin-bottom:4px;">&#x1F3AD;</div>
+        <div style="font-size:.7rem;color:#38bdf8;font-weight:600;">ROLE-PLAY</div>
+        <div style="font-size:.6rem;color:#52525b;margin-top:3px;">give persona</div>
+      </div>
+    </div>
+  </div>
+
 <div class="flash-block">
 <h3 class="quiz-title">Four Prompt Techniques — Flip for Details</h3>
 <details class="flash-card">
@@ -224,7 +249,18 @@ app.get("/user", (req, res) => {
 <!-- SECTION 2: INTERACTIVE PLAYGROUND -->
 <div class="lesson-section">
   <span class="section-label">Try It</span>
-  <h2 class="section-title">Edit prompts and see the difference.</h2>
+  <h2 class="section-title">The pattern behind every technique.</h2>
+
+  <div class="lesson-visual" aria-label="All four techniques use the same API — they just structure the message differently">
+    <div style="padding:14px 20px;font-family:'SF Mono','JetBrains Mono',monospace;text-align:center;">
+      <div style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;background:rgba(192,132,252,.04);border:1px solid rgba(192,132,252,.15);">
+        <span style="color:#c084fc;font-size:.8rem;font-weight:600;">Same AI model</span>
+        <span style="color:#52525b;font-size:.75rem;">+ different prompt structure</span>
+        <span style="color:#52525b;font-size:.8rem;">=</span>
+        <span style="color:#34d399;font-size:.8rem;font-weight:600;">different quality</span>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- SECTION 2B: REAL-WORLD PATTERNS -->
@@ -258,6 +294,13 @@ app.get("/user", (req, res) => {
 <div class="quiz-block">
 <h3 class="quiz-title">Technique Selection</h3>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="When AI needs to learn a new format: show it examples">
+  <div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;">
+    <span style="color:#52525b;">new format?</span>
+    <span style="color:#3f3f46;">&rarr;</span>
+    <span style="padding:4px 8px;border-radius:6px;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);color:#8b5cf6;font-weight:600;">show examples</span>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">1</span>You need the AI to format data in a very specific way that it has never seen before. Which technique?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
@@ -276,6 +319,15 @@ app.get("/user", (req, res) => {
 <div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> When you need a specific, unusual format, showing the AI 2-3 examples is far more effective than trying to describe the format in words. Few-shot lets the AI learn the pattern from examples.</div>
 </div>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Chain-of-thought: force step-by-step reasoning for better accuracy">
+  <div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;">
+    <span style="color:#fb923c;font-weight:600;">Chain-of-Thought</span>
+    <span style="color:#52525b;">=</span>
+    <span style="color:#52525b;">"think step by step"</span>
+    <span style="color:#3f3f46;">&rarr;</span>
+    <span style="color:#34d399;font-weight:600;">better math</span>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">2</span>Research shows chain-of-thought prompting can improve math accuracy by up to:</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
