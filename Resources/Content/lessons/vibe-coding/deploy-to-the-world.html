@@ -20,12 +20,56 @@
 <div class="lesson-section">
   <span class="section-label">The Basics</span>
   <h2 class="section-title">Deploying = putting your app on the internet.</h2>
-  <div class="lesson-visual" aria-label="Deploy pipeline: your code on your laptop gets pushed to a hosting platform like Vercel or Netlify, which gives it a URL anyone in the world can visit">
-    <svg viewBox="0 0 480 110" xmlns="http://www.w3.org/2000/svg">
-      <defs><pattern id="deploy-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/></pattern></defs>
-      <rect width="480" height="110" fill="url(#deploy-grid)"/>
-      <text x="240" y="16" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">DEPLOY = SHARE WITH THE WORLD</text>
-      <rect x="30" y="30" width="100" height="40" rx="8" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+  <div class="lesson-visual" aria-label="Deploy flow showing your laptop with project files, a git push command flowing to Vercel's build pipeline, and the resulting live URL with users connecting from around the world">
+    <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="deploy-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="480" height="200" fill="url(#deploy-grid)"/>
+      <text x="240" y="16" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">FROM YOUR LAPTOP TO THE WORLD</text>
+      <!-- Laptop -->
+      <rect x="30" y="30" width="90" height="60" rx="6" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+      <rect x="38" y="38" width="74" height="36" rx="2" fill="none" stroke="#8b5cf6" stroke-width="0.5" opacity="0.3"/>
+      <text x="75" y="54" text-anchor="middle" fill="#8b5cf6" font-size="5" font-family="SF Mono,monospace" opacity="0.4">index.html</text>
+      <text x="75" y="62" text-anchor="middle" fill="#8b5cf6" font-size="5" font-family="SF Mono,monospace" opacity="0.4">style.css</text>
+      <text x="75" y="70" text-anchor="middle" fill="#8b5cf6" font-size="5" font-family="SF Mono,monospace" opacity="0.4">app.js</text>
+      <rect x="55" y="92" width="40" height="4" rx="2" fill="#8b5cf6" opacity="0.2"/>
+      <text x="75" y="108" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace" opacity="0.4">your laptop</text>
+      <!-- git push arrow -->
+      <line x1="125" y1="60" x2="185" y2="60" stroke="#c084fc" stroke-width="1.5" opacity="0.5"/>
+      <polygon points="183,57 189,60 183,63" fill="#c084fc" opacity="0.5"/>
+      <text x="155" y="50" text-anchor="middle" fill="#c084fc" font-size="6" font-family="SF Mono,monospace" opacity="0.5">git push</text>
+      <!-- Vercel build -->
+      <rect x="190" y="30" width="100" height="60" rx="8" fill="none" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="240" y="50" text-anchor="middle" fill="#fb923c" font-size="8" font-weight="600" font-family="SF Mono,monospace">BUILD</text>
+      <text x="240" y="64" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace">install deps</text>
+      <text x="240" y="74" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace">compile</text>
+      <text x="240" y="84" text-anchor="middle" fill="#34d399" font-size="6" font-family="SF Mono,monospace" opacity="0.5">deploy to CDN</text>
+      <text x="240" y="108" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace" opacity="0.4">Vercel / Netlify</text>
+      <!-- URL arrow -->
+      <line x1="295" y1="60" x2="355" y2="60" stroke="#34d399" stroke-width="1.5" opacity="0.5"/>
+      <polygon points="353,57 359,60 353,63" fill="#34d399" opacity="0.5"/>
+      <text x="325" y="50" text-anchor="middle" fill="#34d399" font-size="6" font-family="SF Mono,monospace" opacity="0.5">URL</text>
+      <!-- Live site -->
+      <rect x="360" y="30" width="100" height="60" rx="8" fill="none" stroke="#34d399" stroke-width="2"/>
+      <text x="410" y="50" text-anchor="middle" fill="#34d399" font-size="8" font-weight="700" font-family="SF Mono,monospace">LIVE</text>
+      <text x="410" y="64" text-anchor="middle" fill="#34d399" font-size="6" font-family="SF Mono,monospace">myapp.vercel.app</text>
+      <text x="410" y="108" text-anchor="middle" fill="#34d399" font-size="6" font-family="SF Mono,monospace" opacity="0.4">anyone can visit</text>
+      <!-- Users connecting -->
+      <circle cx="370" cy="140" r="8" fill="none" stroke="#71717a" stroke-width="0.5" opacity="0.2"/>
+      <circle cx="400" cy="148" r="8" fill="none" stroke="#71717a" stroke-width="0.5" opacity="0.2"/>
+      <circle cx="430" cy="135" r="8" fill="none" stroke="#71717a" stroke-width="0.5" opacity="0.2"/>
+      <circle cx="450" cy="150" r="8" fill="none" stroke="#71717a" stroke-width="0.5" opacity="0.15"/>
+      <line x1="378" y1="136" x2="400" y2="96" stroke="#71717a" stroke-width="0.5" stroke-dasharray="2,2" opacity="0.1"/>
+      <line x1="400" y1="140" x2="410" y2="96" stroke="#71717a" stroke-width="0.5" stroke-dasharray="2,2" opacity="0.1"/>
+      <line x1="422" y1="132" x2="415" y2="96" stroke="#71717a" stroke-width="0.5" stroke-dasharray="2,2" opacity="0.1"/>
+      <text x="410" y="170" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace" opacity="0.2">users worldwide</text>
+      <!-- Bottom -->
+      <text x="240" y="190" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace">one command transforms files on your laptop into a live website</text>
+    </svg>
+  </div>
       <text x="80" y="46" text-anchor="middle" fill="#8b5cf6" font-size="7" font-weight="600" font-family="SF Mono,monospace">YOUR CODE</text>
       <text x="80" y="60" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace">on your laptop</text>
       <line x1="135" y1="50" x2="185" y2="50" stroke="#c084fc" stroke-width="1.5" opacity="0.5"/>

@@ -20,12 +20,58 @@
 <div class="lesson-section">
   <span class="section-label">The Basics</span>
   <h2 class="section-title">A database is just a filing cabinet your app can read.</h2>
-  <div class="lesson-visual" aria-label="Database analogy: a filing cabinet with labeled drawers. Your app reads from and writes to these drawers. Supabase gives you the cabinet for free.">
-    <svg viewBox="0 0 480 110" xmlns="http://www.w3.org/2000/svg">
-      <defs><pattern id="db-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/></pattern></defs>
-      <rect width="480" height="110" fill="url(#db-grid)"/>
-      <text x="240" y="16" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">YOUR APP + DATABASE</text>
-      <rect x="30" y="28" width="100" height="50" rx="8" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+  <div class="lesson-visual" aria-label="How your app talks to a database: user clicks Save, app sends data to Supabase, Supabase stores it in a table with rows and columns, then on next visit the app reads it back" style="padding:16px;">
+    <div style="font-family:'SF Mono','JetBrains Mono',monospace;">
+      <div style="text-align:center;font-size:.65rem;font-weight:600;color:#71717a;letter-spacing:.08em;margin-bottom:10px;">HOW YOUR APP SAVES DATA</div>
+      <div style="display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;">
+        <!-- User action -->
+        <div style="text-align:center;">
+          <div style="width:50px;height:50px;border-radius:50%;border:2px solid #34d399;display:flex;align-items:center;justify-content:center;margin:0 auto;">
+            <span style="color:#34d399;font-size:.7rem;font-weight:700;">USER</span>
+          </div>
+          <div style="color:#34d399;font-size:.55rem;margin-top:4px;">clicks "Save"</div>
+        </div>
+        <!-- Data flow arrows -->
+        <div>
+          <div style="display:flex;align-items:center;gap:4px;margin-bottom:8px;">
+            <span style="color:#34d399;font-size:.5rem;">WRITE</span>
+            <div style="flex:1;height:2px;background:linear-gradient(90deg,#34d399 50%,transparent);border-radius:1px;"></div>
+            <span style="color:#34d399;font-size:.7rem;">&#x2192;</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:4px;">
+            <span style="color:#fb923c;font-size:.7rem;">&#x2190;</span>
+            <div style="flex:1;height:2px;background:linear-gradient(270deg,#fb923c 50%,transparent);border-radius:1px;"></div>
+            <span style="color:#fb923c;font-size:.5rem;">READ</span>
+          </div>
+        </div>
+        <!-- Database table -->
+        <div style="border:1.5px solid rgba(139,92,246,.3);border-radius:8px;overflow:hidden;min-width:180px;">
+          <div style="background:rgba(139,92,246,.08);padding:4px 8px;font-size:.6rem;color:#8b5cf6;font-weight:600;text-align:center;">SUPABASE TABLE: entries</div>
+          <div style="padding:4px 8px;border-bottom:1px solid rgba(139,92,246,.1);">
+            <div style="display:flex;gap:12px;font-size:.5rem;color:#71717a;font-weight:600;">
+              <span style="width:20px;">id</span><span style="flex:1;">text</span><span style="width:55px;">date</span>
+            </div>
+          </div>
+          <div style="padding:3px 8px;border-bottom:1px solid rgba(255,255,255,.03);">
+            <div style="display:flex;gap:12px;font-size:.5rem;color:#a1a1aa;">
+              <span style="width:20px;color:#71717a;">1</span><span style="flex:1;">grateful for sun</span><span style="width:55px;color:#52525b;">May 29</span>
+            </div>
+          </div>
+          <div style="padding:3px 8px;border-bottom:1px solid rgba(255,255,255,.03);">
+            <div style="display:flex;gap:12px;font-size:.5rem;color:#a1a1aa;">
+              <span style="width:20px;color:#71717a;">2</span><span style="flex:1;">good coffee today</span><span style="width:55px;color:#52525b;">May 29</span>
+            </div>
+          </div>
+          <div style="padding:3px 8px;">
+            <div style="display:flex;gap:12px;font-size:.5rem;color:#34d399;">
+              <span style="width:20px;color:#71717a;">3</span><span style="flex:1;font-weight:600;">new entry...</span><span style="width:55px;color:#52525b;">now</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;font-size:.6rem;color:#71717a;margin-top:8px;opacity:.4;">your app writes rows, reads rows — that is all a database does</div>
+    </div>
+  </div>
       <text x="80" y="50" text-anchor="middle" fill="#8b5cf6" font-size="8" font-weight="600" font-family="SF Mono,monospace">YOUR APP</text>
       <text x="80" y="66" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace">reads + writes</text>
       <line x1="132" y1="53" x2="180" y2="53" stroke="#34d399" stroke-width="1.5" opacity="0.5"/>

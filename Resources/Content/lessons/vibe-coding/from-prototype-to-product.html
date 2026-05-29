@@ -20,12 +20,49 @@
 <div class="lesson-section">
   <span class="section-label">The Gap</span>
   <h2 class="section-title">Your prototype works. Now make it a product.</h2>
-  <div class="lesson-visual" aria-label="The gap between prototype and product: prototype has the core idea working, but a product needs error handling, user accounts, security, performance, and polish">
-    <svg viewBox="0 0 480 130" xmlns="http://www.w3.org/2000/svg">
-      <defs><pattern id="prod-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/></pattern></defs>
-      <rect width="480" height="130" fill="url(#prod-grid)"/>
-      <text x="240" y="16" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">PROTOTYPE → PRODUCT</text>
-      <rect x="30" y="28" width="140" height="55" rx="8" fill="none" stroke="#fb923c" stroke-width="1.5"/>
+  <div class="lesson-visual" aria-label="Prototype vs product shown as two icebergs: the prototype shows just the tip above water (working features), while the product reveals everything below the surface (error handling, authentication, security, loading states, mobile support, edge cases)" style="padding:16px;">
+    <div style="font-family:'SF Mono','JetBrains Mono',monospace;">
+      <div style="text-align:center;font-size:.65rem;font-weight:600;color:#71717a;letter-spacing:.08em;margin-bottom:10px;">THE ICEBERG: WHAT USERS DON'T SEE</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <!-- Prototype iceberg -->
+        <div style="text-align:center;">
+          <div style="font-size:.65rem;color:#fb923c;font-weight:600;margin-bottom:6px;">PROTOTYPE</div>
+          <!-- Above water -->
+          <div style="padding:8px;border-radius:8px 8px 0 0;border:1.5px solid rgba(251,146,60,.3);border-bottom:none;background:rgba(251,146,60,.04);">
+            <div style="color:#fb923c;font-size:.65rem;font-weight:600;">happy path works</div>
+          </div>
+          <!-- Water line -->
+          <div style="height:2px;background:linear-gradient(90deg,transparent,rgba(56,189,248,.2),transparent);margin:0;"></div>
+          <!-- Below water (mostly empty) -->
+          <div style="padding:12px 8px;border-radius:0 0 8px 8px;border:1px dashed rgba(113,113,122,.1);min-height:60px;">
+            <div style="color:#71717a;font-size:.55rem;opacity:.2;">nothing here yet</div>
+          </div>
+        </div>
+        <!-- Product iceberg -->
+        <div style="text-align:center;">
+          <div style="font-size:.65rem;color:#34d399;font-weight:600;margin-bottom:6px;">PRODUCT</div>
+          <!-- Above water -->
+          <div style="padding:8px;border-radius:8px 8px 0 0;border:2px solid rgba(52,211,153,.3);border-bottom:none;background:rgba(52,211,153,.04);">
+            <div style="color:#34d399;font-size:.65rem;font-weight:700;">everything works</div>
+          </div>
+          <!-- Water line -->
+          <div style="height:2px;background:linear-gradient(90deg,transparent,rgba(56,189,248,.2),transparent);margin:0;"></div>
+          <!-- Below water (full) -->
+          <div style="padding:8px;border-radius:0 0 8px 8px;border:1.5px solid rgba(52,211,153,.15);background:rgba(52,211,153,.02);">
+            <div style="display:flex;flex-direction:column;gap:3px;">
+              <div style="font-size:.55rem;color:#34d399;opacity:.5;">error handling</div>
+              <div style="font-size:.55rem;color:#34d399;opacity:.45;">authentication</div>
+              <div style="font-size:.55rem;color:#34d399;opacity:.4;">loading states</div>
+              <div style="font-size:.55rem;color:#34d399;opacity:.35;">mobile layout</div>
+              <div style="font-size:.55rem;color:#34d399;opacity:.3;">edge cases</div>
+              <div style="font-size:.55rem;color:#34d399;opacity:.25;">security</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;font-size:.6rem;color:#71717a;margin-top:8px;opacity:.4;">the gap is not more features — it is everything below the waterline</div>
+    </div>
+  </div>
       <text x="100" y="46" text-anchor="middle" fill="#fb923c" font-size="8" font-weight="600" font-family="SF Mono,monospace">PROTOTYPE</text>
       <text x="100" y="60" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace">core idea works</text>
       <text x="100" y="72" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace">happy path only</text>
