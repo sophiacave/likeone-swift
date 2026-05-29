@@ -20,21 +20,41 @@
 <div class="lesson-section">
   <span class="section-label">The Shift</span>
   <h2 class="section-title">Stop thinking about code. Start thinking about people.</h2>
-  <div class="lesson-visual" aria-label="Feature thinking: instead of thinking about code (functions, APIs, databases), think about people (what do users need? what saves them time? what delights them?)">
-    <svg viewBox="0 0 480 130" xmlns="http://www.w3.org/2000/svg">
-      <defs><pattern id="feat-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/></pattern></defs>
-      <rect width="480" height="130" fill="url(#feat-grid)"/>
-      <rect x="30" y="25" width="180" height="60" rx="8" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.4"/>
-      <text x="120" y="44" text-anchor="middle" fill="#ef4444" font-size="7" font-weight="600" font-family="SF Mono,monospace" opacity="0.5">CODE THINKING</text>
-      <text x="120" y="58" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace" opacity="0.4">"what function do I write?"</text>
-      <text x="120" y="70" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace" opacity="0.4">"what API do I call?"</text>
-      <text x="240" y="58" text-anchor="middle" fill="#c084fc" font-size="14" opacity="0.4">&rarr;</text>
-      <rect x="270" y="25" width="180" height="60" rx="8" fill="none" stroke="#34d399" stroke-width="2"/>
-      <text x="360" y="44" text-anchor="middle" fill="#34d399" font-size="7" font-weight="700" font-family="SF Mono,monospace">FEATURE THINKING</text>
-      <text x="360" y="58" text-anchor="middle" fill="#34d399" font-size="6.5" font-family="SF Mono,monospace">"what does the user need?"</text>
-      <text x="360" y="70" text-anchor="middle" fill="#34d399" font-size="6.5" font-family="SF Mono,monospace">"what saves them time?"</text>
-      <text x="240" y="110" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">describe the experience, not the implementation</text>
-    </svg>
+  <div class="lesson-visual" aria-label="Feature decomposition: a user need breaks into visible features which the AI then implements as code. You describe the top layer, AI handles the bottom." style="padding:16px;">
+    <div style="font-family:'SF Mono','JetBrains Mono',monospace;text-align:center;">
+      <div style="font-size:.65rem;font-weight:600;color:#71717a;letter-spacing:.08em;margin-bottom:10px;">THINK IN LAYERS — YOU DESCRIBE THE TOP, AI BUILDS THE BOTTOM</div>
+      <!-- Layer 1: User need -->
+      <div style="padding:10px 20px;border-radius:10px;border:2px solid rgba(52,211,153,.3);background:rgba(52,211,153,.04);display:inline-block;margin-bottom:6px;">
+        <span style="color:#34d399;font-size:.85rem;font-weight:700;">USER NEED</span>
+        <span style="color:#71717a;font-size:.75rem;margin-left:8px;">"I want to track my habits"</span>
+      </div>
+      <div style="color:#34d399;font-size:.6rem;opacity:.4;margin:2px 0;">you describe this &#x2193;</div>
+      <!-- Layer 2: Features -->
+      <div style="display:flex;gap:8px;justify-content:center;margin-bottom:6px;">
+        <div style="padding:8px 12px;border-radius:8px;border:1.5px solid rgba(192,132,252,.25);background:rgba(192,132,252,.03);">
+          <div style="color:#c084fc;font-size:.7rem;font-weight:600;">streak counter</div>
+          <div style="color:#71717a;font-size:.55rem;margin-top:2px;">shows consecutive days</div>
+        </div>
+        <div style="padding:8px 12px;border-radius:8px;border:1.5px solid rgba(192,132,252,.25);background:rgba(192,132,252,.03);">
+          <div style="color:#c084fc;font-size:.7rem;font-weight:600;">daily checklist</div>
+          <div style="color:#71717a;font-size:.55rem;margin-top:2px;">tap to complete</div>
+        </div>
+        <div style="padding:8px 12px;border-radius:8px;border:1.5px solid rgba(192,132,252,.25);background:rgba(192,132,252,.03);">
+          <div style="color:#c084fc;font-size:.7rem;font-weight:600;">progress chart</div>
+          <div style="color:#71717a;font-size:.55rem;margin-top:2px;">weekly trends</div>
+        </div>
+      </div>
+      <div style="color:#c084fc;font-size:.6rem;opacity:.3;margin:2px 0;">AI figures this out &#x2193;</div>
+      <!-- Layer 3: Code (dimmed) -->
+      <div style="display:flex;gap:6px;justify-content:center;opacity:.25;">
+        <div style="padding:5px 8px;border-radius:4px;border:1px solid rgba(113,113,122,.2);font-size:.55rem;color:#71717a;">localStorage</div>
+        <div style="padding:5px 8px;border-radius:4px;border:1px solid rgba(113,113,122,.2);font-size:.55rem;color:#71717a;">Date()</div>
+        <div style="padding:5px 8px;border-radius:4px;border:1px solid rgba(113,113,122,.2);font-size:.55rem;color:#71717a;">canvas API</div>
+        <div style="padding:5px 8px;border-radius:4px;border:1px solid rgba(113,113,122,.2);font-size:.55rem;color:#71717a;">CSS grid</div>
+        <div style="padding:5px 8px;border-radius:4px;border:1px solid rgba(113,113,122,.2);font-size:.55rem;color:#71717a;">event listeners</div>
+      </div>
+      <div style="color:#71717a;font-size:.55rem;opacity:.2;margin-top:2px;">you never touch this</div>
+    </div>
   </div>
 
   <p class="section-text">The biggest mistake new vibe coders make is trying to think like a programmer. They worry about databases, functions, and file structures. That is AI's job now.</p>

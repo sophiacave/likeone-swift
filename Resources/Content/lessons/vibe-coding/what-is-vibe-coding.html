@@ -20,34 +20,57 @@
 <div class="lesson-section">
   <span class="section-label">The Big Idea</span>
   <h2 class="section-title">You describe it. AI builds it.</h2>
-  <div class="lesson-visual" aria-label="The paradigm shift: traditional coding requires years of learning syntax and debugging, while vibe coding requires only describing what you want in plain English and the AI writes the code">
-    <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg">
+  <div class="lesson-visual" aria-label="The vibe coding loop: you describe what you want in plain English, AI generates working code, you see a live preview, you refine with more conversation, and the loop repeats until the app is exactly right">
+    <svg viewBox="0 0 480 240" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <pattern id="vibe-grid1" width="20" height="20" patternUnits="userSpaceOnUse">
           <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
         </pattern>
       </defs>
-      <rect width="480" height="160" fill="url(#vibe-grid1)"/>
-      <text x="240" y="16" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">THE SHIFT</text>
-      <!-- Old way -->
-      <rect x="30" y="28" width="180" height="80" rx="8" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.4"/>
-      <text x="120" y="46" text-anchor="middle" fill="#ef4444" font-size="8" font-weight="600" font-family="SF Mono,monospace" opacity="0.5">TRADITIONAL</text>
-      <text x="120" y="62" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.4">learn syntax</text>
-      <text x="120" y="74" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.4">memorize APIs</text>
-      <text x="120" y="86" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.4">debug error codes</text>
-      <text x="120" y="98" text-anchor="middle" fill="#ef4444" font-size="6.5" font-family="SF Mono,monospace" opacity="0.4">years to build anything</text>
-      <!-- Arrow -->
-      <text x="240" y="72" text-anchor="middle" fill="#c084fc" font-size="16" opacity="0.4">&rarr;</text>
-      <!-- New way -->
-      <rect x="270" y="28" width="180" height="80" rx="8" fill="none" stroke="#34d399" stroke-width="2"/>
-      <text x="360" y="46" text-anchor="middle" fill="#34d399" font-size="8" font-weight="700" font-family="SF Mono,monospace">VIBE CODING</text>
-      <text x="360" y="62" text-anchor="middle" fill="#34d399" font-size="7" font-family="SF Mono,monospace">describe what you want</text>
-      <text x="360" y="74" text-anchor="middle" fill="#34d399" font-size="7" font-family="SF Mono,monospace">AI writes the code</text>
-      <text x="360" y="86" text-anchor="middle" fill="#34d399" font-size="7" font-family="SF Mono,monospace">refine with conversation</text>
-      <text x="360" y="98" text-anchor="middle" fill="#34d399" font-size="6.5" font-family="SF Mono,monospace" opacity="0.7">ship in hours</text>
-      <!-- Bottom -->
-      <text x="240" y="130" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace">the barrier went from "years of study" to "can you describe what you want?"</text>
-      <text x="240" y="148" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace" opacity="0.5">anyone with an idea can now build software</text>
+      <rect width="480" height="240" fill="url(#vibe-grid1)"/>
+      <text x="240" y="18" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">THE VIBE CODING LOOP</text>
+      <!-- YOU: the human with an idea -->
+      <circle cx="80" cy="80" r="28" fill="none" stroke="#34d399" stroke-width="2"/>
+      <text x="80" y="75" text-anchor="middle" fill="#34d399" font-size="10" font-weight="700" font-family="SF Mono,monospace">YOU</text>
+      <text x="80" y="88" text-anchor="middle" fill="#34d399" font-size="7" font-family="SF Mono,monospace">+ idea</text>
+      <text x="80" y="38" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.4">no code needed</text>
+      <!-- Arrow: natural language flows to AI -->
+      <line x1="110" y1="72" x2="178" y2="58" stroke="#34d399" stroke-width="1.5" opacity="0.5"/>
+      <polygon points="176,54 183,56 178,62" fill="#34d399" opacity="0.5"/>
+      <text x="148" y="55" text-anchor="middle" fill="#34d399" font-size="6.5" font-family="SF Mono,monospace" opacity="0.6">"build me</text>
+      <text x="148" y="64" text-anchor="middle" fill="#34d399" font-size="6.5" font-family="SF Mono,monospace" opacity="0.6">a to-do app"</text>
+      <!-- AI: the coding engine -->
+      <circle cx="240" cy="50" r="30" fill="none" stroke="#c084fc" stroke-width="2"/>
+      <text x="240" y="45" text-anchor="middle" fill="#c084fc" font-size="10" font-weight="700" font-family="SF Mono,monospace">AI</text>
+      <text x="240" y="58" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace">interprets</text>
+      <text x="240" y="68" text-anchor="middle" fill="#c084fc" font-size="7" font-family="SF Mono,monospace">+ generates</text>
+      <!-- Arrow: AI generates code -->
+      <line x1="272" y1="58" x2="340" y2="72" stroke="#8b5cf6" stroke-width="1.5" opacity="0.5"/>
+      <polygon points="338,68 345,72 340,76" fill="#8b5cf6" opacity="0.5"/>
+      <!-- Code output -->
+      <rect x="345" y="50" width="110" height="50" rx="8" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+      <text x="400" y="68" text-anchor="middle" fill="#8b5cf6" font-size="7" font-weight="600" font-family="SF Mono,monospace">WORKING CODE</text>
+      <text x="370" y="82" fill="#71717a" font-size="6" font-family="SF Mono,monospace" opacity="0.3">function add()</text>
+      <text x="370" y="90" fill="#71717a" font-size="6" font-family="SF Mono,monospace" opacity="0.25">  return a + b</text>
+      <!-- Arrow: code becomes preview -->
+      <line x1="400" y1="102" x2="400" y2="138" stroke="#fb923c" stroke-width="1.5" opacity="0.5"/>
+      <polygon points="397,136 400,142 403,136" fill="#fb923c" opacity="0.5"/>
+      <!-- Live preview -->
+      <rect x="345" y="142" width="110" height="50" rx="8" fill="none" stroke="#fb923c" stroke-width="2"/>
+      <text x="400" y="160" text-anchor="middle" fill="#fb923c" font-size="8" font-weight="700" font-family="SF Mono,monospace">PREVIEW</text>
+      <text x="400" y="175" text-anchor="middle" fill="#fb923c" font-size="7" font-family="SF Mono,monospace">see it live</text>
+      <text x="400" y="185" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace" opacity="0.4">in your browser</text>
+      <!-- Feedback loop: you refine -->
+      <line x1="345" y1="175" x2="115" y2="175" stroke="#34d399" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.3"/>
+      <line x1="115" y1="175" x2="90" y2="110" stroke="#34d399" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.3"/>
+      <polygon points="87,112 90,105 95,111" fill="#34d399" opacity="0.4"/>
+      <!-- Refine label on feedback loop -->
+      <text x="220" y="168" text-anchor="middle" fill="#34d399" font-size="7" font-family="SF Mono,monospace" opacity="0.4">"make it dark mode"</text>
+      <text x="220" y="180" text-anchor="middle" fill="#34d399" font-size="7" font-family="SF Mono,monospace" opacity="0.4">"add categories"</text>
+      <text x="55" y="148" text-anchor="end" fill="#34d399" font-size="6" font-family="SF Mono,monospace" opacity="0.3">refine</text>
+      <!-- Loop count -->
+      <text x="240" y="210" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace">each loop takes minutes &middot; 3-5 loops = finished app</text>
+      <text x="240" y="228" text-anchor="middle" fill="#c084fc" font-size="8" font-family="SF Mono,monospace" opacity="0.5">the conversation IS the development process</text>
     </svg>
   </div>
 
