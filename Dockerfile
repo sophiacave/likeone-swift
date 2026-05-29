@@ -1,4 +1,5 @@
 FROM swift:6.0-jammy as build
+RUN apt-get update && apt-get install -y libsqlite3-dev && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY Package.swift Package.resolved ./
 RUN swift package resolve 2>/dev/null || true
@@ -8,6 +9,7 @@ RUN swift build -c release -Xswiftc -cross-module-optimization
 FROM ubuntu:jammy
 RUN apt-get update && apt-get install -y \
     ca-certificates \
+    libsqlite3-0 \
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY --from=build /app/.build/release/LOServer .
