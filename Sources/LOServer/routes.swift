@@ -2,11 +2,13 @@ import Vapor
 import Leaf
 import LOCore
 import LOContent
+import LOBrain
 
 func routes(_ app: Application) throws {
     let courses = CourseProvider()
     let blog = BlogProvider()
     let catalog = ProductCatalog()
+    let brain = LocalBrainClient()
 
     // Health check
     app.get("health") { req async -> String in
@@ -100,6 +102,36 @@ func routes(_ app: Application) throws {
         }
         let response = Response(status: .ok)
         try response.content.encode(product)
+        return response
+    }
+
+    // API: brain
+    app.get("api", "v1", "brain", "boot") { req async throws -> Response in
+        let entries = try await brain.boot()
+        let response = Response(status: .ok)
+        try response.content.encode(entries)
+        return response
+    }
+
+    app.get("api", "v1", "brain", "search") { req async throws -> Response in
+        let q = req.query[String.self, at: "q"] ?? ""
+        let limit = req.query[Int.self, at: "limit"] ?? 5
+        guard !q.isEmpty else {
+            throw Abort(.badRequest, reason: "Query parameter 'q' is required")
+        }
+        let entries = try await brain.search(query: q, limit: limit)
+        let response = Response(status: .ok)
+        try response.content.encode(entries)
+        return response
+    }
+
+    app.get("api", "v1", "brain", ":key") { req async throws -> Response in
+        guard let key = req.parameters.get("key"),
+              let entry = try await brain.read(key: key) else {
+            throw Abort(.notFound, reason: "Brain key not found")
+        }
+        let response = Response(status: .ok)
+        try response.content.encode(entry)
         return response
     }
 }
