@@ -1,0 +1,92 @@
+#extend("layout"):
+    #export("content"):
+        <section class="page-hero">
+            <div class="site-container">
+                <span class="site-section-tag">ABOUT</span>
+                <h1 class="page-hero-title">We believe AI should be<br><span class="accent-gradient">for everyone.</span></h1>
+                <p class="page-hero-desc">Like One is a 501(c)(3) nonprofit on a mission to make AI education free, accessible, and actually useful.</p>
+            </div>
+        </section>
+
+        <section class="site-section">
+            <div class="site-container" style="max-width:800px;">
+                <div class="about-story">
+                    <span class="site-section-tag">OUR STORY</span>
+                    <h2 class="site-section-title" style="text-align:left;">Built by someone the system forgot.</h2>
+                    <p class="about-text">Like One was founded by Sophia Cave &mdash; a trans woman, self-taught engineer, and disability advocate who spent years navigating a tech industry that wasn't built for people like her.</p>
+                    <p class="about-text">The AI revolution is creating the biggest shift in human capability since the internet. But the people who need it most &mdash; disabled workers, career changers, people locked out of $200K bootcamps &mdash; are being left behind. Again.</p>
+                    <p class="about-text">We built Like One to fix that. Every course is free. Every lesson is hands-on. No gatekeepers. No waitlists. No paywalls.</p>
+                </div>
+
+                <div class="about-mission" style="margin-top:64px;">
+                    <span class="site-section-tag">MISSION</span>
+                    <h2 class="site-section-title" style="text-align:left;">Three things we care about.</h2>
+                    <div class="about-pillars">
+                        <div class="about-pillar">
+                            <div class="about-pillar-icon" style="background:rgba(168,85,247,.1);color:var(--purple-400);">01</div>
+                            <h3 class="about-pillar-title">Free AI Education</h3>
+                            <p class="about-pillar-text">52 courses covering everything from "what is AI" to building autonomous agents. No account required to start. No credit card ever.</p>
+                        </div>
+                        <div class="about-pillar">
+                            <div class="about-pillar-icon" style="background:rgba(52,211,153,.1);color:var(--green);">02</div>
+                            <h3 class="about-pillar-title">Accessibility First</h3>
+                            <p class="about-pillar-text">Screen-reader friendly. Keyboard navigable. Visual aids designed for different learning styles. AI education that actually accommodates disabled learners.</p>
+                        </div>
+                        <div class="about-pillar">
+                            <div class="about-pillar-icon" style="background:rgba(251,146,60,.1);color:var(--orange);">03</div>
+                            <h3 class="about-pillar-title">Fund the Cure</h3>
+                            <p class="about-pillar-text">A percentage of every dollar we earn goes directly to HIV cure research at UCSF. Revenue isn't just revenue &mdash; it's research funding.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-team" style="margin-top:64px;">
+                    <span class="site-section-tag">TEAM</span>
+                    <h2 class="site-section-title" style="text-align:left;">The humans behind it.</h2>
+                    <div class="about-team-grid">
+                        <div class="about-team-card">
+                            <div class="about-team-name">Sophia Cave</div>
+                            <div class="about-team-role">Founder &amp; Executive Director</div>
+                            <p class="about-team-bio">Trans woman in tech. Self-taught engineer. Built Like One's entire platform, curriculum, and AI infrastructure as a solo founder. Believes the people the system tried to delete should be the ones building the future.</p>
+                        </div>
+                        <div class="about-team-card">
+                            <div class="about-team-name">Rikki Deeg</div>
+                            <div class="about-team-role">Managing Member &amp; Veteran</div>
+                            <p class="about-team-bio">U.S. Army veteran. Keeps Like One grounded, operational, and mission-focused. Brings the discipline and heart that turns vision into reality.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-numbers" style="margin-top:64px;">
+                    <span class="site-section-tag">BY THE NUMBERS</span>
+                    <div class="about-stats-grid">
+                        <div class="about-stat">
+                            <div class="about-stat-num">52</div>
+                            <div class="about-stat-label">Free Courses</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-num">521</div>
+                            <div class="about-stat-label">Lessons</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-num">501(c)(3)</div>
+                            <div class="about-stat-label">Tax Exempt</div>
+                        </div>
+                        <div class="about-stat">
+                            <div class="about-stat-num">$0</div>
+                            <div class="about-stat-label">Cost to Learn</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="site-section-alt">
+            <div class="site-container text-center" style="padding:64px 20px;">
+                <h2 style="font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:16px;color:var(--text-primary);">Want to help?</h2>
+                <p style="font-size:1rem;color:var(--text-secondary);max-width:480px;margin:0 auto 28px;line-height:1.6;">The best way to support Like One is to learn something, share it with someone, or reach out.</p>
+                <a class="site-btn-primary" href="mailto:hello@likeone.ai">Get in Touch</a>
+            </div>
+        </section>
+    #endexport
+#endextend

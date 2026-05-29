@@ -1,0 +1,96 @@
+#extend("layout"):
+    #export("content"):
+        <section class="page-hero">
+            <div class="site-container text-center">
+                <span class="site-section-tag">PRICING</span>
+                <h1 class="page-hero-title">Free. Not freemium.<br><span class="accent-gradient">Actually free.</span></h1>
+                <p class="page-hero-desc">Every course. Every lesson. Every quiz. No credit card. No trial period. No "upgrade to unlock." Just learn.</p>
+            </div>
+        </section>
+
+        <section class="site-section">
+            <div class="site-container" style="max-width:900px;">
+                <div class="pricing-grid">
+                    <div class="pricing-card pricing-card-free">
+                        <div class="pricing-badge">CURRENT</div>
+                        <h2 class="pricing-plan-name">Academy</h2>
+                        <div class="pricing-price">$0</div>
+                        <div class="pricing-period">forever</div>
+                        <ul class="pricing-features">
+                            <li>52 courses across 7 levels</li>
+                            <li>521 hands-on lessons</li>
+                            <li>Interactive quizzes with visual aids</li>
+                            <li>Flashcard study mode</li>
+                            <li>Progress tracking</li>
+                            <li>Full-text search</li>
+                            <li>No account required</li>
+                        </ul>
+                        <a class="site-btn-primary" href="/academy" style="width:100%;text-align:center;">Start Learning</a>
+                    </div>
+
+                    <div class="pricing-card pricing-card-coming">
+                        <div class="pricing-badge pricing-badge-soon">COMING SOON</div>
+                        <h2 class="pricing-plan-name">Certificate</h2>
+                        <div class="pricing-price">TBD</div>
+                        <div class="pricing-period">per certificate</div>
+                        <ul class="pricing-features">
+                            <li>Everything in Academy</li>
+                            <li>Verified completion certificate</li>
+                            <li>Shareable credential link</li>
+                            <li>PDF download</li>
+                            <li>LinkedIn-ready badge</li>
+                        </ul>
+                        <div class="pricing-coming-label">Notify Me</div>
+                    </div>
+
+                    <div class="pricing-card pricing-card-coming">
+                        <div class="pricing-badge pricing-badge-soon">COMING SOON</div>
+                        <h2 class="pricing-plan-name">Pro Tools</h2>
+                        <div class="pricing-price">TBD</div>
+                        <div class="pricing-period">per month</div>
+                        <ul class="pricing-features">
+                            <li>Everything in Academy</li>
+                            <li>AI Resume Builder</li>
+                            <li>Interview Buddy</li>
+                            <li>Job Application Tracker</li>
+                            <li>Priority support</li>
+                        </ul>
+                        <div class="pricing-coming-label">Notify Me</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="site-section-alt">
+            <div class="site-container" style="max-width:700px;">
+                <h2 class="site-section-title text-center">Why is it free?</h2>
+                <div class="pricing-faq">
+                    <div class="pricing-faq-item">
+                        <h3 class="pricing-faq-q">How can you afford to give this away?</h3>
+                        <p class="pricing-faq-a">Like One is a 501(c)(3) nonprofit. Our mission is education access, not profit extraction. We keep costs near zero with efficient infrastructure and a small team.</p>
+                    </div>
+                    <div class="pricing-faq-item">
+                        <h3 class="pricing-faq-q">Will the free courses ever go behind a paywall?</h3>
+                        <p class="pricing-faq-a">No. The Academy will always be free. Future paid products (certificates, tools) will fund the free education, not replace it.</p>
+                    </div>
+                    <div class="pricing-faq-item">
+                        <h3 class="pricing-faq-q">Where does the money go?</h3>
+                        <p class="pricing-faq-a">Revenue from future paid products funds three things: keeping the Academy free, building accessibility tools, and donating to HIV cure research at UCSF.</p>
+                    </div>
+                    <div class="pricing-faq-item">
+                        <h3 class="pricing-faq-q">Do I need an account?</h3>
+                        <p class="pricing-faq-a">Not to learn. Your progress is tracked locally in your browser. Accounts will be needed for certificates and pro tools when they launch.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="site-section">
+            <div class="site-container text-center" style="padding-bottom:80px;">
+                <h2 style="font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:16px;color:var(--text-primary);">Ready?</h2>
+                <p style="font-size:1rem;color:var(--text-secondary);max-width:400px;margin:0 auto 28px;line-height:1.6;">Pick a course and start. Five minutes from now, you'll know something new.</p>
+                <a class="site-btn-primary" href="/academy">Browse All 52 Courses</a>
+            </div>
+        </section>
+    #endexport
+#endextend

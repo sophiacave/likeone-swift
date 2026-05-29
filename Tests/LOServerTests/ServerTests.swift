@@ -4,11 +4,13 @@ import Foundation
 @testable import LOServer
 import Vapor
 import XCTVapor
+import Leaf
 
 @Suite("LOServer Routes")
 struct ServerTests {
     private func withApp(_ test: (Application) async throws -> Void) async throws {
         let app = try await Application.make(.testing)
+        app.views.use(.leaf)
         try routes(app)
         try await XCTVaporContext.$emitWarningIfCurrentTestInfoIsAvailable.withValue(false) {
             try await test(app)
@@ -108,6 +110,36 @@ struct ServerTests {
         try await withApp { app in
             try await app.test(.GET, "auth/me") { res async in
                 #expect(res.status == .unauthorized)
+            }
+        }
+    }
+
+    @Test("About page returns 200")
+    func aboutPage() async throws {
+        try await withApp { app in
+            try await app.test(.GET, "about") { res async in
+                #expect(res.status == .ok)
+                #expect(res.body.string.contains("Like One"))
+            }
+        }
+    }
+
+    @Test("Pricing page returns 200")
+    func pricingPage() async throws {
+        try await withApp { app in
+            try await app.test(.GET, "pricing") { res async in
+                #expect(res.status == .ok)
+                #expect(res.body.string.contains("free"))
+            }
+        }
+    }
+
+    @Test("Foundation page returns 200")
+    func foundationPage() async throws {
+        try await withApp { app in
+            try await app.test(.GET, "foundation") { res async in
+                #expect(res.status == .ok)
+                #expect(res.body.string.contains("501(c)(3)"))
             }
         }
     }

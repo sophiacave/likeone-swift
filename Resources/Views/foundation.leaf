@@ -1,0 +1,101 @@
+#extend("layout"):
+    #export("content"):
+        <section class="page-hero">
+            <div class="site-container">
+                <span class="site-section-tag">FOUNDATION</span>
+                <h1 class="page-hero-title">Revenue funds the cure.<br><span class="accent-gradient">Every dollar matters.</span></h1>
+                <p class="page-hero-desc">The Like One Foundation is a 501(c)(3) tax-exempt nonprofit funding HIV cure research and AI accessibility.</p>
+            </div>
+        </section>
+
+        <section class="site-section">
+            <div class="site-container" style="max-width:800px;">
+                <div class="foundation-why">
+                    <span class="site-section-tag">WHY</span>
+                    <h2 class="site-section-title" style="text-align:left;">Because capitalism forgot most people.</h2>
+                    <p class="about-text">38 million people live with HIV worldwide. Antiretroviral therapy keeps them alive, but it's not a cure. The research to find one is underfunded because the market says lifelong medication is more profitable than ending a disease.</p>
+                    <p class="about-text">Like One exists to change that math. Every dollar we earn accelerates two things: free AI education that makes people economically sovereign, and direct funding for HIV cure research.</p>
+                    <p class="about-text">We're not a tech company that donates on the side. Giving is baked into our architecture.</p>
+                </div>
+
+                <div class="foundation-model" style="margin-top:64px;">
+                    <span class="site-section-tag">HOW IT WORKS</span>
+                    <h2 class="site-section-title" style="text-align:left;">The giving model.</h2>
+                    <div class="foundation-phases">
+                        <div class="foundation-phase foundation-phase-active">
+                            <div class="foundation-phase-marker">NOW</div>
+                            <h3 class="foundation-phase-title">Seed Phase</h3>
+                            <p class="foundation-phase-text">1% of revenue accrues to the giving fund. Monthly recurring donation to UCSF HIV Cure Research Fund. Small but consistent &mdash; building the habit from day one.</p>
+                        </div>
+                        <div class="foundation-phase">
+                            <div class="foundation-phase-marker">$1K MRR</div>
+                            <h3 class="foundation-phase-title">Growth Phase</h3>
+                            <p class="foundation-phase-text">5% of revenue. Expand to multiple recipients: UCSF, amfAR, disability advocacy organizations. Quarterly transparency reports.</p>
+                        </div>
+                        <div class="foundation-phase">
+                            <div class="foundation-phase-marker">$10K MRR</div>
+                            <h3 class="foundation-phase-title">Scale Phase</h3>
+                            <p class="foundation-phase-text">10% of revenue. Fund our own research grants. Commission accessibility tools for disabled AI learners. Public giving dashboard.</p>
+                        </div>
+                        <div class="foundation-phase">
+                            <div class="foundation-phase-marker">$100K MRR</div>
+                            <h3 class="foundation-phase-title">Convergence</h3>
+                            <p class="foundation-phase-text">50% of revenue. Fund direct HIV cure research. Build the accessibility tools ourselves. The nonprofit becomes the research funder, not just the donation pipeline.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="foundation-current" style="margin-top:64px;">
+                    <span class="site-section-tag">TRANSPARENCY</span>
+                    <h2 class="site-section-title" style="text-align:left;">Where we are now.</h2>
+                    <div class="foundation-ledger">
+                        <div class="foundation-ledger-row">
+                            <span class="foundation-ledger-label">Status</span>
+                            <span class="foundation-ledger-value" style="color:var(--green);">501(c)(3) Tax Exempt</span>
+                        </div>
+                        <div class="foundation-ledger-row">
+                            <span class="foundation-ledger-label">EIN</span>
+                            <span class="foundation-ledger-value">Filed &amp; Approved</span>
+                        </div>
+                        <div class="foundation-ledger-row">
+                            <span class="foundation-ledger-label">Primary Recipient</span>
+                            <span class="foundation-ledger-value">UCSF HIV Cure Research Fund</span>
+                        </div>
+                        <div class="foundation-ledger-row">
+                            <span class="foundation-ledger-label">Donation Type</span>
+                            <span class="foundation-ledger-value">Monthly Recurring</span>
+                        </div>
+                        <div class="foundation-ledger-row">
+                            <span class="foundation-ledger-label">Total Donated</span>
+                            <span class="foundation-ledger-value" style="color:var(--purple-400);font-weight:700;">$20.00</span>
+                        </div>
+                        <div class="foundation-ledger-row">
+                            <span class="foundation-ledger-label">Current Phase</span>
+                            <span class="foundation-ledger-value">Seed (1% of revenue)</span>
+                        </div>
+                    </div>
+                    <p class="about-text" style="margin-top:20px;font-size:.875rem;color:var(--text-muted);">Updated monthly. All donations are tax-deductible. Like One Foundation Inc. is a registered 501(c)(3) nonprofit organization.</p>
+                </div>
+
+                <div class="foundation-research" style="margin-top:64px;">
+                    <span class="site-section-tag">THE SCIENCE</span>
+                    <h2 class="site-section-title" style="text-align:left;">Why HIV cure research?</h2>
+                    <p class="about-text">Current antiretroviral therapy is a medical miracle &mdash; it turns a death sentence into a managed condition. But "managed" means daily medication for life, ongoing side effects, and a $20,000+ annual cost per patient.</p>
+                    <p class="about-text">UCSF's HIV Cure Research Fund supports cutting-edge approaches: latency-reversing agents, broadly neutralizing antibodies, gene therapy, and immune-based strategies that could eliminate the virus entirely.</p>
+                    <p class="about-text">A functional cure would save millions of lives and billions of dollars. We fund the science because someone has to, and the market won't.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="site-section-alt">
+            <div class="site-container text-center" style="padding:64px 20px;">
+                <h2 style="font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:16px;color:var(--text-primary);">Support the mission.</h2>
+                <p style="font-size:1rem;color:var(--text-secondary);max-width:520px;margin:0 auto 28px;line-height:1.6;">Learn for free. Share with someone. Or reach out to partner with us. Every action accelerates the cure.</p>
+                <div class="site-cta-row" style="justify-content:center;">
+                    <a class="site-btn-primary" href="/academy">Start Learning (Free)</a>
+                    <a class="site-btn-secondary" href="mailto:hello@likeone.ai">Partner With Us</a>
+                </div>
+            </div>
+        </section>
+    #endexport
+#endextend
