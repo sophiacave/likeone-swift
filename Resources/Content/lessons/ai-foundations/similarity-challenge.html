@@ -18,6 +18,20 @@
 <div class="lesson-section">
   <span class="section-label">Key Concepts</span>
   <h2 class="section-title">How machines measure "similar."</h2>
+
+  <div class="lesson-visual" aria-label="Cosine similarity scale: 1.0 identical, 0.7 related, 0.0 unrelated, -1.0 opposite">
+    <div style="padding:14px 20px;font-family:'SF Mono','JetBrains Mono',monospace;">
+      <div style="font-size:.7rem;color:#71717a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;text-align:center;">COSINE SIMILARITY</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="text-align:center;"><div style="font-size:.9rem;font-weight:700;color:#f87171;">-1.0</div><div style="font-size:.6rem;color:#52525b;">opposite</div></div>
+        <div style="flex:1;height:4px;background:linear-gradient(90deg,#f87171,#71717a,#34d399);border-radius:2px;margin:0 10px;"></div>
+        <div style="text-align:center;"><div style="font-size:.9rem;font-weight:700;color:#71717a;">0.0</div><div style="font-size:.6rem;color:#52525b;">unrelated</div></div>
+        <div style="flex:1;height:4px;background:linear-gradient(90deg,#71717a,#34d399);border-radius:2px;margin:0 10px;"></div>
+        <div style="text-align:center;"><div style="font-size:.9rem;font-weight:700;color:#34d399;">1.0</div><div style="font-size:.6rem;color:#52525b;">identical</div></div>
+      </div>
+    </div>
+  </div>
+
   <p class="section-text">Humans intuitively know that "dog" and "puppy" are related while "dog" and "algebra" are not. But how does a machine know? The answer is <strong style="color:#e5e5e5">similarity metrics</strong> — mathematical formulas that compare vectors and output a number representing how close two concepts are.</p>
 
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
@@ -76,6 +90,26 @@
   <span class="section-label">Part 1</span>
   <h2 class="section-title">Embedding mastery.</h2>
 
+  <div class="lesson-visual" aria-label="Three similarity metrics compared: cosine measures angle, euclidean measures distance, dot product is raw score">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px;font-family:'SF Mono','JetBrains Mono',monospace;">
+      <div style="text-align:center;padding:10px 8px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);">
+        <div style="font-size:.7rem;color:#34d399;font-weight:600;">COSINE</div>
+        <div style="font-size:.6rem;color:#52525b;margin-top:3px;">angle between</div>
+        <div style="font-size:.6rem;color:#3f3f46;">most common</div>
+      </div>
+      <div style="text-align:center;padding:10px 8px;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.12);">
+        <div style="font-size:.7rem;color:#8b5cf6;font-weight:600;">EUCLIDEAN</div>
+        <div style="font-size:.6rem;color:#52525b;margin-top:3px;">straight-line gap</div>
+        <div style="font-size:.6rem;color:#3f3f46;">position-based</div>
+      </div>
+      <div style="text-align:center;padding:10px 8px;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.12);">
+        <div style="font-size:.7rem;color:#fb923c;font-weight:600;">DOT PRODUCT</div>
+        <div style="font-size:.6rem;color:#52525b;margin-top:3px;">raw score</div>
+        <div style="font-size:.6rem;color:#3f3f46;">fast to compute</div>
+      </div>
+    </div>
+  </div>
+
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
 <div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Cosine Similarity from Scratch</div>
 <pre style="margin:0;color:#e5e5e5"><code>import math
@@ -125,6 +159,13 @@ print(f"cat · car = {cosine_similarity(cat, car):.4f}")  # ~0.2688</code></pre>
 <div class="quiz-block">
 <h3 class="quiz-title">Similarity Challenge — 6 Questions</h3>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Cosine similarity: higher means more similar meaning">
+  <div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;">
+    <span style="color:#34d399;">similar = high cosine</span>
+    <span style="color:#52525b;">|</span>
+    <span style="color:#f87171;">different = low cosine</span>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">1</span>Which pair of words would have the HIGHEST cosine similarity?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
@@ -240,6 +281,23 @@ print(f"cat · car = {cosine_similarity(cat, car):.4f}")  # ~0.2688</code></pre>
 <div class="lesson-section">
   <span class="section-label">Math Corner</span>
   <h2 class="section-title">The math behind cosine similarity.</h2>
+
+  <div class="lesson-visual" aria-label="Cosine similarity formula: dot product divided by magnitudes">
+    <div style="text-align:center;padding:16px 20px;font-family:'SF Mono','JetBrains Mono',monospace;">
+      <div style="display:inline-flex;align-items:center;gap:4px;font-size:.85rem;">
+        <span style="color:#c084fc;">cos(A,B)</span>
+        <span style="color:#52525b;">=</span>
+        <span style="color:#34d399;">A &middot; B</span>
+        <span style="color:#52525b;">/</span>
+        <span style="color:#38bdf8;">|A| &times; |B|</span>
+      </div>
+      <div style="display:flex;justify-content:center;gap:16px;margin-top:10px;font-size:.65rem;color:#52525b;">
+        <span><span style="color:#34d399;">dot product</span> = alignment</span>
+        <span><span style="color:#38bdf8;">magnitudes</span> = normalize</span>
+      </div>
+    </div>
+  </div>
+
   <p class="section-text">You do not need to memorize the formula, but understanding it makes the concept click. Cosine similarity has three steps:</p>
 
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
@@ -285,6 +343,11 @@ print(f"cat · car = {cosine_similarity(cat, car):.4f}")  # ~0.2688</code></pre>
 <div class="quiz-block">
 <h3 class="quiz-title">Full Course Review</h3>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Neuron: weighted sum + bias then activation">
+  <div style="display:flex;align-items:center;justify-content:center;gap:4px;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;">
+    <span style="color:#38bdf8;">inputs</span><span style="color:#3f3f46;">&rarr;</span><span style="color:#c084fc;">sum+bias</span><span style="color:#3f3f46;">&rarr;</span><span style="padding:3px 6px;border-radius:4px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);color:#fb923c;font-weight:600;">f(z)</span><span style="color:#3f3f46;">&rarr;</span><span style="color:#34d399;">output</span>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">1</span>A neuron computes: weighted sum + bias, then applies an activation function. What is the activation function for?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
@@ -350,6 +413,13 @@ print(f"cat · car = {cosine_similarity(cat, car):.4f}")  # ~0.2688</code></pre>
 <div class="quiz-block">
 <h3 class="quiz-title">AI Foundations Gauntlet</h3>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Inside a neuron: weights, bias, activation function">
+  <div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;">
+    <span style="padding:3px 6px;border-radius:4px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);color:#34d399;">weights</span>
+    <span style="padding:3px 6px;border-radius:4px;background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);color:#c084fc;">bias</span>
+    <span style="padding:3px 6px;border-radius:4px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);color:#fb923c;">activation</span>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">1</span>Which of these is a core component inside an artificial neuron?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
