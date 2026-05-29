@@ -18,6 +18,26 @@
 <div class="lesson-section">
   <span class="section-label">The Concept</span>
   <h2 class="section-title">Layers are the architecture of intelligence.</h2>
+
+  <div class="lesson-visual" aria-label="Three-layer pattern: Input receives data, Hidden finds patterns, Output makes decisions">
+    <div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:16px 20px;font-family:'SF Mono','JetBrains Mono',monospace;">
+      <div style="text-align:center;padding:12px 16px;border-radius:8px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.12);">
+        <div style="font-size:.8rem;color:#38bdf8;font-weight:600;">INPUT</div>
+        <div style="font-size:.65rem;color:#52525b;margin-top:4px;">receives data</div>
+      </div>
+      <span style="color:#3f3f46;font-size:1rem;">&rarr;</span>
+      <div style="text-align:center;padding:12px 16px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);">
+        <div style="font-size:.8rem;color:#34d399;font-weight:600;">HIDDEN</div>
+        <div style="font-size:.65rem;color:#52525b;margin-top:4px;">finds patterns</div>
+      </div>
+      <span style="color:#3f3f46;font-size:1rem;">&rarr;</span>
+      <div style="text-align:center;padding:12px 16px;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.12);">
+        <div style="font-size:.8rem;color:#fb923c;font-weight:600;">OUTPUT</div>
+        <div style="font-size:.65rem;color:#52525b;margin-top:4px;">makes decision</div>
+      </div>
+    </div>
+  </div>
+
   <p class="section-text">A single neuron can make simple decisions. But stack neurons into layers — input, hidden, output — and suddenly the network can recognize faces, translate languages, and write code. The architecture (how many layers, how they connect) determines what the network can learn.</p>
 
   <div style="display:grid;gap:.75rem;margin-top:1rem">
@@ -109,6 +129,29 @@ probs = model(X)
 <div class="lesson-section">
   <span class="section-label">Layer Types</span>
   <h2 class="section-title">Not all layers are created equal.</h2>
+  <div class="lesson-visual" aria-label="Three layer types compared: Dense connects everything, CNN scans patches, Transformer attends to all tokens">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px;font-family:'SF Mono','JetBrains Mono',monospace;">
+      <div style="text-align:center;padding:12px 8px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);">
+        <div style="font-size:1.1rem;margin-bottom:6px;">&#x1F517;</div>
+        <div style="font-size:.75rem;color:#34d399;font-weight:600;">DENSE</div>
+        <div style="font-size:.65rem;color:#52525b;margin-top:4px;">every-to-every</div>
+        <div style="font-size:.6rem;color:#3f3f46;margin-top:2px;">tables, final layers</div>
+      </div>
+      <div style="text-align:center;padding:12px 8px;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.12);">
+        <div style="font-size:1.1rem;margin-bottom:6px;">&#x1F50D;</div>
+        <div style="font-size:.75rem;color:#8b5cf6;font-weight:600;">CNN</div>
+        <div style="font-size:.65rem;color:#52525b;margin-top:4px;">sliding window</div>
+        <div style="font-size:.6rem;color:#3f3f46;margin-top:2px;">images, patterns</div>
+      </div>
+      <div style="text-align:center;padding:12px 8px;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.12);">
+        <div style="font-size:1.1rem;margin-bottom:6px;">&#x1F4A1;</div>
+        <div style="font-size:.75rem;color:#fb923c;font-weight:600;">TRANSFORMER</div>
+        <div style="font-size:.65rem;color:#52525b;margin-top:4px;">attention to all</div>
+        <div style="font-size:.6rem;color:#3f3f46;margin-top:2px;">language, GPT, Claude</div>
+      </div>
+    </div>
+  </div>
+
   <p class="section-text">The simple network above uses <strong style="color:#e5e5e5">dense layers</strong> (also called fully connected) where every neuron connects to every neuron in the next layer. But real networks use specialized layer types designed for different kinds of data:</p>
 
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
@@ -255,6 +298,19 @@ probs = model(X)
 <div class="quiz-block">
 <h3 class="quiz-title">Network Architecture</h3>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Hidden layers build complexity: edges to shapes to objects">
+  <div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;">
+    <span style="color:#38bdf8;">pixels</span>
+    <span style="color:#3f3f46;">&rarr;</span>
+    <span style="padding:4px 8px;border-radius:6px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);color:#34d399;">edges</span>
+    <span style="color:#3f3f46;">&rarr;</span>
+    <span style="padding:4px 8px;border-radius:6px;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);color:#8b5cf6;">shapes</span>
+    <span style="color:#3f3f46;">&rarr;</span>
+    <span style="padding:4px 8px;border-radius:6px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);color:#fb923c;">objects</span>
+    <span style="color:#3f3f46;">&rarr;</span>
+    <span style="color:#e5e5e5;font-weight:700;">"cat"</span>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">1</span>Why do neural networks need hidden layers?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
@@ -273,6 +329,20 @@ probs = model(X)
 <div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Hidden layers find intermediate representations — first layer might detect edges, second detects shapes, third detects objects. Each layer builds on the previous one to learn increasingly complex patterns.</div>
 </div>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Output layer: one neuron per category. Cat neuron and Dog neuron.">
+  <div style="display:flex;align-items:center;justify-content:center;gap:12px;padding:12px 16px;font-family:'SF Mono','JetBrains Mono',monospace;">
+    <span style="color:#52525b;font-size:.75rem;">output:</span>
+    <div style="padding:6px 12px;border-radius:8px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);text-align:center;">
+      <div style="font-size:.75rem;color:#fb923c;font-weight:600;">y1</div>
+      <div style="font-size:.6rem;color:#52525b;">cat?</div>
+    </div>
+    <div style="padding:6px 12px;border-radius:8px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);text-align:center;">
+      <div style="font-size:.75rem;color:#fb923c;font-weight:600;">y2</div>
+      <div style="font-size:.6rem;color:#52525b;">dog?</div>
+    </div>
+    <span style="color:#52525b;font-size:.7rem;">= 1 neuron per category</span>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">2</span>For a cats vs dogs image classifier, why do you need 2 output neurons?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
