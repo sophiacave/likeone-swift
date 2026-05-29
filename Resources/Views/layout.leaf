@@ -26,6 +26,7 @@
                 <div class="site-nav-links">
                     <a class="header-site-link" href="/academy">Academy</a>
                     <a class="header-site-link" href="/blog">Blog</a>
+                    <a class="header-site-link" href="/search" aria-label="Search">&#x1F50D;</a>
                     <a class="header-signin-btn" href="/signin">Sign In</a>
                 </div>
             </nav>
@@ -50,6 +51,27 @@
             e.target.closest('.academy-filter-btn').classList.add('active');
         }
     });
+
+    /* Progress tracking with localStorage */
+    var LOP = {
+        key: 'lo_progress',
+        get: function() { try { return JSON.parse(localStorage.getItem(this.key)) || {}; } catch(e) { return {}; } },
+        save: function(data) { localStorage.setItem(this.key, JSON.stringify(data)); },
+        mark: function(courseSlug, lessonSlug) {
+            var d = this.get();
+            if (!d[courseSlug]) d[courseSlug] = [];
+            if (d[courseSlug].indexOf(lessonSlug) === -1) d[courseSlug].push(lessonSlug);
+            this.save(d);
+        },
+        isDone: function(courseSlug, lessonSlug) {
+            var d = this.get();
+            return d[courseSlug] && d[courseSlug].indexOf(lessonSlug) !== -1;
+        },
+        count: function(courseSlug) {
+            var d = this.get();
+            return d[courseSlug] ? d[courseSlug].length : 0;
+        }
+    };
 
     /* Count-up animation for stats */
     function countUp(el, target, duration) {
@@ -87,6 +109,78 @@
     /* Quiz Score Counter + Flashcard Study Mode */
     document.addEventListener('DOMContentLoaded', function() {
         initParallax();
+
+        // Progress: Mark complete on lesson pages
+        var lessonNav = document.querySelector('.lesson-nav');
+        var topbar = document.querySelector('.lesson-topbar-course');
+        if (lessonNav && topbar) {
+            var path = window.location.pathname.split('/');
+            // /academy/{courseSlug}/{lessonSlug}
+            if (path.length >= 4 && path[1] === 'academy') {
+                var cs = path[2], ls = path[3];
+
+                // Add "Mark Complete" button before nav
+                var bar = document.createElement('div');
+                bar.className = 'lesson-complete-bar';
+                if (LOP.isDone(cs, ls)) {
+                    bar.innerHTML = '<span>&#x2714;</span> Lesson Complete';
+                    bar.classList.add('completed');
+                } else {
+                    bar.innerHTML = 'Mark as Complete &#x2714;';
+                    bar.addEventListener('click', function() {
+                        LOP.mark(cs, ls);
+                        bar.innerHTML = '<span>&#x2714;</span> Lesson Complete';
+                        bar.classList.add('completed');
+                    });
+                }
+                lessonNav.parentNode.insertBefore(bar, lessonNav);
+
+                // Auto-mark when clicking Next lesson link
+                lessonNav.addEventListener('click', function(ev) {
+                    var link = ev.target.closest('.lesson-nav-btn');
+                    if (link) LOP.mark(cs, ls);
+                });
+            }
+        }
+
+        // Progress: Show checkmarks on course detail pages
+        document.querySelectorAll('.lesson-row').forEach(function(row) {
+            var href = row.getAttribute('href');
+            if (!href) return;
+            var parts = href.split('/');
+            if (parts.length >= 4) {
+                var cs = parts[2], ls = parts[3];
+                if (LOP.isDone(cs, ls)) {
+                    row.classList.add('lesson-done');
+                    var right = row.querySelector('.lesson-row-right');
+                    if (right) {
+                        var check = document.createElement('span');
+                        check.className = 'lesson-done-check';
+                        check.textContent = '\u2714';
+                        right.prepend(check);
+                    }
+                }
+            }
+        });
+
+        // Progress: Show progress bar on course cards
+        document.querySelectorAll('.course-card').forEach(function(card) {
+            var href = card.getAttribute('href');
+            if (!href) return;
+            var slug = href.replace('/academy/', '').replace('/', '');
+            var done = LOP.count(slug);
+            if (done > 0) {
+                var meta = card.querySelector('.course-card-meta');
+                if (meta) {
+                    var lessonsText = card.querySelector('.course-card-lessons');
+                    var total = lessonsText ? parseInt(lessonsText.textContent) || 10 : 10;
+                    var pct = Math.min(Math.round((done / total) * 100), 100);
+                    var pbar = document.createElement('div');
+                    pbar.innerHTML = '<div class="course-progress-bar"><div class="course-progress-fill" style="width:' + pct + '%"></div></div><div class="course-progress-text">' + done + ' of ' + total + ' complete</div>';
+                    meta.parentNode.insertBefore(pbar, meta.nextSibling);
+                }
+            }
+        });
 
         // Stats count-up on scroll into view
         var statEls = document.querySelectorAll('.site-stat-number');

@@ -953,6 +953,62 @@ a:focus-visible, button:focus-visible {
     display: block;
 }
 
+/* Lesson Progress */
+.lesson-complete-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px;
+    margin-top: 32px;
+    background: rgba(52, 211, 153, 0.06);
+    border: 1px solid rgba(52, 211, 153, 0.15);
+    border-radius: var(--radius);
+    color: #34d399;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out);
+}
+.lesson-complete-bar:hover {
+    background: rgba(52, 211, 153, 0.1);
+    border-color: rgba(52, 211, 153, 0.25);
+}
+.lesson-complete-bar.completed {
+    background: rgba(52, 211, 153, 0.08);
+    border-color: rgba(52, 211, 153, 0.2);
+    pointer-events: none;
+}
+.lesson-row.lesson-done {
+    border-color: rgba(52, 211, 153, 0.15);
+}
+.lesson-row.lesson-done .lesson-num {
+    color: #34d399;
+}
+.lesson-done-check {
+    color: #34d399;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.course-progress-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+.course-progress-fill {
+    height: 100%;
+    background: #34d399;
+    border-radius: 2px;
+    transition: width 0.5s var(--ease-out);
+}
+.course-progress-text {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
 /* Lesson Navigation */
 .lesson-nav {
     display: flex;

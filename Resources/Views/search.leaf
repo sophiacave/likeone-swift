@@ -1,0 +1,25 @@
+#extend("layout"):
+    #export("content"):
+        <section class="site-section" style="min-height:60vh;">
+            <div class="site-container" style="max-width:680px;">
+                <h1 class="site-section-title" style="margin-bottom:24px;">Search</h1>
+                <div style="position:relative;">
+                    <input type="search"
+                           name="q"
+                           value="#(query)"
+                           placeholder="Search courses, lessons, blog posts..."
+                           autofocus
+                           style="width:100%;padding:14px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);color:var(--text-primary);font-size:1rem;font-family:inherit;outline:none;transition:border-color .3s;"
+                           hx-get="/search/results"
+                           hx-trigger="keyup changed delay:300ms"
+                           hx-target="#search-results"
+                           hx-swap="innerHTML"
+                           hx-include="this"
+                    >
+                </div>
+                <div id="search-results" style="margin-top:16px;">
+                </div>
+            </div>
+        </section>
+    #endexport
+#endextend

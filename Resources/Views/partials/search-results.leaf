@@ -1,0 +1,23 @@
+#if(total > 0):
+    <div style="font-size:.85rem;color:var(--text-muted);margin-bottom:16px;">#(total) result#if(total != 1):s#endif for "#(query)"</div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+        #for(result in results):
+            <a href="#(result.url)" style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:inherit;transition:border-color .3s,transform .3s;">
+                <div style="font-size:1.5rem;flex-shrink:0;line-height:1;">#(result.emoji)</div>
+                <div style="flex:1;min-width:0;">
+                    <div style="font-size:.95rem;font-weight:600;color:var(--text-primary);margin-bottom:2px;">#(result.title)</div>
+                    <div style="font-size:.8rem;color:var(--text-muted);margin-bottom:4px;">#(result.meta)</div>
+                    <div style="font-size:.85rem;color:var(--text-secondary);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">#(result.description)</div>
+                </div>
+            </a>
+        #endfor
+    </div>
+    #if(total > 20):
+        <div style="font-size:.85rem;color:var(--text-muted);margin-top:12px;text-align:center;">Showing 20 of #(total) results</div>
+    #endif
+#elseif(count(query) > 0):
+    <div style="text-align:center;padding:40px 0;color:var(--text-muted);">
+        <div style="font-size:1.5rem;margin-bottom:8px;">No results</div>
+        <div style="font-size:.9rem;">Try a different search term</div>
+    </div>
+#endif
