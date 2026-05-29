@@ -47,6 +47,26 @@
 <div class="lesson-section">
   <span class="section-label">Under the Hood</span>
   <h2 class="section-title">How embeddings are created.</h2>
+
+  <div class="lesson-visual" aria-label="Three steps: tokenize text, learn from context, vectors stabilize into meaning clusters">
+    <div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:16px 20px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;">
+      <div style="text-align:center;padding:10px 12px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);">
+        <div style="color:#34d399;font-weight:600;">1. TOKENIZE</div>
+        <div style="color:#52525b;font-size:.65rem;margin-top:3px;">split into chunks</div>
+      </div>
+      <span style="color:#3f3f46;">&rarr;</span>
+      <div style="text-align:center;padding:10px 12px;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.12);">
+        <div style="color:#8b5cf6;font-weight:600;">2. LEARN</div>
+        <div style="color:#52525b;font-size:.65rem;margin-top:3px;">read billions of sentences</div>
+      </div>
+      <span style="color:#3f3f46;">&rarr;</span>
+      <div style="text-align:center;padding:10px 12px;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.12);">
+        <div style="color:#fb923c;font-weight:600;">3. STABILIZE</div>
+        <div style="color:#52525b;font-size:.65rem;margin-top:3px;">meaning = position</div>
+      </div>
+    </div>
+  </div>
+
   <p class="section-text">Embeddings are not hand-crafted — they are <strong style="color:#e5e5e5">learned from data</strong>. An embedding model reads billions of sentences and discovers that words appearing in similar contexts tend to mean similar things. "The cat sat on the mat" and "the dog sat on the mat" teach the model that "cat" and "dog" are interchangeable in some contexts — so their vectors end up nearby.</p>
 
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
@@ -157,6 +177,17 @@ response = client.messages.create(
 <div class="lesson-section">
   <span class="section-label">Applications</span>
   <h2 class="section-title">Five things embeddings power in the real world.</h2>
+
+  <div class="lesson-visual" aria-label="Five real-world uses of embeddings: Search, Recommendations, RAG, Clustering, Anomaly Detection">
+    <div style="display:flex;gap:6px;padding:14px 16px;justify-content:center;flex-wrap:wrap;font-family:'SF Mono','JetBrains Mono',monospace;">
+      <span style="padding:6px 12px;border-radius:20px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);color:#34d399;font-size:.7rem;font-weight:600;">Search</span>
+      <span style="padding:6px 12px;border-radius:20px;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);color:#8b5cf6;font-size:.7rem;font-weight:600;">Recommendations</span>
+      <span style="padding:6px 12px;border-radius:20px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);color:#fb923c;font-size:.7rem;font-weight:600;">RAG</span>
+      <span style="padding:6px 12px;border-radius:20px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.12);color:#38bdf8;font-size:.7rem;font-weight:600;">Clustering</span>
+      <span style="padding:6px 12px;border-radius:20px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.12);color:#f87171;font-size:.7rem;font-weight:600;">Anomaly Detection</span>
+    </div>
+  </div>
+
   <p class="section-text">Embeddings are not just academic — they are the invisible engine behind products you use every day:</p>
 
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
@@ -216,6 +247,15 @@ response = client.messages.create(
 <div class="quiz-block">
 <h3 class="quiz-title">Embedding Explorer Quiz</h3>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Cosine similarity: 1.0 means identical meaning, 0.0 means unrelated">
+  <div style="display:flex;align-items:center;justify-content:center;gap:12px;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;">
+    <span style="color:#34d399;">identical = 1.0</span>
+    <span style="color:#52525b;">|</span>
+    <span style="color:#fb923c;">related = 0.7</span>
+    <span style="color:#52525b;">|</span>
+    <span style="color:#f87171;">unrelated = 0.0</span>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">1</span>Which word pair would have the HIGHEST cosine similarity?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
@@ -234,6 +274,13 @@ response = client.messages.create(
 <div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Car and automobile are synonyms — they appear in nearly identical contexts so their vectors point in almost the same direction. Cosine similarity would be around 0.95.</div>
 </div>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Analogy: Paris is to France as Tokyo is to Japan — same directional relationship in vector space">
+  <div style="display:flex;align-items:center;justify-content:center;gap:4px;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;">
+    <span style="color:#c084fc;">Paris</span><span style="color:#52525b;">:</span><span style="color:#38bdf8;">France</span>
+    <span style="color:#52525b;margin:0 6px;">::</span>
+    <span style="color:#c084fc;">Tokyo</span><span style="color:#52525b;">:</span><span style="color:#34d399;font-weight:700;">?</span>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">2</span>In the analogy Paris : France :: Tokyo : ?, the answer is Japan because:</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
