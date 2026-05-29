@@ -6,8 +6,8 @@
 
   <div class="section">
     <h2>The Five Steps</h2>
-<canvas id="loop-canvas"></canvas>
-    <p class="hint">Click any node on the loop to explore it</p>
+
+    <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:4px;padding:14px 12px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.7rem;flex-wrap:wrap;"><span style="padding:6px 10px;border-radius:6px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);color:#34d399;font-weight:600;">1. Perceive</span><span style="color:#3f3f46;">&rarr;</span><span style="padding:6px 10px;border-radius:6px;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);color:#8b5cf6;font-weight:600;">2. Think</span><span style="color:#3f3f46;">&rarr;</span><span style="padding:6px 10px;border-radius:6px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);color:#fb923c;font-weight:600;">3. Act</span><span style="color:#3f3f46;">&rarr;</span><span style="padding:6px 10px;border-radius:6px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.12);color:#38bdf8;font-weight:600;">4. Observe</span><span style="color:#3f3f46;">&rarr;</span><span style="padding:6px 10px;border-radius:6px;background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);color:#c084fc;font-weight:600;">5. Loop</span></div></div>
 
     <div class="info-panel" id="info">
       <h3 id="info-title">The Loop</h3>
@@ -100,6 +100,8 @@
 
   <div class="section">
     <h2>Why the Loop Matters</h2>
+
+    <div class="lesson-visual"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;"><div style="padding:8px;border-radius:8px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1);text-align:center;font-size:.65rem;color:#f87171;font-weight:600;">Without loop: single shot</div><div style="padding:8px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);text-align:center;font-size:.65rem;color:#34d399;font-weight:600;">With loop: self-correcting</div></div></div>
     <p>A chatbot calls the LLM once and returns the result. An agent calls the LLM in a loop, feeding each result back as context for the next decision. This is the difference between "answer a question" and "solve a problem."</p>
 
     <div style="display:flex;gap:1rem;margin:1.5rem 0;flex-wrap:wrap">
@@ -125,6 +127,8 @@
 
   <div class="section">
     <h2>The Stop Condition</h2>
+
+    <div class="lesson-visual"><div style="text-align:center;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#fb923c;">loop until:</span> <span style="color:#34d399;font-weight:600;">task complete</span> <span style="color:#52525b;">or</span> <span style="color:#f87171;">max iterations</span> <span style="color:#52525b;">or</span> <span style="color:#f87171;">error</span></div></div>
     <p>Every loop needs a way to stop. Without a stop condition, your agent runs forever. There are three ways agents decide to stop:</p>
 
     <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
@@ -223,6 +227,7 @@
 <div class="quiz-block">
 <h3 class="quiz-title">The Agent Loop</h3>
 <div class="quiz-question">
+<div class="quiz-visual"><div style="text-align:center;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;"><span style="color:#34d399;">perceive</span> <span style="color:#3f3f46;">&rarr;</span> <span style="color:#8b5cf6;">think</span> <span style="color:#3f3f46;">&rarr;</span> <span style="color:#fb923c;">act</span> <span style="color:#3f3f46;">&rarr;</span> <span style="color:#38bdf8;">observe</span> <span style="color:#3f3f46;">&rarr;</span> <span style="color:#c084fc;">loop</span></div></div>
 <p class="quiz-q"><span class="quiz-num">1</span>What is the correct order of the agent loop steps?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
