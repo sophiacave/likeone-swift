@@ -18,6 +18,27 @@
 <div class="lesson-section">
   <span class="section-label">The Big Picture</span>
   <h2 class="section-title">Every word lives at a specific address in meaning-space.</h2>
+  <div class="lesson-visual" aria-label="Two search queries with zero words in common mapping to the same region in embedding space">
+    <div style="padding:16px 20px;font-family:'SF Mono','JetBrains Mono',monospace;">
+      <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;">
+        <div style="padding:12px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);text-align:center;">
+          <div style="font-size:.65rem;color:#52525b;margin-bottom:4px;">SEARCH QUERY</div>
+          <div style="font-size:.9rem;color:#34d399;font-weight:600;">"affordable dining"</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:.7rem;color:#71717a;">same</div>
+          <div style="font-size:.7rem;color:#71717a;">meaning</div>
+          <div style="font-size:1.2rem;color:#c084fc;">=</div>
+        </div>
+        <div style="padding:12px;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.12);text-align:center;">
+          <div style="font-size:.65rem;color:#52525b;margin-bottom:4px;">RESULT</div>
+          <div style="font-size:.9rem;color:#8b5cf6;font-weight:600;">"budget restaurants"</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:10px;font-size:.75rem;color:#52525b;">zero words in common — embeddings know they mean the same thing</div>
+    </div>
+  </div>
+
   <p class="section-text">Imagine a massive warehouse where every word in the English language has its own shelf. Synonyms are on the same shelf. Related words are in the same aisle. Unrelated words are in different buildings. That warehouse is <strong style="color:#e5e5e5">embedding space</strong> — and the shelf number is the word's <strong style="color:#e5e5e5">vector</strong>.</p>
   <p class="section-text">When you search "affordable dining" and the system returns "budget-friendly restaurants" — that's embeddings at work. The two phrases have zero words in common, but they live on the same shelf.</p>
 </div>
