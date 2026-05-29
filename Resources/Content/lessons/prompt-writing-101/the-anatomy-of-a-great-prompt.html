@@ -18,51 +18,41 @@
 <div class="lesson-section">
   <span class="section-label">The Framework</span>
   <h2 class="section-title">The RCFCE Framework.</h2>
-  <div class="lesson-visual" aria-label="The RCFCE framework shown as five building blocks stacked vertically: Role sets expertise, Context provides situation, Format defines output shape, Constraints set boundaries, Examples show quality standard">
-    <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="rcfce-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
-        </pattern>
-      </defs>
-      <rect width="480" height="220" fill="url(#rcfce-grid)"/>
-      <text x="240" y="18" text-anchor="middle" fill="#71717a" font-size="8" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">THE 5 BUILDING BLOCKS</text>
-      <!-- R — Role -->
-      <rect x="60" y="30" width="160" height="28" rx="6" fill="none" stroke="#fb923c" stroke-width="1.5"/>
-      <text x="80" y="48" fill="#fb923c" font-size="10" font-weight="700" font-family="SF Mono,monospace">R</text>
-      <text x="100" y="48" fill="#fb923c" font-size="9" font-family="SF Mono,monospace">Role</text>
-      <text x="270" y="48" fill="#71717a" font-size="7" font-family="SF Mono,monospace">who the AI should be</text>
-      <!-- C — Context -->
-      <rect x="60" y="66" width="160" height="28" rx="6" fill="none" stroke="#8b5cf6" stroke-width="2"/>
-      <text x="80" y="84" fill="#8b5cf6" font-size="10" font-weight="700" font-family="SF Mono,monospace">C</text>
-      <text x="100" y="84" fill="#8b5cf6" font-size="9" font-family="SF Mono,monospace">Context</text>
-      <text x="270" y="84" fill="#8b5cf6" font-size="7" font-weight="600" font-family="SF Mono,monospace">your situation + audience</text>
-      <text x="430" y="84" fill="#8b5cf6" font-size="6" font-family="SF Mono,monospace" opacity="0.6">ALWAYS</text>
-      <!-- F — Format -->
-      <rect x="60" y="102" width="160" height="28" rx="6" fill="none" stroke="#38bdf8" stroke-width="2"/>
-      <text x="80" y="120" fill="#38bdf8" font-size="10" font-weight="700" font-family="SF Mono,monospace">F</text>
-      <text x="100" y="120" fill="#38bdf8" font-size="9" font-family="SF Mono,monospace">Format</text>
-      <text x="270" y="120" fill="#38bdf8" font-size="7" font-weight="600" font-family="SF Mono,monospace">what the output looks like</text>
-      <text x="430" y="120" fill="#38bdf8" font-size="6" font-family="SF Mono,monospace" opacity="0.6">ALWAYS</text>
-      <!-- C — Constraints -->
-      <rect x="60" y="138" width="160" height="28" rx="6" fill="none" stroke="#34d399" stroke-width="1.5"/>
-      <text x="80" y="156" fill="#34d399" font-size="10" font-weight="700" font-family="SF Mono,monospace">C</text>
-      <text x="100" y="156" fill="#34d399" font-size="9" font-family="SF Mono,monospace">Constraints</text>
-      <text x="270" y="156" fill="#71717a" font-size="7" font-family="SF Mono,monospace">boundaries and limits</text>
-      <!-- E — Examples -->
-      <rect x="60" y="174" width="160" height="28" rx="6" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.7"/>
-      <text x="80" y="192" fill="#ef4444" font-size="10" font-weight="700" font-family="SF Mono,monospace" opacity="0.7">E</text>
-      <text x="100" y="192" fill="#ef4444" font-size="9" font-family="SF Mono,monospace" opacity="0.7">Examples</text>
-      <text x="270" y="192" fill="#71717a" font-size="7" font-family="SF Mono,monospace">show what good looks like</text>
-      <!-- Priority bracket -->
-      <line x1="45" y1="70" x2="45" y2="126" stroke="#c084fc" stroke-width="1.5"/>
-      <line x1="45" y1="70" x2="50" y2="70" stroke="#c084fc" stroke-width="1.5"/>
-      <line x1="45" y1="126" x2="50" y2="126" stroke="#c084fc" stroke-width="1.5"/>
-      <text x="35" y="102" text-anchor="middle" fill="#c084fc" font-size="6" font-weight="600" font-family="SF Mono,monospace" transform="rotate(-90,35,102)">CORE</text>
-      <!-- Bottom note -->
-      <text x="240" y="215" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace">Context + Format alone puts you ahead of 90% of users</text>
-    </svg>
+  <div class="lo-visual" role="figure" aria-label="The RCFCE Framework">
+  <div class="lo-visual__title">The RCFCE Framework</div>
+  <div class="lo-flow" data-steps="5">
+    <div class="lo-flow__step lo-flow__step--orange">
+      <div class="lo-flow__step-num">1</div>
+      <div class="lo-flow__step-label">Role</div>
+      <div class="lo-flow__step-detail">Who the AI<br>should be</div>
+    </div>
+    <div class="lo-flow__arrow">&rarr;</div>
+    <div class="lo-flow__step lo-flow__step--purple">
+      <div class="lo-flow__step-num">2</div>
+      <div class="lo-flow__step-label">Context</div>
+      <div class="lo-flow__step-detail">Your situation<br>+ audience</div>
+    </div>
+    <div class="lo-flow__arrow">&rarr;</div>
+    <div class="lo-flow__step lo-flow__step--blue">
+      <div class="lo-flow__step-num">3</div>
+      <div class="lo-flow__step-label">Format</div>
+      <div class="lo-flow__step-detail">What output<br>looks like</div>
+    </div>
+    <div class="lo-flow__arrow">&rarr;</div>
+    <div class="lo-flow__step lo-flow__step--green">
+      <div class="lo-flow__step-num">4</div>
+      <div class="lo-flow__step-label">Constraints</div>
+      <div class="lo-flow__step-detail">Boundaries<br>and limits</div>
+    </div>
+    <div class="lo-flow__arrow">&rarr;</div>
+    <div class="lo-flow__step lo-flow__step--red">
+      <div class="lo-flow__step-num">5</div>
+      <div class="lo-flow__step-label">Examples</div>
+      <div class="lo-flow__step-detail">Show what<br>good looks like</div>
+    </div>
   </div>
+  <div class="lo-visual__caption"><strong>Context + Format</strong> alone puts you ahead of 90% of users.</div>
+</div>
 
   <p class="section-text">Every great prompt is built from five components. You don't always need all five, but knowing them gives you a toolkit for any situation.</p>
 
@@ -97,37 +87,21 @@
 <div class="lesson-section">
   <span class="section-label">Priorities</span>
   <h2 class="section-title">You don't always need all five.</h2>
-  <div class="lesson-visual" aria-label="Priority pyramid: Context and Format form the base (always needed), Role and Constraints in the middle (add when needed), Examples at the top (for style matching)">
-    <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="pyr-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
-        </pattern>
-      </defs>
-      <rect width="480" height="200" fill="url(#pyr-grid)"/>
-      <!-- Pyramid layers — bottom to top -->
-      <!-- Base: Context + Format (ALWAYS) -->
-      <polygon points="100,165 380,165 340,120 140,120" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
-      <text x="200" y="140" fill="#8b5cf6" font-size="9" font-weight="600" font-family="SF Mono,monospace">Context</text>
-      <text x="285" y="140" fill="#38bdf8" font-size="9" font-weight="600" font-family="SF Mono,monospace">Format</text>
-      <text x="240" y="155" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">90% of prompt quality</text>
-      <!-- Middle: Role + Constraints -->
-      <polygon points="140,120 340,120 300,80 180,80" fill="none" stroke="#34d399" stroke-width="1.5" opacity="0.7"/>
-      <text x="210" y="100" fill="#fb923c" font-size="8" font-family="SF Mono,monospace" opacity="0.8">Role</text>
-      <text x="265" y="100" fill="#34d399" font-size="8" font-family="SF Mono,monospace" opacity="0.8">Constraints</text>
-      <text x="240" y="112" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace" opacity="0.6">add when task is complex</text>
-      <!-- Top: Examples -->
-      <polygon points="180,80 300,80 240,42" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
-      <text x="240" y="66" text-anchor="middle" fill="#ef4444" font-size="8" font-family="SF Mono,monospace" opacity="0.6">Examples</text>
-      <text x="240" y="76" text-anchor="middle" fill="#71717a" font-size="6" font-family="SF Mono,monospace" opacity="0.4">style matching</text>
-      <!-- Side labels -->
-      <text x="70" y="145" text-anchor="end" fill="#34d399" font-size="7" font-weight="600" font-family="SF Mono,monospace">ALWAYS</text>
-      <text x="70" y="100" text-anchor="end" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.5">WHEN NEEDED</text>
-      <text x="70" y="62" text-anchor="end" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.3">OPTIONAL</text>
-      <!-- Bottom insight -->
-      <text x="240" y="190" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace">match complexity to the task — not every prompt needs all 5</text>
-    </svg>
+  <div class="lo-visual" role="figure" aria-label="Priority: Context and Format are always needed, Role and Constraints when needed, Examples optional">
+  <div class="lo-visual__title">Component Priority</div>
+  <div style="display:flex;flex-direction:column;gap:.5rem;align-items:center;">
+    <div style="padding:.6rem 1.5rem;border-radius:var(--v-radius-sm);border:1px solid var(--v-red-border);background:var(--v-red-bg);font-size:.75rem;color:var(--v-red);text-align:center;">
+      <strong>Examples</strong><br><span style="font-size:.65rem;color:var(--v-muted)">for style matching</span>
+    </div>
+    <div style="padding:.6rem 2.5rem;border-radius:var(--v-radius-sm);border:1px solid var(--v-border2);background:var(--v-surface);font-size:.75rem;color:var(--v-dim);text-align:center;">
+      <strong style="color:var(--v-orange)">Role</strong> + <strong style="color:var(--v-green)">Constraints</strong><br><span style="font-size:.65rem;color:var(--v-muted)">add when task is complex</span>
+    </div>
+    <div style="padding:.75rem 3.5rem;border-radius:var(--v-radius-sm);border:2px solid var(--v-purple-border);background:var(--v-purple-bg);font-size:.8rem;text-align:center;">
+      <strong style="color:var(--v-purple)">Context</strong> + <strong style="color:var(--v-blue)">Format</strong><br><span style="font-size:.65rem;color:var(--v-muted)">include in EVERY prompt</span>
+    </div>
   </div>
+  <div class="lo-visual__caption">Match complexity to the task &mdash; <strong>not every prompt needs all 5</strong>.</div>
+</div>
 
   <p class="section-text">Here's the truth: for most everyday prompts, you need <strong>Context + Format</strong> at minimum. Those two alone put you ahead of 90% of AI users.</p>
 
@@ -300,57 +274,35 @@ your task complexity. Not every prompt needs all 5 components.</span></code></pr
 <div class="lesson-section">
   <span class="section-label">Impact Map</span>
   <h2 class="section-title">What each component actually changes in the output.</h2>
-  <div class="lesson-visual" aria-label="Impact map showing each RCFCE component and what it specifically changes: Role changes vocabulary and perspective, Context changes relevance, Format changes structure, Constraints change precision, Examples change style">
-    <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="impact-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
-        </pattern>
-      </defs>
-      <rect width="480" height="200" fill="url(#impact-grid)"/>
-      <text x="240" y="18" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">WHAT EACH COMPONENT CHANGES</text>
-      <!-- Role -->
-      <rect x="20" y="32" width="60" height="24" rx="5" fill="none" stroke="#fb923c" stroke-width="1.5"/>
-      <text x="50" y="48" text-anchor="middle" fill="#fb923c" font-size="8" font-weight="600" font-family="SF Mono,monospace">Role</text>
-      <line x1="82" y1="44" x2="120" y2="44" stroke="#fb923c" stroke-width="1" opacity="0.4"/>
-      <polygon points="118,41 124,44 118,47" fill="#fb923c" opacity="0.4"/>
-      <text x="130" y="42" fill="#71717a" font-size="7" font-family="SF Mono,monospace">vocabulary</text>
-      <text x="130" y="52" fill="#71717a" font-size="7" font-family="SF Mono,monospace">perspective</text>
-      <text x="240" y="48" fill="#71717a" font-size="7" font-family="SF Mono,monospace">depth of expertise</text>
-      <!-- Context -->
-      <rect x="20" y="66" width="60" height="24" rx="5" fill="none" stroke="#8b5cf6" stroke-width="2"/>
-      <text x="50" y="82" text-anchor="middle" fill="#8b5cf6" font-size="8" font-weight="600" font-family="SF Mono,monospace">Context</text>
-      <line x1="82" y1="78" x2="120" y2="78" stroke="#8b5cf6" stroke-width="1.5" opacity="0.5"/>
-      <polygon points="118,75 124,78 118,81" fill="#8b5cf6" opacity="0.5"/>
-      <text x="130" y="76" fill="#8b5cf6" font-size="7" font-weight="600" font-family="SF Mono,monospace">relevance</text>
-      <text x="130" y="86" fill="#8b5cf6" font-size="7" font-weight="600" font-family="SF Mono,monospace">specificity</text>
-      <text x="240" y="82" fill="#8b5cf6" font-size="7" font-family="SF Mono,monospace">usefulness to YOUR situation</text>
-      <!-- Format -->
-      <rect x="20" y="100" width="60" height="24" rx="5" fill="none" stroke="#38bdf8" stroke-width="2"/>
-      <text x="50" y="116" text-anchor="middle" fill="#38bdf8" font-size="8" font-weight="600" font-family="SF Mono,monospace">Format</text>
-      <line x1="82" y1="112" x2="120" y2="112" stroke="#38bdf8" stroke-width="1.5" opacity="0.5"/>
-      <polygon points="118,109 124,112 118,115" fill="#38bdf8" opacity="0.5"/>
-      <text x="130" y="110" fill="#38bdf8" font-size="7" font-weight="600" font-family="SF Mono,monospace">structure</text>
-      <text x="130" y="120" fill="#38bdf8" font-size="7" font-weight="600" font-family="SF Mono,monospace">scanability</text>
-      <text x="240" y="116" fill="#38bdf8" font-size="7" font-family="SF Mono,monospace">copy-paste ready output</text>
-      <!-- Constraints -->
-      <rect x="20" y="134" width="60" height="24" rx="5" fill="none" stroke="#34d399" stroke-width="1.5"/>
-      <text x="50" y="150" text-anchor="middle" fill="#34d399" font-size="8" font-weight="600" font-family="SF Mono,monospace">Constr.</text>
-      <line x1="82" y1="146" x2="120" y2="146" stroke="#34d399" stroke-width="1" opacity="0.4"/>
-      <polygon points="118,143 124,146 118,149" fill="#34d399" opacity="0.4"/>
-      <text x="130" y="144" fill="#71717a" font-size="7" font-family="SF Mono,monospace">precision</text>
-      <text x="130" y="154" fill="#71717a" font-size="7" font-family="SF Mono,monospace">authenticity</text>
-      <text x="240" y="150" fill="#71717a" font-size="7" font-family="SF Mono,monospace">eliminates generic AI-isms</text>
-      <!-- Examples -->
-      <rect x="20" y="168" width="60" height="24" rx="5" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.6"/>
-      <text x="50" y="184" text-anchor="middle" fill="#ef4444" font-size="8" font-weight="600" font-family="SF Mono,monospace" opacity="0.6">Exmpl.</text>
-      <line x1="82" y1="180" x2="120" y2="180" stroke="#ef4444" stroke-width="1" opacity="0.3"/>
-      <polygon points="118,177 124,180 118,183" fill="#ef4444" opacity="0.3"/>
-      <text x="130" y="178" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.6">style</text>
-      <text x="130" y="188" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.6">voice</text>
-      <text x="240" y="184" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.5">2 sentences of example &gt; paragraph of description</text>
-    </svg>
+  <div class="lo-visual" role="figure" aria-label="What Each Component Changes">
+  <div class="lo-visual__title">What Each Component Changes</div>
+  <div class="lo-flow" data-steps="4">
+    <div class="lo-flow__step lo-flow__step--orange">
+      <div class="lo-flow__step-num">1</div>
+      <div class="lo-flow__step-label">Role</div>
+      <div class="lo-flow__step-detail">Vocabulary,<br>perspective,<br>expertise depth</div>
+    </div>
+    <div class="lo-flow__arrow">&rarr;</div>
+    <div class="lo-flow__step lo-flow__step--purple">
+      <div class="lo-flow__step-num">2</div>
+      <div class="lo-flow__step-label">Context</div>
+      <div class="lo-flow__step-detail">Relevance,<br>specificity,<br>usefulness</div>
+    </div>
+    <div class="lo-flow__arrow">&rarr;</div>
+    <div class="lo-flow__step lo-flow__step--blue">
+      <div class="lo-flow__step-num">3</div>
+      <div class="lo-flow__step-label">Format</div>
+      <div class="lo-flow__step-detail">Structure,<br>scanability,<br>copy-paste ready</div>
+    </div>
+    <div class="lo-flow__arrow">&rarr;</div>
+    <div class="lo-flow__step lo-flow__step--green">
+      <div class="lo-flow__step-num">4</div>
+      <div class="lo-flow__step-label">Constraints</div>
+      <div class="lo-flow__step-detail">Precision,<br>authenticity,<br>kills AI-isms</div>
+    </div>
   </div>
+  <div class="lo-visual__caption">Each component targets a <strong>different dimension</strong> of output quality.</div>
+</div>
 
   <p class="section-text">Understanding the RCFCE components is one thing. Understanding what each one <strong>does</strong> to the output helps you decide which ones to invest time in.</p>
 

@@ -18,47 +18,23 @@
 <div class="lesson-section">
   <span class="section-label">The Paradox</span>
   <h2 class="section-title">Why limits make AI better, not worse.</h2>
-  <div class="lesson-visual" aria-label="Funnel diagram showing infinite mediocre possibilities narrowing through constraints into a focused zone of high-quality output">
-    <svg viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="con-grid1" width="20" height="20" patternUnits="userSpaceOnUse">
-          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
-        </pattern>
-      </defs>
-      <rect width="480" height="180" fill="url(#con-grid1)"/>
-      <!-- Wide zone: no constraints -->
-      <polygon points="40,30 220,30 220,150 40,150" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.2"/>
-      <text x="130" y="22" text-anchor="middle" fill="#ef4444" font-size="7" font-weight="600" font-family="SF Mono,monospace" opacity="0.5">NO CONSTRAINTS</text>
-      <!-- Scattered dots representing generic output -->
-      <circle cx="70" cy="60" r="2" fill="#ef4444" opacity="0.15"/>
-      <circle cx="120" cy="45" r="2" fill="#ef4444" opacity="0.1"/>
-      <circle cx="180" cy="80" r="2" fill="#ef4444" opacity="0.12"/>
-      <circle cx="90" cy="110" r="2" fill="#ef4444" opacity="0.15"/>
-      <circle cx="150" cy="130" r="2" fill="#ef4444" opacity="0.1"/>
-      <circle cx="60" cy="90" r="2" fill="#ef4444" opacity="0.12"/>
-      <circle cx="200" cy="50" r="2" fill="#ef4444" opacity="0.1"/>
-      <circle cx="100" cy="70" r="2" fill="#ef4444" opacity="0.15"/>
-      <circle cx="170" y="100" r="2" fill="#ef4444" opacity="0.12"/>
-      <text x="130" y="95" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace" opacity="0.3">infinite mediocre</text>
-      <text x="130" y="107" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace" opacity="0.3">possibilities</text>
-      <!-- Funnel narrowing -->
-      <line x1="220" y1="30" x2="340" y2="65" stroke="#c084fc" stroke-width="1.5" opacity="0.4"/>
-      <line x1="220" y1="150" x2="340" y2="115" stroke="#c084fc" stroke-width="1.5" opacity="0.4"/>
-      <!-- Constraint labels along funnel -->
-      <text x="260" y="50" fill="#c084fc" font-size="6.5" font-family="SF Mono,monospace" opacity="0.5">length</text>
-      <text x="275" y="65" fill="#c084fc" font-size="6.5" font-family="SF Mono,monospace" opacity="0.5">tone</text>
-      <text x="290" y="80" fill="#c084fc" font-size="6.5" font-family="SF Mono,monospace" opacity="0.5">scope</text>
-      <text x="300" y="95" fill="#c084fc" font-size="6.5" font-family="SF Mono,monospace" opacity="0.5">format</text>
-      <text x="280" y="130" fill="#c084fc" font-size="6.5" font-family="SF Mono,monospace" opacity="0.5">negatives</text>
-      <!-- Focused zone: with constraints -->
-      <rect x="340" y="65" width="120" height="50" rx="8" fill="none" stroke="#34d399" stroke-width="2"/>
-      <text x="400" y="85" text-anchor="middle" fill="#34d399" font-size="8" font-weight="600" font-family="SF Mono,monospace">FOCUSED</text>
-      <text x="400" y="98" text-anchor="middle" fill="#34d399" font-size="8" font-weight="600" font-family="SF Mono,monospace">HIGH QUALITY</text>
-      <text x="400" y="108" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace">precise output</text>
-      <!-- Bottom insight -->
-      <text x="240" y="172" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace">constraints are creative fuel, not limitations</text>
-    </svg>
+  <div class="lo-visual" role="figure" aria-label="Why Constraints Improve Output">
+  <div class="lo-visual__title">Why Constraints Improve Output</div>
+  <div class="lo-compare">
+    <div class="lo-compare__side lo-compare__side--before">
+      <div class="lo-compare__badge">No Constraints</div>
+      <div class="lo-compare__content">Infinite possibilities.<br>AI picks the most generic,<br>average option.</div>
+      <div class="lo-compare__result" style="color:var(--v-red)">&rarr; Mediocre, unfocused.</div>
+    </div>
+    <div class="lo-compare__divider">&rarr;</div>
+    <div class="lo-compare__side lo-compare__side--after">
+      <div class="lo-compare__badge">With Constraints</div>
+      <div class="lo-compare__content">Length + tone + scope +<br>format + negatives.<br>Focused output space.</div>
+      <div class="lo-compare__result" style="color:var(--v-green)">&rarr; Precise, high quality.</div>
+    </div>
   </div>
+  <div class="lo-visual__caption">Constraints are <strong>creative fuel</strong>, not limitations.</div>
+</div>
 
   <p class="section-text">It feels counterintuitive: give AI fewer options and it performs better? But think about writing a song. "Write a song about anything" is paralyzing. "Write a 4-line verse about losing your keys, in the style of country music" — now you can work.</p>
   <p class="section-text">Constraints do the same thing for AI. They eliminate the infinite space of mediocre possibilities and force the model into a focused, specific output space where the quality is higher.</p>
@@ -91,56 +67,41 @@ Write a product description for <span style="color:#4ade80">[product name]</span
 <div class="lesson-section">
   <span class="section-label">The Types</span>
   <h2 class="section-title">5 types of constraints.</h2>
-  <div class="lesson-visual" aria-label="Five constraint types shown as connected blocks: Length, Tone, Scope, Format, and Negative, each with a brief description of what they control">
-    <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="con-grid2" width="20" height="20" patternUnits="userSpaceOnUse">
-          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
-        </pattern>
-      </defs>
-      <rect width="480" height="160" fill="url(#con-grid2)"/>
-      <!-- 5 constraint blocks in a row -->
-      <!-- 1. Length -->
-      <rect x="16" y="30" width="80" height="55" rx="8" fill="none" stroke="#fb923c" stroke-width="1.5"/>
-      <text x="56" y="50" text-anchor="middle" fill="#fb923c" font-size="8" font-weight="600" font-family="SF Mono,monospace">LENGTH</text>
-      <text x="56" y="64" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace">how much</text>
-      <text x="56" y="76" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace">you get</text>
-      <!-- 2. Tone -->
-      <rect x="108" y="30" width="80" height="55" rx="8" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
-      <text x="148" y="50" text-anchor="middle" fill="#8b5cf6" font-size="8" font-weight="600" font-family="SF Mono,monospace">TONE</text>
-      <text x="148" y="64" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace">how it</text>
-      <text x="148" y="76" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace">sounds</text>
-      <!-- 3. Scope -->
-      <rect x="200" y="30" width="80" height="55" rx="8" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
-      <text x="240" y="50" text-anchor="middle" fill="#38bdf8" font-size="8" font-weight="600" font-family="SF Mono,monospace">SCOPE</text>
-      <text x="240" y="64" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace">what to</text>
-      <text x="240" y="76" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace">focus on</text>
-      <!-- 4. Format -->
-      <rect x="292" y="30" width="80" height="55" rx="8" fill="none" stroke="#34d399" stroke-width="1.5"/>
-      <text x="332" y="50" text-anchor="middle" fill="#34d399" font-size="8" font-weight="600" font-family="SF Mono,monospace">FORMAT</text>
-      <text x="332" y="64" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace">how it's</text>
-      <text x="332" y="76" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace">structured</text>
-      <!-- 5. Negative -->
-      <rect x="384" y="30" width="80" height="55" rx="8" fill="none" stroke="#ef4444" stroke-width="1.5"/>
-      <text x="424" y="50" text-anchor="middle" fill="#ef4444" font-size="8" font-weight="600" font-family="SF Mono,monospace">NEGATIVE</text>
-      <text x="424" y="64" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace">what to</text>
-      <text x="424" y="76" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace">avoid</text>
-      <!-- Connection line -->
-      <line x1="56" y1="90" x2="56" y2="110" stroke="#fb923c" stroke-width="0.5" opacity="0.3"/>
-      <line x1="148" y1="90" x2="148" y2="110" stroke="#8b5cf6" stroke-width="0.5" opacity="0.3"/>
-      <line x1="240" y1="90" x2="240" y2="110" stroke="#38bdf8" stroke-width="0.5" opacity="0.3"/>
-      <line x1="332" y1="90" x2="332" y2="110" stroke="#34d399" stroke-width="0.5" opacity="0.3"/>
-      <line x1="424" y1="90" x2="424" y2="110" stroke="#ef4444" stroke-width="0.5" opacity="0.3"/>
-      <!-- Example row -->
-      <text x="56" y="122" text-anchor="middle" fill="#fb923c" font-size="6" font-family="SF Mono,monospace" opacity="0.6">"3 sentences"</text>
-      <text x="148" y="122" text-anchor="middle" fill="#8b5cf6" font-size="6" font-family="SF Mono,monospace" opacity="0.6">"warm, not sappy"</text>
-      <text x="240" y="122" text-anchor="middle" fill="#38bdf8" font-size="6" font-family="SF Mono,monospace" opacity="0.6">"only benefits"</text>
-      <text x="332" y="122" text-anchor="middle" fill="#34d399" font-size="6" font-family="SF Mono,monospace" opacity="0.6">"bullet list"</text>
-      <text x="424" y="122" text-anchor="middle" fill="#ef4444" font-size="6" font-family="SF Mono,monospace" opacity="0.6">"no buzzwords"</text>
-      <!-- Bottom -->
-      <text x="240" y="148" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">each constraint eliminates one category of generic output</text>
-    </svg>
+  <div class="lo-visual" role="figure" aria-label="5 Constraint Types">
+  <div class="lo-visual__title">5 Constraint Types</div>
+  <div class="lo-flow" data-steps="5">
+    <div class="lo-flow__step lo-flow__step--orange">
+      <div class="lo-flow__step-num">1</div>
+      <div class="lo-flow__step-label">Length</div>
+      <div class="lo-flow__step-detail">"3 sentences"<br>How much</div>
+    </div>
+    <div class="lo-flow__arrow">&rarr;</div>
+    <div class="lo-flow__step lo-flow__step--purple">
+      <div class="lo-flow__step-num">2</div>
+      <div class="lo-flow__step-label">Tone</div>
+      <div class="lo-flow__step-detail">"warm, not sappy"<br>How it sounds</div>
+    </div>
+    <div class="lo-flow__arrow">&rarr;</div>
+    <div class="lo-flow__step lo-flow__step--blue">
+      <div class="lo-flow__step-num">3</div>
+      <div class="lo-flow__step-label">Scope</div>
+      <div class="lo-flow__step-detail">"only benefits"<br>What to focus on</div>
+    </div>
+    <div class="lo-flow__arrow">&rarr;</div>
+    <div class="lo-flow__step lo-flow__step--green">
+      <div class="lo-flow__step-num">4</div>
+      <div class="lo-flow__step-label">Format</div>
+      <div class="lo-flow__step-detail">"bullet list"<br>How it looks</div>
+    </div>
+    <div class="lo-flow__arrow">&rarr;</div>
+    <div class="lo-flow__step lo-flow__step--red">
+      <div class="lo-flow__step-num">5</div>
+      <div class="lo-flow__step-label">Negative</div>
+      <div class="lo-flow__step-detail">"no buzzwords"<br>What to avoid</div>
+    </div>
   </div>
+  <div class="lo-visual__caption">Each constraint <strong>eliminates one category</strong> of generic output.</div>
+</div>
 
 <div class="flash-block">
 <h3 class="quiz-title">5 Constraint Types — Flip to See Examples</h3>
@@ -218,56 +179,29 @@ WHY: Negative constraints directly target AI-isms. They are the fastest way to m
 <div class="lesson-section">
   <span class="section-label">Advanced</span>
   <h2 class="section-title">Stacking constraints for maximum impact.</h2>
-  <div class="lesson-visual" aria-label="Diagram showing how stacking multiple constraint types together creates progressively better output, from one constraint producing okay output to five constraints producing precise output">
-    <svg viewBox="0 0 480 150" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="con-grid3" width="20" height="20" patternUnits="userSpaceOnUse">
-          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
-        </pattern>
-      </defs>
-      <rect width="480" height="150" fill="url(#con-grid3)"/>
-      <text x="240" y="18" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">CONSTRAINT STACKING</text>
-      <!-- Progressive stacking bars -->
-      <!-- 1 constraint -->
-      <rect x="40" y="35" width="40" height="20" rx="4" fill="none" stroke="#fb923c" stroke-width="1" opacity="0.4"/>
-      <text x="60" y="49" text-anchor="middle" fill="#fb923c" font-size="6" font-family="SF Mono,monospace" opacity="0.5">LEN</text>
-      <text x="60" y="70" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.3">okay</text>
-      <!-- 2 constraints -->
-      <rect x="120" y="35" width="40" height="20" rx="4" fill="none" stroke="#fb923c" stroke-width="1" opacity="0.5"/>
-      <rect x="120" y="60" width="40" height="20" rx="4" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.5"/>
-      <text x="140" y="49" text-anchor="middle" fill="#fb923c" font-size="6" font-family="SF Mono,monospace" opacity="0.6">LEN</text>
-      <text x="140" y="74" text-anchor="middle" fill="#8b5cf6" font-size="6" font-family="SF Mono,monospace" opacity="0.6">TONE</text>
-      <text x="140" y="96" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.4">better</text>
-      <!-- 3 constraints -->
-      <rect x="200" y="35" width="40" height="20" rx="4" fill="none" stroke="#fb923c" stroke-width="1.2"/>
-      <rect x="200" y="60" width="40" height="20" rx="4" fill="none" stroke="#8b5cf6" stroke-width="1.2"/>
-      <rect x="200" y="85" width="40" height="20" rx="4" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
-      <text x="220" y="49" text-anchor="middle" fill="#fb923c" font-size="6" font-family="SF Mono,monospace">LEN</text>
-      <text x="220" y="74" text-anchor="middle" fill="#8b5cf6" font-size="6" font-family="SF Mono,monospace">TONE</text>
-      <text x="220" y="99" text-anchor="middle" fill="#38bdf8" font-size="6" font-family="SF Mono,monospace">SCOPE</text>
-      <text x="220" y="120" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.5">good</text>
-      <!-- 5 constraints -->
-      <rect x="310" y="28" width="50" height="18" rx="4" fill="none" stroke="#fb923c" stroke-width="1.5"/>
-      <rect x="310" y="50" width="50" height="18" rx="4" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
-      <rect x="310" y="72" width="50" height="18" rx="4" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
-      <rect x="310" y="94" width="50" height="18" rx="4" fill="none" stroke="#34d399" stroke-width="1.5"/>
-      <rect x="310" y="116" width="50" height="18" rx="4" fill="none" stroke="#ef4444" stroke-width="1.5"/>
-      <text x="335" y="41" text-anchor="middle" fill="#fb923c" font-size="5.5" font-family="SF Mono,monospace">LEN</text>
-      <text x="335" y="63" text-anchor="middle" fill="#8b5cf6" font-size="5.5" font-family="SF Mono,monospace">TONE</text>
-      <text x="335" y="85" text-anchor="middle" fill="#38bdf8" font-size="5.5" font-family="SF Mono,monospace">SCOPE</text>
-      <text x="335" y="107" text-anchor="middle" fill="#34d399" font-size="5.5" font-family="SF Mono,monospace">FMT</text>
-      <text x="335" y="129" text-anchor="middle" fill="#ef4444" font-size="5.5" font-family="SF Mono,monospace">NEG</text>
-      <!-- Arrow to result -->
-      <line x1="365" y1="80" x2="395" y2="80" stroke="#34d399" stroke-width="1.5" opacity="0.5"/>
-      <polygon points="393,77 399,80 393,83" fill="#34d399" opacity="0.5"/>
-      <!-- Result -->
-      <rect x="400" y="60" width="65" height="40" rx="8" fill="none" stroke="#34d399" stroke-width="2"/>
-      <text x="432" y="78" text-anchor="middle" fill="#34d399" font-size="7" font-weight="600" font-family="SF Mono,monospace">PRECISE</text>
-      <text x="432" y="90" text-anchor="middle" fill="#34d399" font-size="7" font-weight="600" font-family="SF Mono,monospace">OUTPUT</text>
-      <!-- Bottom -->
-      <text x="240" y="146" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">more constraints = less guessing = higher quality</text>
-    </svg>
+  <div class="lo-visual" role="figure" aria-label="Constraint Stacking">
+  <div class="lo-visual__title">Constraint Stacking</div>
+  <div class="lo-flow" data-steps="3">
+    <div class="lo-flow__step lo-flow__step--orange">
+      <div class="lo-flow__step-num">1</div>
+      <div class="lo-flow__step-label">1 type</div>
+      <div class="lo-flow__step-detail">Okay<br>output</div>
+    </div>
+    <div class="lo-flow__arrow">&rarr;</div>
+    <div class="lo-flow__step lo-flow__step--purple">
+      <div class="lo-flow__step-num">2</div>
+      <div class="lo-flow__step-label">3 types</div>
+      <div class="lo-flow__step-detail">Good<br>output</div>
+    </div>
+    <div class="lo-flow__arrow">&rarr;</div>
+    <div class="lo-flow__step lo-flow__step--green">
+      <div class="lo-flow__step-num">3</div>
+      <div class="lo-flow__step-label">5 types</div>
+      <div class="lo-flow__step-detail">Precise<br>output</div>
+    </div>
   </div>
+  <div class="lo-visual__caption">More constraints = less guessing = <strong>higher quality</strong>.</div>
+</div>
 
   <p class="section-text">Individual constraints are useful. But the real power comes from combining them strategically. Here's how different constraint combinations serve different goals.</p>
 
