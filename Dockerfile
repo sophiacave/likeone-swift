@@ -3,16 +3,15 @@ RUN apt-get update && apt-get install -y libsqlite3-dev && rm -rf /var/lib/apt/l
 WORKDIR /app
 COPY Package.swift Package.resolved ./
 RUN swift package resolve 2>/dev/null || true
-COPY . .
+COPY Sources/ Sources/
+COPY Resources/ Resources/
+COPY Public/ Public/
 RUN python3 -c "import re; t=open('Package.swift').read(); t=re.sub(r'\n\s*// Tests\n.*?(?=\n\s*\],)', '', t, flags=re.DOTALL); open('Package.swift','w').write(t)"
-RUN swift build -c release -Xswiftc -cross-module-optimization && \
-    BIN_PATH=$(swift build -c release --show-bin-path) && \
-    echo "Binary path: $BIN_PATH" && \
-    ls -la "$BIN_PATH"/LOServer* 2>/dev/null || echo "LOServer not at BIN_PATH" && \
-    find .build -name "LOServer" -type f 2>/dev/null && \
-    cp "$BIN_PATH/LOServer" /staging-binary && \
-    mkdir -p /staging-resources && \
-    find .build -name "LOContent_LOContent.resources" -type d -exec cp -r {} /staging-resources/ \;
+RUN swift build -c release -Xswiftc -cross-module-optimization \
+    && mkdir -p /output \
+    && find .build -name LOServer -type f -perm /111 -exec cp {} /output/LOServer \; \
+    && find .build -name "LOContent_LOContent.resources" -type d -exec cp -r {} /output/ \; \
+    && ls -la /output/
 
 FROM ubuntu:jammy
 RUN apt-get update && apt-get install -y \
@@ -20,10 +19,10 @@ RUN apt-get update && apt-get install -y \
     libsqlite3-0 \
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
-COPY --from=build /staging-binary ./LOServer
+COPY --from=build /output/LOServer ./LOServer
 COPY --from=build /app/Resources ./Resources
 COPY --from=build /app/Public ./Public
-COPY --from=build /staging-resources/ .
+COPY --from=build /output/LOContent_LOContent.resources ./LOContent_LOContent.resources
 ENV ENVIRONMENT=production
 EXPOSE 8080
 ENTRYPOINT ["./LOServer", "serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080"]
