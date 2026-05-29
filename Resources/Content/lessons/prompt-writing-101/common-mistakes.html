@@ -18,6 +18,37 @@
 <div class="lesson-section">
   <span class="section-label">The Mistakes</span>
   <h2 class="section-title">8 mistakes and their instant fixes.</h2>
+  <div class="lesson-visual" aria-label="Eight common prompt mistakes shown as warning signs: too vague, too long, no format, no audience, AI-isms accepted, no iteration, wrong scope, no constraints">
+    <svg viewBox="0 0 480 130" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="mis-grid1" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="480" height="130" fill="url(#mis-grid1)"/>
+      <text x="240" y="16" text-anchor="middle" fill="#ef4444" font-size="7" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">8 COMMON MISTAKES</text>
+      <!-- Row 1 -->
+      <rect x="16" y="25" width="105" height="32" rx="5" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+      <text x="68" y="45" text-anchor="middle" fill="#ef4444" font-size="7" font-family="SF Mono,monospace" opacity="0.6">too vague</text>
+      <rect x="131" y="25" width="105" height="32" rx="5" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+      <text x="183" y="45" text-anchor="middle" fill="#ef4444" font-size="7" font-family="SF Mono,monospace" opacity="0.6">too long</text>
+      <rect x="246" y="25" width="105" height="32" rx="5" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+      <text x="298" y="45" text-anchor="middle" fill="#ef4444" font-size="7" font-family="SF Mono,monospace" opacity="0.6">no format</text>
+      <rect x="361" y="25" width="105" height="32" rx="5" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.5"/>
+      <text x="413" y="45" text-anchor="middle" fill="#ef4444" font-size="7" font-family="SF Mono,monospace" opacity="0.6">no audience</text>
+      <!-- Row 2 -->
+      <rect x="16" y="65" width="105" height="32" rx="5" fill="none" stroke="#fb923c" stroke-width="1" opacity="0.4"/>
+      <text x="68" y="85" text-anchor="middle" fill="#fb923c" font-size="7" font-family="SF Mono,monospace" opacity="0.5">accept AI-isms</text>
+      <rect x="131" y="65" width="105" height="32" rx="5" fill="none" stroke="#fb923c" stroke-width="1" opacity="0.4"/>
+      <text x="183" y="85" text-anchor="middle" fill="#fb923c" font-size="7" font-family="SF Mono,monospace" opacity="0.5">no iteration</text>
+      <rect x="246" y="65" width="105" height="32" rx="5" fill="none" stroke="#fb923c" stroke-width="1" opacity="0.4"/>
+      <text x="298" y="85" text-anchor="middle" fill="#fb923c" font-size="7" font-family="SF Mono,monospace" opacity="0.5">wrong scope</text>
+      <rect x="361" y="65" width="105" height="32" rx="5" fill="none" stroke="#fb923c" stroke-width="1" opacity="0.4"/>
+      <text x="413" y="85" text-anchor="middle" fill="#fb923c" font-size="7" font-family="SF Mono,monospace" opacity="0.5">no constraints</text>
+      <!-- Bottom -->
+      <text x="240" y="118" text-anchor="middle" fill="#34d399" font-size="7" font-family="SF Mono,monospace">every mistake has a 30-second fix — flip the cards below</text>
+    </svg>
+  </div>
 
 
 <div class="flash-block">
@@ -130,6 +161,15 @@ AI works best building on something you started — not creating from nothing. Y
 <div class="quiz-block">
 <h3 class="quiz-title">Good Practice or Common Mistake?</h3>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="A prompt saying 'Make it better' with a warning symbol">
+  <div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;">
+    <div style="padding:6px 12px;border-radius:6px;border:1px solid rgba(239,68,68,.3);background:rgba(239,68,68,.04);">
+      <span style="color:#ef4444;font-size:.7rem;">"Make it better."</span>
+    </div>
+    <span style="color:#fb923c;font-size:.9rem;">&#x26A0;</span>
+    <span style="color:#71717a;font-size:.65rem;">good or bad?</span>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">1</span>You write: "Make it better." Is this a good prompting practice?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
@@ -325,6 +365,56 @@ Analyze WHY it failed: Missing context? Wrong role? Bad format choice? Fix THAT 
 <div class="lesson-section">
   <span class="section-label">Corrections Lab</span>
   <h2 class="section-title">Real mistakes, real fixes — practice your diagnostic eye.</h2>
+  <div class="lesson-visual" aria-label="Diagnostic flowchart: output too generic? add context. Too long? add length constraint. Wrong tone? add tone constraint. AI-sounding? add negative constraints.">
+    <svg viewBox="0 0 480 150" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="mis-grid2" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="480" height="150" fill="url(#mis-grid2)"/>
+      <text x="240" y="16" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">DIAGNOSTIC FLOWCHART</text>
+      <!-- Problem → Fix pairs -->
+      <rect x="20" y="28" width="90" height="24" rx="5" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.6"/>
+      <text x="65" y="44" text-anchor="middle" fill="#ef4444" font-size="7" font-family="SF Mono,monospace" opacity="0.6">too generic?</text>
+      <text x="130" y="44" fill="#71717a" font-size="8" opacity="0.3">&rarr;</text>
+      <rect x="145" y="28" width="90" height="24" rx="5" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="190" y="44" text-anchor="middle" fill="#34d399" font-size="7" font-weight="600" font-family="SF Mono,monospace">+ context</text>
+
+      <rect x="260" y="28" width="90" height="24" rx="5" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.6"/>
+      <text x="305" y="44" text-anchor="middle" fill="#ef4444" font-size="7" font-family="SF Mono,monospace" opacity="0.6">too long?</text>
+      <text x="370" y="44" fill="#71717a" font-size="8" opacity="0.3">&rarr;</text>
+      <rect x="385" y="28" width="80" height="24" rx="5" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="425" y="44" text-anchor="middle" fill="#34d399" font-size="7" font-weight="600" font-family="SF Mono,monospace">+ length</text>
+
+      <rect x="20" y="64" width="90" height="24" rx="5" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.6"/>
+      <text x="65" y="80" text-anchor="middle" fill="#ef4444" font-size="7" font-family="SF Mono,monospace" opacity="0.6">wrong tone?</text>
+      <text x="130" y="80" fill="#71717a" font-size="8" opacity="0.3">&rarr;</text>
+      <rect x="145" y="64" width="90" height="24" rx="5" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="190" y="80" text-anchor="middle" fill="#34d399" font-size="7" font-weight="600" font-family="SF Mono,monospace">+ tone pair</text>
+
+      <rect x="260" y="64" width="90" height="24" rx="5" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.6"/>
+      <text x="305" y="80" text-anchor="middle" fill="#ef4444" font-size="7" font-family="SF Mono,monospace" opacity="0.6">AI-sounding?</text>
+      <text x="370" y="80" fill="#71717a" font-size="8" opacity="0.3">&rarr;</text>
+      <rect x="385" y="64" width="80" height="24" rx="5" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="425" y="80" text-anchor="middle" fill="#34d399" font-size="7" font-weight="600" font-family="SF Mono,monospace">+ negatives</text>
+
+      <rect x="20" y="100" width="90" height="24" rx="5" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.6"/>
+      <text x="65" y="116" text-anchor="middle" fill="#ef4444" font-size="7" font-family="SF Mono,monospace" opacity="0.6">no structure?</text>
+      <text x="130" y="116" fill="#71717a" font-size="8" opacity="0.3">&rarr;</text>
+      <rect x="145" y="100" width="90" height="24" rx="5" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="190" y="116" text-anchor="middle" fill="#34d399" font-size="7" font-weight="600" font-family="SF Mono,monospace">+ format</text>
+
+      <rect x="260" y="100" width="90" height="24" rx="5" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.6"/>
+      <text x="305" y="116" text-anchor="middle" fill="#ef4444" font-size="7" font-family="SF Mono,monospace" opacity="0.6">wrong depth?</text>
+      <text x="370" y="116" fill="#71717a" font-size="8" opacity="0.3">&rarr;</text>
+      <rect x="385" y="100" width="80" height="24" rx="5" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="425" y="116" text-anchor="middle" fill="#34d399" font-size="7" font-weight="600" font-family="SF Mono,monospace">+ scope</text>
+
+      <text x="240" y="142" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">every bad output has a 30-second fix</text>
+    </svg>
+  </div>
+
   <p class="section-text">For each broken prompt below, identify the mistake and read the corrected version. This is the skill that separates good AI users from great ones — the ability to diagnose and fix a prompt in seconds.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
