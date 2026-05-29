@@ -6,68 +6,34 @@
 
   <div class="section">
     <h2>RAG in One Sentence</h2>
-    <div class="lesson-visual" aria-label="The RAG pipeline in 6 steps: User Query flows to Embed Query, then Vector Search, Retrieve Chunks, Augment Prompt, and finally LLM Response, shown as a linear flow with color-coded stages">
-      <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="rag-grid1" width="20" height="20" patternUnits="userSpaceOnUse">
-            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
-          </pattern>
-        </defs>
-        <rect width="480" height="200" fill="url(#rag-grid1)"/>
-        <text x="240" y="16" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">THE RAG LOOP — 6 STEPS</text>
-        <!-- Step 1: Query -->
-        <circle cx="55" cy="55" r="20" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
-        <text x="55" y="52" text-anchor="middle" fill="#8b5cf6" font-size="9" font-weight="700" font-family="SF Mono,monospace">1</text>
-        <text x="55" y="62" text-anchor="middle" fill="#71717a" font-size="5" font-family="SF Mono,monospace">query</text>
-        <text x="55" y="85" text-anchor="middle" fill="#8b5cf6" font-size="6" font-family="SF Mono,monospace" opacity="0.6">USER</text>
-        <text x="55" y="94" text-anchor="middle" fill="#8b5cf6" font-size="6" font-family="SF Mono,monospace" opacity="0.6">QUESTION</text>
-        <!-- Arrow -->
-        <line x1="77" y1="55" x2="110" y2="55" stroke="#71717a" stroke-width="1" opacity="0.3"/>
-        <polygon points="108,52 114,55 108,58" fill="#71717a" opacity="0.3"/>
-        <!-- Step 2: Embed -->
-        <circle cx="140" cy="55" r="20" fill="none" stroke="#34d399" stroke-width="1.5"/>
-        <text x="140" y="52" text-anchor="middle" fill="#34d399" font-size="9" font-weight="700" font-family="SF Mono,monospace">2</text>
-        <text x="140" y="62" text-anchor="middle" fill="#71717a" font-size="5" font-family="SF Mono,monospace">embed</text>
-        <text x="140" y="85" text-anchor="middle" fill="#34d399" font-size="6" font-family="SF Mono,monospace" opacity="0.6">TEXT</text>
-        <text x="140" y="94" text-anchor="middle" fill="#34d399" font-size="6" font-family="SF Mono,monospace" opacity="0.6">&rarr; VECTOR</text>
-        <!-- Arrow -->
-        <line x1="162" y1="55" x2="195" y2="55" stroke="#71717a" stroke-width="1" opacity="0.3"/>
-        <polygon points="193,52 199,55 193,58" fill="#71717a" opacity="0.3"/>
-        <!-- Step 3: Search -->
-        <circle cx="225" cy="55" r="20" fill="none" stroke="#fb923c" stroke-width="1.5"/>
-        <text x="225" y="52" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="700" font-family="SF Mono,monospace">3</text>
-        <text x="225" y="62" text-anchor="middle" fill="#71717a" font-size="5" font-family="SF Mono,monospace">search</text>
-        <text x="225" y="85" text-anchor="middle" fill="#fb923c" font-size="6" font-family="SF Mono,monospace" opacity="0.6">VECTOR</text>
-        <text x="225" y="94" text-anchor="middle" fill="#fb923c" font-size="6" font-family="SF Mono,monospace" opacity="0.6">DB QUERY</text>
-        <!-- Arrow -->
-        <line x1="247" y1="55" x2="280" y2="55" stroke="#71717a" stroke-width="1" opacity="0.3"/>
-        <polygon points="278,52 284,55 278,58" fill="#71717a" opacity="0.3"/>
-        <!-- Step 4: Retrieve -->
-        <circle cx="310" cy="55" r="20" fill="none" stroke="#ef4444" stroke-width="1.5"/>
-        <text x="310" y="52" text-anchor="middle" fill="#ef4444" font-size="9" font-weight="700" font-family="SF Mono,monospace">4</text>
-        <text x="310" y="62" text-anchor="middle" fill="#71717a" font-size="5" font-family="SF Mono,monospace">retrieve</text>
-        <text x="310" y="85" text-anchor="middle" fill="#ef4444" font-size="6" font-family="SF Mono,monospace" opacity="0.6">TOP-K</text>
-        <text x="310" y="94" text-anchor="middle" fill="#ef4444" font-size="6" font-family="SF Mono,monospace" opacity="0.6">CHUNKS</text>
-        <!-- Arrow -->
-        <line x1="332" y1="55" x2="365" y2="55" stroke="#71717a" stroke-width="1" opacity="0.3"/>
-        <polygon points="363,52 369,55 363,58" fill="#71717a" opacity="0.3"/>
-        <!-- Step 5: Augment -->
-        <circle cx="395" cy="55" r="20" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
-        <text x="395" y="52" text-anchor="middle" fill="#38bdf8" font-size="9" font-weight="700" font-family="SF Mono,monospace">5</text>
-        <text x="395" y="62" text-anchor="middle" fill="#71717a" font-size="5" font-family="SF Mono,monospace">augment</text>
-        <text x="395" y="85" text-anchor="middle" fill="#38bdf8" font-size="6" font-family="SF Mono,monospace" opacity="0.6">CONTEXT</text>
-        <text x="395" y="94" text-anchor="middle" fill="#38bdf8" font-size="6" font-family="SF Mono,monospace" opacity="0.6">+ PROMPT</text>
-        <!-- Arrow down to Step 6 -->
-        <line x1="395" y1="77" x2="395" y2="115" stroke="#71717a" stroke-width="1" opacity="0.3"/>
-        <polygon points="392,113 395,119 398,113" fill="#71717a" opacity="0.3"/>
-        <!-- Step 6: Response -->
-        <rect x="340" y="120" width="110" height="40" rx="10" fill="none" stroke="#facc15" stroke-width="2"/>
-        <text x="395" y="138" text-anchor="middle" fill="#facc15" font-size="9" font-weight="700" font-family="SF Mono,monospace">6</text>
-        <text x="395" y="152" text-anchor="middle" fill="#facc15" font-size="7" font-family="SF Mono,monospace">GROUNDED ANSWER</text>
-        <!-- Bottom -->
-        <text x="240" y="185" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace">find the data &rarr; hand it to the LLM &rarr; grounded answer</text>
-        <text x="240" y="198" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.4">no retrieval = hallucination &middot; with retrieval = facts</text>
-      </svg>
+    <div class="lo-visual" role="figure" aria-label="The RAG pipeline in 4 steps: embed the query into a vector, search for similar vectors in the database, augment the prompt with retrieved context, then generate a grounded answer">
+      <div class="lo-visual__title">The RAG Pipeline</div>
+      <div class="lo-flow" data-steps="4">
+        <div class="lo-flow__step lo-flow__step--green">
+          <div class="lo-flow__step-num">1</div>
+          <div class="lo-flow__step-label">Embed</div>
+          <div class="lo-flow__step-detail">Convert question<br>to a vector</div>
+        </div>
+        <div class="lo-flow__arrow">&rarr;</div>
+        <div class="lo-flow__step lo-flow__step--purple">
+          <div class="lo-flow__step-num">2</div>
+          <div class="lo-flow__step-label">Search</div>
+          <div class="lo-flow__step-detail">Find similar<br>vectors in DB</div>
+        </div>
+        <div class="lo-flow__arrow">&rarr;</div>
+        <div class="lo-flow__step lo-flow__step--blue">
+          <div class="lo-flow__step-num">3</div>
+          <div class="lo-flow__step-label">Augment</div>
+          <div class="lo-flow__step-detail">Insert context<br>into prompt</div>
+        </div>
+        <div class="lo-flow__arrow">&rarr;</div>
+        <div class="lo-flow__step lo-flow__step--orange">
+          <div class="lo-flow__step-num">4</div>
+          <div class="lo-flow__step-label">Generate</div>
+          <div class="lo-flow__step-detail">LLM answers from<br>real data</div>
+        </div>
+      </div>
+      <div class="lo-visual__caption">Without retrieval, the LLM guesses. With retrieval, it <strong>cites your documents</strong>.</div>
     </div>
 
     <p>Instead of hoping the LLM memorized the answer during training, we <strong>find</strong> the relevant documents and <strong>hand them to the LLM</strong> along with the question. The model answers using actual data, not guesswork. This is Retrieval-Augmented Generation — and it is the difference between an AI that says "I think the refund policy is 30 days" (hallucination) and one that says "According to your documentation, the refund window is 14 days from purchase" (grounded answer).</p>
