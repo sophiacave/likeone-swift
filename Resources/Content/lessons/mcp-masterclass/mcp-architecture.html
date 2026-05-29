@@ -6,6 +6,30 @@
 
   <div class="section">
     <h2>The Three Components</h2>
+    <div class="lo-vis" role="figure" aria-label="MCP architecture: Host connects to Client, which manages Server connections exposing Tools, Resources, and Prompts">
+      <div class="lo-vis__title">MCP Architecture</div>
+      <div class="lo-steps" data-count="3">
+        <div class="lo-step lo-step--purple">
+          <span class="lo-step__num">01</span>
+          <span class="lo-step__label">Host</span>
+          <span class="lo-step__desc">Claude Code, VS Code, or any AI app</span>
+        </div>
+        <span class="lo-steps__arrow">&rarr;</span>
+        <div class="lo-step lo-step--blue">
+          <span class="lo-step__num">02</span>
+          <span class="lo-step__label">Client</span>
+          <span class="lo-step__desc">Manages server connections + routing</span>
+        </div>
+        <span class="lo-steps__arrow">&rarr;</span>
+        <div class="lo-step lo-step--green">
+          <span class="lo-step__num">03</span>
+          <span class="lo-step__label">Server</span>
+          <span class="lo-step__desc">Exposes tools, resources, and prompts</span>
+        </div>
+      </div>
+      <div class="lo-vis__caption"><strong>Host &rarr; Client &rarr; Server</strong>. Every MCP system follows this pattern.</div>
+    </div>
+
     <p>MCP has three components that work together:</p>
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">

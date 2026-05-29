@@ -6,6 +6,23 @@
 
   <div class="section">
     <h2>MCP Servers vs Direct Tool Calls</h2>
+    <div class="lo-vis" role="figure" aria-label="MCP servers expose capabilities as a group, while tools are individual actions the server provides">
+      <div class="lo-vis__title">Servers vs Tools</div>
+      <div class="lo-versus">
+        <div class="lo-versus__side" style="background:var(--vis-purple-bg);border:1px solid var(--vis-purple-border);">
+          <div class="lo-versus__tag" style="color:var(--vis-purple);background:rgba(196,181,253,.1)">Server</div>
+          <div class="lo-versus__body">A <strong>collection</strong> of related capabilities.<br>Like a department in a company.</div>
+          <div class="lo-versus__result" style="color:var(--vis-purple)">filesystem-server, github-server</div>
+        </div>
+        <div class="lo-versus__side" style="background:var(--vis-orange-bg);border:1px solid var(--vis-orange-border);">
+          <div class="lo-versus__tag" style="color:var(--vis-orange);background:rgba(253,186,116,.1)">Tool</div>
+          <div class="lo-versus__body">A <strong>single action</strong> a server can perform.<br>Like a function you can call.</div>
+          <div class="lo-versus__result" style="color:var(--vis-orange)">read_file, create_issue, run_query</div>
+        </div>
+      </div>
+      <div class="lo-vis__caption">Servers <strong>group</strong> tools. Tools <strong>do</strong> things.</div>
+    </div>
+
     <p>An MCP Server is NOT the same as a single tool. A server is a persistent process that can expose many tools, maintain state across calls, and manage connections. Here's how they compare:</p>
 
     <div class="comparison">

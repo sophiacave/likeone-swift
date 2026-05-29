@@ -6,6 +6,30 @@
 
   <div class="section">
     <h2>Why MCP Security Matters</h2>
+    <div class="lo-vis" role="figure" aria-label="MCP security: validate inputs, limit access, log everything">
+      <div class="lo-vis__title">MCP Security Fundamentals</div>
+      <div class="lo-steps" data-count="3">
+        <div class="lo-step lo-step--red">
+          <span class="lo-step__num">01</span>
+          <span class="lo-step__label">Validate</span>
+          <span class="lo-step__desc">Check every input. Never trust raw parameters.</span>
+        </div>
+        <span class="lo-steps__arrow">&rarr;</span>
+        <div class="lo-step lo-step--orange">
+          <span class="lo-step__num">02</span>
+          <span class="lo-step__label">Limit</span>
+          <span class="lo-step__desc">Restrict file paths, network access, permissions.</span>
+        </div>
+        <span class="lo-steps__arrow">&rarr;</span>
+        <div class="lo-step lo-step--green">
+          <span class="lo-step__num">03</span>
+          <span class="lo-step__label">Log</span>
+          <span class="lo-step__desc">Record every tool call for audit trails.</span>
+        </div>
+      </div>
+      <div class="lo-vis__caption">MCP servers have <strong>real system access</strong>. Security is not optional.</div>
+    </div>
+
     <p>When you build an MCP server, you are giving an AI model the ability to execute code on your machine. The AI decides when to call your tools, what arguments to pass, and how to use the results. If your server blindly trusts those inputs, a single prompt injection or malformed request can read sensitive files, drop database tables, or leak credentials.</p>
     <p>The good news: MCP security follows the same principles as web application security. If you have built a REST API, you already know 80% of this. The difference is that your "user" is an AI model that processes untrusted human input.</p>
   </div>
