@@ -133,6 +133,31 @@
   <span class="section-label">Key Concepts</span>
   <h2 class="section-title">The four things that shape every AI response.</h2>
 
+  <div class="lesson-visual" aria-label="Diagram showing the four controls: tokens (how it reads), context window (how much it sees), system prompt (who it is), temperature (how creative)">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:16px;font-family:'SF Mono','JetBrains Mono',monospace;">
+      <div style="text-align:center;padding:12px 8px;border-radius:8px;background:rgba(192,132,252,.04);border:1px solid rgba(192,132,252,.12);">
+        <div style="font-size:1.3rem;margin-bottom:6px;">&#x1F4AC;</div>
+        <div style="font-size:.75rem;color:#c084fc;font-weight:600;">TOKENS</div>
+        <div style="font-size:.65rem;color:#52525b;margin-top:4px;">how it reads</div>
+      </div>
+      <div style="text-align:center;padding:12px 8px;border-radius:8px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.12);">
+        <div style="font-size:1.3rem;margin-bottom:6px;">&#x1F4D0;</div>
+        <div style="font-size:.75rem;color:#38bdf8;font-weight:600;">CONTEXT</div>
+        <div style="font-size:.65rem;color:#52525b;margin-top:4px;">how much it sees</div>
+      </div>
+      <div style="text-align:center;padding:12px 8px;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.12);">
+        <div style="font-size:1.3rem;margin-bottom:6px;">&#x1F3AD;</div>
+        <div style="font-size:.75rem;color:#fb923c;font-weight:600;">SYSTEM</div>
+        <div style="font-size:.65rem;color:#52525b;margin-top:4px;">who it is</div>
+      </div>
+      <div style="text-align:center;padding:12px 8px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);">
+        <div style="font-size:1.3rem;margin-bottom:6px;">&#x1F321;</div>
+        <div style="font-size:.75rem;color:#34d399;font-weight:600;">TEMP</div>
+        <div style="font-size:.65rem;color:#52525b;margin-top:4px;">how creative</div>
+      </div>
+    </div>
+  </div>
+
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
     <div style="padding:1rem;border-radius:10px;background:rgba(192,132,252,.04);border:1px solid rgba(192,132,252,.1)">
       <strong style="color:#c084fc;font-size:.88rem">1. Tokens — how AI reads text</strong>
@@ -256,6 +281,14 @@ USE WHEN: You want ideas, not accuracy. Be prepared to filter.</div>
 <div class="quiz-block">
 <h3 class="quiz-title">Prompt Anatomy</h3>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="The word unbelievable split into subword tokens">
+  <div style="display:flex;gap:4px;justify-content:center;padding:12px 16px;font-family:'SF Mono','JetBrains Mono',monospace;">
+    <span style="padding:6px 10px;border-radius:6px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.15);color:#34d399;font-size:.85rem;">un</span>
+    <span style="padding:6px 10px;border-radius:6px;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.15);color:#8b5cf6;font-size:.85rem;">believ</span>
+    <span style="padding:6px 10px;border-radius:6px;background:rgba(251,146,60,.08);border:1px solid rgba(251,146,60,.15);color:#fb923c;font-size:.85rem;">able</span>
+    <span style="color:#52525b;font-size:.75rem;align-self:center;margin-left:8px;">= 3 tokens</span>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">1</span>How does AI read the word "unbelievable"?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
@@ -274,6 +307,14 @@ USE WHEN: You want ideas, not accuracy. Be prepared to filter.</div>
 <div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> AI tokenizers break words into subword chunks. Unbelievable becomes something like un + believ + able. The model never sees raw text — only token IDs (numbers).</div>
 </div>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Context window: everything the model can see at once">
+  <div style="padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;text-align:center;">
+    <div style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.12);">
+      <span style="color:#38bdf8;font-size:.8rem;font-weight:600;">CONTEXT WINDOW</span>
+      <span style="color:#52525b;font-size:.75rem;">= everything the model sees at once</span>
+    </div>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">2</span>Claude has a 200K token context window. What does this mean?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
@@ -292,6 +333,15 @@ USE WHEN: You want ideas, not accuracy. Be prepared to filter.</div>
 <div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The context window is the model working memory. Everything it can see at once — your prompt, conversation history, and its response — must fit within this limit.</div>
 </div>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="System prompt is the hidden instruction layer that shapes all responses">
+  <div style="padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;text-align:center;">
+    <div style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.12);">
+      <span style="color:#fb923c;font-size:.8rem;">&#x1F3AD;</span>
+      <span style="color:#fb923c;font-size:.8rem;font-weight:600;">SYSTEM PROMPT</span>
+      <span style="color:#52525b;font-size:.75rem;">= hidden rules the AI always follows</span>
+    </div>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">3</span>You are writing a system prompt for a customer service bot. It should be helpful but never make promises about refunds. Where does this instruction go?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
