@@ -4,7 +4,7 @@ WORKDIR /app
 COPY Package.swift Package.resolved ./
 RUN swift package resolve 2>/dev/null || true
 COPY . .
-RUN swift build -c release -Xswiftc -cross-module-optimization
+RUN swift build -c release --target LOServer -Xswiftc -cross-module-optimization
 
 FROM ubuntu:jammy
 RUN apt-get update && apt-get install -y \
