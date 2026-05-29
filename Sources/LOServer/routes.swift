@@ -105,8 +105,17 @@ func routes(_ app: Application) throws {
         return response
     }
 
-    // API: brain
+    // API: brain (graceful degradation when DB unavailable)
+    app.get("api", "v1", "brain", "status") { req async -> [String: String] in
+        ["available": String(brain.isAvailable), "mode": brain.isAvailable ? "local" : "unavailable"]
+    }
+
     app.get("api", "v1", "brain", "boot") { req async throws -> Response in
+        guard brain.isAvailable else {
+            let response = Response(status: .ok)
+            try response.content.encode([String: String]())
+            return response
+        }
         let entries = try await brain.boot()
         let response = Response(status: .ok)
         try response.content.encode(entries)
@@ -119,6 +128,11 @@ func routes(_ app: Application) throws {
         guard !q.isEmpty else {
             throw Abort(.badRequest, reason: "Query parameter 'q' is required")
         }
+        guard brain.isAvailable else {
+            let response = Response(status: .ok)
+            try response.content.encode([[String: String]]())
+            return response
+        }
         let entries = try await brain.search(query: q, limit: limit)
         let response = Response(status: .ok)
         try response.content.encode(entries)
@@ -126,6 +140,9 @@ func routes(_ app: Application) throws {
     }
 
     app.get("api", "v1", "brain", ":key") { req async throws -> Response in
+        guard brain.isAvailable else {
+            throw Abort(.notFound, reason: "Brain not available on this server")
+        }
         guard let key = req.parameters.get("key"),
               let entry = try await brain.read(key: key) else {
             throw Abort(.notFound, reason: "Brain key not found")

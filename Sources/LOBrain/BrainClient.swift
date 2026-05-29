@@ -27,11 +27,13 @@ public enum BrainError: Error {
 
 public final class LocalBrainClient: BrainClient, @unchecked Sendable {
     public let dbPath: String
+    public let isAvailable: Bool
     private let lock = NSLock()
 
     public init(dbPath: String? = nil) {
         let home = FileManager.default.homeDirectoryForCurrentUser.path
         self.dbPath = dbPath ?? "\(home)/.fractal_brain/local_brain.db"
+        self.isAvailable = FileManager.default.fileExists(atPath: self.dbPath)
     }
 
     public func read(key: String) async throws -> BrainEntry? {

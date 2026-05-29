@@ -9,6 +9,13 @@ struct BrainTests {
         let client = LocalBrainClient()
         #expect(client is BrainClient)
         #expect(client.dbPath.contains("local_brain.db"))
+        #expect(client.isAvailable == true)
+    }
+
+    @Test("LocalBrainClient reports unavailable for missing DB")
+    func unavailableClient() {
+        let client = LocalBrainClient(dbPath: "/tmp/nonexistent_brain.db")
+        #expect(client.isAvailable == false)
     }
 
     @Test("RemoteBrainClient initializes with default URL")
