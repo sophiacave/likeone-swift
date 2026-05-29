@@ -18,6 +18,26 @@
 <div class="lesson-section">
   <span class="section-label">Recap</span>
   <h2 class="section-title">Neural network concepts at a glance.</h2>
+
+  <div class="lesson-visual" aria-label="Neural network as factory: data enters, gets processed at each layer, prediction comes out">
+    <div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:16px 20px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;">
+      <div style="text-align:center;padding:10px 14px;border-radius:8px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.12);">
+        <div style="color:#38bdf8;font-weight:600;">DATA</div>
+        <div style="font-size:.6rem;color:#52525b;">raw input</div>
+      </div>
+      <span style="color:#3f3f46;">&rarr;</span>
+      <div style="text-align:center;padding:10px 14px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);">
+        <div style="color:#34d399;font-weight:600;">PROCESS</div>
+        <div style="font-size:.6rem;color:#52525b;">layers find patterns</div>
+      </div>
+      <span style="color:#3f3f46;">&rarr;</span>
+      <div style="text-align:center;padding:10px 14px;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.12);">
+        <div style="color:#fb923c;font-weight:600;">PREDICT</div>
+        <div style="font-size:.6rem;color:#52525b;">final answer</div>
+      </div>
+    </div>
+  </div>
+
   <p class="section-text">Before you dive into the quiz, here is a quick visual recap of everything from Lessons 1 and 2. Think of a neural network as a factory assembly line: raw materials (data) enter on one end, get processed at each station (layer), and a finished product (prediction) comes out the other end.</p>
 
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
@@ -230,6 +250,21 @@
 <div class="lesson-section">
   <span class="section-label">Training Recap</span>
   <h2 class="section-title">How a network learns from its mistakes.</h2>
+
+  <div class="lesson-visual" aria-label="Training loop: predict, measure error, trace blame, adjust weights, repeat">
+    <div style="display:flex;align-items:center;justify-content:center;gap:4px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.7rem;flex-wrap:wrap;">
+      <span style="padding:6px 10px;border-radius:6px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);color:#34d399;font-weight:600;">1. Predict</span>
+      <span style="color:#3f3f46;">&rarr;</span>
+      <span style="padding:6px 10px;border-radius:6px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.12);color:#f87171;font-weight:600;">2. Measure Error</span>
+      <span style="color:#3f3f46;">&rarr;</span>
+      <span style="padding:6px 10px;border-radius:6px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);color:#fb923c;font-weight:600;">3. Trace Blame</span>
+      <span style="color:#3f3f46;">&rarr;</span>
+      <span style="padding:6px 10px;border-radius:6px;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);color:#8b5cf6;font-weight:600;">4. Adjust</span>
+      <span style="color:#3f3f46;">&rarr;</span>
+      <span style="color:#71717a;font-style:italic;">repeat</span>
+    </div>
+  </div>
+
   <p class="section-text">Training is the process of adjusting weights and biases so the network gets better at its task. Here is the full loop, step by step:</p>
 
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
@@ -325,6 +360,28 @@
 <div class="lesson-section">
   <span class="section-label">Common Pitfalls</span>
   <h2 class="section-title">Mistakes beginners make about neural networks.</h2>
+
+  <div class="lesson-visual" aria-label="Common myths about neural networks">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px;font-family:'SF Mono','JetBrains Mono',monospace;">
+      <div style="padding:10px;border-radius:8px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1);text-align:center;">
+        <div style="font-size:.7rem;color:#f87171;font-weight:600;">MYTH</div>
+        <div style="font-size:.6rem;color:#52525b;margin-top:3px;">more layers = always better</div>
+      </div>
+      <div style="padding:10px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);text-align:center;">
+        <div style="font-size:.7rem;color:#34d399;font-weight:600;">REALITY</div>
+        <div style="font-size:.6rem;color:#52525b;margin-top:3px;">more layers = need more data</div>
+      </div>
+      <div style="padding:10px;border-radius:8px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1);text-align:center;">
+        <div style="font-size:.7rem;color:#f87171;font-weight:600;">MYTH</div>
+        <div style="font-size:.6rem;color:#52525b;margin-top:3px;">AI understands like humans</div>
+      </div>
+      <div style="padding:10px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);text-align:center;">
+        <div style="font-size:.7rem;color:#34d399;font-weight:600;">REALITY</div>
+        <div style="font-size:.6rem;color:#52525b;margin-top:3px;">AI finds statistical patterns</div>
+      </div>
+    </div>
+  </div>
+
   <p class="section-text">Before the final challenge, let's clear up the most common misconceptions about how neural networks work:</p>
 
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
