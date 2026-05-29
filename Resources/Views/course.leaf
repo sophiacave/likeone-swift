@@ -1,37 +1,49 @@
 #extend("layout"):
     #export("content"):
-        <section class="course-hero">
-            <div class="site-container" style="max-width: 800px;">
+        <section class="course-detail">
+            <div class="reading-column">
                 <a href="/academy" class="course-back">&larr; Back to Academy</a>
-                <div class="course-hero-emoji">#(course.emoji)</div>
-                <span class="course-card-level" style="margin-bottom: 0.5rem; display: inline-block;">#(course.level)</span>
-                <h1 class="course-hero-title">#(course.title)</h1>
-                <p class="course-hero-desc">#(course.description)</p>
-                <div class="course-hero-meta">
-                    <span>#(course.lessonCount) lessons</span>
-                    <span>&bull;</span>
-                    <span style="text-transform: capitalize;">#(course.tier)</span>
-                </div>
-            </div>
-        </section>
 
-        <section class="site-section">
-            <div class="site-container" style="max-width: 800px;">
-                <h2 class="site-section-title" style="margin-bottom: 24px;">Lessons</h2>
+                <div class="course-detail-header">
+                    <div class="course-detail-emoji">#(course.emoji)</div>
+                    <div class="course-detail-info">
+                        <span class="course-card-level">#(course.level)</span>
+                        <h1 class="course-detail-title">#(course.title)</h1>
+                        <p class="course-detail-desc">#(course.description)</p>
+                        <div class="course-detail-meta">
+                            <span>#(course.lessonCount) lessons</span>
+                            <span>&bull;</span>
+                            <span style="text-transform: capitalize;">#(course.tier)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-lesson-header">
+                    <h2 class="course-lesson-heading">Lessons</h2>
+                </div>
+
                 <div class="lesson-list">
                     #for(lesson in lessons):
-                        <div class="lesson-row">
+                        <a href="/academy/#(lesson.courseSlug)/#(lesson.slug)" class="lesson-row" aria-label="Lesson #(lesson.order): #(lesson.title)">
                             <div class="lesson-row-left">
                                 <span class="lesson-num">#(lesson.order)</span>
                                 <span class="lesson-title">#(lesson.title)</span>
                             </div>
-                            <span class="lesson-badge #if(lesson.isFree):lesson-free#else:lesson-pro#endif">
-                                #if(lesson.isFree):Free#else:Pro#endif
-                            </span>
-                        </div>
+                            <div class="lesson-row-right">
+                                <span class="lesson-badge #if(lesson.isFree):lesson-free#else:lesson-pro#endif">
+                                    #if(lesson.isFree):Free#else:Pro#endif
+                                </span>
+                                #if(lesson.isFree):
+                                    <span class="lesson-arrow">&rarr;</span>
+                                #else:
+                                    <span class="lesson-lock">&#x1F512;</span>
+                                #endif
+                            </div>
+                        </a>
                     #endfor
                 </div>
-                <div style="margin-top: 32px; text-align: center;">
+
+                <div style="margin-top: 40px; text-align: center; padding-bottom: 40px;">
                     <a href="/academy" class="site-btn-secondary">Browse All Courses</a>
                 </div>
             </div>

@@ -1,21 +1,33 @@
 #extend("layout"):
     #export("content"):
-        <article class="site-section" style="padding-top: 48px;">
-            <div class="site-container" style="max-width: 720px;">
+        <article class="blog-article">
+            <div class="reading-column">
                 <a href="/blog" class="course-back">&larr; Back to Blog</a>
-                <div class="blog-card-meta" style="margin-bottom: 12px;">
+
+                <div class="blog-article-meta">
                     <span class="blog-card-date">#(post.date)</span>
                     <span class="blog-card-author">#(post.author)</span>
                 </div>
-                <h1 class="course-hero-title" style="text-align: left; margin-bottom: 16px;">#(post.title)</h1>
-                <p class="course-hero-desc" style="text-align: left; margin: 0 0 12px;">#(post.description)</p>
-                <div class="blog-card-tags" style="margin-bottom: 40px;">
+
+                <h1 class="blog-article-title">#(post.title)</h1>
+                <p class="blog-article-lede">#(post.description)</p>
+
+                <div class="blog-card-tags" style="margin-bottom: 32px;">
                     #for(tag in post.tags):
                         <span class="blog-tag">#(tag)</span>
                     #endfor
                 </div>
-                <div class="blog-content">
+
+                <hr class="article-divider">
+
+                <div class="article-content">
                     #unsafeHTML(content)
+                </div>
+
+                <hr class="article-divider">
+
+                <div style="text-align: center; padding: 40px 0;">
+                    <a href="/blog" class="site-btn-secondary">More Articles</a>
                 </div>
             </div>
         </article>
