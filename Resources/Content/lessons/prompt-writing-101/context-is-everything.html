@@ -18,6 +18,53 @@
 <div class="lesson-section">
   <span class="section-label">The Problem</span>
   <h2 class="section-title">Without context, AI has to guess. And it guesses wrong.</h2>
+  <div class="lesson-visual" aria-label="Diagram showing a prompt 'Write a marketing email' surrounded by six unknown variables the AI must guess: product, audience, differentiator, tone, type, and action">
+    <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="ctx-grid1" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="480" height="200" fill="url(#ctx-grid1)"/>
+      <!-- Central prompt -->
+      <rect x="150" y="72" width="180" height="36" rx="8" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.6"/>
+      <text x="240" y="94" text-anchor="middle" fill="#ef4444" font-size="9" font-family="SF Mono,monospace" opacity="0.7">"Write a marketing email"</text>
+      <!-- 6 unknowns radiating out -->
+      <!-- Top left: What product? -->
+      <circle cx="100" cy="40" r="14" fill="none" stroke="#fb923c" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+      <text x="100" y="44" text-anchor="middle" fill="#fb923c" font-size="11" font-family="SF Mono,monospace" opacity="0.5">?</text>
+      <text x="100" y="22" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">product</text>
+      <line x1="112" y1="50" x2="152" y2="76" stroke="#71717a" stroke-width="0.5" stroke-dasharray="2,2" opacity="0.2"/>
+      <!-- Top right: What audience? -->
+      <circle cx="380" cy="40" r="14" fill="none" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+      <text x="380" y="44" text-anchor="middle" fill="#8b5cf6" font-size="11" font-family="SF Mono,monospace" opacity="0.5">?</text>
+      <text x="380" y="22" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">audience</text>
+      <line x1="368" y1="50" x2="328" y2="76" stroke="#71717a" stroke-width="0.5" stroke-dasharray="2,2" opacity="0.2"/>
+      <!-- Left: What differentiator? -->
+      <circle cx="60" cy="100" r="14" fill="none" stroke="#38bdf8" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+      <text x="60" y="104" text-anchor="middle" fill="#38bdf8" font-size="11" font-family="SF Mono,monospace" opacity="0.5">?</text>
+      <text x="60" y="124" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">differentiator</text>
+      <line x1="74" y1="96" x2="150" y2="90" stroke="#71717a" stroke-width="0.5" stroke-dasharray="2,2" opacity="0.2"/>
+      <!-- Right: What tone? -->
+      <circle cx="420" cy="100" r="14" fill="none" stroke="#34d399" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+      <text x="420" y="104" text-anchor="middle" fill="#34d399" font-size="11" font-family="SF Mono,monospace" opacity="0.5">?</text>
+      <text x="420" y="124" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">tone</text>
+      <line x1="406" y1="96" x2="330" y2="90" stroke="#71717a" stroke-width="0.5" stroke-dasharray="2,2" opacity="0.2"/>
+      <!-- Bottom left: Cold or follow-up? -->
+      <circle cx="130" cy="160" r="14" fill="none" stroke="#c084fc" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+      <text x="130" y="164" text-anchor="middle" fill="#c084fc" font-size="11" font-family="SF Mono,monospace" opacity="0.5">?</text>
+      <text x="130" y="184" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">cold or follow-up</text>
+      <line x1="140" y1="148" x2="178" y2="110" stroke="#71717a" stroke-width="0.5" stroke-dasharray="2,2" opacity="0.2"/>
+      <!-- Bottom right: What action? -->
+      <circle cx="350" cy="160" r="14" fill="none" stroke="#fb923c" stroke-width="1" stroke-dasharray="3,2" opacity="0.5"/>
+      <text x="350" y="164" text-anchor="middle" fill="#fb923c" font-size="11" font-family="SF Mono,monospace" opacity="0.5">?</text>
+      <text x="350" y="184" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">desired action</text>
+      <line x1="340" y1="148" x2="302" y2="110" stroke="#71717a" stroke-width="0.5" stroke-dasharray="2,2" opacity="0.2"/>
+      <!-- Label -->
+      <text x="240" y="120" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.4">6 unknowns = 6 guesses = generic output</text>
+    </svg>
+  </div>
+
   <p class="section-text">When you prompt "Write me a marketing email," the AI doesn't know:</p>
   <ul class="section-text" style="padding-left:1.5rem;margin-top:.5rem;margin-bottom:1rem">
     <li>What you're selling</li>
@@ -34,6 +81,51 @@
 <div class="lesson-section">
   <span class="section-label">The Six Types</span>
   <h2 class="section-title">The 6 types of context that matter most.</h2>
+  <div class="lesson-visual" aria-label="Six context types arranged in a grid: WHO (you), WHO (audience), WHAT (situation), WHY (goal), HOW (tone), and WHERE (constraints), all flowing into the center labeled YOUR PROMPT">
+    <svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="ctx-grid2" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="480" height="200" fill="url(#ctx-grid2)"/>
+      <text x="240" y="16" text-anchor="middle" fill="#71717a" font-size="7" font-weight="600" font-family="SF Mono,monospace" letter-spacing="0.5">6 TYPES OF CONTEXT</text>
+      <!-- Center: YOUR PROMPT -->
+      <circle cx="240" cy="105" r="30" fill="none" stroke="#c084fc" stroke-width="2"/>
+      <text x="240" y="102" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="600" font-family="SF Mono,monospace">YOUR</text>
+      <text x="240" y="114" text-anchor="middle" fill="#c084fc" font-size="7" font-weight="600" font-family="SF Mono,monospace">PROMPT</text>
+      <!-- 1. WHO — You (top left) -->
+      <rect x="40" y="28" width="100" height="40" rx="8" fill="none" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="90" y="44" text-anchor="middle" fill="#fb923c" font-size="8" font-weight="600" font-family="SF Mono,monospace">WHO (you)</text>
+      <text x="90" y="58" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">your role + level</text>
+      <line x1="128" y1="60" x2="216" y2="82" stroke="#fb923c" stroke-width="1" opacity="0.3"/>
+      <!-- 2. WHO — Audience (top right) -->
+      <rect x="340" y="28" width="100" height="40" rx="8" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+      <text x="390" y="44" text-anchor="middle" fill="#8b5cf6" font-size="8" font-weight="600" font-family="SF Mono,monospace">WHO (them)</text>
+      <text x="390" y="58" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">audience + needs</text>
+      <line x1="352" y1="60" x2="264" y2="82" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
+      <!-- 3. WHAT (middle left) -->
+      <rect x="28" y="86" width="100" height="40" rx="8" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="78" y="102" text-anchor="middle" fill="#38bdf8" font-size="8" font-weight="600" font-family="SF Mono,monospace">WHAT</text>
+      <text x="78" y="116" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">the situation</text>
+      <line x1="128" y1="106" x2="210" y2="105" stroke="#38bdf8" stroke-width="1" opacity="0.3"/>
+      <!-- 4. WHY (middle right) -->
+      <rect x="352" y="86" width="100" height="40" rx="8" fill="none" stroke="#34d399" stroke-width="1.5"/>
+      <text x="402" y="102" text-anchor="middle" fill="#34d399" font-size="8" font-weight="600" font-family="SF Mono,monospace">WHY</text>
+      <text x="402" y="116" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">the real goal</text>
+      <line x1="352" y1="106" x2="270" y2="105" stroke="#34d399" stroke-width="1" opacity="0.3"/>
+      <!-- 5. HOW (bottom left) -->
+      <rect x="60" y="148" width="100" height="40" rx="8" fill="none" stroke="#c084fc" stroke-width="1.5"/>
+      <text x="110" y="164" text-anchor="middle" fill="#c084fc" font-size="8" font-weight="600" font-family="SF Mono,monospace">HOW</text>
+      <text x="110" y="178" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">tone + style</text>
+      <line x1="148" y1="156" x2="220" y2="128" stroke="#c084fc" stroke-width="1" opacity="0.3"/>
+      <!-- 6. WHERE (bottom right) -->
+      <rect x="320" y="148" width="100" height="40" rx="8" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.7"/>
+      <text x="370" y="164" text-anchor="middle" fill="#ef4444" font-size="8" font-weight="600" font-family="SF Mono,monospace" opacity="0.7">WHERE</text>
+      <text x="370" y="178" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">channel + format</text>
+      <line x1="332" y1="156" x2="260" y2="128" stroke="#ef4444" stroke-width="1" opacity="0.2"/>
+    </svg>
+  </div>
 
 <div class="flash-block">
 <h3 class="quiz-title">The 6 Types of Context</h3>
@@ -183,6 +275,45 @@ Give me a framework for making this decision."</code></pre>
 <div class="lesson-section">
   <span class="section-label">The Balance</span>
   <h2 class="section-title">How much context is the right amount?</h2>
+  <div class="lesson-visual" aria-label="Context balance scale showing three zones: too little context (AI guesses, red), just right (AI delivers, green), and too much (AI loses focus, orange)">
+    <svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="ctx-grid3" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="480" height="160" fill="url(#ctx-grid3)"/>
+      <!-- Three zones -->
+      <!-- Zone 1: Too little -->
+      <rect x="30" y="40" width="120" height="70" rx="8" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.4"/>
+      <text x="90" y="60" text-anchor="middle" fill="#ef4444" font-size="8" font-weight="600" font-family="SF Mono,monospace" opacity="0.6">TOO LITTLE</text>
+      <text x="90" y="78" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">AI guesses</text>
+      <text x="90" y="90" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">everything</text>
+      <text x="90" y="104" text-anchor="middle" fill="#ef4444" font-size="7" font-family="SF Mono,monospace" opacity="0.5">generic output</text>
+      <!-- Arrow -->
+      <line x1="155" y1="75" x2="175" y2="75" stroke="#71717a" stroke-width="1" opacity="0.3"/>
+      <polygon points="173,72 179,75 173,78" fill="#71717a" opacity="0.3"/>
+      <!-- Zone 2: Just right -->
+      <rect x="180" y="30" width="120" height="80" rx="8" fill="none" stroke="#34d399" stroke-width="2"/>
+      <text x="240" y="50" text-anchor="middle" fill="#34d399" font-size="9" font-weight="600" font-family="SF Mono,monospace">JUST RIGHT</text>
+      <text x="240" y="68" text-anchor="middle" fill="#34d399" font-size="7" font-family="SF Mono,monospace">AI delivers</text>
+      <text x="240" y="80" text-anchor="middle" fill="#34d399" font-size="7" font-family="SF Mono,monospace">precisely</text>
+      <text x="240" y="100" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace">every detail that would</text>
+      <text x="240" y="110" text-anchor="middle" fill="#71717a" font-size="6.5" font-family="SF Mono,monospace">change the output</text>
+      <!-- Arrow -->
+      <line x1="305" y1="75" x2="325" y2="75" stroke="#71717a" stroke-width="1" opacity="0.3"/>
+      <polygon points="323,72 329,75 323,78" fill="#71717a" opacity="0.3"/>
+      <!-- Zone 3: Too much -->
+      <rect x="330" y="40" width="120" height="70" rx="8" fill="none" stroke="#fb923c" stroke-width="1" opacity="0.4"/>
+      <text x="390" y="60" text-anchor="middle" fill="#fb923c" font-size="8" font-weight="600" font-family="SF Mono,monospace" opacity="0.6">TOO MUCH</text>
+      <text x="390" y="78" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">AI loses focus</text>
+      <text x="390" y="90" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace">on the ask</text>
+      <text x="390" y="104" text-anchor="middle" fill="#fb923c" font-size="7" font-family="SF Mono,monospace" opacity="0.5">unfocused output</text>
+      <!-- Bottom rule -->
+      <text x="240" y="140" text-anchor="middle" fill="#71717a" font-size="8" font-family="SF Mono,monospace">rule: if swapping this detail would change the output, include it</text>
+      <text x="240" y="154" text-anchor="middle" fill="#71717a" font-size="7" font-family="SF Mono,monospace" opacity="0.5">if it wouldn't — leave it out</text>
+    </svg>
+  </div>
 
 <div class="flash-block">
 <h3 class="quiz-title">Too Little vs Just Right vs Too Much</h3>
@@ -254,6 +385,25 @@ Competitors: We don't trash-talk. Focus on our strengths.
 <div class="quiz-block">
 <h3 class="quiz-title">Context Mastery</h3>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Three context types shown with varying impact levels — audience and goal are highlighted as highest impact">
+  <div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;font-family:'SF Mono','JetBrains Mono',monospace;flex-wrap:wrap;">
+    <div style="padding:6px 10px;border-radius:6px;border:2px solid rgba(139,92,246,.4);background:rgba(139,92,246,.06);">
+      <span style="color:#8b5cf6;font-size:.7rem;font-weight:700;">AUDIENCE</span>
+    </div>
+    <div style="padding:6px 10px;border-radius:6px;border:2px solid rgba(52,211,153,.4);background:rgba(52,211,153,.06);">
+      <span style="color:#34d399;font-size:.7rem;font-weight:700;">GOAL</span>
+    </div>
+    <div style="padding:6px 10px;border-radius:6px;border:1px solid rgba(56,189,248,.15);opacity:.4;">
+      <span style="color:#38bdf8;font-size:.7rem;">SITUATION</span>
+    </div>
+    <div style="padding:6px 10px;border-radius:6px;border:1px solid rgba(251,146,60,.15);opacity:.3;">
+      <span style="color:#fb923c;font-size:.7rem;">IDENTITY</span>
+    </div>
+    <div style="padding:6px 10px;border-radius:6px;border:1px solid rgba(192,132,252,.15);opacity:.3;">
+      <span style="color:#c084fc;font-size:.7rem;">TONE</span>
+    </div>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">1</span>You are writing a prompt for a marketing email. Which context type is MOST likely to change the output dramatically?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
