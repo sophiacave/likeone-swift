@@ -4,6 +4,7 @@ WORKDIR /app
 COPY Package.swift Package.resolved ./
 RUN swift package resolve 2>/dev/null || true
 COPY . .
+RUN sed -i '/\.testTarget/d' Package.swift
 RUN swift build -c release --target LOServer -Xswiftc -cross-module-optimization
 
 FROM ubuntu:jammy
