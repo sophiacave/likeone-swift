@@ -4,6 +4,8 @@
 
 
 
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#34d399">accuracy</span> <span style="color:#71717a">+</span> <span style="color:#38bdf8">speed</span> <span style="color:#71717a">+</span> <span style="color:#fb923c">reliability</span> <span style="color:#71717a">+</span> <span style="color:#8b5cf6">cost</span> <span style="color:#71717a">+</span> <span style="color:#c084fc">satisfaction</span></div></div>
+
   <div class="section">
     <h2>The Five Evaluation Dimensions</h2>
     <p>Rate your agent on each dimension. An agent must score above 70 on ALL five to be production-ready. One weak dimension can sink the entire experience:</p>
@@ -36,6 +38,8 @@
       </div>
     </div>
   </div>
+
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#34d399">test cases</span> <span style="color:#71717a">&rarr;</span> <span style="color:#fb923c">batch run 3-5x</span> <span style="color:#71717a">&rarr;</span> <span style="color:#8b5cf6">score dimensions</span></div></div>
 
   <div class="section">
     <h2>Building a Test Suite</h2>
@@ -94,6 +98,8 @@
       &nbsp;&nbsp;<span style="color:#34d399">print</span>(<span style="color:#fb923c">f"Errors: {errors}/{len(results)}"</span>)
     </div>
   </div>
+
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#f87171">happy path only</span> <span style="color:#71717a">|</span> <span style="color:#fb923c">ignoring speed</span> <span style="color:#71717a">|</span> <span style="color:#8b5cf6">measuring once</span> <span style="color:#71717a">=</span> <span style="color:#f87171">traps</span></div></div>
 
   <div class="section">
     <h2>Common Evaluation Traps</h2>
@@ -240,6 +246,7 @@
 
 <div class="quiz-block">
 <h3 class="quiz-title">Agent Evaluation</h3>
+<div class="quiz-visual"><div style="text-align:center;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;"><span style="color:#34d399">all 5 dimensions</span> <span style="color:#71717a">&ge;</span> <span style="color:#fb923c">70</span> <span style="color:#71717a">&rarr;</span> <span style="color:#34d399">deploy</span></div></div>
 <div class="quiz-question">
 <p class="quiz-q"><span class="quiz-num">1</span>What is the recommended deploy threshold across all 5 dimensions?</p>
 <div class="quiz-options">

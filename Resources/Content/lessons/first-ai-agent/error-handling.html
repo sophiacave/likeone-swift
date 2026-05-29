@@ -4,6 +4,8 @@
 
 
 
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#f87171">error</span> <span style="color:#71717a">&rarr;</span> <span style="color:#fb923c">retry</span> <span style="color:#71717a">&rarr;</span> <span style="color:#8b5cf6">fallback</span> <span style="color:#71717a">&rarr;</span> <span style="color:#34d399">escalate</span> <span style="color:#71717a">&rarr;</span> <span style="color:#38bdf8">log</span></div></div>
+
   <div class="section">
     <h2>The Five Failure Modes</h2>
     <p>Every agent you build will encounter these failures. Learning them now means you design for resilience from day one.</p>
@@ -36,6 +38,8 @@
       </div>
     </div>
   </div>
+
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#fb923c">1s</span> <span style="color:#71717a">&rarr;</span> <span style="color:#fb923c">2s</span> <span style="color:#71717a">&rarr;</span> <span style="color:#fb923c">4s</span> <span style="color:#71717a">&rarr;</span> <span style="color:#f87171">fail</span> <span style="color:#71717a">|</span> <span style="color:#34d399">exponential backoff</span></div></div>
 
   <div class="section">
     <h2>Pattern 1: Retry with Exponential Backoff</h2>
@@ -72,6 +76,8 @@
       <p style="font-size:.8rem;color:#a1a1aa;margin:.3rem 0 0">If a service is overloaded, hammering it with rapid retries makes the problem worse. Exponential backoff (1s, 2s, 4s) gives the service progressively more time to recover while still attempting the call.</p>
     </div>
   </div>
+
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#8b5cf6">primary tool</span> <span style="color:#71717a">&rarr;</span> <span style="color:#fb923c">fallback tool</span> <span style="color:#71717a">&rarr;</span> <span style="color:#34d399">tell user</span></div></div>
 
   <div class="section">
     <h2>Pattern 2: Graceful Degradation</h2>
@@ -238,6 +244,7 @@
 
 <div class="quiz-block">
 <h3 class="quiz-title">Error Recovery Strategies</h3>
+<div class="quiz-visual"><div style="text-align:center;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;"><span style="color:#fb923c">retry</span> <span style="color:#71717a">&rarr;</span> <span style="color:#8b5cf6">fallback</span> <span style="color:#71717a">&rarr;</span> <span style="color:#34d399">escalate</span> <span style="color:#71717a">|</span> <span style="color:#f87171">never crash silently</span></div></div>
 <div class="quiz-question">
 <p class="quiz-q"><span class="quiz-num">1</span>Your agent calls a weather API and gets a 503 Service Unavailable error after 3 retries. What is the best response?</p>
 <div class="quiz-options">
