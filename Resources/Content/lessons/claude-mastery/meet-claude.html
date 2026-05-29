@@ -8,6 +8,9 @@
 
 <div class="card">
 <h2>Who Is Claude?</h2>
+
+<div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="padding:6px 12px;border-radius:8px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);color:#34d399;font-weight:600;">Anthropic</span><span style="color:#3f3f46;">&rarr;</span><span style="padding:6px 12px;border-radius:8px;background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.15);color:#c084fc;font-weight:600;">Constitutional AI</span><span style="color:#3f3f46;">&rarr;</span><span style="padding:6px 12px;border-radius:8px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.12);color:#38bdf8;font-weight:600;">Claude</span></div></div>
+
 <p>Claude is an AI assistant made by <strong style="color:#e5e5e5">Anthropic</strong> — a company founded in 2021 by former OpenAI researchers who believed AI safety should be a first-class engineering priority, not an afterthought. Where most AI labs optimize for impressive demos, Anthropic optimizes for models you can actually trust.</p>
 
 <p>The philosophy behind Claude is called <strong style="color:#e5e5e5">Constitutional AI</strong>. Instead of training a model purely on human preference ratings (where annotators might reward confident-sounding wrong answers), Anthropic gave Claude a set of explicit principles — like a constitution — and trained it to <em>reason against those principles</em>. The model evaluates its own outputs: "Does this response follow the principles? If not, how should I revise it?" This self-evaluation loop runs thousands of times during training, shaping how Claude thinks — not just what it says.</p>
@@ -114,6 +117,8 @@
 
 <div class="card">
 <h2>The Claude Model Lineup (2025)</h2>
+
+<div class="lesson-visual"><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px;font-family:'SF Mono','JetBrains Mono',monospace;"><div style="text-align:center;padding:10px 8px;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.12);"><div style="font-size:.75rem;color:#fb923c;font-weight:600;">Opus</div><div style="font-size:.6rem;color:#52525b;margin-top:3px;">smartest</div></div><div style="text-align:center;padding:10px 8px;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.12);"><div style="font-size:.75rem;color:#8b5cf6;font-weight:600;">Sonnet</div><div style="font-size:.6rem;color:#52525b;margin-top:3px;">balanced</div></div><div style="text-align:center;padding:10px 8px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);"><div style="font-size:.75rem;color:#34d399;font-weight:600;">Haiku</div><div style="font-size:.6rem;color:#52525b;margin-top:3px;">fastest</div></div></div></div>
 <p>Anthropic offers Claude in three tiers. Think of it like choosing tools — more power isn't always better if you're paying for it on every request. The key is matching model capability to task complexity.</p>
 <div class="model-grid">
 <div class="model-card opus">
@@ -148,6 +153,8 @@
 
 <div class="card">
 <h2>The HHH Framework</h2>
+
+<div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.85rem;"><span style="padding:6px 12px;border-radius:8px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);color:#34d399;font-weight:600;">Helpful</span><span style="padding:6px 12px;border-radius:8px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.12);color:#38bdf8;font-weight:600;">Honest</span><span style="padding:6px 12px;border-radius:8px;background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.15);color:#c084fc;font-weight:600;">Harmless</span></div></div>
 <p>Everything about Claude traces back to three words. Anthropic calls it the HHH framework — and it is not just marketing. These properties are baked into how the model is trained and evaluated. Every response Claude generates is implicitly measured against all three.</p>
 <div class="three-h">
 <div class="h-pill helpful">
@@ -321,6 +328,7 @@ choose_model(<span style="color:#fbbf24">"legal"</span>, <span style="color:#fb9
 <div class="quiz-block">
 <h3 class="quiz-title">Meet Claude — Mastery Check</h3>
 <div class="quiz-question">
+<div class="quiz-visual"><div style="text-align:center;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;"><span style="color:#fb923c;">Opus</span> <span style="color:#52525b;">= smart |</span> <span style="color:#8b5cf6;">Sonnet</span> <span style="color:#52525b;">= balanced |</span> <span style="color:#34d399;">Haiku</span> <span style="color:#52525b;">= fast</span></div></div>
 <p class="quiz-q"><span class="quiz-num">1</span>You are building a chatbot that auto-tags 10,000 customer support tickets per day by category. Speed and cost matter more than nuance. Which model?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">

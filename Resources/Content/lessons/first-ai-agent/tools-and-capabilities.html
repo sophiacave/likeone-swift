@@ -4,6 +4,8 @@
 
 
 
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#8b5cf6">knowledge</span> <span style="color:#71717a">+</span> <span style="color:#34d399">action</span> <span style="color:#71717a">+</span> <span style="color:#fb923c">autonomy</span> <span style="color:#71717a">=</span> <span style="color:#38bdf8">capable agent</span></div></div>
+
   <div class="section">
     <h2>Three Categories of Tools</h2>
     <p>Every tool an agent can use falls into one of three categories. Understanding these categories helps you design agents that have the right capabilities for the job:</p>
@@ -45,6 +47,8 @@
     </div>
   </div>
 
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#fb923c">name</span> <span style="color:#71717a">+</span> <span style="color:#c084fc">description</span> <span style="color:#71717a">+</span> <span style="color:#34d399">input_schema</span> <span style="color:#71717a">=</span> <span style="color:#38bdf8">tool definition</span></div></div>
+
   <div class="section">
     <h2>How Tools Are Defined (Real Code)</h2>
     <p>In the Claude API, each tool is defined as a JSON schema. The <code>description</code> field is what Claude reads to decide when to use the tool:</p>
@@ -82,6 +86,8 @@
       }
     </div>
   </div>
+
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#8b5cf6">search</span> <span style="color:#71717a">+</span> <span style="color:#34d399">database</span> <span style="color:#71717a">+</span> <span style="color:#fb923c">email</span> <span style="color:#71717a">=</span> <span style="color:#f87171">multiplied power</span></div></div>
 
   <div class="section">
     <h2>Tools Compound in Value</h2>
@@ -205,6 +211,7 @@ response = client.messages.create(
 
 <div class="quiz-block">
 <h3 class="quiz-title">Tools and Agent Capabilities</h3>
+<div class="quiz-visual"><div style="text-align:center;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;"><span style="color:#8b5cf6">knowledge</span> <span style="color:#71717a">reads</span> | <span style="color:#34d399">action</span> <span style="color:#71717a">writes</span> | <span style="color:#fb923c">autonomy</span> <span style="color:#71717a">loops</span></div></div>
 <div class="quiz-question">
 <p class="quiz-q"><span class="quiz-num">1</span>What capability does adding an API Caller tool unlock?</p>
 <div class="quiz-options">

@@ -4,6 +4,8 @@
 
 
 
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#fb923c">short-term</span> <span style="color:#71717a">(session)</span> <span style="color:#71717a">+</span> <span style="color:#34d399">long-term</span> <span style="color:#71717a">(persistent)</span> <span style="color:#71717a">+</span> <span style="color:#8b5cf6">vector</span> <span style="color:#71717a">(RAG)</span></div></div>
+
   <div class="section">
     <h2>Two Types of Memory</h2>
     <p>Agents need two kinds of memory, just like humans. Short-term memory holds the current conversation. Long-term memory persists across sessions.</p>
@@ -21,6 +23,8 @@
       </div>
     </div>
   </div>
+
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#fb923c">messages[]</span> <span style="color:#71717a">&rarr;</span> <span style="color:#34d399">append each turn</span> <span style="color:#71717a">&rarr;</span> <span style="color:#f87171">lost on session end</span></div></div>
 
   <div class="section">
     <h2>Short-Term Memory in Code</h2>
@@ -47,6 +51,8 @@
       <p style="font-size:.8rem;color:#a1a1aa;margin:.3rem 0 0">When the messages array gets too long, it overflows the context window. When the session ends, the array is gone. The agent starts the next session knowing nothing about what happened before.</p>
     </div>
   </div>
+
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#34d399">save_memory()</span> <span style="color:#71717a">+</span> <span style="color:#8b5cf6">recall_memory()</span> <span style="color:#71717a">=</span> <span style="color:#fb923c">persistent agent</span></div></div>
 
   <div class="section">
     <h2>Long-Term Memory in Code</h2>
@@ -199,6 +205,7 @@
 
 <div class="quiz-block">
 <h3 class="quiz-title">Memory Architecture Quiz</h3>
+<div class="quiz-visual"><div style="text-align:center;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;"><span style="color:#fb923c">conversation</span> <span style="color:#71717a">|</span> <span style="color:#34d399">database</span> <span style="color:#71717a">|</span> <span style="color:#8b5cf6">vector store</span> <span style="color:#71717a">|</span> <span style="color:#38bdf8">external API</span></div></div>
 <div class="quiz-question">
 <p class="quiz-q"><span class="quiz-num">1</span>What is the key limitation of short-term memory?</p>
 <div class="quiz-options">

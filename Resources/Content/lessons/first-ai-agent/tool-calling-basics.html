@@ -4,6 +4,8 @@
 
 
 
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#8b5cf6">define</span> <span style="color:#71717a">&rarr;</span> <span style="color:#34d399">Claude calls</span> <span style="color:#71717a">&rarr;</span> <span style="color:#fb923c">you execute</span></div></div>
+
   <div class="section">
     <h2>How Tool Calling Works</h2>
     <p>Tool calling is a three-step conversation between your code and Claude:</p>
@@ -32,6 +34,8 @@
       </div>
     </div>
   </div>
+
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#fb923c">JSON schema</span> <span style="color:#71717a">+</span> <span style="color:#8b5cf6">description</span> <span style="color:#71717a">=</span> <span style="color:#34d399">tool definition</span></div></div>
 
   <div class="section">
     <h2>Step 1: Define Your Tools</h2>
@@ -92,6 +96,8 @@
       <p style="font-size:.8rem;color:#a1a1aa;margin:.3rem 0 0">Claude uses the tool description to decide when to call it. Vague descriptions like "search stuff" lead to wrong tool selection. Be specific about what the tool does and <em>when</em> to use it.</p>
     </div>
   </div>
+
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#38bdf8">user request</span> <span style="color:#71717a">&rarr;</span> <span style="color:#8b5cf6">Claude reasons</span> <span style="color:#71717a">&rarr;</span> <span style="color:#34d399">tool_use block</span></div></div>
 
   <div class="section">
     <h2>Step 2: Claude Decides to Call a Tool</h2>
@@ -284,6 +290,7 @@
 
 <div class="quiz-block">
 <h3 class="quiz-title">Tool Calling Quiz</h3>
+<div class="quiz-visual"><div style="text-align:center;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;"><span style="color:#8b5cf6">define</span> <span style="color:#71717a">&rarr;</span> <span style="color:#34d399">call</span> <span style="color:#71717a">&rarr;</span> <span style="color:#fb923c">execute</span> <span style="color:#71717a">&rarr;</span> <span style="color:#38bdf8">result</span></div></div>
 <div class="quiz-question">
 <p class="quiz-q"><span class="quiz-num">1</span>What is the purpose of the tool description field?</p>
 <div class="quiz-options">

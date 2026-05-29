@@ -4,6 +4,8 @@
 
 
 
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#8b5cf6">identity</span> <span style="color:#71717a">&rarr;</span> <span style="color:#34d399">goal</span> <span style="color:#71717a">&rarr;</span> <span style="color:#fb923c">tools</span> <span style="color:#71717a">&rarr;</span> <span style="color:#38bdf8">memory</span> <span style="color:#71717a">&rarr;</span> <span style="color:#f87171">guardrails</span> <span style="color:#71717a">&rarr;</span> <span style="color:#c084fc">output</span></div></div>
+
   <div class="section">
     <h2>The Six Blocks of a System Prompt</h2>
     <p>Every production agent system prompt contains these six blocks, in this order. Order matters — the model processes context sequentially, so identity and goal must come first:</p>
@@ -54,6 +56,8 @@
     </div>
   </div>
 
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#34d399">system prompt</span> <span style="color:#71717a">=</span> <span style="color:#8b5cf6">agent DNA</span> <span style="color:#71717a">+</span> <span style="color:#fb923c">persistent rules</span></div></div>
+
   <div class="section">
     <h2>A Complete System Prompt (Real Example)</h2>
     <p>Here is a production system prompt for a customer support agent. Every block is labeled so you can see the structure:</p>
@@ -94,6 +98,8 @@
       <span style="color:#a1a1aa">- End with a clear next step or confirmation</span>
     </div>
   </div>
+
+  <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#c084fc">system</span> <span style="color:#71717a">param</span> <span style="color:#71717a">&ne;</span> <span style="color:#fb923c">messages</span> <span style="color:#71717a">param</span></div></div>
 
   <div class="section">
     <h2>Using the System Prompt in Code</h2>
@@ -249,6 +255,7 @@ response = client.messages.create(
 
 <div class="quiz-block">
 <h3 class="quiz-title">System Prompt Structure</h3>
+<div class="quiz-visual"><div style="text-align:center;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;"><span style="color:#8b5cf6">identity first</span> <span style="color:#71717a">&rarr;</span> <span style="color:#f87171">guardrails last</span> <span style="color:#71717a">|</span> <span style="color:#34d399">order matters</span></div></div>
 <div class="quiz-question">
 <p class="quiz-q"><span class="quiz-num">1</span>What is the purpose of the Identity block?</p>
 <div class="quiz-options">
