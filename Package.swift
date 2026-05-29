@@ -81,7 +81,14 @@ let package = Package(
         .testTarget(name: "LOBrainTests", dependencies: ["LOBrain"]),
         .testTarget(name: "LOContentTests", dependencies: ["LOContent"]),
         .testTarget(name: "LODesignTests", dependencies: ["LODesign"]),
-        .testTarget(name: "LOServerTests", dependencies: ["LOServer"]),
+        .testTarget(name: "LOAuthTests", dependencies: [
+            "LOAuth",
+            .product(name: "Vapor", package: "vapor"),
+        ]),
+        .testTarget(name: "LOServerTests", dependencies: [
+            "LOServer",
+            .product(name: "XCTVapor", package: "vapor"),
+        ]),
     ],
     swiftLanguageModes: [.v6]
 )
