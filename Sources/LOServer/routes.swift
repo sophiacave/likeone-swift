@@ -1,7 +1,11 @@
 import Vapor
 import Leaf
+import LOCore
+import LOContent
 
 func routes(_ app: Application) throws {
+    let courses = CourseProvider()
+
     // Health check
     app.get("health") { req async -> String in
         "ok"
@@ -32,14 +36,33 @@ func routes(_ app: Application) throws {
         return try await req.view.render("academy", context)
     }
 
-    // API info endpoint
+    // API: info
     app.get("api", "info") { req async -> [String: String] in
         [
             "name": "LikeOne Swift",
-            "version": "0.1.0",
-            "runtime": "Vapor 4 + Leaf",
-            "swift": "6.3"
+            "version": "0.2.0",
+            "runtime": "Vapor 4 + Leaf + HTMX",
+            "swift": "6.3",
+            "packages": "LOCore, LOBrain, LOAuth, LODesign, LOContent, LOServer"
         ]
+    }
+
+    // API: courses (Phase 1 bridge)
+    app.get("api", "v1", "courses") { req async throws -> Response in
+        let allCourses = courses.allCourses()
+        let response = Response(status: .ok)
+        try response.content.encode(allCourses)
+        return response
+    }
+
+    app.get("api", "v1", "courses", ":slug") { req async throws -> Response in
+        guard let slug = req.parameters.get("slug"),
+              let course = courses.course(slug: slug) else {
+            throw Abort(.notFound, reason: "Course not found")
+        }
+        let response = Response(status: .ok)
+        try response.content.encode(course)
+        return response
     }
 }
 
