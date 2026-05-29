@@ -4,7 +4,7 @@ WORKDIR /app
 COPY Package.swift Package.resolved ./
 RUN swift package resolve 2>/dev/null || true
 COPY . .
-RUN sed -i '/\.testTarget/d' Package.swift
+RUN python3 -c "import re; t=open('Package.swift').read(); t=re.sub(r'\n\s*// Tests\n.*?(?=\n\s*\],)', '', t, flags=re.DOTALL); open('Package.swift','w').write(t)"
 RUN swift build -c release --target LOServer -Xswiftc -cross-module-optimization
 
 FROM ubuntu:jammy
