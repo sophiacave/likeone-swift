@@ -6,34 +6,34 @@
 
   <div class="section">
     <h2>RAG in One Sentence</h2>
-    <div class="lo-visual" role="figure" aria-label="The RAG pipeline in 4 steps: embed the query into a vector, search for similar vectors in the database, augment the prompt with retrieved context, then generate a grounded answer">
-      <div class="lo-visual__title">The RAG Pipeline</div>
-      <div class="lo-flow" data-steps="4">
-        <div class="lo-flow__step lo-flow__step--green">
-          <div class="lo-flow__step-num">1</div>
-          <div class="lo-flow__step-label">Embed</div>
-          <div class="lo-flow__step-detail">Convert question<br>to a vector</div>
+    <div class="lo-vis" role="figure" aria-label="The RAG pipeline in 4 steps: embed the query, search the database, augment the prompt, generate a grounded answer">
+      <div class="lo-vis__title">The RAG Pipeline</div>
+      <div class="lo-steps" data-count="4">
+        <div class="lo-step lo-step--green">
+          <span class="lo-step__num">01</span>
+          <span class="lo-step__label">Embed</span>
+          <span class="lo-step__desc">Convert your question into a vector</span>
         </div>
-        <div class="lo-flow__arrow">&rarr;</div>
-        <div class="lo-flow__step lo-flow__step--purple">
-          <div class="lo-flow__step-num">2</div>
-          <div class="lo-flow__step-label">Search</div>
-          <div class="lo-flow__step-detail">Find similar<br>vectors in DB</div>
+        <span class="lo-steps__arrow">&rarr;</span>
+        <div class="lo-step lo-step--purple">
+          <span class="lo-step__num">02</span>
+          <span class="lo-step__label">Search</span>
+          <span class="lo-step__desc">Find similar vectors in the database</span>
         </div>
-        <div class="lo-flow__arrow">&rarr;</div>
-        <div class="lo-flow__step lo-flow__step--blue">
-          <div class="lo-flow__step-num">3</div>
-          <div class="lo-flow__step-label">Augment</div>
-          <div class="lo-flow__step-detail">Insert context<br>into prompt</div>
+        <span class="lo-steps__arrow">&rarr;</span>
+        <div class="lo-step lo-step--blue">
+          <span class="lo-step__num">03</span>
+          <span class="lo-step__label">Augment</span>
+          <span class="lo-step__desc">Insert retrieved context into the prompt</span>
         </div>
-        <div class="lo-flow__arrow">&rarr;</div>
-        <div class="lo-flow__step lo-flow__step--orange">
-          <div class="lo-flow__step-num">4</div>
-          <div class="lo-flow__step-label">Generate</div>
-          <div class="lo-flow__step-detail">LLM answers from<br>real data</div>
+        <span class="lo-steps__arrow">&rarr;</span>
+        <div class="lo-step lo-step--orange">
+          <span class="lo-step__num">04</span>
+          <span class="lo-step__label">Generate</span>
+          <span class="lo-step__desc">LLM answers using real documents</span>
         </div>
       </div>
-      <div class="lo-visual__caption">Without retrieval, the LLM guesses. With retrieval, it <strong>cites your documents</strong>.</div>
+      <div class="lo-vis__caption">Without retrieval, the LLM guesses. With retrieval, it <strong>cites your documents</strong>.</div>
     </div>
 
     <p>Instead of hoping the LLM memorized the answer during training, we <strong>find</strong> the relevant documents and <strong>hand them to the LLM</strong> along with the question. The model answers using actual data, not guesswork. This is Retrieval-Augmented Generation — and it is the difference between an AI that says "I think the refund policy is 30 days" (hallucination) and one that says "According to your documentation, the refund window is 14 days from purchase" (grounded answer).</p>
