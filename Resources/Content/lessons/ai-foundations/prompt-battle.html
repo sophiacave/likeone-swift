@@ -18,6 +18,31 @@
 <div class="lesson-section">
   <span class="section-label">Strategy Guide</span>
   <h2 class="section-title">The prompt engineer's decision tree.</h2>
+
+  <div class="lesson-visual" aria-label="Decision tree: simple task = zero-shot, need format = few-shot, complex reasoning = chain-of-thought, specific expertise = role-play">
+    <div style="padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;">
+      <div style="font-size:.7rem;color:#71717a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;text-align:center;">WHICH TECHNIQUE?</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div style="padding:10px 12px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);">
+          <div style="font-size:.7rem;color:#34d399;font-weight:600;">Simple task?</div>
+          <div style="font-size:.65rem;color:#52525b;margin-top:3px;">Zero-Shot</div>
+        </div>
+        <div style="padding:10px 12px;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.12);">
+          <div style="font-size:.7rem;color:#8b5cf6;font-weight:600;">Need specific format?</div>
+          <div style="font-size:.65rem;color:#52525b;margin-top:3px;">Few-Shot</div>
+        </div>
+        <div style="padding:10px 12px;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.12);">
+          <div style="font-size:.7rem;color:#fb923c;font-weight:600;">Complex reasoning?</div>
+          <div style="font-size:.65rem;color:#52525b;margin-top:3px;">Chain-of-Thought</div>
+        </div>
+        <div style="padding:10px 12px;border-radius:8px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.12);">
+          <div style="font-size:.7rem;color:#38bdf8;font-weight:600;">Need expertise?</div>
+          <div style="font-size:.65rem;color:#52525b;margin-top:3px;">Role-Play</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <p class="section-text">Before you battle, let's build your mental toolkit. Prompt engineering is about choosing the right strategy for the right situation — like picking the right tool from a toolbox. A hammer is great for nails, terrible for screws. Same with prompt techniques.</p>
 
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
@@ -80,6 +105,28 @@
   <span class="section-label">The Battle</span>
   <h2 class="section-title">Answer fast, answer right.</h2>
 
+  <div class="lesson-visual" aria-label="Temperature scale: 0.0 = precise and deterministic, 0.7 = balanced, 1.0 = creative and unpredictable">
+    <div style="padding:14px 20px;font-family:'SF Mono','JetBrains Mono',monospace;">
+      <div style="font-size:.7rem;color:#71717a;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;text-align:center;">TEMPERATURE</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="text-align:center;">
+          <div style="font-size:1rem;font-weight:700;color:#38bdf8;">0.0</div>
+          <div style="font-size:.6rem;color:#52525b;">precise</div>
+        </div>
+        <div style="flex:1;height:4px;background:linear-gradient(90deg,#38bdf8,#c084fc,#fb923c);border-radius:2px;margin:0 12px;"></div>
+        <div style="text-align:center;">
+          <div style="font-size:1rem;font-weight:700;color:#fb923c;">1.0</div>
+          <div style="font-size:.6rem;color:#52525b;">creative</div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:6px;font-size:.6rem;color:#3f3f46;">
+        <span>code, facts</span>
+        <span>conversation</span>
+        <span>brainstorming</span>
+      </div>
+    </div>
+  </div>
+
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
 <div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Prompt Example — Zero-Shot vs Few-Shot vs Chain-of-Thought</div>
 <pre style="margin:0;color:#e5e5e5"><code># ZERO-SHOT (no examples — just the task)
@@ -130,6 +177,11 @@ Answer: POSITIVE</code></pre>
 <div class="quiz-block">
 <h3 class="quiz-title">Prompt Engineering Battle — 6 Rounds</h3>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Math needs step-by-step reasoning">
+  <div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;">
+    <span style="color:#52525b;">math problem</span><span style="color:#3f3f46;">&rarr;</span><span style="color:#fb923c;font-weight:600;">think step by step</span><span style="color:#3f3f46;">&rarr;</span><span style="color:#34d399;">correct answer</span>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">1</span>Which prompt technique is BEST for getting accurate math solutions?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
@@ -249,6 +301,11 @@ Answer: POSITIVE</code></pre>
 <div class="quiz-block">
 <h3 class="quiz-title">Match Technique to Task</h3>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="Unique format = show the AI examples of what you want">
+  <div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;">
+    <span style="color:#52525b;">custom format?</span><span style="color:#3f3f46;">&rarr;</span><span style="color:#8b5cf6;font-weight:600;">show examples</span>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">1</span>You need the AI to extract structured data from messy emails in a format unique to your company. Which technique?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
@@ -328,6 +385,17 @@ Answer: POSITIVE</code></pre>
 <div class="lesson-section">
   <span class="section-label">Advanced Moves</span>
   <h2 class="section-title">Combine techniques for maximum power.</h2>
+
+  <div class="lesson-visual" aria-label="Technique stacking: Role-Play plus Chain-of-Thought equals expert analysis with visible logic">
+    <div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;">
+      <span style="padding:6px 10px;border-radius:6px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.12);color:#38bdf8;font-weight:600;">Role-Play</span>
+      <span style="color:#34d399;font-weight:700;">+</span>
+      <span style="padding:6px 10px;border-radius:6px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);color:#fb923c;font-weight:600;">Chain-of-Thought</span>
+      <span style="color:#52525b;">=</span>
+      <span style="color:#34d399;font-weight:700;">expert analysis</span>
+    </div>
+  </div>
+
   <p class="section-text">The real masters do not use one technique at a time — they layer them. Here are the most effective combinations:</p>
 
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
@@ -358,6 +426,13 @@ Answer: POSITIVE</code></pre>
 <div class="quiz-block">
 <h3 class="quiz-title">Prompt Engineering Concepts</h3>
 <div class="quiz-question">
+<div class="quiz-visual" aria-label="System prompt: hidden instructions processed before user input">
+  <div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.75rem;">
+    <span style="padding:4px 8px;border-radius:6px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);color:#fb923c;">system prompt</span>
+    <span style="color:#3f3f46;">&rarr;</span>
+    <span style="color:#52525b;">shapes every response</span>
+  </div>
+</div>
 <p class="quiz-q"><span class="quiz-num">1</span>What is a system prompt?</p>
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
