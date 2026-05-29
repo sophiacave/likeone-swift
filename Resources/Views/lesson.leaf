@@ -1,0 +1,45 @@
+#extend("layout"):
+    #export("content"):
+        <div class="lesson-topbar">
+            <div class="reading-column" style="display: flex; justify-content: space-between; align-items: center;">
+                <a href="/academy/#(courseSlug)" class="lesson-topbar-course">
+                    <span class="lesson-topbar-emoji">#(courseEmoji)</span>
+                    #(courseTitle)
+                </a>
+                <span class="lesson-topbar-pos">Lesson #(lessonOrder) of #(totalLessons)</span>
+            </div>
+        </div>
+
+        <article class="lesson-article">
+            <div class="reading-column">
+                <h1 class="lesson-page-title">#(lessonTitle)</h1>
+
+                <div class="article-content lesson-content">
+                    #unsafeHTML(content)
+                </div>
+
+                <nav class="lesson-nav" aria-label="Lesson navigation">
+                    #if(prevSlug):
+                        <a href="/academy/#(courseSlug)/#(prevSlug)" class="lesson-nav-btn lesson-nav-prev">
+                            <span class="lesson-nav-label">&larr; Previous</span>
+                            <span class="lesson-nav-title">#(prevTitle)</span>
+                        </a>
+                    #else:
+                        <div></div>
+                    #endif
+                    #if(nextSlug):
+                        <a href="/academy/#(courseSlug)/#(nextSlug)" class="lesson-nav-btn lesson-nav-next">
+                            <span class="lesson-nav-label">Next &rarr;</span>
+                            <span class="lesson-nav-title">#(nextTitle)</span>
+                        </a>
+                    #else:
+                        <a href="/academy/#(courseSlug)" class="lesson-nav-btn lesson-nav-next">
+                            <span class="lesson-nav-label">Done &check;</span>
+                            <span class="lesson-nav-title">Back to Course</span>
+                        </a>
+                    #endif
+                </nav>
+            </div>
+        </article>
+    #endexport
+#endextend

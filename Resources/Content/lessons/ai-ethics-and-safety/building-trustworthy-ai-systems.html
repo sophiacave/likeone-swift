@@ -1,0 +1,214 @@
+<div class="wrap">
+
+
+
+
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>The 6 principles of trustworthy AI systems</li>
+    <li>How to build human oversight into AI workflows</li>
+    <li>Red flags in AI products and services</li>
+    <li>How to evaluate whether an AI tool is safe to use</li>
+  </ul>
+</div>
+
+<!-- SECTION 1 -->
+<div class="lesson-section">
+  <span class="section-label">The Principles</span>
+  <h2 class="section-title">6 principles of trustworthy AI.</h2>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">1</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Human Oversight</div>
+          <div style="color:var(--dim);font-size:.85rem">Humans can always intervene, correct, or override AI decisions. There's always a way to appeal an AI-made decision.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(192,132,252,.12);color:var(--purple);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">2</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Explainability</div>
+          <div style="color:var(--dim);font-size:.85rem">You can understand WHY the AI made a decision. "The algorithm decided" isn't an explanation — it's a cop-out.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(56,189,248,.12);color:var(--blue);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">3</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Fairness</div>
+          <div style="color:var(--dim);font-size:.85rem">The system is tested for bias across different groups. Disparate impacts are measured, reported, and mitigated.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(74,222,128,.12);color:var(--green);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">4</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Privacy by Design</div>
+          <div style="color:var(--dim);font-size:.85rem">Data protection isn't an afterthought — it's built into the system from day one. Minimum data collection. Clear consent.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(248,113,113,.12);color:var(--red);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">5</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Robustness</div>
+          <div style="color:var(--dim);font-size:.85rem">The system handles edge cases, adversarial inputs, and failures gracefully. It doesn't break in dangerous ways.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:var(--orange);font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">6</div>
+        <div>
+          <div style="font-weight:700;font-size:.95rem;margin-bottom:2px">Accountability</div>
+          <div style="color:var(--dim);font-size:.85rem">Someone is responsible. If the AI causes harm, there's a person or team who owns the outcome — not "the algorithm."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="lesson-section">
+  <span class="section-label">Human-in-the-Loop</span>
+  <h2 class="section-title">Building human oversight into AI workflows.</h2>
+  <p class="section-text">Even if you're just building a simple AI workflow — like using AI to draft emails that get sent automatically — think about where humans need to be in the loop:</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        <div style="font-size:.7rem;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">Low Stakes (automate freely)</div>
+        <ul style="list-style:none;padding:0;margin:0;font-size:.85rem;color:var(--dim)">
+          <li style="padding:6px 0;border-bottom:1px solid var(--border)">Internal notifications</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border)">Data formatting</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border)">Content tagging/categorization</li>
+          <li style="padding:6px 0">Draft generation (with human review before send)</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:.7rem;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">High Stakes (human must approve)</div>
+        <ul style="list-style:none;padding:0;margin:0;font-size:.85rem;color:var(--dim)">
+          <li style="padding:6px 0;border-bottom:1px solid var(--border)">Customer communications</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border)">Hiring/screening decisions</li>
+          <li style="padding:6px 0;border-bottom:1px solid var(--border)">Financial transactions</li>
+          <li style="padding:6px 0">Anything published publicly</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: TRUST FRAMEWORKS -->
+<div class="lesson-section">
+  <span class="section-label">Trust Frameworks</span>
+  <h2 class="section-title">How organizations establish AI trust.</h2>
+  <p class="section-text">Individual principles matter, but organizations need structured frameworks to implement them. Several authoritative frameworks have emerged that guide responsible AI development and deployment.</p>
+
+  <div class="demo-container" style="padding:1.75rem">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="padding:14px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#38bdf8;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">NIST AI Risk Management Framework</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">The U.S. National Institute of Standards and Technology published a voluntary framework organized around four functions: Govern, Map, Measure, and Manage. It helps organizations identify AI risks and implement controls proportional to those risks.</p>
+      </div>
+      <div style="padding:14px;background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#8b5cf6;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">EU AI Act Risk Categories</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">The EU classifies AI systems into risk tiers: unacceptable (banned), high-risk (heavily regulated), limited risk (transparency requirements), and minimal risk (no specific requirements). High-risk includes AI in hiring, credit scoring, law enforcement, and healthcare.</p>
+      </div>
+      <div style="padding:14px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.2);border-radius:10px">
+        <div style="font-size:.7rem;font-weight:700;color:#34d399;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">ISO/IEC 42001</div>
+        <p style="font-size:.85rem;color:#a1a1aa;margin:0">The first international standard for AI management systems. It provides a certifiable framework for organizations to demonstrate they manage AI responsibly — covering governance, risk assessment, impact evaluation, and continuous improvement.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: AUDIT PATTERNS -->
+<div class="lesson-section">
+  <span class="section-label">Auditing</span>
+  <h2 class="section-title">How to audit AI systems for trustworthiness.</h2>
+  <p class="section-text">Whether you're evaluating an AI tool for your team or building one yourself, these audit patterns help you systematically check for trustworthiness.</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Bias</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Test with diverse inputs.</strong> Run the same task with names, locations, and demographics from different backgrounds. Does the output quality or tone change? If a hiring tool ranks "James" higher than "Jamal" with identical resumes, you have a bias problem.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Accuracy</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Create a test set with known answers.</strong> Feed the AI questions where you already know the correct answer. Measure how often it gets them right, and more importantly, how confidently it states wrong answers.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Privacy</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Trace the data flow.</strong> Map where user data goes: is it stored? For how long? Who can access it? Is it used for training? Can users request deletion? A trustworthy system has clear answers to all of these.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Robustness</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Try to break it.</strong> What happens with adversarial inputs, edge cases, or deliberately misleading prompts? A trustworthy system degrades gracefully rather than producing dangerous outputs.</div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <div style="background:rgba(251,146,60,.12);color:#fb923c;font-weight:800;font-size:.75rem;padding:4px 10px;border-radius:6px;flex-shrink:0">Override</div>
+        <div style="color:#a1a1aa;font-size:.85rem"><strong>Test the kill switch.</strong> Can a human override any AI decision? Is there an appeal process? What happens when the AI is wrong — is there a clear path to correction? If there's no off-ramp, the system isn't trustworthy.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: CERTIFICATION -->
+<div class="lesson-section">
+  <span class="section-label">Certification</span>
+  <h2 class="section-title">Emerging certification and accountability approaches.</h2>
+  <p class="section-text">As AI becomes critical infrastructure, certification and accountability mechanisms are emerging. Understanding these helps you evaluate vendors, build better systems, and prepare for regulatory requirements.</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Model Cards</span> — Standardized documentation that describes what a model does, how it was trained, its known limitations, and its intended use cases. Think of it as a nutrition label for AI models.</div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Algorithmic Impact Assessments</span> — Formal evaluations conducted before deploying AI in high-stakes contexts. They assess potential harms, document mitigation strategies, and create accountability records.</div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Third-Party Audits</span> — Independent organizations that test AI systems for bias, accuracy, and safety. Similar to financial auditing, these provide external validation that a system meets stated standards.</div>
+      <div style="background:var(--bg);border:1px solid rgba(52,211,153,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:#a1a1aa"><span style="color:#34d399;font-weight:700">Bug Bounties for AI</span> — Programs that reward researchers for finding bias, safety failures, or vulnerabilities in AI systems. Anthropic, OpenAI, and others run these programs to crowdsource the discovery of problems before they cause harm.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3 -->
+<div class="lesson-section">
+  <span class="section-label">Red Flags</span>
+  <h2 class="section-title">Red flags when evaluating AI tools.</h2>
+  <p class="section-text">Before you integrate any AI tool into your workflow, watch for these warning signs:</p>
+
+  <div class="demo-container" style="padding:1.5rem">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:var(--dim)"><span style="color:var(--red);font-weight:700">🚩</span> No clear privacy policy or data handling documentation</div>
+      <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:var(--dim)"><span style="color:var(--red);font-weight:700">🚩</span> "We train on all user data" with no opt-out</div>
+      <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:var(--dim)"><span style="color:var(--red);font-weight:700">🚩</span> No way to delete your data or export your history</div>
+      <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:var(--dim)"><span style="color:var(--red);font-weight:700">🚩</span> Claims of "100% accuracy" or "no hallucinations"</div>
+      <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:var(--dim)"><span style="color:var(--red);font-weight:700">🚩</span> No information about the model being used or how it works</div>
+      <div style="background:var(--bg);border:1px solid rgba(248,113,113,.2);border-radius:8px;padding:10px 14px;font-size:.85rem;color:var(--dim)"><span style="color:var(--red);font-weight:700">🚩</span> Requires access to more data than the task actually needs</div>
+    </div>
+  </div>
+</div>
+
+<!-- INTERACTIVE: MATCH -->
+<div class="lesson-section">
+  <span class="section-label">Practice</span>
+</div>
+
+<!-- INTERACTIVE: FLASHDECK -->
+<div class="lesson-section">
+  <span class="section-label">Review</span>
+  <h2 class="section-title">Review the 6 principles of trustworthy AI.</h2>
+  <div data-learn="FlashDeck" data-props='{"title":"6 Principles of Trustworthy AI","cards":[{"front":"1. Human Oversight","back":"Humans can always intervene, correct, or override AI decisions. There is always a way to appeal an AI-made decision."},{"front":"2. Explainability","back":"You can understand WHY the AI made a decision. The algorithm decided is not an explanation."},{"front":"3. Fairness","back":"The system is tested for bias across different groups. Disparate impacts are measured, reported, and mitigated."},{"front":"4. Privacy by Design","back":"Data protection is built into the system from day one — not an afterthought. Minimum data collection, clear consent."},{"front":"5. Robustness","back":"The system handles edge cases, adversarial inputs, and failures gracefully. It does not break in dangerous ways."},{"front":"6. Accountability","back":"Someone is responsible. If the AI causes harm, a person or team owns the outcome — not the algorithm."}]}'></div>
+</div>
+
+<!-- INTERACTIVE: QUIZ -->
+<div class="lesson-section">
+  <span class="section-label">Knowledge Check</span>
+  <h2 class="section-title">Check your understanding.</h2>
+  <div data-learn="QuizMC" data-props='{"title":"Building Trustworthy AI Systems","questions":[{"q":"Which of these is a red flag when evaluating an AI tool?","options":["The tool has a paid subscription tier","The tool claims 100% accuracy or no hallucinations","The tool has a privacy policy","The tool requires an account to use"],"correct":1,"explanation":"Claims of 100% accuracy or no hallucinations are a major red flag. No current AI system is 100% accurate. Any company making this claim is either misleading users or does not understand their own product."},{"q":"For a high-stakes AI workflow like hiring decisions, the lesson recommends:","options":["Fully automate to remove human bias","Require human approval before any decision is finalized","Use the most advanced AI model available","Let the AI decide and document its reasoning"],"correct":1,"explanation":"High-stakes decisions — hiring, customer communications, financial transactions — require human approval. Low-stakes tasks like data formatting can be automated more freely, but consequential decisions need a human in the loop."},{"q":"What does Privacy by Design mean in trustworthy AI systems?","options":["Adding privacy settings after the product launches","Data protection built into the system from the start, with minimum data collection and clear consent","Encrypting all AI outputs","Storing user data in private servers"],"correct":1,"explanation":"Privacy by Design means protection is built in from day one, not bolted on afterward. This includes collecting only the minimum data needed and obtaining clear consent — not retrofitting privacy after the fact."},{"q":"According to the lesson, what does accountability mean in AI systems?","options":["The AI system tracks all its own decisions","A specific person or team is responsible if the AI causes harm — not the algorithm","Users accept responsibility by clicking agree to terms","Accountability is shared equally between users and developers"],"correct":1,"explanation":"Accountability means a human being or team owns the outcome when AI causes harm. Saying the algorithm decided is not accountability — it is deflection. Trustworthy systems name who is responsible."}]}'></div>
+</div>
+
+<!-- NEXT -->
+<div class="lesson-section" style="text-align:center;padding:2rem 0">
+  <a href="/academy/ai-ethics-and-safety/ai-ethics-assessment" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Final Assessment →</a>
+</div>
+
+</div>

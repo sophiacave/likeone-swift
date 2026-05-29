@@ -11,6 +11,7 @@ struct AcademyController: RouteCollection {
         let academy = routes.grouped("academy")
         academy.get(use: index)
         academy.get(":slug", use: courseDetail)
+        academy.get(":slug", ":lessonSlug", use: lessonPage)
         academy.get("filter", use: filterCourses)
     }
 
@@ -62,6 +63,42 @@ struct AcademyController: RouteCollection {
             )}
         )
         return try await req.view.render("course", context)
+    }
+
+    @Sendable
+    func lessonPage(req: Request) async throws -> View {
+        guard let courseSlug = req.parameters.get("slug"),
+              let lessonSlug = req.parameters.get("lessonSlug"),
+              let course = courses.course(slug: courseSlug),
+              let lesson = lessons.lesson(courseSlug: courseSlug, lessonSlug: lessonSlug) else {
+            throw Abort(.notFound, reason: "Lesson not found")
+        }
+
+        let courseLessons = lessons.lessons(forCourse: courseSlug)
+        let currentIndex = courseLessons.firstIndex(where: { $0.slug == lessonSlug }) ?? 0
+        let prevLesson = currentIndex > 0 ? courseLessons[currentIndex - 1] : nil
+        let nextLesson = currentIndex < courseLessons.count - 1 ? courseLessons[currentIndex + 1] : nil
+
+        // Read lesson HTML from filesystem
+        let contentPath = req.application.directory.resourcesDirectory + "Content/lessons/\(courseSlug)/\(lessonSlug).html"
+        let content = (try? String(contentsOfFile: contentPath, encoding: .utf8)) ?? "<p>Lesson content coming soon.</p>"
+
+        let context = LessonPageContext(
+            title: "\(lesson.title) | \(course.title) | Like One Academy",
+            description: course.description,
+            courseTitle: course.title,
+            courseSlug: courseSlug,
+            courseEmoji: course.emoji,
+            lessonTitle: lesson.title,
+            lessonOrder: lesson.order,
+            totalLessons: courseLessons.count,
+            content: content,
+            prevSlug: prevLesson?.slug,
+            prevTitle: prevLesson?.title,
+            nextSlug: nextLesson?.slug,
+            nextTitle: nextLesson?.title
+        )
+        return try await req.view.render("lesson", context)
     }
 
     @Sendable
@@ -139,4 +176,20 @@ struct LessonItem: Content {
 
 struct CourseGridContext: Content {
     let courses: [CourseCard]
+}
+
+struct LessonPageContext: Content {
+    let title: String
+    let description: String
+    let courseTitle: String
+    let courseSlug: String
+    let courseEmoji: String
+    let lessonTitle: String
+    let lessonOrder: Int
+    let totalLessons: Int
+    let content: String
+    let prevSlug: String?
+    let prevTitle: String?
+    let nextSlug: String?
+    let nextTitle: String?
 }
