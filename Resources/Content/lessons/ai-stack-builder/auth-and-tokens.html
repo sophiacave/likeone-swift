@@ -269,10 +269,128 @@ Deno.<span style="color:#34d399">serve</span>(<span style="color:#c084fc">async<
 </div>
 
 <div style="margin:1.5rem 0">
-<div data-learn="QuizMC" data-props='{"title":"Auth & Tokens — Mastery Check","questions":[{"q":"Which part of a JWT is cryptographically signed to prevent tampering?","options":["Header only","Payload only","The signature is computed from the header AND payload together","All three parts are encrypted"],"correct":2,"explanation":"The signature is an HMAC computed from the base64-encoded header + payload using a secret. Any change to either part invalidates the signature. Note: the parts are signed, not encrypted — the payload is readable by anyone."},{"q":"What does the sub claim in a JWT payload represent?","options":["Subscription tier","Subject — typically the user ID","Supabase project ID","Secret key"],"correct":1,"explanation":"The sub (subject) claim uniquely identifies the principal — usually the user ID. Supabase auth.uid() extracts this value to enforce Row Level Security policies."},{"q":"How long does a Supabase access token (JWT) last by default?","options":["24 hours","7 days","1 hour","30 minutes"],"correct":2,"explanation":"Supabase access tokens expire after 1 hour (3600 seconds). The long-lived refresh token silently obtains a new access token when the old one expires — users stay logged in without interruption."},{"q":"Why is RLS more secure than checking permissions in application code?","options":["RLS is faster than code checks","Even if your app code has a bug that forgets to filter by user_id, the database itself rejects unauthorized rows","RLS encrypts all data at rest","RLS prevents SQL injection"],"correct":1,"explanation":"Application code can have bugs — a missed WHERE clause, a wrong variable, or a code path that skips validation. RLS operates at the database level, below your app code. It enforces access rules on EVERY query, regardless of how the query was constructed."},{"q":"What happens if you store the service role key in a NEXT_PUBLIC_ variable?","options":["Nothing — it is automatically protected","The key is exposed in the browser, bypassing ALL RLS — anyone can read, write, or delete all database data","Supabase rejects the key","The build fails"],"correct":1,"explanation":"NEXT_PUBLIC_ variables are included in the browser bundle, visible to anyone. The service role key bypasses RLS entirely. Exposing it gives any browser visitor full, unrestricted access to your entire database. This is a critical security vulnerability."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Auth & Tokens — Mastery Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which part of a JWT is cryptographically signed to prevent tampering?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Header only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Payload only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The signature is computed from the header AND payload together
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>All three parts are encrypted
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The signature is an HMAC computed from the base64-encoded header + payload using a secret. Any change to either part invalidates the signature. Note: the parts are signed, not encrypted — the payload is readable by anyone.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What does the sub claim in a JWT payload represent?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Subscription tier
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Subject — typically the user ID
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Supabase project ID
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Secret key
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The sub (subject) claim uniquely identifies the principal — usually the user ID. Supabase auth.uid() extracts this value to enforce Row Level Security policies.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>How long does a Supabase access token (JWT) last by default?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>24 hours
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>7 days
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>1 hour
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>30 minutes
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Supabase access tokens expire after 1 hour (3600 seconds). The long-lived refresh token silently obtains a new access token when the old one expires — users stay logged in without interruption.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Why is RLS more secure than checking permissions in application code?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>RLS is faster than code checks
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Even if your app code has a bug that forgets to filter by user_id, the database itself rejects unauthorized rows
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>RLS encrypts all data at rest
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>RLS prevents SQL injection
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Application code can have bugs — a missed WHERE clause, a wrong variable, or a code path that skips validation. RLS operates at the database level, below your app code. It enforces access rules on EVERY query, regardless of how the query was constructed.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What happens if you store the service role key in a NEXT_PUBLIC_ variable?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Nothing — it is automatically protected
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The key is exposed in the browser, bypassing ALL RLS — anyone can read, write, or delete all database data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Supabase rejects the key
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The build fails
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> NEXT_PUBLIC_ variables are included in the browser bundle, visible to anyone. The service role key bypasses RLS entirely. Exposing it gives any browser visitor full, unrestricted access to your entire database. This is a critical security vulnerability.</div>
+</div>
+</div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Auth & Tokens Flashcards","cards":[{"front":"What are the three parts of a JWT?","back":"Header (algorithm + type), Payload (claims/data), Signature (cryptographic verification). Separated by dots and base64url-encoded. Signed but NOT encrypted — anyone can read the payload."},{"front":"What is RLS and why does it matter for JWTs?","back":"Row Level Security is a Postgres feature that enforces data access rules per row. Supabase RLS policies use auth.uid() to extract the user ID from the JWT, so each user can only access their own data — even if application code has bugs."},{"front":"What is the difference between an access token and a refresh token?","back":"Access token: short-lived JWT (1 hour) sent with every request. Refresh token: long-lived, stored securely, used only to silently get a new access token when the old one expires. The Supabase client handles refresh automatically."},{"front":"What HTTP header carries a JWT in API requests?","back":"Authorization: Bearer <token>. The server reads this header, extracts the token, and verifies the signature to authenticate the request."},{"front":"Why should you never store secrets in a JWT payload?","back":"JWTs are signed, not encrypted. The payload is simply base64-encoded — anyone can decode it and read the contents. The signature only prevents tampering, not reading. Store secrets in server-side environment variables."},{"front":"What does auth.uid() do in a Supabase RLS policy?","back":"Extracts the sub (subject) claim from the JWT — which is the authenticated user ID. RLS policies use this to restrict each query to only the rows belonging to the current user."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Auth & Tokens Flashcards</h3>
+<details class="flash-card">
+<summary class="flash-front">What are the three parts of a JWT?</summary>
+<div class="flash-back">Header (algorithm + type), Payload (claims/data), Signature (cryptographic verification). Separated by dots and base64url-encoded. Signed but NOT encrypted — anyone can read the payload.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is RLS and why does it matter for JWTs?</summary>
+<div class="flash-back">Row Level Security is a Postgres feature that enforces data access rules per row. Supabase RLS policies use auth.uid() to extract the user ID from the JWT, so each user can only access their own data — even if application code has bugs.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the difference between an access token and a refresh token?</summary>
+<div class="flash-back">Access token: short-lived JWT (1 hour) sent with every request. Refresh token: long-lived, stored securely, used only to silently get a new access token when the old one expires. The Supabase client handles refresh automatically.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What HTTP header carries a JWT in API requests?</summary>
+<div class="flash-back">Authorization: Bearer <token>. The server reads this header, extracts the token, and verifies the signature to authenticate the request.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why should you never store secrets in a JWT payload?</summary>
+<div class="flash-back">JWTs are signed, not encrypted. The payload is simply base64-encoded — anyone can decode it and read the contents. The signature only prevents tampering, not reading. Store secrets in server-side environment variables.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What does auth.uid() do in a Supabase RLS policy?</summary>
+<div class="flash-back">Extracts the sub (subject) claim from the JWT — which is the authenticated user ID. RLS policies use this to restrict each query to only the rows belonging to the current user.</div>
+</details>
+</div>
 
 </div>
 

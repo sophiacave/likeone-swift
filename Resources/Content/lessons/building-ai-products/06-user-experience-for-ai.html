@@ -51,7 +51,29 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"AI UX — Key Concepts","cards":[{"front":"Stop Building Chatbots","back":"Chat puts the burden on users to know what to ask. Structured inputs — buttons, dropdowns, templates, pre-filled forms — guide users toward input your model works best with."},{"front":"Edit, Don&#39;t Create","back":"AI generates a first draft, user edits it. Design around inline editing, track changes, version comparison, and regenerate buttons. The human is editor-in-chief."},{"front":"Streaming Responses","back":"Showing text as it generates reduces perceived wait time by 60-70%. Users start reading immediately instead of staring at a spinner."},{"front":"Design for the Wrong Answer","back":"Every AI output is a suggestion. Make it trivially easy to reject, edit, or regenerate. Add thumbs up/down, try again, and edit links on every output."},{"front":"AI Accessibility","back":"Streaming text can break screen readers. Loading animations can trigger seizures. Auto-playing responses can overwhelm cognitive disabilities. Build accessible from day one."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">AI UX — Key Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">Stop Building Chatbots</summary>
+<div class="flash-back">Chat puts the burden on users to know what to ask. Structured inputs — buttons, dropdowns, templates, pre-filled forms — guide users toward input your model works best with.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Edit, Don't Create</summary>
+<div class="flash-back">AI generates a first draft, user edits it. Design around inline editing, track changes, version comparison, and regenerate buttons. The human is editor-in-chief.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Streaming Responses</summary>
+<div class="flash-back">Showing text as it generates reduces perceived wait time by 60-70%. Users start reading immediately instead of staring at a spinner.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Design for the Wrong Answer</summary>
+<div class="flash-back">Every AI output is a suggestion. Make it trivially easy to reject, edit, or regenerate. Add thumbs up/down, try again, and edit links on every output.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">AI Accessibility</summary>
+<div class="flash-back">Streaming text can break screen readers. Loading animations can trigger seizures. Auto-playing responses can overwhelm cognitive disabilities. Build accessible from day one.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -177,7 +199,63 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="QuizMC" data-props='{"title":"User Experience for AI Quiz","questions":[{"q":"Why is a blank chat window usually the wrong interface for AI products?","options":["Chat is too slow","Chat puts the burden on users to know what to ask, how to phrase it, and what’s possible — a terrible experience for anyone who isn’t already an AI power user","Chat is too expensive to build","Chat doesn’t work on mobile"],"correct":1,"explanation":"Most users don’t know how to prompt. A blank chat box that says ‘how can I help?’ requires expertise the user doesn’t have. Structured inputs guide users toward the interactions your model handles best."},{"q":"What is the single biggest UX improvement for AI response latency?","options":["Faster servers","Smaller AI models","Streaming responses — showing text as it generates — which reduces perceived wait time by 60-70%","Caching common responses"],"correct":2,"explanation":"Streaming lets users start reading immediately instead of staring at a spinner for 5-15 seconds. The total time may be the same but the perceived experience is dramatically better."},{"q":"What must every AI output include to keep users feeling like the pilot?","options":["A confidence score","Easy ways to reject, edit, or regenerate — so users always have agency over AI output","A source citation","An explanation of how it was generated"],"correct":1,"explanation":"If a user has to accept an AI result because there’s no alternative, your UX has failed. Rejection, editing, and regeneration options ensure users remain in control and build the habit of verification."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">User Experience for AI Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why is a blank chat window usually the wrong interface for AI products?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Chat is too slow
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Chat puts the burden on users to know what to ask, how to phrase it, and what’s possible — a terrible experience for anyone who isn’t already an AI power user
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Chat is too expensive to build
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Chat doesn’t work on mobile
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Most users don’t know how to prompt. A blank chat box that says ‘how can I help?’ requires expertise the user doesn’t have. Structured inputs guide users toward the interactions your model handles best.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the single biggest UX improvement for AI response latency?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Faster servers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Smaller AI models
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Streaming responses — showing text as it generates — which reduces perceived wait time by 60-70%
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Caching common responses
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Streaming lets users start reading immediately instead of staring at a spinner for 5-15 seconds. The total time may be the same but the perceived experience is dramatically better.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What must every AI output include to keep users feeling like the pilot?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A confidence score
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Easy ways to reject, edit, or regenerate — so users always have agency over AI output
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A source citation
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>An explanation of how it was generated
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> If a user has to accept an AI result because there’s no alternative, your UX has failed. Rejection, editing, and regeneration options ensure users remain in control and build the habit of verification.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

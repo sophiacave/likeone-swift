@@ -226,8 +226,64 @@ Using your dataset from Lesson 2, calculate: total training tokens, estimated th
 </div>
 </div>
 
-<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the recommended approach for your FIRST fine-tuning run?", "options": ["Rent the most powerful GPU available (H100) to ensure success", "Always train locally to avoid cloud costs", "Use a managed fine-tuning API (OpenAI or Together AI) for zero infrastructure setup", "Start with multi-GPU DeepSpeed training for maximum speed"], "correct": 2, "explanation": "The correct answer is: Use a managed fine-tuning API (OpenAI or Together AI) for zero infrastructure setup"}, {"q": "Why should you budget 3-5x your estimated compute cost?", "options": ["Cloud GPU prices fluctuate unpredictably", "First attempts often fail due to hyperparameter issues, data format bugs, or quality problems, requiring multiple training runs", "You need to train multiple model sizes to compare", "Evaluation and testing require the same compute as training"], "correct": 1, "explanation": "The correct answer is: First attempts often fail due to hyperparameter issues, data format bugs, or quality problems, requiring multiple training runs"}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the recommended approach for your FIRST fine-tuning run?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Rent the most powerful GPU available (H100) to ensure success
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Always train locally to avoid cloud costs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Use a managed fine-tuning API (OpenAI or Together AI) for zero infrastructure setup
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Start with multi-GPU DeepSpeed training for maximum speed
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: Use a managed fine-tuning API (OpenAI or Together AI) for zero infrastructure setup</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why should you budget 3-5x your estimated compute cost?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Cloud GPU prices fluctuate unpredictably
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>First attempts often fail due to hyperparameter issues, data format bugs, or quality problems, requiring multiple training runs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>You need to train multiple model sizes to compare
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Evaluation and testing require the same compute as training
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: First attempts often fail due to hyperparameter issues, data format bugs, or quality problems, requiring multiple training runs</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What is the training cost formula?", "back": "Total cost = (training_tokens / tokens_per_second) * ($/hour / 3600). Training tokens = num_examples * avg_tokens_per_example * num_epochs."}, {"front": "What are the three DeepSpeed ZeRO stages?", "back": "Stage 1: Partition optimizer states. Stage 2: Partition optimizer + gradients (default choice). Stage 3: Partition optimizer + gradients + model params (for very large models, higher communication overhead)."}, {"front": "What models can a consumer RTX 4090 (24GB) fine-tune?", "back": "QLoRA: up to 13B models. Standard LoRA: up to 7B models. Full fine-tuning: not practical for any modern LLM."}, {"front": "When should you choose FSDP over DeepSpeed?", "back": "Choose FSDP for native PyTorch integration and simpler configuration. Choose DeepSpeed for maximum flexibility, CPU offloading, and more granular memory optimization."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Vocabulary</h3>
+<details class="flash-card">
+<summary class="flash-front">What is the training cost formula?</summary>
+<div class="flash-back">Total cost = (training_tokens / tokens_per_second) * ($/hour / 3600). Training tokens = num_examples * avg_tokens_per_example * num_epochs.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are the three DeepSpeed ZeRO stages?</summary>
+<div class="flash-back">Stage 1: Partition optimizer states. Stage 2: Partition optimizer + gradients (default choice). Stage 3: Partition optimizer + gradients + model params (for very large models, higher communication overhead).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What models can a consumer RTX 4090 (24GB) fine-tune?</summary>
+<div class="flash-back">QLoRA: up to 13B models. Standard LoRA: up to 7B models. Full fine-tuning: not practical for any modern LLM.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">When should you choose FSDP over DeepSpeed?</summary>
+<div class="flash-back">Choose FSDP for native PyTorch integration and simpler configuration. Choose DeepSpeed for maximum flexibility, CPU offloading, and more granular memory optimization.</div>
+</details>
+</div>
 
 </div>

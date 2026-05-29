@@ -133,8 +133,72 @@ curl http://localhost:11434/api/embed -d '{
 </div>
 </div>
 
-<div data-learn="QuizMC" data-props='{"questions": [{"q": "What port does the Ollama API run on by default?", "options": ["8080", "3000", "11434", "5000"], "correct": 2, "explanation": "The correct answer is: 11434"}, {"q": "What is the recommended model for a machine with 16GB RAM?", "options": ["llama3.1:70b", "qwen2.5:14b or mistral:7b", "gemma2:2b", "qwen2.5:72b"], "correct": 1, "explanation": "The correct answer is: qwen2.5:14b or mistral:7b"}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What port does the Ollama API run on by default?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>8080
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>3000
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>11434
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>5000
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: 11434</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the recommended model for a machine with 16GB RAM?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>llama3.1:70b
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>qwen2.5:14b or mistral:7b
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>gemma2:2b
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>qwen2.5:72b
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: qwen2.5:14b or mistral:7b</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What command installs Ollama on macOS or Linux?", "back": "curl -fsSL https://ollama.com/install.sh | sh"}, {"front": "How do you pull and run a model in Ollama?", "back": "ollama pull llama3.1:8b (downloads model) then ollama run llama3.1:8b (starts interactive chat)"}, {"front": "How do you list all downloaded models?", "back": "ollama list"}, {"front": "What makes Ollama&#39;s API compatible with existing tools?", "back": "It&#39;s OpenAI-compatible -- tools built for OpenAI&#39;s API work by changing the base URL to http://localhost:11434/v1"}, {"front": "What is the security consideration when exposing Ollama to the network?", "back": "Ollama has no built-in authentication. Setting OLLAMA_HOST=0.0.0.0 exposes it to the network -- only do this on trusted networks."}, {"front": "How do you generate embeddings with Ollama?", "back": "Use the /api/embed endpoint with an embedding model like nomic-embed-text"}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Vocabulary</h3>
+<details class="flash-card">
+<summary class="flash-front">What command installs Ollama on macOS or Linux?</summary>
+<div class="flash-back">curl -fsSL https://ollama.com/install.sh | sh</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you pull and run a model in Ollama?</summary>
+<div class="flash-back">ollama pull llama3.1:8b (downloads model) then ollama run llama3.1:8b (starts interactive chat)</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you list all downloaded models?</summary>
+<div class="flash-back">ollama list</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What makes Ollama's API compatible with existing tools?</summary>
+<div class="flash-back">It's OpenAI-compatible -- tools built for OpenAI's API work by changing the base URL to http://localhost:11434/v1</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the security consideration when exposing Ollama to the network?</summary>
+<div class="flash-back">Ollama has no built-in authentication. Setting OLLAMA_HOST=0.0.0.0 exposes it to the network -- only do this on trusted networks.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you generate embeddings with Ollama?</summary>
+<div class="flash-back">Use the /api/embed endpoint with an embedding model like nomic-embed-text</div>
+</details>
+</div>
 
 </div>

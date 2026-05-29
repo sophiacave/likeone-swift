@@ -166,7 +166,29 @@ for segment, group in df.groupby("product"):
 <div class="lesson-section">
   <span class="section-label" style="color: var(--blue);">Key Concepts</span>
   <h2 class="section-title">Learn the Terms</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Pattern Recognition Concepts","cards":[{"front":"Trend","back":"A directional pattern over time — revenue growing 5% month-over-month, support tickets spiking every Monday, open rates declining since September"},{"front":"Outlier","back":"A data point that doesn&#39;t fit the pattern — could be a data entry error or the most interesting finding in your dataset"},{"front":"Correlation","back":"A relationship between two variables — when one goes up the other moves too — but correlation does NOT prove causation"},{"front":"Confounding Variable","back":"A hidden third factor that causes two things to appear related — like heat causing both ice cream sales and drowning rates to rise"},{"front":"Segmented Analysis","back":"Breaking overall patterns down by group (region, customer type, product) — a flat average often hides two segments moving in opposite directions"}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Pattern Recognition Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">Trend</summary>
+<div class="flash-back">A directional pattern over time — revenue growing 5% month-over-month, support tickets spiking every Monday, open rates declining since September</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Outlier</summary>
+<div class="flash-back">A data point that doesn't fit the pattern — could be a data entry error or the most interesting finding in your dataset</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Correlation</summary>
+<div class="flash-back">A relationship between two variables — when one goes up the other moves too — but correlation does NOT prove causation</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Confounding Variable</summary>
+<div class="flash-back">A hidden third factor that causes two things to appear related — like heat causing both ice cream sales and drowning rates to rise</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Segmented Analysis</summary>
+<div class="flash-back">Breaking overall patterns down by group (region, customer type, product) — a flat average often hides two segments moving in opposite directions</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -177,7 +199,63 @@ for segment, group in df.groupby("product"):
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Lesson 6 Quiz</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Pattern Recognition","questions":[{"q":"Ice cream sales and drowning deaths both increase in summer. What does this illustrate?","options":["Ice cream causes drowning","A strong causal relationship","A correlation caused by a confounding variable (heat)","A trend pattern over time"],"correct":2,"explanation":"Both are caused by hot weather — a confounding variable. This is the correlation-causation trap. Always ask AI if there could be a third factor driving two correlated variables."},{"q":"What is a segmented pattern analysis and why does it matter?","options":["Breaking down overall trends by segments like region, customer type, or time period","Removing outliers from the dataset","Analyzing only the top 10% of data","A technique for pie chart creation"],"correct":0,"explanation":"Overall averages lie — your average customer might not exist. Segmentation can reveal two opposing trends hidden inside a flat overall number, which changes everything about your decisions."},{"q":"What does asking AI to explain \"why\" a pattern exists (rather than just \"what\") accomplish?","options":["It slows down the analysis","It turns pattern detection into genuine business intelligence","It produces less accurate results","It only works for financial data"],"correct":1,"explanation":"Asking for possible explanations and what additional data would confirm them transforms a basic pattern find into actionable intelligence you can actually use."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Pattern Recognition</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Ice cream sales and drowning deaths both increase in summer. What does this illustrate?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Ice cream causes drowning
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A strong causal relationship
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A correlation caused by a confounding variable (heat)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A trend pattern over time
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Both are caused by hot weather — a confounding variable. This is the correlation-causation trap. Always ask AI if there could be a third factor driving two correlated variables.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is a segmented pattern analysis and why does it matter?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Breaking down overall trends by segments like region, customer type, or time period
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Removing outliers from the dataset
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Analyzing only the top 10% of data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A technique for pie chart creation
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Overall averages lie — your average customer might not exist. Segmentation can reveal two opposing trends hidden inside a flat overall number, which changes everything about your decisions.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What does asking AI to explain "why" a pattern exists (rather than just "what") accomplish?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It slows down the analysis
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It turns pattern detection into genuine business intelligence
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It produces less accurate results
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It only works for financial data
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Asking for possible explanations and what additional data would confirm them transforms a basic pattern find into actionable intelligence you can actually use.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

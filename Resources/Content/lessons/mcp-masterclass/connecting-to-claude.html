@@ -206,7 +206,85 @@
     </div>
   </div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Connection Process Quiz","questions":[{"q":"Where do you configure MCP servers for Claude Desktop on macOS?","options":["In the Claude Desktop UI settings panel","In claude_desktop_config.json in ~/Library/Application Support/Claude/","In the server package.json file","In a .env file at the project root"],"correct":1,"explanation":"MCP servers are configured in claude_desktop_config.json, located at ~/Library/Application Support/Claude/ on macOS or %APPDATA%\\Claude\\ on Windows."},{"q":"What happens during the MCP capability negotiation phase when Claude starts?","options":["The user manually selects which tools to enable","Claude sends initialize then tools/list to discover available tools","The server pushes notifications to Claude automatically","The client uploads all local data to the server"],"correct":1,"explanation":"During negotiation, Claude sends an initialize request with its protocol version, the server responds with capabilities, then Claude sends tools/list to discover all available tool definitions."},{"q":"Your MCP server works when you run it manually in the terminal, but Claude Desktop says no tools are available. What is the most likely cause?","options":["The server needs to be rewritten in Python","The command path in config is relative instead of absolute","Claude Desktop does not support custom servers","The server needs a paid license"],"correct":1,"explanation":"Claude Desktop launches servers from its own working directory, not your project directory. Relative paths like ./server.ts will not resolve. Always use absolute paths like /Users/you/project/server.ts."}]}'></div>
-<div data-learn="FlashDeck" data-props='{"title":"Config File Fields","cards":[{"front":"command field in claude_desktop_config.json","back":"The program that launches your server — e.g. node, npx, or python. This is the executable Claude runs to start the MCP server."},{"front":"args field in claude_desktop_config.json","back":"Array of arguments passed to the command. Used to specify which server package to load, which directory to allow access to, etc."},{"front":"env field in claude_desktop_config.json","back":"Key-value pairs for environment variables. Use this for secrets like API keys or DB connection strings. They stay on your machine and never leave."},{"front":"initialize (MCP message)","back":"The first message Claude sends when connecting. Includes protocol version and capabilities. Server responds with its own capabilities."},{"front":"tools/list (MCP message)","back":"Sent by Claude after initialize. The server returns all available tool definitions. Claude stores these to know what it can call."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Connection Process Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Where do you configure MCP servers for Claude Desktop on macOS?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>In the Claude Desktop UI settings panel
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>In claude_desktop_config.json in ~/Library/Application Support/Claude/
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>In the server package.json file
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>In a .env file at the project root
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> MCP servers are configured in claude_desktop_config.json, located at ~/Library/Application Support/Claude/ on macOS or %APPDATA%\Claude\ on Windows.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What happens during the MCP capability negotiation phase when Claude starts?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The user manually selects which tools to enable
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Claude sends initialize then tools/list to discover available tools
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The server pushes notifications to Claude automatically
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The client uploads all local data to the server
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> During negotiation, Claude sends an initialize request with its protocol version, the server responds with capabilities, then Claude sends tools/list to discover all available tool definitions.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Your MCP server works when you run it manually in the terminal, but Claude Desktop says no tools are available. What is the most likely cause?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The server needs to be rewritten in Python
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The command path in config is relative instead of absolute
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Claude Desktop does not support custom servers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The server needs a paid license
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Claude Desktop launches servers from its own working directory, not your project directory. Relative paths like ./server.ts will not resolve. Always use absolute paths like /Users/you/project/server.ts.</div>
+</div>
+</div>
+<div class="flash-block">
+<h3 class="quiz-title">Config File Fields</h3>
+<details class="flash-card">
+<summary class="flash-front">command field in claude_desktop_config.json</summary>
+<div class="flash-back">The program that launches your server — e.g. node, npx, or python. This is the executable Claude runs to start the MCP server.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">args field in claude_desktop_config.json</summary>
+<div class="flash-back">Array of arguments passed to the command. Used to specify which server package to load, which directory to allow access to, etc.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">env field in claude_desktop_config.json</summary>
+<div class="flash-back">Key-value pairs for environment variables. Use this for secrets like API keys or DB connection strings. They stay on your machine and never leave.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">initialize (MCP message)</summary>
+<div class="flash-back">The first message Claude sends when connecting. Includes protocol version and capabilities. Server responds with its own capabilities.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">tools/list (MCP message)</summary>
+<div class="flash-back">Sent by Claude after initialize. The server returns all available tool definitions. Claude stores these to know what it can call.</div>
+</details>
+</div>
 
 </div>

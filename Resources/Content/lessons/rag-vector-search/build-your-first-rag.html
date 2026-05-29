@@ -248,8 +248,90 @@ answer = ask(<span style="color:#fbbf24">"What is the refund policy?"</span>)
   </div>
 
   <div class="divider"><span>Test Your Understanding</span></div>
-<div data-learn="QuizMC" data-props='{"title":"Build Your First RAG — Check Your Understanding","questions":[{"q":"Why is batch embedding more efficient than embedding one document at a time?","options":["Batch embedding uses a different model","One API call with 100 texts is faster and cheaper than 100 API calls with 1 text each","Batch embedding produces higher quality vectors","Batch embedding requires less disk space"],"correct":1,"explanation":"API calls have overhead — network latency, authentication, rate limiting. Sending 100 texts in one call eliminates 99% of that overhead. Most embedding APIs are priced per token, so the cost is identical, but the speed improvement is dramatic."},{"q":"What is the purpose of the metadata stored alongside each vector?","options":["To improve embedding quality","To enable filtering and to provide source attribution when returning results","To make the vector database faster","To reduce storage costs"],"correct":1,"explanation":"Metadata serves two purposes: (1) filtering — narrowing search results by source, date, category, etc. (2) attribution — when a chunk is retrieved, the metadata tells you where it came from, enabling citations in the generated answer."},{"q":"Your RAG system returns irrelevant chunks for specific queries. Which parameter should you adjust first?","options":["Increase chunk_size to capture more context","Raise the similarity_threshold to filter out low-relevance results","Lower top_k to return fewer results","Change the LLM model"],"correct":1,"explanation":"If irrelevant chunks are being retrieved, the similarity threshold is too low — chunks with weak similarity are making it through. Raising the threshold from 0.75 to 0.80-0.85 filters out these low-relevance results. This is the first parameter to tune when retrieval quality is poor."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Build Your First RAG — Check Your Understanding</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why is batch embedding more efficient than embedding one document at a time?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Batch embedding uses a different model
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>One API call with 100 texts is faster and cheaper than 100 API calls with 1 text each
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Batch embedding produces higher quality vectors
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Batch embedding requires less disk space
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> API calls have overhead — network latency, authentication, rate limiting. Sending 100 texts in one call eliminates 99% of that overhead. Most embedding APIs are priced per token, so the cost is identical, but the speed improvement is dramatic.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the purpose of the metadata stored alongside each vector?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>To improve embedding quality
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>To enable filtering and to provide source attribution when returning results
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>To make the vector database faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>To reduce storage costs
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Metadata serves two purposes: (1) filtering — narrowing search results by source, date, category, etc. (2) attribution — when a chunk is retrieved, the metadata tells you where it came from, enabling citations in the generated answer.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Your RAG system returns irrelevant chunks for specific queries. Which parameter should you adjust first?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Increase chunk_size to capture more context
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Raise the similarity_threshold to filter out low-relevance results
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Lower top_k to return fewer results
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Change the LLM model
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> If irrelevant chunks are being retrieved, the similarity threshold is too low — chunks with weak similarity are making it through. Raising the threshold from 0.75 to 0.80-0.85 filters out these low-relevance results. This is the first parameter to tune when retrieval quality is poor.</div>
+</div>
+</div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"RAG Build — Key Parameters","cards":[{"front":"chunk_size","back":"Number of words per chunk. Start at 200. Increase for more context, decrease for more precision. Tune based on answer quality."},{"front":"chunk_overlap","back":"Words repeated between adjacent chunks. Prevents boundary loss. Typical: 10-20% of chunk_size, or 1 overlapping sentence."},{"front":"top_k","back":"How many chunks to retrieve per query. More = more context for the LLM but higher token cost and potential noise. Start at 5."},{"front":"similarity_threshold","back":"Minimum cosine similarity for a chunk to be included. Filters irrelevant results. Start at 0.75, raise if seeing noise."},{"front":"temperature","back":"Controls LLM randomness. Set to 0.0-0.2 for factual RAG answers to minimize hallucination and maximize reliability."},{"front":"batch_size","back":"Number of texts to embed in one API call. Reduces network overhead. Typical: 100. OpenAI supports up to 2048 per call."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">RAG Build — Key Parameters</h3>
+<details class="flash-card">
+<summary class="flash-front">chunk_size</summary>
+<div class="flash-back">Number of words per chunk. Start at 200. Increase for more context, decrease for more precision. Tune based on answer quality.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">chunk_overlap</summary>
+<div class="flash-back">Words repeated between adjacent chunks. Prevents boundary loss. Typical: 10-20% of chunk_size, or 1 overlapping sentence.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">top_k</summary>
+<div class="flash-back">How many chunks to retrieve per query. More = more context for the LLM but higher token cost and potential noise. Start at 5.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">similarity_threshold</summary>
+<div class="flash-back">Minimum cosine similarity for a chunk to be included. Filters irrelevant results. Start at 0.75, raise if seeing noise.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">temperature</summary>
+<div class="flash-back">Controls LLM randomness. Set to 0.0-0.2 for factual RAG answers to minimize hallucination and maximize reliability.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">batch_size</summary>
+<div class="flash-back">Number of texts to embed in one API call. Reduces network overhead. Typical: 100. OpenAI supports up to 2048 per call.</div>
+</details>
+</div>
 
 </div>

@@ -205,9 +205,177 @@
   </div>
 </div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Agent Mastery Quiz","questions":[{"q":"What is the fundamental difference between a chatbot and an agent?","options":["Agents use more advanced AI models","Agents can perceive, decide, act, and loop autonomously — chatbots just respond once","Chatbots are free, agents cost money","Agents always use voice, chatbots use text"],"correct":1,"explanation":"The core difference is the agent loop: perceive → think → act → observe → learn → repeat. A chatbot does one thing: you ask, it answers. An agent operates autonomously toward a goal."},{"q":"What happens in the Observe step of the agent loop?","options":["The agent watches the user type","The agent looks at its training data","The agent checks the result of its action to see if it succeeded or failed","The agent observes other agents working"],"correct":2,"explanation":"Observation is the feedback step. After taking an action (calling a tool), the agent checks the result. Did it work? Did it fail? Was the data good? This closes the loop and enables self-correction."},{"q":"Why does an agent need tools?","options":["To look more professional","Without tools, an agent can only generate text — tools let it actually DO things in the real world","Tools make the AI faster","Tools are optional — agents work fine without them"],"correct":1,"explanation":"Tools are what separate agents from chatbots. Without tools, an agent can only generate text. With tools (APIs, databases, email, etc.), it can take actions, retrieve real data, and interact with the world."},{"q":"What should a system prompt for an agent include?","options":["Just the agent name","Only a list of available tools","Identity, goal, available tools, memory instructions, guardrails, and output format","A copy of the agent training data"],"correct":2,"explanation":"A complete agent system prompt covers all six blocks: Identity (who it is), Goal (what it is trying to do), Tools (what it can use), Memory (what it should remember), Guardrails (what it must never do), and Output Format (how to respond)."},{"q":"What is the main advantage of long-term memory over short-term memory?","options":["Long-term memory is faster","Long-term memory persists across sessions, so the agent improves over time instead of starting fresh","Long-term memory is cheaper","Short-term memory does not actually exist"],"correct":1,"explanation":"Short-term memory helps within a single session but is lost when the session ends. Long-term memory persists — the agent remembers what worked, what failed, and user preferences across all interactions. This is how agents get genuinely smarter over time."},{"q":"When an agent tool call fails, what is the best recovery strategy?","options":["Retry the exact same call 100 times","Tell the user I cannot do that and stop","Try an alternative approach (fallback tool), and explain what happened to the user","Ignore the error and make up a response"],"correct":2,"explanation":"Graceful degradation: try alternatives first, be transparent about what happened, and only escalate if all fallbacks fail. Never hammer a failing service, give up immediately, or fabricate data."},{"q":"An agent encounters a user request that conflicts with its guardrails. What should it do?","options":["Override the guardrail — the user asked for it","Silently do something different from what was asked","Explain the conflict, refuse the unsafe action, and suggest a safe alternative","Shut down completely"],"correct":2,"explanation":"Guardrails exist for safety. The agent should never override them, but it should be helpful — explain WHY it cannot comply and offer an alternative path that achieves the user goal safely."},{"q":"Which 5 dimensions should you evaluate an agent on before deploying?","options":["Speed, color, size, weight, and temperature","Accuracy, speed, reliability, cost efficiency, and user satisfaction","Number of tools, model size, training data, compute, and uptime","Revenue, profit, growth, retention, and churn"],"correct":1,"explanation":"The five evaluation dimensions are: Accuracy (does it give correct answers?), Speed (how fast?), Reliability (does it work consistently?), Cost Efficiency (affordable at scale?), and User Satisfaction (are people happy?). All five need to meet your threshold before deploying."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Agent Mastery Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the fundamental difference between a chatbot and an agent?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Agents use more advanced AI models
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Agents can perceive, decide, act, and loop autonomously — chatbots just respond once
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Chatbots are free, agents cost money
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Agents always use voice, chatbots use text
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The core difference is the agent loop: perceive → think → act → observe → learn → repeat. A chatbot does one thing: you ask, it answers. An agent operates autonomously toward a goal.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What happens in the Observe step of the agent loop?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The agent watches the user type
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The agent looks at its training data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The agent checks the result of its action to see if it succeeded or failed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The agent observes other agents working
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Observation is the feedback step. After taking an action (calling a tool), the agent checks the result. Did it work? Did it fail? Was the data good? This closes the loop and enables self-correction.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why does an agent need tools?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>To look more professional
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Without tools, an agent can only generate text — tools let it actually DO things in the real world
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Tools make the AI faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Tools are optional — agents work fine without them
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Tools are what separate agents from chatbots. Without tools, an agent can only generate text. With tools (APIs, databases, email, etc.), it can take actions, retrieve real data, and interact with the world.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What should a system prompt for an agent include?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Just the agent name
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Only a list of available tools
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Identity, goal, available tools, memory instructions, guardrails, and output format
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A copy of the agent training data
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A complete agent system prompt covers all six blocks: Identity (who it is), Goal (what it is trying to do), Tools (what it can use), Memory (what it should remember), Guardrails (what it must never do), and Output Format (how to respond).</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What is the main advantage of long-term memory over short-term memory?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Long-term memory is faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Long-term memory persists across sessions, so the agent improves over time instead of starting fresh
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Long-term memory is cheaper
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Short-term memory does not actually exist
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Short-term memory helps within a single session but is lost when the session ends. Long-term memory persists — the agent remembers what worked, what failed, and user preferences across all interactions. This is how agents get genuinely smarter over time.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">6</span>When an agent tool call fails, what is the best recovery strategy?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Retry the exact same call 100 times
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Tell the user I cannot do that and stop
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Try an alternative approach (fallback tool), and explain what happened to the user
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Ignore the error and make up a response
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Graceful degradation: try alternatives first, be transparent about what happened, and only escalate if all fallbacks fail. Never hammer a failing service, give up immediately, or fabricate data.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">7</span>An agent encounters a user request that conflicts with its guardrails. What should it do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Override the guardrail — the user asked for it
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Silently do something different from what was asked
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Explain the conflict, refuse the unsafe action, and suggest a safe alternative
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Shut down completely
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Guardrails exist for safety. The agent should never override them, but it should be helpful — explain WHY it cannot comply and offer an alternative path that achieves the user goal safely.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">8</span>Which 5 dimensions should you evaluate an agent on before deploying?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Speed, color, size, weight, and temperature
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Accuracy, speed, reliability, cost efficiency, and user satisfaction
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Number of tools, model size, training data, compute, and uptime
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Revenue, profit, growth, retention, and churn
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The five evaluation dimensions are: Accuracy (does it give correct answers?), Speed (how fast?), Reliability (does it work consistently?), Cost Efficiency (affordable at scale?), and User Satisfaction (are people happy?). All five need to meet your threshold before deploying.</div>
+</div>
+</div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"Agent Concept Flashcards","cards":[{"front":"What is the agent loop?","back":"Perceive → Think → Act → Observe → Learn — a continuous cycle that runs until the agent achieves its goal."},{"front":"What makes an agent different from a chatbot?","back":"Agents use tools, maintain memory, and loop autonomously. Chatbots respond once per turn and have no persistent state."},{"front":"What are the 6 blocks of a good system prompt?","back":"Identity, Goal, Tools, Memory, Guardrails, Output Format."},{"front":"What is graceful degradation?","back":"When a tool fails, try fallback alternatives before escalating to the user. Never give up on the first failure."},{"front":"What are the 5 agent evaluation dimensions?","back":"Accuracy, Speed, Reliability, Cost Efficiency, User Satisfaction."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Agent Concept Flashcards</h3>
+<details class="flash-card">
+<summary class="flash-front">What is the agent loop?</summary>
+<div class="flash-back">Perceive → Think → Act → Observe → Learn — a continuous cycle that runs until the agent achieves its goal.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What makes an agent different from a chatbot?</summary>
+<div class="flash-back">Agents use tools, maintain memory, and loop autonomously. Chatbots respond once per turn and have no persistent state.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are the 6 blocks of a good system prompt?</summary>
+<div class="flash-back">Identity, Goal, Tools, Memory, Guardrails, Output Format.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is graceful degradation?</summary>
+<div class="flash-back">When a tool fails, try fallback alternatives before escalating to the user. Never give up on the first failure.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are the 5 agent evaluation dimensions?</summary>
+<div class="flash-back">Accuracy, Speed, Reliability, Cost Efficiency, User Satisfaction.</div>
+</details>
+</div>
 
 
 </div>

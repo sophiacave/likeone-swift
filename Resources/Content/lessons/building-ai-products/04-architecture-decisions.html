@@ -46,7 +46,29 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Architecture Decisions — Key Concepts","cards":[{"front":"API-First (Claude, GPT, Gemini)","back":"Start here. Fastest time to market, highest general quality. You pay per token but ship in days. Tradeoff: dependent on someone else&#39;s model, pricing, and uptime."},{"front":"RAG (Retrieval-Augmented Generation)","back":"Store your data as embeddings, retrieve relevant chunks at query time, feed to model as context. Sweet spot for most products that need the model to know your data."},{"front":"Model-Agnostic Architecture","back":"Abstract model calls behind a clean interface. Store prompts as templates. Keep model-specific code in a thin adapter layer. Swap models with a config change, not a rewrite."},{"front":"The Starter Stack","back":"Frontend + backend with auth/billing (Supabase) + AI API (Claude/GPT) + vector database (pgvector). Four components. Ship fast, optimize later."},{"front":"Fine-Tuning","back":"Only when you have domain-specific data general models can&#39;t match. Expensive, requires clean data, locks you to a model version. Phase 2 optimization, never phase 1."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Architecture Decisions — Key Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">API-First (Claude, GPT, Gemini)</summary>
+<div class="flash-back">Start here. Fastest time to market, highest general quality. You pay per token but ship in days. Tradeoff: dependent on someone else's model, pricing, and uptime.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">RAG (Retrieval-Augmented Generation)</summary>
+<div class="flash-back">Store your data as embeddings, retrieve relevant chunks at query time, feed to model as context. Sweet spot for most products that need the model to know your data.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Model-Agnostic Architecture</summary>
+<div class="flash-back">Abstract model calls behind a clean interface. Store prompts as templates. Keep model-specific code in a thin adapter layer. Swap models with a config change, not a rewrite.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Starter Stack</summary>
+<div class="flash-back">Frontend + backend with auth/billing (Supabase) + AI API (Claude/GPT) + vector database (pgvector). Four components. Ship fast, optimize later.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Fine-Tuning</summary>
+<div class="flash-back">Only when you have domain-specific data general models can't match. Expensive, requires clean data, locks you to a model version. Phase 2 optimization, never phase 1.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -174,7 +196,63 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="QuizMC" data-props='{"title":"Architecture Decisions Quiz","questions":[{"q":"When should you choose to fine-tune a model?","options":["For every AI product from day one","As a phase 2 optimization when you have domain-specific data that general models cannot match and product-market fit is proven","To save money on API costs","When you want faster response times"],"correct":1,"explanation":"Fine-tuning is expensive, requires clean data, locks you to a specific model version, and is hard to iterate on. It’s a phase 2 optimization for when you have the data and PMF to justify it — never a phase 1 choice."},{"q":"Why should you build model-agnostic from day one?","options":["It is easier to build","Today you use Claude; tomorrow GPT-5 drops, or an open-source model matches quality at 1/10th the cost — a config change should swap models, not a rewrite","All models produce the same results","It is required for production apps"],"correct":1,"explanation":"The AI model landscape changes rapidly. Abstracting your model calls behind a clean interface means you can swap providers as the market evolves without rebuilding your business logic."},{"q":"What is the starter stack recommended for most AI products on day one?","options":["AWS + Kubernetes + custom model infrastructure","Frontend, backend with auth and billing, one AI API, and a vector database for RAG — four components, ship fast","Only one AI API — no database needed","Full microservices architecture with multiple AI providers"],"correct":1,"explanation":"Complexity on day one kills velocity. A frontend, Supabase for auth and storage, one AI API, and pgvector for RAG covers 90% of what you need at launch. Optimize later when you have real usage data."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Architecture Decisions Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>When should you choose to fine-tune a model?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>For every AI product from day one
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>As a phase 2 optimization when you have domain-specific data that general models cannot match and product-market fit is proven
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>To save money on API costs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>When you want faster response times
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Fine-tuning is expensive, requires clean data, locks you to a specific model version, and is hard to iterate on. It’s a phase 2 optimization for when you have the data and PMF to justify it — never a phase 1 choice.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why should you build model-agnostic from day one?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is easier to build
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Today you use Claude; tomorrow GPT-5 drops, or an open-source model matches quality at 1/10th the cost — a config change should swap models, not a rewrite
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>All models produce the same results
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It is required for production apps
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The AI model landscape changes rapidly. Abstracting your model calls behind a clean interface means you can swap providers as the market evolves without rebuilding your business logic.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the starter stack recommended for most AI products on day one?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>AWS + Kubernetes + custom model infrastructure
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Frontend, backend with auth and billing, one AI API, and a vector database for RAG — four components, ship fast
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Only one AI API — no database needed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Full microservices architecture with multiple AI providers
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Complexity on day one kills velocity. A frontend, Supabase for auth and storage, one AI API, and pgvector for RAG covers 90% of what you need at launch. Optimize later when you have real usage data.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

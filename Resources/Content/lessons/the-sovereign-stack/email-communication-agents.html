@@ -162,13 +162,95 @@ Thanks!
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Email & Communication Agents","cards":[{"front":"Email Agent Stack","back":"Four components: Reading (IMAP/Gmail/MCP), Triage (classify priority and action), Drafting (generate response in your voice), Sending (Resend/SMTP with proper authentication)."},{"front":"Triage System","back":"Classify each email: priority (urgent/normal/low), category (client/billing/support/spam), action (reply/forward/archive/flag). Run locally on Ollama for free classification."},{"front":"Drafting in Your Voice","back":"Brain provides: directive.voice (your style), contact context (relationship history), project context (relevant details). Every draft sounds like you because it IS built from your context."},{"front":"Template System","back":"Recurring email patterns (follow-ups, invoices, confirmations) use templates with variable slots. AI fills in the variables from context. Saves regeneration time for common patterns."},{"front":"Review Before Send Rule","back":"Important emails (urgent, new contacts, financial) are queued for human review. Routine emails (scheduling, acknowledgments) can be auto-sent. Never auto-send to new contacts."},{"front":"Email Authentication","back":"SPF, DKIM, and DMARC DNS records are required for deliverability. Without them, your automated emails land in spam. Set up before automating any outbound email."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Email & Communication Agents</h3>
+<details class="flash-card">
+<summary class="flash-front">Email Agent Stack</summary>
+<div class="flash-back">Four components: Reading (IMAP/Gmail/MCP), Triage (classify priority and action), Drafting (generate response in your voice), Sending (Resend/SMTP with proper authentication).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Triage System</summary>
+<div class="flash-back">Classify each email: priority (urgent/normal/low), category (client/billing/support/spam), action (reply/forward/archive/flag). Run locally on Ollama for free classification.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Drafting in Your Voice</summary>
+<div class="flash-back">Brain provides: directive.voice (your style), contact context (relationship history), project context (relevant details). Every draft sounds like you because it IS built from your context.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Template System</summary>
+<div class="flash-back">Recurring email patterns (follow-ups, invoices, confirmations) use templates with variable slots. AI fills in the variables from context. Saves regeneration time for common patterns.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Review Before Send Rule</summary>
+<div class="flash-back">Important emails (urgent, new contacts, financial) are queued for human review. Routine emails (scheduling, acknowledgments) can be auto-sent. Never auto-send to new contacts.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Email Authentication</summary>
+<div class="flash-back">SPF, DKIM, and DMARC DNS records are required for deliverability. Without them, your automated emails land in spam. Set up before automating any outbound email.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Email agents quiz.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Email & Communication Agents","questions":[{"q":"Why should email triage run on a local model instead of a cloud API?","options":["Local models are more accurate at email classification","Triage is a routine classification task that local models handle well at zero cost -- saving cloud API tokens for tasks that actually need frontier model quality","Local models can access your email inbox directly","Cloud APIs cannot process email content"],"correct":1,"explanation":"Email triage is pattern matching -- urgent vs. normal, client vs. spam. A 7B local model handles this perfectly. Running 100 triage calls per day locally costs nothing. Running them on Claude costs dollars. Save cloud tokens for complex drafting where quality matters."},{"q":"How does the brain enable the AI to draft emails in your voice?","options":["The brain stores pre-written email templates for every situation","The brain provides your communication style (directive.voice), contact relationship history, and project context -- the AI drafts using YOUR identity and context, not generic language","The brain corrects the AI draft after it is generated","The brain translates the email to your preferred language"],"correct":1,"explanation":"The brain is the difference between a generic AI draft and one that sounds like you. Your voice directive sets the tone. Contact history sets the relationship. Project context adds relevant details. The result is an email that could have come from your own keyboard."},{"q":"When should an email agent queue a draft for human review instead of auto-sending?","options":["Always -- AI should never send email autonomously","For important emails: urgent priority, first contact with new people, and financial matters -- routine emails like scheduling confirmations can be auto-sent","Only for emails longer than 200 words","Only for emails to C-level executives"],"correct":1,"explanation":"The review rule is about risk. First contact with a new person (wrong tone = bad impression), urgent matters (wrong information = real damage), and financial emails (wrong amount = liability) all warrant human review. Routine acknowledgments and scheduling can flow automatically."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Email & Communication Agents</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why should email triage run on a local model instead of a cloud API?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Local models are more accurate at email classification
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Triage is a routine classification task that local models handle well at zero cost -- saving cloud API tokens for tasks that actually need frontier model quality
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Local models can access your email inbox directly
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Cloud APIs cannot process email content
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Email triage is pattern matching -- urgent vs. normal, client vs. spam. A 7B local model handles this perfectly. Running 100 triage calls per day locally costs nothing. Running them on Claude costs dollars. Save cloud tokens for complex drafting where quality matters.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>How does the brain enable the AI to draft emails in your voice?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The brain stores pre-written email templates for every situation
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The brain provides your communication style (directive.voice), contact relationship history, and project context -- the AI drafts using YOUR identity and context, not generic language
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The brain corrects the AI draft after it is generated
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The brain translates the email to your preferred language
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The brain is the difference between a generic AI draft and one that sounds like you. Your voice directive sets the tone. Contact history sets the relationship. Project context adds relevant details. The result is an email that could have come from your own keyboard.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>When should an email agent queue a draft for human review instead of auto-sending?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Always -- AI should never send email autonomously
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>For important emails: urgent priority, first contact with new people, and financial matters -- routine emails like scheduling confirmations can be auto-sent
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Only for emails longer than 200 words
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Only for emails to C-level executives
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The review rule is about risk. First contact with a new person (wrong tone = bad impression), urgent matters (wrong information = real damage), and financial emails (wrong amount = liability) all warrant human review. Routine acknowledgments and scheduling can flow automatically.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

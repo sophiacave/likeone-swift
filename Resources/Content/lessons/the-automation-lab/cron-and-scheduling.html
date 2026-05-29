@@ -179,7 +179,99 @@
     </div>
   </div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Cron & Scheduling Quiz","questions":[{"q":"What does the cron expression `0 9 * * 1-5` mean?","options":["Every 9 minutes on weekdays","At 9:00 AM, Monday through Friday","Every hour on weekdays starting at 9","At minute 0 of the 9th hour every month"],"correct":1,"explanation":"Fields are: minute(0) hour(9) day(*) month(*) weekday(1-5 = Mon-Fri). So: at 9:00 AM, every weekday."},{"q":"What is a scheduling conflict?","options":["Two cron expressions that are identical","Too many agents running at the same time, competing for shared resources","An agent running at the wrong time zone","A cron job that never fires"],"correct":1,"explanation":"When multiple heavy agents run simultaneously they compete for CPU, memory, and API rate limits. Staggering their schedules prevents this."},{"q":"Which cron expression runs every 30 minutes?","options":["30 * * * *","* 30 * * *","*/30 * * * *","0,30 * * * *"],"correct":2,"explanation":"*/30 in the minute field means every 30 minutes (0 and 30 past each hour). `30 * * * *` runs only at :30 each hour \u2014 that is once per hour, not every 30 minutes."},{"q":"An agent needs to run only on weekdays at midnight for a backup. What cron expression fits?","options":["0 0 * * *","0 0 * * 1-5","* * * * 1-5","0 * * * 1-5"],"correct":1,"explanation":"0 0 * * 1-5 \u2014 minute 0, hour 0 (midnight), any day of month, any month, Mon-Fri only."},{"q":"Why are systemd timers better than crontab for production agents?","options":["They run faster","They have built-in failure tracking, dependency management, and survive reboots with lingering","They use less CPU","They support more scheduling options"],"correct":1,"explanation":"Systemd timers log failures to journalctl, can depend on other services, and persist across reboots with loginctl enable-linger. Crontab fails silently."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Cron & Scheduling Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What does the cron expression `0 9 * * 1-5` mean?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Every 9 minutes on weekdays
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>At 9:00 AM, Monday through Friday
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Every hour on weekdays starting at 9
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>At minute 0 of the 9th hour every month
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Fields are: minute(0) hour(9) day(*) month(*) weekday(1-5 = Mon-Fri). So: at 9:00 AM, every weekday.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is a scheduling conflict?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Two cron expressions that are identical
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Too many agents running at the same time, competing for shared resources
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>An agent running at the wrong time zone
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A cron job that never fires
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> When multiple heavy agents run simultaneously they compete for CPU, memory, and API rate limits. Staggering their schedules prevents this.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Which cron expression runs every 30 minutes?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>30 * * * *
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>* 30 * * *
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>*/30 * * * *
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>0,30 * * * *
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> */30 in the minute field means every 30 minutes (0 and 30 past each hour). `30 * * * *` runs only at :30 each hour — that is once per hour, not every 30 minutes.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>An agent needs to run only on weekdays at midnight for a backup. What cron expression fits?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>0 0 * * *
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>0 0 * * 1-5
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>* * * * 1-5
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>0 * * * 1-5
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> 0 0 * * 1-5 — minute 0, hour 0 (midnight), any day of month, any month, Mon-Fri only.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>Why are systemd timers better than crontab for production agents?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>They run faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>They have built-in failure tracking, dependency management, and survive reboots with lingering
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>They use less CPU
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>They support more scheduling options
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Systemd timers log failures to journalctl, can depend on other services, and persist across reboots with loginctl enable-linger. Crontab fails silently.</div>
+</div>
+</div>
 
   <div class="section">
     <h2>Monitoring Your Schedule</h2>
@@ -197,6 +289,36 @@
     </div>
   </div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"Cron & Scheduling Concepts","cards":[{"front":"Cron field order","back":"Minute | Hour | Day-of-month | Month | Day-of-week. Example: 30 17 * * 1-5 = 5:30 PM weekdays."},{"front":"* (asterisk) in cron","back":"Means every \u2014 every minute, every hour, every day. The wildcard."},{"front":"*/N in cron","back":"Every N units. */5 in the minute field = every 5 minutes. */2 in hour = every 2 hours."},{"front":"1-5 in cron weekday field","back":"Monday through Friday. 0 = Sunday, 6 = Saturday."},{"front":"Three scheduling modes","back":"Cron (time-triggered, periodic), Event-driven (webhook/trigger, zero latency), Always-on (continuous loop, highest resource cost)."},{"front":"Scheduling conflict","back":"Multiple resource-heavy agents firing simultaneously, competing for CPU/memory/API limits. Fix: stagger start times by 1-2 minutes."},{"front":"Crontab vs systemd timers","back":"Crontab: simple, no failure logging. Systemd: built-in failure tracking via journalctl, service dependencies, survives reboots. Use systemd for production."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Cron & Scheduling Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">Cron field order</summary>
+<div class="flash-back">Minute | Hour | Day-of-month | Month | Day-of-week. Example: 30 17 * * 1-5 = 5:30 PM weekdays.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">* (asterisk) in cron</summary>
+<div class="flash-back">Means every — every minute, every hour, every day. The wildcard.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">*/N in cron</summary>
+<div class="flash-back">Every N units. */5 in the minute field = every 5 minutes. */2 in hour = every 2 hours.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">1-5 in cron weekday field</summary>
+<div class="flash-back">Monday through Friday. 0 = Sunday, 6 = Saturday.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Three scheduling modes</summary>
+<div class="flash-back">Cron (time-triggered, periodic), Event-driven (webhook/trigger, zero latency), Always-on (continuous loop, highest resource cost).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Scheduling conflict</summary>
+<div class="flash-back">Multiple resource-heavy agents firing simultaneously, competing for CPU/memory/API limits. Fix: stagger start times by 1-2 minutes.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Crontab vs systemd timers</summary>
+<div class="flash-back">Crontab: simple, no failure logging. Systemd: built-in failure tracking via journalctl, service dependencies, survives reboots. Use systemd for production.</div>
+</details>
+</div>
 
 </div>

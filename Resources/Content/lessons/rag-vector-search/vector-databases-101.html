@@ -191,7 +191,107 @@ results = collection.query(query_embeddings=[query_vec], n_results=<span style="
 
   <div class="divider"><span>Test Your Understanding</span></div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Vector Database Concepts","questions":[{"q":"What does a vector database return when you search with a query?","options":["Rows where a column exactly matches the query","The top-K documents whose vectors are most similar in meaning","All documents sorted alphabetically","A count of how many documents mention the query word"],"correct":1,"explanation":"Vector databases perform similarity search — they compare the query vector against all stored vectors and return the K nearest neighbors, ranked by cosine or dot-product similarity."},{"q":"What index structure do most vector databases use to search billions of vectors quickly?","options":["B-tree index","Hash index","HNSW (Hierarchical Navigable Small World)","Full-text inverted index"],"correct":2,"explanation":"HNSW is a graph-based index that allows approximate nearest-neighbor search in sub-linear time. Instead of scanning every vector, it navigates a layered graph to zoom in on likely neighbors quickly."},{"q":"You are starting a RAG project and already use Supabase for your backend. Which vector database should you try first?","options":["Pinecone — it is the most popular","Chroma — it is the simplest","pgvector — it is already available in your Supabase database","Milvus — it handles the most scale"],"correct":2,"explanation":"pgvector is a PostgreSQL extension that adds vector storage and similarity search to your existing database. Since Supabase is built on Postgres, pgvector is already available — no new infrastructure needed."},{"q":"Why is metadata filtering important in production RAG systems?","options":["It makes searches faster","It allows you to scope searches to relevant subsets of your data","It is required by all vector databases","It improves embedding quality"],"correct":1,"explanation":"Without metadata filtering, every search returns results from the entire corpus. In production, you need to scope searches — by date, category, user, product tier — to return relevant results rather than everything that is semantically similar."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Vector Database Concepts</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What does a vector database return when you search with a query?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Rows where a column exactly matches the query
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The top-K documents whose vectors are most similar in meaning
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>All documents sorted alphabetically
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A count of how many documents mention the query word
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Vector databases perform similarity search — they compare the query vector against all stored vectors and return the K nearest neighbors, ranked by cosine or dot-product similarity.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What index structure do most vector databases use to search billions of vectors quickly?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>B-tree index
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Hash index
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>HNSW (Hierarchical Navigable Small World)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Full-text inverted index
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> HNSW is a graph-based index that allows approximate nearest-neighbor search in sub-linear time. Instead of scanning every vector, it navigates a layered graph to zoom in on likely neighbors quickly.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>You are starting a RAG project and already use Supabase for your backend. Which vector database should you try first?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Pinecone — it is the most popular
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Chroma — it is the simplest
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>pgvector — it is already available in your Supabase database
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Milvus — it handles the most scale
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> pgvector is a PostgreSQL extension that adds vector storage and similarity search to your existing database. Since Supabase is built on Postgres, pgvector is already available — no new infrastructure needed.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Why is metadata filtering important in production RAG systems?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It makes searches faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It allows you to scope searches to relevant subsets of your data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It is required by all vector databases
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It improves embedding quality
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Without metadata filtering, every search returns results from the entire corpus. In production, you need to scope searches — by date, category, user, product tier — to return relevant results rather than everything that is semantically similar.</div>
+</div>
+</div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"Vector Database Fundamentals","cards":[{"front":"Vector Database","back":"A database optimized for storing and searching high-dimensional vectors by similarity rather than exact match. Finds \"happy\" when you search for \"joyful.\""},{"front":"HNSW Index","back":"Hierarchical Navigable Small World — a graph-based index that finds approximate nearest neighbors in sub-linear time, enabling millisecond searches across billions of vectors."},{"front":"Top-K Results","back":"The K most similar document chunks returned from a vector search, ranked by similarity score. Typical K values: 3-10."},{"front":"pgvector","back":"A PostgreSQL extension that adds vector storage and similarity search to your existing Postgres database. Supported by Supabase. Uses the <=> operator for cosine distance."},{"front":"Metadata Filtering","back":"Restricting vector search results to a subset of documents based on structured fields (date, category, user). Essential for production RAG systems."},{"front":"Approximate Nearest Neighbor","back":"HNSW finds vectors that are APPROXIMATELY the closest, not guaranteed the absolute closest. Recall is 95-99%, which is sufficient for RAG."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Vector Database Fundamentals</h3>
+<details class="flash-card">
+<summary class="flash-front">Vector Database</summary>
+<div class="flash-back">A database optimized for storing and searching high-dimensional vectors by similarity rather than exact match. Finds "happy" when you search for "joyful."</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">HNSW Index</summary>
+<div class="flash-back">Hierarchical Navigable Small World — a graph-based index that finds approximate nearest neighbors in sub-linear time, enabling millisecond searches across billions of vectors.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Top-K Results</summary>
+<div class="flash-back">The K most similar document chunks returned from a vector search, ranked by similarity score. Typical K values: 3-10.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">pgvector</summary>
+<div class="flash-back">A PostgreSQL extension that adds vector storage and similarity search to your existing Postgres database. Supported by Supabase. Uses the <=> operator for cosine distance.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Metadata Filtering</summary>
+<div class="flash-back">Restricting vector search results to a subset of documents based on structured fields (date, category, user). Essential for production RAG systems.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Approximate Nearest Neighbor</summary>
+<div class="flash-back">HNSW finds vectors that are APPROXIMATELY the closest, not guaranteed the absolute closest. Recall is 95-99%, which is sufficient for RAG.</div>
+</details>
+</div>
 </div>

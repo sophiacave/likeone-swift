@@ -128,7 +128,29 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Monitoring and Maintenance","cards":[{"front":"Success Rate","back":"Percentage of workflow runs completing successfully. Anything below 95% needs investigation. Track daily."},{"front":"Execution Time","back":"How long each run takes. Sudden increases often signal upstream problems — an API slowing down or retry loops."},{"front":"Alert Categorization","back":"Info = logged not notified. Warning = notified not urgent. Critical = immediate attention. Most events should be Info."},{"front":"The Monthly Health Check","back":"Review success rates, check for slow steps, verify credentials haven&#39;t expired, test error handling in sandbox. Takes one hour, prevents days of fixes."},{"front":"Silent Failures","back":"The most dangerous kind. An API changes format, a rate limit tightens, a parser breaks — without monitoring, these accumulate unseen for weeks."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Monitoring and Maintenance</h3>
+<details class="flash-card">
+<summary class="flash-front">Success Rate</summary>
+<div class="flash-back">Percentage of workflow runs completing successfully. Anything below 95% needs investigation. Track daily.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Execution Time</summary>
+<div class="flash-back">How long each run takes. Sudden increases often signal upstream problems — an API slowing down or retry loops.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Alert Categorization</summary>
+<div class="flash-back">Info = logged not notified. Warning = notified not urgent. Critical = immediate attention. Most events should be Info.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Monthly Health Check</summary>
+<div class="flash-back">Review success rates, check for slow steps, verify credentials haven't expired, test error handling in sandbox. Takes one hour, prevents days of fixes.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Silent Failures</summary>
+<div class="flash-back">The most dangerous kind. An API changes format, a rate limit tightens, a parser breaks — without monitoring, these accumulate unseen for weeks.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -175,7 +197,63 @@ run_with_monitoring(support_email_workflow, email_body, sender)</code></pre>
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Lesson 9 Quiz</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Monitoring and Maintenance","questions":[{"q":"Why is the week after launch described as the most dangerous time for a workflow?","options":["Traffic is always highest the week after launch","Everyone assumes it is working because nobody has complained yet, while silent failures accumulate","Workflows always fail in the first week","Launch week is when most configuration mistakes are made"],"correct":1,"explanation":"Silent failures are the danger. An API changes its response format. A rate limit tightens. A data source adds a field that breaks your parser. Without monitoring, these accumulate unseen — sometimes for weeks — before the damage becomes visible."},{"q":"What is the problem with bad alerting that triggers on every minor hiccup?","options":["It is better than no alerting because you never miss anything","Too many alerts cause alert fatigue — you start ignoring them all, including the critical ones","Minor alerts are the most important ones to track","All alerts should be treated as equally urgent"],"correct":1,"explanation":"If every retry fires a notification, you start ignoring them. When the genuinely critical alert comes — the one that means real damage is happening — it gets ignored too. Categorize alerts: Info, Warning, Critical. Most should be Info."},{"q":"How long does the recommended monthly health check take and what does it prevent?","options":["An hour — it prevents catastrophic failures that would take days to fix","A full day — it ensures perfect workflow performance","Five minutes — it is mostly a formality","A week — it requires rebuilding the workflow from scratch"],"correct":0,"explanation":"The monthly health check takes about an hour: review success rates, check for slow steps, verify credentials haven&#39;t expired, and test error handling in sandbox. One hour prevents failures that take days to fix. The math is heavily in your favor."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Monitoring and Maintenance</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why is the week after launch described as the most dangerous time for a workflow?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Traffic is always highest the week after launch
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Everyone assumes it is working because nobody has complained yet, while silent failures accumulate
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Workflows always fail in the first week
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Launch week is when most configuration mistakes are made
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Silent failures are the danger. An API changes its response format. A rate limit tightens. A data source adds a field that breaks your parser. Without monitoring, these accumulate unseen — sometimes for weeks — before the damage becomes visible.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the problem with bad alerting that triggers on every minor hiccup?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is better than no alerting because you never miss anything
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Too many alerts cause alert fatigue — you start ignoring them all, including the critical ones
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Minor alerts are the most important ones to track
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>All alerts should be treated as equally urgent
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> If every retry fires a notification, you start ignoring them. When the genuinely critical alert comes — the one that means real damage is happening — it gets ignored too. Categorize alerts: Info, Warning, Critical. Most should be Info.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>How long does the recommended monthly health check take and what does it prevent?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>An hour — it prevents catastrophic failures that would take days to fix
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A full day — it ensures perfect workflow performance
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Five minutes — it is mostly a formality
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A week — it requires rebuilding the workflow from scratch
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The monthly health check takes about an hour: review success rates, check for slow steps, verify credentials haven't expired, and test error handling in sandbox. One hour prevents failures that take days to fix. The math is heavily in your favor.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

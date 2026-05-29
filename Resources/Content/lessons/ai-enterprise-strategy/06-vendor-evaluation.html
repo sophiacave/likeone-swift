@@ -208,10 +208,128 @@ Build me:
 </div>
 
 <div style="margin:1.5rem 0">
-<div data-learn="FlashDeck" data-props='{"title":"Vendor Evaluation","cards":[{"front":"Build","back":"Choose when AI IS your product and you need full control. Requires significant in-house talent and infrastructure. Most orgs over-index on building."},{"front":"Buy","back":"Choose when the problem is well-understood and commercial solutions are mature. Fastest time to value. Best for first 2-3 AI use cases."},{"front":"Partner","back":"Choose when you need domain-specific AI but lack capability. Consulting firms accelerate by 6-12 months. Ensure knowledge transfer is contractually required."},{"front":"The Six Evaluation Dimensions","back":"Capability Fit (25%), Integration Complexity (20%), Total Cost (20%), Vendor Viability (15%), Data Handling (10%), Exit Strategy (10%). Weight by your priorities."},{"front":"Proof of Concept Rule","back":"ALWAYS run a POC with YOUR actual data on YOUR actual problem. Vendor demos use curated data on ideal scenarios. Any vendor unwilling to do this is not confident in their product."},{"front":"Three-Red-Flag Rule","back":"One red flag = investigate deeper. Two = proceed with extreme caution. Three or more = walk away. Red flags: no methodology behind accuracy claims, annual commitment before pilot, proprietary data formats, no references."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Vendor Evaluation</h3>
+<details class="flash-card">
+<summary class="flash-front">Build</summary>
+<div class="flash-back">Choose when AI IS your product and you need full control. Requires significant in-house talent and infrastructure. Most orgs over-index on building.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Buy</summary>
+<div class="flash-back">Choose when the problem is well-understood and commercial solutions are mature. Fastest time to value. Best for first 2-3 AI use cases.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Partner</summary>
+<div class="flash-back">Choose when you need domain-specific AI but lack capability. Consulting firms accelerate by 6-12 months. Ensure knowledge transfer is contractually required.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Six Evaluation Dimensions</summary>
+<div class="flash-back">Capability Fit (25%), Integration Complexity (20%), Total Cost (20%), Vendor Viability (15%), Data Handling (10%), Exit Strategy (10%). Weight by your priorities.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Proof of Concept Rule</summary>
+<div class="flash-back">ALWAYS run a POC with YOUR actual data on YOUR actual problem. Vendor demos use curated data on ideal scenarios. Any vendor unwilling to do this is not confident in their product.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Three-Red-Flag Rule</summary>
+<div class="flash-back">One red flag = investigate deeper. Two = proceed with extreme caution. Three or more = walk away. Red flags: no methodology behind accuracy claims, annual commitment before pilot, proprietary data formats, no references.</div>
+</details>
+</div>
 </div>
 
-<div data-learn="QuizMC" data-props='{"title":"Vendor Evaluation — Mastery Check","questions":[{"q":"Your team wants to build a custom AI model for customer churn prediction. This is your organization first AI project. What is the best approach?","options":["Build in-house — you need full control over the model","Buy a commercial solution — the problem is well-understood and you need to build institutional AI knowledge first","Partner with a consulting firm — they have the most experience","Wait until you have a full AI team before starting"],"correct":1,"explanation":"Customer churn prediction is a well-understood problem with mature commercial solutions. For your first AI project, buying lets you prove value quickly, build organizational confidence in AI, and learn what works before investing in custom development. Build institutional knowledge first, bring capabilities in-house strategically later."},{"q":"A vendor claims 98% accuracy for their document classification system. What should you do?","options":["Trust the number — vendors would not publish false claims","Ask for the evaluation methodology: what dataset, what metric, what conditions, and run a POC with your own data","Negotiate a lower price since 98% seems standard","Compare this number to other vendors 98% claims"],"correct":1,"explanation":"98% accuracy means nothing without context. What dataset was used? What metric (precision, recall, F1)? What conditions? A model can be 98% accurate on a vendor-curated test set and 60% accurate on your messy real-world data. Always demand methodology and validate with your own POC."},{"q":"You are reviewing a vendor contract. It requires a 2-year commitment, uses a proprietary data format, and includes language that allows them to use your data to improve their models. How many red flags is this?","options":["One — the proprietary format is the only real concern","Two — the commitment length and data format","Three — long lock-in, proprietary format, and data usage for their model training are all red flags","None — these are standard enterprise contract terms"],"correct":2,"explanation":"Three red flags: (1) 2-year commitment without a pilot period removes your leverage, (2) proprietary data format creates exit pain, (3) using your data to train their models means your proprietary data improves their product for your competitors. Three red flags = walk away or renegotiate every term."},{"q":"What is the most important contract term to negotiate with an AI vendor?","options":["Price per seat","Pilot-first structure: 30-90 days paid pilot with your data before any annual commitment, with pilot cost credited if you proceed","Number of support hours included","Length of the initial term"],"correct":1,"explanation":"The pilot-first structure is the single most important protection. It forces the vendor to prove value with your data before you commit. It gives you objective evidence for the go/no-go decision. And it gives you leverage: if the pilot succeeds, you buy with confidence. If it fails, you walk away having spent a fraction of the annual cost."},{"q":"A partner builds an AI system for you but the code is in a proprietary framework only they maintain. What went wrong?","options":["Nothing — proprietary frameworks are more secure","Knowledge transfer was not contractually required — they built a dependency, not a partnership","You should have hired their engineers instead","The framework was probably the best choice technically"],"correct":1,"explanation":"Without contractual knowledge transfer requirements, the partner has created a dependency that keeps you paying them indefinitely. Always require: code in standard languages/frameworks, full documentation, training for your team, and the ability to maintain the system independently after handoff."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Vendor Evaluation — Mastery Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Your team wants to build a custom AI model for customer churn prediction. This is your organization first AI project. What is the best approach?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Build in-house — you need full control over the model
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Buy a commercial solution — the problem is well-understood and you need to build institutional AI knowledge first
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Partner with a consulting firm — they have the most experience
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Wait until you have a full AI team before starting
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Customer churn prediction is a well-understood problem with mature commercial solutions. For your first AI project, buying lets you prove value quickly, build organizational confidence in AI, and learn what works before investing in custom development. Build institutional knowledge first, bring capabilities in-house strategically later.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>A vendor claims 98% accuracy for their document classification system. What should you do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Trust the number — vendors would not publish false claims
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Ask for the evaluation methodology: what dataset, what metric, what conditions, and run a POC with your own data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Negotiate a lower price since 98% seems standard
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Compare this number to other vendors 98% claims
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> 98% accuracy means nothing without context. What dataset was used? What metric (precision, recall, F1)? What conditions? A model can be 98% accurate on a vendor-curated test set and 60% accurate on your messy real-world data. Always demand methodology and validate with your own POC.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>You are reviewing a vendor contract. It requires a 2-year commitment, uses a proprietary data format, and includes language that allows them to use your data to improve their models. How many red flags is this?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>One — the proprietary format is the only real concern
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Two — the commitment length and data format
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Three — long lock-in, proprietary format, and data usage for their model training are all red flags
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>None — these are standard enterprise contract terms
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Three red flags: (1) 2-year commitment without a pilot period removes your leverage, (2) proprietary data format creates exit pain, (3) using your data to train their models means your proprietary data improves their product for your competitors. Three red flags = walk away or renegotiate every term.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What is the most important contract term to negotiate with an AI vendor?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Price per seat
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Pilot-first structure: 30-90 days paid pilot with your data before any annual commitment, with pilot cost credited if you proceed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Number of support hours included
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Length of the initial term
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The pilot-first structure is the single most important protection. It forces the vendor to prove value with your data before you commit. It gives you objective evidence for the go/no-go decision. And it gives you leverage: if the pilot succeeds, you buy with confidence. If it fails, you walk away having spent a fraction of the annual cost.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>A partner builds an AI system for you but the code is in a proprietary framework only they maintain. What went wrong?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Nothing — proprietary frameworks are more secure
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Knowledge transfer was not contractually required — they built a dependency, not a partnership
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>You should have hired their engineers instead
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The framework was probably the best choice technically
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Without contractual knowledge transfer requirements, the partner has created a dependency that keeps you paying them indefinitely. Always require: code in standard languages/frameworks, full documentation, training for your team, and the ability to maintain the system independently after handoff.</div>
+</div>
+</div>
 
 </div>
 

@@ -305,8 +305,64 @@ Take the model from Lesson 3 or 4. Run it on your held-out test set. Calculate: 
 </div>
 </div>
 
-<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the most reliable automated evaluation method for open-ended text generation?", "options": ["BLEU score comparison with reference outputs", "Perplexity measurement on the test set", "LLM-as-judge: using a stronger model to rate outputs on specified criteria", "Word count comparison with expected output length"], "correct": 2, "explanation": "The correct answer is: LLM-as-judge: using a stronger model to rate outputs on specified criteria"}, {"q": "What indicates catastrophic forgetting is occurring?", "options": ["The model&#39;s training loss stops decreasing", "Validation loss is lower than training loss", "The model loses general capabilities it had before fine-tuning while improving on the specific task", "The model generates longer outputs than expected"], "correct": 2, "explanation": "The correct answer is: The model loses general capabilities it had before fine-tuning while improving on the specific task"}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the most reliable automated evaluation method for open-ended text generation?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>BLEU score comparison with reference outputs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Perplexity measurement on the test set
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>LLM-as-judge: using a stronger model to rate outputs on specified criteria
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Word count comparison with expected output length
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: LLM-as-judge: using a stronger model to rate outputs on specified criteria</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What indicates catastrophic forgetting is occurring?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The model's training loss stops decreasing
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Validation loss is lower than training loss
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The model loses general capabilities it had before fine-tuning while improving on the specific task
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The model generates longer outputs than expected
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: The model loses general capabilities it had before fine-tuning while improving on the specific task</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What three metrics should every fine-tuned model be evaluated on?", "back": "1. Automated task-specific metric (accuracy, F1, exact match), 2. General quality metric (perplexity or LLM-as-judge), 3. Overfitting detector (train vs validation loss gap)"}, {"front": "How do you prevent catastrophic forgetting?", "back": "Use LoRA (freezes base model), keep learning rate low (1e-4 to 2e-4), mix in 5-10% general-purpose data, and train for fewer epochs (1-2 for large datasets)."}, {"front": "What is position bias in LLM-as-judge evaluation?", "back": "LLM judges tend to prefer the first response shown. Fix by randomizing response order and averaging across both orderings."}, {"front": "What are the quality gate thresholds for a production model?", "back": "Task accuracy >90%, judge score >3.5/5, forgetting gap <5%, format compliance >95%, win rate vs base >60%."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Vocabulary</h3>
+<details class="flash-card">
+<summary class="flash-front">What three metrics should every fine-tuned model be evaluated on?</summary>
+<div class="flash-back">1. Automated task-specific metric (accuracy, F1, exact match), 2. General quality metric (perplexity or LLM-as-judge), 3. Overfitting detector (train vs validation loss gap)</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you prevent catastrophic forgetting?</summary>
+<div class="flash-back">Use LoRA (freezes base model), keep learning rate low (1e-4 to 2e-4), mix in 5-10% general-purpose data, and train for fewer epochs (1-2 for large datasets).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is position bias in LLM-as-judge evaluation?</summary>
+<div class="flash-back">LLM judges tend to prefer the first response shown. Fix by randomizing response order and averaging across both orderings.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are the quality gate thresholds for a production model?</summary>
+<div class="flash-back">Task accuracy >90%, judge score >3.5/5, forgetting gap <5%, format compliance >95%, win rate vs base >60%.</div>
+</details>
+</div>
 
 </div>

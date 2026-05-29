@@ -162,13 +162,95 @@ only when your workload actually demands it.</code></div>
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Fleet Orchestration","cards":[{"front":"Machine Registry","back":"Describes each machine: ID, hostname, role, capabilities, specs, status, load. Stored in the brain. The dispatcher consults it to route tasks to the right machine."},{"front":"Task Dispatch Logic","back":"Filter by capability (can it do the task?), availability (online and not overloaded?), then route to the least-loaded capable machine. Queue if no machine is available."},{"front":"Heartbeat Monitoring","back":"Every 30-60 seconds, each machine reports: alive, current load, RAM usage. 3 missed heartbeats = offline. Tasks re-queued. Alert sent. Prevents dispatching to dead machines."},{"front":"Hub-Spoke Pattern","back":"One primary machine plans and dispatches. Others execute and report. Simple, reliable, easy to debug. Right choice for small fleets (2-5 machines)."},{"front":"Pipeline Pattern","back":"Tasks flow through machines in sequence. Each machine specializes in one stage. Best for workflows with clear sequential steps (preprocess -> infer -> publish)."},{"front":"Swarm Pattern","back":"All machines are peers. Shared task queue, any machine picks up the next task. Most resilient to failures. Best for embarrassingly parallel work."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Fleet Orchestration</h3>
+<details class="flash-card">
+<summary class="flash-front">Machine Registry</summary>
+<div class="flash-back">Describes each machine: ID, hostname, role, capabilities, specs, status, load. Stored in the brain. The dispatcher consults it to route tasks to the right machine.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Task Dispatch Logic</summary>
+<div class="flash-back">Filter by capability (can it do the task?), availability (online and not overloaded?), then route to the least-loaded capable machine. Queue if no machine is available.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Heartbeat Monitoring</summary>
+<div class="flash-back">Every 30-60 seconds, each machine reports: alive, current load, RAM usage. 3 missed heartbeats = offline. Tasks re-queued. Alert sent. Prevents dispatching to dead machines.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Hub-Spoke Pattern</summary>
+<div class="flash-back">One primary machine plans and dispatches. Others execute and report. Simple, reliable, easy to debug. Right choice for small fleets (2-5 machines).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Pipeline Pattern</summary>
+<div class="flash-back">Tasks flow through machines in sequence. Each machine specializes in one stage. Best for workflows with clear sequential steps (preprocess -> infer -> publish).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Swarm Pattern</summary>
+<div class="flash-back">All machines are peers. Shared task queue, any machine picks up the next task. Most resilient to failures. Best for embarrassingly parallel work.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Fleet orchestration quiz.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Fleet Orchestration","questions":[{"q":"What three factors does a task dispatcher consider when routing work?","options":["Speed, cost, and complexity","Capability (can the machine do this task?), availability (is it online and not overloaded?), and priority (which machine should handle urgent work?)","RAM, CPU, and disk space","Network speed, model size, and queue depth"],"correct":1,"explanation":"The dispatcher matches tasks to machines based on what each machine can do (capabilities), whether it is ready (online, not overloaded), and how urgent the task is. A social media task goes to the machine with social capability and the lowest load."},{"q":"Why are heartbeats essential for fleet orchestration?","options":["Heartbeats make machines run faster","Without heartbeats, the dispatcher does not know if a machine is online or dead -- it could dispatch tasks to a crashed machine, where they disappear into a void","Heartbeats are required by the operating system","Heartbeats synchronize the clocks between machines"],"correct":1,"explanation":"A dead machine that the dispatcher thinks is alive receives tasks that never complete. Heartbeats detect machine failures within 90-180 seconds. Dead machines are removed from the dispatch pool, and their queued tasks are reassigned to healthy machines."},{"q":"When should you choose the hub-spoke pattern over the swarm pattern?","options":["When you have more than 10 machines","For small fleets (2-5 machines) where simplicity and debuggability matter more than maximum resilience -- hub-spoke has one coordinator, making task flow easy to trace and debug","When all tasks are identical","When you need maximum fault tolerance"],"correct":1,"explanation":"Hub-spoke is the simplest pattern. One machine plans, others execute. Easy to trace any task from dispatch to completion. For 2-5 machines, the single point of failure risk is acceptable. Swarm is better for large fleets where you need maximum resilience to individual machine failures."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Fleet Orchestration</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What three factors does a task dispatcher consider when routing work?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Speed, cost, and complexity
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Capability (can the machine do this task?), availability (is it online and not overloaded?), and priority (which machine should handle urgent work?)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>RAM, CPU, and disk space
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Network speed, model size, and queue depth
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The dispatcher matches tasks to machines based on what each machine can do (capabilities), whether it is ready (online, not overloaded), and how urgent the task is. A social media task goes to the machine with social capability and the lowest load.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why are heartbeats essential for fleet orchestration?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Heartbeats make machines run faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Without heartbeats, the dispatcher does not know if a machine is online or dead -- it could dispatch tasks to a crashed machine, where they disappear into a void
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Heartbeats are required by the operating system
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Heartbeats synchronize the clocks between machines
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A dead machine that the dispatcher thinks is alive receives tasks that never complete. Heartbeats detect machine failures within 90-180 seconds. Dead machines are removed from the dispatch pool, and their queued tasks are reassigned to healthy machines.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>When should you choose the hub-spoke pattern over the swarm pattern?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>When you have more than 10 machines
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>For small fleets (2-5 machines) where simplicity and debuggability matter more than maximum resilience -- hub-spoke has one coordinator, making task flow easy to trace and debug
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>When all tasks are identical
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>When you need maximum fault tolerance
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Hub-spoke is the simplest pattern. One machine plans, others execute. Easy to trace any task from dispatch to completion. For 2-5 machines, the single point of failure risk is acceptable. Swarm is better for large fleets where you need maximum resilience to individual machine failures.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

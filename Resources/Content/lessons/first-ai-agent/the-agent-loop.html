@@ -184,6 +184,114 @@
   </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Agent Loop Concepts","cards":[{"front":"Perceive","back":"The agent takes in information from its environment — a user message, API response, file change, or scheduled trigger. Perception is how the agent knows something needs doing."},{"front":"Think","back":"The agent reasons about what it perceived, considering its goal, memory, and context. The LLM combines all inputs to decide the best next action. This is the intelligence step."},{"front":"Act","back":"The agent calls a tool — sending an email, querying a database, making an API call, writing a file. This is what separates agents from chatbots: they do things in the real world."},{"front":"Observe","back":"After acting, the agent checks the result. Did the API call succeed? Was the data valid? Observation closes the feedback loop and enables self-correction."},{"front":"Learn","back":"The agent updates its memory with the outcome. What worked, what failed, what new information was discovered. Each loop becomes smarter than the last."},{"front":"stop_reason: tool_use","back":"When Claude returns stop_reason=tool_use, it means the model wants to call a tool. Your code executes the tool and feeds the result back. When stop_reason is end_turn, the agent is done."},{"front":"max_turns","back":"A safety limit on how many loops an agent can run. Prevents runaway agents that loop forever without making progress. Typical values: 5-25 depending on task complexity."},{"front":"Context overflow","back":"When memory grows so large the LLM cannot process it. Fix by summarizing old memory (keep recent results full, compress older ones) or using a sliding window."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Agent Loop Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">Perceive</summary>
+<div class="flash-back">The agent takes in information from its environment — a user message, API response, file change, or scheduled trigger. Perception is how the agent knows something needs doing.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Think</summary>
+<div class="flash-back">The agent reasons about what it perceived, considering its goal, memory, and context. The LLM combines all inputs to decide the best next action. This is the intelligence step.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Act</summary>
+<div class="flash-back">The agent calls a tool — sending an email, querying a database, making an API call, writing a file. This is what separates agents from chatbots: they do things in the real world.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Observe</summary>
+<div class="flash-back">After acting, the agent checks the result. Did the API call succeed? Was the data valid? Observation closes the feedback loop and enables self-correction.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Learn</summary>
+<div class="flash-back">The agent updates its memory with the outcome. What worked, what failed, what new information was discovered. Each loop becomes smarter than the last.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">stop_reason: tool_use</summary>
+<div class="flash-back">When Claude returns stop_reason=tool_use, it means the model wants to call a tool. Your code executes the tool and feeds the result back. When stop_reason is end_turn, the agent is done.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">max_turns</summary>
+<div class="flash-back">A safety limit on how many loops an agent can run. Prevents runaway agents that loop forever without making progress. Typical values: 5-25 depending on task complexity.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Context overflow</summary>
+<div class="flash-back">When memory grows so large the LLM cannot process it. Fix by summarizing old memory (keep recent results full, compress older ones) or using a sliding window.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"The Agent Loop","questions":[{"q":"What is the correct order of the agent loop steps?","options":["Think → Act → Perceive → Learn → Observe","Perceive → Think → Act → Observe → Learn","Act → Observe → Think → Learn → Perceive","Learn → Perceive → Think → Act → Observe"],"correct":1,"explanation":"The agent loop always starts with Perceive (taking in input), then Think (reasoning about what to do), Act (calling a tool), Observe (checking the result), and Learn (updating memory). Then it loops back."},{"q":"In the Python code, what tells the loop the agent is finished?","options":["The agent calls a special done() function","The stop_reason is not tool_use — meaning the agent responded with text instead of a tool call","The max_turns variable reaches zero","The memory list becomes empty"],"correct":1,"explanation":"When Claude responds with text instead of requesting a tool call, stop_reason will be end_turn instead of tool_use. This means the agent has decided its goal is achieved and the loop exits."},{"q":"Why is max_turns important?","options":["It makes the agent run faster","It prevents runaway agents that loop forever without making progress","It determines the model to use","It controls the response length"],"correct":1,"explanation":"Without max_turns, a confused agent could loop indefinitely — calling tools, getting results, but never making progress. The limit is a safety net that forces the agent to stop and report after a set number of iterations."},{"q":"An agent keeps calling the same tool with the same input across 5 loops. What is happening?","options":["The agent is working correctly but slowly","The agent is stuck in an infinite loop — it is not learning from results","The tool is broken","The max_turns is set too high"],"correct":1,"explanation":"If the agent repeats the same action without progress, it is failing to learn from the Observe step. The tool result is not changing the agent reasoning. This is the infinite loop failure mode — fix with progress detection or better tool result formatting."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">The Agent Loop</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the correct order of the agent loop steps?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Think → Act → Perceive → Learn → Observe
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Perceive → Think → Act → Observe → Learn
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Act → Observe → Think → Learn → Perceive
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Learn → Perceive → Think → Act → Observe
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The agent loop always starts with Perceive (taking in input), then Think (reasoning about what to do), Act (calling a tool), Observe (checking the result), and Learn (updating memory). Then it loops back.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>In the Python code, what tells the loop the agent is finished?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The agent calls a special done() function
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The stop_reason is not tool_use — meaning the agent responded with text instead of a tool call
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The max_turns variable reaches zero
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The memory list becomes empty
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> When Claude responds with text instead of requesting a tool call, stop_reason will be end_turn instead of tool_use. This means the agent has decided its goal is achieved and the loop exits.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why is max_turns important?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It makes the agent run faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It prevents runaway agents that loop forever without making progress
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It determines the model to use
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It controls the response length
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Without max_turns, a confused agent could loop indefinitely — calling tools, getting results, but never making progress. The limit is a safety net that forces the agent to stop and report after a set number of iterations.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>An agent keeps calling the same tool with the same input across 5 loops. What is happening?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The agent is working correctly but slowly
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The agent is stuck in an infinite loop — it is not learning from results
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The tool is broken
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The max_turns is set too high
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> If the agent repeats the same action without progress, it is failing to learn from the Observe step. The tool result is not changing the agent reasoning. This is the infinite loop failure mode — fix with progress detection or better tool result formatting.</div>
+</div>
+</div>

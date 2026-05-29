@@ -62,7 +62,41 @@ Keep the summary concise — doctors have limited time.</code></pre>
   <span class="section-label">Records</span>
   <h2 class="section-title">Translate doctor-speak into plain English.</h2>
 
-<div data-learn="FlashDeck" data-props='{"title":"Medical Record Translation","cards":[{"front":"Lab Results\n\nYour blood work came back with numbers and ranges that mean nothing to you.","back":"PROMPT: \"Explain these lab results in plain English. What is normal, what is not? Which results should I ask my doctor about? What do the abnormal ones potentially mean?\"\n\nAI translates every value and flags what matters."},{"front":"Doctor Notes\n\nYour medical records have notes from your doctor with abbreviations and medical terms.","back":"PROMPT: \"Translate these doctor notes into plain English. What did the doctor observe? What is their assessment? What is the plan? Explain any medical terms.\"\n\nYou have a right to understand your own records."},{"front":"Medication Information\n\nYou were prescribed something new and want to understand it before taking it.","back":"PROMPT: \"Explain this medication in plain English: [medication name, dose]. What does it do? Common side effects? Interactions with [your other medications]? What should I watch for? What should I tell my doctor about?\"\n\nNote: always confirm with your pharmacist too."},{"front":"Imaging Reports\n\nMRI, X-ray, or CT results with medical terminology.","back":"PROMPT: \"Explain this imaging report in plain English. What did they find? Is anything abnormal? What does [specific term] mean? What are the next steps based on these findings?\"\n\nAI makes radiology reports readable."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Medical Record Translation</h3>
+<details class="flash-card">
+<summary class="flash-front">Lab Results
+
+Your blood work came back with numbers and ranges that mean nothing to you.</summary>
+<div class="flash-back">PROMPT: "Explain these lab results in plain English. What is normal, what is not? Which results should I ask my doctor about? What do the abnormal ones potentially mean?"
+
+AI translates every value and flags what matters.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Doctor Notes
+
+Your medical records have notes from your doctor with abbreviations and medical terms.</summary>
+<div class="flash-back">PROMPT: "Translate these doctor notes into plain English. What did the doctor observe? What is their assessment? What is the plan? Explain any medical terms."
+
+You have a right to understand your own records.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Medication Information
+
+You were prescribed something new and want to understand it before taking it.</summary>
+<div class="flash-back">PROMPT: "Explain this medication in plain English: [medication name, dose]. What does it do? Common side effects? Interactions with [your other medications]? What should I watch for? What should I tell my doctor about?"
+
+Note: always confirm with your pharmacist too.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Imaging Reports
+
+MRI, X-ray, or CT results with medical terminology.</summary>
+<div class="flash-back">PROMPT: "Explain this imaging report in plain English. What did they find? Is anything abnormal? What does [specific term] mean? What are the next steps based on these findings?"
+
+AI makes radiology reports readable.</div>
+</details>
+</div>
 
 </div>
 
@@ -121,7 +155,45 @@ Address it to [insurance company appeals department].</code></pre>
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
 
-<div data-learn="QuizMC" data-props='{"questions":[{"q":"What is the most effective way to prepare for a doctor appointment?","options":["Memorize everything you want to say","Have AI create a one-page summary with symptoms, questions, and medications to bring with you","Just tell the doctor everything you can remember","Record the appointment on your phone"],"correct":1,"explanation":"A printed or on-phone summary prevents the \"I forgot to mention\" problem. When brain fog hits mid-appointment, read from the list instead of relying on memory."},{"q":"When insurance denies a claim, what should you do?","options":["Accept the denial — they are usually right","Give up because appealing is too much work","Use AI to draft a formal appeal letter and have your doctor review it","Call and yell at the insurance company"],"correct":2,"explanation":"Insurance companies expect most people to give up. AI drafts professional appeal letters citing medical necessity. Combined with your doctor&#39;s sign-off, this is a powerful strategy."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the most effective way to prepare for a doctor appointment?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Memorize everything you want to say
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Have AI create a one-page summary with symptoms, questions, and medications to bring with you
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Just tell the doctor everything you can remember
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Record the appointment on your phone
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A printed or on-phone summary prevents the "I forgot to mention" problem. When brain fog hits mid-appointment, read from the list instead of relying on memory.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>When insurance denies a claim, what should you do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Accept the denial — they are usually right
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Give up because appealing is too much work
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Use AI to draft a formal appeal letter and have your doctor review it
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Call and yell at the insurance company
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Insurance companies expect most people to give up. AI drafts professional appeal letters citing medical necessity. Combined with your doctor's sign-off, this is a powerful strategy.</div>
+</div>
+</div>
 
 </div>
 
@@ -130,7 +202,33 @@ Address it to [insurance company appeals department].</code></pre>
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
 
-<div data-learn="FlashDeck" data-props='{"title":"Medical Advocacy","cards":[{"front":"What should an appointment prep include?","back":"One-page summary for the doctor, list of questions, symptoms organized by severity, and reminders of what to bring. Print it or keep it on your phone."},{"front":"How do you understand medical records?","back":"Paste them into AI and ask for a plain English translation. AI explains lab results, doctor notes, medication info, and imaging reports in language you can understand."},{"front":"How do you fight an insurance denial?","back":"Use AI to draft a formal appeal letter citing medical necessity and requesting peer-to-peer review. Have your doctor review and sign off. File before the deadline."},{"front":"How do you research a condition without misinformation?","back":"Ask AI to explain based on \"current medical consensus\" and cite major medical organizations. Ask what the evidence shows and what questions to bring to your doctor."},{"front":"Why is appointment prep so important for disabled people?","back":"Short appointments, brain fog, and anxiety mean you forget to mention symptoms and ask questions. A prepared summary fixes this."},{"front":"Should you trust AI medical information completely?","back":"No. AI provides excellent summaries and preparation, but always confirm with your actual doctors and pharmacists. AI is a tool for informed advocacy, not a replacement for medical advice."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Medical Advocacy</h3>
+<details class="flash-card">
+<summary class="flash-front">What should an appointment prep include?</summary>
+<div class="flash-back">One-page summary for the doctor, list of questions, symptoms organized by severity, and reminders of what to bring. Print it or keep it on your phone.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you understand medical records?</summary>
+<div class="flash-back">Paste them into AI and ask for a plain English translation. AI explains lab results, doctor notes, medication info, and imaging reports in language you can understand.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you fight an insurance denial?</summary>
+<div class="flash-back">Use AI to draft a formal appeal letter citing medical necessity and requesting peer-to-peer review. Have your doctor review and sign off. File before the deadline.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you research a condition without misinformation?</summary>
+<div class="flash-back">Ask AI to explain based on "current medical consensus" and cite major medical organizations. Ask what the evidence shows and what questions to bring to your doctor.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why is appointment prep so important for disabled people?</summary>
+<div class="flash-back">Short appointments, brain fog, and anxiety mean you forget to mention symptoms and ask questions. A prepared summary fixes this.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Should you trust AI medical information completely?</summary>
+<div class="flash-back">No. AI provides excellent summaries and preparation, but always confirm with your actual doctors and pharmacists. AI is a tool for informed advocacy, not a replacement for medical advice.</div>
+</details>
+</div>
 
 </div>
 

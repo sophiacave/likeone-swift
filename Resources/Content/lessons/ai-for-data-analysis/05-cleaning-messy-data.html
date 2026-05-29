@@ -165,7 +165,29 @@ print("Cleaned data saved.")</code></pre>
 <div class="lesson-section">
   <span class="section-label">Quick Review</span>
   <h2 class="section-title">Data Quality Problems</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Common Data Quality Issues","cards":[{"front":"Duplicates","back":"The same record entered twice or more, sometimes with slightly different formatting or casing"},{"front":"Inconsistent names","back":"US, United States, U.S.A., and usa are all the same country but look like four different values"},{"front":"Mixed formats","back":"Dates appearing as 03/15/2024, March 15 2024, and 2024-03-15 in the same column"},{"front":"Missing values","back":"Empty cells that could mean zero, unknown, or not applicable — context determines the right fix"},{"front":"Outliers","back":"Extreme values that may be data entry errors or genuinely important anomalies requiring investigation"}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Common Data Quality Issues</h3>
+<details class="flash-card">
+<summary class="flash-front">Duplicates</summary>
+<div class="flash-back">The same record entered twice or more, sometimes with slightly different formatting or casing</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Inconsistent names</summary>
+<div class="flash-back">US, United States, U.S.A., and usa are all the same country but look like four different values</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Mixed formats</summary>
+<div class="flash-back">Dates appearing as 03/15/2024, March 15 2024, and 2024-03-15 in the same column</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Missing values</summary>
+<div class="flash-back">Empty cells that could mean zero, unknown, or not applicable — context determines the right fix</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Outliers</summary>
+<div class="flash-back">Extreme values that may be data entry errors or genuinely important anomalies requiring investigation</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -176,7 +198,63 @@ print("Cleaned data saved.")</code></pre>
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Lesson 5 Quiz</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Cleaning Messy Data","questions":[{"q":"Roughly what percentage of a data analyst&#39;s time is spent on data cleaning?","options":["10%","25%","50%","Up to 80%"],"correct":3,"explanation":"Data analysts spend up to 80% of their time cleaning data — not analyzing it. AI dramatically compresses this bottleneck."},{"q":"What is the first step in the AI data cleaning checklist?","options":["Remove all outliers immediately","Find and delete duplicate rows","Scan for structure: rows, columns, data types, and missing value percentages","Standardize all text to lowercase"],"correct":2,"explanation":"Before fixing anything, you need a structural overview. Describing the shape of the data tells you where to focus cleaning efforts first."},{"q":"Why does AI excel at data cleaning tasks?","options":["AI can only work with clean data","Pattern-matching and tedious repetitive tasks are exactly what AI processes fastest","AI makes cleaning decisions without any context","AI can only clean numerical data"],"correct":1,"explanation":"The tedious pattern-matching work of spotting inconsistencies, grouping variants, and standardizing formats is precisely what AI handles at speed — it catches things human eyes miss."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Cleaning Messy Data</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Roughly what percentage of a data analyst's time is spent on data cleaning?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>10%
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>25%
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>50%
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Up to 80%
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Data analysts spend up to 80% of their time cleaning data — not analyzing it. AI dramatically compresses this bottleneck.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the first step in the AI data cleaning checklist?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Remove all outliers immediately
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Find and delete duplicate rows
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Scan for structure: rows, columns, data types, and missing value percentages
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Standardize all text to lowercase
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Before fixing anything, you need a structural overview. Describing the shape of the data tells you where to focus cleaning efforts first.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why does AI excel at data cleaning tasks?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>AI can only work with clean data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Pattern-matching and tedious repetitive tasks are exactly what AI processes fastest
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>AI makes cleaning decisions without any context
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>AI can only clean numerical data
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The tedious pattern-matching work of spotting inconsistencies, grouping variants, and standardizing formats is precisely what AI handles at speed — it catches things human eyes miss.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

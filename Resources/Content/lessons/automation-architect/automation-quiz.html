@@ -193,9 +193,123 @@
     </div>
   </div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Automation Fundamentals","questions":[{"q":"What is a trigger in automation?","options":["A function that transforms data","An event that starts an automation","A database query","An API response"],"correct":1,"explanation":"A trigger is the event that kicks off your automation — it is the when that fires before any actions execute."},{"q":"Which cron expression runs a task every day at midnight?","options":["* * * * *","0 0 * * *","0 12 * * 1","*/5 * * * *"],"correct":1,"explanation":"0 0 * * * means minute 0, hour 0 (midnight), every day, every month, every day of week."},{"q":"What does a webhook do?","options":["Polls a server every 5 seconds","Sends a scheduled email","Receives real-time data via HTTP POST","Stores data in a cache"],"correct":2,"explanation":"A webhook is a URL that receives real-time HTTP POST requests when an event occurs in an external system."},{"q":"In a trigger-action pair, what flows between them?","options":["HTML pages","Data (the event payload)","CSS styles","User credentials"],"correct":1,"explanation":"Data flows from trigger to action. The trigger produces a payload (event data) that the action consumes and acts upon."},{"q":"Which is NOT a common automation action?","options":["Send an email notification","Write to a database","Call an external API","Listen for a webhook"],"correct":3,"explanation":"Listening for a webhook is a trigger, not an action. Actions are the things that happen after a trigger fires."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Automation Fundamentals</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is a trigger in automation?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A function that transforms data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>An event that starts an automation
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A database query
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>An API response
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A trigger is the event that kicks off your automation — it is the when that fires before any actions execute.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Which cron expression runs a task every day at midnight?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>* * * * *
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>0 0 * * *
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>0 12 * * 1
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>*/5 * * * *
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> 0 0 * * * means minute 0, hour 0 (midnight), every day, every month, every day of week.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What does a webhook do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Polls a server every 5 seconds
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Sends a scheduled email
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Receives real-time data via HTTP POST
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Stores data in a cache
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A webhook is a URL that receives real-time HTTP POST requests when an event occurs in an external system.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>In a trigger-action pair, what flows between them?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>HTML pages
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Data (the event payload)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>CSS styles
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>User credentials
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Data flows from trigger to action. The trigger produces a payload (event data) that the action consumes and acts upon.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>Which is NOT a common automation action?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Send an email notification
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Write to a database
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Call an external API
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Listen for a webhook
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Listening for a webhook is a trigger, not an action. Actions are the things that happen after a trigger fires.</div>
+</div>
+</div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"Key Automation Concepts","cards":[{"front":"Trigger","back":"The event that starts an automation — the when. Examples: new email, form submitted, schedule fires."},{"front":"Action","back":"The task executed after a trigger fires. Examples: send email, save to DB, call API."},{"front":"Webhook","back":"A URL endpoint that receives real-time HTTP POST data from external systems."},{"front":"Cron expression 0 0 * * *","back":"Runs every day at midnight. minute=0, hour=0, day=any, month=any, weekday=any."},{"front":"Event payload","back":"The structured data produced by a trigger and passed to the action for processing."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Key Automation Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">Trigger</summary>
+<div class="flash-back">The event that starts an automation — the when. Examples: new email, form submitted, schedule fires.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Action</summary>
+<div class="flash-back">The task executed after a trigger fires. Examples: send email, save to DB, call API.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Webhook</summary>
+<div class="flash-back">A URL endpoint that receives real-time HTTP POST data from external systems.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Cron expression 0 0 * * *</summary>
+<div class="flash-back">Runs every day at midnight. minute=0, hour=0, day=any, month=any, weekday=any.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Event payload</summary>
+<div class="flash-back">The structured data produced by a trigger and passed to the action for processing.</div>
+</details>
+</div>
 
 
 </div>

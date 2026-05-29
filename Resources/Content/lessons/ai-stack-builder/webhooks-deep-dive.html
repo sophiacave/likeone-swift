@@ -255,10 +255,128 @@ Deno.<span style="color:#34d399">serve</span>(<span style="color:#c084fc">async<
 </div>
 
 <div style="margin:1.5rem 0">
-<div data-learn="QuizMC" data-props='{"title":"Webhooks Mastery Check","questions":[{"q":"Why must you read the raw request body (req.text()) instead of parsed JSON when verifying a Stripe webhook?","options":["JSON parsing is slower","The signature is computed on the raw bytes — parsing changes the string and invalidates the signature","Stripe does not send JSON","Deno does not support req.json()"],"correct":1,"explanation":"Stripe computes the HMAC signature on the exact raw bytes of the request body. If you parse the JSON first, the serialization may change whitespace or key ordering, producing a different byte sequence and causing signature verification to fail."},{"q":"What is exponential backoff in Stripe webhook retries?","options":["Stripe sends faster retries each time","The wait time between retries grows longer with each attempt — 1min, 5min, 30min, etc.","Stripe gives up after 3 failed retries","Your endpoint backs up data before retrying"],"correct":1,"explanation":"Exponential backoff means each retry waits longer than the last — 1 minute, then 5 minutes, then 30, etc. This prevents overwhelming a recovering server. Stripe retries for up to 3 days before marking the event as failed."},{"q":"How do you make a webhook handler idempotent?","options":["Add a timeout to every request","Store the event ID on first processing and skip if already seen — so duplicate deliveries produce the same result","Respond with 200 before processing","Use HTTPS instead of HTTP"],"correct":1,"explanation":"Store the Stripe event ID (evt_xxx) in your database when you first process it. Before processing any event, check if that ID already exists. If it does, skip processing and return 200. This prevents double-charging or duplicate grants when Stripe retries."},{"q":"A bad actor sends a fake checkout.session.completed webhook to your endpoint. What prevents them from getting free access?","options":["HTTPS encryption","Rate limiting on the endpoint","Signature verification — constructEvent() rejects any request not signed with your webhook secret","The firewall blocks unknown IPs"],"correct":2,"explanation":"Stripe signs every webhook with a secret (whsec_...) only you and Stripe know. constructEvent() verifies this signature cryptographically. A fake request will not have a valid signature and will be rejected with a 400 error before any business logic runs."},{"q":"You deploy a webhook endpoint but forget to store the signing secret as an environment variable. What happens?","options":["Webhooks work but are slower","constructEvent() throws an error on every request — all webhooks are rejected with 400","Stripe stops sending webhooks after 24 hours","Nothing — the endpoint works without verification"],"correct":1,"explanation":"Without the signing secret, constructEvent() cannot verify signatures and throws an error on every incoming webhook. Your try/catch returns 400. Stripe sees failures and retries with backoff, eventually giving up after 3 days. No events get processed until you fix the secret."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Webhooks Mastery Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why must you read the raw request body (req.text()) instead of parsed JSON when verifying a Stripe webhook?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>JSON parsing is slower
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The signature is computed on the raw bytes — parsing changes the string and invalidates the signature
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Stripe does not send JSON
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Deno does not support req.json()
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Stripe computes the HMAC signature on the exact raw bytes of the request body. If you parse the JSON first, the serialization may change whitespace or key ordering, producing a different byte sequence and causing signature verification to fail.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is exponential backoff in Stripe webhook retries?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Stripe sends faster retries each time
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The wait time between retries grows longer with each attempt — 1min, 5min, 30min, etc.
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Stripe gives up after 3 failed retries
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Your endpoint backs up data before retrying
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Exponential backoff means each retry waits longer than the last — 1 minute, then 5 minutes, then 30, etc. This prevents overwhelming a recovering server. Stripe retries for up to 3 days before marking the event as failed.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>How do you make a webhook handler idempotent?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Add a timeout to every request
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Store the event ID on first processing and skip if already seen — so duplicate deliveries produce the same result
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Respond with 200 before processing
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Use HTTPS instead of HTTP
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Store the Stripe event ID (evt_xxx) in your database when you first process it. Before processing any event, check if that ID already exists. If it does, skip processing and return 200. This prevents double-charging or duplicate grants when Stripe retries.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>A bad actor sends a fake checkout.session.completed webhook to your endpoint. What prevents them from getting free access?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>HTTPS encryption
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Rate limiting on the endpoint
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Signature verification — constructEvent() rejects any request not signed with your webhook secret
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The firewall blocks unknown IPs
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Stripe signs every webhook with a secret (whsec_...) only you and Stripe know. constructEvent() verifies this signature cryptographically. A fake request will not have a valid signature and will be rejected with a 400 error before any business logic runs.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>You deploy a webhook endpoint but forget to store the signing secret as an environment variable. What happens?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Webhooks work but are slower
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>constructEvent() throws an error on every request — all webhooks are rejected with 400
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Stripe stops sending webhooks after 24 hours
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Nothing — the endpoint works without verification
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Without the signing secret, constructEvent() cannot verify signatures and throws an error on every incoming webhook. Your try/catch returns 400. Stripe sees failures and retries with backoff, eventually giving up after 3 days. No events get processed until you fix the secret.</div>
+</div>
+</div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Webhooks Flashcards","cards":[{"front":"What is the difference between polling and webhooks?","back":"Polling: your app repeatedly asks the other service \"did anything happen?\" on an interval — wasteful and delayed. Webhooks: the other service pushes a notification to your endpoint the moment something happens — real-time and efficient."},{"front":"What does idempotency mean for a webhook handler?","back":"An idempotent handler produces the same result whether called once or many times with the same data. Implementation: store the Stripe event ID in your database on first processing, and skip if already seen. This prevents double-grants and duplicate emails when Stripe retries."},{"front":"What prefix does a Stripe webhook signing secret start with?","back":"whsec_ — short for webhook secret. Store it in your environment variables (never in code). Use it with stripe.webhooks.constructEvent() to verify every incoming webhook is genuinely from Stripe."},{"front":"Why must you use req.text() instead of req.json() before signature verification?","back":"The HMAC signature is computed on the exact raw bytes of the request body. Parsing with req.json() then re-serializing changes whitespace and key ordering, producing different bytes and invalidating the signature. Always read raw text first, verify, then parse."},{"front":"What happens when Stripe retries a webhook?","back":"Stripe uses exponential backoff: retry after ~1min, ~5min, ~30min, then hours, up to 3 days total. This prevents overwhelming a recovering server. Your handler MUST be idempotent because retries can deliver the same event multiple times."},{"front":"How do you test webhooks during local development?","back":"Use the Stripe CLI: stripe listen --forward-to localhost:54321/functions/v1/stripe-webhook. This creates a secure tunnel from Stripe to your local machine. Then trigger test events with stripe trigger checkout.session.completed."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Webhooks Flashcards</h3>
+<details class="flash-card">
+<summary class="flash-front">What is the difference between polling and webhooks?</summary>
+<div class="flash-back">Polling: your app repeatedly asks the other service "did anything happen?" on an interval — wasteful and delayed. Webhooks: the other service pushes a notification to your endpoint the moment something happens — real-time and efficient.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What does idempotency mean for a webhook handler?</summary>
+<div class="flash-back">An idempotent handler produces the same result whether called once or many times with the same data. Implementation: store the Stripe event ID in your database on first processing, and skip if already seen. This prevents double-grants and duplicate emails when Stripe retries.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What prefix does a Stripe webhook signing secret start with?</summary>
+<div class="flash-back">whsec_ — short for webhook secret. Store it in your environment variables (never in code). Use it with stripe.webhooks.constructEvent() to verify every incoming webhook is genuinely from Stripe.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why must you use req.text() instead of req.json() before signature verification?</summary>
+<div class="flash-back">The HMAC signature is computed on the exact raw bytes of the request body. Parsing with req.json() then re-serializing changes whitespace and key ordering, producing different bytes and invalidating the signature. Always read raw text first, verify, then parse.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What happens when Stripe retries a webhook?</summary>
+<div class="flash-back">Stripe uses exponential backoff: retry after ~1min, ~5min, ~30min, then hours, up to 3 days total. This prevents overwhelming a recovering server. Your handler MUST be idempotent because retries can deliver the same event multiple times.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you test webhooks during local development?</summary>
+<div class="flash-back">Use the Stripe CLI: stripe listen --forward-to localhost:54321/functions/v1/stripe-webhook. This creates a secure tunnel from Stripe to your local machine. Then trigger test events with stripe trigger checkout.session.completed.</div>
+</details>
+</div>
 
 </div>
 

@@ -227,10 +227,128 @@
 </div>
 
 <div style="margin:1.5rem 0">
-<div data-learn="QuizMC" data-props='{"title":"Vercel Deploy — Mastery Check","questions":[{"q":"What happens automatically when you push to the main branch on GitHub?","options":["Nothing — you must run vercel --prod manually","Vercel detects the push and triggers a production deployment","A preview deployment is created but not promoted to production","Vercel sends you an email to confirm the deploy"],"correct":1,"explanation":"When you connect your GitHub repo to Vercel, it watches for pushes to the main branch and automatically triggers a production deployment. No manual step needed — git push is the entire deploy workflow."},{"q":"What is the purpose of a preview deployment?","options":["To deploy to a staging server","Each pull request gets its own unique URL so you can test changes before merging","To reduce production costs","To test environment variables"],"correct":1,"explanation":"Vercel creates a unique preview URL for every pull request. You can share the URL with teammates, test the changes in a real browser, and confirm everything works before merging to main and deploying to production."},{"q":"Which environment variable prefix exposes values to the browser in Next.js?","options":["PUBLIC_","BROWSER_","NEXT_PUBLIC_","CLIENT_"],"correct":2,"explanation":"In Next.js, only variables prefixed with NEXT_PUBLIC_ are included in the browser bundle. All other environment variables remain server-side only. This distinction is critical — secret keys (Stripe, service role) must never use this prefix."},{"q":"What does the vercel env pull command do?","options":["Uploads local env vars to Vercel","Downloads Vercel environment variables to a local .env.local file","Deletes all environment variables","Shows env var values in the terminal"],"correct":1,"explanation":"vercel env pull downloads your Vercel environment variables to a local .env.local file, keeping your local development in sync with production config. The file is automatically gitignored by Next.js so secrets are not committed."},{"q":"A deploy succeeds but the page loads blank. What is the most likely cause?","options":["The CSS file is missing","NEXT_PUBLIC_SUPABASE_URL is not set in Vercel — the frontend cannot connect to the database","The domain is not configured correctly","Vercel is experiencing an outage"],"correct":1,"explanation":"A blank page after successful deploy usually means the frontend app cannot connect to its data source. If NEXT_PUBLIC_SUPABASE_URL is missing, the Supabase client initializes with undefined and all data fetches fail silently, rendering an empty page."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Vercel Deploy — Mastery Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What happens automatically when you push to the main branch on GitHub?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Nothing — you must run vercel --prod manually
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Vercel detects the push and triggers a production deployment
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A preview deployment is created but not promoted to production
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Vercel sends you an email to confirm the deploy
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> When you connect your GitHub repo to Vercel, it watches for pushes to the main branch and automatically triggers a production deployment. No manual step needed — git push is the entire deploy workflow.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the purpose of a preview deployment?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>To deploy to a staging server
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Each pull request gets its own unique URL so you can test changes before merging
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>To reduce production costs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>To test environment variables
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Vercel creates a unique preview URL for every pull request. You can share the URL with teammates, test the changes in a real browser, and confirm everything works before merging to main and deploying to production.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Which environment variable prefix exposes values to the browser in Next.js?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>PUBLIC_
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>BROWSER_
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>NEXT_PUBLIC_
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>CLIENT_
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> In Next.js, only variables prefixed with NEXT_PUBLIC_ are included in the browser bundle. All other environment variables remain server-side only. This distinction is critical — secret keys (Stripe, service role) must never use this prefix.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What does the vercel env pull command do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Uploads local env vars to Vercel
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Downloads Vercel environment variables to a local .env.local file
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Deletes all environment variables
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Shows env var values in the terminal
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> vercel env pull downloads your Vercel environment variables to a local .env.local file, keeping your local development in sync with production config. The file is automatically gitignored by Next.js so secrets are not committed.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>A deploy succeeds but the page loads blank. What is the most likely cause?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The CSS file is missing
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>NEXT_PUBLIC_SUPABASE_URL is not set in Vercel — the frontend cannot connect to the database
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The domain is not configured correctly
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Vercel is experiencing an outage
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A blank page after successful deploy usually means the frontend app cannot connect to its data source. If NEXT_PUBLIC_SUPABASE_URL is missing, the Supabase client initializes with undefined and all data fetches fail silently, rendering an empty page.</div>
+</div>
+</div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Vercel Deploy Flashcards","cards":[{"front":"What is a CDN (Content Delivery Network) and why does Vercel use one?","back":"A CDN is a network of servers distributed globally. When a user requests your site, it is served from the closest server (Point of Presence / PoP). Vercel has 50+ PoPs, so users in Tokyo get served from Tokyo — reducing latency and improving performance for everyone."},{"front":"What should you do if you accidentally commit a secret key to git?","back":"Immediately revoke the exposed key in that service dashboard (Stripe, Supabase, etc.) and generate a new one. Assume the key is already compromised — git history is public. Update your environment variables with the new key and redeploy."},{"front":"What is the difference between vercel and vercel --prod?","back":"vercel (without --prod) creates a preview deployment — a unique URL for testing. vercel --prod promotes the build to production and updates your main domain. Most teams use git push to trigger --prod automatically via the GitHub integration."},{"front":"Why separate environment variables by Production, Preview, and Development?","back":"To prevent test keys from touching production data and vice versa. Production uses live Stripe keys and real customer data. Preview uses test Stripe keys for safe experimentation. Development uses local instances. Mixing them risks charging test cards or corrupting production data."},{"front":"What does vercel env pull do?","back":"Downloads your Vercel environment variables to a local .env.local file. This keeps your local dev environment in sync with production config without manually copying secrets. The file is automatically gitignored by Next.js."},{"front":"What happens if a Vercel build fails?","back":"Vercel does NOT deploy the broken code. Your existing production site stays live and unaffected. The failed build appears in the dashboard with detailed logs showing exactly where the error occurred. Fix the error, push again, and Vercel rebuilds."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Vercel Deploy Flashcards</h3>
+<details class="flash-card">
+<summary class="flash-front">What is a CDN (Content Delivery Network) and why does Vercel use one?</summary>
+<div class="flash-back">A CDN is a network of servers distributed globally. When a user requests your site, it is served from the closest server (Point of Presence / PoP). Vercel has 50+ PoPs, so users in Tokyo get served from Tokyo — reducing latency and improving performance for everyone.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What should you do if you accidentally commit a secret key to git?</summary>
+<div class="flash-back">Immediately revoke the exposed key in that service dashboard (Stripe, Supabase, etc.) and generate a new one. Assume the key is already compromised — git history is public. Update your environment variables with the new key and redeploy.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the difference between vercel and vercel --prod?</summary>
+<div class="flash-back">vercel (without --prod) creates a preview deployment — a unique URL for testing. vercel --prod promotes the build to production and updates your main domain. Most teams use git push to trigger --prod automatically via the GitHub integration.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why separate environment variables by Production, Preview, and Development?</summary>
+<div class="flash-back">To prevent test keys from touching production data and vice versa. Production uses live Stripe keys and real customer data. Preview uses test Stripe keys for safe experimentation. Development uses local instances. Mixing them risks charging test cards or corrupting production data.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What does vercel env pull do?</summary>
+<div class="flash-back">Downloads your Vercel environment variables to a local .env.local file. This keeps your local dev environment in sync with production config without manually copying secrets. The file is automatically gitignored by Next.js.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What happens if a Vercel build fails?</summary>
+<div class="flash-back">Vercel does NOT deploy the broken code. Your existing production site stays live and unaffected. The failed build appears in the dashboard with detailed logs showing exactly where the error occurred. Fix the error, push again, and Vercel rebuilds.</div>
+</details>
+</div>
 
 </div>
 

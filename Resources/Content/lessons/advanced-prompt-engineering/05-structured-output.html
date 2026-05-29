@@ -80,7 +80,29 @@ Start your response with:
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Structured Output — Key Concepts","cards":[{"front":"What is schema-driven prompting?","back":"Providing the exact JSON structure with field names, types, and descriptions — giving the AI a precise blueprint so output is consistent and parseable every time."},{"front":"What is the Output First trick?","back":"Starting the AI&#39;s response for it (e.g., beginning with &#39;1. **&#39;) to anchor the format from the very first token, preventing the model from inventing its own structure."},{"front":"How do you prevent the &#39;helpful preamble&#39; problem?","back":"Add &#39;Return ONLY the JSON. No preamble. No explanation.&#39; — explicitly telling the AI what NOT to include is as important as telling it what to include."},{"front":"Why do you need cell constraints in table prompts?","back":"Without constraints like &#39;10 words or fewer per cell,&#39; AI turns table cells into paragraphs, making the table unreadable and defeating the purpose of structured format."},{"front":"How do you fix inconsistent JSON keys?","back":"Provide the exact schema and explicitly say &#39;use these exact key names&#39; — plus specify types in your schema description to prevent numbers returning as strings."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Structured Output — Key Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">What is schema-driven prompting?</summary>
+<div class="flash-back">Providing the exact JSON structure with field names, types, and descriptions — giving the AI a precise blueprint so output is consistent and parseable every time.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the Output First trick?</summary>
+<div class="flash-back">Starting the AI's response for it (e.g., beginning with '1. **') to anchor the format from the very first token, preventing the model from inventing its own structure.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you prevent the 'helpful preamble' problem?</summary>
+<div class="flash-back">Add 'Return ONLY the JSON. No preamble. No explanation.' — explicitly telling the AI what NOT to include is as important as telling it what to include.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why do you need cell constraints in table prompts?</summary>
+<div class="flash-back">Without constraints like '10 words or fewer per cell,' AI turns table cells into paragraphs, making the table unreadable and defeating the purpose of structured format.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you fix inconsistent JSON keys?</summary>
+<div class="flash-back">Provide the exact schema and explicitly say 'use these exact key names' — plus specify types in your schema description to prevent numbers returning as strings.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -190,7 +212,63 @@ Return ONLY valid JSON. No markdown. No explanation.</code>
 </div>
 
 <div class="lesson-section">
-  <div data-learn="QuizMC" data-props='{"title":"Structured Output Quiz","questions":[{"q":"What is the most reliable way to get consistent JSON from an AI?","options":["Ask nicely for JSON","Provide the exact schema with field descriptions and types","Ask for JSON at the end of the prompt","Use bullet points instead"],"correct":1,"explanation":"Schema-driven prompting — showing the exact structure with type descriptions for each field — gives the AI a precise blueprint to follow, dramatically improving consistency."},{"q":"Why does the ‘Output First’ trick work?","options":["It makes the prompt shorter","Starting the response anchors the AI into your format from the very first token","It prevents hallucinations","It speeds up generation"],"correct":1,"explanation":"When you begin the AI’s response (e.g., ‘1. **’), the model continues in that format rather than inventing its own structure."},{"q":"How do you fix the ‘helpful preamble’ problem where AI adds ‘Here is the JSON:’ before your data?","options":["Ask for shorter output","Add ‘Return ONLY the JSON. No preamble. No explanation.’ to your prompt","Use a different model","Put the schema at the end of the prompt"],"correct":1,"explanation":"Explicitly telling the AI what NOT to include is as important as telling it what to include. ‘Return ONLY’ directives suppress unwanted framing text."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Structured Output Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the most reliable way to get consistent JSON from an AI?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Ask nicely for JSON
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Provide the exact schema with field descriptions and types
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Ask for JSON at the end of the prompt
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Use bullet points instead
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Schema-driven prompting — showing the exact structure with type descriptions for each field — gives the AI a precise blueprint to follow, dramatically improving consistency.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why does the ‘Output First’ trick work?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It makes the prompt shorter
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Starting the response anchors the AI into your format from the very first token
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It prevents hallucinations
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It speeds up generation
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> When you begin the AI’s response (e.g., ‘1. **’), the model continues in that format rather than inventing its own structure.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>How do you fix the ‘helpful preamble’ problem where AI adds ‘Here is the JSON:’ before your data?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Ask for shorter output
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Add ‘Return ONLY the JSON. No preamble. No explanation.’ to your prompt
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Use a different model
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Put the schema at the end of the prompt
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Explicitly telling the AI what NOT to include is as important as telling it what to include. ‘Return ONLY’ directives suppress unwanted framing text.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

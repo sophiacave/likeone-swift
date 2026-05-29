@@ -162,7 +162,39 @@ response = client.messages.create(
 <div class="lesson-section">
   <span class="section-label">Experiment</span>
   <h2 class="section-title">See how temperature changes output.</h2>
-<div data-learn="FlashDeck" data-props='{"title":"Temperature Guide — Flip for Details","cards":[{"front":"🧊 LOW TEMPERATURE (0.0 - 0.3)\n\nDeterministic and focused","back":"BEST FOR: Code, math, factual questions, data analysis\n\nThe model always picks the most likely next token. Consistent, predictable, correct — but potentially repetitive.\n\nUSE WHEN: You need one right answer, not creative options."},{"front":"⚖️ MEDIUM TEMPERATURE (0.4 - 0.7)\n\nBalanced default","back":"BEST FOR: General conversations, business writing, explanations\n\nGood mix of coherence and variety. The default for most AI chatbots.\n\nUSE WHEN: You want natural-sounding output that is still reliable."},{"front":"🔥 HIGH TEMPERATURE (0.8 - 1.0+)\n\nCreative and unpredictable","back":"BEST FOR: Brainstorming, creative writing, generating diverse options\n\nThe model sometimes picks unlikely tokens, leading to surprising and creative output — but also more errors.\n\nUSE WHEN: You want ideas, not accuracy. Be prepared to filter."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Temperature Guide — Flip for Details</h3>
+<details class="flash-card">
+<summary class="flash-front">🧊 LOW TEMPERATURE (0.0 - 0.3)
+
+Deterministic and focused</summary>
+<div class="flash-back">BEST FOR: Code, math, factual questions, data analysis
+
+The model always picks the most likely next token. Consistent, predictable, correct — but potentially repetitive.
+
+USE WHEN: You need one right answer, not creative options.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">⚖️ MEDIUM TEMPERATURE (0.4 - 0.7)
+
+Balanced default</summary>
+<div class="flash-back">BEST FOR: General conversations, business writing, explanations
+
+Good mix of coherence and variety. The default for most AI chatbots.
+
+USE WHEN: You want natural-sounding output that is still reliable.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">🔥 HIGH TEMPERATURE (0.8 - 1.0+)
+
+Creative and unpredictable</summary>
+<div class="flash-back">BEST FOR: Brainstorming, creative writing, generating diverse options
+
+The model sometimes picks unlikely tokens, leading to surprising and creative output — but also more errors.
+
+USE WHEN: You want ideas, not accuracy. Be prepared to filter.</div>
+</details>
+</div>
 
 </div>
 
@@ -171,7 +203,63 @@ response = client.messages.create(
   <span class="section-label">Knowledge Check</span>
   <h2 class="section-title">Test your understanding.</h2>
 
-<div data-learn="QuizMC" data-props='{"title":"Prompt Anatomy","questions":[{"q":"How does AI read the word \"unbelievable\"?","options":["As one token: unbelievable","As individual characters: u-n-b-e-l-i-e-v-a-b-l-e","As subword chunks like: un-believ-able","As the dictionary definition of the word"],"correct":2,"explanation":"AI tokenizers break words into subword chunks. Unbelievable becomes something like un + believ + able. The model never sees raw text — only token IDs (numbers)."},{"q":"Claude has a 200K token context window. What does this mean?","options":["It can remember 200,000 previous conversations","Your prompt plus its response must fit within 200,000 tokens total","It can process 200,000 words per second","It has 200,000 neurons"],"correct":1,"explanation":"The context window is the model working memory. Everything it can see at once — your prompt, conversation history, and its response — must fit within this limit."},{"q":"You are writing a system prompt for a customer service bot. It should be helpful but never make promises about refunds. Where does this instruction go?","options":["In the user message","In the system prompt — it gets processed before any user messages","In a separate configuration file","Nowhere — AI cannot follow such instructions"],"correct":1,"explanation":"System prompts set behavioral rules before any user interaction. They are the ideal place for personality, constraints, and behavioral guardrails."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Prompt Anatomy</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>How does AI read the word "unbelievable"?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>As one token: unbelievable
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>As individual characters: u-n-b-e-l-i-e-v-a-b-l-e
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>As subword chunks like: un-believ-able
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>As the dictionary definition of the word
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> AI tokenizers break words into subword chunks. Unbelievable becomes something like un + believ + able. The model never sees raw text — only token IDs (numbers).</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Claude has a 200K token context window. What does this mean?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It can remember 200,000 previous conversations
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Your prompt plus its response must fit within 200,000 tokens total
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It can process 200,000 words per second
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It has 200,000 neurons
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The context window is the model working memory. Everything it can see at once — your prompt, conversation history, and its response — must fit within this limit.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>You are writing a system prompt for a customer service bot. It should be helpful but never make promises about refunds. Where does this instruction go?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>In the user message
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>In the system prompt — it gets processed before any user messages
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>In a separate configuration file
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Nowhere — AI cannot follow such instructions
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> System prompts set behavioral rules before any user interaction. They are the ideal place for personality, constraints, and behavioral guardrails.</div>
+</div>
+</div>
 
   <div class="narration" style="margin-top:1.5rem">
     <strong>Every prompt is a performance.</strong> Your words get chopped into tokens, fed through the context window alongside a system prompt, shaped by temperature, and out comes a response. Understanding this anatomy turns you from a user into an engineer.

@@ -73,12 +73,68 @@
 <div class="lesson-section">
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
-  <div data-learn="QuizMC" data-props='{"questions":[{"q":"What is the biggest art mistake new game devs make?","options":["Using too few colors","Mixing inconsistent art styles","Making sprites too small","Not using 3D graphics"],"correct":1,"explanation":"Mixing art styles (like pixel art characters on watercolor backgrounds) makes your game look broken. Pick one style and use it everywhere."},{"q":"What does the 80/20 rule of game animation mean?","options":["80% of games use 20% of animation types","Spend 80% of time on backgrounds, 20% on characters","80% of visual polish comes from code-based effects, not hand-animated sprites","Animate only 20% of your game objects"],"correct":2,"explanation":"Most visual polish comes from code effects like particles, screen shake, and tweening -- not from complex sprite animations. Focus art on static sprites, animate with code."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the biggest art mistake new game devs make?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Using too few colors
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Mixing inconsistent art styles
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Making sprites too small
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Not using 3D graphics
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Mixing art styles (like pixel art characters on watercolor backgrounds) makes your game look broken. Pick one style and use it everywhere.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What does the 80/20 rule of game animation mean?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>80% of games use 20% of animation types
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Spend 80% of time on backgrounds, 20% on characters
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>80% of visual polish comes from code-based effects, not hand-animated sprites
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Animate only 20% of your game objects
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Most visual polish comes from code effects like particles, screen shake, and tweening -- not from complex sprite animations. Focus art on static sprites, animate with code.</div>
+</div>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Game Art & Sprites","cards":[{"front":"What are the three AI-friendly game art styles?","back":"Pixel art (nostalgic, forgiving), flat vector (clean, scalable), and hand-drawn (charming, unique). Pick one and stick with it."},{"front":"What is a sprite sheet?","back":"A single image containing multiple frames of animation arranged in a strip or grid. The game cycles through frames to create movement."},{"front":"What is a parallax background?","back":"Multiple background layers scrolling at different speeds to create a sense of depth in a 2D game. Usually 3-4 layers."},{"front":"How do you maintain art consistency with AI?","back":"Generate your main character first, then use it as a style reference for all other assets. Same palette, same line weight, same vibe."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Game Art & Sprites</h3>
+<details class="flash-card">
+<summary class="flash-front">What are the three AI-friendly game art styles?</summary>
+<div class="flash-back">Pixel art (nostalgic, forgiving), flat vector (clean, scalable), and hand-drawn (charming, unique). Pick one and stick with it.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is a sprite sheet?</summary>
+<div class="flash-back">A single image containing multiple frames of animation arranged in a strip or grid. The game cycles through frames to create movement.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is a parallax background?</summary>
+<div class="flash-back">Multiple background layers scrolling at different speeds to create a sense of depth in a 2D game. Usually 3-4 layers.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you maintain art consistency with AI?</summary>
+<div class="flash-back">Generate your main character first, then use it as a style reference for all other assets. Same palette, same line weight, same vibe.</div>
+</details>
+</div>
 </div>
 </div>

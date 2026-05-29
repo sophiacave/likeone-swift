@@ -196,14 +196,114 @@
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Review the 6 principles of trustworthy AI.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"6 Principles of Trustworthy AI","cards":[{"front":"1. Human Oversight","back":"Humans can always intervene, correct, or override AI decisions. There is always a way to appeal an AI-made decision."},{"front":"2. Explainability","back":"You can understand WHY the AI made a decision. The algorithm decided is not an explanation."},{"front":"3. Fairness","back":"The system is tested for bias across different groups. Disparate impacts are measured, reported, and mitigated."},{"front":"4. Privacy by Design","back":"Data protection is built into the system from day one — not an afterthought. Minimum data collection, clear consent."},{"front":"5. Robustness","back":"The system handles edge cases, adversarial inputs, and failures gracefully. It does not break in dangerous ways."},{"front":"6. Accountability","back":"Someone is responsible. If the AI causes harm, a person or team owns the outcome — not the algorithm."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">6 Principles of Trustworthy AI</h3>
+<details class="flash-card">
+<summary class="flash-front">1. Human Oversight</summary>
+<div class="flash-back">Humans can always intervene, correct, or override AI decisions. There is always a way to appeal an AI-made decision.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">2. Explainability</summary>
+<div class="flash-back">You can understand WHY the AI made a decision. The algorithm decided is not an explanation.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">3. Fairness</summary>
+<div class="flash-back">The system is tested for bias across different groups. Disparate impacts are measured, reported, and mitigated.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">4. Privacy by Design</summary>
+<div class="flash-back">Data protection is built into the system from day one — not an afterthought. Minimum data collection, clear consent.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">5. Robustness</summary>
+<div class="flash-back">The system handles edge cases, adversarial inputs, and failures gracefully. It does not break in dangerous ways.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">6. Accountability</summary>
+<div class="flash-back">Someone is responsible. If the AI causes harm, a person or team owns the outcome — not the algorithm.</div>
+</details>
+</div>
 </div>
 
 <!-- INTERACTIVE: QUIZ -->
 <div class="lesson-section">
   <span class="section-label">Knowledge Check</span>
   <h2 class="section-title">Check your understanding.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Building Trustworthy AI Systems","questions":[{"q":"Which of these is a red flag when evaluating an AI tool?","options":["The tool has a paid subscription tier","The tool claims 100% accuracy or no hallucinations","The tool has a privacy policy","The tool requires an account to use"],"correct":1,"explanation":"Claims of 100% accuracy or no hallucinations are a major red flag. No current AI system is 100% accurate. Any company making this claim is either misleading users or does not understand their own product."},{"q":"For a high-stakes AI workflow like hiring decisions, the lesson recommends:","options":["Fully automate to remove human bias","Require human approval before any decision is finalized","Use the most advanced AI model available","Let the AI decide and document its reasoning"],"correct":1,"explanation":"High-stakes decisions — hiring, customer communications, financial transactions — require human approval. Low-stakes tasks like data formatting can be automated more freely, but consequential decisions need a human in the loop."},{"q":"What does Privacy by Design mean in trustworthy AI systems?","options":["Adding privacy settings after the product launches","Data protection built into the system from the start, with minimum data collection and clear consent","Encrypting all AI outputs","Storing user data in private servers"],"correct":1,"explanation":"Privacy by Design means protection is built in from day one, not bolted on afterward. This includes collecting only the minimum data needed and obtaining clear consent — not retrofitting privacy after the fact."},{"q":"According to the lesson, what does accountability mean in AI systems?","options":["The AI system tracks all its own decisions","A specific person or team is responsible if the AI causes harm — not the algorithm","Users accept responsibility by clicking agree to terms","Accountability is shared equally between users and developers"],"correct":1,"explanation":"Accountability means a human being or team owns the outcome when AI causes harm. Saying the algorithm decided is not accountability — it is deflection. Trustworthy systems name who is responsible."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Building Trustworthy AI Systems</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which of these is a red flag when evaluating an AI tool?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The tool has a paid subscription tier
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The tool claims 100% accuracy or no hallucinations
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The tool has a privacy policy
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The tool requires an account to use
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Claims of 100% accuracy or no hallucinations are a major red flag. No current AI system is 100% accurate. Any company making this claim is either misleading users or does not understand their own product.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>For a high-stakes AI workflow like hiring decisions, the lesson recommends:</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Fully automate to remove human bias
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Require human approval before any decision is finalized
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Use the most advanced AI model available
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Let the AI decide and document its reasoning
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> High-stakes decisions — hiring, customer communications, financial transactions — require human approval. Low-stakes tasks like data formatting can be automated more freely, but consequential decisions need a human in the loop.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What does Privacy by Design mean in trustworthy AI systems?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Adding privacy settings after the product launches
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Data protection built into the system from the start, with minimum data collection and clear consent
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Encrypting all AI outputs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Storing user data in private servers
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Privacy by Design means protection is built in from day one, not bolted on afterward. This includes collecting only the minimum data needed and obtaining clear consent — not retrofitting privacy after the fact.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>According to the lesson, what does accountability mean in AI systems?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The AI system tracks all its own decisions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A specific person or team is responsible if the AI causes harm — not the algorithm
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Users accept responsibility by clicking agree to terms
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Accountability is shared equally between users and developers
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Accountability means a human being or team owns the outcome when AI causes harm. Saying the algorithm decided is not accountability — it is deflection. Trustworthy systems name who is responsible.</div>
+</div>
+</div>
 </div>
 
 <!-- NEXT -->

@@ -176,10 +176,128 @@ Build me:
 </div>
 
 <div style="margin:1.5rem 0">
-<div data-learn="FlashDeck" data-props='{"title":"AI Governance and Ethics","cards":[{"front":"Tier 1 — Low Risk","back":"Internal productivity tools, content suggestions, search. Self-service deployment, annual review, basic monitoring. Teams move fast because harm potential is minimal."},{"front":"Tier 2 — Medium Risk","back":"Customer-facing chatbots, predictive analytics, personalization. Lightweight pre-deployment review, quarterly bias testing, human override required, performance monitoring."},{"front":"Tier 3 — High Risk","back":"Employment, credit, health, safety, legal decisions. Full governance board review, continuous monitoring, mandatory human oversight, complete audit trail, third-party audits."},{"front":"Five Types of AI Bias","back":"Historical (past discrimination in data), Representation (underrepresented groups), Measurement (proxy features), Aggregation (good average, poor for subgroups), Deployment (wrong context)."},{"front":"EU AI Act Penalties","back":"Up to 7% of global annual revenue. Risk-based classification system. High-risk AI requires conformity assessments, human oversight, transparency, post-market monitoring."},{"front":"Ethics as Design Principle","back":"Not a compliance department. A culture where every builder asks who could this harm? as routinely as does this pass the tests? Built into sprint process, not annual audit."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">AI Governance and Ethics</h3>
+<details class="flash-card">
+<summary class="flash-front">Tier 1 — Low Risk</summary>
+<div class="flash-back">Internal productivity tools, content suggestions, search. Self-service deployment, annual review, basic monitoring. Teams move fast because harm potential is minimal.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Tier 2 — Medium Risk</summary>
+<div class="flash-back">Customer-facing chatbots, predictive analytics, personalization. Lightweight pre-deployment review, quarterly bias testing, human override required, performance monitoring.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Tier 3 — High Risk</summary>
+<div class="flash-back">Employment, credit, health, safety, legal decisions. Full governance board review, continuous monitoring, mandatory human oversight, complete audit trail, third-party audits.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Five Types of AI Bias</summary>
+<div class="flash-back">Historical (past discrimination in data), Representation (underrepresented groups), Measurement (proxy features), Aggregation (good average, poor for subgroups), Deployment (wrong context).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">EU AI Act Penalties</summary>
+<div class="flash-back">Up to 7% of global annual revenue. Risk-based classification system. High-risk AI requires conformity assessments, human oversight, transparency, post-market monitoring.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Ethics as Design Principle</summary>
+<div class="flash-back">Not a compliance department. A culture where every builder asks who could this harm? as routinely as does this pass the tests? Built into sprint process, not annual audit.</div>
+</details>
+</div>
 </div>
 
-<div data-learn="QuizMC" data-props='{"title":"Governance and Ethics — Mastery Check","questions":[{"q":"A customer-facing chatbot that answers product questions should be classified as which tier?","options":["Tier 1 — it is just answering questions","Tier 2 — it is customer-facing with potential for misinformation, requires structured review and human override","Tier 3 — all customer-facing AI needs maximum governance","It depends on the industry but generally Tier 1"],"correct":1,"explanation":"Customer-facing chatbots can misinform, offend, or make commitments the company cannot honor. They need structured review, bias testing, explainability, and a human override mechanism — but they do not affect legal rights or safety, so full Tier 3 governance would be excessive overhead."},{"q":"Amazon scrapped an AI recruiting tool because it systematically discriminated against women. What type of bias caused this?","options":["Deployment bias — the tool was used in the wrong context","Historical bias — the training data reflected 10 years of male-dominated hiring patterns, and the model learned to replicate them","Aggregation bias — it worked on average but not for women","Measurement bias — gender was used as an input feature"],"correct":1,"explanation":"The training data came from 10 years of resumes submitted to Amazon, which were predominantly male (reflecting the tech industry). The model learned that male candidates were preferred — not because men were better, but because the historical data was biased. This is historical bias: past discrimination encoded into training data."},{"q":"Your governance framework requires a full board review for every AI deployment. What is wrong with this approach?","options":["Nothing — thorough governance is always better","It applies high-risk governance to low-risk systems, creating unnecessary bottlenecks that slow innovation without improving safety","The board should review more frequently","You need a bigger board to handle the volume"],"correct":1,"explanation":"Applying Tier 3 governance to Tier 1 systems creates decision paralysis. An internal search optimization does not need the same oversight as a loan approval system. Tiered governance means speed where it is safe and caution where it matters."},{"q":"The EU AI Act is already in force. Your organization has AI systems that affect credit decisions. What should you do NOW?","options":["Wait for full implementation deadlines to see exactly what is required","Nothing — the EU AI Act only applies to EU companies","Start building governance infrastructure immediately: document risk assessments, create audit trails, implement bias testing, establish human oversight — adjusting an existing framework is far easier than building one under deadline pressure","Hire a compliance consultant and wait for their report"],"correct":2,"explanation":"High-risk AI systems (credit, employment, health) face the strictest requirements with the earliest compliance deadlines. Building governance infrastructure now means you will be adjusting an existing framework when deadlines hit — not scrambling from scratch. The cost of proactive preparation is a fraction of reactive compliance."},{"q":"An engineer on your AI team says: We should ship this model now and test for bias later — we are behind schedule. What is the right response?","options":["Agree — you can always fix bias post-deployment","Bias testing should be part of the definition of done, not a separate phase that can be skipped under time pressure","Compromise — test for the most obvious biases and skip the rest","Escalate to legal and let them decide"],"correct":1,"explanation":"Bias testing is not optional extra work — it is part of building a production-quality system. An AI system deployed without bias testing is like software deployed without security testing: it might work fine, or it might create a crisis. Build ethical review into the sprint process, not as a gate that gets skipped when deadlines are tight."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Governance and Ethics — Mastery Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>A customer-facing chatbot that answers product questions should be classified as which tier?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Tier 1 — it is just answering questions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Tier 2 — it is customer-facing with potential for misinformation, requires structured review and human override
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Tier 3 — all customer-facing AI needs maximum governance
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It depends on the industry but generally Tier 1
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Customer-facing chatbots can misinform, offend, or make commitments the company cannot honor. They need structured review, bias testing, explainability, and a human override mechanism — but they do not affect legal rights or safety, so full Tier 3 governance would be excessive overhead.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Amazon scrapped an AI recruiting tool because it systematically discriminated against women. What type of bias caused this?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Deployment bias — the tool was used in the wrong context
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Historical bias — the training data reflected 10 years of male-dominated hiring patterns, and the model learned to replicate them
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Aggregation bias — it worked on average but not for women
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Measurement bias — gender was used as an input feature
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The training data came from 10 years of resumes submitted to Amazon, which were predominantly male (reflecting the tech industry). The model learned that male candidates were preferred — not because men were better, but because the historical data was biased. This is historical bias: past discrimination encoded into training data.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Your governance framework requires a full board review for every AI deployment. What is wrong with this approach?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Nothing — thorough governance is always better
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It applies high-risk governance to low-risk systems, creating unnecessary bottlenecks that slow innovation without improving safety
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The board should review more frequently
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>You need a bigger board to handle the volume
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Applying Tier 3 governance to Tier 1 systems creates decision paralysis. An internal search optimization does not need the same oversight as a loan approval system. Tiered governance means speed where it is safe and caution where it matters.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>The EU AI Act is already in force. Your organization has AI systems that affect credit decisions. What should you do NOW?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Wait for full implementation deadlines to see exactly what is required
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Nothing — the EU AI Act only applies to EU companies
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Start building governance infrastructure immediately: document risk assessments, create audit trails, implement bias testing, establish human oversight — adjusting an existing framework is far easier than building one under deadline pressure
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Hire a compliance consultant and wait for their report
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> High-risk AI systems (credit, employment, health) face the strictest requirements with the earliest compliance deadlines. Building governance infrastructure now means you will be adjusting an existing framework when deadlines hit — not scrambling from scratch. The cost of proactive preparation is a fraction of reactive compliance.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>An engineer on your AI team says: We should ship this model now and test for bias later — we are behind schedule. What is the right response?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Agree — you can always fix bias post-deployment
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Bias testing should be part of the definition of done, not a separate phase that can be skipped under time pressure
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Compromise — test for the most obvious biases and skip the rest
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Escalate to legal and let them decide
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Bias testing is not optional extra work — it is part of building a production-quality system. An AI system deployed without bias testing is like software deployed without security testing: it might work fine, or it might create a crisis. Build ethical review into the sprint process, not as a gate that gets skipped when deadlines are tight.</div>
+</div>
+</div>
 
 </div>
 

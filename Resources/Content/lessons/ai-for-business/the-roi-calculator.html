@@ -106,7 +106,25 @@
   <h2 class="section-title">Key concepts.</h2>
   <p class="section-text">Before you calculate ROI for your own business, make sure these four concepts are clear. They are the difference between an accurate projection and wishful thinking.</p>
 
-  <div data-learn="FlashDeck" data-props='{"title":"ROI Concepts","cards":[{"front":"The ROI Formula","back":"(Hours saved/week x hourly cost x 52) - annual tool costs = net savings. Then: net savings / annual tool costs x 100 = ROI%. A 400% ROI means you get $4 back for every $1 spent."},{"front":"Break-even Point","back":"The point where your savings cover your tool costs. Formula: monthly tool cost / weekly savings x 5 = days to break even. If a tool costs $100/mo and saves $280/week, you break even in under 2 days per month."},{"front":"Hidden Costs","back":"The costs most people forget: setup time (often 4-10 hours), employee training, integration development, ongoing prompt maintenance, and the productivity dip during the learning curve. Add 20-30% to your cost estimate."},{"front":"Conservative vs Aggressive Estimate","back":"Conservative: 25-35% automation rate, 6-week ramp. Aggressive: 50-70% automation rate, immediate productivity. Always present the conservative number to stakeholders and be pleasantly surprised when you beat it."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">ROI Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">The ROI Formula</summary>
+<div class="flash-back">(Hours saved/week x hourly cost x 52) - annual tool costs = net savings. Then: net savings / annual tool costs x 100 = ROI%. A 400% ROI means you get $4 back for every $1 spent.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Break-even Point</summary>
+<div class="flash-back">The point where your savings cover your tool costs. Formula: monthly tool cost / weekly savings x 5 = days to break even. If a tool costs $100/mo and saves $280/week, you break even in under 2 days per month.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Hidden Costs</summary>
+<div class="flash-back">The costs most people forget: setup time (often 4-10 hours), employee training, integration development, ongoing prompt maintenance, and the productivity dip during the learning curve. Add 20-30% to your cost estimate.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Conservative vs Aggressive Estimate</summary>
+<div class="flash-back">Conservative: 25-35% automation rate, 6-week ramp. Aggressive: 50-70% automation rate, immediate productivity. Always present the conservative number to stakeholders and be pleasantly surprised when you beat it.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -114,7 +132,99 @@
   <h2 class="section-title">Calculate these scenarios.</h2>
   <p class="section-text">Five real math problems. These are the kinds of calculations you will need to make when evaluating AI tools for your business. Work through each one — the numbers are the point, not the arithmetic.</p>
 
-  <div data-learn="QuizMC" data-props='{"title":"ROI Math Scenarios","questions":[{"q":"You spend 15 hrs/week on email management at $40/hr. An AI email tool costs $20/month and saves 40% of that time. What is the net annual savings?","options":["$10,212","$12,240","$12,000","$10,000"],"correct":0,"explanation":"15 hrs x 40% = 6 hrs saved/week. 6 x $40 x 52 = $12,480 gross savings. Minus $240/year tool cost = $12,240. Wait — that is answer B. Let us recheck: $12,480 - $240 = $12,240. The closest correct answer is $12,240. Net annual savings = $12,240."},{"q":"Your support team spends 30 hrs/week on tickets at $25/hr. AI handles 50% of tickets. Tool costs $300/mo. What is the annual net savings?","options":["$15,900","$19,500","$16,100","$22,500"],"correct":0,"explanation":"30 hrs x 50% = 15 hrs saved/week. 15 x $25 x 52 = $19,500 gross. Minus $3,600/year tool cost = $15,900 net annual savings. ROI = 442%."},{"q":"A tool costs $99/month. It saves your team 3 hours per week at $50/hr. What is the approximate payback period (days per month to break even)?","options":["About 4 days","About 8 days","About 12 days","About 2 days"],"correct":1,"explanation":"Weekly savings = 3 x $50 = $150/week = $30/day. Monthly tool cost = $99. Days to break even = $99 / $30 = 3.3 days. The closest answer is about 4 days — but option A is most correct here. At $30/day savings, you recover $99 in about 3-4 working days each month."},{"q":"You want 300% ROI on an AI investment. Your tool costs $500/year. What is the minimum annual savings needed?","options":["$1,000","$1,500","$2,000","$2,500"],"correct":2,"explanation":"300% ROI means net savings = 3x the tool cost. $500 x 3 = $1,500 net savings. But net savings = gross savings minus costs. So gross savings needed = $1,500 + $500 = $2,000. You need $2,000 in gross annual savings to hit 300% ROI on a $500 tool."},{"q":"You are evaluating two AI tools. Tool A: $50/mo, saves 2 hrs/week. Tool B: $200/mo, saves 6 hrs/week. Your labor rate is $45/hr. Which has the better annual ROI?","options":["Tool A — lower cost, decent return","Tool B — higher savings outweigh the cost","They are exactly equal","Cannot be determined without more data"],"correct":1,"explanation":"Tool A: 2 x $45 x 52 = $4,680 gross - $600 = $4,080 net. ROI = 680%. Tool B: 6 x $45 x 52 = $14,040 gross - $2,400 = $11,640 net. ROI = 485%. Tool A has better ROI percentage — but Tool B generates far more total value ($11,640 vs $4,080). If you can afford both, buy both. If you must choose one, Tool B delivers more total savings."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">ROI Math Scenarios</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>You spend 15 hrs/week on email management at $40/hr. An AI email tool costs $20/month and saves 40% of that time. What is the net annual savings?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>$10,212
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>$12,240
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>$12,000
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>$10,000
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> 15 hrs x 40% = 6 hrs saved/week. 6 x $40 x 52 = $12,480 gross savings. Minus $240/year tool cost = $12,240. Wait — that is answer B. Let us recheck: $12,480 - $240 = $12,240. The closest correct answer is $12,240. Net annual savings = $12,240.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Your support team spends 30 hrs/week on tickets at $25/hr. AI handles 50% of tickets. Tool costs $300/mo. What is the annual net savings?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>$15,900
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>$19,500
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>$16,100
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>$22,500
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> 30 hrs x 50% = 15 hrs saved/week. 15 x $25 x 52 = $19,500 gross. Minus $3,600/year tool cost = $15,900 net annual savings. ROI = 442%.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>A tool costs $99/month. It saves your team 3 hours per week at $50/hr. What is the approximate payback period (days per month to break even)?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>About 4 days
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>About 8 days
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>About 12 days
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>About 2 days
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Weekly savings = 3 x $50 = $150/week = $30/day. Monthly tool cost = $99. Days to break even = $99 / $30 = 3.3 days. The closest answer is about 4 days — but option A is most correct here. At $30/day savings, you recover $99 in about 3-4 working days each month.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>You want 300% ROI on an AI investment. Your tool costs $500/year. What is the minimum annual savings needed?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>$1,000
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>$1,500
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>$2,000
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>$2,500
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> 300% ROI means net savings = 3x the tool cost. $500 x 3 = $1,500 net savings. But net savings = gross savings minus costs. So gross savings needed = $1,500 + $500 = $2,000. You need $2,000 in gross annual savings to hit 300% ROI on a $500 tool.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>You are evaluating two AI tools. Tool A: $50/mo, saves 2 hrs/week. Tool B: $200/mo, saves 6 hrs/week. Your labor rate is $45/hr. Which has the better annual ROI?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Tool A — lower cost, decent return
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Tool B — higher savings outweigh the cost
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>They are exactly equal
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Cannot be determined without more data
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Tool A: 2 x $45 x 52 = $4,680 gross - $600 = $4,080 net. ROI = 680%. Tool B: 6 x $45 x 52 = $14,040 gross - $2,400 = $11,640 net. ROI = 485%. Tool A has better ROI percentage — but Tool B generates far more total value ($11,640 vs $4,080). If you can afford both, buy both. If you must choose one, Tool B delivers more total savings.</div>
+</div>
+</div>
 </div>
 
 <div class="lesson-section">

@@ -244,9 +244,105 @@ has_critical = <span style="color:#34d399">any</span>(i[<span style="color:#fbbf
 </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Prompt Engineering Techniques","cards":[{"front":"Haiku format specification","back":"Specify exact syllable structure (5-7-5) AND the required word. Ambiguous format instructions lead to off-spec outputs. Name the format, define the constraints, specify required content."},{"front":"JSON-only output prompt","back":"Tell Claude to output ONLY JSON with no explanation and no markdown code blocks. Define the exact field names you want. Use temperature=0 and low max_tokens for consistency."},{"front":"Tone transformation","back":"Specify the target tone, the target audience, and any honesty constraints — e.g., optimistic for investors without fabricating data. The honesty constraint is what makes it production-safe."},{"front":"Constrained code review","back":"Request ONLY bullet points with NO corrected code and a max of one sentence per issue. Add severity tags [CRITICAL/WARNING/INFO]. Format constraints prevent over-verbose responses."},{"front":"Persona lock","back":"Set a persistent character identity with \"always stay in character\" as an explicit instruction. Combine with domain accuracy requirements so the persona doesn\u0027t compromise factual correctness."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Prompt Engineering Techniques</h3>
+<details class="flash-card">
+<summary class="flash-front">Haiku format specification</summary>
+<div class="flash-back">Specify exact syllable structure (5-7-5) AND the required word. Ambiguous format instructions lead to off-spec outputs. Name the format, define the constraints, specify required content.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">JSON-only output prompt</summary>
+<div class="flash-back">Tell Claude to output ONLY JSON with no explanation and no markdown code blocks. Define the exact field names you want. Use temperature=0 and low max_tokens for consistency.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Tone transformation</summary>
+<div class="flash-back">Specify the target tone, the target audience, and any honesty constraints — e.g., optimistic for investors without fabricating data. The honesty constraint is what makes it production-safe.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Constrained code review</summary>
+<div class="flash-back">Request ONLY bullet points with NO corrected code and a max of one sentence per issue. Add severity tags [CRITICAL/WARNING/INFO]. Format constraints prevent over-verbose responses.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Persona lock</summary>
+<div class="flash-back">Set a persistent character identity with "always stay in character" as an explicit instruction. Combine with domain accuracy requirements so the persona doesn't compromise factual correctness.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Prompt Engineering Challenge Review","questions":[{"q":"You want Claude to output ONLY a valid JSON object from a sentence, no prose, no markdown. Which instruction set is correct?","options":["Parse this sentence","Convert to JSON format please","Output ONLY valid JSON. No explanation. No markdown code blocks. Fields: name, age, city, occupation.","Give me the JSON if possible"],"correct":2,"explanation":"You need three things: ONLY keyword to suppress prose, no explanation to prevent narration, and no markdown to prevent code fences. Specifying exact field names removes ambiguity. This is directly usable in production code."},{"q":"For the tone transformer challenge, what constraint separates good prompts from great ones?","options":["Using more formal vocabulary","Specifying the target audience (investors)","Adding the honesty constraint — optimistic without lying or fabricating","Making the rewrite shorter"],"correct":2,"explanation":"Specifying both the tone AND the honesty constraint (optimistic but truthful, without fabricating data) is what makes a tone prompt production-safe. Without the honesty constraint, Claude might exaggerate numbers to match the requested tone."},{"q":"You want Claude to review code but NOT show the corrected version. What is the key constraint?","options":["Set temperature to 0","Say please only show issues","Explicitly state: do NOT provide corrected code, output ONLY bullet points","Use Haiku instead of Sonnet"],"correct":2,"explanation":"Claude defaults to being helpful — which means it will try to fix the code for you. You need an explicit negative constraint (do NOT provide corrected code) combined with a positive format directive (ONLY bullet points) to override this default."},{"q":"To build a reliable persona that stays in character across all follow-ups, what system prompt element is essential?","options":["A very long backstory","Always stay in character as an explicit instruction","Using high temperature","Ending with a question"],"correct":1,"explanation":"Always stay in character is the critical anchor phrase. Without an explicit persistence instruction, Claude may break character when asked factual questions or faced with unusual inputs."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Prompt Engineering Challenge Review</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>You want Claude to output ONLY a valid JSON object from a sentence, no prose, no markdown. Which instruction set is correct?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Parse this sentence
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Convert to JSON format please
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Output ONLY valid JSON. No explanation. No markdown code blocks. Fields: name, age, city, occupation.
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Give me the JSON if possible
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> You need three things: ONLY keyword to suppress prose, no explanation to prevent narration, and no markdown to prevent code fences. Specifying exact field names removes ambiguity. This is directly usable in production code.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>For the tone transformer challenge, what constraint separates good prompts from great ones?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Using more formal vocabulary
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Specifying the target audience (investors)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Adding the honesty constraint — optimistic without lying or fabricating
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Making the rewrite shorter
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Specifying both the tone AND the honesty constraint (optimistic but truthful, without fabricating data) is what makes a tone prompt production-safe. Without the honesty constraint, Claude might exaggerate numbers to match the requested tone.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>You want Claude to review code but NOT show the corrected version. What is the key constraint?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Set temperature to 0
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Say please only show issues
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Explicitly state: do NOT provide corrected code, output ONLY bullet points
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Use Haiku instead of Sonnet
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Claude defaults to being helpful — which means it will try to fix the code for you. You need an explicit negative constraint (do NOT provide corrected code) combined with a positive format directive (ONLY bullet points) to override this default.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>To build a reliable persona that stays in character across all follow-ups, what system prompt element is essential?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A very long backstory
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Always stay in character as an explicit instruction
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Using high temperature
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Ending with a question
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Always stay in character is the critical anchor phrase. Without an explicit persistence instruction, Claude may break character when asked factual questions or faced with unusual inputs.</div>
+</div>
+</div>
 
 
 </div>

@@ -195,8 +195,108 @@ $$;</code></pre>
 
   <div class="divider"><span>Test Your Understanding</span></div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Hybrid Search Quiz","questions":[{"q":"A user searches for \"Section 42(b)(3)\" in a legal document database. Which search type should be weighted higher?","options":["Pure semantic search — it understands legal concepts","Keyword search — the exact statute reference must match precisely","Neither — a full-text scan is better for legal documents","Equal weighting always produces the best results"],"correct":1,"explanation":"Exact identifiers like statute numbers, error codes, and product IDs require precise keyword matching. A semantic search might find related legal concepts but miss the specific section."},{"q":"What does the alpha parameter control in hybrid search?","options":["The number of results to return","The balance between keyword and semantic score contributions","The embedding model dimensions","The chunk size used during indexing"],"correct":1,"explanation":"Alpha (0 to 1) is the weight given to semantic vs keyword scores. Alpha=0 is pure keyword, alpha=1 is pure semantic, alpha=0.5 is equal weighting."},{"q":"What is Reciprocal Rank Fusion (RRF)?","options":["A way to compress vectors","An alternative to alpha weighting that merges ranked lists by position rather than raw scores","A technique for generating embeddings","A method for chunking documents"],"correct":1,"explanation":"RRF combines results from keyword and vector search by their rank positions rather than raw scores. This avoids the problem of normalizing scores from different systems and is simpler to implement than alpha-weighted fusion."},{"q":"A user queries \"how to fix React rendering bugs.\" What alpha value is best?","options":["alpha=0.0 — pure keyword","alpha=0.3 — mostly keyword","alpha=0.7 — mostly semantic","alpha=1.0 — pure semantic"],"correct":2,"explanation":"This is a conceptual \"how to\" question that benefits from semantic understanding (finding pages about debugging and performance), but \"React\" and \"rendering\" are specific terms that keyword matching should catch. A higher semantic weight (0.7) with some keyword backing is ideal."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Hybrid Search Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>A user searches for "Section 42(b)(3)" in a legal document database. Which search type should be weighted higher?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Pure semantic search — it understands legal concepts
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Keyword search — the exact statute reference must match precisely
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Neither — a full-text scan is better for legal documents
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Equal weighting always produces the best results
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Exact identifiers like statute numbers, error codes, and product IDs require precise keyword matching. A semantic search might find related legal concepts but miss the specific section.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What does the alpha parameter control in hybrid search?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The number of results to return
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The balance between keyword and semantic score contributions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The embedding model dimensions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The chunk size used during indexing
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Alpha (0 to 1) is the weight given to semantic vs keyword scores. Alpha=0 is pure keyword, alpha=1 is pure semantic, alpha=0.5 is equal weighting.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is Reciprocal Rank Fusion (RRF)?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A way to compress vectors
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>An alternative to alpha weighting that merges ranked lists by position rather than raw scores
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A technique for generating embeddings
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A method for chunking documents
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> RRF combines results from keyword and vector search by their rank positions rather than raw scores. This avoids the problem of normalizing scores from different systems and is simpler to implement than alpha-weighted fusion.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>A user queries "how to fix React rendering bugs." What alpha value is best?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>alpha=0.0 — pure keyword
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>alpha=0.3 — mostly keyword
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>alpha=0.7 — mostly semantic
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>alpha=1.0 — pure semantic
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> This is a conceptual "how to" question that benefits from semantic understanding (finding pages about debugging and performance), but "React" and "rendering" are specific terms that keyword matching should catch. A higher semantic weight (0.7) with some keyword backing is ideal.</div>
+</div>
+</div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"Hybrid Search Vocabulary","cards":[{"front":"BM25","back":"Best Match 25 — a classic keyword relevance algorithm that scores documents based on term frequency and inverse document frequency. The keyword side of hybrid search."},{"front":"Alpha Weight","back":"The parameter (0-1) controlling semantic vs keyword balance. Alpha=0 = pure keyword. Alpha=1 = pure semantic. Most production systems: 0.4-0.7."},{"front":"Sparse Vector","back":"A high-dimensional vector with mostly zero values, representing keyword presence. Used in sparse-dense hybrid approaches (e.g., Pinecone)."},{"front":"Dense Vector","back":"A compact vector where all dimensions have values — the standard embedding output. Captures semantic meaning."},{"front":"Reciprocal Rank Fusion (RRF)","back":"Merges keyword and semantic ranked lists by combining rank positions (1/(k+rank)) rather than raw scores. Avoids score normalization issues."},{"front":"tsvector (PostgreSQL)","back":"PostgreSQL\u0027s built-in full-text search data type. Stores a sorted list of normalized lexemes for efficient keyword matching with the @@ operator."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Hybrid Search Vocabulary</h3>
+<details class="flash-card">
+<summary class="flash-front">BM25</summary>
+<div class="flash-back">Best Match 25 — a classic keyword relevance algorithm that scores documents based on term frequency and inverse document frequency. The keyword side of hybrid search.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Alpha Weight</summary>
+<div class="flash-back">The parameter (0-1) controlling semantic vs keyword balance. Alpha=0 = pure keyword. Alpha=1 = pure semantic. Most production systems: 0.4-0.7.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Sparse Vector</summary>
+<div class="flash-back">A high-dimensional vector with mostly zero values, representing keyword presence. Used in sparse-dense hybrid approaches (e.g., Pinecone).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Dense Vector</summary>
+<div class="flash-back">A compact vector where all dimensions have values — the standard embedding output. Captures semantic meaning.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Reciprocal Rank Fusion (RRF)</summary>
+<div class="flash-back">Merges keyword and semantic ranked lists by combining rank positions (1/(k+rank)) rather than raw scores. Avoids score normalization issues.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">tsvector (PostgreSQL)</summary>
+<div class="flash-back">PostgreSQL's built-in full-text search data type. Stores a sorted list of normalized lexemes for efficient keyword matching with the @@ operator.</div>
+</details>
+</div>
 
 </div>

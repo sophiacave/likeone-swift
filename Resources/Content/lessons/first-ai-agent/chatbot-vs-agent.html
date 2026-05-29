@@ -196,6 +196,110 @@ tools = [<span style="color:#71717a"># your tool definitions here</span>]
     </div>
   </div>
 
-<div data-learn="QuizMC" data-props='{"title":"Chatbot or Agent?","questions":[{"q":"I ask ChatGPT to write an email. It writes it and shows it to me. I copy-paste it into Gmail myself. What is this?","options":["Agent — it processed my request","Chatbot — it only generated text, I took the action","Agent — it used memory","Chatbot — it required voice input"],"correct":1,"explanation":"The AI just generated text — it did not send it, track it, or follow up. You had to do the action. That is a chatbot pattern."},{"q":"An AI system monitors a website every hour. If it detects downtime, it restarts the server, checks if it worked, and pages the engineer if not. What is this?","options":["Chatbot — it answers questions about the website","Agent — it perceives, decides, acts, and loops","Chatbot — it runs on a schedule","Agent — only because it sends notifications"],"correct":1,"explanation":"It perceives (monitors), thinks (is it down?), acts (restart), observes (did it work?), and escalates. Full agent loop with error handling."},{"q":"Which of the three requirements for agency does a Gmail filter lack?","options":["Tools — it cannot take actions","Memory — it cannot remember past emails","A reasoning loop — it follows fixed rules without AI decision-making","All three"],"correct":2,"explanation":"A Gmail filter has tools (apply label, forward) and basic memory (filter rules persist). But it has no reasoning loop — it follows fixed if/then rules without thinking. Add AI reasoning and it becomes an agent."},{"q":"What is the most important difference between a chatbot and an agent?","options":["Agents are more expensive to run","Agents use better models","Agents take real-world actions through tools in an autonomous loop","Agents have prettier interfaces"],"correct":2,"explanation":"The core distinction is action + autonomy. A chatbot generates text. An agent uses tools to change the world and loops until the goal is met. The model can be the same — the architecture is what differs."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Chatbot or Agent?</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>I ask ChatGPT to write an email. It writes it and shows it to me. I copy-paste it into Gmail myself. What is this?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Agent — it processed my request
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Chatbot — it only generated text, I took the action
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Agent — it used memory
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Chatbot — it required voice input
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The AI just generated text — it did not send it, track it, or follow up. You had to do the action. That is a chatbot pattern.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>An AI system monitors a website every hour. If it detects downtime, it restarts the server, checks if it worked, and pages the engineer if not. What is this?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Chatbot — it answers questions about the website
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Agent — it perceives, decides, acts, and loops
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Chatbot — it runs on a schedule
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Agent — only because it sends notifications
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> It perceives (monitors), thinks (is it down?), acts (restart), observes (did it work?), and escalates. Full agent loop with error handling.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Which of the three requirements for agency does a Gmail filter lack?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Tools — it cannot take actions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Memory — it cannot remember past emails
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A reasoning loop — it follows fixed rules without AI decision-making
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>All three
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A Gmail filter has tools (apply label, forward) and basic memory (filter rules persist). But it has no reasoning loop — it follows fixed if/then rules without thinking. Add AI reasoning and it becomes an agent.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What is the most important difference between a chatbot and an agent?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Agents are more expensive to run
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Agents use better models
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Agents take real-world actions through tools in an autonomous loop
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Agents have prettier interfaces
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The core distinction is action + autonomy. A chatbot generates text. An agent uses tools to change the world and loops until the goal is met. The model can be the same — the architecture is what differs.</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Chatbot vs Agent Key Concepts","cards":[{"front":"What is a chatbot?","back":"A system that takes a single input and returns a single output. No memory, no actions, no loop. You ask, it answers, done."},{"front":"What is an agent?","back":"A system that perceives input, reasons about goals, takes actions via tools, observes results, and loops autonomously until the goal is met."},{"front":"The three requirements for agency","back":"(1) Tools — the ability to take real actions. (2) Memory — the ability to remember past results. (3) A loop — the ability to call the LLM multiple times, feeding results back in."},{"front":"What is the agent loop?","back":"Perceive → Think → Act → Observe → Learn — the continuous cycle that separates agents from chatbots. The loop runs until the goal is achieved or a stop condition is hit."},{"front":"Why do agents need tools?","back":"Tools let agents take real actions in the world — sending emails, querying databases, calling APIs. Without tools, the AI can only generate text."},{"front":"Why do agents need memory?","back":"Memory lets agents build on previous actions. Without memory, every loop starts from scratch. With memory, the agent accumulates knowledge and avoids repeating mistakes."},{"front":"The chatbot-to-agent spectrum","back":"Text only → + Tools (can act once) → + Memory (learns) → + Loop (works until done) → Full Agent (autonomous). Each addition moves the system closer to true agency."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Chatbot vs Agent Key Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">What is a chatbot?</summary>
+<div class="flash-back">A system that takes a single input and returns a single output. No memory, no actions, no loop. You ask, it answers, done.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is an agent?</summary>
+<div class="flash-back">A system that perceives input, reasons about goals, takes actions via tools, observes results, and loops autonomously until the goal is met.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The three requirements for agency</summary>
+<div class="flash-back">(1) Tools — the ability to take real actions. (2) Memory — the ability to remember past results. (3) A loop — the ability to call the LLM multiple times, feeding results back in.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the agent loop?</summary>
+<div class="flash-back">Perceive → Think → Act → Observe → Learn — the continuous cycle that separates agents from chatbots. The loop runs until the goal is achieved or a stop condition is hit.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why do agents need tools?</summary>
+<div class="flash-back">Tools let agents take real actions in the world — sending emails, querying databases, calling APIs. Without tools, the AI can only generate text.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why do agents need memory?</summary>
+<div class="flash-back">Memory lets agents build on previous actions. Without memory, every loop starts from scratch. With memory, the agent accumulates knowledge and avoids repeating mistakes.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The chatbot-to-agent spectrum</summary>
+<div class="flash-back">Text only → + Tools (can act once) → + Memory (learns) → + Loop (works until done) → Full Agent (autonomous). Each addition moves the system closer to true agency.</div>
+</details>
+</div>

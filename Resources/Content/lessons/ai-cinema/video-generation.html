@@ -202,8 +202,68 @@ If a shot fails on any criterion, diagnose which parameter to adjust before rege
 Never regenerate without changing something. Each attempt should test a specific hypothesis about what will improve the output.
 </div>
 
-<div data-learn="QuizMC" data-props='{"questions": [{"q": "When using image-to-video generation, what should the text prompt describe?", "options": ["Everything visible in the frame including composition and lighting", "Only what should CHANGE -- movement, expression shifts, and camera motion", "The emotional tone and narrative context of the scene", "Technical specifications like resolution and frame rate"], "correct": 1, "explanation": "The correct answer is: Only what should CHANGE -- movement, expression shifts, and camera motion"}, {"q": "Which platform is recommended for long establishing shots?", "options": ["Pika 2.0 (cheapest per clip)", "Runway Gen-4 (best cinematic quality)", "Kling 2.0 (best motion consistency)", "Google Veo 3 (longest clip duration up to 16 seconds)"], "correct": 3, "explanation": "The correct answer is: Google Veo 3 (longest clip duration up to 16 seconds)"}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>When using image-to-video generation, what should the text prompt describe?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Everything visible in the frame including composition and lighting
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Only what should CHANGE -- movement, expression shifts, and camera motion
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The emotional tone and narrative context of the scene
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Technical specifications like resolution and frame rate
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: Only what should CHANGE -- movement, expression shifts, and camera motion</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Which platform is recommended for long establishing shots?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Pika 2.0 (cheapest per clip)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Runway Gen-4 (best cinematic quality)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Kling 2.0 (best motion consistency)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Google Veo 3 (longest clip duration up to 16 seconds)
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: Google Veo 3 (longest clip duration up to 16 seconds)</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What is the expected success rate for first-attempt video generation?", "back": "30-40%. Professional AI filmmakers budget for 2-4 attempts per shot. Never regenerate without changing a specific parameter."}, {"front": "Why should you use multiple video platforms in the same project?", "back": "Each platform excels at different shot types: Veo for long establishing shots, Runway for character close-ups, Kling for action sequences, Pika for cheap transition shots."}, {"front": "What is the key difference between text-to-video and image-to-video workflows?", "back": "Image-to-video separates composition (handled by the input image) from motion (handled by the prompt), giving independent control over both and much more predictable results."}, {"front": "How do Kling and Runway prompt styles differ?", "back": "Kling responds to descriptive, narrative prompts. Runway responds better to concise, technical camera direction. Each platform has its own prompt dialect."}, {"front": "What should you do before regenerating a failed shot?", "back": "Diagnose which specific parameter to adjust. Common fixes: reduce motion strength, use stronger reference image, switch camera presets, adjust color terms, or switch platforms."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Vocabulary</h3>
+<details class="flash-card">
+<summary class="flash-front">What is the expected success rate for first-attempt video generation?</summary>
+<div class="flash-back">30-40%. Professional AI filmmakers budget for 2-4 attempts per shot. Never regenerate without changing a specific parameter.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why should you use multiple video platforms in the same project?</summary>
+<div class="flash-back">Each platform excels at different shot types: Veo for long establishing shots, Runway for character close-ups, Kling for action sequences, Pika for cheap transition shots.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the key difference between text-to-video and image-to-video workflows?</summary>
+<div class="flash-back">Image-to-video separates composition (handled by the input image) from motion (handled by the prompt), giving independent control over both and much more predictable results.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do Kling and Runway prompt styles differ?</summary>
+<div class="flash-back">Kling responds to descriptive, narrative prompts. Runway responds better to concise, technical camera direction. Each platform has its own prompt dialect.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What should you do before regenerating a failed shot?</summary>
+<div class="flash-back">Diagnose which specific parameter to adjust. Common fixes: reduce motion strength, use stronger reference image, switch camera presets, adjust color terms, or switch platforms.</div>
+</details>
+</div>
 
 </div>

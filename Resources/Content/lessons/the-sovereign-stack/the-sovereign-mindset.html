@@ -86,13 +86,95 @@ The journey starts with your first local model.</code></div>
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"The Sovereign Mindset","cards":[{"front":"The Rental Trap","back":"Building your business on rented AI infrastructure. Your data flows through their servers, your costs are set by their pricing, your access can be revoked by their ToS. Convenient until it is catastrophic."},{"front":"The Sovereignty Spectrum","back":"Level 0: fully dependent (all cloud). Level 1: fallback capable (local basics). Level 2: cloud-optional (80% local). Level 3: fully sovereign (all local). Target: Level 2 -- sovereign enough to survive, practical enough to thrive."},{"front":"The Sovereign Stack","back":"Local AI models (Ollama), sovereign brain (SQLite/Postgres you own), automation agents (on your hardware), cloud API (optional, strategic). All components under your control."},{"front":"The Economics","back":"Cloud: $300/month scaling linearly. Sovereign: $600 one-time + $5/month electricity. Hybrid (80/20): $18/month. Sovereignty pays for itself in 2 months."},{"front":"When Cloud Is Right","back":"Complex reasoning (frontier models), burst capacity (sudden spikes), specific capabilities (vision, long context). Use cloud strategically, not dependently. The test: would your business survive without it?"},{"front":"Data Sovereignty","back":"Local models keep data on your network. No third party sees customer data, financial records, or strategic plans. Essential for regulated industries (HIPAA, GDPR, SOC2)."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">The Sovereign Mindset</h3>
+<details class="flash-card">
+<summary class="flash-front">The Rental Trap</summary>
+<div class="flash-back">Building your business on rented AI infrastructure. Your data flows through their servers, your costs are set by their pricing, your access can be revoked by their ToS. Convenient until it is catastrophic.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Sovereignty Spectrum</summary>
+<div class="flash-back">Level 0: fully dependent (all cloud). Level 1: fallback capable (local basics). Level 2: cloud-optional (80% local). Level 3: fully sovereign (all local). Target: Level 2 -- sovereign enough to survive, practical enough to thrive.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Sovereign Stack</summary>
+<div class="flash-back">Local AI models (Ollama), sovereign brain (SQLite/Postgres you own), automation agents (on your hardware), cloud API (optional, strategic). All components under your control.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Economics</summary>
+<div class="flash-back">Cloud: $300/month scaling linearly. Sovereign: $600 one-time + $5/month electricity. Hybrid (80/20): $18/month. Sovereignty pays for itself in 2 months.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">When Cloud Is Right</summary>
+<div class="flash-back">Complex reasoning (frontier models), burst capacity (sudden spikes), specific capabilities (vision, long context). Use cloud strategically, not dependently. The test: would your business survive without it?</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Data Sovereignty</summary>
+<div class="flash-back">Local models keep data on your network. No third party sees customer data, financial records, or strategic plans. Essential for regulated industries (HIPAA, GDPR, SOC2).</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">The sovereign mindset quiz.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"The Sovereign Mindset","questions":[{"q":"What is the sovereignty spectrum target for most businesses?","options":["Level 0: fully cloud-dependent for maximum convenience","Level 2: cloud-optional -- local models handle 80% of needs, cloud APIs used strategically for complex tasks","Level 3: fully sovereign with zero cloud usage ever","Level 1: local fallback only for emergencies"],"correct":1,"explanation":"Level 2 is the sweet spot. You are sovereign enough to survive without cloud (your business does not break if an API goes down) but practical enough to use cloud APIs when they add value for complex tasks. Level 3 is possible but sacrifices the benefits of frontier models."},{"q":"Why is the hybrid approach (80% local, 20% cloud) cost-effective?","options":["Cloud APIs are free for low usage","Local models run 80% of requests at near-zero marginal cost after the hardware investment, while cloud handles only the complex 20% -- reducing monthly AI spend by 90%+","Hybrid billing gets a discount from cloud providers","Local models are always faster than cloud models"],"correct":1,"explanation":"The math: 1,000 daily requests all on cloud = $300/month. 800 locally (free after hardware) + 200 on cloud = $18/month. The hardware cost ($600) pays for itself in under 2 months. After that, you save $280+ every month indefinitely."},{"q":"What is the sovereignty test for a business?","options":["Can the business run without any AI at all?","If all cloud AI services disappeared tomorrow, would the business survive -- degraded but functional?","Does the business own its own data centers?","Has the business trained its own foundation model?"],"correct":1,"explanation":"Sovereignty is not about eliminating cloud. It is about not being dependent on it. If your cloud AI disappears and your business breaks completely, you are dependent. If it degrades but keeps running on local models, you are sovereign."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">The Sovereign Mindset</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the sovereignty spectrum target for most businesses?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Level 0: fully cloud-dependent for maximum convenience
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Level 2: cloud-optional -- local models handle 80% of needs, cloud APIs used strategically for complex tasks
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Level 3: fully sovereign with zero cloud usage ever
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Level 1: local fallback only for emergencies
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Level 2 is the sweet spot. You are sovereign enough to survive without cloud (your business does not break if an API goes down) but practical enough to use cloud APIs when they add value for complex tasks. Level 3 is possible but sacrifices the benefits of frontier models.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why is the hybrid approach (80% local, 20% cloud) cost-effective?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Cloud APIs are free for low usage
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Local models run 80% of requests at near-zero marginal cost after the hardware investment, while cloud handles only the complex 20% -- reducing monthly AI spend by 90%+
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Hybrid billing gets a discount from cloud providers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Local models are always faster than cloud models
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The math: 1,000 daily requests all on cloud = $300/month. 800 locally (free after hardware) + 200 on cloud = $18/month. The hardware cost ($600) pays for itself in under 2 months. After that, you save $280+ every month indefinitely.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the sovereignty test for a business?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Can the business run without any AI at all?
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>If all cloud AI services disappeared tomorrow, would the business survive -- degraded but functional?
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Does the business own its own data centers?
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Has the business trained its own foundation model?
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Sovereignty is not about eliminating cloud. It is about not being dependent on it. If your cloud AI disappears and your business breaks completely, you are dependent. If it degrades but keeps running on local models, you are sovereign.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

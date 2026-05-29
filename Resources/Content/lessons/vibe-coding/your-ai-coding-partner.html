@@ -56,7 +56,47 @@
   <h2 class="section-title">Which one should you pick?</h2>
   <p class="section-text">Do not overthink this. Pick the one that matches where you are right now. You can always switch later.</p>
 
-<div data-learn="FlashDeck" data-props='{"title":"Pick Your Tool","cards":[{"front":"I have never written a line of code.\n\nI want to start building TODAY.\n\nI do not want to install anything.","back":"Start with Replit.\n\nOpen replit.com in your browser, describe what you want to build, and watch it appear. Zero setup. Zero installation. You can always graduate to more powerful tools later."},{"front":"I am curious about code.\n\nI want to see what AI is writing.\n\nI want to learn while I build.","back":"Start with Cursor.\n\nCursor shows you the code as AI writes it. You can ask questions about any line. It is the best tool for people who want to understand what is happening under the hood while still moving fast."},{"front":"I have some technical comfort.\n\nI want maximum power.\n\nI am building something serious.","back":"Start with Claude Code.\n\nClaude Code is the most autonomous option. It reads your entire project, makes changes across multiple files, runs tests, and handles complex tasks. It is the closest thing to having a developer on your team."},{"front":"I honestly have no idea.\n\nJust tell me what to do.","back":"Start with Replit.\n\nSeriously. It is the lowest friction way to experience vibe coding. Build something small. Feel the magic. Then decide if you want more power. You will know when you are ready to level up."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Pick Your Tool</h3>
+<details class="flash-card">
+<summary class="flash-front">I have never written a line of code.
+
+I want to start building TODAY.
+
+I do not want to install anything.</summary>
+<div class="flash-back">Start with Replit.
+
+Open replit.com in your browser, describe what you want to build, and watch it appear. Zero setup. Zero installation. You can always graduate to more powerful tools later.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">I am curious about code.
+
+I want to see what AI is writing.
+
+I want to learn while I build.</summary>
+<div class="flash-back">Start with Cursor.
+
+Cursor shows you the code as AI writes it. You can ask questions about any line. It is the best tool for people who want to understand what is happening under the hood while still moving fast.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">I have some technical comfort.
+
+I want maximum power.
+
+I am building something serious.</summary>
+<div class="flash-back">Start with Claude Code.
+
+Claude Code is the most autonomous option. It reads your entire project, makes changes across multiple files, runs tests, and handles complex tasks. It is the closest thing to having a developer on your team.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">I honestly have no idea.
+
+Just tell me what to do.</summary>
+<div class="flash-back">Start with Replit.
+
+Seriously. It is the lowest friction way to experience vibe coding. Build something small. Feel the magic. Then decide if you want more power. You will know when you are ready to level up.</div>
+</details>
+</div>
 
 </div>
 
@@ -125,7 +165,63 @@
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
 
-<div data-learn="QuizMC" data-props='{"questions":[{"q":"Which AI coding tool requires zero installation and runs entirely in your browser?","options":["Claude Code","Cursor","Replit","VS Code"],"correct":2,"explanation":"Replit runs entirely in your browser. No downloads, no installation, no terminal. Just open the website and start building."},{"q":"What is the main advantage of an editor-based tool like Cursor?","options":["It is the fastest option","You can see and understand the code as AI writes it","It does not require an internet connection","It is completely free forever"],"correct":1,"explanation":"Cursor shows you the code as it is written, letting you learn and maintain control. It is the best balance of speed and understanding."},{"q":"If you have never coded before and want to build something today, which tool should you start with?","options":["Claude Code in the terminal","A traditional code editor with no AI","Replit in your browser","Download and compile a C++ framework"],"correct":2,"explanation":"Replit has the lowest barrier to entry. Zero setup, zero installation, and you can go from description to working app in minutes."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which AI coding tool requires zero installation and runs entirely in your browser?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Claude Code
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Cursor
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Replit
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>VS Code
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Replit runs entirely in your browser. No downloads, no installation, no terminal. Just open the website and start building.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the main advantage of an editor-based tool like Cursor?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is the fastest option
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>You can see and understand the code as AI writes it
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It does not require an internet connection
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It is completely free forever
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Cursor shows you the code as it is written, letting you learn and maintain control. It is the best balance of speed and understanding.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>If you have never coded before and want to build something today, which tool should you start with?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Claude Code in the terminal
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A traditional code editor with no AI
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Replit in your browser
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Download and compile a C++ framework
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Replit has the lowest barrier to entry. Zero setup, zero installation, and you can go from description to working app in minutes.</div>
+</div>
+</div>
 
 </div>
 
@@ -134,7 +230,33 @@
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
 
-<div data-learn="FlashDeck" data-props='{"title":"AI Coding Tools","cards":[{"front":"What is Claude Code?","back":"A terminal-based AI coding agent from Anthropic. It reads your entire project, writes code across multiple files, and runs commands autonomously. Most powerful option."},{"front":"What is Cursor?","back":"A code editor with AI built in. You see files and code while AI suggests changes inline. Best for learning while building."},{"front":"What is Replit?","back":"A browser-based coding platform with AI agent mode. Zero installation. Describe what you want and it builds it. Best for beginners."},{"front":"What are the three modes of AI coding?","back":"Chat-based (Replit), Editor-based (Cursor), and Terminal-based (Claude Code). Each offers different levels of control and autonomy."},{"front":"Which tool should a complete beginner choose?","back":"Replit. Zero setup, runs in browser, and you can go from description to working app in minutes."},{"front":"Can you switch tools later?","back":"Yes. The skills you learn — describing features, reviewing results, iterating — transfer to any AI coding tool."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">AI Coding Tools</h3>
+<details class="flash-card">
+<summary class="flash-front">What is Claude Code?</summary>
+<div class="flash-back">A terminal-based AI coding agent from Anthropic. It reads your entire project, writes code across multiple files, and runs commands autonomously. Most powerful option.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is Cursor?</summary>
+<div class="flash-back">A code editor with AI built in. You see files and code while AI suggests changes inline. Best for learning while building.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is Replit?</summary>
+<div class="flash-back">A browser-based coding platform with AI agent mode. Zero installation. Describe what you want and it builds it. Best for beginners.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are the three modes of AI coding?</summary>
+<div class="flash-back">Chat-based (Replit), Editor-based (Cursor), and Terminal-based (Claude Code). Each offers different levels of control and autonomy.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Which tool should a complete beginner choose?</summary>
+<div class="flash-back">Replit. Zero setup, runs in browser, and you can go from description to working app in minutes.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Can you switch tools later?</summary>
+<div class="flash-back">Yes. The skills you learn — describing features, reviewing results, iterating — transfer to any AI coding tool.</div>
+</details>
+</div>
 
 </div>
 

@@ -246,9 +246,109 @@ server.tool(<span class="str">"get_weather"</span>, {
     </div>
   </div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Real-World Servers Quiz","questions":[{"q":"The GitHub MCP server uses which authentication mechanism for secure access?","options":["Username and password stored in config","Fine-grained personal access tokens","SSH keys embedded in the server binary","No authentication — GitHub API is public"],"correct":1,"explanation":"The GitHub MCP server uses fine-grained personal access tokens (PATs). These allow scoped permissions so Claude only has access to the repositories and actions you explicitly grant."},{"q":"Which MCP server pattern is most appropriate for connecting Claude to your company internal REST API?","options":["Database Server","Memory Server","Custom API Server","Browser Server"],"correct":2,"explanation":"The Custom API Server pattern is designed exactly for this: wrap any REST or GraphQL API as MCP tools, controlling auth, rate limits, and data filtering. Your internal tools become AI-accessible through a standard interface."},{"q":"Why does a database MCP server use a connection pool instead of connecting on each tool call?","options":["Connection pools are required by the MCP protocol","Pools eliminate reconnection overhead across multiple queries","Pools provide better security than single connections","Pools are only needed for NoSQL databases"],"correct":1,"explanation":"Database connections are expensive to establish (TCP handshake, authentication, SSL negotiation). A connection pool keeps connections open and reuses them across tool calls, making queries fast and efficient."},{"q":"What is the most important security measure for a Slack MCP server with send_message capability?","options":["Using HTTPS for the Slack API","Rate limiting message frequency","Human-in-the-loop approval before sending","Encrypting message content"],"correct":2,"explanation":"The send_message tool can be triggered by prompt injection, potentially sending unintended messages to channels. Human-in-the-loop approval (confirmed parameter pattern from Lesson 9) ensures a human reviews every outgoing message before it is sent."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Real-World Servers Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>The GitHub MCP server uses which authentication mechanism for secure access?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Username and password stored in config
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Fine-grained personal access tokens
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>SSH keys embedded in the server binary
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>No authentication — GitHub API is public
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The GitHub MCP server uses fine-grained personal access tokens (PATs). These allow scoped permissions so Claude only has access to the repositories and actions you explicitly grant.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Which MCP server pattern is most appropriate for connecting Claude to your company internal REST API?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Database Server
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Memory Server
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Custom API Server
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Browser Server
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The Custom API Server pattern is designed exactly for this: wrap any REST or GraphQL API as MCP tools, controlling auth, rate limits, and data filtering. Your internal tools become AI-accessible through a standard interface.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why does a database MCP server use a connection pool instead of connecting on each tool call?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Connection pools are required by the MCP protocol
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Pools eliminate reconnection overhead across multiple queries
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Pools provide better security than single connections
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Pools are only needed for NoSQL databases
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Database connections are expensive to establish (TCP handshake, authentication, SSL negotiation). A connection pool keeps connections open and reuses them across tool calls, making queries fast and efficient.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What is the most important security measure for a Slack MCP server with send_message capability?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Using HTTPS for the Slack API
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Rate limiting message frequency
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Human-in-the-loop approval before sending
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Encrypting message content
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The send_message tool can be triggered by prompt injection, potentially sending unintended messages to channels. Human-in-the-loop approval (confirmed parameter pattern from Lesson 9) ensures a human reviews every outgoing message before it is sent.</div>
+</div>
+</div>
 
 
-  <div data-learn="FlashDeck" data-props='{"title":"Production Server Patterns","cards":[{"front":"Database Server — key capability","back":"Maintains a persistent connection pool. Claude can query, insert, update, and analyze data through natural language without reconnecting on each call."},{"front":"GitHub Server — authentication","back":"Uses fine-grained personal access tokens (PATs) with scoped permissions. You control exactly which repos and actions Claude can access. Token in env field, never in code."},{"front":"Slack Server — key risk","back":"send_message can be triggered by prompt injection. Always use human-in-the-loop approval or restrict the bot to a dedicated channel. Be very careful with write access."},{"front":"Browser Server — underlying technology","back":"Puppeteer or Playwright running a headless Chromium browser. Persistent session means cookies, login state, and page context survive across tool calls."},{"front":"Memory Server — storage patterns","back":"Stores memories as entities with relations (knowledge graph). Advanced implementations use vector embeddings for semantic search. Simpler ones use JSON files with tag-based filtering."},{"front":"Custom API Server — primary advantage","back":"Acts as an authenticated proxy. Holds API credentials securely and translates MCP tool calls into REST/GraphQL requests. Claude never sees the raw API key."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Production Server Patterns</h3>
+<details class="flash-card">
+<summary class="flash-front">Database Server — key capability</summary>
+<div class="flash-back">Maintains a persistent connection pool. Claude can query, insert, update, and analyze data through natural language without reconnecting on each call.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">GitHub Server — authentication</summary>
+<div class="flash-back">Uses fine-grained personal access tokens (PATs) with scoped permissions. You control exactly which repos and actions Claude can access. Token in env field, never in code.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Slack Server — key risk</summary>
+<div class="flash-back">send_message can be triggered by prompt injection. Always use human-in-the-loop approval or restrict the bot to a dedicated channel. Be very careful with write access.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Browser Server — underlying technology</summary>
+<div class="flash-back">Puppeteer or Playwright running a headless Chromium browser. Persistent session means cookies, login state, and page context survive across tool calls.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Memory Server — storage patterns</summary>
+<div class="flash-back">Stores memories as entities with relations (knowledge graph). Advanced implementations use vector embeddings for semantic search. Simpler ones use JSON files with tag-based filtering.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Custom API Server — primary advantage</summary>
+<div class="flash-back">Acts as an authenticated proxy. Holds API credentials securely and translates MCP tool calls into REST/GraphQL requests. Claude never sees the raw API key.</div>
+</details>
+</div>
 
 </div>

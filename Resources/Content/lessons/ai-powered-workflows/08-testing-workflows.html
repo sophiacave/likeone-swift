@@ -134,7 +134,29 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Testing Workflows","cards":[{"front":"Unit Testing","back":"Test each step in isolation. Does the classifier categorize correctly? Does the template render properly? Fix issues before they compound."},{"front":"Integration Testing","back":"Test connections between steps. Does Step A&#39;s output actually work as Step B&#39;s input? This is where most bugs hide."},{"front":"End-to-End Testing","back":"Run the entire workflow from trigger to final output with test data. Your full dress rehearsal before going live."},{"front":"Think Like a Chaos Gremlin","back":"Test with: normal data, edge cases (emoji in names), missing data (blank fields), malformed data, and extreme values ($0 orders)."},{"front":"Sandbox First, Always","back":"Use test modes religiously — Stripe test mode, email preview sends, staging databases. Never test against production until sandboxes are exhausted."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Testing Workflows</h3>
+<details class="flash-card">
+<summary class="flash-front">Unit Testing</summary>
+<div class="flash-back">Test each step in isolation. Does the classifier categorize correctly? Does the template render properly? Fix issues before they compound.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Integration Testing</summary>
+<div class="flash-back">Test connections between steps. Does Step A's output actually work as Step B's input? This is where most bugs hide.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">End-to-End Testing</summary>
+<div class="flash-back">Run the entire workflow from trigger to final output with test data. Your full dress rehearsal before going live.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Think Like a Chaos Gremlin</summary>
+<div class="flash-back">Test with: normal data, edge cases (emoji in names), missing data (blank fields), malformed data, and extreme values ($0 orders).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Sandbox First, Always</summary>
+<div class="flash-back">Use test modes religiously — Stripe test mode, email preview sends, staging databases. Never test against production until sandboxes are exhausted.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -176,7 +198,63 @@
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Lesson 8 Quiz</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Testing Workflows","questions":[{"q":"Why is testing described as insurance rather than overhead?","options":["Testing slows down development significantly","An untested workflow that sends wrong emails to 10,000 customers or corrupts records creates damage far exceeding the cost of testing","Testing is only valuable for large enterprise workflows","Testing guarantees a workflow will never fail"],"correct":1,"explanation":"Testing is the cheapest insurance you will ever buy. An untested workflow that misfires at scale — wrong emails, corrupted data, broken integrations — creates hours or days of cleanup work. Testing prevents this."},{"q":"What does thinking like a chaos gremlin mean for test data?","options":["Intentionally breaking the workflow to see what happens","Creating test cases only for the happy path where everything works","Creating test cases for normal data, edge cases, missing data, malformed data, and extreme values","Testing with very large datasets only"],"correct":2,"explanation":"Good test data covers the weird stuff, not just the ideal case. What happens with an emoji in a name field? A blank email subject? A $0 order? A date in a different timezone? If your workflow handles all five, it is ready for real-world conditions."},{"q":"What is the first rule of testing workflow environments?","options":["Always test on production data for accuracy","Never test at all — just deploy and monitor","Use sandbox and test modes religiously — never test against production data until you have exhausted every sandbox option","Only test after the workflow has been live for a week"],"correct":2,"explanation":"Every major platform offers sandbox or test modes. Stripe has test mode. Email tools have preview sends. Use them completely before touching production. A dry run that does not actually fire real actions is your first line of defense."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Testing Workflows</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why is testing described as insurance rather than overhead?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Testing slows down development significantly
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>An untested workflow that sends wrong emails to 10,000 customers or corrupts records creates damage far exceeding the cost of testing
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Testing is only valuable for large enterprise workflows
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Testing guarantees a workflow will never fail
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Testing is the cheapest insurance you will ever buy. An untested workflow that misfires at scale — wrong emails, corrupted data, broken integrations — creates hours or days of cleanup work. Testing prevents this.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What does thinking like a chaos gremlin mean for test data?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Intentionally breaking the workflow to see what happens
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Creating test cases only for the happy path where everything works
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Creating test cases for normal data, edge cases, missing data, malformed data, and extreme values
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Testing with very large datasets only
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Good test data covers the weird stuff, not just the ideal case. What happens with an emoji in a name field? A blank email subject? A $0 order? A date in a different timezone? If your workflow handles all five, it is ready for real-world conditions.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the first rule of testing workflow environments?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Always test on production data for accuracy
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Never test at all — just deploy and monitor
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Use sandbox and test modes religiously — never test against production data until you have exhausted every sandbox option
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Only test after the workflow has been live for a week
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Every major platform offers sandbox or test modes. Stripe has test mode. Email tools have preview sends. Use them completely before touching production. A dry run that does not actually fire real actions is your first line of defense.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

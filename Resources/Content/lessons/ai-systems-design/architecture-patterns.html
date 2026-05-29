@@ -167,8 +167,68 @@ Pipelines are ideal for RAG, document processing, and any workflow where the ste
 Start with Gateway + Pipeline. Add Router when costs matter. Add Orchestrator only when tasks require dynamic decision-making. Over-engineering early is the second most common failure mode after under-engineering.
 </div>
 
-<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the primary difference between a Pipeline and an Orchestrator?", "options": ["Pipelines are faster", "Orchestrators use more expensive models", "Pipelines follow fixed stages while Orchestrators dynamically replan based on results", "There is no meaningful difference"], "correct": 2, "explanation": "The key difference is dynamic replanning. Pipelines always execute the same fixed sequence of stages. Orchestrators evaluate intermediate results and can change their plan, add steps, or retry with different approaches."}, {"q": "Why should token counts be validated at the Gateway rather than at the model call?", "options": ["Gateways are faster", "To fail fast before consuming compute on preprocessing", "Models can&#39;t count tokens accurately", "It&#39;s a security requirement"], "correct": 1, "explanation": "By the time you hit a token limit at the model API, you&#39;ve already spent compute on preprocessing, embedding, retrieval, and prompt construction. Validating at the gateway lets you reject oversized requests immediately -- fail fast, fail cheap."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the primary difference between a Pipeline and an Orchestrator?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Pipelines are faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Orchestrators use more expensive models
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Pipelines follow fixed stages while Orchestrators dynamically replan based on results
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>There is no meaningful difference
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The key difference is dynamic replanning. Pipelines always execute the same fixed sequence of stages. Orchestrators evaluate intermediate results and can change their plan, add steps, or retry with different approaches.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why should token counts be validated at the Gateway rather than at the model call?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Gateways are faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>To fail fast before consuming compute on preprocessing
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Models can't count tokens accurately
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It's a security requirement
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> By the time you hit a token limit at the model API, you've already spent compute on preprocessing, embedding, retrieval, and prompt construction. Validating at the gateway lets you reject oversized requests immediately -- fail fast, fail cheap.</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What does the Gateway pattern handle?", "back": "Authentication, rate limiting, input validation, token count enforcement, and request normalization. It protects the system and enforces contracts without making AI decisions."}, {"front": "How much can proper model routing reduce API costs?", "back": "Typically 40-60%. By routing simple queries to cheaper models (e.g., GPT-4o-mini instead of Opus), you avoid overpaying for tasks that don&#39;t need frontier intelligence."}, {"front": "What safeguard is essential for Orchestrator patterns?", "back": "A maximum iteration count. Without it, a confused planner can loop indefinitely, burning tokens and time. Production systems typically cap at 5-10 iterations."}, {"front": "When should you use a Pipeline vs. an Orchestrator?", "back": "Use Pipelines when steps are known in advance (RAG, document processing). Use Orchestrators when the task requires dynamic decision-making based on intermediate results (agents, complex reasoning)."}, {"front": "How do the four patterns compose in production?", "back": "Gateway fronts the system (mandatory). Router dispatches to different Pipelines. Complex requests get an Orchestrator. The patterns are composable layers, not competing alternatives."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Vocabulary</h3>
+<details class="flash-card">
+<summary class="flash-front">What does the Gateway pattern handle?</summary>
+<div class="flash-back">Authentication, rate limiting, input validation, token count enforcement, and request normalization. It protects the system and enforces contracts without making AI decisions.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How much can proper model routing reduce API costs?</summary>
+<div class="flash-back">Typically 40-60%. By routing simple queries to cheaper models (e.g., GPT-4o-mini instead of Opus), you avoid overpaying for tasks that don't need frontier intelligence.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What safeguard is essential for Orchestrator patterns?</summary>
+<div class="flash-back">A maximum iteration count. Without it, a confused planner can loop indefinitely, burning tokens and time. Production systems typically cap at 5-10 iterations.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">When should you use a Pipeline vs. an Orchestrator?</summary>
+<div class="flash-back">Use Pipelines when steps are known in advance (RAG, document processing). Use Orchestrators when the task requires dynamic decision-making based on intermediate results (agents, complex reasoning).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do the four patterns compose in production?</summary>
+<div class="flash-back">Gateway fronts the system (mandatory). Router dispatches to different Pipelines. Complex requests get an Orchestrator. The patterns are composable layers, not competing alternatives.</div>
+</details>
+</div>
 
 </div>

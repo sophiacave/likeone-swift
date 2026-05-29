@@ -41,7 +41,29 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Scaling Layers — From Cheapest to Most Expensive","cards":[{"front":"Layer 0: CDN + Edge Cache","back":"Static content served from the edge. Zero AI cost. Absorbs all cacheable traffic before it touches your infrastructure."},{"front":"Layer 1: Semantic Cache","back":"Vector similarity search against cached query-answer pairs. Catches repeated or similar questions without any LLM call."},{"front":"Layer 2: RAG from Database","back":"Answer from your knowledge base. A vector search costs fractions of a cent — far cheaper than calling an LLM."},{"front":"Layer 3: Load-Balanced AI Providers","back":"Distribute novel queries across multiple providers. Round-robin routing doubles your effective rate limit."},{"front":"Layer 4: Request Queue","back":"For non-urgent tasks, accept requests immediately and process at your own pace — protecting rate limits and user experience."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Scaling Layers — From Cheapest to Most Expensive</h3>
+<details class="flash-card">
+<summary class="flash-front">Layer 0: CDN + Edge Cache</summary>
+<div class="flash-back">Static content served from the edge. Zero AI cost. Absorbs all cacheable traffic before it touches your infrastructure.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Layer 1: Semantic Cache</summary>
+<div class="flash-back">Vector similarity search against cached query-answer pairs. Catches repeated or similar questions without any LLM call.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Layer 2: RAG from Database</summary>
+<div class="flash-back">Answer from your knowledge base. A vector search costs fractions of a cent — far cheaper than calling an LLM.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Layer 3: Load-Balanced AI Providers</summary>
+<div class="flash-back">Distribute novel queries across multiple providers. Round-robin routing doubles your effective rate limit.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Layer 4: Request Queue</summary>
+<div class="flash-back">For non-urgent tasks, accept requests immediately and process at your own pace — protecting rate limits and user experience.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -214,7 +236,63 @@ the expensive LLM providers.</code></pre>
 </div>
 
 <div class="lesson-section">
-  <div data-learn="QuizMC" data-props='{"title":"Scaling Patterns Quiz","questions":[{"q":"Why does adding more app servers NOT solve the AI scaling problem?","options":["App servers are too expensive","The bottleneck is the external AI provider’s rate limits — you can’t add more OpenAI by adding more of your own servers","App servers can’t make AI API calls","Adding servers creates more latency"],"correct":1,"explanation":"Traditional scaling adds capacity on your side. With AI apps, the constraint is the external provider’s rate and token limits. Your scaling strategy must work around provider constraints, not just infrastructure ones."},{"q":"How does round-robin routing across two AI providers help with scaling?","options":["It makes responses faster","If each provider allows 100 RPM, alternating between them effectively doubles your throughput to 200 RPM","It reduces cost","It improves response quality"],"correct":1,"explanation":"Multi-provider load balancing distributes requests across providers, multiplying your effective rate limit by the number of providers in your pool. It also provides automatic failover if one provider goes down."},{"q":"What is the backpressure pattern in queue-based AI architectures?","options":["Sending requests faster when the queue is long","Stopping acceptance of new requests when the queue is too long — showing a clear message rather than timing out after 30 seconds of silence","Deleting old requests from the queue","Routing to a faster provider when queues build up"],"correct":1,"explanation":"Backpressure is about making honest promises. A clear ‘system busy’ message is far better UX than silently queuing a request that will timeout 30 seconds later with no feedback."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Scaling Patterns Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why does adding more app servers NOT solve the AI scaling problem?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>App servers are too expensive
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The bottleneck is the external AI provider’s rate limits — you can’t add more OpenAI by adding more of your own servers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>App servers can’t make AI API calls
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Adding servers creates more latency
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Traditional scaling adds capacity on your side. With AI apps, the constraint is the external provider’s rate and token limits. Your scaling strategy must work around provider constraints, not just infrastructure ones.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>How does round-robin routing across two AI providers help with scaling?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It makes responses faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>If each provider allows 100 RPM, alternating between them effectively doubles your throughput to 200 RPM
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It reduces cost
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It improves response quality
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Multi-provider load balancing distributes requests across providers, multiplying your effective rate limit by the number of providers in your pool. It also provides automatic failover if one provider goes down.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the backpressure pattern in queue-based AI architectures?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Sending requests faster when the queue is long
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Stopping acceptance of new requests when the queue is too long — showing a clear message rather than timing out after 30 seconds of silence
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Deleting old requests from the queue
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Routing to a faster provider when queues build up
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Backpressure is about making honest promises. A clear ‘system busy’ message is far better UX than silently queuing a request that will timeout 30 seconds later with no feedback.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

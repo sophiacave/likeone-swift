@@ -149,9 +149,127 @@ Response to User</code></pre>
 <p style="font-size:.85rem;color:#a1a1aa;line-height:1.7;margin-top:1rem">You can now think like an attacker and build like a defender. That combination is rare, valuable, and exactly what the industry needs. Every AI system you build from here will be stronger because you understand how it can be broken.</p>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Security-First Architecture","cards":[{"front":"Three principles of security-first AI architecture","back":"1) Least privilege — minimize agent access. 2) Defense in depth — multiple overlapping security layers. 3) Fail-safe defaults — system locks down on errors, not opens up."},{"front":"Least privilege for AI agents","back":"Give each agent only the minimum tools and access needed. Use scoped tools (get_order_status) instead of generic access (sql_query). Every permission is an attack surface."},{"front":"Defense in depth layers","back":"Seven layers: input validation, prompt boundaries, hardened system prompt, model processing, output validation, tool permissions, production monitoring. Each catches what others miss."},{"front":"Fail-safe defaults","back":"When something fails, the system should become MORE restrictive, not less. Reject unvalidated inputs. Withhold suspicious outputs. Deny uncertain tool calls. Lock down on anomalies."},{"front":"Fail-closed vs fail-open","back":"Fail-closed: on error, deny access (secure). Fail-open: on error, allow access (insecure). AI systems should always fail closed — better to refuse a legitimate request than execute a malicious one."},{"front":"The security checklist","back":"Least privilege tools, input validation (pattern + classifier + boundaries), hardened prompt, output validation, tool hooks, cost limits, monitoring, red team results, fail-safe defaults, no secrets in prompts."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Security-First Architecture</h3>
+<details class="flash-card">
+<summary class="flash-front">Three principles of security-first AI architecture</summary>
+<div class="flash-back">1) Least privilege — minimize agent access. 2) Defense in depth — multiple overlapping security layers. 3) Fail-safe defaults — system locks down on errors, not opens up.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Least privilege for AI agents</summary>
+<div class="flash-back">Give each agent only the minimum tools and access needed. Use scoped tools (get_order_status) instead of generic access (sql_query). Every permission is an attack surface.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Defense in depth layers</summary>
+<div class="flash-back">Seven layers: input validation, prompt boundaries, hardened system prompt, model processing, output validation, tool permissions, production monitoring. Each catches what others miss.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Fail-safe defaults</summary>
+<div class="flash-back">When something fails, the system should become MORE restrictive, not less. Reject unvalidated inputs. Withhold suspicious outputs. Deny uncertain tool calls. Lock down on anomalies.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Fail-closed vs fail-open</summary>
+<div class="flash-back">Fail-closed: on error, deny access (secure). Fail-open: on error, allow access (insecure). AI systems should always fail closed — better to refuse a legitimate request than execute a malicious one.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The security checklist</summary>
+<div class="flash-back">Least privilege tools, input validation (pattern + classifier + boundaries), hardened prompt, output validation, tool hooks, cost limits, monitoring, red team results, fail-safe defaults, no secrets in prompts.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Security-First Architecture Check","questions":[{"q":"What does \"fail-safe default\" mean in AI security?","options":["The system restarts automatically on errors","When something goes wrong, the system becomes more restrictive — denying access rather than allowing it","The system saves its state before crashing","Errors are automatically fixed"],"correct":1,"explanation":"Fail-safe (or fail-closed) means the system locks down on errors. Unvalidated inputs are rejected. Suspicious outputs are withheld. Uncertain tool calls are denied. This is safer than fail-open, where errors remove protections."},{"q":"A customer support agent needs to look up order status. What is the most secure way to give it database access?","options":["Full SQL query access to the orders table","A scoped get_order_status(order_id) function that returns only status information","Read access to the entire database","API access to the database admin panel"],"correct":1,"explanation":"A scoped function structurally limits what data the agent can access. Even if compromised, it can only return order status — not customer PII, not other tables, not arbitrary query results."},{"q":"Your output validation service crashes. What should your system do?","options":["Skip validation and send the model response directly to the user","Withhold the response and return a safe default message until validation is restored","Let the user decide if they want to see unvalidated output","Nothing — the model is safe enough on its own"],"correct":1,"explanation":"Fail-safe defaults mean withholding output when validation is unavailable. Sending unvalidated model output to users could expose PII, system prompt fragments, or harmful content that would normally be caught."},{"q":"How many security layers should a well-designed AI system have?","options":["One strong layer is enough","Two: input and output","As many as practical — each layer catches what others miss","Layers are unnecessary if the model is well-trained"],"correct":2,"explanation":"Defense in depth uses as many layers as practical. The example architecture has seven layers from input to output. No single layer catches everything, but together they provide comprehensive coverage."},{"q":"You have completed this course. What is the most important skill you now have?","options":["You can build unbreakable AI systems","You can think like an attacker AND build like a defender — understanding both attack and defense","You can hack any AI system","You no longer need to worry about AI security"],"correct":1,"explanation":"The core skill is dual perspective. Understanding how attacks work (injection, jailbreaking, exfiltration) lets you build stronger defenses (guardrails, validation, monitoring). No system is unbreakable, but yours will be significantly harder to break."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Security-First Architecture Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What does "fail-safe default" mean in AI security?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The system restarts automatically on errors
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>When something goes wrong, the system becomes more restrictive — denying access rather than allowing it
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The system saves its state before crashing
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Errors are automatically fixed
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Fail-safe (or fail-closed) means the system locks down on errors. Unvalidated inputs are rejected. Suspicious outputs are withheld. Uncertain tool calls are denied. This is safer than fail-open, where errors remove protections.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>A customer support agent needs to look up order status. What is the most secure way to give it database access?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Full SQL query access to the orders table
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A scoped get_order_status(order_id) function that returns only status information
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Read access to the entire database
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>API access to the database admin panel
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A scoped function structurally limits what data the agent can access. Even if compromised, it can only return order status — not customer PII, not other tables, not arbitrary query results.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Your output validation service crashes. What should your system do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Skip validation and send the model response directly to the user
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Withhold the response and return a safe default message until validation is restored
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Let the user decide if they want to see unvalidated output
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Nothing — the model is safe enough on its own
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Fail-safe defaults mean withholding output when validation is unavailable. Sending unvalidated model output to users could expose PII, system prompt fragments, or harmful content that would normally be caught.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>How many security layers should a well-designed AI system have?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>One strong layer is enough
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Two: input and output
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>As many as practical — each layer catches what others miss
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Layers are unnecessary if the model is well-trained
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Defense in depth uses as many layers as practical. The example architecture has seven layers from input to output. No single layer catches everything, but together they provide comprehensive coverage.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>You have completed this course. What is the most important skill you now have?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>You can build unbreakable AI systems
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>You can think like an attacker AND build like a defender — understanding both attack and defense
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>You can hack any AI system
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>You no longer need to worry about AI security
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The core skill is dual perspective. Understanding how attacks work (injection, jailbreaking, exfiltration) lets you build stronger defenses (guardrails, validation, monitoring). No system is unbreakable, but yours will be significantly harder to break.</div>
+</div>
+</div>
 
 </div>
 

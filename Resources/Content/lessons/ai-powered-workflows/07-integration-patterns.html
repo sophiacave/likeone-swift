@@ -133,7 +133,29 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Integration Patterns","cards":[{"front":"Point-to-Point Integration","back":"Tool A connects directly to Tool B. Simple for two tools, but 5 tools need 10 connections and 10 tools need 45. Becomes spaghetti fast."},{"front":"Hub-and-Spoke Integration","back":"All tools connect to a central hub like Make or Zapier. Adding a new tool means one new connection, not five. Command center approach."},{"front":"APIs in Plain English","back":"A structured way for two tools to exchange data. You send a request, get a response. Usually JSON format — organized text with labels and values."},{"front":"API Authentication","back":"How APIs know you&#39;re allowed to use them. Usually API keys — treat like passwords. Never share publicly, store securely, rotate if compromised."},{"front":"No-Code vs. Custom: The 80/20 Rule","back":"No-code connectors (Zapier, Make) handle 80% of needs. Build custom only for complex transformations, missing connectors, or performance requirements."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Integration Patterns</h3>
+<details class="flash-card">
+<summary class="flash-front">Point-to-Point Integration</summary>
+<div class="flash-back">Tool A connects directly to Tool B. Simple for two tools, but 5 tools need 10 connections and 10 tools need 45. Becomes spaghetti fast.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Hub-and-Spoke Integration</summary>
+<div class="flash-back">All tools connect to a central hub like Make or Zapier. Adding a new tool means one new connection, not five. Command center approach.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">APIs in Plain English</summary>
+<div class="flash-back">A structured way for two tools to exchange data. You send a request, get a response. Usually JSON format — organized text with labels and values.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">API Authentication</summary>
+<div class="flash-back">How APIs know you're allowed to use them. Usually API keys — treat like passwords. Never share publicly, store securely, rotate if compromised.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">No-Code vs. Custom: The 80/20 Rule</summary>
+<div class="flash-back">No-code connectors (Zapier, Make) handle 80% of needs. Build custom only for complex transformations, missing connectors, or performance requirements.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -175,7 +197,63 @@ API_KEY = os.environ[<span style="color:#fbbf24">"SLACK_BOT_TOKEN"</span>]
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Lesson 7 Quiz</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Integration Patterns","questions":[{"q":"Why does hub-and-spoke become essential as the number of integrated tools grows?","options":["It is always the best architecture regardless of tool count","With 5 tools, point-to-point creates 10 connections — hub-and-spoke reduces this to 5 one-hub connections","Hub-and-spoke tools cost less than direct integrations","Only hub-and-spoke supports webhooks"],"correct":1,"explanation":"With point-to-point, connections grow exponentially — 5 tools need 10 connections, 10 tools need 45. Hub-and-spoke means each tool connects once to the hub. Adding a new tool adds one connection, not many."},{"q":"What is a webhook in practical terms?","options":["A scheduled job that polls for changes","A webhook is a small HTTP request that fires automatically when something happens in a tool — enabling instant event-driven reactions","A type of API key","A database backup trigger"],"correct":1,"explanation":"A webhook fires the moment an event happens — not when you poll for it. Payment succeeds? Webhook fires. Deal moves stages? Webhook fires. Your workflow platform catches these signals and reacts instantly."},{"q":"When should you build a custom integration instead of using no-code connectors?","options":["Always — custom integrations are always better","Never — no-code connectors handle everything","When you need complex data transformations, the pre-built connectors do not cover your use case, or you need higher performance","Only when the no-code platform is offline"],"correct":2,"explanation":"No-code connectors handle about 80% of integration needs. Build custom when you need transformations the connectors cannot handle, hit rate limits on no-code platforms, or require performance the pre-built tools cannot deliver."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Integration Patterns</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why does hub-and-spoke become essential as the number of integrated tools grows?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is always the best architecture regardless of tool count
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>With 5 tools, point-to-point creates 10 connections — hub-and-spoke reduces this to 5 one-hub connections
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Hub-and-spoke tools cost less than direct integrations
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Only hub-and-spoke supports webhooks
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> With point-to-point, connections grow exponentially — 5 tools need 10 connections, 10 tools need 45. Hub-and-spoke means each tool connects once to the hub. Adding a new tool adds one connection, not many.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is a webhook in practical terms?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A scheduled job that polls for changes
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A webhook is a small HTTP request that fires automatically when something happens in a tool — enabling instant event-driven reactions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A type of API key
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A database backup trigger
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A webhook fires the moment an event happens — not when you poll for it. Payment succeeds? Webhook fires. Deal moves stages? Webhook fires. Your workflow platform catches these signals and reacts instantly.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>When should you build a custom integration instead of using no-code connectors?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Always — custom integrations are always better
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Never — no-code connectors handle everything
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>When you need complex data transformations, the pre-built connectors do not cover your use case, or you need higher performance
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Only when the no-code platform is offline
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> No-code connectors handle about 80% of integration needs. Build custom when you need transformations the connectors cannot handle, hit rate limits on no-code platforms, or require performance the pre-built tools cannot deliver.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

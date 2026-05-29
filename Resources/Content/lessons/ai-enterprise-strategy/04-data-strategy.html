@@ -248,10 +248,128 @@ Build me:
 </div>
 
 <div style="margin:1.5rem 0">
-<div data-learn="FlashDeck" data-props='{"title":"Data Strategy Essentials","cards":[{"front":"The Data Audit","back":"Five questions for every data source: Where does it live? What format? How current and complete? Who owns it and who can access? What legal/compliance constraints? Complete in 2-3 weeks."},{"front":"Three Categories of Data","back":"Data you have and CAN use (clean, accessible, legal). Data you have but CANNOT use (quality, access, or legal issues). Data you NEED but do not have (gaps requiring new collection)."},{"front":"Four Governance Questions","back":"Who can access this data? What can they use it for? How must it be protected? Who is accountable? Should fit on one page."},{"front":"Three Architecture Layers","back":"Storage (data lake/warehouse), Pipeline (ETL/transformation/orchestration), Serving (feature stores, vector databases, APIs). Modern cloud platforms handle much of this."},{"front":"Data Quality Dimensions","back":"Completeness, Freshness, Accuracy, Consistency, Lineage. Quality problems do not show up as errors — they show up as AI recommendations that are subtly wrong."},{"front":"Centralized vs. Federated","back":"Centralized: easier to govern, harder to build. Federated: faster for teams, consistency challenges. Hybrid (centralized governance, federated execution) is where mature orgs land."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Data Strategy Essentials</h3>
+<details class="flash-card">
+<summary class="flash-front">The Data Audit</summary>
+<div class="flash-back">Five questions for every data source: Where does it live? What format? How current and complete? Who owns it and who can access? What legal/compliance constraints? Complete in 2-3 weeks.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Three Categories of Data</summary>
+<div class="flash-back">Data you have and CAN use (clean, accessible, legal). Data you have but CANNOT use (quality, access, or legal issues). Data you NEED but do not have (gaps requiring new collection).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Four Governance Questions</summary>
+<div class="flash-back">Who can access this data? What can they use it for? How must it be protected? Who is accountable? Should fit on one page.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Three Architecture Layers</summary>
+<div class="flash-back">Storage (data lake/warehouse), Pipeline (ETL/transformation/orchestration), Serving (feature stores, vector databases, APIs). Modern cloud platforms handle much of this.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Data Quality Dimensions</summary>
+<div class="flash-back">Completeness, Freshness, Accuracy, Consistency, Lineage. Quality problems do not show up as errors — they show up as AI recommendations that are subtly wrong.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Centralized vs. Federated</summary>
+<div class="flash-back">Centralized: easier to govern, harder to build. Federated: faster for teams, consistency challenges. Hybrid (centralized governance, federated execution) is where mature orgs land.</div>
+</details>
+</div>
 </div>
 
-<div data-learn="QuizMC" data-props='{"title":"Data Strategy — Mastery Check","questions":[{"q":"According to surveys, what is the primary cause of failed enterprise AI initiatives?","options":["Poor model selection","Insufficient compute resources","Data-related problems (quality, access, governance)","Lack of AI talent"],"correct":2,"explanation":"82% of enterprises that failed to achieve AI ROI cited data-related problems as the primary cause. The models work fine — it is the data foundation that determines success or failure."},{"q":"What are the three layers of an AI-ready data architecture?","options":["Collection, Processing, Output","Storage (lake/warehouse), Pipeline (ETL/transformation), Serving (feature stores, APIs, vector databases)","Input, Compute, Storage","Frontend, Backend, Database"],"correct":1,"explanation":"Storage is where data lands in unified form. Pipeline is how it moves and transforms. Serving is the interface between your data and your AI models. All three must work for AI to deliver value."},{"q":"Your data governance process takes 6 weeks to approve a new AI use case. What is wrong?","options":["Nothing — governance should be thorough","The governance framework has become a roadblock instead of a guardrail — it should take less than a day per use case","You need more committee members to speed it up","This is normal for enterprise governance"],"correct":1,"explanation":"Effective AI data governance answers four questions (who can access, what for, how protected, who accountable) and should take less than a day to implement for a new use case. If governance takes longer than the AI project itself, it is a roadblock, not a guardrail."},{"q":"You are building an AI demand forecasting model. The training data is from 2022. It is 2026. What data quality dimension is the problem?","options":["Completeness — the data is missing recent records","Freshness — the data does not reflect current market conditions","Accuracy — the old data was probably wrong","Consistency — the format may have changed"],"correct":1,"explanation":"Freshness means data reflects the current state of the world. A demand forecasting model trained on 2022 data will optimize for conditions that no longer exist — supply chain disruptions, pricing structures, and customer behavior have all changed since then."},{"q":"What is the recommended starting approach for building data infrastructure?","options":["Build a complete enterprise data warehouse before starting any AI work","Build the minimum viable data foundation for your first use case, then expand the pattern","Wait until you have a full data team hired before building anything","Use spreadsheet exports until you can afford a proper data platform"],"correct":1,"explanation":"Start with one use case. Build the pipeline end-to-end for that use case. Document the pattern. Then replicate it for the next use case. This approach delivers value quickly while building institutional knowledge about what your organization actually needs."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Data Strategy — Mastery Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>According to surveys, what is the primary cause of failed enterprise AI initiatives?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Poor model selection
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Insufficient compute resources
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Data-related problems (quality, access, governance)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Lack of AI talent
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> 82% of enterprises that failed to achieve AI ROI cited data-related problems as the primary cause. The models work fine — it is the data foundation that determines success or failure.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What are the three layers of an AI-ready data architecture?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Collection, Processing, Output
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Storage (lake/warehouse), Pipeline (ETL/transformation), Serving (feature stores, APIs, vector databases)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Input, Compute, Storage
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Frontend, Backend, Database
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Storage is where data lands in unified form. Pipeline is how it moves and transforms. Serving is the interface between your data and your AI models. All three must work for AI to deliver value.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Your data governance process takes 6 weeks to approve a new AI use case. What is wrong?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Nothing — governance should be thorough
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The governance framework has become a roadblock instead of a guardrail — it should take less than a day per use case
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>You need more committee members to speed it up
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>This is normal for enterprise governance
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Effective AI data governance answers four questions (who can access, what for, how protected, who accountable) and should take less than a day to implement for a new use case. If governance takes longer than the AI project itself, it is a roadblock, not a guardrail.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>You are building an AI demand forecasting model. The training data is from 2022. It is 2026. What data quality dimension is the problem?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Completeness — the data is missing recent records
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Freshness — the data does not reflect current market conditions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Accuracy — the old data was probably wrong
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Consistency — the format may have changed
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Freshness means data reflects the current state of the world. A demand forecasting model trained on 2022 data will optimize for conditions that no longer exist — supply chain disruptions, pricing structures, and customer behavior have all changed since then.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What is the recommended starting approach for building data infrastructure?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Build a complete enterprise data warehouse before starting any AI work
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Build the minimum viable data foundation for your first use case, then expand the pattern
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Wait until you have a full data team hired before building anything
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Use spreadsheet exports until you can afford a proper data platform
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Start with one use case. Build the pipeline end-to-end for that use case. Document the pattern. Then replicate it for the next use case. This approach delivers value quickly while building institutional knowledge about what your organization actually needs.</div>
+</div>
+</div>
 
 </div>
 

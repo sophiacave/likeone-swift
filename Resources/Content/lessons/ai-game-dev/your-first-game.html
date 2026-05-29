@@ -71,12 +71,68 @@
 <div class="lesson-section">
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
-  <div data-learn="QuizMC" data-props='{"questions":[{"q":"What makes a good AI game prompt?","options":["Keep it vague so AI has creative freedom","Be as specific as possible about mechanics, elements, and constraints","Always ask for 3D graphics","Only use one-word descriptions"],"correct":1,"explanation":"Specificity is key. Describing the exact mechanic, visual elements, and technical constraints gives AI everything it needs to generate a working game."},{"q":"What is the game loop?","options":["A type of for-loop in JavaScript","A function that runs 60 times per second updating and redrawing the game","The process of publishing a game","A marketing strategy for games"],"correct":1,"explanation":"The game loop is the heartbeat of every game -- a function running ~60fps that updates game state and redraws the screen each frame."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What makes a good AI game prompt?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Keep it vague so AI has creative freedom
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Be as specific as possible about mechanics, elements, and constraints
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Always ask for 3D graphics
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Only use one-word descriptions
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Specificity is key. Describing the exact mechanic, visual elements, and technical constraints gives AI everything it needs to generate a working game.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the game loop?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A type of for-loop in JavaScript
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A function that runs 60 times per second updating and redrawing the game
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The process of publishing a game
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A marketing strategy for games
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The game loop is the heartbeat of every game -- a function running ~60fps that updates game state and redraws the screen each frame.</div>
+</div>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Your First Game","cards":[{"front":"What do you need to start building browser games?","back":"A browser, a text editor (VS Code recommended), and an AI assistant. No installs or frameworks required."},{"front":"What is HTML5 Canvas?","back":"An HTML element that lets you draw shapes, images, and text with JavaScript -- like a digital whiteboard refreshing 60 times per second."},{"front":"What is the AI iteration loop?","back":"Prompt AI for a game, test it, then prompt for improvements. Each cycle takes seconds instead of hours."},{"front":"What three concepts power every browser game?","back":"The game loop (60fps updates), the Canvas (drawing surface), and event listeners (player input handling)."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Your First Game</h3>
+<details class="flash-card">
+<summary class="flash-front">What do you need to start building browser games?</summary>
+<div class="flash-back">A browser, a text editor (VS Code recommended), and an AI assistant. No installs or frameworks required.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is HTML5 Canvas?</summary>
+<div class="flash-back">An HTML element that lets you draw shapes, images, and text with JavaScript -- like a digital whiteboard refreshing 60 times per second.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the AI iteration loop?</summary>
+<div class="flash-back">Prompt AI for a game, test it, then prompt for improvements. Each cycle takes seconds instead of hours.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What three concepts power every browser game?</summary>
+<div class="flash-back">The game loop (60fps updates), the Canvas (drawing surface), and event listeners (player input handling).</div>
+</details>
+</div>
 </div>
 </div>

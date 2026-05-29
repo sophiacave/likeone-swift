@@ -159,13 +159,95 @@ console.log(`Logged in as: ${userName}`);</code></div>
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Browser Agent Architecture","cards":[{"front":"DOM vs. Vision Interaction","back":"DOM: fast (milliseconds), precise, reliable selectors. Only works for web pages with known structure. Vision: slower (seconds), approximate coordinates, universal -- works on any interface. Best agents use both."},{"front":"Chrome DevTools Protocol","back":"The API Chrome exposes for programmatic control: page navigation, DOM access, JavaScript execution, network interception. Tools like Playwright and Puppeteer are built on CDP."},{"front":"The Hybrid Architecture","back":"Layer 1: DOM for fast, known interactions. Layer 2: Vision as fallback for unknown pages. Layer 3: Combined page context (screenshot + simplified HTML) for complex decisions."},{"front":"Stable Selectors","back":"Prefer IDs, data-testid attributes, ARIA labels, and unique text content. Avoid fragile positional selectors like div:nth-child(3) that break when page structure changes."},{"front":"DOM-First, Vision-Fallback","back":"Try DOM interaction first (fast, precise). If the selector is not found or the action fails, fall back to vision (screenshot, AI analysis, coordinate click). This gives speed when possible and flexibility when needed."},{"front":"Page Context Extraction","back":"Send Claude both a screenshot AND simplified HTML for the richest understanding. The screenshot shows appearance, the HTML shows structure and properties. Cross-referencing both improves accuracy."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Browser Agent Architecture</h3>
+<details class="flash-card">
+<summary class="flash-front">DOM vs. Vision Interaction</summary>
+<div class="flash-back">DOM: fast (milliseconds), precise, reliable selectors. Only works for web pages with known structure. Vision: slower (seconds), approximate coordinates, universal -- works on any interface. Best agents use both.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Chrome DevTools Protocol</summary>
+<div class="flash-back">The API Chrome exposes for programmatic control: page navigation, DOM access, JavaScript execution, network interception. Tools like Playwright and Puppeteer are built on CDP.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Hybrid Architecture</summary>
+<div class="flash-back">Layer 1: DOM for fast, known interactions. Layer 2: Vision as fallback for unknown pages. Layer 3: Combined page context (screenshot + simplified HTML) for complex decisions.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Stable Selectors</summary>
+<div class="flash-back">Prefer IDs, data-testid attributes, ARIA labels, and unique text content. Avoid fragile positional selectors like div:nth-child(3) that break when page structure changes.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">DOM-First, Vision-Fallback</summary>
+<div class="flash-back">Try DOM interaction first (fast, precise). If the selector is not found or the action fails, fall back to vision (screenshot, AI analysis, coordinate click). This gives speed when possible and flexibility when needed.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Page Context Extraction</summary>
+<div class="flash-back">Send Claude both a screenshot AND simplified HTML for the richest understanding. The screenshot shows appearance, the HTML shows structure and properties. Cross-referencing both improves accuracy.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Browser agent architecture quiz.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Browser Agent Architecture","questions":[{"q":"When should a browser agent use vision-based interaction instead of DOM-based?","options":["Always -- vision is more reliable","When you do not know the page structure, when JavaScript frameworks make DOM querying unreliable, or when the interface is not web-based","Only when the page has no CSS","Never -- DOM is always better"],"correct":1,"explanation":"Vision is the universal fallback. It works on any interface -- web, desktop, mobile emulator -- regardless of whether the page structure is known. DOM is faster and more precise but requires knowledge of selectors and only works for web pages."},{"q":"What is the advantage of the DOM-first, vision-fallback pattern?","options":["It eliminates the need for screenshots entirely","It provides speed when page structure is known (DOM) and flexibility when it is not (vision) -- combining the best of both approaches","It reduces API costs to zero","It works without any browser automation library"],"correct":1,"explanation":"DOM interaction is fast (milliseconds) and precise but requires known selectors. Vision is slower (seconds) but universal. By trying DOM first and falling back to vision, the agent is fast when possible and flexible when needed."},{"q":"Why should you avoid fragile CSS selectors like div:nth-child(3) > button?","options":["They are slower to execute than stable selectors","They break when any parent element changes, causing the entire workflow to fail -- prefer IDs, data-testid, or ARIA labels that remain stable","They consume more browser memory","They are not supported by all browsers"],"correct":1,"explanation":"Positional selectors depend on the exact page structure. Adding a new div, reordering elements, or inserting an ad can change nth-child positions and break the selector. Stable selectors (IDs, data-testid, ARIA labels) reference specific elements regardless of their position in the DOM tree."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Browser Agent Architecture</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>When should a browser agent use vision-based interaction instead of DOM-based?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Always -- vision is more reliable
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>When you do not know the page structure, when JavaScript frameworks make DOM querying unreliable, or when the interface is not web-based
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Only when the page has no CSS
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Never -- DOM is always better
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Vision is the universal fallback. It works on any interface -- web, desktop, mobile emulator -- regardless of whether the page structure is known. DOM is faster and more precise but requires knowledge of selectors and only works for web pages.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the advantage of the DOM-first, vision-fallback pattern?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It eliminates the need for screenshots entirely
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It provides speed when page structure is known (DOM) and flexibility when it is not (vision) -- combining the best of both approaches
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It reduces API costs to zero
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It works without any browser automation library
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> DOM interaction is fast (milliseconds) and precise but requires known selectors. Vision is slower (seconds) but universal. By trying DOM first and falling back to vision, the agent is fast when possible and flexible when needed.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why should you avoid fragile CSS selectors like div:nth-child(3) > button?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>They are slower to execute than stable selectors
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>They break when any parent element changes, causing the entire workflow to fail -- prefer IDs, data-testid, or ARIA labels that remain stable
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>They consume more browser memory
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>They are not supported by all browsers
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Positional selectors depend on the exact page structure. Adding a new div, reordering elements, or inserting an ad can change nth-child positions and break the selector. Stable selectors (IDs, data-testid, ARIA labels) reference specific elements regardless of their position in the DOM tree.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

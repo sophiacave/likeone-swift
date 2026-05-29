@@ -185,8 +185,68 @@ validated = await validate(result, timeout=budget.allocate(1.0))         # remai
 Without timeout budgets, one slow stage consumes the entire allowance, and every downstream stage either races or fails. Budget allocation turns unpredictable timeouts into managed trade-offs.
 </div>
 
-<div data-learn="QuizMC" data-props='{"questions": [{"q": "Why is &#39;full jitter&#39; important in retry logic?", "options": ["It makes retries faster", "It prevents thundering herd -- all clients retrying simultaneously", "It reduces the number of retries needed", "It&#39;s required by most API providers"], "correct": 1, "explanation": "Without jitter, all clients that failed at the same time will retry at the same time, creating a thundering herd that re-crashes the already struggling service. Full jitter randomizes retry timing to spread load."}, {"q": "What are the three states of a circuit breaker?", "options": ["Active, Inactive, Recovery", "Open, Closed, Half-Open", "Green, Yellow, Red", "Normal, Alert, Critical"], "correct": 1, "explanation": "Closed (normal operation, requests pass through), Open (failures exceeded threshold, all calls short-circuit to fallback), and Half-Open (allow one test request to check if the service has recovered)."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why is 'full jitter' important in retry logic?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It makes retries faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It prevents thundering herd -- all clients retrying simultaneously
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It reduces the number of retries needed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It's required by most API providers
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Without jitter, all clients that failed at the same time will retry at the same time, creating a thundering herd that re-crashes the already struggling service. Full jitter randomizes retry timing to spread load.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What are the three states of a circuit breaker?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Active, Inactive, Recovery
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Open, Closed, Half-Open
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Green, Yellow, Red
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Normal, Alert, Critical
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Closed (normal operation, requests pass through), Open (failures exceeded threshold, all calls short-circuit to fallback), and Half-Open (allow one test request to check if the service has recovered).</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What does 99.5% uptime actually mean in practice?", "back": "About 43 minutes of downtime per week. At 1,000 requests/hour, that&#39;s 700+ failed requests weekly. High uptime percentages can mask significant real-world impact."}, {"front": "What are the three rules for AI retries?", "back": "1) Only retry transient errors (429, 503), not client errors (400). 2) Use full jitter to prevent thundering herd. 3) Cap your retry budget (3 retries is usually sufficient)."}, {"front": "Why is a degraded response better than an error message?", "back": "Users tolerate &#39;slightly worse&#39; much better than &#39;completely broken.&#39; Design fallbacks on a spectrum from best to acceptable, never from best to nothing."}, {"front": "What is a timeout budget?", "back": "A mechanism that allocates a total time budget across processing stages. Each stage gets a fraction of remaining time, preventing one slow stage from consuming the entire allowance."}, {"front": "What is the model degradation fallback pattern?", "back": "A chain of progressively cheaper/faster models: e.g., Claude Sonnet -> GPT-4o -> Claude Haiku -> local Llama. When the primary fails, fall through to the next available model."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Vocabulary</h3>
+<details class="flash-card">
+<summary class="flash-front">What does 99.5% uptime actually mean in practice?</summary>
+<div class="flash-back">About 43 minutes of downtime per week. At 1,000 requests/hour, that's 700+ failed requests weekly. High uptime percentages can mask significant real-world impact.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are the three rules for AI retries?</summary>
+<div class="flash-back">1) Only retry transient errors (429, 503), not client errors (400). 2) Use full jitter to prevent thundering herd. 3) Cap your retry budget (3 retries is usually sufficient).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why is a degraded response better than an error message?</summary>
+<div class="flash-back">Users tolerate 'slightly worse' much better than 'completely broken.' Design fallbacks on a spectrum from best to acceptable, never from best to nothing.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is a timeout budget?</summary>
+<div class="flash-back">A mechanism that allocates a total time budget across processing stages. Each stage gets a fraction of remaining time, preventing one slow stage from consuming the entire allowance.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the model degradation fallback pattern?</summary>
+<div class="flash-back">A chain of progressively cheaper/faster models: e.g., Claude Sonnet -> GPT-4o -> Claude Haiku -> local Llama. When the primary fails, fall through to the next available model.</div>
+</details>
+</div>
 
 </div>

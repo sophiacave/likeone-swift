@@ -190,10 +190,128 @@ Build me:
 </div>
 
 <div style="margin:1.5rem 0">
-<div data-learn="FlashDeck" data-props='{"title":"AI Team and Talent","cards":[{"front":"The Most Critical Role","back":"AI Product Manager — hire first. Translates business needs to technical requirements. Without this role, data scientists build interesting models that solve the wrong problem."},{"front":"The Seven Capabilities","back":"AI Product Manager, AI/ML Engineer, Data Engineer, MLOps Engineer, Domain Expert, Governance/Ethics Lead, Executive Sponsor. One person can cover multiple roles early on, but every capability must exist."},{"front":"Upskilling Math","back":"One senior ML hire: $300K+/year. Upskilling 10 existing employees: ~$50K. The 10 upskilled employees understand your business 100x better. Do both, but start with upskilling."},{"front":"Centralized → Hub-and-Spoke","back":"Start centralized to build capability. Move to hub-and-spoke around your 3rd or 4th production AI system. Requires investment in shared platforms and standards."},{"front":"Learning Culture","back":"Make learning visible, build feedback loops, reward AI application over AI knowledge. A certification means nothing without a shipped product."},{"front":"AI as Amplifier","back":"AI does not replace people, it amplifies them. Address job displacement fears head-on with transparency and reskilling. Companies that manage this with empathy attract the best talent."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">AI Team and Talent</h3>
+<details class="flash-card">
+<summary class="flash-front">The Most Critical Role</summary>
+<div class="flash-back">AI Product Manager — hire first. Translates business needs to technical requirements. Without this role, data scientists build interesting models that solve the wrong problem.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Seven Capabilities</summary>
+<div class="flash-back">AI Product Manager, AI/ML Engineer, Data Engineer, MLOps Engineer, Domain Expert, Governance/Ethics Lead, Executive Sponsor. One person can cover multiple roles early on, but every capability must exist.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Upskilling Math</summary>
+<div class="flash-back">One senior ML hire: $300K+/year. Upskilling 10 existing employees: ~$50K. The 10 upskilled employees understand your business 100x better. Do both, but start with upskilling.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Centralized → Hub-and-Spoke</summary>
+<div class="flash-back">Start centralized to build capability. Move to hub-and-spoke around your 3rd or 4th production AI system. Requires investment in shared platforms and standards.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Learning Culture</summary>
+<div class="flash-back">Make learning visible, build feedback loops, reward AI application over AI knowledge. A certification means nothing without a shipped product.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">AI as Amplifier</summary>
+<div class="flash-back">AI does not replace people, it amplifies them. Address job displacement fears head-on with transparency and reskilling. Companies that manage this with empathy attract the best talent.</div>
+</details>
+</div>
 </div>
 
-<div data-learn="QuizMC" data-props='{"title":"Team and Talent — Mastery Check","questions":[{"q":"You have budget to make one AI hire. Your first AI use case is automating invoice processing for the finance team. Which role do you hire?","options":["AI/ML Engineer — they will build the model","Data Engineer — you need clean data first","AI Product Manager — they will scope the project correctly and bridge business and technical teams","MLOps Engineer — you need production infrastructure"],"correct":2,"explanation":"The AI Product Manager ensures you are solving the right problem the right way. They will scope the use case with finance, define success metrics, decide whether to build or buy, and manage stakeholders. Without this role, you risk building a technically impressive system that does not actually fit the finance team workflow."},{"q":"Your best data scientist built an amazing model in a Jupyter notebook. It works perfectly on test data. Six months later, nothing is in production. What role is missing?","options":["Another data scientist to help","An MLOps engineer to deploy and maintain the model in production","A project manager to track deadlines","An executive sponsor to provide motivation"],"correct":1,"explanation":"The gap between a working notebook and a production system is enormous. MLOps engineers handle deployment, monitoring, scaling, drift detection, and production reliability. This is the most commonly under-invested role — organizations discover they need it when their first model degrades in production and nobody knows why."},{"q":"Why do existing employees often deliver more value than external AI hires in the first months?","options":["They are cheaper and easier to manage","They already have deep knowledge of the business, customers, and data that takes external hires 6+ months to learn","They are more motivated to learn new skills","They understand the company culture better"],"correct":1,"explanation":"Domain knowledge is the critical accelerant. A domain expert who learns prompt engineering delivers immediate value because they understand the problem deeply. A brilliant data scientist who spends months learning your industry, your data quirks, and your stakeholder dynamics may take much longer to produce useful results."},{"q":"When should a centralized AI team model transition to hub-and-spoke?","options":["After the first year regardless of progress","When you have 3-4 production AI systems and business units need embedded AI capability","When you hire more than 10 AI staff","When the CEO mandates it"],"correct":1,"explanation":"The transition is driven by demand, not time. Around your 3rd or 4th production system, business units will be frustrated waiting in a central team queue. Hub-and-spoke lets them move faster while maintaining quality standards through shared platforms and governance."},{"q":"An executive says: We do not need to worry about job displacement — AI only helps people. What is the right response?","options":["Agree — AI never replaces jobs","Disagree — AI will replace most jobs within 5 years","Acknowledge that some roles WILL change and invest in transparent communication and reskilling — ignoring the concern erodes trust","Avoid the topic — it is too political"],"correct":2,"explanation":"The fear of displacement is real and valid. Ignoring it does not make it go away — it makes your best people start looking for jobs at companies that address it honestly. The right approach: be transparent about which roles will change, invest in reskilling, and show real examples of AI making people more effective rather than redundant."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Team and Talent — Mastery Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>You have budget to make one AI hire. Your first AI use case is automating invoice processing for the finance team. Which role do you hire?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>AI/ML Engineer — they will build the model
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Data Engineer — you need clean data first
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>AI Product Manager — they will scope the project correctly and bridge business and technical teams
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>MLOps Engineer — you need production infrastructure
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The AI Product Manager ensures you are solving the right problem the right way. They will scope the use case with finance, define success metrics, decide whether to build or buy, and manage stakeholders. Without this role, you risk building a technically impressive system that does not actually fit the finance team workflow.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Your best data scientist built an amazing model in a Jupyter notebook. It works perfectly on test data. Six months later, nothing is in production. What role is missing?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Another data scientist to help
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>An MLOps engineer to deploy and maintain the model in production
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A project manager to track deadlines
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>An executive sponsor to provide motivation
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The gap between a working notebook and a production system is enormous. MLOps engineers handle deployment, monitoring, scaling, drift detection, and production reliability. This is the most commonly under-invested role — organizations discover they need it when their first model degrades in production and nobody knows why.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why do existing employees often deliver more value than external AI hires in the first months?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>They are cheaper and easier to manage
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>They already have deep knowledge of the business, customers, and data that takes external hires 6+ months to learn
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>They are more motivated to learn new skills
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>They understand the company culture better
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Domain knowledge is the critical accelerant. A domain expert who learns prompt engineering delivers immediate value because they understand the problem deeply. A brilliant data scientist who spends months learning your industry, your data quirks, and your stakeholder dynamics may take much longer to produce useful results.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>When should a centralized AI team model transition to hub-and-spoke?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>After the first year regardless of progress
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>When you have 3-4 production AI systems and business units need embedded AI capability
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>When you hire more than 10 AI staff
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>When the CEO mandates it
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The transition is driven by demand, not time. Around your 3rd or 4th production system, business units will be frustrated waiting in a central team queue. Hub-and-spoke lets them move faster while maintaining quality standards through shared platforms and governance.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>An executive says: We do not need to worry about job displacement — AI only helps people. What is the right response?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Agree — AI never replaces jobs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Disagree — AI will replace most jobs within 5 years
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Acknowledge that some roles WILL change and invest in transparent communication and reskilling — ignoring the concern erodes trust
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Avoid the topic — it is too political
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The fear of displacement is real and valid. Ignoring it does not make it go away — it makes your best people start looking for jobs at companies that address it honestly. The right approach: be transparent about which roles will change, invest in reskilling, and show real examples of AI making people more effective rather than redundant.</div>
+</div>
+</div>
 
 </div>
 

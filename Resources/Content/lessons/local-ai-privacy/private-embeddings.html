@@ -153,8 +153,72 @@ for doc, meta in zip(results["documents"][0],
 </div>
 </div>
 
-<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the key advantage of semantic search over traditional keyword search?", "options": ["It runs faster", "It finds conceptually related content even without exact keyword matches", "It uses less disk space", "It only works with PDF files"], "correct": 1, "explanation": "The correct answer is: It finds conceptually related content even without exact keyword matches"}, {"q": "Why should you overlap chunks when splitting documents for embedding?", "options": ["To increase storage costs", "To preserve context at chunk boundaries so no information is lost", "To make the database larger", "Overlapping is not recommended"], "correct": 1, "explanation": "The correct answer is: To preserve context at chunk boundaries so no information is lost"}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the key advantage of semantic search over traditional keyword search?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It runs faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It finds conceptually related content even without exact keyword matches
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It uses less disk space
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It only works with PDF files
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: It finds conceptually related content even without exact keyword matches</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why should you overlap chunks when splitting documents for embedding?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>To increase storage costs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>To preserve context at chunk boundaries so no information is lost
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>To make the database larger
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Overlapping is not recommended
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: To preserve context at chunk boundaries so no information is lost</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What is an embedding?", "back": "A list of numbers (vector) representing the meaning of text. Similar meanings produce similar vectors, enabling search by concept instead of exact keywords."}, {"front": "What embedding model does Ollama provide?", "back": "nomic-embed-text (768 dimensions, 137M parameters) and mxbai-embed-large (1024 dimensions, 335M parameters)"}, {"front": "What are the 4 steps of the document search pipeline?", "back": "1) Ingest (read and split docs into chunks), 2) Embed (generate vectors locally), 3) Store (save to ChromaDB), 4) Query (embed query, find similar chunks)"}, {"front": "What is the recommended chunk size for document embedding?", "back": "200-500 words per chunk with ~50 words of overlap between chunks"}, {"front": "What is hybrid search?", "back": "Combining semantic search (meaning-based via embeddings) with keyword search (exact term matching) for queries that need both conceptual and literal matching"}, {"front": "What is the privacy guarantee of local embeddings?", "back": "Data flows from documents to local embedding model to local database. At no point does content leave your machine."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Vocabulary</h3>
+<details class="flash-card">
+<summary class="flash-front">What is an embedding?</summary>
+<div class="flash-back">A list of numbers (vector) representing the meaning of text. Similar meanings produce similar vectors, enabling search by concept instead of exact keywords.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What embedding model does Ollama provide?</summary>
+<div class="flash-back">nomic-embed-text (768 dimensions, 137M parameters) and mxbai-embed-large (1024 dimensions, 335M parameters)</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are the 4 steps of the document search pipeline?</summary>
+<div class="flash-back">1) Ingest (read and split docs into chunks), 2) Embed (generate vectors locally), 3) Store (save to ChromaDB), 4) Query (embed query, find similar chunks)</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the recommended chunk size for document embedding?</summary>
+<div class="flash-back">200-500 words per chunk with ~50 words of overlap between chunks</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is hybrid search?</summary>
+<div class="flash-back">Combining semantic search (meaning-based via embeddings) with keyword search (exact term matching) for queries that need both conceptual and literal matching</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the privacy guarantee of local embeddings?</summary>
+<div class="flash-back">Data flows from documents to local embedding model to local database. At no point does content leave your machine.</div>
+</details>
+</div>
 
 </div>

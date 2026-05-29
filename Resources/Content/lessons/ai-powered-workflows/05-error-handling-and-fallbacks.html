@@ -111,7 +111,29 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Error Handling and Fallbacks","cards":[{"front":"Errors Are Expected","back":"APIs go down, data arrives malformed, rate limits get hit. These are normal operating conditions, not signs your workflow is broken."},{"front":"Retry Strategy","back":"Wait 5s, then 15s, then 45s — increasing intervals. Most transient errors resolve themselves within 3 attempts."},{"front":"Fallback Strategy","back":"Retries exhausted? Switch to Plan B. Use backup service, apply a default category, flag for human review."},{"front":"AI Confidence Thresholds","back":"Above 80% = act automatically. Between 50-80% = act but flag for review. Below 50% = route to a human."},{"front":"Graceful Degradation","back":"If step 3 of 6 fails, can steps 4-6 still run with partial data? Design steps to be as independent as possible."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Error Handling and Fallbacks</h3>
+<details class="flash-card">
+<summary class="flash-front">Errors Are Expected</summary>
+<div class="flash-back">APIs go down, data arrives malformed, rate limits get hit. These are normal operating conditions, not signs your workflow is broken.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Retry Strategy</summary>
+<div class="flash-back">Wait 5s, then 15s, then 45s — increasing intervals. Most transient errors resolve themselves within 3 attempts.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Fallback Strategy</summary>
+<div class="flash-back">Retries exhausted? Switch to Plan B. Use backup service, apply a default category, flag for human review.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">AI Confidence Thresholds</summary>
+<div class="flash-back">Above 80% = act automatically. Between 50-80% = act but flag for review. Below 50% = route to a human.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Graceful Degradation</summary>
+<div class="flash-back">If step 3 of 6 fails, can steps 4-6 still run with partial data? Design steps to be as independent as possible.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -178,7 +200,63 @@ client = anthropic.Anthropic()
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Lesson 5 Quiz</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Error Handling and Fallbacks","questions":[{"q":"What is the correct mental model for treating errors in production workflows?","options":["Errors mean the workflow is broken and needs to be rebuilt","Errors are expected operating conditions — the difference is whether your workflow recovers gracefully","Errors should always stop the entire pipeline","Errors only happen during initial setup and testing"],"correct":1,"explanation":"APIs go down. Data arrives malformed. Rate limits get hit. These are normal operating conditions, not signs of failure. A workflow without error handling is a ticking time bomb. A workflow with error handling is a resilient system."},{"q":"What makes AI uncertainty in classification different from traditional code errors?","options":["AI never produces uncertain outputs","Traditional code has three states: works, error, or uncertain","AI has a third state — uncertainty — requiring confidence thresholds to decide whether to act automatically or route to a human","AI uncertainty is always a sign of bad training data"],"correct":2,"explanation":"Traditional code either works or throws an error. AI adds a third state: uncertain. An 80%+ confident classification acts automatically. A 40% confident one should route to a human. Confidence thresholds turn AI uncertainty into a manageable feature."},{"q":"What does graceful degradation mean in workflow design?","options":["The workflow always fails completely when one step fails","Workflows should shut down rather than produce incomplete results","A workflow that does the best it can with what is available rather than stopping completely when one step fails","Gradual performance improvement over time"],"correct":2,"explanation":"If step 3 of a 6-step pipeline fails, can steps 4-6 still run with partial data? Often yes. Designing steps to be as independent as possible means a single failure does not block the entire pipeline."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Error Handling and Fallbacks</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the correct mental model for treating errors in production workflows?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Errors mean the workflow is broken and needs to be rebuilt
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Errors are expected operating conditions — the difference is whether your workflow recovers gracefully
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Errors should always stop the entire pipeline
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Errors only happen during initial setup and testing
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> APIs go down. Data arrives malformed. Rate limits get hit. These are normal operating conditions, not signs of failure. A workflow without error handling is a ticking time bomb. A workflow with error handling is a resilient system.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What makes AI uncertainty in classification different from traditional code errors?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>AI never produces uncertain outputs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Traditional code has three states: works, error, or uncertain
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>AI has a third state — uncertainty — requiring confidence thresholds to decide whether to act automatically or route to a human
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>AI uncertainty is always a sign of bad training data
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Traditional code either works or throws an error. AI adds a third state: uncertain. An 80%+ confident classification acts automatically. A 40% confident one should route to a human. Confidence thresholds turn AI uncertainty into a manageable feature.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What does graceful degradation mean in workflow design?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The workflow always fails completely when one step fails
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Workflows should shut down rather than produce incomplete results
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A workflow that does the best it can with what is available rather than stopping completely when one step fails
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Gradual performance improvement over time
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> If step 3 of a 6-step pipeline fails, can steps 4-6 still run with partial data? Often yes. Designing steps to be as independent as possible means a single failure does not block the entire pipeline.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

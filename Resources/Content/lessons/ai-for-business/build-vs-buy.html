@@ -21,7 +21,25 @@
 
   <p class="section-text">Flip each card to understand the cost, timeline, risk, and ideal use case for each option. Pay special attention to the "Best when" criteria — these are the conditions that must be true for each option to make sense. If the conditions do not match your situation, that option is wrong regardless of how appealing it sounds.</p>
 
-  <div data-learn="FlashDeck" data-props='{"title":"The Four AI Strategy Options","cards":[{"front":"BUY a SaaS Tool","back":"Best when: the problem is common, budget is under $5K/year, you need results fast, and no sensitive data is involved. Examples: Jasper for writing, Zapier for automation, Otter.ai for transcription. Cost: $20-$500/month. Timeline: days. Risk: low."},{"front":"BUILD Custom AI","back":"Best when: your problem is genuinely unique, you have developers on staff, budget exceeds $10K, and data sensitivity requires keeping everything in-house. Examples: custom ML model, proprietary recommendation engine. Cost: $10K-$200K+. Timeline: 1-6 months. Risk: high."},{"front":"HIRE a Consultant","back":"Best when: your needs are specific enough that off-the-shelf tools do not fit, but not so unique that a custom build is warranted. Also when you have budget ($2K-$15K) but no technical staff. Examples: custom GPT setup, AI strategy session, workflow automation. Timeline: 2-6 weeks."},{"front":"WAIT (Do Nothing Yet)","back":"Best when: budget is under $500, the problem is not urgent, or the AI tools in your category are evolving so fast that buying now means replacing in 6 months. AI tool prices drop every quarter. Sometimes the best move is to revisit in 90 days."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">The Four AI Strategy Options</h3>
+<details class="flash-card">
+<summary class="flash-front">BUY a SaaS Tool</summary>
+<div class="flash-back">Best when: the problem is common, budget is under $5K/year, you need results fast, and no sensitive data is involved. Examples: Jasper for writing, Zapier for automation, Otter.ai for transcription. Cost: $20-$500/month. Timeline: days. Risk: low.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">BUILD Custom AI</summary>
+<div class="flash-back">Best when: your problem is genuinely unique, you have developers on staff, budget exceeds $10K, and data sensitivity requires keeping everything in-house. Examples: custom ML model, proprietary recommendation engine. Cost: $10K-$200K+. Timeline: 1-6 months. Risk: high.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">HIRE a Consultant</summary>
+<div class="flash-back">Best when: your needs are specific enough that off-the-shelf tools do not fit, but not so unique that a custom build is warranted. Also when you have budget ($2K-$15K) but no technical staff. Examples: custom GPT setup, AI strategy session, workflow automation. Timeline: 2-6 weeks.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">WAIT (Do Nothing Yet)</summary>
+<div class="flash-back">Best when: budget is under $500, the problem is not urgent, or the AI tools in your category are evolving so fast that buying now means replacing in 6 months. AI tool prices drop every quarter. Sometimes the best move is to revisit in 90 days.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -163,7 +181,99 @@ Explain your reasoning for each factor and give me a confidence level (high/medi
   <h2 class="section-title">Make the call.</h2>
   <p class="section-text">Five scenario-based questions. For each one, apply the five factors and recommend the right strategy. These are real decisions — not edge cases.</p>
 
-  <div data-learn="QuizMC" data-props='{"title":"Build vs. Buy Decisions","questions":[{"q":"A 10-person marketing agency wants to use AI to generate first drafts of blog posts and social content. Their budget is $200/month and they need to start this week. What is the right call?","options":["Build — agencies need custom models for brand consistency","Buy — this is a common problem with excellent SaaS tools that deploy in hours","Hire a consultant — content is too brand-sensitive for off-the-shelf tools","Wait — AI writing tools are still too immature for professional content"],"correct":1,"explanation":"Common problem, reasonable budget, urgent timeline, no sensitive data. This is a textbook Buy scenario. Tools like Jasper, Claude, or Copy.ai handle this well at $20-$100/month and can be up and running same day."},{"q":"A wealth management firm wants AI to analyze client portfolios and suggest rebalancing strategies. Client financial data is involved. Budget: $50,000. What is the right call?","options":["Buy — plenty of fintech SaaS tools handle portfolio analysis","Wait — financial AI is too risky for wealth management","Build or hire a specialist — financial data sensitivity and regulatory requirements rule out generic SaaS","Hire a general AI consultant for a quick setup"],"correct":2,"explanation":"Client financial data (PII + regulated) and the high-stakes nature of portfolio recommendations require a solution built with compliance in mind. A generic SaaS tool cannot guarantee the data privacy or regulatory controls required. Build or hire a specialist with fintech AI experience."},{"q":"A restaurant owner wants to use AI to respond to Google reviews and social media comments. She has no technical staff. Budget: $30/month. What is the right call?","options":["Build — review responses need to sound like her specifically","Buy — SaaS tools like Podium or a general AI assistant handle this well","Hire a consultant to build a custom review response system","Wait — AI social media tools are not ready for restaurant use"],"correct":1,"explanation":"Classic Buy scenario. The problem is common, the budget fits, there is no sensitive data, and she needs it to work without technical maintenance. Tools like Podium, Birdeye, or even Claude with a simple prompt template solve this for under $30/month."},{"q":"A logistics company wants to predict delivery delays using 5 years of their proprietary shipment data, weather patterns, and carrier performance records. Budget: $80,000. They have two developers. What is the right call?","options":["Buy — logistics SaaS tools can handle this without custom development","Wait — predictive AI is too expensive for most logistics businesses","Build — the problem is unique, data is proprietary, team has technical capacity, and budget supports it","Hire a consultant for a 2-week setup"],"correct":2,"explanation":"Unique problem (proprietary 5-year dataset), significant budget, technical staff available, and the competitive advantage of a custom model justifies the investment. This is one of the rare scenarios where Build is the right answer."},{"q":"A small nonprofit wants AI to help draft grant applications. Budget: $0 (no AI spend authorized). Timeline: 3 months before next grant cycle. What is the right call?","options":["Hire a consultant — grant writing is too important to risk on free tools","Build a custom model on volunteer developer time","Use free tiers of existing AI tools — Claude free, ChatGPT free, or similar","Wait until the board approves a budget"],"correct":2,"explanation":"Zero budget does not mean zero options. Claude, ChatGPT, and Gemini all have free tiers that handle grant writing drafts well. Start there, demonstrate value, then make the case for a small paid subscription. Do not wait — use what is available now."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Build vs. Buy Decisions</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>A 10-person marketing agency wants to use AI to generate first drafts of blog posts and social content. Their budget is $200/month and they need to start this week. What is the right call?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Build — agencies need custom models for brand consistency
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Buy — this is a common problem with excellent SaaS tools that deploy in hours
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Hire a consultant — content is too brand-sensitive for off-the-shelf tools
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Wait — AI writing tools are still too immature for professional content
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Common problem, reasonable budget, urgent timeline, no sensitive data. This is a textbook Buy scenario. Tools like Jasper, Claude, or Copy.ai handle this well at $20-$100/month and can be up and running same day.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>A wealth management firm wants AI to analyze client portfolios and suggest rebalancing strategies. Client financial data is involved. Budget: $50,000. What is the right call?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Buy — plenty of fintech SaaS tools handle portfolio analysis
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Wait — financial AI is too risky for wealth management
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Build or hire a specialist — financial data sensitivity and regulatory requirements rule out generic SaaS
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Hire a general AI consultant for a quick setup
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Client financial data (PII + regulated) and the high-stakes nature of portfolio recommendations require a solution built with compliance in mind. A generic SaaS tool cannot guarantee the data privacy or regulatory controls required. Build or hire a specialist with fintech AI experience.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>A restaurant owner wants to use AI to respond to Google reviews and social media comments. She has no technical staff. Budget: $30/month. What is the right call?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Build — review responses need to sound like her specifically
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Buy — SaaS tools like Podium or a general AI assistant handle this well
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Hire a consultant to build a custom review response system
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Wait — AI social media tools are not ready for restaurant use
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Classic Buy scenario. The problem is common, the budget fits, there is no sensitive data, and she needs it to work without technical maintenance. Tools like Podium, Birdeye, or even Claude with a simple prompt template solve this for under $30/month.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>A logistics company wants to predict delivery delays using 5 years of their proprietary shipment data, weather patterns, and carrier performance records. Budget: $80,000. They have two developers. What is the right call?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Buy — logistics SaaS tools can handle this without custom development
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Wait — predictive AI is too expensive for most logistics businesses
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Build — the problem is unique, data is proprietary, team has technical capacity, and budget supports it
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Hire a consultant for a 2-week setup
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Unique problem (proprietary 5-year dataset), significant budget, technical staff available, and the competitive advantage of a custom model justifies the investment. This is one of the rare scenarios where Build is the right answer.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>A small nonprofit wants AI to help draft grant applications. Budget: $0 (no AI spend authorized). Timeline: 3 months before next grant cycle. What is the right call?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Hire a consultant — grant writing is too important to risk on free tools
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Build a custom model on volunteer developer time
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Use free tiers of existing AI tools — Claude free, ChatGPT free, or similar
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Wait until the board approves a budget
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Zero budget does not mean zero options. Claude, ChatGPT, and Gemini all have free tiers that handle grant writing drafts well. Start there, demonstrate value, then make the case for a small paid subscription. Do not wait — use what is available now.</div>
+</div>
+</div>
 </div>
 
 <div class="lesson-section">

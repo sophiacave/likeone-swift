@@ -235,10 +235,128 @@ Message: <span style="color:#fb923c">"New sub: </span><span style="color:#f59e0b
 </div>
 
 <div style="margin:1.5rem 0">
-<div data-learn="QuizMC" data-props='{"title":"Make.com Mastery Check","questions":[{"q":"What does {{1.email}} mean in a Make.com scenario?","options":["Send an email to module 1","The email field from the output of module #1","A variable named 1.email","An error in the mapping"],"correct":1,"explanation":"In Make.com, double curly braces reference data from other modules. The number is the module position in the scenario. {{1.email}} means grab the email field from the first module (usually your trigger)."},{"q":"What is the recommended first module type when building a Make.com scenario?","options":["Supabase insert","Filter logic","A trigger — Webhook or Schedule","Slack notification"],"correct":2,"explanation":"Every scenario must start with a trigger — something that initiates the run. Either a Webhook (fires when an external event happens) or a Schedule (runs on a time interval). Other modules follow the trigger."},{"q":"Why should you add error handlers to modules that call external APIs?","options":["They speed up execution","External services can fail — error handlers create parallel paths so failures notify you instead of failing silently","They are required by Make.com for all scenarios","They reduce operation costs"],"correct":1,"explanation":"External APIs fail — timeouts, rate limits, downtime. An error handler creates a branching path that fires only on failure, routing the error to Slack or email so you always know when something breaks. Without it, failures are silent."},{"q":"A 5-module scenario runs 20 times per day. How many monthly operations does it consume?","options":["20","100","3,000","5"],"correct":2,"explanation":"Each module execution = 1 operation. A 5-module scenario running once = 5 operations. Running 20 times/day = 100 operations/day. Over 30 days = 3,000 operations/month. The free tier (1,000 ops) would not cover this — you would need the Core plan."},{"q":"What is the purpose of the Router module?","options":["It connects to your internet router","It splits the flow into parallel conditional paths — different logic for different conditions","It speeds up data transfer between modules","It replaces the trigger module"],"correct":1,"explanation":"The Router creates branching paths from a single point. Each branch can have its own filter condition — for example, one path for payments over $50 (send celebration) and another for all other payments (log silently). This enables conditional logic without code."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Make.com Mastery Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What does {{1.email}} mean in a Make.com scenario?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Send an email to module 1
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The email field from the output of module #1
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A variable named 1.email
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>An error in the mapping
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> In Make.com, double curly braces reference data from other modules. The number is the module position in the scenario. {{1.email}} means grab the email field from the first module (usually your trigger).</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the recommended first module type when building a Make.com scenario?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Supabase insert
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Filter logic
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A trigger — Webhook or Schedule
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Slack notification
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Every scenario must start with a trigger — something that initiates the run. Either a Webhook (fires when an external event happens) or a Schedule (runs on a time interval). Other modules follow the trigger.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why should you add error handlers to modules that call external APIs?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>They speed up execution
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>External services can fail — error handlers create parallel paths so failures notify you instead of failing silently
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>They are required by Make.com for all scenarios
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>They reduce operation costs
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> External APIs fail — timeouts, rate limits, downtime. An error handler creates a branching path that fires only on failure, routing the error to Slack or email so you always know when something breaks. Without it, failures are silent.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>A 5-module scenario runs 20 times per day. How many monthly operations does it consume?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>20
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>100
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>3,000
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>5
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Each module execution = 1 operation. A 5-module scenario running once = 5 operations. Running 20 times/day = 100 operations/day. Over 30 days = 3,000 operations/month. The free tier (1,000 ops) would not cover this — you would need the Core plan.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What is the purpose of the Router module?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It connects to your internet router
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It splits the flow into parallel conditional paths — different logic for different conditions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It speeds up data transfer between modules
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It replaces the trigger module
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The Router creates branching paths from a single point. Each branch can have its own filter condition — for example, one path for payments over $50 (send celebration) and another for all other payments (log silently). This enables conditional logic without code.</div>
+</div>
+</div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Make.com Flashcards","cards":[{"front":"What is the difference between a Webhook trigger and a Schedule trigger?","back":"Webhook: fires immediately when an external service sends a POST request (event-driven). Schedule: fires at a set time interval like every hour or every day at 9am (time-driven). Use webhooks for real-time reactions, schedules for batch operations."},{"front":"What does idempotency mean when designing Make.com scenarios?","back":"Running the same scenario multiple times with the same data produces the same result without side effects — like duplicate emails or double database inserts. Design scenarios to check for existing records before inserting."},{"front":"How do you reference data from module 3 inside module 5?","back":"Use {{3.fieldName}} syntax. The number is always the module position, and fieldName is the specific output field you want to reference from that module."},{"front":"What happens when a scenario fails mid-execution?","back":"Make.com stores the failed run in the Incomplete Executions queue. You can inspect the payload, fix the issue in your scenario, and re-run the exact same execution with the original data. No data is lost."},{"front":"What is a Router module and when do you use it?","back":"A Router splits scenario flow into parallel branches, each with its own filter condition. Use it when the same trigger needs different handling based on conditions — like high-value vs. low-value payments, or success vs. error paths."},{"front":"How are Make.com operations counted for billing?","back":"Each module execution = 1 operation. A 4-module scenario running once = 4 operations. A scenario with a Router that takes 2 branches counts all modules on both branches. Free tier gives 1,000 ops/month."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Make.com Flashcards</h3>
+<details class="flash-card">
+<summary class="flash-front">What is the difference between a Webhook trigger and a Schedule trigger?</summary>
+<div class="flash-back">Webhook: fires immediately when an external service sends a POST request (event-driven). Schedule: fires at a set time interval like every hour or every day at 9am (time-driven). Use webhooks for real-time reactions, schedules for batch operations.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What does idempotency mean when designing Make.com scenarios?</summary>
+<div class="flash-back">Running the same scenario multiple times with the same data produces the same result without side effects — like duplicate emails or double database inserts. Design scenarios to check for existing records before inserting.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you reference data from module 3 inside module 5?</summary>
+<div class="flash-back">Use {{3.fieldName}} syntax. The number is always the module position, and fieldName is the specific output field you want to reference from that module.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What happens when a scenario fails mid-execution?</summary>
+<div class="flash-back">Make.com stores the failed run in the Incomplete Executions queue. You can inspect the payload, fix the issue in your scenario, and re-run the exact same execution with the original data. No data is lost.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is a Router module and when do you use it?</summary>
+<div class="flash-back">A Router splits scenario flow into parallel branches, each with its own filter condition. Use it when the same trigger needs different handling based on conditions — like high-value vs. low-value payments, or success vs. error paths.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How are Make.com operations counted for billing?</summary>
+<div class="flash-back">Each module execution = 1 operation. A 4-module scenario running once = 4 operations. A scenario with a Router that takes 2 branches counts all modules on both branches. Free tier gives 1,000 ops/month.</div>
+</details>
+</div>
 
 </div>
 

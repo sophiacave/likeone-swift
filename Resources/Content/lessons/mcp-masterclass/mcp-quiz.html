@@ -248,9 +248,213 @@
 <h2 style="color: #e5e5e5; font-size: 1.4rem; text-align: center; margin-bottom: 0.5rem;">Ready? Let's go.</h2>
 <p style="color: #71717a; text-align: center; margin-bottom: 2rem;">10 questions. You need 8 correct to pass. Good luck.</p>
 
-  <div data-learn="QuizMC" data-props='{"title":"MCP Mastery Quiz","questions":[{"q":"What does MCP stand for?","options":["Machine Connection Protocol","Model Context Protocol","Multi-Channel Platform","Module Computation Pipeline"],"correct":1,"explanation":"MCP stands for Model Context Protocol. It is an open standard created by Anthropic that defines how AI models communicate with external tools and data sources."},{"q":"What are the three components of MCP architecture?","options":["Client, Server, Database","Host, MCP Client, MCP Server","Browser, API, Model","Frontend, Backend, Database"],"correct":1,"explanation":"The three MCP components are: Host (the AI application like Claude Desktop), MCP Client (the protocol bridge), and MCP Server (your tool or data source)."},{"q":"What transport protocols does MCP support?","options":["HTTP and WebSocket only","gRPC and REST","stdio and Streamable HTTP","TCP/IP sockets only"],"correct":2,"explanation":"MCP supports two transport mechanisms: stdio (standard input/output, ideal for local servers) and Streamable HTTP for remote servers."},{"q":"In the server.tool() method, what are the three arguments?","options":["url, method, callback","name, schema, handler","route, middleware, controller","endpoint, params, response"],"correct":1,"explanation":"server.tool() takes three arguments: name (a string identifier), schema (a Zod schema defining input parameters), and handler (an async function that executes the tool logic)."},{"q":"What are the three MCP primitives?","options":["Read, Write, Execute","Input, Output, Error","Tools, Resources, Prompts","Query, Mutation, Subscription"],"correct":2,"explanation":"The three MCP primitives are: Tools (actions the AI can take), Resources (data the AI can read), and Prompts (templates the AI can use). Each serves a different purpose."},{"q":"How does an MCP Server differ from a direct tool call?","options":["There is no difference","Servers are faster","Servers are long-running, expose multiple tools, and maintain state","Servers only work with Claude"],"correct":2,"explanation":"MCP Servers are long-running processes that expose multiple tools, maintain state across calls (like DB connections), and support automatic tool discovery. Direct tool calls are one-off and stateless."},{"q":"Where do you configure MCP servers for Claude Desktop?","options":["In the Claude Desktop UI settings","In claude_desktop_config.json","In the server package.json","In a .env file"],"correct":1,"explanation":"MCP servers are configured in claude_desktop_config.json, located in ~/Library/Application Support/Claude/ on macOS or %APPDATA%\\Claude\\ on Windows."},{"q":"What happens during the MCP capability negotiation phase?","options":["The user manually selects which tools to enable","Claude sends initialize, then lists available tools from the server","The server pushes notifications to Claude","The client uploads all data to the server"],"correct":1,"explanation":"During negotiation, Claude sends an initialize request with its protocol version, the server responds with capabilities, then Claude sends tools/list to discover all available tools."},{"q":"Which security practice prevents a prompt injection from executing DROP TABLE?","options":["Rate limiting","Audit logging","Principle of least privilege","Transport security"],"correct":2,"explanation":"Principle of least privilege means connecting with minimal permissions (e.g., read-only DB user). Even if a prompt injection gets through, destructive queries are impossible because the server does not have permission."},{"q":"Which MCP primitive would you use to give Claude access to your project README without executing any code?","options":["A Tool that reads the file","A Resource that exposes the file","A Prompt with the content embedded","A Server with full filesystem access"],"correct":1,"explanation":"Resources are read-only data exposed through MCP. A resource like file://project/README.md gives the AI access to the content without executing any action — it is the safest, most appropriate primitive for read-only data."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">MCP Mastery Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What does MCP stand for?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Machine Connection Protocol
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Model Context Protocol
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Multi-Channel Platform
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Module Computation Pipeline
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> MCP stands for Model Context Protocol. It is an open standard created by Anthropic that defines how AI models communicate with external tools and data sources.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What are the three components of MCP architecture?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Client, Server, Database
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Host, MCP Client, MCP Server
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Browser, API, Model
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Frontend, Backend, Database
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The three MCP components are: Host (the AI application like Claude Desktop), MCP Client (the protocol bridge), and MCP Server (your tool or data source).</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What transport protocols does MCP support?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>HTTP and WebSocket only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>gRPC and REST
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>stdio and Streamable HTTP
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>TCP/IP sockets only
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> MCP supports two transport mechanisms: stdio (standard input/output, ideal for local servers) and Streamable HTTP for remote servers.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>In the server.tool() method, what are the three arguments?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>url, method, callback
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>name, schema, handler
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>route, middleware, controller
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>endpoint, params, response
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> server.tool() takes three arguments: name (a string identifier), schema (a Zod schema defining input parameters), and handler (an async function that executes the tool logic).</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What are the three MCP primitives?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Read, Write, Execute
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Input, Output, Error
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Tools, Resources, Prompts
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Query, Mutation, Subscription
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The three MCP primitives are: Tools (actions the AI can take), Resources (data the AI can read), and Prompts (templates the AI can use). Each serves a different purpose.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">6</span>How does an MCP Server differ from a direct tool call?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>There is no difference
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Servers are faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Servers are long-running, expose multiple tools, and maintain state
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Servers only work with Claude
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> MCP Servers are long-running processes that expose multiple tools, maintain state across calls (like DB connections), and support automatic tool discovery. Direct tool calls are one-off and stateless.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">7</span>Where do you configure MCP servers for Claude Desktop?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>In the Claude Desktop UI settings
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>In claude_desktop_config.json
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>In the server package.json
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>In a .env file
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> MCP servers are configured in claude_desktop_config.json, located in ~/Library/Application Support/Claude/ on macOS or %APPDATA%\Claude\ on Windows.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">8</span>What happens during the MCP capability negotiation phase?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The user manually selects which tools to enable
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Claude sends initialize, then lists available tools from the server
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The server pushes notifications to Claude
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The client uploads all data to the server
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> During negotiation, Claude sends an initialize request with its protocol version, the server responds with capabilities, then Claude sends tools/list to discover all available tools.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">9</span>Which security practice prevents a prompt injection from executing DROP TABLE?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Rate limiting
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Audit logging
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Principle of least privilege
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Transport security
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Principle of least privilege means connecting with minimal permissions (e.g., read-only DB user). Even if a prompt injection gets through, destructive queries are impossible because the server does not have permission.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">10</span>Which MCP primitive would you use to give Claude access to your project README without executing any code?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A Tool that reads the file
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A Resource that exposes the file
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A Prompt with the content embedded
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A Server with full filesystem access
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Resources are read-only data exposed through MCP. A resource like file://project/README.md gives the AI access to the content without executing any action — it is the safest, most appropriate primitive for read-only data.</div>
+</div>
+</div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"Course Recap — Key Concepts","cards":[{"front":"MCP = ?","back":"Model Context Protocol. An open standard by Anthropic defining how AI models communicate with external tools and data sources."},{"front":"Three MCP components","back":"Host (the AI app), MCP Client (the protocol bridge inside the Host), MCP Server (the tool or data source)."},{"front":"Three MCP primitives","back":"Tools (AI-invoked actions), Resources (read-only data), Prompts (user-selected templates)."},{"front":"server.tool() signature","back":"server.tool(name, schema, handler) — name is the identifier, schema is a Zod object, handler is an async function returning { content: [...] }."},{"front":"Principle of least privilege","back":"Connect your MCP server with minimal permissions. A read-only DB user cannot execute DROP TABLE even if a prompt injection gets through."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Course Recap — Key Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">MCP = ?</summary>
+<div class="flash-back">Model Context Protocol. An open standard by Anthropic defining how AI models communicate with external tools and data sources.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Three MCP components</summary>
+<div class="flash-back">Host (the AI app), MCP Client (the protocol bridge inside the Host), MCP Server (the tool or data source).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Three MCP primitives</summary>
+<div class="flash-back">Tools (AI-invoked actions), Resources (read-only data), Prompts (user-selected templates).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">server.tool() signature</summary>
+<div class="flash-back">server.tool(name, schema, handler) — name is the identifier, schema is a Zod object, handler is an async function returning { content: [...] }.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Principle of least privilege</summary>
+<div class="flash-back">Connect your MCP server with minimal permissions. A read-only DB user cannot execute DROP TABLE even if a prompt injection gets through.</div>
+</details>
+</div>
 
 
 </div>

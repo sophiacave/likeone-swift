@@ -195,8 +195,126 @@ support_agent = AgentConfig(
     </div>
   </div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"The 6 Agent Components","cards":[{"front":"Identity","back":"Who the agent is \u2014 name, role, personality, and voice. Encoded in the system prompt. Shapes every decision the agent makes."},{"front":"Memory","back":"What the agent knows. Short-term (conversation window), long-term (database), shared (accessible to other agents). Makes agents smarter over time."},{"front":"Tools","back":"What the agent can do \u2014 API calls, database queries, file ops. Defined as JSON schemas (or MCP servers). Without tools, agents can only think."},{"front":"Goals","back":"What the agent is trying to achieve. Must be specific and measurable. Persistent (always active) or triggered (event-activated)."},{"front":"Guardrails","back":"What the agent must NOT do. Hard limits that override goals. Without guardrails, agents optimize recklessly."},{"front":"Schedule","back":"When the agent runs \u2014 event-driven (webhooks), cron-based (timer), or always-on (continuous). Determines autonomy and resource usage."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">The 6 Agent Components</h3>
+<details class="flash-card">
+<summary class="flash-front">Identity</summary>
+<div class="flash-back">Who the agent is — name, role, personality, and voice. Encoded in the system prompt. Shapes every decision the agent makes.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Memory</summary>
+<div class="flash-back">What the agent knows. Short-term (conversation window), long-term (database), shared (accessible to other agents). Makes agents smarter over time.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Tools</summary>
+<div class="flash-back">What the agent can do — API calls, database queries, file ops. Defined as JSON schemas (or MCP servers). Without tools, agents can only think.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Goals</summary>
+<div class="flash-back">What the agent is trying to achieve. Must be specific and measurable. Persistent (always active) or triggered (event-activated).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Guardrails</summary>
+<div class="flash-back">What the agent must NOT do. Hard limits that override goals. Without guardrails, agents optimize recklessly.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Schedule</summary>
+<div class="flash-back">When the agent runs — event-driven (webhooks), cron-based (timer), or always-on (continuous). Determines autonomy and resource usage.</div>
+</details>
+</div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Agent Anatomy Check","questions":[{"q":"Which component defines what an agent is NOT allowed to do?","options":["Goals","Memory","Guardrails","Schedule"],"correct":2,"explanation":"Guardrails are the hard limits \u2014 they define forbidden actions and override goals when they conflict."},{"q":"An agent that reacts to a webhook event rather than running on a timer uses which schedule type?","options":["Cron-based","Always-on","Event-driven","Manual"],"correct":2,"explanation":"Event-driven agents wake up in response to triggers like webhooks, new records, or incoming messages."},{"q":"What is the difference between long-term memory and shared memory?","options":["Long-term is faster","Shared memory is accessible to ALL agents; long-term belongs to one agent","There is no difference","Long-term lasts forever; shared is session-only"],"correct":1,"explanation":"Shared memory (brain_context) is the bridge between agents. Long-term memory (agent_memory) belongs to a single agent and persists across its sessions."},{"q":"An agent with 50 tools keeps choosing the wrong one. What is the most likely fix?","options":["Add more tools","Split into multiple specialized agents with 5-15 tools each","Remove all guardrails","Switch to always-on scheduling"],"correct":1,"explanation":"LLMs perform better with fewer, focused tools. Too many tools creates confusion. Split into specialized agents that each excel at a narrow task."},{"q":"Why is \u0027You are a helpful assistant\u0027 a bad agent identity?","options":["It is too long","It is too specific","It is too vague \u2014 it produces generic behavior instead of targeted, useful actions","It violates guardrails"],"correct":2,"explanation":"Vague identities produce vague behavior. Specific identities (role + priorities + voice) produce focused, predictable agents."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Agent Anatomy Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which component defines what an agent is NOT allowed to do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Goals
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Memory
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Guardrails
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Schedule
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Guardrails are the hard limits — they define forbidden actions and override goals when they conflict.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>An agent that reacts to a webhook event rather than running on a timer uses which schedule type?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Cron-based
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Always-on
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Event-driven
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Manual
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Event-driven agents wake up in response to triggers like webhooks, new records, or incoming messages.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the difference between long-term memory and shared memory?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Long-term is faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Shared memory is accessible to ALL agents; long-term belongs to one agent
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>There is no difference
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Long-term lasts forever; shared is session-only
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Shared memory (brain_context) is the bridge between agents. Long-term memory (agent_memory) belongs to a single agent and persists across its sessions.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>An agent with 50 tools keeps choosing the wrong one. What is the most likely fix?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Add more tools
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Split into multiple specialized agents with 5-15 tools each
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Remove all guardrails
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Switch to always-on scheduling
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> LLMs perform better with fewer, focused tools. Too many tools creates confusion. Split into specialized agents that each excel at a narrow task.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>Why is 'You are a helpful assistant' a bad agent identity?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is too long
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It is too specific
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It is too vague — it produces generic behavior instead of targeted, useful actions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It violates guardrails
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Vague identities produce vague behavior. Specific identities (role + priorities + voice) produce focused, predictable agents.</div>
+</div>
+</div>
 
 </div>

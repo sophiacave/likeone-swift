@@ -215,8 +215,108 @@ response = claude.messages.create(
 
   <div class="divider"><span>Test Your Understanding</span></div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Advanced RAG Patterns Quiz","questions":[{"q":"A user asks: \"What causes that disease where you forget things?\" Which pattern is most appropriate?","options":["Basic RAG — just search for the query as-is","Multi-Step RAG — first retrieve with the vague query, then refine to technical terminology","Self-RAG — the model likely knows this without retrieval","Agentic RAG — deploy an agent to plan the search"],"correct":1,"explanation":"Multi-Step RAG is designed for vague, colloquial queries. The first retrieval finds documents mentioning memory loss and cognitive decline. The LLM uses those terms to refine the query to precise medical terminology, then the second retrieval finds targeted results."},{"q":"What is the key cost-saving benefit of Self-RAG?","options":["It uses a cheaper embedding model","It skips retrieval for queries that don\u0027t need it, saving vector DB calls and context tokens","It compresses chunk sizes automatically","It caches all previous query results"],"correct":1,"explanation":"Self-RAG lets the LLM decide whether retrieval is needed. Simple factual questions can be answered directly without a vector search. This reduces latency and cost for high-volume applications where many queries are simple."},{"q":"When should you NOT use Agentic RAG?","options":["When the question spans multiple knowledge bases","When complex synthesis across sources is needed","When a simple single-source query would work with basic RAG","When the user needs a comprehensive research-style answer"],"correct":2,"explanation":"Agentic RAG is the most powerful but also the slowest and most expensive pattern. For simple questions with a single knowledge source, basic RAG works better — faster, cheaper, and easier to debug."},{"q":"A user asks \"How much revenue did we make in Q3 and what was the growth rate vs Q2?\" Which pattern?","options":["Basic RAG — it can find the numbers","Multi-Step RAG — the query needs refinement","RAG + Tools — retrieval finds the data, a calculator computes the growth rate","Self-RAG — no retrieval needed"],"correct":2,"explanation":"This query requires two things: (1) retrieving revenue figures from the knowledge base, and (2) calculating a growth rate — a mathematical operation that RAG alone cannot do. RAG+Tools combines document retrieval with a calculator tool."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Advanced RAG Patterns Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>A user asks: "What causes that disease where you forget things?" Which pattern is most appropriate?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Basic RAG — just search for the query as-is
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Multi-Step RAG — first retrieve with the vague query, then refine to technical terminology
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Self-RAG — the model likely knows this without retrieval
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Agentic RAG — deploy an agent to plan the search
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Multi-Step RAG is designed for vague, colloquial queries. The first retrieval finds documents mentioning memory loss and cognitive decline. The LLM uses those terms to refine the query to precise medical terminology, then the second retrieval finds targeted results.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the key cost-saving benefit of Self-RAG?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It uses a cheaper embedding model
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It skips retrieval for queries that don't need it, saving vector DB calls and context tokens
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It compresses chunk sizes automatically
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It caches all previous query results
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Self-RAG lets the LLM decide whether retrieval is needed. Simple factual questions can be answered directly without a vector search. This reduces latency and cost for high-volume applications where many queries are simple.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>When should you NOT use Agentic RAG?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>When the question spans multiple knowledge bases
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>When complex synthesis across sources is needed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>When a simple single-source query would work with basic RAG
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>When the user needs a comprehensive research-style answer
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Agentic RAG is the most powerful but also the slowest and most expensive pattern. For simple questions with a single knowledge source, basic RAG works better — faster, cheaper, and easier to debug.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>A user asks "How much revenue did we make in Q3 and what was the growth rate vs Q2?" Which pattern?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Basic RAG — it can find the numbers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Multi-Step RAG — the query needs refinement
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>RAG + Tools — retrieval finds the data, a calculator computes the growth rate
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Self-RAG — no retrieval needed
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> This query requires two things: (1) retrieving revenue figures from the knowledge base, and (2) calculating a growth rate — a mathematical operation that RAG alone cannot do. RAG+Tools combines document retrieval with a calculator tool.</div>
+</div>
+</div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"Advanced Pattern Vocabulary","cards":[{"front":"Multi-Step RAG","back":"Query → retrieve → refine query using terminology from results → retrieve again. Handles vague input by iteratively improving the search."},{"front":"Self-RAG","back":"LLM first decides \"do I need to retrieve?\" then after answering, self-evaluates quality. Saves cost on simple queries, catches hallucinations."},{"front":"RAG + Tools","back":"Combines document retrieval with executable tools (calculator, API calls, database queries) for questions requiring more than text lookup."},{"front":"Agentic RAG","back":"An autonomous agent that plans its own multi-source retrieval strategy, executes searches, evaluates sufficiency, and iterates until complete."},{"front":"Query Refinement","back":"Using the LLM to rewrite a vague query into precise technical vocabulary based on terms found in first-round retrieval results."},{"front":"Tool Use (Function Calling)","back":"The LLM decides which tools to call and with what parameters. In RAG+Tools, the knowledge base search is one tool among several."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Advanced Pattern Vocabulary</h3>
+<details class="flash-card">
+<summary class="flash-front">Multi-Step RAG</summary>
+<div class="flash-back">Query → retrieve → refine query using terminology from results → retrieve again. Handles vague input by iteratively improving the search.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Self-RAG</summary>
+<div class="flash-back">LLM first decides "do I need to retrieve?" then after answering, self-evaluates quality. Saves cost on simple queries, catches hallucinations.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">RAG + Tools</summary>
+<div class="flash-back">Combines document retrieval with executable tools (calculator, API calls, database queries) for questions requiring more than text lookup.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Agentic RAG</summary>
+<div class="flash-back">An autonomous agent that plans its own multi-source retrieval strategy, executes searches, evaluates sufficiency, and iterates until complete.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Query Refinement</summary>
+<div class="flash-back">Using the LLM to rewrite a vague query into precise technical vocabulary based on terms found in first-round retrieval results.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Tool Use (Function Calling)</summary>
+<div class="flash-back">The LLM decides which tools to call and with what parameters. In RAG+Tools, the knowledge base search is one tool among several.</div>
+</details>
+</div>
 
 </div>

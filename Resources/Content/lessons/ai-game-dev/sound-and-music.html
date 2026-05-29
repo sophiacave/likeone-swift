@@ -73,12 +73,68 @@
 <div class="lesson-section">
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
-  <div data-learn="QuizMC" data-props='{"questions":[{"q":"What is the correct priority order for game audio?","options":["Music first, then ambient, then SFX","Ambient first, then music, then SFX","Player action sounds, feedback sounds, ambient, then music","All audio should be added simultaneously"],"correct":2,"explanation":"Player actions (jumps, attacks) come first, then feedback (damage, success), then ambient atmosphere, then music. This order matches what players notice most."},{"q":"Why do browser games need a Click to Start screen?","options":["It looks more professional","Browsers block audio playback until the user interacts with the page","It gives time to load graphics","Game engines require it"],"correct":1,"explanation":"Modern browsers have a security policy that blocks audio playback until the user clicks or taps the page. A start screen serves double duty as both UX and audio unlock."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the correct priority order for game audio?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Music first, then ambient, then SFX
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Ambient first, then music, then SFX
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Player action sounds, feedback sounds, ambient, then music
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>All audio should be added simultaneously
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Player actions (jumps, attacks) come first, then feedback (damage, success), then ambient atmosphere, then music. This order matches what players notice most.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why do browser games need a Click to Start screen?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It looks more professional
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Browsers block audio playback until the user interacts with the page
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It gives time to load graphics
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Game engines require it
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Modern browsers have a security policy that blocks audio playback until the user clicks or taps the page. A start screen serves double duty as both UX and audio unlock.</div>
+</div>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Game Audio","cards":[{"front":"What free tools generate retro game sound effects?","back":"jsfxr/sfxr (browser-based retro SFX generator), ElevenLabs Sound Effects, and Freesound.org for Creative Commons audio."},{"front":"How many music tracks does a complete game need?","back":"Typically 3-5: main theme, menu music, gameplay/action, victory jingle, and game over screen."},{"front":"What is audio pooling?","back":"Pre-loading sounds into memory so they play instantly when triggered. Eliminates the delay that kills game feel."},{"front":"What file formats should you use for game audio?","back":"MP3 for music (small files), WAV for short SFX (no decode delay). Keep total audio under 5MB for fast loading."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Game Audio</h3>
+<details class="flash-card">
+<summary class="flash-front">What free tools generate retro game sound effects?</summary>
+<div class="flash-back">jsfxr/sfxr (browser-based retro SFX generator), ElevenLabs Sound Effects, and Freesound.org for Creative Commons audio.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How many music tracks does a complete game need?</summary>
+<div class="flash-back">Typically 3-5: main theme, menu music, gameplay/action, victory jingle, and game over screen.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is audio pooling?</summary>
+<div class="flash-back">Pre-loading sounds into memory so they play instantly when triggered. Eliminates the delay that kills game feel.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What file formats should you use for game audio?</summary>
+<div class="flash-back">MP3 for music (small files), WAV for short SFX (no decode delay). Keep total audio under 5MB for fast loading.</div>
+</details>
+</div>
 </div>
 </div>

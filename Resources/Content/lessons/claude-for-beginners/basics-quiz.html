@@ -140,7 +140,47 @@
   <h2 class="section-title">Test yourself — can you spot the better prompt?</h2>
   <p class="section-text">Before the quiz, try this mental exercise. For each pair below, identify which prompt uses the 3-part formula correctly. This is exactly what the quiz will test.</p>
 
-<div data-learn="FlashDeck" data-props='{"title":"Spot the Better Prompt","cards":[{"front":"Pair 1\n\nA: Help me with my resume.\n\nB: You are a career coach. I am applying for a senior marketing role at a tech startup. Review my resume and suggest 3 improvements that would make it stand out. Focus on impact metrics and action verbs.","back":"B is better.\n\nA has no role, no context, no format. Claude has to guess everything — your industry, your career level, what kind of help you need.\n\nB has all three parts: Role (career coach), Context (senior marketing, tech startup), Format (3 improvements, focus areas specified)."},{"front":"Pair 2\n\nA: You are a nutritionist. I am a busy professional who skips lunch most days. Give me 5 quick, healthy lunch ideas I can make in under 10 minutes. Include calorie counts.\n\nB: What should I eat for lunch?","back":"A is better.\n\nB is so vague that Claude could suggest anything from a Michelin-star recipe to a vending machine snack.\n\nA gives Claude a clear role (nutritionist), real context (busy, skips lunch), and specific format (5 ideas, under 10 minutes, calorie counts)."},{"front":"Pair 3\n\nA: Explain blockchain.\n\nB: Explain blockchain to a small business owner who has heard the term but does not understand it. Use a real-world analogy involving something they already understand, like a shared spreadsheet. Keep it under 4 sentences.\n\nWhich is better?","back":"B is better.\n\nA will get a technically accurate but possibly jargon-heavy explanation that may not be useful.\n\nB specifies the audience (small business owner), requests an analogy (shared spreadsheet), and limits the length (4 sentences). The result will be clear, relevant, and memorable."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Spot the Better Prompt</h3>
+<details class="flash-card">
+<summary class="flash-front">Pair 1
+
+A: Help me with my resume.
+
+B: You are a career coach. I am applying for a senior marketing role at a tech startup. Review my resume and suggest 3 improvements that would make it stand out. Focus on impact metrics and action verbs.</summary>
+<div class="flash-back">B is better.
+
+A has no role, no context, no format. Claude has to guess everything — your industry, your career level, what kind of help you need.
+
+B has all three parts: Role (career coach), Context (senior marketing, tech startup), Format (3 improvements, focus areas specified).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Pair 2
+
+A: You are a nutritionist. I am a busy professional who skips lunch most days. Give me 5 quick, healthy lunch ideas I can make in under 10 minutes. Include calorie counts.
+
+B: What should I eat for lunch?</summary>
+<div class="flash-back">A is better.
+
+B is so vague that Claude could suggest anything from a Michelin-star recipe to a vending machine snack.
+
+A gives Claude a clear role (nutritionist), real context (busy, skips lunch), and specific format (5 ideas, under 10 minutes, calorie counts).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Pair 3
+
+A: Explain blockchain.
+
+B: Explain blockchain to a small business owner who has heard the term but does not understand it. Use a real-world analogy involving something they already understand, like a shared spreadsheet. Keep it under 4 sentences.
+
+Which is better?</summary>
+<div class="flash-back">B is better.
+
+A will get a technically accurate but possibly jargon-heavy explanation that may not be useful.
+
+B specifies the audience (small business owner), requests an analogy (shared spreadsheet), and limits the length (4 sentences). The result will be clear, relevant, and memorable.</div>
+</details>
+</div>
 
 </div>
 
@@ -189,9 +229,141 @@
 </div>
 
 <!-- FLASHDECK — Review before the quiz -->
-<div data-learn="FlashDeck" data-props='{"title":"Claude Basics Review","cards":[{"front":"What is Claude?","back":"An AI assistant made by Anthropic that can read, write, analyze data, brainstorm, and more — all through natural conversation."},{"front":"The 3-Part Prompt Formula","back":"Role (who Claude should be) + Context (the situation) + Format (what you want back). This formula works for almost any prompt."},{"front":"Can Claude access the internet?","back":"Yes — since March 2025, Claude can search the web for current information. But always verify important facts with a reliable source."},{"front":"How should you think about Claude?","back":"A brilliant coworker who makes you faster and better. It does not replace you — it amplifies you. Human judgment + AI capability is unstoppable."},{"front":"Trust but verify","back":"Claude is excellent at reasoning and writing but can occasionally get specific facts wrong. Always verify important claims before using them in presentations or decisions."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Claude Basics Review</h3>
+<details class="flash-card">
+<summary class="flash-front">What is Claude?</summary>
+<div class="flash-back">An AI assistant made by Anthropic that can read, write, analyze data, brainstorm, and more — all through natural conversation.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The 3-Part Prompt Formula</summary>
+<div class="flash-back">Role (who Claude should be) + Context (the situation) + Format (what you want back). This formula works for almost any prompt.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Can Claude access the internet?</summary>
+<div class="flash-back">Yes — since March 2025, Claude can search the web for current information. But always verify important facts with a reliable source.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How should you think about Claude?</summary>
+<div class="flash-back">A brilliant coworker who makes you faster and better. It does not replace you — it amplifies you. Human judgment + AI capability is unstoppable.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Trust but verify</summary>
+<div class="flash-back">Claude is excellent at reasoning and writing but can occasionally get specific facts wrong. Always verify important claims before using them in presentations or decisions.</div>
+</details>
+</div>
 
 <!-- MATCHCONNECT — Practice matching -->
 <!-- QUIZ — React QuizMC component hydrated client-side -->
-<div data-learn="QuizMC" data-props='{"questions":[{"q":"What is Claude?","options":["A search engine that finds web links","An AI assistant that reads, writes, and analyzes","A chatbot that only answers yes or no","A coding tool for software developers only"],"correct":1,"explanation":"Claude is an AI assistant made by Anthropic. It can read, write, analyze data, brainstorm, and much more — all through natural conversation."},{"q":"What are the 3 parts of a great prompt?","options":["Question, Answer, Follow-up","Role, Context, Format","Subject, Body, Signature","Input, Processing, Output"],"correct":1,"explanation":"Role (who Claude should be), Context (the situation), and Format (what you want back) — this formula works for almost any prompt."},{"q":"Which prompt will get a better result?","options":["Write me something about marketing","You are a marketing strategist. I run a small bakery with a $200/month budget. Give me 5 social media post ideas with captions.","Help with marketing please","Marketing ideas for business"],"correct":1,"explanation":"The specific prompt includes role (marketing strategist), context (small bakery, $200 budget), and format (5 ideas with captions). Claude can nail this because you told it exactly what you need."},{"q":"Can Claude access the internet to look things up?","options":["Yes — Claude can search the web for current information","No — it only works from its training data","Only with a paid subscription","Yes, but only Wikipedia"],"correct":0,"explanation":"Since March 2025, Claude can search the web for current information. However, you should still verify important facts — web search makes Claude more current, but not infallible."},{"q":"What should you do when Claude gives you a factual claim for a presentation?","options":["Trust it completely — AI is always accurate","Verify it with a reliable source","Ask Claude if it is sure","Ignore it and make up your own facts"],"correct":1,"explanation":"Always verify important facts. Claude is excellent at reasoning and writing, but can occasionally get specific facts wrong. Trust the analysis, double-check the numbers."},{"q":"What is the best way to think about Claude?","options":["A magic oracle that knows everything","A brilliant coworker who makes you faster and better","A replacement for human workers","A toy that is fun but not useful for real work"],"correct":1,"explanation":"Claude is a thinking partner — a brilliant coworker who never sleeps. It does not replace you; it amplifies you. Human judgment + AI capability is unstoppable."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is Claude?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A search engine that finds web links
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>An AI assistant that reads, writes, and analyzes
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A chatbot that only answers yes or no
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A coding tool for software developers only
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Claude is an AI assistant made by Anthropic. It can read, write, analyze data, brainstorm, and much more — all through natural conversation.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What are the 3 parts of a great prompt?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Question, Answer, Follow-up
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Role, Context, Format
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Subject, Body, Signature
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Input, Processing, Output
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Role (who Claude should be), Context (the situation), and Format (what you want back) — this formula works for almost any prompt.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Which prompt will get a better result?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Write me something about marketing
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>You are a marketing strategist. I run a small bakery with a $200/month budget. Give me 5 social media post ideas with captions.
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Help with marketing please
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Marketing ideas for business
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The specific prompt includes role (marketing strategist), context (small bakery, $200 budget), and format (5 ideas with captions). Claude can nail this because you told it exactly what you need.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Can Claude access the internet to look things up?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Yes — Claude can search the web for current information
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>No — it only works from its training data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Only with a paid subscription
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Yes, but only Wikipedia
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Since March 2025, Claude can search the web for current information. However, you should still verify important facts — web search makes Claude more current, but not infallible.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What should you do when Claude gives you a factual claim for a presentation?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Trust it completely — AI is always accurate
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Verify it with a reliable source
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Ask Claude if it is sure
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Ignore it and make up your own facts
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Always verify important facts. Claude is excellent at reasoning and writing, but can occasionally get specific facts wrong. Trust the analysis, double-check the numbers.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">6</span>What is the best way to think about Claude?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A magic oracle that knows everything
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A brilliant coworker who makes you faster and better
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A replacement for human workers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A toy that is fun but not useful for real work
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Claude is a thinking partner — a brilliant coworker who never sleeps. It does not replace you; it amplifies you. Human judgment + AI capability is unstoppable.</div>
+</div>
+</div>
 </div>

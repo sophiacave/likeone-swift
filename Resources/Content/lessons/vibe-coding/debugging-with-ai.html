@@ -83,7 +83,39 @@ Please fix this.</code></pre>
   <h2 class="section-title">Error messages are scary-looking but simple.</h2>
   <p class="section-text">Error messages look like gibberish, but they usually contain the answer. You do not need to understand them — you just need to copy them. But here is a quick decoder for the most common ones:</p>
 
-<div data-learn="FlashDeck" data-props='{"title":"Error Message Decoder","cards":[{"front":"TypeError: Cannot read property X of undefined\n\nWhat does this mean in plain English?","back":"The code is trying to use something that does not exist yet. Like trying to open a drawer in a desk that has not been built. Fix: AI needs to check that the thing exists before using it."},{"front":"404 Not Found\n\nWhat does this mean in plain English?","back":"The app is looking for a page or file that does not exist at that location. Like going to Room 305 in a building that only has 3 floors. Fix: the URL or file path is wrong."},{"front":"SyntaxError: Unexpected token\n\nWhat does this mean in plain English?","back":"There is a typo in the code — a missing comma, bracket, or quote mark. Like a sentence with a random character in the middle. Fix: AI needs to find and fix the typo."},{"front":"CORS error / Access-Control-Allow-Origin\n\nWhat does this mean in plain English?","back":"Your app is trying to talk to another website that is not allowing it. Like trying to call a phone number that has blocked your number. Fix: usually a server configuration issue — tell AI about it."},{"front":"Module not found / Cannot find module\n\nWhat does this mean in plain English?","back":"The code references a library or file that is not installed or does not exist. Like a recipe calling for an ingredient you do not have. Fix: AI needs to install the missing library or fix the file path."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Error Message Decoder</h3>
+<details class="flash-card">
+<summary class="flash-front">TypeError: Cannot read property X of undefined
+
+What does this mean in plain English?</summary>
+<div class="flash-back">The code is trying to use something that does not exist yet. Like trying to open a drawer in a desk that has not been built. Fix: AI needs to check that the thing exists before using it.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">404 Not Found
+
+What does this mean in plain English?</summary>
+<div class="flash-back">The app is looking for a page or file that does not exist at that location. Like going to Room 305 in a building that only has 3 floors. Fix: the URL or file path is wrong.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">SyntaxError: Unexpected token
+
+What does this mean in plain English?</summary>
+<div class="flash-back">There is a typo in the code — a missing comma, bracket, or quote mark. Like a sentence with a random character in the middle. Fix: AI needs to find and fix the typo.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">CORS error / Access-Control-Allow-Origin
+
+What does this mean in plain English?</summary>
+<div class="flash-back">Your app is trying to talk to another website that is not allowing it. Like trying to call a phone number that has blocked your number. Fix: usually a server configuration issue — tell AI about it.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Module not found / Cannot find module
+
+What does this mean in plain English?</summary>
+<div class="flash-back">The code references a library or file that is not installed or does not exist. Like a recipe calling for an ingredient you do not have. Fix: AI needs to install the missing library or fix the file path.</div>
+</details>
+</div>
 
   <div class="tip-box">
     <div class="tip-label">You do not need to understand errors</div>
@@ -137,7 +169,45 @@ Please fix this.</code></pre>
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
 
-<div data-learn="QuizMC" data-props='{"questions":[{"q":"What are the three parts of a good bug report for AI?","options":["Code file, line number, stack trace","What you expected, what actually happened, any error messages","Screenshot, video recording, device model","Bug title, severity rating, assigned developer"],"correct":1,"explanation":"Tell AI what you expected to happen, what actually happened, and any error messages you see. That gives AI everything it needs to fix the problem."},{"q":"What should you do with an error message you do not understand?","options":["Google it and read Stack Overflow for 30 minutes","Try to fix the code yourself","Copy the entire message and paste it to AI","Delete the code and start over"],"correct":2,"explanation":"You do not need to understand error messages. Just copy the whole thing and paste it to AI with context about what you were doing. AI reads and fixes it."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What are the three parts of a good bug report for AI?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Code file, line number, stack trace
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>What you expected, what actually happened, any error messages
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Screenshot, video recording, device model
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Bug title, severity rating, assigned developer
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Tell AI what you expected to happen, what actually happened, and any error messages you see. That gives AI everything it needs to fix the problem.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What should you do with an error message you do not understand?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Google it and read Stack Overflow for 30 minutes
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Try to fix the code yourself
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Copy the entire message and paste it to AI
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Delete the code and start over
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> You do not need to understand error messages. Just copy the whole thing and paste it to AI with context about what you were doing. AI reads and fixes it.</div>
+</div>
+</div>
 
 </div>
 
@@ -146,7 +216,33 @@ Please fix this.</code></pre>
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
 
-<div data-learn="FlashDeck" data-props='{"title":"Debugging Basics","cards":[{"front":"Are bugs a sign of failure?","back":"No. Bugs are a normal part of building software. Even the best professional developers deal with bugs constantly. It is part of the process."},{"front":"What is the 3-part bug report format?","back":"1. What you expected to happen. 2. What actually happened. 3. Any error messages you see."},{"front":"Where do you find error messages in a browser?","back":"Right-click the page, click Inspect, then click the Console tab. Red text = errors."},{"front":"What is a 404 error?","back":"The app is looking for a page or file that does not exist at that location. Like going to Room 305 in a building with only 3 floors."},{"front":"What should you do when AI keeps going in circles?","back":"Tell AI to start that feature over with a completely different approach. Sometimes a fresh start on the broken piece is the fastest fix."},{"front":"Do you need to understand error messages?","back":"No. Copy the entire error and paste it to AI. AI understands it and fixes the code. Your job is describing the problem, not decoding the error."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Debugging Basics</h3>
+<details class="flash-card">
+<summary class="flash-front">Are bugs a sign of failure?</summary>
+<div class="flash-back">No. Bugs are a normal part of building software. Even the best professional developers deal with bugs constantly. It is part of the process.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the 3-part bug report format?</summary>
+<div class="flash-back">1. What you expected to happen. 2. What actually happened. 3. Any error messages you see.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Where do you find error messages in a browser?</summary>
+<div class="flash-back">Right-click the page, click Inspect, then click the Console tab. Red text = errors.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is a 404 error?</summary>
+<div class="flash-back">The app is looking for a page or file that does not exist at that location. Like going to Room 305 in a building with only 3 floors.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What should you do when AI keeps going in circles?</summary>
+<div class="flash-back">Tell AI to start that feature over with a completely different approach. Sometimes a fresh start on the broken piece is the fastest fix.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Do you need to understand error messages?</summary>
+<div class="flash-back">No. Copy the entire error and paste it to AI. AI understands it and fixes the code. Your job is describing the problem, not decoding the error.</div>
+</details>
+</div>
 
 </div>
 

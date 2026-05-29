@@ -187,13 +187,95 @@ costs nothing, and YOU own every byte.</code></div>
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Brain Architecture","cards":[{"front":"Why SQLite for Sovereign Brain","back":"Single file, zero dependencies, zero latency (microsecond reads), zero cost, full portability. Copy the file to move your brain. No server, no cloud, no monthly bill."},{"front":"Brain Schema","back":"Key (hierarchical text), Value (content), Category (identity/directive/system/session/project/episode), Tags (flexible), Timestamps (created/updated). Simple, flexible, searchable."},{"front":"Brain Categories","back":"identity.* (who you are), directive.* (rules), system.* (infrastructure), session.* (current state), project.* (ongoing work), episode.* (history). Each loaded when relevant."},{"front":"The Boot Sequence","back":"Read identity, directives, session state, and system info from the local brain in under 50ms. Build the system prompt from brain contents. AI starts with full context instantly."},{"front":"Sovereign Advantage: Speed","back":"Local SQLite reads take microseconds. Cloud API memory calls take 200-500ms. Your AI has full context before the user finishes typing. Speed IS the product."},{"front":"Backup Rule","back":"The brain is a single file. No backup = catastrophic risk. Automate daily backups: rsync to external drive, copy to second machine, or version with git."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Brain Architecture</h3>
+<details class="flash-card">
+<summary class="flash-front">Why SQLite for Sovereign Brain</summary>
+<div class="flash-back">Single file, zero dependencies, zero latency (microsecond reads), zero cost, full portability. Copy the file to move your brain. No server, no cloud, no monthly bill.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Brain Schema</summary>
+<div class="flash-back">Key (hierarchical text), Value (content), Category (identity/directive/system/session/project/episode), Tags (flexible), Timestamps (created/updated). Simple, flexible, searchable.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Brain Categories</summary>
+<div class="flash-back">identity.* (who you are), directive.* (rules), system.* (infrastructure), session.* (current state), project.* (ongoing work), episode.* (history). Each loaded when relevant.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Boot Sequence</summary>
+<div class="flash-back">Read identity, directives, session state, and system info from the local brain in under 50ms. Build the system prompt from brain contents. AI starts with full context instantly.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Sovereign Advantage: Speed</summary>
+<div class="flash-back">Local SQLite reads take microseconds. Cloud API memory calls take 200-500ms. Your AI has full context before the user finishes typing. Speed IS the product.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Backup Rule</summary>
+<div class="flash-back">The brain is a single file. No backup = catastrophic risk. Automate daily backups: rsync to external drive, copy to second machine, or version with git.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Brain architecture quiz.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Brain Architecture","questions":[{"q":"Why is SQLite ideal for a sovereign brain?","options":["It is the fastest database in the world","It requires a dedicated server for best performance","It is a single file with zero dependencies, zero latency, zero cost, and full portability -- no server, no cloud, no monthly bill","It supports more features than PostgreSQL"],"correct":2,"explanation":"SQLite is a single file on disk. No server process, no network, no configuration. Reads take microseconds. The entire brain copies between machines as easily as copying any file. This is sovereignty in database form."},{"q":"What is the purpose of brain categories like identity.* and directive.*?","options":["They are required by SQLite syntax","They organize knowledge so the AI can efficiently load only what it needs -- identity on every boot, project data only when relevant, episodes only when searching history","They make the database smaller","They are used for access control"],"correct":1,"explanation":"Categories enable efficient loading. The boot sequence reads identity and directives (always needed) but skips project and episode data (loaded on demand). Without categories, the AI would have to read everything on every boot -- wasteful for large brains."},{"q":"What is the most important anti-pattern to avoid with a sovereign brain?","options":["Using too many categories","Having no backup strategy -- your brain is a single file, and if the drive fails without backups, all accumulated context and history is permanently lost","Writing too frequently","Reading too many keys at once"],"correct":1,"explanation":"The brain is the most valuable file you own. It accumulates wisdom across thousands of interactions. A single hardware failure without backups destroys everything. Automated daily backups to a second location are non-negotiable."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Brain Architecture</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why is SQLite ideal for a sovereign brain?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is the fastest database in the world
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It requires a dedicated server for best performance
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It is a single file with zero dependencies, zero latency, zero cost, and full portability -- no server, no cloud, no monthly bill
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It supports more features than PostgreSQL
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> SQLite is a single file on disk. No server process, no network, no configuration. Reads take microseconds. The entire brain copies between machines as easily as copying any file. This is sovereignty in database form.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the purpose of brain categories like identity.* and directive.*?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>They are required by SQLite syntax
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>They organize knowledge so the AI can efficiently load only what it needs -- identity on every boot, project data only when relevant, episodes only when searching history
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>They make the database smaller
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>They are used for access control
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Categories enable efficient loading. The boot sequence reads identity and directives (always needed) but skips project and episode data (loaded on demand). Without categories, the AI would have to read everything on every boot -- wasteful for large brains.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the most important anti-pattern to avoid with a sovereign brain?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Using too many categories
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Having no backup strategy -- your brain is a single file, and if the drive fails without backups, all accumulated context and history is permanently lost
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Writing too frequently
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Reading too many keys at once
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The brain is the most valuable file you own. It accumulates wisdom across thousands of interactions. A single hardware failure without backups destroys everything. Automated daily backups to a second location are non-negotiable.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

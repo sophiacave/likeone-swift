@@ -91,13 +91,95 @@ By the end of this course, you will know how to automate them.</code></div>
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"The Vision Agent","cards":[{"front":"The API Gap","back":"Most software (roughly 80%) has no API. Government portals, legacy enterprise tools, internal systems -- none of them offer programmatic access. Computer use fills this gap by automating the visual interface directly."},{"front":"The Vision Agent Loop","back":"Screenshot (see the screen) -> Analyze (understand elements) -> Decide (choose next action) -> Act (click, type, scroll) -> Screenshot again. This loop repeats until the task is complete."},{"front":"Computer Use vs. RPA","back":"Traditional RPA records and replays exact coordinates -- if a button moves, it breaks. Computer use AI understands the screen visually, finding elements even when layouts change. More resilient, but slower per action."},{"front":"The Hybrid Approach","back":"Use APIs and DOM manipulation where available (fast, cheap). Fall back to computer use for everything else (flexible, universal). Smart agents combine both strategies."},{"front":"Current Limitations","back":"Speed (3-10 seconds per action), cost (API tokens per screenshot), pixel precision (dense UIs are harder), and dynamic content (animations can confuse analysis). All manageable with the right patterns."},{"front":"The Vision Agent Thesis","back":"Any software with a screen is now automatable. Computer use bridges the gap between AI and the 80% of software that was never designed for machines."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">The Vision Agent</h3>
+<details class="flash-card">
+<summary class="flash-front">The API Gap</summary>
+<div class="flash-back">Most software (roughly 80%) has no API. Government portals, legacy enterprise tools, internal systems -- none of them offer programmatic access. Computer use fills this gap by automating the visual interface directly.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Vision Agent Loop</summary>
+<div class="flash-back">Screenshot (see the screen) -> Analyze (understand elements) -> Decide (choose next action) -> Act (click, type, scroll) -> Screenshot again. This loop repeats until the task is complete.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Computer Use vs. RPA</summary>
+<div class="flash-back">Traditional RPA records and replays exact coordinates -- if a button moves, it breaks. Computer use AI understands the screen visually, finding elements even when layouts change. More resilient, but slower per action.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Hybrid Approach</summary>
+<div class="flash-back">Use APIs and DOM manipulation where available (fast, cheap). Fall back to computer use for everything else (flexible, universal). Smart agents combine both strategies.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Current Limitations</summary>
+<div class="flash-back">Speed (3-10 seconds per action), cost (API tokens per screenshot), pixel precision (dense UIs are harder), and dynamic content (animations can confuse analysis). All manageable with the right patterns.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Vision Agent Thesis</summary>
+<div class="flash-back">Any software with a screen is now automatable. Computer use bridges the gap between AI and the 80% of software that was never designed for machines.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">The vision agent quiz.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"The Vision Agent","questions":[{"q":"What is the API Gap that computer use solves?","options":["APIs are too expensive for most developers","Most software (roughly 80%) has no API -- government portals, legacy tools, and internal systems were built for human eyes, not programmatic access","APIs are too slow for real-time automation","APIs require authentication that AI cannot handle"],"correct":1,"explanation":"The fundamental problem is that most software was built for humans clicking buttons, not for machines calling endpoints. Computer use bridges this gap by letting AI interact with the visual interface directly."},{"q":"Why is computer use AI more resilient than traditional RPA?","options":["It runs faster than RPA tools","It is cheaper per action than RPA","It understands the screen visually and can find elements even when layouts change, unlike RPA which replays exact coordinates","It does not require a browser to operate"],"correct":2,"explanation":"Traditional RPA memorizes pixel coordinates. Move a button 10 pixels and the automation breaks. Computer use AI reads the screen like a human -- it finds the Submit button by understanding what it sees, regardless of where the button moved."},{"q":"What is the recommended approach for combining computer use with other automation methods?","options":["Always use computer use for everything","Never use computer use -- APIs are always better","Use APIs and DOM manipulation where available (fast, cheap), fall back to computer use for everything else (flexible, universal)","Use computer use first, then switch to APIs if speed is an issue"],"correct":2,"explanation":"The hybrid approach maximizes both speed and coverage. APIs are faster and cheaper when available. Computer use handles everything APIs cannot reach. Smart agents use both."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">The Vision Agent</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the API Gap that computer use solves?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>APIs are too expensive for most developers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Most software (roughly 80%) has no API -- government portals, legacy tools, and internal systems were built for human eyes, not programmatic access
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>APIs are too slow for real-time automation
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>APIs require authentication that AI cannot handle
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The fundamental problem is that most software was built for humans clicking buttons, not for machines calling endpoints. Computer use bridges this gap by letting AI interact with the visual interface directly.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why is computer use AI more resilient than traditional RPA?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It runs faster than RPA tools
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It is cheaper per action than RPA
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It understands the screen visually and can find elements even when layouts change, unlike RPA which replays exact coordinates
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It does not require a browser to operate
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Traditional RPA memorizes pixel coordinates. Move a button 10 pixels and the automation breaks. Computer use AI reads the screen like a human -- it finds the Submit button by understanding what it sees, regardless of where the button moved.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the recommended approach for combining computer use with other automation methods?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Always use computer use for everything
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Never use computer use -- APIs are always better
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Use APIs and DOM manipulation where available (fast, cheap), fall back to computer use for everything else (flexible, universal)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Use computer use first, then switch to APIs if speed is an issue
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The hybrid approach maximizes both speed and coverage. APIs are faster and cheaper when available. Computer use handles everything APIs cannot reach. Smart agents use both.</div>
+</div>
+</div>
 </div>
 
 <div class="lesson-section">

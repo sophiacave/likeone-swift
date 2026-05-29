@@ -178,9 +178,127 @@
 <p style="font-size:.85rem;color:#a1a1aa;line-height:1.7;margin-top:1rem">You now have the knowledge to build agents that do real work in the real world — safely, efficiently, and at scale. The gap between you and everyone else who is still copy-pasting into chat windows just got very wide.</p>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Production Deployment","cards":[{"front":"What are the three most common production failures?","back":"1) API rate limits (solution: retry with backoff). 2) Runaway cost from infinite loops (solution: maxBudgetUsd + maxTurns). 3) Tool failures from external services (solution: error handling in hooks + graceful fallbacks)."},{"front":"Abort controller","back":"A mechanism for cleanly cancelling long-running agent operations. Create an AbortController, pass its signal to query(), and call controller.abort() to stop. Handles timeouts and user cancellations."},{"front":"Production checklist essentials","back":"maxBudgetUsd, maxTurns, PreToolUse security hooks, error handling for API/rate-limit/timeout, abort controller with timeout, cost tracking, audit logging, adversarial testing completed."},{"front":"Cost tracking in production","back":"Use hooks and result metadata to track cost per query, total spend, and average cost. Set alerts for anomalies (e.g., average cost > threshold). The result.cost property gives per-query USD spent."},{"front":"Rate limit handling","back":"When the API returns a rate limit error, wait for the retryAfter duration, then retry the request. Implement exponential backoff for repeated rate limits. Never retry immediately."},{"front":"Why is monitoring critical for agents?","back":"Agents are non-deterministic. Unlike traditional software, the same input can produce different behaviors. Monitoring catches cost spikes, unusual tool patterns, and failures that only appear in production."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Production Deployment</h3>
+<details class="flash-card">
+<summary class="flash-front">What are the three most common production failures?</summary>
+<div class="flash-back">1) API rate limits (solution: retry with backoff). 2) Runaway cost from infinite loops (solution: maxBudgetUsd + maxTurns). 3) Tool failures from external services (solution: error handling in hooks + graceful fallbacks).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Abort controller</summary>
+<div class="flash-back">A mechanism for cleanly cancelling long-running agent operations. Create an AbortController, pass its signal to query(), and call controller.abort() to stop. Handles timeouts and user cancellations.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Production checklist essentials</summary>
+<div class="flash-back">maxBudgetUsd, maxTurns, PreToolUse security hooks, error handling for API/rate-limit/timeout, abort controller with timeout, cost tracking, audit logging, adversarial testing completed.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Cost tracking in production</summary>
+<div class="flash-back">Use hooks and result metadata to track cost per query, total spend, and average cost. Set alerts for anomalies (e.g., average cost > threshold). The result.cost property gives per-query USD spent.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Rate limit handling</summary>
+<div class="flash-back">When the API returns a rate limit error, wait for the retryAfter duration, then retry the request. Implement exponential backoff for repeated rate limits. Never retry immediately.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why is monitoring critical for agents?</summary>
+<div class="flash-back">Agents are non-deterministic. Unlike traditional software, the same input can produce different behaviors. Monitoring catches cost spikes, unusual tool patterns, and failures that only appear in production.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Production Deployment Check","questions":[{"q":"Your production agent occasionally gets 429 (rate limit) errors from the API. What is the correct handling?","options":["Immediately retry the request","Wait for the retryAfter duration, then retry","Crash the application and alert the team","Ignore the error and return partial results"],"correct":1,"explanation":"429 errors include a retryAfter header telling you how long to wait. Respect this duration before retrying. Immediate retries will just trigger more rate limits."},{"q":"Which combination of settings provides the strongest production safety?","options":["bypassPermissions with no limits","maxBudgetUsd + maxTurns + PreToolUse hooks + abort controller","Only maxBudgetUsd","Only permissionMode: default"],"correct":1,"explanation":"Defense in depth. maxBudgetUsd catches cost runaway. maxTurns prevents infinite loops. PreToolUse hooks block dangerous operations. Abort controllers handle timeouts. No single measure is sufficient alone."},{"q":"You notice your agent&#39;s average cost per query has tripled overnight. What should you investigate?","options":["Check if the model price changed","Check if the agent is making more tool calls per query (possible infinite loop pattern)","Check the weather","Restart the server"],"correct":1,"explanation":"Cost spikes usually mean the agent is making more tool calls per query — possibly getting stuck in loops or exploring unnecessary paths. Check tool call counts, review audit logs, and look for pattern changes."},{"q":"How should you implement a 60-second timeout for agent queries?","options":["Use setTimeout to kill the Node.js process","Create an AbortController, set a 60-second timeout, and pass the signal to query()","Set maxTurns to 60","Hope the query finishes in time"],"correct":1,"explanation":"AbortController provides clean cancellation. Set a setTimeout that calls controller.abort(), and pass controller.signal to the query() options. Catch the AbortError to handle the timeout gracefully."},{"q":"Before shipping an agent to production, you should run adversarial tests. What does that mean?","options":["Test with normal user prompts","Deliberately try to make the agent misbehave — inject harmful instructions, request destructive operations","Test only with the simplest possible prompts","Skip testing if it works on your laptop"],"correct":1,"explanation":"Adversarial testing means actively trying to break your guardrails. Inject harmful instructions, request destructive commands, attempt prompt injection. If the agent handles all attacks correctly, your safety layer is ready."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Production Deployment Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Your production agent occasionally gets 429 (rate limit) errors from the API. What is the correct handling?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Immediately retry the request
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Wait for the retryAfter duration, then retry
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Crash the application and alert the team
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Ignore the error and return partial results
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> 429 errors include a retryAfter header telling you how long to wait. Respect this duration before retrying. Immediate retries will just trigger more rate limits.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Which combination of settings provides the strongest production safety?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>bypassPermissions with no limits
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>maxBudgetUsd + maxTurns + PreToolUse hooks + abort controller
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Only maxBudgetUsd
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Only permissionMode: default
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Defense in depth. maxBudgetUsd catches cost runaway. maxTurns prevents infinite loops. PreToolUse hooks block dangerous operations. Abort controllers handle timeouts. No single measure is sufficient alone.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>You notice your agent's average cost per query has tripled overnight. What should you investigate?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Check if the model price changed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Check if the agent is making more tool calls per query (possible infinite loop pattern)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Check the weather
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Restart the server
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Cost spikes usually mean the agent is making more tool calls per query — possibly getting stuck in loops or exploring unnecessary paths. Check tool call counts, review audit logs, and look for pattern changes.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>How should you implement a 60-second timeout for agent queries?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Use setTimeout to kill the Node.js process
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Create an AbortController, set a 60-second timeout, and pass the signal to query()
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Set maxTurns to 60
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Hope the query finishes in time
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> AbortController provides clean cancellation. Set a setTimeout that calls controller.abort(), and pass controller.signal to the query() options. Catch the AbortError to handle the timeout gracefully.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>Before shipping an agent to production, you should run adversarial tests. What does that mean?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Test with normal user prompts
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Deliberately try to make the agent misbehave — inject harmful instructions, request destructive operations
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Test only with the simplest possible prompts
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Skip testing if it works on your laptop
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Adversarial testing means actively trying to break your guardrails. Inject harmful instructions, request destructive commands, attempt prompt injection. If the agent handles all attacks correctly, your safety layer is ready.</div>
+</div>
+</div>
 
 </div>
 

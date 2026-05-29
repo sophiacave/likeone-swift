@@ -203,6 +203,128 @@ response = client.messages.create(
   </div>
 </div>
 
-<div data-learn="QuizMC" data-props='{"title":"Tools and Agent Capabilities","questions":[{"q":"What capability does adding an API Caller tool unlock?","options":["The agent can do math more accurately","The agent can connect to any external service — payments, CRMs, social media, anything with an API","The agent can read local files","The agent can send emails"],"correct":1,"explanation":"API access is the ultimate force multiplier. With an API Caller, your agent can interact with virtually any external system — booking platforms, payment processors, data services."},{"q":"Why does a Calculator tool exist when LLMs can attempt math?","options":["It is faster than reasoning","LLMs produce probabilistic outputs — a calculator guarantees exact precision for every calculation","Calculators use less memory","Users prefer seeing a separate tool was used"],"correct":1,"explanation":"LLMs predict the most likely next token, which makes them unreliable at precise arithmetic. A calculator tool delegates math to a deterministic system, eliminating hallucinated numbers."},{"q":"What is the difference between a knowledge tool and an action tool?","options":["Knowledge tools are faster","Knowledge tools retrieve information, action tools change the world — send emails, write files, call APIs","Knowledge tools are free, action tools cost money","There is no difference"],"correct":1,"explanation":"Knowledge tools (search, database query, file read) bring information IN. Action tools (email, API call, file write) push changes OUT. Both are essential for a capable agent."},{"q":"An agent needs to: (1) look up a customer, (2) check their payment status, (3) send a refund notification. Which tool categories are needed?","options":["Knowledge only","Action only","Knowledge (database lookup, payment API) + Action (email sender)","Autonomy only"],"correct":2,"explanation":"Database lookup and payment API check are knowledge tools (retrieving data). Email sender is an action tool (taking action). This task needs both categories working together."},{"q":"What makes tools compound in value?","options":["Each tool gets faster when more tools are added","Tools can chain together — the output of one becomes the input for another, enabling tasks no single tool could handle","More tools make the model smarter","Tools share memory with each other"],"correct":1,"explanation":"A web search alone finds information. An email sender alone sends messages. Combined: the agent researches a topic AND emails a summary. The combination enables tasks neither tool could do alone."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Tools and Agent Capabilities</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What capability does adding an API Caller tool unlock?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The agent can do math more accurately
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The agent can connect to any external service — payments, CRMs, social media, anything with an API
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The agent can read local files
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The agent can send emails
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> API access is the ultimate force multiplier. With an API Caller, your agent can interact with virtually any external system — booking platforms, payment processors, data services.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why does a Calculator tool exist when LLMs can attempt math?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is faster than reasoning
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>LLMs produce probabilistic outputs — a calculator guarantees exact precision for every calculation
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Calculators use less memory
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Users prefer seeing a separate tool was used
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> LLMs predict the most likely next token, which makes them unreliable at precise arithmetic. A calculator tool delegates math to a deterministic system, eliminating hallucinated numbers.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the difference between a knowledge tool and an action tool?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Knowledge tools are faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Knowledge tools retrieve information, action tools change the world — send emails, write files, call APIs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Knowledge tools are free, action tools cost money
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>There is no difference
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Knowledge tools (search, database query, file read) bring information IN. Action tools (email, API call, file write) push changes OUT. Both are essential for a capable agent.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>An agent needs to: (1) look up a customer, (2) check their payment status, (3) send a refund notification. Which tool categories are needed?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Knowledge only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Action only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Knowledge (database lookup, payment API) + Action (email sender)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Autonomy only
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Database lookup and payment API check are knowledge tools (retrieving data). Email sender is an action tool (taking action). This task needs both categories working together.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What makes tools compound in value?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Each tool gets faster when more tools are added
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Tools can chain together — the output of one becomes the input for another, enabling tasks no single tool could handle
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>More tools make the model smarter
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Tools share memory with each other
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A web search alone finds information. An email sender alone sends messages. Combined: the agent researches a topic AND emails a summary. The combination enables tasks neither tool could do alone.</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Agent Tool Categories","cards":[{"front":"Knowledge tools","back":"Tools that expand what the agent knows — web search, database queries, file readers, knowledge base lookups. They bring information IN from external sources."},{"front":"Action tools","back":"Tools that let the agent change the world — email senders, API callers, file writers, notification systems. They push changes OUT to external systems."},{"front":"Autonomy tools","back":"Tools that enable independent operation — cron schedulers, webhook listeners, health monitors, event triggers. They let the agent work without human prompting."},{"front":"Why tools compound in value","back":"Each additional tool multiplies capabilities. Search + email = research and communicate. Database + API = full account audits. The combination enables tasks no single tool could handle."},{"front":"Why LLMs need calculator tools","back":"LLMs predict tokens probabilistically — they do not actually compute. For precise calculations, they can hallucinate. A calculator tool delegates math to a deterministic system that is always correct."},{"front":"Choosing the right first tool","back":"Match the first tool to the agent\u0027s primary job. Research agent → web search. Support agent → database. Coding agent → file read/write. Data agent → calculator."},{"front":"Tool definition in Claude API","back":"A JSON schema with name, description, and input_schema. The description tells Claude WHEN to use the tool. Include \u0027Use when...\u0027 for accurate tool selection."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Agent Tool Categories</h3>
+<details class="flash-card">
+<summary class="flash-front">Knowledge tools</summary>
+<div class="flash-back">Tools that expand what the agent knows — web search, database queries, file readers, knowledge base lookups. They bring information IN from external sources.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Action tools</summary>
+<div class="flash-back">Tools that let the agent change the world — email senders, API callers, file writers, notification systems. They push changes OUT to external systems.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Autonomy tools</summary>
+<div class="flash-back">Tools that enable independent operation — cron schedulers, webhook listeners, health monitors, event triggers. They let the agent work without human prompting.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why tools compound in value</summary>
+<div class="flash-back">Each additional tool multiplies capabilities. Search + email = research and communicate. Database + API = full account audits. The combination enables tasks no single tool could handle.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why LLMs need calculator tools</summary>
+<div class="flash-back">LLMs predict tokens probabilistically — they do not actually compute. For precise calculations, they can hallucinate. A calculator tool delegates math to a deterministic system that is always correct.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Choosing the right first tool</summary>
+<div class="flash-back">Match the first tool to the agent's primary job. Research agent → web search. Support agent → database. Coding agent → file read/write. Data agent → calculator.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Tool definition in Claude API</summary>
+<div class="flash-back">A JSON schema with name, description, and input_schema. The description tells Claude WHEN to use the tool. Include 'Use when...' for accurate tool selection.</div>
+</details>
+</div>

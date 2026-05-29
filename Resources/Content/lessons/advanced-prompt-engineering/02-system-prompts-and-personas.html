@@ -58,7 +58,29 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"System Prompts — Key Concepts","cards":[{"front":"What is a system prompt?","back":"The instruction layer that sits above every conversation — it tells the AI who it is, how to behave, and what rules to follow before the user says a word."},{"front":"What is persona stacking?","back":"Layering multiple perspectives into one system prompt — e.g., a marketing strategist who thinks like a psychologist and writes like a journalist — for nuanced, multi-lens output."},{"front":"What are the four parts of a system prompt?","back":"Identity (who the AI is), Behavior Rules (tone and formatting), Knowledge Boundaries (what it knows and doesn&#39;t), and Constraints (hard limits on what it should never do)."},{"front":"Why does &#39;be helpful and professional&#39; fail as a system prompt?","back":"It tells the AI nothing beyond its default behavior. Effective system prompts add specificity that changes output — domain expertise, tone, format, and constraints."},{"front":"What is the #1 cause of a weak system prompt?","back":"Contradictory instructions — e.g., &#39;be concise&#39; plus &#39;always explain in detail.&#39; The AI cannot prioritize conflicting rules, so output quality drops."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">System Prompts — Key Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">What is a system prompt?</summary>
+<div class="flash-back">The instruction layer that sits above every conversation — it tells the AI who it is, how to behave, and what rules to follow before the user says a word.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is persona stacking?</summary>
+<div class="flash-back">Layering multiple perspectives into one system prompt — e.g., a marketing strategist who thinks like a psychologist and writes like a journalist — for nuanced, multi-lens output.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are the four parts of a system prompt?</summary>
+<div class="flash-back">Identity (who the AI is), Behavior Rules (tone and formatting), Knowledge Boundaries (what it knows and doesn't), and Constraints (hard limits on what it should never do).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why does 'be helpful and professional' fail as a system prompt?</summary>
+<div class="flash-back">It tells the AI nothing beyond its default behavior. Effective system prompts add specificity that changes output — domain expertise, tone, format, and constraints.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the #1 cause of a weak system prompt?</summary>
+<div class="flash-back">Contradictory instructions — e.g., 'be concise' plus 'always explain in detail.' The AI cannot prioritize conflicting rules, so output quality drops.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -190,7 +212,63 @@ You are [role] with [years/type of experience]. You specialize in [domain].
 </div>
 
 <div class="lesson-section">
-  <div data-learn="QuizMC" data-props='{"title":"System Prompts Quiz","questions":[{"q":"What is \"persona stacking\" in system prompts?","options":["Writing a very long system prompt","Layering multiple perspectives or roles into one prompt","Running multiple system prompts at once","Repeating instructions for emphasis"],"correct":1,"explanation":"Persona stacking combines multiple viewpoints — e.g., a marketing strategist who thinks like a psychologist and writes like a journalist — for nuanced, multi-lens output."},{"q":"Which of these is a red flag that weakens a system prompt?","options":["Specifying severity tags for feedback","Including a fallback behavior","Writing contradictory instructions like ‘be concise’ and ‘always explain in detail’","Describing the AI’s expertise level"],"correct":2,"explanation":"Contradictory instructions confuse the AI about which rule takes priority and degrade output quality. Every instruction should point in a consistent direction."},{"q":"Why does a vague instruction like ‘be helpful and professional’ weaken a system prompt?","options":["It is too short","It uses informal language","It tells the AI nothing beyond its default behavior","It lacks a persona name"],"correct":2,"explanation":"The AI already defaults to helpful and professional behavior. Effective system prompts add specificity that changes behavior — tone, format, domain, constraints — beyond the defaults."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">System Prompts Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is "persona stacking" in system prompts?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Writing a very long system prompt
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Layering multiple perspectives or roles into one prompt
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Running multiple system prompts at once
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Repeating instructions for emphasis
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Persona stacking combines multiple viewpoints — e.g., a marketing strategist who thinks like a psychologist and writes like a journalist — for nuanced, multi-lens output.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Which of these is a red flag that weakens a system prompt?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Specifying severity tags for feedback
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Including a fallback behavior
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Writing contradictory instructions like ‘be concise’ and ‘always explain in detail’
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Describing the AI’s expertise level
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Contradictory instructions confuse the AI about which rule takes priority and degrade output quality. Every instruction should point in a consistent direction.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why does a vague instruction like ‘be helpful and professional’ weaken a system prompt?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is too short
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It uses informal language
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It tells the AI nothing beyond its default behavior
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It lacks a persona name
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The AI already defaults to helpful and professional behavior. Effective system prompts add specificity that changes behavior — tone, format, domain, constraints — beyond the defaults.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

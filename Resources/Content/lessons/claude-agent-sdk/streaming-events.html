@@ -161,9 +161,131 @@ runWithUI(<span style="color:#fbbf24">"Find all TypeScript files in this project
 </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Streaming & Events","cards":[{"front":"What is streaming in the Agent SDK?","back":"Instead of waiting for the complete response, streaming sends events in real time as the agent thinks, calls tools, and generates text. This enables live UI updates and responsive user experiences."},{"front":"text_delta event","back":"A chunk of text from Claude arriving in real time. These are small pieces (words or partial words) that you append to your display to create the typing effect. Use process.stdout.write(), not console.log()."},{"front":"tool_use event","back":"Fired when Claude decides to call a tool. Contains the tool name and parameters. Display this to show users what the agent is doing behind the scenes."},{"front":"tool_result event","back":"Fired when a tool finishes executing and returns its result to Claude. The agent then continues reasoning with this new information."},{"front":"result event","back":"The final event, fired when the agent is completely done. Contains metadata: total cost, number of tool calls, session ID. This signals that the stream is finished."},{"front":"streamQuery() vs query()","back":"query() waits for the complete response and returns the final result. streamQuery() returns an async iterable of events that you process in real time. Same underlying agent, different consumption pattern."},{"front":"Why use process.stdout.write() for text deltas?","back":"console.log() adds a newline after each call, making streamed text appear on separate lines. process.stdout.write() outputs text without newlines, so words flow together naturally."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Streaming & Events</h3>
+<details class="flash-card">
+<summary class="flash-front">What is streaming in the Agent SDK?</summary>
+<div class="flash-back">Instead of waiting for the complete response, streaming sends events in real time as the agent thinks, calls tools, and generates text. This enables live UI updates and responsive user experiences.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">text_delta event</summary>
+<div class="flash-back">A chunk of text from Claude arriving in real time. These are small pieces (words or partial words) that you append to your display to create the typing effect. Use process.stdout.write(), not console.log().</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">tool_use event</summary>
+<div class="flash-back">Fired when Claude decides to call a tool. Contains the tool name and parameters. Display this to show users what the agent is doing behind the scenes.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">tool_result event</summary>
+<div class="flash-back">Fired when a tool finishes executing and returns its result to Claude. The agent then continues reasoning with this new information.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">result event</summary>
+<div class="flash-back">The final event, fired when the agent is completely done. Contains metadata: total cost, number of tool calls, session ID. This signals that the stream is finished.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">streamQuery() vs query()</summary>
+<div class="flash-back">query() waits for the complete response and returns the final result. streamQuery() returns an async iterable of events that you process in real time. Same underlying agent, different consumption pattern.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why use process.stdout.write() for text deltas?</summary>
+<div class="flash-back">console.log() adds a newline after each call, making streamed text appear on separate lines. process.stdout.write() outputs text without newlines, so words flow together naturally.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Streaming & Events Check","questions":[{"q":"What is the main benefit of streaming over a regular query() call?","options":["It is faster overall","Users see real-time progress instead of waiting for the complete response","It uses less API credits","It enables more tool calls"],"correct":1,"explanation":"Streaming does not change the total time or cost. Its benefit is UX — users see text appearing in real time and can observe tool activity, instead of staring at a blank screen while the agent works."},{"q":"Which event type represents a chunk of Claude text arriving in real time?","options":["tool_use","result","text_delta","content_block_start"],"correct":2,"explanation":"text_delta events carry small chunks of text as Claude generates them. You append these to your display to create the live typing effect."},{"q":"A stream emits events in this order: text_delta, tool_use, tool_result, text_delta, result. What happened?","options":["An error occurred","Claude started typing, called a tool, got the result, finished typing, then completed","Claude called two tools in parallel","The stream was interrupted"],"correct":1,"explanation":"This is a typical agent flow: Claude starts responding (text_delta), realizes it needs a tool (tool_use), gets the result (tool_result), incorporates it into its response (text_delta), and finishes (result)."},{"q":"Why should you NOT use console.log() for streaming text deltas?","options":["It is too slow","It adds a newline after each call, breaking the text flow","It cannot handle Unicode","It crashes on empty strings"],"correct":1,"explanation":"console.log() appends a newline character after each call. Since text deltas are small chunks (sometimes single words), each word would appear on its own line. process.stdout.write() outputs text without newlines."},{"q":"What should you do if the stream throws an error mid-execution?","options":["Ignore it — the SDK handles all errors","Restart the entire application","Wrap the for-await loop in try/catch and handle the error gracefully","There is no way to handle stream errors"],"correct":2,"explanation":"Network issues, rate limits, or API errors can interrupt a stream at any point. A try/catch around the for-await loop lets you handle errors gracefully — log them, retry, or inform the user."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Streaming & Events Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the main benefit of streaming over a regular query() call?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is faster overall
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Users see real-time progress instead of waiting for the complete response
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It uses less API credits
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It enables more tool calls
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Streaming does not change the total time or cost. Its benefit is UX — users see text appearing in real time and can observe tool activity, instead of staring at a blank screen while the agent works.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Which event type represents a chunk of Claude text arriving in real time?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>tool_use
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>result
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>text_delta
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>content_block_start
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> text_delta events carry small chunks of text as Claude generates them. You append these to your display to create the live typing effect.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>A stream emits events in this order: text_delta, tool_use, tool_result, text_delta, result. What happened?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>An error occurred
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Claude started typing, called a tool, got the result, finished typing, then completed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Claude called two tools in parallel
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The stream was interrupted
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> This is a typical agent flow: Claude starts responding (text_delta), realizes it needs a tool (tool_use), gets the result (tool_result), incorporates it into its response (text_delta), and finishes (result).</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Why should you NOT use console.log() for streaming text deltas?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is too slow
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It adds a newline after each call, breaking the text flow
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It cannot handle Unicode
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It crashes on empty strings
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> console.log() appends a newline character after each call. Since text deltas are small chunks (sometimes single words), each word would appear on its own line. process.stdout.write() outputs text without newlines.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What should you do if the stream throws an error mid-execution?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Ignore it — the SDK handles all errors
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Restart the entire application
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Wrap the for-await loop in try/catch and handle the error gracefully
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>There is no way to handle stream errors
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Network issues, rate limits, or API errors can interrupt a stream at any point. A try/catch around the for-await loop lets you handle errors gracefully — log them, retry, or inform the user.</div>
+</div>
+</div>
 
 </div>
 

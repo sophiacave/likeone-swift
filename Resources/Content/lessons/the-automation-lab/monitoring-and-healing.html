@@ -147,7 +147,99 @@ check <span style="color:#fbbf24">"academy"</span> https://likeone.ai/academy/</
     <p style="font-size:.85rem;color:#a1a1aa">Observability requires three pillars: <strong>logs</strong> (what happened), <strong>metrics</strong> (how much and how fast), and <strong>traces</strong> (the path through the system). All three together give you the full picture.</p>
   </div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Monitoring & Healing Quiz","questions":[{"q":"A Monitor agent detects a connection timeout on api-server-03. It has retried 2 times. What is the correct fix?","options":["Rollback to last good state","Restart the agent","Escalate immediately to a human","Ignore and wait"],"correct":1,"explanation":"A connection timeout is a runtime issue, not a code issue. Restarting clears the error state. Rollback only helps with bad code deployments."},{"q":"What is the purpose of a Max Retries setting on an auto-healer?","options":["Limit how many agents can run at once","Prevent the healer from restart-looping on a broken agent","Speed up recovery time","Reduce memory usage"],"correct":1,"explanation":"Without a retry limit, an auto-healer could restart a broken agent hundreds of times in a loop. Max retries caps this and forces escalation."},{"q":"When should an auto-healer escalate to a human?","options":["After every error","When the error involves a timeout","When automatic fixes have failed max retries, or the issue requires human judgment","Never"],"correct":2,"explanation":"Auto-healers handle known, fixable errors. When retries are exhausted or the problem is outside the agent\u0027s scope, escalation is correct."},{"q":"A heartbeat script runs successfully but the database shows the agent as offline. What is the most likely cause?","options":["The database is down","The script is using the wrong auth key \u2014 writes are silently rejected","The agent crashed after the heartbeat","The cron job is misconfigured"],"correct":1,"explanation":"The classic silent failure: the HTTP request succeeds but the database rejects the write due to auth. The script logs success, but no data arrives. Always verify the result, not just the request."},{"q":"What is the difference between a restart and a rollback?","options":["They are the same thing","Restart clears a crashed process; rollback reverts to a previous code version","Rollback is faster","Restart is for code issues; rollback for connection issues"],"correct":1,"explanation":"Restart clears a hung process (runtime fix). Rollback reverts to working code (deploy fix). Using the wrong one makes the problem worse."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Monitoring & Healing Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>A Monitor agent detects a connection timeout on api-server-03. It has retried 2 times. What is the correct fix?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Rollback to last good state
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Restart the agent
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Escalate immediately to a human
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Ignore and wait
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A connection timeout is a runtime issue, not a code issue. Restarting clears the error state. Rollback only helps with bad code deployments.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the purpose of a Max Retries setting on an auto-healer?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Limit how many agents can run at once
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Prevent the healer from restart-looping on a broken agent
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Speed up recovery time
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Reduce memory usage
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Without a retry limit, an auto-healer could restart a broken agent hundreds of times in a loop. Max retries caps this and forces escalation.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>When should an auto-healer escalate to a human?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>After every error
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>When the error involves a timeout
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>When automatic fixes have failed max retries, or the issue requires human judgment
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Never
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Auto-healers handle known, fixable errors. When retries are exhausted or the problem is outside the agent's scope, escalation is correct.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>A heartbeat script runs successfully but the database shows the agent as offline. What is the most likely cause?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The database is down
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The script is using the wrong auth key — writes are silently rejected
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The agent crashed after the heartbeat
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The cron job is misconfigured
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The classic silent failure: the HTTP request succeeds but the database rejects the write due to auth. The script logs success, but no data arrives. Always verify the result, not just the request.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What is the difference between a restart and a rollback?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>They are the same thing
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Restart clears a crashed process; rollback reverts to a previous code version
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Rollback is faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Restart is for code issues; rollback for connection issues
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Restart clears a hung process (runtime fix). Rollback reverts to working code (deploy fix). Using the wrong one makes the problem worse.</div>
+</div>
+</div>
 
   <div class="section">
     <h2>Runbooks: The Missing Piece</h2>
@@ -187,5 +279,31 @@ check <span style="color:#fbbf24">"academy"</span> https://likeone.ai/academy/</
     </div>
   </div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"Monitoring & Healing Concepts","cards":[{"front":"What is an auto-healer?","back":"A supervisor agent that monitors others and auto-fixes problems \u2014 restarting crashed agents, rolling back bad deploys, or escalating to humans when retries are exhausted."},{"front":"Restart vs Rollback","back":"Restart: clears a crashed process, resumes current code. Use for runtime errors. Rollback: reverts to previous working code version. Use for bad deploys. Wrong choice = worse problem."},{"front":"What is a health check?","back":"A periodic test that verifies an agent is alive AND producing correct output. Must verify results, not just requests. A silent write failure looks like success."},{"front":"Why set max retries?","back":"Without a limit, a healer restart-loops a broken agent forever. Max retries forces escalation after N failed attempts."},{"front":"The silent failure problem","back":"The most dangerous failure is the one you don\u0027t know about. Wrong auth keys, dead cron jobs, full disks \u2014 all fail silently without proper monitoring."},{"front":"Three layers of defense","back":"Layer 1: Health checks (detect). Layer 2: Auto-healing (fix). Layer 3: Escalation (alert humans when auto-fix fails)."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Monitoring & Healing Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">What is an auto-healer?</summary>
+<div class="flash-back">A supervisor agent that monitors others and auto-fixes problems — restarting crashed agents, rolling back bad deploys, or escalating to humans when retries are exhausted.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Restart vs Rollback</summary>
+<div class="flash-back">Restart: clears a crashed process, resumes current code. Use for runtime errors. Rollback: reverts to previous working code version. Use for bad deploys. Wrong choice = worse problem.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is a health check?</summary>
+<div class="flash-back">A periodic test that verifies an agent is alive AND producing correct output. Must verify results, not just requests. A silent write failure looks like success.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why set max retries?</summary>
+<div class="flash-back">Without a limit, a healer restart-loops a broken agent forever. Max retries forces escalation after N failed attempts.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The silent failure problem</summary>
+<div class="flash-back">The most dangerous failure is the one you don't know about. Wrong auth keys, dead cron jobs, full disks — all fail silently without proper monitoring.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Three layers of defense</summary>
+<div class="flash-back">Layer 1: Health checks (detect). Layer 2: Auto-healing (fix). Layer 3: Escalation (alert humans when auto-fix fails).</div>
+</details>
+</div>
 </div>

@@ -108,7 +108,33 @@ or warm off-white instead.</code></pre>
   <span class="section-label">Level Up</span>
   <h2 class="section-title">What makes a first prompt great vs garbage.</h2>
 
-<div data-learn="FlashDeck" data-props='{"title":"Good vs Bad First Prompts","cards":[{"front":"BAD: \"Make me an app.\"\n\nWhy this fails:","back":"AI has no idea what kind of app, what it does, who uses it, or what it looks like. You will get something random. Be specific about the WHAT."},{"front":"BAD: \"Build a React app using Next.js with Tailwind CSS, a PostgreSQL database, Prisma ORM, and deploy to Vercel with edge functions.\"\n\nWhy this fails:","back":"Too much technical specification too early. You are telling AI HOW to build before establishing WHAT to build. Let AI pick the tech stack. Focus on describing the user experience."},{"front":"GOOD: \"Build a tip calculator. The user enters the bill amount and number of people. Show the tip and per-person total. Simple, clean, mobile-friendly.\"\n\nWhy this works:","back":"Clear purpose. Clear inputs and outputs. Design direction. No unnecessary technical constraints. AI knows exactly what to build and has freedom to choose the best approach."},{"front":"GOOD: \"Build a recipe saver app. Users paste a URL, the app extracts the recipe, and saves it without all the blog nonsense. Display just ingredients and steps.\"\n\nWhy this works:","back":"Solves a real problem. Describes the user flow clearly. Has personality (\"without all the blog nonsense\"). AI understands both the function and the feeling."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Good vs Bad First Prompts</h3>
+<details class="flash-card">
+<summary class="flash-front">BAD: "Make me an app."
+
+Why this fails:</summary>
+<div class="flash-back">AI has no idea what kind of app, what it does, who uses it, or what it looks like. You will get something random. Be specific about the WHAT.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">BAD: "Build a React app using Next.js with Tailwind CSS, a PostgreSQL database, Prisma ORM, and deploy to Vercel with edge functions."
+
+Why this fails:</summary>
+<div class="flash-back">Too much technical specification too early. You are telling AI HOW to build before establishing WHAT to build. Let AI pick the tech stack. Focus on describing the user experience.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">GOOD: "Build a tip calculator. The user enters the bill amount and number of people. Show the tip and per-person total. Simple, clean, mobile-friendly."
+
+Why this works:</summary>
+<div class="flash-back">Clear purpose. Clear inputs and outputs. Design direction. No unnecessary technical constraints. AI knows exactly what to build and has freedom to choose the best approach.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">GOOD: "Build a recipe saver app. Users paste a URL, the app extracts the recipe, and saves it without all the blog nonsense. Display just ingredients and steps."
+
+Why this works:</summary>
+<div class="flash-back">Solves a real problem. Describes the user flow clearly. Has personality ("without all the blog nonsense"). AI understands both the function and the feeling.</div>
+</details>
+</div>
 
 </div>
 
@@ -122,7 +148,63 @@ or warm off-white instead.</code></pre>
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
 
-<div data-learn="QuizMC" data-props='{"questions":[{"q":"What is the vibe coding loop?","options":["Write code, compile, debug, repeat","Describe, review, refine, repeat","Research, plan, code, test, deploy","Design, prototype, develop, launch"],"correct":1,"explanation":"The vibe coding loop is: describe what you want, review what AI builds, refine with specific feedback, repeat until done."},{"q":"How should your first prompt describe an app?","options":["With as much technical detail as possible","With just one word like \"calculator\"","By describing what the user does and sees, in plain English","By specifying the programming language and framework"],"correct":2,"explanation":"Focus on the user experience: what they do, what they see, how it feels. Let AI handle the technical decisions."},{"q":"How many rounds of refinement does a typical vibe-coded app take?","options":["Zero — the first version should be perfect","3 to 5 rounds","At least 20 rounds","It depends on how much code you write manually"],"correct":1,"explanation":"Most apps take 3-5 rounds of describe-review-refine. Each round gets you closer. Getting better at describing means fewer rounds."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the vibe coding loop?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Write code, compile, debug, repeat
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Describe, review, refine, repeat
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Research, plan, code, test, deploy
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Design, prototype, develop, launch
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The vibe coding loop is: describe what you want, review what AI builds, refine with specific feedback, repeat until done.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>How should your first prompt describe an app?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>With as much technical detail as possible
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>With just one word like "calculator"
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>By describing what the user does and sees, in plain English
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>By specifying the programming language and framework
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Focus on the user experience: what they do, what they see, how it feels. Let AI handle the technical decisions.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>How many rounds of refinement does a typical vibe-coded app take?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Zero — the first version should be perfect
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>3 to 5 rounds
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>At least 20 rounds
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It depends on how much code you write manually
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Most apps take 3-5 rounds of describe-review-refine. Each round gets you closer. Getting better at describing means fewer rounds.</div>
+</div>
+</div>
 
 </div>
 
@@ -131,7 +213,33 @@ or warm off-white instead.</code></pre>
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
 
-<div data-learn="FlashDeck" data-props='{"title":"Building Your First App","cards":[{"front":"What should your first prompt include?","back":"What the app does, who uses it, key features, and design direction. Skip technical specifications — let AI choose the tech."},{"front":"What is the vibe coding loop?","back":"Describe what you want, review what AI builds, refine with specific feedback, repeat 3-5 times until done."},{"front":"What do you do after AI generates the first version?","back":"Review it like a user. Click around, try the features, check the design. Then give specific feedback about what to change."},{"front":"Should you specify the programming language in your first prompt?","back":"Usually no. Focus on WHAT you want the app to do. Let AI choose the best technical approach."},{"front":"How do you give good refinement feedback?","back":"Be specific: \"Make the text bigger\" not \"make it better.\" One change at a time works best."},{"front":"What is your role during vibe coding?","back":"You are the product owner and quality checker. You decide what gets built and whether it is good enough. AI handles the code."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Building Your First App</h3>
+<details class="flash-card">
+<summary class="flash-front">What should your first prompt include?</summary>
+<div class="flash-back">What the app does, who uses it, key features, and design direction. Skip technical specifications — let AI choose the tech.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the vibe coding loop?</summary>
+<div class="flash-back">Describe what you want, review what AI builds, refine with specific feedback, repeat 3-5 times until done.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What do you do after AI generates the first version?</summary>
+<div class="flash-back">Review it like a user. Click around, try the features, check the design. Then give specific feedback about what to change.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Should you specify the programming language in your first prompt?</summary>
+<div class="flash-back">Usually no. Focus on WHAT you want the app to do. Let AI choose the best technical approach.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you give good refinement feedback?</summary>
+<div class="flash-back">Be specific: "Make the text bigger" not "make it better." One change at a time works best.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is your role during vibe coding?</summary>
+<div class="flash-back">You are the product owner and quality checker. You decide what gets built and whether it is good enough. AI handles the code.</div>
+</details>
+</div>
 
 </div>
 

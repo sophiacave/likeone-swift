@@ -148,9 +148,131 @@
 </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Tool Use Essentials","cards":[{"front":"What does tools: \"defaults\" include?","back":"Six built-in tools: Bash (terminal commands), Read (file contents), Write (create/overwrite files), Edit (surgical file changes), Grep (content search), and Glob (file pattern matching)."},{"front":"Bash tool","back":"Runs terminal commands. The most powerful tool — can install packages, run scripts, execute programs. Also the most dangerous. Consider disabling it for read-only agents."},{"front":"Read vs. Grep vs. Glob","back":"Read opens a specific file and returns its contents. Grep searches inside files for text patterns. Glob finds files by name patterns (like **/*.ts). Each serves a different search need."},{"front":"Write vs. Edit","back":"Write creates new files or completely overwrites existing ones. Edit makes surgical changes by sending only the diff. Edit is safer and more efficient for modifying existing files."},{"front":"canUseTool callback","back":"A function called before every tool invocation. Receives the tool name and parameters. Return true to allow, false to deny. This is your primary security boundary for controlling agent behavior."},{"front":"Least privilege principle for tools","back":"Give your agent only the tools it needs. A code reviewer needs Read and Grep, not Bash and Write. Fewer tools = smaller attack surface = safer agent."},{"front":"How does Claude choose which tools to use?","back":"Claude reads the tool names and descriptions, evaluates the user request, and autonomously decides which tools to call and in what order. You provide tools; Claude picks the right ones."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Tool Use Essentials</h3>
+<details class="flash-card">
+<summary class="flash-front">What does tools: "defaults" include?</summary>
+<div class="flash-back">Six built-in tools: Bash (terminal commands), Read (file contents), Write (create/overwrite files), Edit (surgical file changes), Grep (content search), and Glob (file pattern matching).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Bash tool</summary>
+<div class="flash-back">Runs terminal commands. The most powerful tool — can install packages, run scripts, execute programs. Also the most dangerous. Consider disabling it for read-only agents.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Read vs. Grep vs. Glob</summary>
+<div class="flash-back">Read opens a specific file and returns its contents. Grep searches inside files for text patterns. Glob finds files by name patterns (like **/*.ts). Each serves a different search need.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Write vs. Edit</summary>
+<div class="flash-back">Write creates new files or completely overwrites existing ones. Edit makes surgical changes by sending only the diff. Edit is safer and more efficient for modifying existing files.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">canUseTool callback</summary>
+<div class="flash-back">A function called before every tool invocation. Receives the tool name and parameters. Return true to allow, false to deny. This is your primary security boundary for controlling agent behavior.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Least privilege principle for tools</summary>
+<div class="flash-back">Give your agent only the tools it needs. A code reviewer needs Read and Grep, not Bash and Write. Fewer tools = smaller attack surface = safer agent.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How does Claude choose which tools to use?</summary>
+<div class="flash-back">Claude reads the tool names and descriptions, evaluates the user request, and autonomously decides which tools to call and in what order. You provide tools; Claude picks the right ones.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Tool Use Comprehension","questions":[{"q":"Which built-in tool would an agent use to find all Python files in a project?","options":["Bash","Read","Grep","Glob"],"correct":3,"explanation":"Glob matches files by name patterns. To find all Python files, Claude would use Glob with a pattern like **/*.py. Grep searches inside files for content. Bash could work (using find) but Glob is the purpose-built tool."},{"q":"You want to build a read-only agent that can analyze code but never modify anything. Which configuration is correct?","options":["tools: \"defaults\" (and hope Claude does not write)","tools: [\"Read\", \"Grep\", \"Glob\"]","tools: [\"Read\", \"Write\", \"Edit\"]","tools: [] (no tools at all)"],"correct":1,"explanation":"Selecting only Read, Grep, and Glob gives the agent analysis capabilities without any ability to modify files or run commands. This is the least privilege approach — the agent physically cannot write or execute."},{"q":"What does the canUseTool callback receive?","options":["The user prompt only","The tool name and its parameters","The complete conversation history","The API key"],"correct":1,"explanation":"canUseTool receives the tool name (like \"Write\" or \"Bash\") and the parameters Claude wants to pass (like file_path or command). You can inspect both to decide whether to allow the call."},{"q":"An agent needs to fix a single line in a 500-line file. Which tool should it use?","options":["Write (rewrite the entire file)","Edit (send only the diff)","Bash (use sed)","Read (and hope for the best)"],"correct":1,"explanation":"Edit sends only the changed portion (the diff), which is more efficient and safer than rewriting the entire 500-line file with Write. Edit preserves everything you did not change."},{"q":"Why is the Bash tool considered the most powerful AND most dangerous?","options":["It is the slowest tool","It can execute any terminal command, including destructive ones","It costs more API credits","It only works on Linux"],"correct":1,"explanation":"Bash can run any command the user has permission for — including rm -rf, git push --force, or downloading malicious scripts. It is enormously powerful for legitimate use, but it requires careful permission controls."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Tool Use Comprehension</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which built-in tool would an agent use to find all Python files in a project?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Bash
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Read
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Grep
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Glob
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Glob matches files by name patterns. To find all Python files, Claude would use Glob with a pattern like **/*.py. Grep searches inside files for content. Bash could work (using find) but Glob is the purpose-built tool.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>You want to build a read-only agent that can analyze code but never modify anything. Which configuration is correct?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>tools: "defaults" (and hope Claude does not write)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>tools: ["Read", "Grep", "Glob"]
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>tools: ["Read", "Write", "Edit"]
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>tools: [] (no tools at all)
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Selecting only Read, Grep, and Glob gives the agent analysis capabilities without any ability to modify files or run commands. This is the least privilege approach — the agent physically cannot write or execute.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What does the canUseTool callback receive?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The user prompt only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The tool name and its parameters
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The complete conversation history
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The API key
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> canUseTool receives the tool name (like "Write" or "Bash") and the parameters Claude wants to pass (like file_path or command). You can inspect both to decide whether to allow the call.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>An agent needs to fix a single line in a 500-line file. Which tool should it use?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Write (rewrite the entire file)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Edit (send only the diff)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Bash (use sed)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Read (and hope for the best)
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Edit sends only the changed portion (the diff), which is more efficient and safer than rewriting the entire 500-line file with Write. Edit preserves everything you did not change.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>Why is the Bash tool considered the most powerful AND most dangerous?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is the slowest tool
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It can execute any terminal command, including destructive ones
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It costs more API credits
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It only works on Linux
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Bash can run any command the user has permission for — including rm -rf, git push --force, or downloading malicious scripts. It is enormously powerful for legitimate use, but it requires careful permission controls.</div>
+</div>
+</div>
 
 </div>
 

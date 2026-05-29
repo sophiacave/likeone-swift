@@ -48,7 +48,29 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Debugging Bad Outputs — Key Concepts","cards":[{"front":"What are the 5 failure modes of AI output?","back":"Too vague, wrong format, wrong tone, hallucination, and ignored instructions — each has a specific diagnostic fix."},{"front":"What is the 4-step debug loop?","back":"Identify (what&#39;s wrong), Diagnose (which failure mode), Hypothesize (what in the prompt caused it), Fix (make ONE targeted change and test again)."},{"front":"Why change only one thing at a time when debugging?","back":"If you rewrite the entire prompt, you won&#39;t know which change fixed the problem — or what might have broken something else. One targeted change per iteration."},{"front":"What is the self-debug technique?","back":"Asking the AI to explain its interpretation of your instructions and where it made assumptions — this surfaces hidden misinterpretations you didn&#39;t know existed."},{"front":"What is a failure log and why keep one?","back":"A record of what went wrong and what fixed it. Over time it builds intuition for writing good prompts the first time and reveals your personal patterns of mistakes."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Debugging Bad Outputs — Key Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">What are the 5 failure modes of AI output?</summary>
+<div class="flash-back">Too vague, wrong format, wrong tone, hallucination, and ignored instructions — each has a specific diagnostic fix.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the 4-step debug loop?</summary>
+<div class="flash-back">Identify (what's wrong), Diagnose (which failure mode), Hypothesize (what in the prompt caused it), Fix (make ONE targeted change and test again).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why change only one thing at a time when debugging?</summary>
+<div class="flash-back">If you rewrite the entire prompt, you won't know which change fixed the problem — or what might have broken something else. One targeted change per iteration.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the self-debug technique?</summary>
+<div class="flash-back">Asking the AI to explain its interpretation of your instructions and where it made assumptions — this surfaces hidden misinterpretations you didn't know existed.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is a failure log and why keep one?</summary>
+<div class="flash-back">A record of what went wrong and what fixed it. Over time it builds intuition for writing good prompts the first time and reveals your personal patterns of mistakes.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -178,7 +200,63 @@ Watch how each round gets closer to what you actually want.</code>
 </div>
 
 <div class="lesson-section">
-  <div data-learn="QuizMC" data-props='{"title":"Debugging Bad Outputs Quiz","questions":[{"q":"What is the most important rule when debugging a prompt?","options":["Rewrite the entire prompt from scratch","Change one thing at a time so you know what fixed it","Add more examples","Make the prompt shorter"],"correct":1,"explanation":"If you rewrite everything at once, you won’t know which change fixed the problem — or what might have broken something else. One targeted change per iteration."},{"q":"What is the self-debug technique?","options":["Running the same prompt multiple times","Asking the AI to explain its interpretation of your instructions and where it made assumptions, then revising","Asking the AI to critique itself","Using a different AI model to check the output"],"correct":1,"explanation":"The self-debug prompt surfaces hidden misinterpretations — the AI might reveal it understood ‘brief’ to mean 50 words when you meant 200, or focused on the wrong part of a multi-part instruction."},{"q":"Which failure mode describes an AI that confidently states incorrect facts?","options":["Wrong format","Wrong tone","Hallucination","Ignored instructions"],"correct":2,"explanation":"Hallucination is when the AI states something confidently that is factually wrong. The fix is to ask for cited sources, confidence flags, or human verification for critical facts."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Debugging Bad Outputs Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the most important rule when debugging a prompt?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Rewrite the entire prompt from scratch
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Change one thing at a time so you know what fixed it
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Add more examples
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Make the prompt shorter
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> If you rewrite everything at once, you won’t know which change fixed the problem — or what might have broken something else. One targeted change per iteration.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the self-debug technique?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Running the same prompt multiple times
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Asking the AI to explain its interpretation of your instructions and where it made assumptions, then revising
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Asking the AI to critique itself
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Using a different AI model to check the output
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The self-debug prompt surfaces hidden misinterpretations — the AI might reveal it understood ‘brief’ to mean 50 words when you meant 200, or focused on the wrong part of a multi-part instruction.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Which failure mode describes an AI that confidently states incorrect facts?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Wrong format
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Wrong tone
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Hallucination
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Ignored instructions
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Hallucination is when the AI states something confidently that is factually wrong. The fix is to ask for cited sources, confidence flags, or human verification for critical facts.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

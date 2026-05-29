@@ -181,8 +181,108 @@ scores = evaluate_rag_answer(
 
   <div class="divider"><span>Test Your Understanding</span></div>
 
-  <div data-learn="QuizMC" data-props='{"title":"RAG Evaluation Metrics Quiz","questions":[{"q":"A RAG answer scores 5/5 on Faithfulness but 1/5 on Relevance. What does this mean?","options":["The answer is perfect","The answer only uses information from the context, but the retrieved context was irrelevant to the question","The answer hallucinated information","The answer is incomplete"],"correct":1,"explanation":"High faithfulness means the answer only uses retrieved context — no hallucinations. Low relevance means the wrong context was retrieved in the first place, so the answer is accurate to its sources but useless to the user. This signals a retrieval problem, not a generation problem."},{"q":"Which metric specifically detects hallucination in a RAG answer?","options":["Relevance","Completeness","Faithfulness (Groundedness)","Context Recall"],"correct":2,"explanation":"Faithfulness (also called Groundedness) measures whether every claim in the answer is supported by the retrieved context. A score of 1.0 means zero hallucination. This is the most critical safety metric for production RAG systems."},{"q":"What is RAGAS?","options":["A vector database optimized for RAG","An open-source framework for automatically evaluating RAG pipelines across multiple quality metrics","A chunking library for Python","A prompt template for RAG systems"],"correct":1,"explanation":"RAGAS (Retrieval Augmented Generation Assessment) is the most widely used open-source framework for RAG evaluation. It automatically scores faithfulness, answer relevancy, context precision, and context recall using an LLM judge."},{"q":"Your evaluation shows high relevance, high faithfulness, but low completeness. What should you fix?","options":["Change the embedding model","Increase top_k to retrieve more chunks and add detail instructions to the prompt","Lower the similarity threshold","Use a different vector database"],"correct":1,"explanation":"Low completeness with high relevance and faithfulness means the right context is being retrieved and the answer is grounded, but it is leaving out information. Retrieving more chunks (higher top_k) and adding instructions like \"Include all relevant details\" will improve completeness."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">RAG Evaluation Metrics Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>A RAG answer scores 5/5 on Faithfulness but 1/5 on Relevance. What does this mean?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The answer is perfect
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The answer only uses information from the context, but the retrieved context was irrelevant to the question
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The answer hallucinated information
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The answer is incomplete
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> High faithfulness means the answer only uses retrieved context — no hallucinations. Low relevance means the wrong context was retrieved in the first place, so the answer is accurate to its sources but useless to the user. This signals a retrieval problem, not a generation problem.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Which metric specifically detects hallucination in a RAG answer?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Relevance
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Completeness
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Faithfulness (Groundedness)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Context Recall
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Faithfulness (also called Groundedness) measures whether every claim in the answer is supported by the retrieved context. A score of 1.0 means zero hallucination. This is the most critical safety metric for production RAG systems.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is RAGAS?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A vector database optimized for RAG
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>An open-source framework for automatically evaluating RAG pipelines across multiple quality metrics
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A chunking library for Python
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A prompt template for RAG systems
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> RAGAS (Retrieval Augmented Generation Assessment) is the most widely used open-source framework for RAG evaluation. It automatically scores faithfulness, answer relevancy, context precision, and context recall using an LLM judge.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Your evaluation shows high relevance, high faithfulness, but low completeness. What should you fix?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Change the embedding model
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Increase top_k to retrieve more chunks and add detail instructions to the prompt
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Lower the similarity threshold
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Use a different vector database
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Low completeness with high relevance and faithfulness means the right context is being retrieved and the answer is grounded, but it is leaving out information. Retrieving more chunks (higher top_k) and adding instructions like "Include all relevant details" will improve completeness.</div>
+</div>
+</div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"Evaluation Metrics Flashcards","cards":[{"front":"Faithfulness (Groundedness)","back":"Every claim in the answer is supported by retrieved context. Score 1.0 = zero hallucination. The most critical RAG safety metric."},{"front":"Answer Relevance","back":"The generated answer actually addresses the user question. A faithful answer can still miss the point entirely."},{"front":"Context Relevance","back":"The retrieved chunks are related to the question asked. Low context relevance = retrieval failure, not generation failure."},{"front":"Completeness","back":"The answer covers all key information present in the retrieved context. A correct but incomplete answer may still mislead users."},{"front":"LLM-as-a-Judge","back":"Using a powerful LLM (e.g. Claude) to automatically score other LLM outputs against criteria. Enables large-scale evaluation without human labelers."},{"front":"RAGAS","back":"Open-source Python library for automated RAG evaluation. Measures faithfulness, answer relevancy, context precision, and context recall."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Evaluation Metrics Flashcards</h3>
+<details class="flash-card">
+<summary class="flash-front">Faithfulness (Groundedness)</summary>
+<div class="flash-back">Every claim in the answer is supported by retrieved context. Score 1.0 = zero hallucination. The most critical RAG safety metric.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Answer Relevance</summary>
+<div class="flash-back">The generated answer actually addresses the user question. A faithful answer can still miss the point entirely.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Context Relevance</summary>
+<div class="flash-back">The retrieved chunks are related to the question asked. Low context relevance = retrieval failure, not generation failure.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Completeness</summary>
+<div class="flash-back">The answer covers all key information present in the retrieved context. A correct but incomplete answer may still mislead users.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">LLM-as-a-Judge</summary>
+<div class="flash-back">Using a powerful LLM (e.g. Claude) to automatically score other LLM outputs against criteria. Enables large-scale evaluation without human labelers.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">RAGAS</summary>
+<div class="flash-back">Open-source Python library for automated RAG evaluation. Measures faithfulness, answer relevancy, context precision, and context recall.</div>
+</details>
+</div>
 
 </div>

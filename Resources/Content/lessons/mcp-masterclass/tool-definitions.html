@@ -231,8 +231,112 @@ z.object({
     <p>When building a tool definition, start with these three questions: (1) What should the tool be called? Use <code>snake_case</code> and make it descriptive. (2) When should Claude use it? Write a clear description. (3) What inputs does it need? Define each parameter with type, constraints, and a <code>.describe()</code> string. The complete example above (<code>search_documents</code>) demonstrates all of these elements working together.</p>
   </div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Tool Definition Quiz","questions":[{"q":"Which field in a tool definition is most important for Claude to decide WHEN to use the tool?","options":["The tool name","The description field","The required parameters list","The return type"],"correct":1,"explanation":"The description field is what Claude reads to decide when to invoke a tool. A clear, specific description means Claude calls your tool at exactly the right moment without extra prompt engineering."},{"q":"In JSON Schema, what does the required array inside inputSchema specify?","options":["Which parameters are strings","Which parameters Claude must provide — if absent the call fails","Which parameters have default values","Which parameters are read-only"],"correct":1,"explanation":"The required array lists parameter names that must be provided in every tool call. If Claude omits a required parameter, the MCP protocol rejects the call before it reaches your handler."},{"q":"How do you make a parameter optional in a Zod schema?","options":["Add .optional() or .default(value) to the chain","Set required: false in the JSON Schema","Pass null as the default in server.tool()","Optional parameters are not supported in MCP"],"correct":0,"explanation":"Use .optional() to let Claude omit the parameter entirely, or .default(value) to provide a fallback. Both result in the parameter being excluded from the JSON Schema required array."},{"q":"If Claude is calling your tool with wrong argument values, what should you fix first?","options":["The tool name","The handler logic","The .describe() strings on each parameter","The transport configuration"],"correct":2,"explanation":"Claude generates argument values by reading the .describe() text on each parameter. If the descriptions are vague or ambiguous, Claude will guess wrong. Make descriptions specific about format, range, and meaning."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Tool Definition Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which field in a tool definition is most important for Claude to decide WHEN to use the tool?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The tool name
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The description field
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The required parameters list
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The return type
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The description field is what Claude reads to decide when to invoke a tool. A clear, specific description means Claude calls your tool at exactly the right moment without extra prompt engineering.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>In JSON Schema, what does the required array inside inputSchema specify?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Which parameters are strings
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Which parameters Claude must provide — if absent the call fails
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Which parameters have default values
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Which parameters are read-only
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The required array lists parameter names that must be provided in every tool call. If Claude omits a required parameter, the MCP protocol rejects the call before it reaches your handler.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>How do you make a parameter optional in a Zod schema?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Add .optional() or .default(value) to the chain
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Set required: false in the JSON Schema
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Pass null as the default in server.tool()
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Optional parameters are not supported in MCP
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Use .optional() to let Claude omit the parameter entirely, or .default(value) to provide a fallback. Both result in the parameter being excluded from the JSON Schema required array.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>If Claude is calling your tool with wrong argument values, what should you fix first?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The tool name
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The handler logic
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The .describe() strings on each parameter
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The transport configuration
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Claude generates argument values by reading the .describe() text on each parameter. If the descriptions are vague or ambiguous, Claude will guess wrong. Make descriptions specific about format, range, and meaning.</div>
+</div>
+</div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"Tool Definition Concepts","cards":[{"front":"inputSchema","back":"The JSON Schema object inside a tool definition. Has type: \"object\", a properties map, and a required array. Claude uses this to know what to pass."},{"front":"properties","back":"A map of parameter name to type definition. Each entry specifies type (string/number/boolean/enum), constraints, and a description Claude reads."},{"front":"required array","back":"Lists which parameter names are mandatory. Parameters with .default() or .optional() in Zod are excluded from required. If Claude omits a required param, the call is rejected."},{"front":"z.enum()","back":"Defines a fixed set of allowed values. Claude picks from your list instead of guessing. Example: z.enum([\"asc\", \"desc\"]) constrains to exactly two valid values."},{"front":"z.string().describe()","back":"Defines a string parameter with a description. Claude reads the description to know what value to generate. Always include .describe() — without it, Claude is guessing blind."},{"front":"Description vs Name","back":"The description is MORE important than the name. Claude reads descriptions to decide WHEN to use a tool. A descriptive name helps, but the description drives the decision."},{"front":"Zod-to-JSON-Schema","back":"The MCP SDK automatically converts your Zod schema to JSON Schema for the tools/list response. You write Zod, Claude receives JSON Schema. The conversion is transparent."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Tool Definition Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">inputSchema</summary>
+<div class="flash-back">The JSON Schema object inside a tool definition. Has type: "object", a properties map, and a required array. Claude uses this to know what to pass.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">properties</summary>
+<div class="flash-back">A map of parameter name to type definition. Each entry specifies type (string/number/boolean/enum), constraints, and a description Claude reads.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">required array</summary>
+<div class="flash-back">Lists which parameter names are mandatory. Parameters with .default() or .optional() in Zod are excluded from required. If Claude omits a required param, the call is rejected.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">z.enum()</summary>
+<div class="flash-back">Defines a fixed set of allowed values. Claude picks from your list instead of guessing. Example: z.enum(["asc", "desc"]) constrains to exactly two valid values.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">z.string().describe()</summary>
+<div class="flash-back">Defines a string parameter with a description. Claude reads the description to know what value to generate. Always include .describe() — without it, Claude is guessing blind.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Description vs Name</summary>
+<div class="flash-back">The description is MORE important than the name. Claude reads descriptions to decide WHEN to use a tool. A descriptive name helps, but the description drives the decision.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Zod-to-JSON-Schema</summary>
+<div class="flash-back">The MCP SDK automatically converts your Zod schema to JSON Schema for the tools/list response. You write Zod, Claude receives JSON Schema. The conversion is transparent.</div>
+</details>
+</div>
 
 </div>

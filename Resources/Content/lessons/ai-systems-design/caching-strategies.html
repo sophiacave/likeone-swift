@@ -184,8 +184,68 @@ class CacheInvalidator:
 ```
 </div>
 
-<div data-learn="QuizMC" data-props='{"questions": [{"q": "What similarity threshold should you start with for a semantic cache?", "options": ["0.70 -- catch as many similar queries as possible", "0.85 -- balance between hits and accuracy", "0.92 -- conservative starting point, tune from there", "0.99 -- only near-exact matches"], "correct": 2, "explanation": "Start at 0.92 and tune based on your domain. Too low and you serve wrong answers for different questions. Too high and the cache rarely hits. Narrow domains can go lower; broad domains need higher thresholds."}, {"q": "How should you structure prompts to maximize KV cache / prompt cache hits?", "options": ["Randomize example order for diversity", "Put dynamic user content first, static instructions last", "Put static instructions first (prefix), dynamic content last (suffix)", "Keep prompts as short as possible"], "correct": 2, "explanation": "Prompt caching works on shared prefixes. Static parts (system instructions, few-shot examples) should come first so they form a consistent cacheable prefix. User-specific dynamic content goes last as the variable suffix."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What similarity threshold should you start with for a semantic cache?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>0.70 -- catch as many similar queries as possible
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>0.85 -- balance between hits and accuracy
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>0.92 -- conservative starting point, tune from there
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>0.99 -- only near-exact matches
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Start at 0.92 and tune based on your domain. Too low and you serve wrong answers for different questions. Too high and the cache rarely hits. Narrow domains can go lower; broad domains need higher thresholds.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>How should you structure prompts to maximize KV cache / prompt cache hits?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Randomize example order for diversity
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Put dynamic user content first, static instructions last
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Put static instructions first (prefix), dynamic content last (suffix)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Keep prompts as short as possible
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Prompt caching works on shared prefixes. Static parts (system instructions, few-shot examples) should come first so they form a consistent cacheable prefix. User-specific dynamic content goes last as the variable suffix.</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the three caching layers for AI systems?", "back": "1) Exact-match cache (hash prompt, return for identical inputs). 2) Semantic cache (embed query, find similar cached queries above threshold). 3) KV/Prompt cache (reuse model&#39;s internal computations for shared prompt prefixes)."}, {"front": "What hit rates can a well-tuned semantic cache achieve?", "back": "30-50% for general customer support. Over 70% for FAQ-heavy applications. This reduces average latency from ~3 seconds to ~50ms on cache hits."}, {"front": "What discount does Anthropic&#39;s prompt caching offer?", "back": "90% discount on cached input tokens. The static prefix (system prompt, examples) is computed once and reused for subsequent requests with the same prefix."}, {"front": "What are the four cache invalidation triggers for AI?", "back": "1) Source data changes (invalidate entries referencing updated docs). 2) Model/prompt changes (bump cache version). 3) Time-based expiry (TTLs per domain). 4) Quality feedback (user reports incorrect cached response)."}, {"front": "When does edge caching work well for AI, and when doesn&#39;t it?", "back": "Works well: read-heavy, low-personalization (FAQs, docs, product descriptions). Poor fit: personalized or conversational AI where each response is unique."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Vocabulary</h3>
+<details class="flash-card">
+<summary class="flash-front">What are the three caching layers for AI systems?</summary>
+<div class="flash-back">1) Exact-match cache (hash prompt, return for identical inputs). 2) Semantic cache (embed query, find similar cached queries above threshold). 3) KV/Prompt cache (reuse model's internal computations for shared prompt prefixes).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What hit rates can a well-tuned semantic cache achieve?</summary>
+<div class="flash-back">30-50% for general customer support. Over 70% for FAQ-heavy applications. This reduces average latency from ~3 seconds to ~50ms on cache hits.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What discount does Anthropic's prompt caching offer?</summary>
+<div class="flash-back">90% discount on cached input tokens. The static prefix (system prompt, examples) is computed once and reused for subsequent requests with the same prefix.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are the four cache invalidation triggers for AI?</summary>
+<div class="flash-back">1) Source data changes (invalidate entries referencing updated docs). 2) Model/prompt changes (bump cache version). 3) Time-based expiry (TTLs per domain). 4) Quality feedback (user reports incorrect cached response).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">When does edge caching work well for AI, and when doesn't it?</summary>
+<div class="flash-back">Works well: read-heavy, low-personalization (FAQs, docs, product descriptions). Poor fit: personalized or conversational AI where each response is unique.</div>
+</details>
+</div>
 
 </div>

@@ -70,7 +70,53 @@
   <span class="section-label">The Four Techniques</span>
   <h2 class="section-title">Each one solves a different problem.</h2>
 
-<div data-learn="FlashDeck" data-props='{"title":"Four Prompt Techniques — Flip for Details","cards":[{"front":"🎯 ZERO-SHOT\n\nNo examples given.\nJust a clear instruction.","back":"WHEN TO USE: Simple, well-defined tasks like classification, translation, or formatting.\n\nEXAMPLE: \"Classify this review as POSITIVE or NEGATIVE: [text]\"\n\nTIP: Be specific about format, length, and tone. The more precise, the better."},{"front":"📋 FEW-SHOT\n\nGive 2-3 examples first.\nAI learns the pattern.","back":"WHEN TO USE: When you need a specific output format or style the AI might not guess.\n\nEXAMPLE: Show 2 informal→professional email conversions, then give a new informal message.\n\nTIP: Make examples diverse. If all examples are similar, the AI may not generalize."},{"front":"🔗 CHAIN-OF-THOUGHT\n\nForce step-by-step reasoning.\nDramatically improves accuracy.","back":"WHEN TO USE: Math, logic, multi-step reasoning, anything that needs accuracy over speed.\n\nEXAMPLE: \"Solve this step by step: [problem]. Let us think step by step.\"\n\nRESEARCH: Up to 2x accuracy improvement on complex problems."},{"front":"🎭 ROLE-PLAY\n\nGive the AI a persona.\nGet expert-level output.","back":"WHEN TO USE: When you need specialized expertise or a specific communication style.\n\nEXAMPLE: \"You are a senior security engineer reviewing code for vulnerabilities. Flag issues by severity.\"\n\nTIP: Include expertise level, style, focus areas, and what to avoid."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Four Prompt Techniques — Flip for Details</h3>
+<details class="flash-card">
+<summary class="flash-front">🎯 ZERO-SHOT
+
+No examples given.
+Just a clear instruction.</summary>
+<div class="flash-back">WHEN TO USE: Simple, well-defined tasks like classification, translation, or formatting.
+
+EXAMPLE: "Classify this review as POSITIVE or NEGATIVE: [text]"
+
+TIP: Be specific about format, length, and tone. The more precise, the better.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">📋 FEW-SHOT
+
+Give 2-3 examples first.
+AI learns the pattern.</summary>
+<div class="flash-back">WHEN TO USE: When you need a specific output format or style the AI might not guess.
+
+EXAMPLE: Show 2 informal→professional email conversions, then give a new informal message.
+
+TIP: Make examples diverse. If all examples are similar, the AI may not generalize.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">🔗 CHAIN-OF-THOUGHT
+
+Force step-by-step reasoning.
+Dramatically improves accuracy.</summary>
+<div class="flash-back">WHEN TO USE: Math, logic, multi-step reasoning, anything that needs accuracy over speed.
+
+EXAMPLE: "Solve this step by step: [problem]. Let us think step by step."
+
+RESEARCH: Up to 2x accuracy improvement on complex problems.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">🎭 ROLE-PLAY
+
+Give the AI a persona.
+Get expert-level output.</summary>
+<div class="flash-back">WHEN TO USE: When you need specialized expertise or a specific communication style.
+
+EXAMPLE: "You are a senior security engineer reviewing code for vulnerabilities. Flag issues by severity."
+
+TIP: Include expertise level, style, focus areas, and what to avoid.</div>
+</details>
+</div>
 
 </div>
 
@@ -194,7 +240,45 @@ app.get("/user", (req, res) => {
   <h2 class="section-title">Pick the right technique.</h2>
 
 
-<div data-learn="QuizMC" data-props='{"title":"Technique Selection","questions":[{"q":"You need the AI to format data in a very specific way that it has never seen before. Which technique?","options":["Zero-shot with detailed instructions","Few-shot with 2-3 examples of the exact format you want","Chain-of-thought reasoning","Role-play as a data formatter"],"correct":1,"explanation":"When you need a specific, unusual format, showing the AI 2-3 examples is far more effective than trying to describe the format in words. Few-shot lets the AI learn the pattern from examples."},{"q":"Research shows chain-of-thought prompting can improve math accuracy by up to:","options":["10%","25%","50%","100% (2x)"],"correct":3,"explanation":"Studies show chain-of-thought prompting can double accuracy on multi-step reasoning tasks. By forcing the model to show its work, errors in intermediate steps become visible and correctable."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Technique Selection</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>You need the AI to format data in a very specific way that it has never seen before. Which technique?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Zero-shot with detailed instructions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Few-shot with 2-3 examples of the exact format you want
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Chain-of-thought reasoning
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Role-play as a data formatter
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> When you need a specific, unusual format, showing the AI 2-3 examples is far more effective than trying to describe the format in words. Few-shot lets the AI learn the pattern from examples.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Research shows chain-of-thought prompting can improve math accuracy by up to:</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>10%
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>25%
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>50%
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>100% (2x)
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Studies show chain-of-thought prompting can double accuracy on multi-step reasoning tasks. By forcing the model to show its work, errors in intermediate steps become visible and correctable.</div>
+</div>
+</div>
 
 </div>
 

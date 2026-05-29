@@ -40,7 +40,29 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"AI Cost Optimization Strategies","cards":[{"front":"Semantic Caching","back":"Before calling an LLM, check if a similar query has been answered recently using vector similarity. One cached answer can serve many slightly different questions."},{"front":"Response Caching","back":"For deterministic operations like embeddings and classifications, cache the result keyed on input hash. Same text always produces the same embedding — compute once, store forever."},{"front":"Prompt Caching","back":"Some providers (including Anthropic) offer discounted pricing when you send the same system prompt repeatedly. Structure requests to take advantage of this."},{"front":"Model Tiering","back":"Use free embeddings for search, mid-tier models for simple tasks, flagship models only for complex reasoning. Route by task complexity, not by habit."},{"front":"RAG Before Generation","back":"A vector search costs fractions of a cent. An LLM call costs 100x more. Check your knowledge base first — only call the LLM for genuinely novel questions."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">AI Cost Optimization Strategies</h3>
+<details class="flash-card">
+<summary class="flash-front">Semantic Caching</summary>
+<div class="flash-back">Before calling an LLM, check if a similar query has been answered recently using vector similarity. One cached answer can serve many slightly different questions.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Response Caching</summary>
+<div class="flash-back">For deterministic operations like embeddings and classifications, cache the result keyed on input hash. Same text always produces the same embedding — compute once, store forever.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Prompt Caching</summary>
+<div class="flash-back">Some providers (including Anthropic) offer discounted pricing when you send the same system prompt repeatedly. Structure requests to take advantage of this.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Model Tiering</summary>
+<div class="flash-back">Use free embeddings for search, mid-tier models for simple tasks, flagship models only for complex reasoning. Route by task complexity, not by habit.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">RAG Before Generation</summary>
+<div class="flash-back">A vector search costs fractions of a cent. An LLM call costs 100x more. Check your knowledge base first — only call the LLM for genuinely novel questions.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -195,7 +217,63 @@ With model tiering (70% Haiku, 30% Sonnet):
 </div>
 
 <div class="lesson-section">
-  <div data-learn="QuizMC" data-props='{"title":"Cost Optimization Quiz","questions":[{"q":"Why does your system prompt represent the first cost optimization opportunity?","options":["System prompts cost more per token","A 2000-token system prompt goes with every request — paying for it every single time at scale compounds into serious money","System prompts are charged at 5x the rate","System prompts prevent caching"],"correct":1,"explanation":"If your system prompt is 2,000 tokens and you make 10,000 API calls per day, you are paying for 20 million tokens of system prompt daily. Making it as concise as possible is the fastest cost win."},{"q":"What cost reduction percentage does a well-implemented caching layer typically achieve?","options":["5-10%","10-20%","40-70%","90%+"],"correct":2,"explanation":"A well-implemented cache — combining semantic caching, response caching, and embedding caching — typically reduces AI API costs by 40-70%. This is not an optimization, it is a survival strategy at scale."},{"q":"What is the correct order of operations for serving a user query at minimum cost?","options":["LLM call first, then cache if the answer is good","Check semantic cache, then RAG from knowledge base, then call LLM only for genuinely novel complex queries","Always call LLM first for best quality","Check cache, then call LLM, then store result"],"correct":1,"explanation":"Layer your architecture: cache first (free), RAG from your database second (fractions of a cent), LLM last (most expensive). Only the novel, complex queries that none of your cheaper layers can answer reach the LLM."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Cost Optimization Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why does your system prompt represent the first cost optimization opportunity?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>System prompts cost more per token
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A 2000-token system prompt goes with every request — paying for it every single time at scale compounds into serious money
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>System prompts are charged at 5x the rate
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>System prompts prevent caching
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> If your system prompt is 2,000 tokens and you make 10,000 API calls per day, you are paying for 20 million tokens of system prompt daily. Making it as concise as possible is the fastest cost win.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What cost reduction percentage does a well-implemented caching layer typically achieve?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>5-10%
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>10-20%
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>40-70%
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>90%+
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A well-implemented cache — combining semantic caching, response caching, and embedding caching — typically reduces AI API costs by 40-70%. This is not an optimization, it is a survival strategy at scale.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the correct order of operations for serving a user query at minimum cost?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>LLM call first, then cache if the answer is good
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Check semantic cache, then RAG from knowledge base, then call LLM only for genuinely novel complex queries
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Always call LLM first for best quality
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Check cache, then call LLM, then store result
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Layer your architecture: cache first (free), RAG from your database second (fractions of a cent), LLM last (most expensive). Only the novel, complex queries that none of your cheaper layers can answer reach the LLM.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

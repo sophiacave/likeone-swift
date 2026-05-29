@@ -27,7 +27,73 @@
   <span class="section-label">The Formats</span>
   <h2 class="section-title">8 formats you'll use constantly.</h2>
 
-<div data-learn="FlashDeck" data-props='{"title":"8 Output Formats — Flip to See When to Use Each","cards":[{"front":"📋 Bullet Points\n\nThe most versatile format. Scannable, sharp, efficient.","back":"Use when: Slack updates, meeting notes, quick summaries, internal communication.\n\nPrompt: \"Give me this as 5-7 bullet points, one key insight per bullet.\""},{"front":"📊 Table / Comparison\n\nSide-by-side structure for decisions and analysis.","back":"Use when: Comparing options, feature lists, pros/cons, vendor evaluations.\n\nPrompt: \"Create a table comparing [A] vs [B] across these criteria: [list]. Include a recommendation row.\""},{"front":"📝 Step-by-Step\n\nNumbered sequences for processes and instructions.","back":"Use when: How-to guides, onboarding docs, troubleshooting, recipes.\n\nPrompt: \"Give me step-by-step instructions. Number each step. Include expected outcome per step.\""},{"front":"📧 Email / Message\n\nReady-to-send communication in the right tone.","back":"Use when: Any time the output goes directly to another person.\n\nPrompt: \"Write this as an email. Include subject line. Under 150 words. Tone: [describe].\""},{"front":"🗒️ Executive Summary\n\nThe insight first, then evidence. For busy readers.","back":"Use when: Reports to leadership, board updates, stakeholder communication.\n\nPrompt: \"Write a 3-sentence executive summary. Lead with the bottom line.\""},{"front":"💻 Code / JSON / Structured Data\n\nMachine-readable or developer-ready output.","back":"Use when: API responses, config files, data processing, automation scripts.\n\nPrompt: \"Return this as valid JSON with keys for [x, y, z].\" or \"Write this as a Python function.\""},{"front":"🎯 Pros & Cons List\n\nBalanced analysis for decision-making.","back":"Use when: You need to weigh options, present trade-offs, or get a recommendation.\n\nPrompt: \"Give me 5 pros and 5 cons. Then your recommendation with reasoning.\""},{"front":"📄 Report / Document\n\nLong-form structured output with sections and headers.","back":"Use when: Documentation, proposals, analysis write-ups, presentations.\n\nPrompt: \"Structure this as a report with these sections: [list]. Include headers, key findings, and action items.\""}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">8 Output Formats — Flip to See When to Use Each</h3>
+<details class="flash-card">
+<summary class="flash-front">📋 Bullet Points
+
+The most versatile format. Scannable, sharp, efficient.</summary>
+<div class="flash-back">Use when: Slack updates, meeting notes, quick summaries, internal communication.
+
+Prompt: "Give me this as 5-7 bullet points, one key insight per bullet."</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">📊 Table / Comparison
+
+Side-by-side structure for decisions and analysis.</summary>
+<div class="flash-back">Use when: Comparing options, feature lists, pros/cons, vendor evaluations.
+
+Prompt: "Create a table comparing [A] vs [B] across these criteria: [list]. Include a recommendation row."</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">📝 Step-by-Step
+
+Numbered sequences for processes and instructions.</summary>
+<div class="flash-back">Use when: How-to guides, onboarding docs, troubleshooting, recipes.
+
+Prompt: "Give me step-by-step instructions. Number each step. Include expected outcome per step."</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">📧 Email / Message
+
+Ready-to-send communication in the right tone.</summary>
+<div class="flash-back">Use when: Any time the output goes directly to another person.
+
+Prompt: "Write this as an email. Include subject line. Under 150 words. Tone: [describe]."</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">🗒️ Executive Summary
+
+The insight first, then evidence. For busy readers.</summary>
+<div class="flash-back">Use when: Reports to leadership, board updates, stakeholder communication.
+
+Prompt: "Write a 3-sentence executive summary. Lead with the bottom line."</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">💻 Code / JSON / Structured Data
+
+Machine-readable or developer-ready output.</summary>
+<div class="flash-back">Use when: API responses, config files, data processing, automation scripts.
+
+Prompt: "Return this as valid JSON with keys for [x, y, z]." or "Write this as a Python function."</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">🎯 Pros & Cons List
+
+Balanced analysis for decision-making.</summary>
+<div class="flash-back">Use when: You need to weigh options, present trade-offs, or get a recommendation.
+
+Prompt: "Give me 5 pros and 5 cons. Then your recommendation with reasoning."</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">📄 Report / Document
+
+Long-form structured output with sections and headers.</summary>
+<div class="flash-back">Use when: Documentation, proposals, analysis write-ups, presentations.
+
+Prompt: "Structure this as a report with these sections: [list]. Include headers, key findings, and action items."</div>
+</details>
+</div>
 </div>
 
 <!-- SECTION 2B: FORMAT DEEP DIVES -->
@@ -180,7 +246,45 @@ Repeat for each topic. Keep each section under 100 words.</pre>
   <h2 class="section-title">Output for your tools, not your eyes.</h2>
   <p class="section-text">One of the most underused techniques: ask AI to output in the exact format your next tool needs.</p>
 
-<div data-learn="FlashDeck" data-props='{"title":"Format for the Destination — Flip to See the Prompt","cards":[{"front":"📊 Destination: Spreadsheet\n\nYou need data you can paste into Google Sheets or Excel","back":"\"Output as CSV with headers: Name, Category, Priority, Due Date.\"\n\nor\n\n\"Format as a markdown table with columns for Feature, Status, and Owner.\"\n\nSkips the entire reformatting step."},{"front":"🖥️ Destination: Website\n\nYou need content ready for a web page","back":"\"Output as HTML with h2 headings, p tags for paragraphs, and ul/li for lists. Include class names for styling.\"\n\nCopy → paste → publish. No reformatting."},{"front":"📱 Destination: Presentation\n\nYou need slide-ready content","back":"\"Format as one slide per section. Each slide: a title (under 8 words) and exactly 3 bullet points (under 15 words each). End with a summary slide.\"\n\nDrop straight into your deck."},{"front":"🤖 Destination: Another AI Tool\n\nYou need structured data for automation","back":"\"Output as JSON with keys: task, priority (1-5), assignee, deadline. Array of objects, one per task.\"\n\nPipe directly into Zapier, Make, or your own code."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Format for the Destination — Flip to See the Prompt</h3>
+<details class="flash-card">
+<summary class="flash-front">📊 Destination: Spreadsheet
+
+You need data you can paste into Google Sheets or Excel</summary>
+<div class="flash-back">"Output as CSV with headers: Name, Category, Priority, Due Date."
+
+or
+
+"Format as a markdown table with columns for Feature, Status, and Owner."
+
+Skips the entire reformatting step.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">🖥️ Destination: Website
+
+You need content ready for a web page</summary>
+<div class="flash-back">"Output as HTML with h2 headings, p tags for paragraphs, and ul/li for lists. Include class names for styling."
+
+Copy → paste → publish. No reformatting.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">📱 Destination: Presentation
+
+You need slide-ready content</summary>
+<div class="flash-back">"Format as one slide per section. Each slide: a title (under 8 words) and exactly 3 bullet points (under 15 words each). End with a summary slide."
+
+Drop straight into your deck.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">🤖 Destination: Another AI Tool
+
+You need structured data for automation</summary>
+<div class="flash-back">"Output as JSON with keys: task, priority (1-5), assignee, deadline. Array of objects, one per task."
+
+Pipe directly into Zapier, Make, or your own code.</div>
+</details>
+</div>
 
 </div>
 
@@ -189,7 +293,63 @@ Repeat for each topic. Keep each section under 100 words.</pre>
   <span class="section-label">Knowledge Check</span>
   <h2 class="section-title">Test your format skills.</h2>
 
-<div data-learn="QuizMC" data-props='{"title":"Format Mastery","questions":[{"q":"You need to compare 5 project management tools for your team. Which format should you request?","options":["3 paragraphs per tool","A comparison table with columns for features, price, and pros/cons","A numbered list of all 5 tools","A single paragraph summary"],"correct":1,"explanation":"Tables are the ideal format for side-by-side comparisons. They make it easy to scan across options and compare specific attributes at a glance."},{"q":"What is the \"show the structure\" technique?","options":["Asking AI to show you its internal structure","Providing a skeleton of your desired output format in the prompt","Letting AI choose whatever structure it wants","Using bullet points in every prompt"],"correct":1,"explanation":"When you show AI a rough template of what your ideal output looks like, it mirrors that structure precisely. This gives you consistent, scannable output without reformatting."},{"q":"You need meeting notes turned into action items for your project tracker. What format should you request?","options":["Flowing paragraphs summarizing the meeting","Bullet points with owner and deadline for each action item","A 500-word essay about the meeting outcomes","A table with columns: Action Item, Owner, Deadline, Priority"],"correct":3,"explanation":"Since this goes into a project tracker, request the exact format your tracker uses — a table with the right columns. Output for your tools, not your eyes."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Format Mastery</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>You need to compare 5 project management tools for your team. Which format should you request?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>3 paragraphs per tool
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A comparison table with columns for features, price, and pros/cons
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A numbered list of all 5 tools
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A single paragraph summary
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Tables are the ideal format for side-by-side comparisons. They make it easy to scan across options and compare specific attributes at a glance.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the "show the structure" technique?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Asking AI to show you its internal structure
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Providing a skeleton of your desired output format in the prompt
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Letting AI choose whatever structure it wants
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Using bullet points in every prompt
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> When you show AI a rough template of what your ideal output looks like, it mirrors that structure precisely. This gives you consistent, scannable output without reformatting.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>You need meeting notes turned into action items for your project tracker. What format should you request?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Flowing paragraphs summarizing the meeting
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Bullet points with owner and deadline for each action item
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A 500-word essay about the meeting outcomes
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A table with columns: Action Item, Owner, Deadline, Priority
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Since this goes into a project tracker, request the exact format your tracker uses — a table with the right columns. Output for your tools, not your eyes.</div>
+</div>
+</div>
 
 </div>
 

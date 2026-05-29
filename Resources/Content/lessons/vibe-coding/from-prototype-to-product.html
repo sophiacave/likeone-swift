@@ -31,7 +31,39 @@
   <h2 class="section-title">User feedback is the best feature request list.</h2>
   <p class="section-text">The fastest way to make your app better is to let 5-10 people use it and watch what happens. Not hypothetical users — real people, with real tasks, using your real app.</p>
 
-<div data-learn="FlashDeck" data-props='{"title":"Getting Useful Feedback","cards":[{"front":"How to get your first testers\n\n(It is simpler than you think)","back":"Share your deployed URL with 5 friends, family members, or colleagues. Say: \"I built this. Can you try using it for [specific task] and tell me what confused you?\" People love being asked to test things."},{"front":"The magic feedback question\n\nOne question that reveals everything","back":"\"What confused you?\"\n\nNot \"do you like it?\" (everyone says yes to be nice). Not \"what features do you want?\" (everyone adds complexity). \"What confused you?\" reveals the real problems."},{"front":"How to turn feedback into prompts\n\nFrom complaint to fix in 60 seconds","back":"User says: \"I was not sure if my entry saved.\"\n\nYour prompt: \"After the user saves an entry, show a clear confirmation message that fades away after 3 seconds. Make it green with a checkmark icon.\"\n\nDirect feedback-to-prompt pipeline."},{"front":"What to ignore\n\nNot all feedback is equal","back":"Ignore: feature requests from people who would never pay. Ignore: \"you should add AI to it\" from people who do not use your app. Listen to: confusion, frustration, and people who tried to do something and could not. Those are real problems."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Getting Useful Feedback</h3>
+<details class="flash-card">
+<summary class="flash-front">How to get your first testers
+
+(It is simpler than you think)</summary>
+<div class="flash-back">Share your deployed URL with 5 friends, family members, or colleagues. Say: "I built this. Can you try using it for [specific task] and tell me what confused you?" People love being asked to test things.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The magic feedback question
+
+One question that reveals everything</summary>
+<div class="flash-back">"What confused you?"
+
+Not "do you like it?" (everyone says yes to be nice). Not "what features do you want?" (everyone adds complexity). "What confused you?" reveals the real problems.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How to turn feedback into prompts
+
+From complaint to fix in 60 seconds</summary>
+<div class="flash-back">User says: "I was not sure if my entry saved."
+
+Your prompt: "After the user saves an entry, show a clear confirmation message that fades away after 3 seconds. Make it green with a checkmark icon."
+
+Direct feedback-to-prompt pipeline.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What to ignore
+
+Not all feedback is equal</summary>
+<div class="flash-back">Ignore: feature requests from people who would never pay. Ignore: "you should add AI to it" from people who do not use your app. Listen to: confusion, frustration, and people who tried to do something and could not. Those are real problems.</div>
+</details>
+</div>
 
 </div>
 
@@ -118,7 +150,45 @@
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
 
-<div data-learn="QuizMC" data-props='{"questions":[{"q":"What is the best question to ask your first testers?","options":["Do you like it?","What features should I add?","What confused you?","Would you pay for this?"],"correct":2,"explanation":"\"What confused you?\" reveals real usability problems. \"Do you like it?\" gets polite lies. \"What features should I add?\" adds complexity. Focus on confusion and friction first."},{"q":"What turns a prototype into a product?","options":["More features","Reliability, polish, error handling, and trust signals","A bigger database","More marketing"],"correct":1,"explanation":"Products need reliability (no crashes), polish (professional feel), error handling (friendly messages when things break), and trust signals (looks real). Features come after the foundation is solid."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the best question to ask your first testers?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Do you like it?
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>What features should I add?
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>What confused you?
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Would you pay for this?
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> "What confused you?" reveals real usability problems. "Do you like it?" gets polite lies. "What features should I add?" adds complexity. Focus on confusion and friction first.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What turns a prototype into a product?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>More features
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Reliability, polish, error handling, and trust signals
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A bigger database
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>More marketing
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Products need reliability (no crashes), polish (professional feel), error handling (friendly messages when things break), and trust signals (looks real). Features come after the foundation is solid.</div>
+</div>
+</div>
 
 </div>
 
@@ -127,7 +197,33 @@
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
 
-<div data-learn="FlashDeck" data-props='{"title":"Prototype to Product","cards":[{"front":"What separates a prototype from a product?","back":"Reliability (no crashes), polish (professional feel), error handling (friendly messages), and trust signals (looks like a real company made it)."},{"front":"What is the best feedback question?","back":"\"What confused you?\" It reveals real usability problems without inviting feature creep or polite lies."},{"front":"What is a loading state?","back":"What the user sees while data is loading — a spinner, skeleton screen, or progress indicator. Without one, users think the app is broken."},{"front":"What is an empty state?","back":"What the user sees when there is no data yet. Instead of a blank page, show a helpful message like \"No entries yet. Start by adding your first one!\""},{"front":"What are three ways to monetize a vibe-coded app?","back":"Freemium (free tier + paid upgrade), one-time purchase (pay once, use forever), or custom builds for clients ($500-5,000 per project)."},{"front":"When should you keep vibe coding vs hiring a developer?","back":"Keep vibe coding for apps with hundreds of users and straightforward features. Consider hiring when you are growing fast, need complex features, or handle sensitive data at scale."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Prototype to Product</h3>
+<details class="flash-card">
+<summary class="flash-front">What separates a prototype from a product?</summary>
+<div class="flash-back">Reliability (no crashes), polish (professional feel), error handling (friendly messages), and trust signals (looks like a real company made it).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the best feedback question?</summary>
+<div class="flash-back">"What confused you?" It reveals real usability problems without inviting feature creep or polite lies.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is a loading state?</summary>
+<div class="flash-back">What the user sees while data is loading — a spinner, skeleton screen, or progress indicator. Without one, users think the app is broken.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is an empty state?</summary>
+<div class="flash-back">What the user sees when there is no data yet. Instead of a blank page, show a helpful message like "No entries yet. Start by adding your first one!"</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are three ways to monetize a vibe-coded app?</summary>
+<div class="flash-back">Freemium (free tier + paid upgrade), one-time purchase (pay once, use forever), or custom builds for clients ($500-5,000 per project).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">When should you keep vibe coding vs hiring a developer?</summary>
+<div class="flash-back">Keep vibe coding for apps with hundreds of users and straightforward features. Consider hiring when you are growing fast, need complex features, or handle sensitive data at scale.</div>
+</details>
+</div>
 
 </div>
 

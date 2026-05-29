@@ -200,10 +200,132 @@
 </div>
 
 <div style="margin:1.5rem 0">
-<div data-learn="FlashDeck" data-props='{"title":"Stack Anatomy Flashcards","cards":[{"front":"What is Supabase and why is it the foundation layer?","back":"Supabase is Postgres with superpowers — it bundles database, auth, edge functions, real-time subscriptions, file storage, and pgvector for AI embeddings in one platform. Fewer services means less integration complexity."},{"front":"What does pgvector enable in an AI stack?","back":"pgvector is a Postgres extension that stores high-dimensional vectors (AI embeddings). It enables semantic search — finding database entries by meaning rather than exact keyword match, which is foundational for AI memory and RAG."},{"front":"Why pair Next.js with Vercel?","back":"Vercel built Next.js, so deployment is seamless — auto-deploys from GitHub, global CDN, edge rendering, and zero-config. It is the fastest path from code push to live site."},{"front":"What role does Claude play in the AI stack?","back":"Claude is the intelligence layer — it handles reasoning, text generation, code writing, and complex decision-making. It integrates cleanly from serverless environments like Supabase Edge Functions."},{"front":"What does Make.com do in the stack?","back":"Make.com is the visual automation glue — it connects services that do not have direct API integrations. You build workflows by dragging modules (Slack alerts, spreadsheet logging, email triggers) without writing code."},{"front":"Two-Tier AI Strategy","back":"Use free embeddings (BGE-small via HuggingFace) for semantic search and retrieval. Only call Claude (paid) when you actually need reasoning or generation. This keeps AI costs under $5/month for most apps."},{"front":"Why not Firebase?","back":"NoSQL (Firestore) is painful for relational data. No pgvector equivalent for AI embeddings. Vendor lock-in with Google. Supabase gives you Postgres (the most versatile database) with all the Firebase conveniences built in."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Stack Anatomy Flashcards</h3>
+<details class="flash-card">
+<summary class="flash-front">What is Supabase and why is it the foundation layer?</summary>
+<div class="flash-back">Supabase is Postgres with superpowers — it bundles database, auth, edge functions, real-time subscriptions, file storage, and pgvector for AI embeddings in one platform. Fewer services means less integration complexity.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What does pgvector enable in an AI stack?</summary>
+<div class="flash-back">pgvector is a Postgres extension that stores high-dimensional vectors (AI embeddings). It enables semantic search — finding database entries by meaning rather than exact keyword match, which is foundational for AI memory and RAG.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why pair Next.js with Vercel?</summary>
+<div class="flash-back">Vercel built Next.js, so deployment is seamless — auto-deploys from GitHub, global CDN, edge rendering, and zero-config. It is the fastest path from code push to live site.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What role does Claude play in the AI stack?</summary>
+<div class="flash-back">Claude is the intelligence layer — it handles reasoning, text generation, code writing, and complex decision-making. It integrates cleanly from serverless environments like Supabase Edge Functions.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What does Make.com do in the stack?</summary>
+<div class="flash-back">Make.com is the visual automation glue — it connects services that do not have direct API integrations. You build workflows by dragging modules (Slack alerts, spreadsheet logging, email triggers) without writing code.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Two-Tier AI Strategy</summary>
+<div class="flash-back">Use free embeddings (BGE-small via HuggingFace) for semantic search and retrieval. Only call Claude (paid) when you actually need reasoning or generation. This keeps AI costs under $5/month for most apps.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why not Firebase?</summary>
+<div class="flash-back">NoSQL (Firestore) is painful for relational data. No pgvector equivalent for AI embeddings. Vendor lock-in with Google. Supabase gives you Postgres (the most versatile database) with all the Firebase conveniences built in.</div>
+</details>
+</div>
 </div>
 
-<div data-learn="QuizMC" data-props='{"title":"Stack Anatomy — Mastery Check","questions":[{"q":"Which combination gives the highest compatibility score for an AI-powered web app?","options":["Firebase + Express + ChatGPT + React + Netlify","Supabase + Edge Functions + Claude + Next.js + Vercel","PlanetScale + FastAPI + Gemini + Astro + Railway","AWS Lambda + RDS + GPT-4 + React + S3"],"correct":1,"explanation":"Supabase + Edge Functions + Claude + Next.js + Vercel is the battle-tested combination for AI apps. Each layer is purpose-built to work with the others — Supabase Edge runs Deno natively, Next.js deploys perfectly on Vercel, and Claude integrates cleanly from serverless environments."},{"q":"Why is Supabase recommended over Firebase for AI-powered stacks?","options":["Supabase is cheaper","Supabase bundles Postgres, Auth, Edge Functions, Realtime, and pgvector in one platform — and Postgres is better than Firestore for relational data and AI embeddings","Supabase has more features","Firebase does not support serverless functions"],"correct":1,"explanation":"Supabase gives you a real Postgres database (relational queries, pgvector for embeddings, full SQL) plus all the convenience features Firebase offers (auth, real-time, functions). Firestore NoSQL lacks vector search and makes relational queries painful."},{"q":"Why does the stack use free BGE-small embeddings instead of calling Claude for everything?","options":["BGE-small is more accurate than Claude","Using free embeddings for search and retrieval, then only calling Claude for reasoning, keeps AI costs under $5/month — the two-tier approach matches cost to capability","Claude cannot generate embeddings","BGE-small is faster in all cases"],"correct":1,"explanation":"Embeddings are a commodity — free models like BGE-small work great for semantic search. Claude is expensive but powerful for reasoning and generation. The two-tier approach means you only pay for the expensive model when you actually need its capabilities."},{"q":"A user subscribes on your site. How many services are involved in the full flow?","options":["Two — frontend and database","Four — Next.js, Edge Function, Supabase, Resend","Six — Next.js, Edge Function, Supabase, Resend, Make.com (Slack notification), and the response back to Next.js","Three — frontend, API, and database"],"correct":2,"explanation":"The full subscribe flow touches six services: Next.js sends the request, the Edge Function processes it, Supabase stores the email, Resend sends the welcome email, Make.com fires a Slack notification via webhook, and the Edge Function returns success to Next.js. All in under 500ms."},{"q":"What is the total monthly cost to run a production AI-powered web app on this stack?","options":["About $100/month","About $29/month — Supabase Pro ($25) + Claude API (~$4) + free tiers for Vercel, Make.com, and HuggingFace","About $50/month","It depends entirely on traffic — there is no predictable base cost"],"correct":1,"explanation":"The base cost is remarkably low: Supabase Pro at $25/month covers database, auth, functions, and vector search. Claude API costs about $4/month at moderate usage. Vercel Hobby, Make.com Free, and HuggingFace Inference are all $0. Total: ~$29/month for a production app."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Stack Anatomy — Mastery Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which combination gives the highest compatibility score for an AI-powered web app?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Firebase + Express + ChatGPT + React + Netlify
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Supabase + Edge Functions + Claude + Next.js + Vercel
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>PlanetScale + FastAPI + Gemini + Astro + Railway
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>AWS Lambda + RDS + GPT-4 + React + S3
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Supabase + Edge Functions + Claude + Next.js + Vercel is the battle-tested combination for AI apps. Each layer is purpose-built to work with the others — Supabase Edge runs Deno natively, Next.js deploys perfectly on Vercel, and Claude integrates cleanly from serverless environments.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why is Supabase recommended over Firebase for AI-powered stacks?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Supabase is cheaper
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Supabase bundles Postgres, Auth, Edge Functions, Realtime, and pgvector in one platform — and Postgres is better than Firestore for relational data and AI embeddings
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Supabase has more features
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Firebase does not support serverless functions
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Supabase gives you a real Postgres database (relational queries, pgvector for embeddings, full SQL) plus all the convenience features Firebase offers (auth, real-time, functions). Firestore NoSQL lacks vector search and makes relational queries painful.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why does the stack use free BGE-small embeddings instead of calling Claude for everything?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>BGE-small is more accurate than Claude
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Using free embeddings for search and retrieval, then only calling Claude for reasoning, keeps AI costs under $5/month — the two-tier approach matches cost to capability
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Claude cannot generate embeddings
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>BGE-small is faster in all cases
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Embeddings are a commodity — free models like BGE-small work great for semantic search. Claude is expensive but powerful for reasoning and generation. The two-tier approach means you only pay for the expensive model when you actually need its capabilities.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>A user subscribes on your site. How many services are involved in the full flow?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Two — frontend and database
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Four — Next.js, Edge Function, Supabase, Resend
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Six — Next.js, Edge Function, Supabase, Resend, Make.com (Slack notification), and the response back to Next.js
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Three — frontend, API, and database
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The full subscribe flow touches six services: Next.js sends the request, the Edge Function processes it, Supabase stores the email, Resend sends the welcome email, Make.com fires a Slack notification via webhook, and the Edge Function returns success to Next.js. All in under 500ms.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What is the total monthly cost to run a production AI-powered web app on this stack?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>About $100/month
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>About $29/month — Supabase Pro ($25) + Claude API (~$4) + free tiers for Vercel, Make.com, and HuggingFace
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>About $50/month
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It depends entirely on traffic — there is no predictable base cost
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The base cost is remarkably low: Supabase Pro at $25/month covers database, auth, functions, and vector search. Claude API costs about $4/month at moderate usage. Vercel Hobby, Make.com Free, and HuggingFace Inference are all $0. Total: ~$29/month for a production app.</div>
+</div>
+</div>
 
 </div>
 

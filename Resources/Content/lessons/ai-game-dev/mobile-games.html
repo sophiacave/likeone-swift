@@ -73,12 +73,68 @@
 <div class="lesson-section">
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
-  <div data-learn="QuizMC" data-props='{"questions":[{"q":"What is the best touch control pattern for simple action games?","options":["Virtual joystick for everything","Tap anywhere on screen to perform the primary action","Small buttons in the corner","Keyboard simulation on screen"],"correct":1,"explanation":"Tap-anywhere is the most intuitive mobile control. The entire screen becomes the button. It works for jumping, shooting, and most primary actions."},{"q":"What does a Progressive Web App (PWA) require?","options":["An App Store account and review process","A manifest.json file and a service worker","A native code compiler","A monthly subscription to a hosting service"],"correct":1,"explanation":"A PWA needs a manifest.json (app metadata and icons) and a service worker (asset caching for offline play). No app store required."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the best touch control pattern for simple action games?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Virtual joystick for everything
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Tap anywhere on screen to perform the primary action
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Small buttons in the corner
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Keyboard simulation on screen
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Tap-anywhere is the most intuitive mobile control. The entire screen becomes the button. It works for jumping, shooting, and most primary actions.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What does a Progressive Web App (PWA) require?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>An App Store account and review process
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A manifest.json file and a service worker
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A native code compiler
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A monthly subscription to a hosting service
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A PWA needs a manifest.json (app metadata and icons) and a service worker (asset caching for offline play). No app store required.</div>
+</div>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Mobile Games","cards":[{"front":"What percentage of casual gamers play on mobile?","back":"About 70%. If your game doesn&#39;t work on phones, you&#39;re missing most of your potential audience."},{"front":"What are the three mobile touch control patterns?","back":"Tap (entire screen is a button), Swipe (direction-based), and Virtual Joystick (on-screen analog stick -- use as last resort)."},{"front":"What is object pooling?","back":"Reusing game objects instead of creating and destroying them. A bullet that goes off-screen gets repositioned and reused, saving memory and CPU."},{"front":"What is a PWA and why use it for games?","back":"Progressive Web App. It lets users install your browser game on their home screen, launch it fullscreen, and play offline. No app store needed."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Mobile Games</h3>
+<details class="flash-card">
+<summary class="flash-front">What percentage of casual gamers play on mobile?</summary>
+<div class="flash-back">About 70%. If your game doesn't work on phones, you're missing most of your potential audience.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are the three mobile touch control patterns?</summary>
+<div class="flash-back">Tap (entire screen is a button), Swipe (direction-based), and Virtual Joystick (on-screen analog stick -- use as last resort).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is object pooling?</summary>
+<div class="flash-back">Reusing game objects instead of creating and destroying them. A bullet that goes off-screen gets repositioned and reused, saving memory and CPU.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is a PWA and why use it for games?</summary>
+<div class="flash-back">Progressive Web App. It lets users install your browser game on their home screen, launch it fullscreen, and play offline. No app store needed.</div>
+</details>
+</div>
 </div>
 </div>

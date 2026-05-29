@@ -129,9 +129,127 @@ Coordinate their work and report the final result.`</span>,
 </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Sub-Agents & Delegation","cards":[{"front":"What is a sub-agent?","back":"A specialized child agent defined within a main agent. Each sub-agent has its own name, instructions, model, and tools. The main agent delegates tasks to sub-agents and coordinates their work."},{"front":"Hub-and-Spoke pattern","back":"One main agent (hub) delegates to specialist sub-agents (spokes). The main agent coordinates, synthesizes results, and decides next steps. Best for tasks with clear phases like research, implement, review."},{"front":"Pipeline pattern","back":"Each agent passes output to the next in sequence. Draft > Review > Polish > Publish. Best for workflows where each stage requires different expertise."},{"front":"How does the main agent delegate?","back":"The main agent uses sub-agents like tool calls. It specifies which agent to delegate to and what task to give it. The sub-agent runs independently and returns its result."},{"front":"Can sub-agents use different models?","back":"Yes. Use Opus for complex analysis tasks, Sonnet for general coding, and Haiku for simple classification or search. Match model capability and cost to each sub-agent role."},{"front":"Least privilege for sub-agents","back":"Give each sub-agent only the tools it needs. A researcher gets Read and Grep. A reviewer gets Read only. A coder gets Read, Write, Edit. Never give all tools to all agents."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Sub-Agents & Delegation</h3>
+<details class="flash-card">
+<summary class="flash-front">What is a sub-agent?</summary>
+<div class="flash-back">A specialized child agent defined within a main agent. Each sub-agent has its own name, instructions, model, and tools. The main agent delegates tasks to sub-agents and coordinates their work.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Hub-and-Spoke pattern</summary>
+<div class="flash-back">One main agent (hub) delegates to specialist sub-agents (spokes). The main agent coordinates, synthesizes results, and decides next steps. Best for tasks with clear phases like research, implement, review.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Pipeline pattern</summary>
+<div class="flash-back">Each agent passes output to the next in sequence. Draft > Review > Polish > Publish. Best for workflows where each stage requires different expertise.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How does the main agent delegate?</summary>
+<div class="flash-back">The main agent uses sub-agents like tool calls. It specifies which agent to delegate to and what task to give it. The sub-agent runs independently and returns its result.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Can sub-agents use different models?</summary>
+<div class="flash-back">Yes. Use Opus for complex analysis tasks, Sonnet for general coding, and Haiku for simple classification or search. Match model capability and cost to each sub-agent role.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Least privilege for sub-agents</summary>
+<div class="flash-back">Give each sub-agent only the tools it needs. A researcher gets Read and Grep. A reviewer gets Read only. A coder gets Read, Write, Edit. Never give all tools to all agents.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Sub-Agents Check","questions":[{"q":"Why use sub-agents instead of one agent with all tools?","options":["Sub-agents are cheaper","Specialized agents with focused instructions perform better than one generalist agent","Sub-agents run faster","You must use sub-agents for all tasks"],"correct":1,"explanation":"Just like specialized employees outperform generalists, sub-agents with focused instructions, specific tools, and clear roles produce better results than one agent trying to do everything."},{"q":"A code review sub-agent should have which tools?","options":["Read, Write, Edit, Bash — full access","Read and Grep only — it should analyze, not modify","Write and Edit only — it needs to fix issues","No tools — it should work from memory"],"correct":1,"explanation":"A reviewer should analyze code without modifying it. Read and Grep let it examine files and search for patterns. Write access would blur the line between reviewing and implementing."},{"q":"In the hub-and-spoke pattern, who decides which sub-agent to use?","options":["The user specifies in the prompt","The main agent decides based on the task","Sub-agents volunteer","They are called in alphabetical order"],"correct":1,"explanation":"The main agent acts as the coordinator (hub). Based on the task and its system prompt instructions, it autonomously decides which sub-agent to delegate to and what task to give them."},{"q":"You have a complex research task and a simple classification task. How should you assign models to sub-agents?","options":["Use Opus for both","Use Haiku for both","Opus for research, Haiku for classification","Use the same model for all sub-agents always"],"correct":2,"explanation":"Match model cost to task complexity. Opus excels at deep research and analysis. Haiku handles simple classification efficiently at a fraction of the cost. Using the right model for each sub-agent optimizes both quality and budget."},{"q":"What happens when a sub-agent finishes its task?","options":["It shuts down permanently","Its result is returned to the main agent, which decides what to do next","It automatically starts the next task","It asks the user for more work"],"correct":1,"explanation":"Sub-agent results flow back to the main agent. The main agent reads the result, decides if additional delegation is needed, and continues coordinating until the overall task is complete."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Sub-Agents Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why use sub-agents instead of one agent with all tools?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Sub-agents are cheaper
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Specialized agents with focused instructions perform better than one generalist agent
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Sub-agents run faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>You must use sub-agents for all tasks
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Just like specialized employees outperform generalists, sub-agents with focused instructions, specific tools, and clear roles produce better results than one agent trying to do everything.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>A code review sub-agent should have which tools?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Read, Write, Edit, Bash — full access
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Read and Grep only — it should analyze, not modify
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Write and Edit only — it needs to fix issues
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>No tools — it should work from memory
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A reviewer should analyze code without modifying it. Read and Grep let it examine files and search for patterns. Write access would blur the line between reviewing and implementing.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>In the hub-and-spoke pattern, who decides which sub-agent to use?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The user specifies in the prompt
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The main agent decides based on the task
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Sub-agents volunteer
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>They are called in alphabetical order
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The main agent acts as the coordinator (hub). Based on the task and its system prompt instructions, it autonomously decides which sub-agent to delegate to and what task to give them.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>You have a complex research task and a simple classification task. How should you assign models to sub-agents?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Use Opus for both
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Use Haiku for both
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Opus for research, Haiku for classification
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Use the same model for all sub-agents always
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Match model cost to task complexity. Opus excels at deep research and analysis. Haiku handles simple classification efficiently at a fraction of the cost. Using the right model for each sub-agent optimizes both quality and budget.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What happens when a sub-agent finishes its task?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It shuts down permanently
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Its result is returned to the main agent, which decides what to do next
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It automatically starts the next task
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It asks the user for more work
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Sub-agent results flow back to the main agent. The main agent reads the result, decides if additional delegation is needed, and continues coordinating until the overall task is complete.</div>
+</div>
+</div>
 
 </div>
 

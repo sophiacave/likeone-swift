@@ -294,9 +294,123 @@ choose_model(<span style="color:#fbbf24">"legal"</span>, <span style="color:#fb9
 </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Claude Essentials","cards":[{"front":"Claude Opus 4.6","back":"Top tier — best for deep analysis, long-form research, complex multi-step reasoning, and autonomous agents. Model ID: claude-opus-4-6. Pricing: $15/$75 per 1M tokens (input/output). Up to 1M token context."},{"front":"Claude Sonnet 4.6","back":"Balanced tier — the everyday powerhouse. Strong reasoning, fast enough for real-time use, cost-effective at scale. Model ID: claude-sonnet-4-6. Pricing: $3/$15 per 1M tokens. Start here for 90% of tasks."},{"front":"Claude Haiku 4.5","back":"Lightweight tier — fastest and cheapest. Best for classification, summarization, extraction, and high-volume pipelines. Model ID: claude-haiku-4-5-20251001. Pricing: $0.80/$4 per 1M tokens."},{"front":"Constitutional AI","back":"Anthropic\u0027s training approach. Claude is given explicit principles and trained to critique its own outputs against them. This self-evaluation loop shapes values, not just outputs — producing a model that is honest by default."},{"front":"HHH Framework","back":"Helpful, Harmless, Honest — the three core properties baked into Claude\u0027s training. They are in tension with each other (maximizing one can hurt another), and Constitutional AI trains Claude to balance all three simultaneously."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Claude Essentials</h3>
+<details class="flash-card">
+<summary class="flash-front">Claude Opus 4.6</summary>
+<div class="flash-back">Top tier — best for deep analysis, long-form research, complex multi-step reasoning, and autonomous agents. Model ID: claude-opus-4-6. Pricing: $15/$75 per 1M tokens (input/output). Up to 1M token context.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Claude Sonnet 4.6</summary>
+<div class="flash-back">Balanced tier — the everyday powerhouse. Strong reasoning, fast enough for real-time use, cost-effective at scale. Model ID: claude-sonnet-4-6. Pricing: $3/$15 per 1M tokens. Start here for 90% of tasks.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Claude Haiku 4.5</summary>
+<div class="flash-back">Lightweight tier — fastest and cheapest. Best for classification, summarization, extraction, and high-volume pipelines. Model ID: claude-haiku-4-5-20251001. Pricing: $0.80/$4 per 1M tokens.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Constitutional AI</summary>
+<div class="flash-back">Anthropic's training approach. Claude is given explicit principles and trained to critique its own outputs against them. This self-evaluation loop shapes values, not just outputs — producing a model that is honest by default.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">HHH Framework</summary>
+<div class="flash-back">Helpful, Harmless, Honest — the three core properties baked into Claude's training. They are in tension with each other (maximizing one can hurt another), and Constitutional AI trains Claude to balance all three simultaneously.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Meet Claude — Mastery Check","questions":[{"q":"You are building a chatbot that auto-tags 10,000 customer support tickets per day by category. Speed and cost matter more than nuance. Which model?","options":["Claude Opus 4.6","Claude Sonnet 4.6","Claude Haiku 4.5","Any model works equally"],"correct":2,"explanation":"High-volume, repetitive classification is exactly where Haiku shines. At $0.80 per million input tokens, processing 10,000 tickets per day would cost pennies. Opus would give you the same classification accuracy at 19x the price."},{"q":"You need to analyze 200 pages of contract language, identify unusual clauses, and write a risk summary for your legal team. Which model?","options":["Claude Opus 4.6","Claude Sonnet 4.6","Claude Haiku 4.5","Temperature matters more than model choice"],"correct":0,"explanation":"200 pages is ~60K tokens of dense legal text requiring sustained attention, nuanced judgment, and synthesis. Opus earns its cost here — the consequence of missing an unusual clause in a legal review is far higher than the price difference between models."},{"q":"You are writing product descriptions for 50 items in your Shopify store — clear, punchy, conversion-focused copy. Which model?","options":["Claude Opus 4.6","Claude Sonnet 4.6","Claude Haiku 4.5","Use all three in sequence"],"correct":1,"explanation":"Sonnet is the perfect fit. Writing 50 product descriptions requires creativity and quality (rules out Haiku) but not the sustained deep reasoning that justifies Opus pricing. Sonnet delivers strong copy at a reasonable cost."},{"q":"What does Constitutional AI mean in the context of Claude?","options":["Claude follows US constitutional law","Claude was trained with a set of explicit guiding principles and self-critique","Claude generates legal documents","Claude refuses all controversial topics"],"correct":1,"explanation":"Constitutional AI means Anthropic gave Claude a set of principles and trained it to critique its own outputs against those principles. The model learns to revise responses that violate the principles — shaping how it thinks, not just what it says. It has nothing to do with US law."},{"q":"What is the correct API call format for Claude?","options":["POST to api.openai.com with an Authorization header","POST to api.anthropic.com/v1/messages with an x-api-key header","GET to claude.ai/api with a token parameter","POST to anthropic.com/chat with a Bearer token"],"correct":1,"explanation":"Claude uses POST requests to api.anthropic.com/v1/messages with the API key passed in the x-api-key header. This is different from OpenAI (which uses Authorization: Bearer) — a common source of confusion when switching between providers."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Meet Claude — Mastery Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>You are building a chatbot that auto-tags 10,000 customer support tickets per day by category. Speed and cost matter more than nuance. Which model?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Claude Opus 4.6
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Claude Sonnet 4.6
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Claude Haiku 4.5
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Any model works equally
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> High-volume, repetitive classification is exactly where Haiku shines. At $0.80 per million input tokens, processing 10,000 tickets per day would cost pennies. Opus would give you the same classification accuracy at 19x the price.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>You need to analyze 200 pages of contract language, identify unusual clauses, and write a risk summary for your legal team. Which model?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Claude Opus 4.6
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Claude Sonnet 4.6
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Claude Haiku 4.5
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Temperature matters more than model choice
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> 200 pages is ~60K tokens of dense legal text requiring sustained attention, nuanced judgment, and synthesis. Opus earns its cost here — the consequence of missing an unusual clause in a legal review is far higher than the price difference between models.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>You are writing product descriptions for 50 items in your Shopify store — clear, punchy, conversion-focused copy. Which model?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Claude Opus 4.6
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Claude Sonnet 4.6
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Claude Haiku 4.5
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Use all three in sequence
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Sonnet is the perfect fit. Writing 50 product descriptions requires creativity and quality (rules out Haiku) but not the sustained deep reasoning that justifies Opus pricing. Sonnet delivers strong copy at a reasonable cost.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What does Constitutional AI mean in the context of Claude?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Claude follows US constitutional law
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Claude was trained with a set of explicit guiding principles and self-critique
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Claude generates legal documents
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Claude refuses all controversial topics
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Constitutional AI means Anthropic gave Claude a set of principles and trained it to critique its own outputs against those principles. The model learns to revise responses that violate the principles — shaping how it thinks, not just what it says. It has nothing to do with US law.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What is the correct API call format for Claude?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>POST to api.openai.com with an Authorization header
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>POST to api.anthropic.com/v1/messages with an x-api-key header
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>GET to claude.ai/api with a token parameter
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>POST to anthropic.com/chat with a Bearer token
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Claude uses POST requests to api.anthropic.com/v1/messages with the API key passed in the x-api-key header. This is different from OpenAI (which uses Authorization: Bearer) — a common source of confusion when switching between providers.</div>
+</div>
+</div>
 
 
 </div>

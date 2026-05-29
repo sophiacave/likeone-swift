@@ -169,13 +169,91 @@ client = anthropic.Anthropic()
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Why Workflows Matter","cards":[{"front":"Task vs. Workflow","back":"A task is a single action (summarize this email). A workflow is a connected sequence that chains multiple actions into an automated pipeline."},{"front":"The Real ROI of Automation","back":"Automating three 15-minute daily tasks saves over 270 hours per year — nearly 7 full work weeks. Plus reduced cognitive load."},{"front":"Workflows Don&#39;t Replace Judgment","back":"You still decide what matters and set priorities. Workflows handle the mechanical parts so your energy goes to creative, judgment-intensive work."},{"front":"Automation Candidates","back":"Any task you do the same way repeatedly — same steps, same sequence, same rules. The more predictable, the more automatable."},{"front":"Cognitive Load Savings","back":"Every decision you automate is one fewer thing draining your mental battery. The time savings compound, but the energy savings transform."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Why Workflows Matter</h3>
+<details class="flash-card">
+<summary class="flash-front">Task vs. Workflow</summary>
+<div class="flash-back">A task is a single action (summarize this email). A workflow is a connected sequence that chains multiple actions into an automated pipeline.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Real ROI of Automation</summary>
+<div class="flash-back">Automating three 15-minute daily tasks saves over 270 hours per year — nearly 7 full work weeks. Plus reduced cognitive load.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Workflows Don't Replace Judgment</summary>
+<div class="flash-back">You still decide what matters and set priorities. Workflows handle the mechanical parts so your energy goes to creative, judgment-intensive work.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Automation Candidates</summary>
+<div class="flash-back">Any task you do the same way repeatedly — same steps, same sequence, same rules. The more predictable, the more automatable.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Cognitive Load Savings</summary>
+<div class="flash-back">Every decision you automate is one fewer thing draining your mental battery. The time savings compound, but the energy savings transform.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Lesson 1 Quiz</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Why Workflows Matter","questions":[{"q":"What is the key difference between a task and a workflow?","options":["Tasks are manual, workflows are digital","A task is a single action, a workflow is a connected sequence of steps that chains multiple actions together","Workflows require coding, tasks do not","Tasks are faster than workflows"],"correct":1,"explanation":"A task is a moment — summarize this email. A workflow is a system — when a support email arrives, classify urgency, draft a response, route it, and log it. One action vs. a connected pipeline."},{"q":"What does the workflow approach accomplish compared to the manual approach?","options":["The manual approach is always more reliable","Both approaches take the same time","The workflow approach produces the same outcome in zero ongoing time after setup","Workflows produce worse results than manual work"],"correct":2,"explanation":"The same outcome — reading email, deciding priority, drafting reply, logging, notifying team — happens in zero time with the workflow approach versus 10 minutes per email manually."},{"q":"How should you think about what workflows replace?","options":["Workflows replace human judgment entirely","Workflows replace you, the person","Workflows replace the mechanical parts so you can focus on work that needs a human brain","Workflows only work for simple single-step tasks"],"correct":2,"explanation":"Automation doesn&#39;t replace your judgment — it amplifies it. You still decide what matters and set priorities. The workflow handles the mechanical repetition so your cognitive energy goes to creative, judgment-intensive work."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Why Workflows Matter</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the key difference between a task and a workflow?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Tasks are manual, workflows are digital
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A task is a single action, a workflow is a connected sequence of steps that chains multiple actions together
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Workflows require coding, tasks do not
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Tasks are faster than workflows
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A task is a moment — summarize this email. A workflow is a system — when a support email arrives, classify urgency, draft a response, route it, and log it. One action vs. a connected pipeline.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What does the workflow approach accomplish compared to the manual approach?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The manual approach is always more reliable
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Both approaches take the same time
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The workflow approach produces the same outcome in zero ongoing time after setup
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Workflows produce worse results than manual work
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The same outcome — reading email, deciding priority, drafting reply, logging, notifying team — happens in zero time with the workflow approach versus 10 minutes per email manually.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>How should you think about what workflows replace?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Workflows replace human judgment entirely
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Workflows replace you, the person
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Workflows replace the mechanical parts so you can focus on work that needs a human brain
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Workflows only work for simple single-step tasks
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Automation doesn't replace your judgment — it amplifies it. You still decide what matters and set priorities. The workflow handles the mechanical repetition so your cognitive energy goes to creative, judgment-intensive work.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

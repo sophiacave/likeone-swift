@@ -246,6 +246,132 @@
   <div class="flow-viz" id="flow-viz"></div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Tool Calling Concepts","cards":[{"front":"What is a tool definition?","back":"A JSON schema that tells Claude what a tool does (description), what parameters it accepts (input_schema), and what they mean. Claude uses this to decide when and how to call the tool."},{"front":"What is a tool_use block?","back":"Claude\u0027s response when it wants to call a tool. Contains the tool name, a unique ID, and the filled-in parameters. Your code executes the tool and returns the result."},{"front":"What is a tool_result message?","back":"Your response after executing a tool. Contains the tool_use_id (linking back to the request) and the result data. Claude uses this to continue reasoning."},{"front":"Chained tool calls","back":"When an agent uses the output of one tool call as context for the next. Example: look up customer → find their plan → create a refund ticket. Each call builds on the previous result."},{"front":"Why does the description field matter most?","back":"Claude reads tool descriptions to decide which tool to use. Vague descriptions cause wrong tool selection. Include WHAT the tool does and WHEN to use it for accurate selection."},{"front":"How to handle tool failures","back":"Return the error as the tool_result content. Claude sees the failure and can adapt — trying a different tool, asking for clarification, or explaining the limitation gracefully."},{"front":"input_schema required vs optional","back":"Required parameters must always be provided by Claude. Optional parameters have defaults. Use required for data Claude MUST extract from the user message."},{"front":"enum in tool parameters","back":"Constrains a parameter to specific valid values (e.g., priority: low/medium/high/urgent). Prevents Claude from inventing invalid values and makes your tool handling predictable."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Tool Calling Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">What is a tool definition?</summary>
+<div class="flash-back">A JSON schema that tells Claude what a tool does (description), what parameters it accepts (input_schema), and what they mean. Claude uses this to decide when and how to call the tool.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is a tool_use block?</summary>
+<div class="flash-back">Claude's response when it wants to call a tool. Contains the tool name, a unique ID, and the filled-in parameters. Your code executes the tool and returns the result.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is a tool_result message?</summary>
+<div class="flash-back">Your response after executing a tool. Contains the tool_use_id (linking back to the request) and the result data. Claude uses this to continue reasoning.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Chained tool calls</summary>
+<div class="flash-back">When an agent uses the output of one tool call as context for the next. Example: look up customer → find their plan → create a refund ticket. Each call builds on the previous result.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why does the description field matter most?</summary>
+<div class="flash-back">Claude reads tool descriptions to decide which tool to use. Vague descriptions cause wrong tool selection. Include WHAT the tool does and WHEN to use it for accurate selection.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How to handle tool failures</summary>
+<div class="flash-back">Return the error as the tool_result content. Claude sees the failure and can adapt — trying a different tool, asking for clarification, or explaining the limitation gracefully.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">input_schema required vs optional</summary>
+<div class="flash-back">Required parameters must always be provided by Claude. Optional parameters have defaults. Use required for data Claude MUST extract from the user message.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">enum in tool parameters</summary>
+<div class="flash-back">Constrains a parameter to specific valid values (e.g., priority: low/medium/high/urgent). Prevents Claude from inventing invalid values and makes your tool handling predictable.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Tool Calling Quiz","questions":[{"q":"What is the purpose of the tool description field?","options":["It is displayed to the user as help text","Claude reads it to decide WHEN to use this tool vs other available tools","It controls the output format","It defines the API endpoint URL"],"correct":1,"explanation":"The description is Claude\u0027s decision criteria. When multiple tools are available, Claude reads each description to determine which tool best matches the current request. Better descriptions = better tool selection."},{"q":"A user says: Check if jane@acme.co has an active subscription. Which tool should Claude call?","options":["search_knowledge_base — to find subscription docs","lookup_customer — to get account details including subscription status","create_ticket — to ask someone to check","No tool needed — Claude can answer from training data"],"correct":1,"explanation":"The user is asking about a specific customer\u0027s data. lookup_customer retrieves account details (including plan and billing status) by email. The knowledge base has general docs, not customer-specific data."},{"q":"What happens when you return an error as a tool_result?","options":["The entire program crashes","Claude sees the error and can adapt — trying a different tool or explaining the issue","The error is hidden from Claude","Claude retries the same tool automatically"],"correct":1,"explanation":"Returning the error as content lets Claude see what went wrong. Claude can then adapt — trying a different approach, asking the user for alternative information, or explaining why it cannot complete the request."},{"q":"An agent calls lookup_customer, then search_knowledge_base, then create_ticket. What is this pattern called?","options":["Parallel tool calling","Chained tool calling — each call builds on previous results","Recursive tool calling","Batch tool calling"],"correct":1,"explanation":"Chained tool calling means each subsequent tool call uses context from previous results. The agent looked up the customer, found the relevant policy, then created a ticket with all the context. This is autonomous multi-step execution."},{"q":"Which tool description is better for accurate tool selection?","options":["Search the database","Search the company knowledge base for help articles. Use when the customer asks about product features or troubleshooting.","DB search tool","Query handler"],"correct":1,"explanation":"The second description tells Claude exactly what data the tool returns (help articles) and when to use it (product questions, troubleshooting). Claude can distinguish this from a customer lookup or ticket creation tool based on these specifics."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Tool Calling Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the purpose of the tool description field?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is displayed to the user as help text
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Claude reads it to decide WHEN to use this tool vs other available tools
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It controls the output format
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It defines the API endpoint URL
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The description is Claude's decision criteria. When multiple tools are available, Claude reads each description to determine which tool best matches the current request. Better descriptions = better tool selection.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>A user says: Check if jane@acme.co has an active subscription. Which tool should Claude call?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>search_knowledge_base — to find subscription docs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>lookup_customer — to get account details including subscription status
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>create_ticket — to ask someone to check
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>No tool needed — Claude can answer from training data
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The user is asking about a specific customer's data. lookup_customer retrieves account details (including plan and billing status) by email. The knowledge base has general docs, not customer-specific data.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What happens when you return an error as a tool_result?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The entire program crashes
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Claude sees the error and can adapt — trying a different tool or explaining the issue
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The error is hidden from Claude
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Claude retries the same tool automatically
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Returning the error as content lets Claude see what went wrong. Claude can then adapt — trying a different approach, asking the user for alternative information, or explaining why it cannot complete the request.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>An agent calls lookup_customer, then search_knowledge_base, then create_ticket. What is this pattern called?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Parallel tool calling
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Chained tool calling — each call builds on previous results
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Recursive tool calling
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Batch tool calling
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Chained tool calling means each subsequent tool call uses context from previous results. The agent looked up the customer, found the relevant policy, then created a ticket with all the context. This is autonomous multi-step execution.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>Which tool description is better for accurate tool selection?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Search the database
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Search the company knowledge base for help articles. Use when the customer asks about product features or troubleshooting.
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>DB search tool
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Query handler
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The second description tells Claude exactly what data the tool returns (help articles) and when to use it (product questions, troubleshooting). Claude can distinguish this from a customer lookup or ticket creation tool based on these specifics.</div>
+</div>
+</div>

@@ -200,6 +200,132 @@
   </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Error Handling Patterns","cards":[{"front":"Exponential backoff","back":"Retry with increasing wait times: 1s, 2s, 4s. Gives a struggling service time to recover without hammering it. Standard max: 3 retries."},{"front":"Graceful degradation","back":"When the primary tool fails, fall back to an alternative tool instead of giving up. Example: weather API fails → try web search → if both fail, tell the user."},{"front":"Circuit breaker","back":"Stop retrying after a set number of failures. Prevents wasting resources on a dead service. If 3 retries fail, 97 more will not help."},{"front":"Data validation","back":"Check tool results for anomalies before passing to Claude. Negative balances, future dates, missing fields — flag these instead of presenting bad data as truth."},{"front":"Human escalation","back":"When all automated recovery fails: summarize what was tried, what failed, the last known good state, and what remains. The human picks up where the agent left off."},{"front":"Why not retry 100 times?","back":"If 3 retries with backoff fail, the service is genuinely down. More retries waste API credits, delay the user, and can overload the struggling service further."},{"front":"Returning errors to Claude","back":"When a tool fails, return the error as the tool_result content. Claude sees the failure and can adapt — trying a different tool, asking the user, or explaining the limitation."},{"front":"Guardrail violation handling","back":"Never override safety constraints. Explain what was requested, why it cannot be done, and offer a safe alternative. The agent refuses the unsafe action while remaining helpful."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Error Handling Patterns</h3>
+<details class="flash-card">
+<summary class="flash-front">Exponential backoff</summary>
+<div class="flash-back">Retry with increasing wait times: 1s, 2s, 4s. Gives a struggling service time to recover without hammering it. Standard max: 3 retries.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Graceful degradation</summary>
+<div class="flash-back">When the primary tool fails, fall back to an alternative tool instead of giving up. Example: weather API fails → try web search → if both fail, tell the user.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Circuit breaker</summary>
+<div class="flash-back">Stop retrying after a set number of failures. Prevents wasting resources on a dead service. If 3 retries fail, 97 more will not help.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Data validation</summary>
+<div class="flash-back">Check tool results for anomalies before passing to Claude. Negative balances, future dates, missing fields — flag these instead of presenting bad data as truth.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Human escalation</summary>
+<div class="flash-back">When all automated recovery fails: summarize what was tried, what failed, the last known good state, and what remains. The human picks up where the agent left off.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why not retry 100 times?</summary>
+<div class="flash-back">If 3 retries with backoff fail, the service is genuinely down. More retries waste API credits, delay the user, and can overload the struggling service further.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Returning errors to Claude</summary>
+<div class="flash-back">When a tool fails, return the error as the tool_result content. Claude sees the failure and can adapt — trying a different tool, asking the user, or explaining the limitation.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Guardrail violation handling</summary>
+<div class="flash-back">Never override safety constraints. Explain what was requested, why it cannot be done, and offer a safe alternative. The agent refuses the unsafe action while remaining helpful.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Error Recovery Strategies","questions":[{"q":"Your agent calls a weather API and gets a 503 Service Unavailable error after 3 retries. What is the best response?","options":["Tell the user you cannot help and stop","Retry the same API call 100 times until it works","Try an alternative tool (web search for weather) and explain the fallback to the user","Ignore the error and make up a weather forecast"],"correct":2,"explanation":"Graceful degradation: adapt to failure by trying alternative paths while keeping the user informed. Hammering a failing service wastes time and can trigger rate limiting."},{"q":"Your agent queries a database and gets negative spending amounts and dates from the future. What should it do?","options":["Use the data anyway","Flag the anomaly, refuse to present invalid data, and suggest the user check the data source","Silently fix the data by removing the negative sign and adjusting the date","Ask the user what the correct values should be"],"correct":1,"explanation":"Agents should validate data before presenting it. When validation fails, honesty about the problem and pointing toward the root cause is the right call."},{"q":"After 48 attempts to fix a failing test with zero progress, what should the agent do?","options":["Keep trying — the 49th attempt might work","Stop, summarize what was tried and what failed, escalate to a human with full context","Delete the test file so it cannot fail","Switch to a different programming language"],"correct":1,"explanation":"A good agent knows when to stop. After repeated failures with no progress, the most valuable action is a detailed handoff to a human — summarizing attempts so they do not start from scratch."},{"q":"Why is exponential backoff better than immediate retries?","options":["It is faster overall","It gives the failing service time to recover instead of hammering it with rapid requests","It uses less memory","It is required by all APIs"],"correct":1,"explanation":"If a service is overloaded, rapid retries add more load. Exponential backoff (1s, 2s, 4s) gives progressively more recovery time while still attempting the call."},{"q":"A user asks the agent to send a confidential document to all employees, but guardrails restrict confidential docs. What should the agent do?","options":["Override the guardrail because the user explicitly asked","Send it only to authorized recipients without telling the user","Explain the conflict, refuse the unsafe action, and suggest a safe alternative","Send it to everyone and log a warning"],"correct":2,"explanation":"Guardrails exist for safety. The agent should respect them while being helpful — explain why it cannot comply and offer a path forward."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Error Recovery Strategies</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Your agent calls a weather API and gets a 503 Service Unavailable error after 3 retries. What is the best response?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Tell the user you cannot help and stop
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Retry the same API call 100 times until it works
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Try an alternative tool (web search for weather) and explain the fallback to the user
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Ignore the error and make up a weather forecast
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Graceful degradation: adapt to failure by trying alternative paths while keeping the user informed. Hammering a failing service wastes time and can trigger rate limiting.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Your agent queries a database and gets negative spending amounts and dates from the future. What should it do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Use the data anyway
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Flag the anomaly, refuse to present invalid data, and suggest the user check the data source
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Silently fix the data by removing the negative sign and adjusting the date
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Ask the user what the correct values should be
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Agents should validate data before presenting it. When validation fails, honesty about the problem and pointing toward the root cause is the right call.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>After 48 attempts to fix a failing test with zero progress, what should the agent do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Keep trying — the 49th attempt might work
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Stop, summarize what was tried and what failed, escalate to a human with full context
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Delete the test file so it cannot fail
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Switch to a different programming language
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A good agent knows when to stop. After repeated failures with no progress, the most valuable action is a detailed handoff to a human — summarizing attempts so they do not start from scratch.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Why is exponential backoff better than immediate retries?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is faster overall
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It gives the failing service time to recover instead of hammering it with rapid requests
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It uses less memory
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It is required by all APIs
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> If a service is overloaded, rapid retries add more load. Exponential backoff (1s, 2s, 4s) gives progressively more recovery time while still attempting the call.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>A user asks the agent to send a confidential document to all employees, but guardrails restrict confidential docs. What should the agent do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Override the guardrail because the user explicitly asked
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Send it only to authorized recipients without telling the user
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Explain the conflict, refuse the unsafe action, and suggest a safe alternative
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Send it to everyone and log a warning
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Guardrails exist for safety. The agent should respect them while being helpful — explain why it cannot comply and offer a path forward.</div>
+</div>
+</div>

@@ -231,8 +231,64 @@ Fine-tune Llama 3.1 8B using QLoRA on a machine with 8-12GB VRAM (RTX 3070/3080 
 </div>
 </div>
 
-<div data-learn="QuizMC" data-props='{"questions": [{"q": "What makes NormalFloat4 (NF4) quantization superior to uniform INT4 for model weights?", "options": ["NF4 uses fewer bits per weight than INT4", "NF4 only quantizes attention layers while keeping MLP in full precision", "NF4 creates non-uniform bins matching the normal distribution of weights, preserving more precision near zero where most values cluster", "NF4 is faster to compute than INT4 during inference"], "correct": 2, "explanation": "The correct answer is: NF4 creates non-uniform bins matching the normal distribution of weights, preserving more precision near zero where most values cluster"}, {"q": "What is the primary tradeoff of using QLoRA instead of standard LoRA?", "options": ["QLoRA produces significantly lower quality models", "QLoRA requires more training data", "QLoRA is 20-30% slower due to quantization/dequantization overhead, trading speed for memory savings", "QLoRA adapters cannot be merged with the base model"], "correct": 2, "explanation": "The correct answer is: QLoRA is 20-30% slower due to quantization/dequantization overhead, trading speed for memory savings"}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What makes NormalFloat4 (NF4) quantization superior to uniform INT4 for model weights?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>NF4 uses fewer bits per weight than INT4
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>NF4 only quantizes attention layers while keeping MLP in full precision
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>NF4 creates non-uniform bins matching the normal distribution of weights, preserving more precision near zero where most values cluster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>NF4 is faster to compute than INT4 during inference
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: NF4 creates non-uniform bins matching the normal distribution of weights, preserving more precision near zero where most values cluster</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the primary tradeoff of using QLoRA instead of standard LoRA?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>QLoRA produces significantly lower quality models
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>QLoRA requires more training data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>QLoRA is 20-30% slower due to quantization/dequantization overhead, trading speed for memory savings
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>QLoRA adapters cannot be merged with the base model
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: QLoRA is 20-30% slower due to quantization/dequantization overhead, trading speed for memory savings</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the three innovations in QLoRA?", "back": "1. 4-bit NormalFloat (NF4) quantized base model with 16-bit LoRA adapters. 2. Double quantization (quantize the quantization constants). 3. Paged optimizers (auto-offload to CPU on memory spikes)."}, {"front": "How much VRAM does QLoRA require for Llama 3.1 70B vs standard LoRA?", "back": "QLoRA: ~36 GB. Standard LoRA: ~150 GB. QLoRA reduces memory by roughly 4x."}, {"front": "What is the typical quality loss from QLoRA compared to full fine-tuning?", "back": "QLoRA retains 97-98% of full fine-tuning quality. Standard LoRA retains 98-99%. The gap is smaller than the impact of training data quality."}, {"front": "When should you prefer standard LoRA over QLoRA?", "back": "When you have sufficient VRAM, need maximum training speed, want the highest quality, or are training on high-end GPUs (A100/H100) where memory is not the constraint."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Vocabulary</h3>
+<details class="flash-card">
+<summary class="flash-front">What are the three innovations in QLoRA?</summary>
+<div class="flash-back">1. 4-bit NormalFloat (NF4) quantized base model with 16-bit LoRA adapters. 2. Double quantization (quantize the quantization constants). 3. Paged optimizers (auto-offload to CPU on memory spikes).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How much VRAM does QLoRA require for Llama 3.1 70B vs standard LoRA?</summary>
+<div class="flash-back">QLoRA: ~36 GB. Standard LoRA: ~150 GB. QLoRA reduces memory by roughly 4x.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the typical quality loss from QLoRA compared to full fine-tuning?</summary>
+<div class="flash-back">QLoRA retains 97-98% of full fine-tuning quality. Standard LoRA retains 98-99%. The gap is smaller than the impact of training data quality.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">When should you prefer standard LoRA over QLoRA?</summary>
+<div class="flash-back">When you have sufficient VRAM, need maximum training speed, want the highest quality, or are training on high-end GPUs (A100/H100) where memory is not the constraint.</div>
+</details>
+</div>
 
 </div>

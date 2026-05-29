@@ -241,7 +241,85 @@ Respond in this structure:
   <li><span style="color:#c084fc">Output format</span> makes responses predictable, which matters when other code parses the agent's output.</li>
 </ul>
 
-  <div data-learn="QuizMC" data-props='{"title":"Agent Design Principles","questions":[{"q":"Why is a clear goal statement important when designing an agent?","options":["It makes the agent run faster","Vague goals produce confused agents that do not know when they are done","It reduces API costs","The goal is only used for marketing purposes"],"correct":1,"explanation":"An agent needs a clear, specific goal to know what it is working toward and when it has succeeded. Vague goals lead to aimless loops and wasted compute."},{"q":"Why should every agent have at least one guardrail?","options":["Guardrails are optional decorations","Guardrails prevent the agent from taking destructive or unsafe actions even when asked","Guardrails speed up response time","Guardrails replace the need for memory"],"correct":1,"explanation":"Guardrails are safety constraints that the agent must never violate. They protect against accidental data deletion, privacy leaks, and other irreversible mistakes — even if a user explicitly requests the unsafe action."},{"q":"What is the ideal number of tools for a starting agent?","options":["As many as possible — more tools means more power","Zero — tools add complexity","A focused set of 2-4 tools that directly serve its specific goal","Exactly 10 tools"],"correct":2,"explanation":"Start with a small, focused toolset that matches your agent goal. Too many tools increases complexity, cost, and the chance of the agent using the wrong one."}]}'></div>
-<div data-learn="FlashDeck" data-props='{"title":"Agent Design Checklist","cards":[{"front":"What is a guardrail?","back":"A hard constraint the agent must never violate — e.g., never delete production data, never share credentials, never send emails to external parties."},{"front":"What should agent memory store?","back":"Information the agent needs across sessions — user preferences, past outcomes, learned patterns, and domain-specific context."},{"front":"How do you write a good agent goal?","back":"One clear sentence: what it does, for whom, and to what standard. Avoid vague language like improve things or help users."},{"front":"What does design completeness mean?","back":"Every section is filled in: name, goal, tools, memory, and at least one guardrail. A complete spec produces a deployable agent."},{"front":"Why limit tool selection to 3?","back":"Focused tool sets reduce decision complexity for the agent. The agent spends less reasoning budget deciding which tool to use and more on actually solving the problem."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Agent Design Principles</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why is a clear goal statement important when designing an agent?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It makes the agent run faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Vague goals produce confused agents that do not know when they are done
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It reduces API costs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The goal is only used for marketing purposes
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> An agent needs a clear, specific goal to know what it is working toward and when it has succeeded. Vague goals lead to aimless loops and wasted compute.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why should every agent have at least one guardrail?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Guardrails are optional decorations
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Guardrails prevent the agent from taking destructive or unsafe actions even when asked
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Guardrails speed up response time
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Guardrails replace the need for memory
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Guardrails are safety constraints that the agent must never violate. They protect against accidental data deletion, privacy leaks, and other irreversible mistakes — even if a user explicitly requests the unsafe action.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the ideal number of tools for a starting agent?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>As many as possible — more tools means more power
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Zero — tools add complexity
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A focused set of 2-4 tools that directly serve its specific goal
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Exactly 10 tools
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Start with a small, focused toolset that matches your agent goal. Too many tools increases complexity, cost, and the chance of the agent using the wrong one.</div>
+</div>
+</div>
+<div class="flash-block">
+<h3 class="quiz-title">Agent Design Checklist</h3>
+<details class="flash-card">
+<summary class="flash-front">What is a guardrail?</summary>
+<div class="flash-back">A hard constraint the agent must never violate — e.g., never delete production data, never share credentials, never send emails to external parties.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What should agent memory store?</summary>
+<div class="flash-back">Information the agent needs across sessions — user preferences, past outcomes, learned patterns, and domain-specific context.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you write a good agent goal?</summary>
+<div class="flash-back">One clear sentence: what it does, for whom, and to what standard. Avoid vague language like improve things or help users.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What does design completeness mean?</summary>
+<div class="flash-back">Every section is filled in: name, goal, tools, memory, and at least one guardrail. A complete spec produces a deployable agent.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why limit tool selection to 3?</summary>
+<div class="flash-back">Focused tool sets reduce decision complexity for the agent. The agent spends less reasoning budget deciding which tool to use and more on actually solving the problem.</div>
+</details>
+</div>
 
 </div>

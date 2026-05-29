@@ -105,13 +105,95 @@ Example task: "Process new job applications"
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"MCP + Computer Use","cards":[{"front":"MCP vs. Computer Use","back":"MCP: fast, precise, structured API access. Limited to systems with MCP servers. Computer Use: slow, flexible, visual access. Works on any screen. Best agents use both, choosing per-action."},{"front":"The Decision Framework","back":"MCP when: API/MCP server exists, data-oriented task, speed matters. Computer Use when: no API, visual interaction needed, interface changes frequently. Both when: workflow spans API and non-API systems."},{"front":"Hybrid Workflow Pattern","back":"Use MCP for data steps (read email, query database, send messages). Use Computer Use for visual steps (navigate portals, fill forms, verify screens). One agent, two modalities, chosen per-action."},{"front":"Brain as Data Bridge","back":"Write intermediate results to persistent memory between steps. MCP reads email -> writes order number to brain. Computer Use reads brain -> types order number into portal. Data survives across steps and sessions."},{"front":"Anti-Pattern: CU When MCP Exists","back":"Never navigate Gmail in a browser when Gmail MCP can fetch email in milliseconds. Always check for structured access first. Computer use is the fallback, not the default."},{"front":"Unified Orchestrator","back":"One agent that decides per-action whether to use MCP or Computer Use. Not separate pipelines. The orchestrator carries context and chooses the fastest reliable approach for each step."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">MCP + Computer Use</h3>
+<details class="flash-card">
+<summary class="flash-front">MCP vs. Computer Use</summary>
+<div class="flash-back">MCP: fast, precise, structured API access. Limited to systems with MCP servers. Computer Use: slow, flexible, visual access. Works on any screen. Best agents use both, choosing per-action.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Decision Framework</summary>
+<div class="flash-back">MCP when: API/MCP server exists, data-oriented task, speed matters. Computer Use when: no API, visual interaction needed, interface changes frequently. Both when: workflow spans API and non-API systems.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Hybrid Workflow Pattern</summary>
+<div class="flash-back">Use MCP for data steps (read email, query database, send messages). Use Computer Use for visual steps (navigate portals, fill forms, verify screens). One agent, two modalities, chosen per-action.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Brain as Data Bridge</summary>
+<div class="flash-back">Write intermediate results to persistent memory between steps. MCP reads email -> writes order number to brain. Computer Use reads brain -> types order number into portal. Data survives across steps and sessions.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Anti-Pattern: CU When MCP Exists</summary>
+<div class="flash-back">Never navigate Gmail in a browser when Gmail MCP can fetch email in milliseconds. Always check for structured access first. Computer use is the fallback, not the default.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Unified Orchestrator</summary>
+<div class="flash-back">One agent that decides per-action whether to use MCP or Computer Use. Not separate pipelines. The orchestrator carries context and chooses the fastest reliable approach for each step.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">MCP + computer use quiz.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"MCP + Computer Use","questions":[{"q":"When should an agent use MCP instead of computer use for a task?","options":["When the task involves clicking buttons","When an MCP server or structured API exists for the target system -- it is faster, more precise, and cheaper than visual automation","When the interface uses a dark theme","When the task requires more than 5 steps"],"correct":1,"explanation":"MCP provides millisecond-speed structured access. If a Gmail MCP can read email, there is no reason to navigate Gmail visually. Computer use is for systems without structured access -- it is the flexible fallback, not the first choice."},{"q":"How should data flow between MCP and computer use steps in a hybrid workflow?","options":["Data cannot flow between the two modalities","Write intermediate results to persistent memory (brain). MCP steps write extracted data, computer use steps read it. The brain bridges the two modalities across steps and sessions.","Copy and paste manually between steps","Use a separate database for each modality"],"correct":1,"explanation":"The brain (persistent memory) is the bridge. Step 1 reads an email via MCP and writes the order number to the brain. Step 3 reads the order number from the brain and types it into a visual portal via computer use. Data flows seamlessly through shared memory."},{"q":"What is the main anti-pattern in hybrid MCP + computer use architecture?","options":["Using too many MCP servers","Using computer use for tasks where an MCP server or API already exists -- navigating Gmail visually when Gmail MCP can fetch email in milliseconds","Using the brain for intermediate storage","Combining MCP and computer use in the same workflow"],"correct":1,"explanation":"The core anti-pattern is reaching for the slow, expensive tool when the fast, precise tool is available. Always check for MCP/API access first. Computer use is the universal fallback for systems that have no programmatic interface."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">MCP + Computer Use</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>When should an agent use MCP instead of computer use for a task?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>When the task involves clicking buttons
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>When an MCP server or structured API exists for the target system -- it is faster, more precise, and cheaper than visual automation
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>When the interface uses a dark theme
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>When the task requires more than 5 steps
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> MCP provides millisecond-speed structured access. If a Gmail MCP can read email, there is no reason to navigate Gmail visually. Computer use is for systems without structured access -- it is the flexible fallback, not the first choice.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>How should data flow between MCP and computer use steps in a hybrid workflow?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Data cannot flow between the two modalities
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Write intermediate results to persistent memory (brain). MCP steps write extracted data, computer use steps read it. The brain bridges the two modalities across steps and sessions.
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Copy and paste manually between steps
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Use a separate database for each modality
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The brain (persistent memory) is the bridge. Step 1 reads an email via MCP and writes the order number to the brain. Step 3 reads the order number from the brain and types it into a visual portal via computer use. Data flows seamlessly through shared memory.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the main anti-pattern in hybrid MCP + computer use architecture?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Using too many MCP servers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Using computer use for tasks where an MCP server or API already exists -- navigating Gmail visually when Gmail MCP can fetch email in milliseconds
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Using the brain for intermediate storage
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Combining MCP and computer use in the same workflow
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The core anti-pattern is reaching for the slow, expensive tool when the fast, precise tool is available. Always check for MCP/API access first. Computer use is the universal fallback for systems that have no programmatic interface.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

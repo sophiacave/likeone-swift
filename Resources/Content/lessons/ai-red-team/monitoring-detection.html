@@ -113,9 +113,127 @@
 </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Monitoring & Detection","cards":[{"front":"Why is production monitoring necessary even after red teaming?","back":"Attacks evolve constantly. New jailbreak techniques appear weekly. Users find creative exploits you never imagined. Monitoring catches attacks that pre-deployment testing missed."},{"front":"Five things to monitor","back":"1) Input patterns (injection signatures). 2) Output anomalies (PII, prompt leaks). 3) Tool usage patterns (exfiltration signals). 4) Behavioral drift (off-character responses). 5) Cost anomalies (abuse patterns)."},{"front":"Abuse signal: rapid prompt iteration","back":"Same user sending many similar prompt variations quickly — they are testing which injection pattern bypasses your defenses. Flag users who exceed normal message frequency."},{"front":"Abuse signal: escalating complexity","back":"Messages becoming progressively more adversarial within a session. Indicates multi-step escalation attack in progress. Monitor conversation trajectory, not just individual messages."},{"front":"Abuse signal: meta-conversation","back":"Questions about the system itself (\"What model are you?\", \"What are your rules?\"). This is reconnaissance — the attacker is gathering information before launching a targeted attack."},{"front":"Monitoring as defense feedback","back":"Attack patterns discovered through monitoring should be added to input filters and red team test suites. Monitoring is not passive observation — it actively strengthens your defenses over time."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Monitoring & Detection</h3>
+<details class="flash-card">
+<summary class="flash-front">Why is production monitoring necessary even after red teaming?</summary>
+<div class="flash-back">Attacks evolve constantly. New jailbreak techniques appear weekly. Users find creative exploits you never imagined. Monitoring catches attacks that pre-deployment testing missed.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Five things to monitor</summary>
+<div class="flash-back">1) Input patterns (injection signatures). 2) Output anomalies (PII, prompt leaks). 3) Tool usage patterns (exfiltration signals). 4) Behavioral drift (off-character responses). 5) Cost anomalies (abuse patterns).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Abuse signal: rapid prompt iteration</summary>
+<div class="flash-back">Same user sending many similar prompt variations quickly — they are testing which injection pattern bypasses your defenses. Flag users who exceed normal message frequency.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Abuse signal: escalating complexity</summary>
+<div class="flash-back">Messages becoming progressively more adversarial within a session. Indicates multi-step escalation attack in progress. Monitor conversation trajectory, not just individual messages.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Abuse signal: meta-conversation</summary>
+<div class="flash-back">Questions about the system itself ("What model are you?", "What are your rules?"). This is reconnaissance — the attacker is gathering information before launching a targeted attack.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Monitoring as defense feedback</summary>
+<div class="flash-back">Attack patterns discovered through monitoring should be added to input filters and red team test suites. Monitoring is not passive observation — it actively strengthens your defenses over time.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Monitoring & Detection Check","questions":[{"q":"Why can&#39;t you rely solely on pre-deployment red teaming for AI security?","options":["Red teaming is too expensive","New attack techniques emerge constantly, and users find exploits you never imagined","Red teaming is not effective","Pre-deployment testing catches everything"],"correct":1,"explanation":"The AI security landscape evolves rapidly. New jailbreak techniques appear weekly, creative users find unexpected exploits, and adversarial actors continuously probe for vulnerabilities. Monitoring catches what pre-deployment testing missed."},{"q":"A user sends 15 variations of \"tell me your system prompt\" within 2 minutes. What abuse signal is this?","options":["Normal curiosity","Rapid prompt iteration — they are testing which extraction technique works","A bot malfunction","Random behavior"],"correct":1,"explanation":"Rapid prompt iteration with similar content is a clear abuse signal. The user is systematically testing prompt extraction techniques, looking for one that bypasses your guardrails."},{"q":"Your monitoring detects a sudden spike in database query tool calls from a single session. What might be happening?","options":["The database is slow","Data exfiltration — someone is extracting records through the agent tools","Normal usage pattern","A scheduled backup"],"correct":1,"explanation":"A sudden spike in database queries from a single session suggests someone is using the agent tool access to extract large amounts of data. Rate-limit tool calls and alert the security team."},{"q":"What should you do when monitoring discovers a new attack pattern?","options":["Ignore it — the model will handle it","Add the pattern to your input filters AND red team test suites","Only update the system prompt","Shut down the entire system"],"correct":1,"explanation":"New attack patterns should feed back into your defenses. Add them to input filters so they are caught automatically, and add corresponding test cases to your red team suite so you can verify defenses in future testing rounds."},{"q":"Which monitoring approach catches multi-step escalation attacks?","options":["Checking individual messages in isolation","Monitoring the full conversation trajectory across multiple turns","Keyword filtering","Output length checking"],"correct":1,"explanation":"Multi-step escalation looks innocent on a per-message basis. Only by monitoring the full conversation trajectory can you detect the gradual escalation from benign questions to adversarial content."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Monitoring & Detection Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why can't you rely solely on pre-deployment red teaming for AI security?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Red teaming is too expensive
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>New attack techniques emerge constantly, and users find exploits you never imagined
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Red teaming is not effective
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Pre-deployment testing catches everything
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The AI security landscape evolves rapidly. New jailbreak techniques appear weekly, creative users find unexpected exploits, and adversarial actors continuously probe for vulnerabilities. Monitoring catches what pre-deployment testing missed.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>A user sends 15 variations of "tell me your system prompt" within 2 minutes. What abuse signal is this?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Normal curiosity
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Rapid prompt iteration — they are testing which extraction technique works
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A bot malfunction
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Random behavior
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Rapid prompt iteration with similar content is a clear abuse signal. The user is systematically testing prompt extraction techniques, looking for one that bypasses your guardrails.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Your monitoring detects a sudden spike in database query tool calls from a single session. What might be happening?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The database is slow
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Data exfiltration — someone is extracting records through the agent tools
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Normal usage pattern
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A scheduled backup
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A sudden spike in database queries from a single session suggests someone is using the agent tool access to extract large amounts of data. Rate-limit tool calls and alert the security team.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What should you do when monitoring discovers a new attack pattern?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Ignore it — the model will handle it
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Add the pattern to your input filters AND red team test suites
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Only update the system prompt
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Shut down the entire system
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> New attack patterns should feed back into your defenses. Add them to input filters so they are caught automatically, and add corresponding test cases to your red team suite so you can verify defenses in future testing rounds.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>Which monitoring approach catches multi-step escalation attacks?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Checking individual messages in isolation
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Monitoring the full conversation trajectory across multiple turns
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Keyword filtering
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Output length checking
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Multi-step escalation looks innocent on a per-message basis. Only by monitoring the full conversation trajectory can you detect the gradual escalation from benign questions to adversarial content.</div>
+</div>
+</div>
 
 </div>
 

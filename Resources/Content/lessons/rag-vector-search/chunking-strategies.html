@@ -189,7 +189,107 @@ client = OpenAI()
 
   <div class="divider"><span>Test Your Understanding</span></div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Chunking Knowledge Check","questions":[{"q":"Why do we need to chunk documents before embedding them?","options":["Smaller files are cheaper to store","Embedding models have token limits and cannot process full documents as a single vector","Chunks load faster in the browser","Vector databases only accept chunks, not full documents"],"correct":1,"explanation":"Embedding models have maximum token limits (typically 512-8192 tokens). Long documents must be split into chunks so each piece can be embedded individually. This also improves retrieval precision since each chunk covers a focused topic."},{"q":"What is the purpose of overlap between chunks?","options":["To make the index larger","To prevent information at chunk boundaries from being lost","To reduce the number of embeddings needed","To increase cosine similarity scores"],"correct":1,"explanation":"Overlap repeats the end of one chunk at the start of the next. This ensures that a sentence or idea spanning the boundary between two chunks is fully represented in at least one chunk, so it is not lost during retrieval."},{"q":"A legal firm needs to chunk 500-page contracts for a RAG system. Which strategy is best?","options":["Fixed-size, 50 words — maximum precision","Paragraph-based, 300-500 words — preserves clause structure","Semantic chunking with 30-word chunks — topic boundaries matter","No chunking — embed the whole contract as one vector"],"correct":1,"explanation":"Legal documents have meaningful paragraph and clause structure. Paragraph-based chunking with larger sizes (300-500 words) preserves the context needed to understand legal clauses while keeping chunks focused enough for precise retrieval."},{"q":"You are building a chatbot FAQ with short Q&A pairs. What chunk size should you start with?","options":["500+ words to capture maximum context","100-200 words so each chunk contains one complete answer","50 words for maximum precision","1000+ words to reduce the number of embeddings"],"correct":1,"explanation":"FAQ entries are short and self-contained. 100-200 word chunks ensure each chunk captures one complete question-answer pair without diluting it with unrelated content."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Chunking Knowledge Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why do we need to chunk documents before embedding them?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Smaller files are cheaper to store
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Embedding models have token limits and cannot process full documents as a single vector
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Chunks load faster in the browser
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Vector databases only accept chunks, not full documents
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Embedding models have maximum token limits (typically 512-8192 tokens). Long documents must be split into chunks so each piece can be embedded individually. This also improves retrieval precision since each chunk covers a focused topic.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the purpose of overlap between chunks?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>To make the index larger
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>To prevent information at chunk boundaries from being lost
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>To reduce the number of embeddings needed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>To increase cosine similarity scores
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Overlap repeats the end of one chunk at the start of the next. This ensures that a sentence or idea spanning the boundary between two chunks is fully represented in at least one chunk, so it is not lost during retrieval.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>A legal firm needs to chunk 500-page contracts for a RAG system. Which strategy is best?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Fixed-size, 50 words — maximum precision
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Paragraph-based, 300-500 words — preserves clause structure
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Semantic chunking with 30-word chunks — topic boundaries matter
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>No chunking — embed the whole contract as one vector
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Legal documents have meaningful paragraph and clause structure. Paragraph-based chunking with larger sizes (300-500 words) preserves the context needed to understand legal clauses while keeping chunks focused enough for precise retrieval.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>You are building a chatbot FAQ with short Q&A pairs. What chunk size should you start with?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>500+ words to capture maximum context
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>100-200 words so each chunk contains one complete answer
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>50 words for maximum precision
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>1000+ words to reduce the number of embeddings
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> FAQ entries are short and self-contained. 100-200 word chunks ensure each chunk captures one complete question-answer pair without diluting it with unrelated content.</div>
+</div>
+</div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"Chunking Flashcards","cards":[{"front":"Token","back":"Roughly 3/4 of a word. 100 tokens ≈ 75 words. Embedding models have a maximum token limit per input."},{"front":"Chunk Overlap","back":"Repeating the last N words of one chunk at the start of the next. Prevents boundary information loss. Typical: 10-20% of chunk size."},{"front":"Fixed-Size Chunking","back":"Split text every N words regardless of sentence boundaries. Simple and predictable but can cut sentences mid-thought."},{"front":"Sentence-Based Chunking","back":"Group complete sentences until the chunk reaches the target size. Preserves natural language boundaries. Best general-purpose strategy."},{"front":"Paragraph-Based Chunking","back":"Use double newlines as split points. Respects document structure — each paragraph becomes one or more chunks. Best for structured documents."},{"front":"Semantic Chunking","back":"Split at natural topic shifts detected by embedding similarity between consecutive sentences. Most accurate but most computationally expensive."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Chunking Flashcards</h3>
+<details class="flash-card">
+<summary class="flash-front">Token</summary>
+<div class="flash-back">Roughly 3/4 of a word. 100 tokens ≈ 75 words. Embedding models have a maximum token limit per input.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Chunk Overlap</summary>
+<div class="flash-back">Repeating the last N words of one chunk at the start of the next. Prevents boundary information loss. Typical: 10-20% of chunk size.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Fixed-Size Chunking</summary>
+<div class="flash-back">Split text every N words regardless of sentence boundaries. Simple and predictable but can cut sentences mid-thought.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Sentence-Based Chunking</summary>
+<div class="flash-back">Group complete sentences until the chunk reaches the target size. Preserves natural language boundaries. Best general-purpose strategy.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Paragraph-Based Chunking</summary>
+<div class="flash-back">Use double newlines as split points. Respects document structure — each paragraph becomes one or more chunks. Best for structured documents.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Semantic Chunking</summary>
+<div class="flash-back">Split at natural topic shifts detected by embedding similarity between consecutive sentences. Most accurate but most computationally expensive.</div>
+</details>
+</div>
 </div>

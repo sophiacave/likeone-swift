@@ -74,12 +74,68 @@
 <div class="lesson-section">
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
-  <div data-learn="QuizMC" data-props='{"questions":[{"q":"What type of multiplayer should most first-time game devs implement?","options":["Real-time online with dedicated servers","MMO-style persistent worlds","Asynchronous features like leaderboards and daily challenges","Peer-to-peer networking"],"correct":2,"explanation":"Asynchronous features give you 80% of social engagement with 10% of the complexity. Leaderboards and daily challenges are the sweet spot for first games."},{"q":"How do daily challenges work in procedurally generated games?","options":["Manually design a new level each day","Seed the random generator with today&#39;s date so everyone gets the same level","Use a different game engine each day","Download new levels from a server"],"correct":1,"explanation":"Using today&#39;s date as a random seed means every player&#39;s procedural generator creates the same level. Same challenge, comparable scores, zero server work."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What type of multiplayer should most first-time game devs implement?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Real-time online with dedicated servers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>MMO-style persistent worlds
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Asynchronous features like leaderboards and daily challenges
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Peer-to-peer networking
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Asynchronous features give you 80% of social engagement with 10% of the complexity. Leaderboards and daily challenges are the sweet spot for first games.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>How do daily challenges work in procedurally generated games?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Manually design a new level each day
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Seed the random generator with today's date so everyone gets the same level
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Use a different game engine each day
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Download new levels from a server
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Using today's date as a random seed means every player's procedural generator creates the same level. Same challenge, comparable scores, zero server work.</div>
+</div>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Multiplayer & Leaderboards","cards":[{"front":"What are the three types of multiplayer?","back":"Local (same device), Asynchronous (different times -- leaderboards, ghosts), and Real-time Online (simultaneous connection). Start with async."},{"front":"What free backends work for leaderboards?","back":"Supabase (PostgreSQL + real-time) and Firebase (Google, well-documented). Both have generous free tiers."},{"front":"What is the viral loop for browser games?","back":"Player beats score, shares link, friend plays, beats score, shares link. Build the share button before any other social feature."},{"front":"How does local multiplayer input work?","back":"Player 1 uses WASD, Player 2 uses arrow keys. An input manager maps different key sets to different players independently."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Multiplayer & Leaderboards</h3>
+<details class="flash-card">
+<summary class="flash-front">What are the three types of multiplayer?</summary>
+<div class="flash-back">Local (same device), Asynchronous (different times -- leaderboards, ghosts), and Real-time Online (simultaneous connection). Start with async.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What free backends work for leaderboards?</summary>
+<div class="flash-back">Supabase (PostgreSQL + real-time) and Firebase (Google, well-documented). Both have generous free tiers.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the viral loop for browser games?</summary>
+<div class="flash-back">Player beats score, shares link, friend plays, beats score, shares link. Build the share button before any other social feature.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How does local multiplayer input work?</summary>
+<div class="flash-back">Player 1 uses WASD, Player 2 uses arrow keys. An input manager maps different key sets to different players independently.</div>
+</details>
+</div>
 </div>
 </div>

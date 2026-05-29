@@ -117,13 +117,95 @@ Automate it and run it after every agent change.</code></div>
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Testing Visual Agents","cards":[{"front":"Why Visual Testing Is Different","back":"Visual environments are non-deterministic. The same page can look different at different times. Tests need recording, visual assertions with tolerance, and outcome-based validation instead of exact pixel matching."},{"front":"Recording Pipeline","back":"Every run produces a log: screenshots, actions, timestamps, verifications. Serves three purposes: debugging (what went wrong), compliance (audit trail), improvement (training data for better agents)."},{"front":"GIF Audit Trail","back":"Compile sequential screenshots into an animated GIF. Annotate with click markers and text highlights. A 10-second GIF review replaces reading a 50-step JSON log."},{"front":"Replay Testing","back":"Feed recorded golden-run screenshots to the agent without real actions. Verify the agent makes the same decisions. Compare at the element level (same button clicked) not pixel level (exact same coordinates)."},{"front":"Outcome-Based Regression","back":"Assert final outcomes (form submitted, confirmation shown, data in database) rather than every intermediate step. More resilient to UI changes while still catching real failures."},{"front":"Testing Anti-Pattern: Pixel-Perfect","back":"Asserting pixel-perfect screenshot matches fails on font changes, ad rotations, and cosmetic updates. Use semantic assertions (correct page, correct elements visible, correct data entered)."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Testing Visual Agents</h3>
+<details class="flash-card">
+<summary class="flash-front">Why Visual Testing Is Different</summary>
+<div class="flash-back">Visual environments are non-deterministic. The same page can look different at different times. Tests need recording, visual assertions with tolerance, and outcome-based validation instead of exact pixel matching.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Recording Pipeline</summary>
+<div class="flash-back">Every run produces a log: screenshots, actions, timestamps, verifications. Serves three purposes: debugging (what went wrong), compliance (audit trail), improvement (training data for better agents).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">GIF Audit Trail</summary>
+<div class="flash-back">Compile sequential screenshots into an animated GIF. Annotate with click markers and text highlights. A 10-second GIF review replaces reading a 50-step JSON log.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Replay Testing</summary>
+<div class="flash-back">Feed recorded golden-run screenshots to the agent without real actions. Verify the agent makes the same decisions. Compare at the element level (same button clicked) not pixel level (exact same coordinates).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Outcome-Based Regression</summary>
+<div class="flash-back">Assert final outcomes (form submitted, confirmation shown, data in database) rather than every intermediate step. More resilient to UI changes while still catching real failures.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Testing Anti-Pattern: Pixel-Perfect</summary>
+<div class="flash-back">Asserting pixel-perfect screenshot matches fails on font changes, ad rotations, and cosmetic updates. Use semantic assertions (correct page, correct elements visible, correct data entered).</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Testing visual agents quiz.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Testing Visual Agents","questions":[{"q":"Why is pixel-perfect screenshot comparison a bad testing strategy for visual agents?","options":["It is too slow to run","It requires expensive hardware","One font rendering change, ad rotation, or cosmetic update fails the entire test -- use semantic assertions (correct page, correct elements) instead of pixel matching","It does not work with GIF recordings"],"correct":2,"explanation":"Visual environments change constantly. Ads rotate, fonts render slightly differently, and layouts shift by a pixel or two. Pixel-perfect comparison creates a test that fails all the time for cosmetic reasons while potentially missing real functional failures."},{"q":"What are the three purposes of recording every visual agent run?","options":["Speed, cost, and reliability","Debugging (what went wrong), compliance (audit trail for regulated industries), and improvement (training data for better agents)","Marketing, sales, and support","Storage, archival, and backup"],"correct":1,"explanation":"Recordings serve debugging (replay the failure), compliance (prove the agent followed correct steps for auditors), and improvement (review patterns of hesitation, wrong decisions, and wasted time to make the agent better)."},{"q":"What is outcome-based regression testing and why is it preferred?","options":["Testing the outcome of every individual click","Asserting final outcomes (form submitted, confirmation shown, data in database) rather than every intermediate step -- more resilient to UI changes while catching real failures","Only testing outcomes on production systems","Testing outcomes without any recordings"],"correct":1,"explanation":"The UI path to a final outcome may change (button position, page structure), but the outcome stays the same. Asserting was the form submitted? rather than was Step 3 click at (500,300)? means UI changes do not break your tests unless they actually break the workflow."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Testing Visual Agents</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why is pixel-perfect screenshot comparison a bad testing strategy for visual agents?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is too slow to run
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It requires expensive hardware
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>One font rendering change, ad rotation, or cosmetic update fails the entire test -- use semantic assertions (correct page, correct elements) instead of pixel matching
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It does not work with GIF recordings
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Visual environments change constantly. Ads rotate, fonts render slightly differently, and layouts shift by a pixel or two. Pixel-perfect comparison creates a test that fails all the time for cosmetic reasons while potentially missing real functional failures.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What are the three purposes of recording every visual agent run?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Speed, cost, and reliability
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Debugging (what went wrong), compliance (audit trail for regulated industries), and improvement (training data for better agents)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Marketing, sales, and support
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Storage, archival, and backup
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Recordings serve debugging (replay the failure), compliance (prove the agent followed correct steps for auditors), and improvement (review patterns of hesitation, wrong decisions, and wasted time to make the agent better).</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is outcome-based regression testing and why is it preferred?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Testing the outcome of every individual click
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Asserting final outcomes (form submitted, confirmation shown, data in database) rather than every intermediate step -- more resilient to UI changes while catching real failures
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Only testing outcomes on production systems
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Testing outcomes without any recordings
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The UI path to a final outcome may change (button position, page structure), but the outcome stays the same. Asserting was the form submitted? rather than was Step 3 click at (500,300)? means UI changes do not break your tests unless they actually break the workflow.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

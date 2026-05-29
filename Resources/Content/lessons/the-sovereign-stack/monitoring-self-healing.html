@@ -158,13 +158,95 @@ Add proactive alerting once the basics are solid.</code></div>
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Monitoring & Self-Healing","cards":[{"front":"Three Monitoring Layers","back":"Health checks (alive/dead, every 30-60s), Metrics (performance -- response time, CPU, RAM), Logs (what happened and why). All three needed for complete visibility."},{"front":"Self-Healing Patterns","back":"Auto-restart (simplest), exponential backoff restart (prevent hammering), resource-triggered healing (preemptive cleanup), service substitution (swap to backup)."},{"front":"Proactive Alerting","back":"Trend detection (RAM increasing daily -- predict when it hits 100%), anomaly detection (response time 4x normal), dependency chain awareness (disk slowdown affects everything above it)."},{"front":"Graceful Degradation","back":"When a component fails, lose capability but stay functional. Ollama down -> use cloud API. Cloud down -> use local. Brain inaccessible -> session-only context. Email down -> queue locally."},{"front":"Alert Fatigue","back":"Too many alerts = all alerts ignored. Set thresholds that mean something. A CPU spike for 10 seconds is noise. CPU at 95% for 5 minutes is a real problem."},{"front":"Restart Loop Protection","back":"Cap restart attempts (3-5) with exponential backoff. After the cap, stop restarting and alert a human. Infinite restart loops waste resources and never fix the root cause."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Monitoring & Self-Healing</h3>
+<details class="flash-card">
+<summary class="flash-front">Three Monitoring Layers</summary>
+<div class="flash-back">Health checks (alive/dead, every 30-60s), Metrics (performance -- response time, CPU, RAM), Logs (what happened and why). All three needed for complete visibility.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Self-Healing Patterns</summary>
+<div class="flash-back">Auto-restart (simplest), exponential backoff restart (prevent hammering), resource-triggered healing (preemptive cleanup), service substitution (swap to backup).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Proactive Alerting</summary>
+<div class="flash-back">Trend detection (RAM increasing daily -- predict when it hits 100%), anomaly detection (response time 4x normal), dependency chain awareness (disk slowdown affects everything above it).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Graceful Degradation</summary>
+<div class="flash-back">When a component fails, lose capability but stay functional. Ollama down -> use cloud API. Cloud down -> use local. Brain inaccessible -> session-only context. Email down -> queue locally.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Alert Fatigue</summary>
+<div class="flash-back">Too many alerts = all alerts ignored. Set thresholds that mean something. A CPU spike for 10 seconds is noise. CPU at 95% for 5 minutes is a real problem.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Restart Loop Protection</summary>
+<div class="flash-back">Cap restart attempts (3-5) with exponential backoff. After the cap, stop restarting and alert a human. Infinite restart loops waste resources and never fix the root cause.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Monitoring quiz.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Monitoring & Self-Healing","questions":[{"q":"What is proactive alerting and why is it better than reactive alerting?","options":["Proactive alerting sends more alerts more frequently","Proactive alerting detects trends and anomalies that predict future failures -- alerting before the crash happens, not after. RAM increasing 5% daily triggers an alert a week before it hits 100%.","Proactive alerting only monitors critical services","Proactive alerting replaces health checks entirely"],"correct":1,"explanation":"Reactive alerting tells you something broke. Proactive alerting tells you something is about to break. Catching a memory leak 7 days before it causes a crash gives you time to fix it calmly instead of scrambling at 3am."},{"q":"What is the correct response when auto-restart fails multiple times?","options":["Keep restarting indefinitely until it works","Stop restarting after 3-5 attempts, alert a human, and activate graceful degradation -- the service has a deeper problem that automation cannot fix","Immediately shut down all related services","Delete the service and reinstall from scratch"],"correct":1,"explanation":"Infinite restart loops waste resources and never fix root causes. After 3-5 failed attempts with exponential backoff, the problem is structural -- bad config, corrupted data, dependency failure. Stop, alert, degrade gracefully, and let a human investigate."},{"q":"What makes graceful degradation different from just crashing?","options":["Graceful degradation is faster","When a component fails, the system loses that specific capability but keeps running -- Ollama down means route to cloud API, not shut down the business. Functionality degrades instead of stopping.","Graceful degradation prevents all failures","Graceful degradation requires cloud backup for every service"],"correct":1,"explanation":"A system that crashes when Ollama dies takes down everything. A system with graceful degradation routes AI requests to a cloud API fallback. The business keeps running, just at higher cost. Every critical component should have a degradation path defined in advance."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Monitoring & Self-Healing</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is proactive alerting and why is it better than reactive alerting?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Proactive alerting sends more alerts more frequently
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Proactive alerting detects trends and anomalies that predict future failures -- alerting before the crash happens, not after. RAM increasing 5% daily triggers an alert a week before it hits 100%.
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Proactive alerting only monitors critical services
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Proactive alerting replaces health checks entirely
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Reactive alerting tells you something broke. Proactive alerting tells you something is about to break. Catching a memory leak 7 days before it causes a crash gives you time to fix it calmly instead of scrambling at 3am.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the correct response when auto-restart fails multiple times?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Keep restarting indefinitely until it works
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Stop restarting after 3-5 attempts, alert a human, and activate graceful degradation -- the service has a deeper problem that automation cannot fix
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Immediately shut down all related services
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Delete the service and reinstall from scratch
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Infinite restart loops waste resources and never fix root causes. After 3-5 failed attempts with exponential backoff, the problem is structural -- bad config, corrupted data, dependency failure. Stop, alert, degrade gracefully, and let a human investigate.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What makes graceful degradation different from just crashing?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Graceful degradation is faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>When a component fails, the system loses that specific capability but keeps running -- Ollama down means route to cloud API, not shut down the business. Functionality degrades instead of stopping.
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Graceful degradation prevents all failures
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Graceful degradation requires cloud backup for every service
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A system that crashes when Ollama dies takes down everything. A system with graceful degradation routes AI requests to a cloud API fallback. The business keeps running, just at higher cost. Every critical component should have a degradation path defined in advance.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

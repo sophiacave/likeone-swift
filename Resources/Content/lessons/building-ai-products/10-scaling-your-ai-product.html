@@ -46,7 +46,29 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Scaling Your AI Product — Key Concepts","cards":[{"front":"Response Caching","back":"Many users ask similar things. Cache frequent query patterns and serve identical results instantly — reduces API calls by 30-50% with zero quality loss."},{"front":"Tiered Model Routing","back":"Route simple requests to cheaper, faster models. Reserve expensive models for complex tasks. A routing layer classifying query complexity can cut costs by 40%."},{"front":"Prompt Compression","back":"Shorter prompts cost less. Audit system prompts quarterly — the difference between 2,000 and 800 tokens compounds massively at scale."},{"front":"Fallback Models","back":"If Claude is down, route to GPT. If both are down, route to open-source with degraded quality. Some output is always better than an error page."},{"front":"The Data Flywheel","back":"Every user interaction teaches the system something. Over time, you build context and insight no competitor can replicate by simply switching to a newer model."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Scaling Your AI Product — Key Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">Response Caching</summary>
+<div class="flash-back">Many users ask similar things. Cache frequent query patterns and serve identical results instantly — reduces API calls by 30-50% with zero quality loss.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Tiered Model Routing</summary>
+<div class="flash-back">Route simple requests to cheaper, faster models. Reserve expensive models for complex tasks. A routing layer classifying query complexity can cut costs by 40%.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Prompt Compression</summary>
+<div class="flash-back">Shorter prompts cost less. Audit system prompts quarterly — the difference between 2,000 and 800 tokens compounds massively at scale.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Fallback Models</summary>
+<div class="flash-back">If Claude is down, route to GPT. If both are down, route to open-source with degraded quality. Some output is always better than an error page.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Data Flywheel</summary>
+<div class="flash-back">Every user interaction teaches the system something. Over time, you build context and insight no competitor can replicate by simply switching to a newer model.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -187,7 +209,63 @@ What phase are you in? What's your next milestone?</code></div>
 </div>
 
 <div class="lesson-section">
-  <div data-learn="QuizMC" data-props='{"title":"Scaling Your AI Product Quiz","questions":[{"q":"What signal should trigger you to evaluate self-hosting AI models?","options":["When you reach 1,000 users","When your monthly API bill exceeds the cost of dedicated GPU infrastructure and quality requirements can be met by open-source models","When your competitors self-host","When your team grows to 10 engineers"],"correct":1,"explanation":"For most products this happens between $5,000 and $20,000 per month in API costs. Self-hosting before that threshold adds enormous operational complexity for minimal savings."},{"q":"What is a data flywheel and why does it matter for long-term competitive advantage?","options":["A caching system for faster responses","Every user interaction teaches the system something — over time you build context and insight that no competitor can replicate by simply using a newer model","A database backup strategy","An A/B testing framework"],"correct":1,"explanation":"The companies that win in AI aren’t the ones with the best model. They’re the ones whose product gets measurably better with every user interaction — creating a compounding advantage that deepens over time."},{"q":"What is the key metric for Phase 1 (0-1K users) of scaling?","options":["Revenue","Cost per active user","Retention rate — proving the product delivers consistent value and users come back","Number of API calls"],"correct":2,"explanation":"At 0-1K users, the only thing that matters is proving product-market fit. Retention rate tells you whether users find enough value to return — the foundation everything else is built on."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Scaling Your AI Product Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What signal should trigger you to evaluate self-hosting AI models?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>When you reach 1,000 users
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>When your monthly API bill exceeds the cost of dedicated GPU infrastructure and quality requirements can be met by open-source models
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>When your competitors self-host
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>When your team grows to 10 engineers
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> For most products this happens between $5,000 and $20,000 per month in API costs. Self-hosting before that threshold adds enormous operational complexity for minimal savings.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is a data flywheel and why does it matter for long-term competitive advantage?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A caching system for faster responses
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Every user interaction teaches the system something — over time you build context and insight that no competitor can replicate by simply using a newer model
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A database backup strategy
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>An A/B testing framework
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The companies that win in AI aren’t the ones with the best model. They’re the ones whose product gets measurably better with every user interaction — creating a compounding advantage that deepens over time.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the key metric for Phase 1 (0-1K users) of scaling?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Revenue
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Cost per active user
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Retention rate — proving the product delivers consistent value and users come back
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Number of API calls
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> At 0-1K users, the only thing that matters is proving product-market fit. Retention rate tells you whether users find enough value to return — the foundation everything else is built on.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

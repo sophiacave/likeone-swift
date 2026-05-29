@@ -205,10 +205,128 @@ Build me:
 </div>
 
 <div style="margin:1.5rem 0">
-<div data-learn="FlashDeck" data-props='{"title":"Measuring AI Impact","cards":[{"front":"Leading Indicators","back":"Technical performance metrics: accuracy, latency, error rates, coverage, confidence. Monitored real-time. Early warning signals — if these degrade, business impact follows."},{"front":"Lagging Indicators","back":"Business value metrics: cost saved, revenue generated, productivity gain, customer satisfaction. Reported monthly/quarterly. These justify continued investment or trigger kill decisions."},{"front":"Guardrail Metrics","back":"Safety metrics: bias, false positives, complaints, compliance violations, employee sentiment. Non-optional. An AI that delivers ROI while causing harm is a net loss."},{"front":"A/B Testing","back":"Gold standard for attribution. Route some cases through AI, others through baseline. Measures the true difference AI makes while controlling for all other variables."},{"front":"Shadow Mode","back":"Run AI in parallel making decisions but not acting. Compare to human decisions on the same cases in real-time. Shows what AI WOULD have done with zero risk."},{"front":"Honest Uncertainty","back":"We believe AI contributed to a 15% improvement, with a confidence range of 10-20% is more credible than AI delivered exactly 15%. False precision undermines trust."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Measuring AI Impact</h3>
+<details class="flash-card">
+<summary class="flash-front">Leading Indicators</summary>
+<div class="flash-back">Technical performance metrics: accuracy, latency, error rates, coverage, confidence. Monitored real-time. Early warning signals — if these degrade, business impact follows.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Lagging Indicators</summary>
+<div class="flash-back">Business value metrics: cost saved, revenue generated, productivity gain, customer satisfaction. Reported monthly/quarterly. These justify continued investment or trigger kill decisions.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Guardrail Metrics</summary>
+<div class="flash-back">Safety metrics: bias, false positives, complaints, compliance violations, employee sentiment. Non-optional. An AI that delivers ROI while causing harm is a net loss.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">A/B Testing</summary>
+<div class="flash-back">Gold standard for attribution. Route some cases through AI, others through baseline. Measures the true difference AI makes while controlling for all other variables.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Shadow Mode</summary>
+<div class="flash-back">Run AI in parallel making decisions but not acting. Compare to human decisions on the same cases in real-time. Shows what AI WOULD have done with zero risk.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Honest Uncertainty</summary>
+<div class="flash-back">We believe AI contributed to a 15% improvement, with a confidence range of 10-20% is more credible than AI delivered exactly 15%. False precision undermines trust.</div>
+</details>
+</div>
 </div>
 
-<div data-learn="QuizMC" data-props='{"title":"Measuring AI Impact — Mastery Check","questions":[{"q":"Your AI model has 94% accuracy. The CFO asks: What is that worth to us? You do not have an answer. What went wrong?","options":["Nothing — 94% accuracy speaks for itself","You are measuring leading indicators but not lagging indicators. Technical metrics do not answer the business value question.","The CFO does not understand AI","You need higher accuracy before calculating business value"],"correct":1,"explanation":"Accuracy is a leading indicator — it tells you the AI is working technically. But the CFO wants lagging indicators: cost saved, revenue generated, risk reduced. Without translating technical performance into business impact, you cannot defend the budget."},{"q":"Revenue increased 12% after deploying an AI recommendation engine. A new marketing campaign also launched the same month. How do you attribute the improvement?","options":["Credit it all to AI — the timing matches","Credit it all to marketing — that is more traditional","Use A/B testing: route some users through AI recommendations and others through the baseline, measuring conversion independently of the marketing campaign","Split the credit 50/50"],"correct":2,"explanation":"Without A/B testing, you cannot disentangle the AI effect from the marketing effect. An A/B test randomly assigns users to AI vs. no-AI groups, controlling for all other variables including the marketing campaign. This gives you clean, defensible attribution."},{"q":"Your guardrail metrics show that the AI loan approval system approves 18% fewer applications from one demographic group. Leading indicators show 96% accuracy. What should you do?","options":["The accuracy is high so the system is working correctly","Investigate immediately — high accuracy does not mean fair. The disparate impact may indicate bias that requires remediation before the system can continue operating","Increase the sample size to see if the disparity persists","Report only the accuracy metric to stakeholders"],"correct":1,"explanation":"This is exactly what guardrail metrics are designed to catch. High accuracy can coexist with significant bias — the model may be accurately replicating historical discrimination. An 18% disparity in approval rates demands immediate investigation, root cause analysis, and remediation."},{"q":"Why should you run AI in shadow mode before full deployment?","options":["To test the servers under load","To establish a clean baseline by comparing AI decisions to human decisions on the same cases in real-time — giving you attribution data from day one","To train the model on real data","To satisfy compliance requirements"],"correct":1,"explanation":"Shadow mode lets you compare what the AI would have decided vs. what humans actually decided on identical cases. This gives you clean attribution data before you even launch — you know exactly where the AI outperforms, underperforms, and agrees with humans."},{"q":"What are the three questions every executive dashboard should answer about AI?","options":["Is it accurate? Is it fast? Is it scalable?","Did it save money, did it make money, did it reduce risk?","Is the team happy? Is the model trained? Is it deployed?","How many models? How much compute? How many users?"],"correct":1,"explanation":"Executives care about business impact, not technical details. Every AI dashboard should clearly answer: did this save us money (cost reduction), did this make us money (revenue impact), and did this reduce risk (compliance, safety, trust). If you cannot answer at least one with a number, the budget is at risk."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Measuring AI Impact — Mastery Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Your AI model has 94% accuracy. The CFO asks: What is that worth to us? You do not have an answer. What went wrong?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Nothing — 94% accuracy speaks for itself
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>You are measuring leading indicators but not lagging indicators. Technical metrics do not answer the business value question.
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The CFO does not understand AI
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>You need higher accuracy before calculating business value
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Accuracy is a leading indicator — it tells you the AI is working technically. But the CFO wants lagging indicators: cost saved, revenue generated, risk reduced. Without translating technical performance into business impact, you cannot defend the budget.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Revenue increased 12% after deploying an AI recommendation engine. A new marketing campaign also launched the same month. How do you attribute the improvement?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Credit it all to AI — the timing matches
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Credit it all to marketing — that is more traditional
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Use A/B testing: route some users through AI recommendations and others through the baseline, measuring conversion independently of the marketing campaign
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Split the credit 50/50
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Without A/B testing, you cannot disentangle the AI effect from the marketing effect. An A/B test randomly assigns users to AI vs. no-AI groups, controlling for all other variables including the marketing campaign. This gives you clean, defensible attribution.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Your guardrail metrics show that the AI loan approval system approves 18% fewer applications from one demographic group. Leading indicators show 96% accuracy. What should you do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The accuracy is high so the system is working correctly
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Investigate immediately — high accuracy does not mean fair. The disparate impact may indicate bias that requires remediation before the system can continue operating
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Increase the sample size to see if the disparity persists
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Report only the accuracy metric to stakeholders
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> This is exactly what guardrail metrics are designed to catch. High accuracy can coexist with significant bias — the model may be accurately replicating historical discrimination. An 18% disparity in approval rates demands immediate investigation, root cause analysis, and remediation.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Why should you run AI in shadow mode before full deployment?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>To test the servers under load
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>To establish a clean baseline by comparing AI decisions to human decisions on the same cases in real-time — giving you attribution data from day one
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>To train the model on real data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>To satisfy compliance requirements
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Shadow mode lets you compare what the AI would have decided vs. what humans actually decided on identical cases. This gives you clean attribution data before you even launch — you know exactly where the AI outperforms, underperforms, and agrees with humans.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What are the three questions every executive dashboard should answer about AI?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Is it accurate? Is it fast? Is it scalable?
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Did it save money, did it make money, did it reduce risk?
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Is the team happy? Is the model trained? Is it deployed?
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>How many models? How much compute? How many users?
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Executives care about business impact, not technical details. Every AI dashboard should clearly answer: did this save us money (cost reduction), did this make us money (revenue impact), and did this reduce risk (compliance, safety, trust). If you cannot answer at least one with a number, the budget is at risk.</div>
+</div>
+</div>
 
 </div>
 

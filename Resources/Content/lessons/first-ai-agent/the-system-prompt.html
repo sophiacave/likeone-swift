@@ -211,6 +211,132 @@ response = client.messages.create(
   </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"System Prompt Architecture","cards":[{"front":"Identity Block","back":"Tells the agent who it is and what role it plays. Grounds all reasoning with a consistent voice, expertise area, and sense of purpose. Always comes first."},{"front":"Goal Block","back":"The agent\u0027s primary mission in one clear sentence. Everything the agent does serves this goal. \u0027Be helpful\u0027 is NOT a goal — \u0027Resolve issues in minimal messages\u0027 IS."},{"front":"Tools Block","back":"Lists available tools with \u0027Use when...\u0027 guidance for each one. Without guidance, the model picks tools by guessing. With it, tool selection accuracy jumps significantly."},{"front":"Guardrails Block","back":"Hard rules the agent must never violate. Written as explicit NEVER statements. Examples: never share internal data, never promise refunds above $X without escalation."},{"front":"Output Format Block","back":"Controls response style: length (2-3 sentences), tone (empathetic, professional), structure (bullets, prose). Without it, responses default to verbose paragraphs."},{"front":"Why does block order matter?","back":"The model processes context sequentially. Identity first means all subsequent instructions are interpreted through the right persona. Guardrails before identity makes them harder to internalize."},{"front":"system vs messages parameter","back":"system = persistent instructions applying to every turn. messages = the actual conversation (user + assistant turns). Keep them separate — system is the agent\u0027s DNA, messages are the dialogue."},{"front":"Most common system prompt mistake","back":"Vague goals and no tool guidance. \u0027Be helpful\u0027 + \u0027you have tools\u0027 produces unpredictable behavior. \u0027Resolve issues in minimal messages\u0027 + \u0027Use lookup_customer when...\u0027 produces reliable agents."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">System Prompt Architecture</h3>
+<details class="flash-card">
+<summary class="flash-front">Identity Block</summary>
+<div class="flash-back">Tells the agent who it is and what role it plays. Grounds all reasoning with a consistent voice, expertise area, and sense of purpose. Always comes first.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Goal Block</summary>
+<div class="flash-back">The agent's primary mission in one clear sentence. Everything the agent does serves this goal. 'Be helpful' is NOT a goal — 'Resolve issues in minimal messages' IS.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Tools Block</summary>
+<div class="flash-back">Lists available tools with 'Use when...' guidance for each one. Without guidance, the model picks tools by guessing. With it, tool selection accuracy jumps significantly.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Guardrails Block</summary>
+<div class="flash-back">Hard rules the agent must never violate. Written as explicit NEVER statements. Examples: never share internal data, never promise refunds above $X without escalation.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Output Format Block</summary>
+<div class="flash-back">Controls response style: length (2-3 sentences), tone (empathetic, professional), structure (bullets, prose). Without it, responses default to verbose paragraphs.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why does block order matter?</summary>
+<div class="flash-back">The model processes context sequentially. Identity first means all subsequent instructions are interpreted through the right persona. Guardrails before identity makes them harder to internalize.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">system vs messages parameter</summary>
+<div class="flash-back">system = persistent instructions applying to every turn. messages = the actual conversation (user + assistant turns). Keep them separate — system is the agent's DNA, messages are the dialogue.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Most common system prompt mistake</summary>
+<div class="flash-back">Vague goals and no tool guidance. 'Be helpful' + 'you have tools' produces unpredictable behavior. 'Resolve issues in minimal messages' + 'Use lookup_customer when...' produces reliable agents.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"System Prompt Structure","questions":[{"q":"What is the purpose of the Identity block?","options":["It stores the agent API key","It tells the agent who it is, grounding all reasoning with a consistent persona and expertise","It lists which users can access the agent","It defines how fast the agent responds"],"correct":1,"explanation":"The Identity block establishes the agent persona and role. It grounds all reasoning — giving it a consistent voice that shapes every decision the agent makes."},{"q":"Why does block order matter?","options":["It does not — the LLM reads it all at once","Identity and goal first ensures the agent interprets all subsequent instructions through the correct lens","The last block always takes priority","Order only matters for output format"],"correct":1,"explanation":"LLMs process context sequentially. Identity and goal first means every tool, guardrail, and format instruction is interpreted through the correct framing."},{"q":"Which is a better goal statement?","options":["Be helpful to users","Resolve customer issues in as few messages as possible while ensuring satisfaction","Help people","Answer questions"],"correct":1,"explanation":"A good goal is specific and measurable. \u0027Resolve issues in minimal messages while ensuring satisfaction\u0027 gives the agent clear criteria for success. \u0027Be helpful\u0027 is too vague to guide behavior."},{"q":"Where does the system prompt go in the Claude API?","options":["In the messages array as the first message","In the system parameter, separate from messages","In the tools parameter","In the response"],"correct":1,"explanation":"The system parameter is separate from messages. It applies to every turn of the conversation as persistent instructions — the agent\u0027s DNA that shapes all responses."},{"q":"Your agent sometimes picks the wrong tool. What is the most likely fix?","options":["Use a more expensive model","Add Use when... guidance to each tool description in the system prompt","Remove tools the agent does not need","Increase max_tokens"],"correct":1,"explanation":"Tool selection is driven by descriptions. Adding \u0027Use when...\u0027 to each tool tells the model exactly when each tool is appropriate, dramatically improving selection accuracy."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">System Prompt Structure</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the purpose of the Identity block?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It stores the agent API key
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It tells the agent who it is, grounding all reasoning with a consistent persona and expertise
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It lists which users can access the agent
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It defines how fast the agent responds
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The Identity block establishes the agent persona and role. It grounds all reasoning — giving it a consistent voice that shapes every decision the agent makes.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why does block order matter?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It does not — the LLM reads it all at once
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Identity and goal first ensures the agent interprets all subsequent instructions through the correct lens
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The last block always takes priority
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Order only matters for output format
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> LLMs process context sequentially. Identity and goal first means every tool, guardrail, and format instruction is interpreted through the correct framing.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Which is a better goal statement?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Be helpful to users
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Resolve customer issues in as few messages as possible while ensuring satisfaction
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Help people
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Answer questions
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A good goal is specific and measurable. 'Resolve issues in minimal messages while ensuring satisfaction' gives the agent clear criteria for success. 'Be helpful' is too vague to guide behavior.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Where does the system prompt go in the Claude API?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>In the messages array as the first message
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>In the system parameter, separate from messages
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>In the tools parameter
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>In the response
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The system parameter is separate from messages. It applies to every turn of the conversation as persistent instructions — the agent's DNA that shapes all responses.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>Your agent sometimes picks the wrong tool. What is the most likely fix?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Use a more expensive model
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Add Use when... guidance to each tool description in the system prompt
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Remove tools the agent does not need
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Increase max_tokens
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Tool selection is driven by descriptions. Adding 'Use when...' to each tool tells the model exactly when each tool is appropriate, dramatically improving selection accuracy.</div>
+</div>
+</div>

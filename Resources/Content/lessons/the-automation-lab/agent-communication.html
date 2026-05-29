@@ -153,7 +153,99 @@ message = {
     </div>
   </div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Agent Communication Quiz","questions":[{"q":"How do agents communicate in a decoupled architecture?","options":["Direct API calls between agents","Shared memory \u2014 one writes, others read","Email-style message queues","Real-time WebSocket only"],"correct":1,"explanation":"Agents communicate through shared memory (consciousness_stream). No direct connections needed \u2014 agents write and read from the same store independently."},{"q":"What is the consciousness_stream?","options":["A real-time audio feed","A shared database table agents post messages to","A private log only one agent can read","A cron job scheduler"],"correct":1,"explanation":"The consciousness_stream is a shared table \u2014 like a team Slack channel for AI agents. Any agent can read from it or write to it."},{"q":"Agent A finishes writing a blog post and sets task.output in shared memory. What should Agent B (the publisher) do?","options":["Wait for Agent A to call it directly","Poll task.output and act when a new entry appears","Ask a human to relay the message","Create a new memory table"],"correct":1,"explanation":"Agent B watches for new entries on its key (task.output). When Agent A writes there, Agent B reads the payload and executes its action."},{"q":"Why is direct coupling between agents fragile?","options":["It is slower","If one agent fails, all agents that depend on it also fail","It uses more memory","It requires more code"],"correct":1,"explanation":"Direct coupling means Agent A directly calls Agent B. If B goes down, A crashes too. Shared memory decouples them \u2014 A writes regardless of B\u0027s status."},{"q":"What is the fastest way for Agent B to learn that Agent A has written new data?","options":["Polling every second","Supabase Realtime / database trigger that pushes notifications instantly","Reading the full table every minute","Asking a supervisor agent"],"correct":1,"explanation":"Database triggers and Supabase Realtime push changes via WebSockets the moment a row is inserted \u2014 zero latency, no polling required."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Agent Communication Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>How do agents communicate in a decoupled architecture?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Direct API calls between agents
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Shared memory — one writes, others read
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Email-style message queues
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Real-time WebSocket only
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Agents communicate through shared memory (consciousness_stream). No direct connections needed — agents write and read from the same store independently.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the consciousness_stream?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A real-time audio feed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A shared database table agents post messages to
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A private log only one agent can read
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A cron job scheduler
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The consciousness_stream is a shared table — like a team Slack channel for AI agents. Any agent can read from it or write to it.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Agent A finishes writing a blog post and sets task.output in shared memory. What should Agent B (the publisher) do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Wait for Agent A to call it directly
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Poll task.output and act when a new entry appears
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Ask a human to relay the message
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Create a new memory table
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Agent B watches for new entries on its key (task.output). When Agent A writes there, Agent B reads the payload and executes its action.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Why is direct coupling between agents fragile?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is slower
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>If one agent fails, all agents that depend on it also fail
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It uses more memory
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It requires more code
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Direct coupling means Agent A directly calls Agent B. If B goes down, A crashes too. Shared memory decouples them — A writes regardless of B's status.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What is the fastest way for Agent B to learn that Agent A has written new data?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Polling every second
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Supabase Realtime / database trigger that pushes notifications instantly
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Reading the full table every minute
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Asking a supervisor agent
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Database triggers and Supabase Realtime push changes via WebSockets the moment a row is inserted — zero latency, no polling required.</div>
+</div>
+</div>
 
   <div class="section">
     <h2>Namespacing and Key Design</h2>
@@ -192,6 +284,32 @@ message = {
     </div>
   </div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"Communication Patterns","cards":[{"front":"Why don\u0027t agents call each other directly?","back":"Direct connections create tight coupling. If Agent A fails, Agent B breaks too. Shared memory decouples them \u2014 they operate independently and communicate asynchronously."},{"front":"What is a message key?","back":"A named slot in shared memory (e.g., task.output). The sender writes to it; the receiver watches for new entries on that key."},{"front":"What happens if two agents write to the same key at the same time?","back":"A race condition \u2014 the second write overwrites the first. Solved with locking, priority queues, or a conscience layer (Lesson 6)."},{"front":"Polling vs event-driven reading","back":"Polling: check the key on a timer (simple, has latency). Event-driven: get notified instantly via WebSocket or trigger (faster, more complex)."},{"front":"What is Supabase Realtime?","back":"A feature that pushes database changes to subscribers via WebSockets in real time. Agents get notified the moment a new row is inserted \u2014 no polling."},{"front":"What happens if the database is down when an agent writes?","back":"The message is lost. Solution: retry with exponential backoff, or buffer writes locally with a write-ahead log."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Communication Patterns</h3>
+<details class="flash-card">
+<summary class="flash-front">Why don't agents call each other directly?</summary>
+<div class="flash-back">Direct connections create tight coupling. If Agent A fails, Agent B breaks too. Shared memory decouples them — they operate independently and communicate asynchronously.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is a message key?</summary>
+<div class="flash-back">A named slot in shared memory (e.g., task.output). The sender writes to it; the receiver watches for new entries on that key.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What happens if two agents write to the same key at the same time?</summary>
+<div class="flash-back">A race condition — the second write overwrites the first. Solved with locking, priority queues, or a conscience layer (Lesson 6).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Polling vs event-driven reading</summary>
+<div class="flash-back">Polling: check the key on a timer (simple, has latency). Event-driven: get notified instantly via WebSocket or trigger (faster, more complex).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is Supabase Realtime?</summary>
+<div class="flash-back">A feature that pushes database changes to subscribers via WebSockets in real time. Agents get notified the moment a new row is inserted — no polling.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What happens if the database is down when an agent writes?</summary>
+<div class="flash-back">The message is lost. Solution: retry with exponential backoff, or buffer writes locally with a write-ahead log.</div>
+</details>
+</div>
 
 </div>

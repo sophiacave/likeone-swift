@@ -224,9 +224,127 @@ console.<span style="color:#34d399">log</span>(<span style="color:#fb923c">'All 
 <div id="confetti"></div>
 </div>
 
-<div data-learn="QuizMC" data-props='{"title":"Launch Readiness — Mastery Check","questions":[{"q":"Where do you configure CORS headers for a Supabase edge function?","options":["Supabase Dashboard under Settings","In the edge function code itself as a corsHeaders object","Vercel dashboard under Headers","Namecheap DNS settings"],"correct":1,"explanation":"CORS headers are set directly in your edge function code. You define a corsHeaders object and include it in every Response you return. There is no dashboard UI for this — it is code-level configuration."},{"q":"What is the risk of leaving NEXT_PUBLIC_ prefix on a Stripe secret key?","options":["It causes a build error","The key is exposed in the browser JavaScript and anyone can see and use it to charge cards and access your Stripe account","It disables tree-shaking","The Stripe API rejects requests"],"correct":1,"explanation":"Variables with NEXT_PUBLIC_ prefix are bundled into browser JavaScript. Anyone who views source can extract the key. With a Stripe secret key, they could issue charges, read customer data, or modify your account."},{"q":"What does idempotency mean in the context of Stripe webhooks?","options":["Webhooks are sent exactly once","Your endpoint processes the same event safely multiple times without creating duplicates","Stripe encrypts all webhook payloads","Webhooks require authentication"],"correct":1,"explanation":"Stripe may retry webhooks due to network issues. Idempotency means your handler produces the same result whether it runs once or ten times — store the Stripe event ID and skip if already processed."},{"q":"You run the pre-launch script and it fails on step 1. What happened?","options":["The build failed","A secret key was found with a NEXT_PUBLIC_ prefix in your source code — it would be exposed to browsers","The health endpoint is down","RLS is not enabled"],"correct":1,"explanation":"Step 1 greps for NEXT_PUBLIC_.*SERVICE_ROLE and NEXT_PUBLIC_.*SECRET in your src/ directory. A match means a secret key is prefixed with NEXT_PUBLIC_ and would be exposed in the browser bundle. Fix: remove the prefix and move the variable to server-side only."},{"q":"After switching from test to live Stripe keys, what must you also update?","options":["The Supabase URL","The webhook signing secret — live and test endpoints have different signing secrets","The Vercel project ID","The CORS headers"],"correct":1,"explanation":"Stripe issues different signing secrets for test and live webhook endpoints. If you switch to live keys but keep the test webhook secret, signature verification will fail on every live event. Update STRIPE_WEBHOOK_SECRET in your environment variables."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Launch Readiness — Mastery Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Where do you configure CORS headers for a Supabase edge function?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Supabase Dashboard under Settings
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>In the edge function code itself as a corsHeaders object
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Vercel dashboard under Headers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Namecheap DNS settings
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> CORS headers are set directly in your edge function code. You define a corsHeaders object and include it in every Response you return. There is no dashboard UI for this — it is code-level configuration.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the risk of leaving NEXT_PUBLIC_ prefix on a Stripe secret key?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It causes a build error
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The key is exposed in the browser JavaScript and anyone can see and use it to charge cards and access your Stripe account
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It disables tree-shaking
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The Stripe API rejects requests
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Variables with NEXT_PUBLIC_ prefix are bundled into browser JavaScript. Anyone who views source can extract the key. With a Stripe secret key, they could issue charges, read customer data, or modify your account.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What does idempotency mean in the context of Stripe webhooks?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Webhooks are sent exactly once
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Your endpoint processes the same event safely multiple times without creating duplicates
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Stripe encrypts all webhook payloads
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Webhooks require authentication
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Stripe may retry webhooks due to network issues. Idempotency means your handler produces the same result whether it runs once or ten times — store the Stripe event ID and skip if already processed.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>You run the pre-launch script and it fails on step 1. What happened?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The build failed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A secret key was found with a NEXT_PUBLIC_ prefix in your source code — it would be exposed to browsers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The health endpoint is down
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>RLS is not enabled
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Step 1 greps for NEXT_PUBLIC_.*SERVICE_ROLE and NEXT_PUBLIC_.*SECRET in your src/ directory. A match means a secret key is prefixed with NEXT_PUBLIC_ and would be exposed in the browser bundle. Fix: remove the prefix and move the variable to server-side only.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>After switching from test to live Stripe keys, what must you also update?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The Supabase URL
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The webhook signing secret — live and test endpoints have different signing secrets
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The Vercel project ID
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The CORS headers
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Stripe issues different signing secrets for test and live webhook endpoints. If you switch to live keys but keep the test webhook secret, signature verification will fail on every live event. Update STRIPE_WEBHOOK_SECRET in your environment variables.</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Launch Checklist Flashcards","cards":[{"front":"What is tree-shaking and why does it matter for performance?","back":"Tree-shaking automatically removes unused code from your JavaScript bundle during build. Smaller bundles mean faster page loads. Check bundle size with next build — aim for under 100KB for first load JS."},{"front":"How do you verify Stripe webhook signatures and why?","back":"Call stripe.webhooks.constructEvent(body, sig, secret) with your webhook signing secret. This prevents fake events — anyone can POST to your endpoint, but only Stripe can produce a valid signature."},{"front":"What should happen when a payment fails on your site?","back":"Redirect to a helpful error page with a retry option. Never leave users on a blank page or generic Stripe error. Set the cancel_url parameter in your checkout session to control where failed/cancelled payments land."},{"front":"What is the Stripe test card number?","back":"4242 4242 4242 4242 with any future expiry date and any CVC. This card always succeeds in test mode. Use 4000 0000 0000 0002 to test a declined payment."},{"front":"Name the 4 categories of the launch checklist and their focus.","back":"Security (5 items): secrets, RLS, webhook signatures, CORS, git history. Performance (5): bundle size, images, indexes, caching, cold starts. UX (5): error states, mobile, cancel URL, loading states, confirmations. Revenue (5): test payments, webhooks, email capture, live keys, notifications."},{"front":"Why run a smoke test AFTER deploying, not just before?","back":"The build can succeed but the deployed app can still fail — missing environment variables in Vercel, DNS issues, edge function cold starts, or CORS misconfigurations only appear in the production environment. Post-deploy smoke tests catch these."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Launch Checklist Flashcards</h3>
+<details class="flash-card">
+<summary class="flash-front">What is tree-shaking and why does it matter for performance?</summary>
+<div class="flash-back">Tree-shaking automatically removes unused code from your JavaScript bundle during build. Smaller bundles mean faster page loads. Check bundle size with next build — aim for under 100KB for first load JS.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you verify Stripe webhook signatures and why?</summary>
+<div class="flash-back">Call stripe.webhooks.constructEvent(body, sig, secret) with your webhook signing secret. This prevents fake events — anyone can POST to your endpoint, but only Stripe can produce a valid signature.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What should happen when a payment fails on your site?</summary>
+<div class="flash-back">Redirect to a helpful error page with a retry option. Never leave users on a blank page or generic Stripe error. Set the cancel_url parameter in your checkout session to control where failed/cancelled payments land.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the Stripe test card number?</summary>
+<div class="flash-back">4242 4242 4242 4242 with any future expiry date and any CVC. This card always succeeds in test mode. Use 4000 0000 0000 0002 to test a declined payment.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Name the 4 categories of the launch checklist and their focus.</summary>
+<div class="flash-back">Security (5 items): secrets, RLS, webhook signatures, CORS, git history. Performance (5): bundle size, images, indexes, caching, cold starts. UX (5): error states, mobile, cancel URL, loading states, confirmations. Revenue (5): test payments, webhooks, email capture, live keys, notifications.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why run a smoke test AFTER deploying, not just before?</summary>
+<div class="flash-back">The build can succeed but the deployed app can still fail — missing environment variables in Vercel, DNS issues, edge function cold starts, or CORS misconfigurations only appear in the production environment. Post-deploy smoke tests catch these.</div>
+</details>
+</div>
 
 </div>
 

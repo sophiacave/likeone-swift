@@ -169,13 +169,91 @@ asyncio.run(generate())</code></div>
 <div class="lesson-section">
   <span class="section-label">Key Terms</span>
   <h2 class="section-title">TTS Vocabulary</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Text-to-Speech Key Concepts","cards":[{"front":"Concatenative TTS","back":"The old approach — stitching together tiny pre-recorded chunks of speech — which is why it sounded mechanical and robotic"},{"front":"Neural TTS","back":"Modern approach that learns speech patterns from thousands of hours of recordings and generates audio from scratch, one waveform at a time"},{"front":"SSML","back":"Speech Synthesis Markup Language — gives fine control over delivery including pauses, emphasis, speaking rate, pitch, and pronunciation"},{"front":"Prosody","back":"The rhythm, stress, and intonation of speech — what makes the difference between a flat reading and natural conversation"},{"front":"Writing for the ear","back":"Short sentences, contractions, punctuation for pauses, spelled-out numbers — text written for listening, not reading, because ears only get one shot"}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Text-to-Speech Key Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">Concatenative TTS</summary>
+<div class="flash-back">The old approach — stitching together tiny pre-recorded chunks of speech — which is why it sounded mechanical and robotic</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Neural TTS</summary>
+<div class="flash-back">Modern approach that learns speech patterns from thousands of hours of recordings and generates audio from scratch, one waveform at a time</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">SSML</summary>
+<div class="flash-back">Speech Synthesis Markup Language — gives fine control over delivery including pauses, emphasis, speaking rate, pitch, and pronunciation</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Prosody</summary>
+<div class="flash-back">The rhythm, stress, and intonation of speech — what makes the difference between a flat reading and natural conversation</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Writing for the ear</summary>
+<div class="flash-back">Short sentences, contractions, punctuation for pauses, spelled-out numbers — text written for listening, not reading, because ears only get one shot</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Lesson 2 Quiz</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Text-to-Speech Basics","questions":[{"q":"What is the fundamental difference between old concatenative TTS and modern neural TTS?","options":["Old TTS was faster","Old TTS stitched together recorded chunks — modern TTS generates audio from scratch using learned speech patterns","Neural TTS only works in English","Modern TTS requires more computing power but sounds the same"],"correct":1,"explanation":"Old TTS mechanically stitched together pre-recorded speech fragments — which is why it sounded robotic. Neural TTS learns patterns from thousands of hours of recordings and generates waveforms from scratch, producing natural-sounding results."},{"q":"What is the key writing principle for text that will be converted to speech?","options":["Use complex, sophisticated vocabulary","Write the same way you would for a printed document","Keep sentences short, use contractions, and use punctuation to create natural pauses","Always spell out every number in full"],"correct":2,"explanation":"Your ears get one shot at audio — unlike eyes that can re-read. Short sentences, contractions like don&#39;t instead of do not, and ellipses or dashes for pauses help TTS output sound natural."},{"q":"What does SSML stand for and what is it used for?","options":["Simple Speech Markup Layer — for adding sound effects","Speech Synthesis Markup Language — for fine-tuning delivery rate, pitch, volume, breaks, and pronunciation","Streaming Speech Memory Language — for real-time audio","Standard Sound Module Language — for equalizer settings"],"correct":1,"explanation":"SSML is Speech Synthesis Markup Language — it gives you fine control over how TTS reads your text, including pauses, emphasis, speaking speed, and specific pronunciation of words."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Text-to-Speech Basics</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the fundamental difference between old concatenative TTS and modern neural TTS?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Old TTS was faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Old TTS stitched together recorded chunks — modern TTS generates audio from scratch using learned speech patterns
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Neural TTS only works in English
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Modern TTS requires more computing power but sounds the same
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Old TTS mechanically stitched together pre-recorded speech fragments — which is why it sounded robotic. Neural TTS learns patterns from thousands of hours of recordings and generates waveforms from scratch, producing natural-sounding results.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the key writing principle for text that will be converted to speech?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Use complex, sophisticated vocabulary
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Write the same way you would for a printed document
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Keep sentences short, use contractions, and use punctuation to create natural pauses
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Always spell out every number in full
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Your ears get one shot at audio — unlike eyes that can re-read. Short sentences, contractions like don't instead of do not, and ellipses or dashes for pauses help TTS output sound natural.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What does SSML stand for and what is it used for?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Simple Speech Markup Layer — for adding sound effects
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Speech Synthesis Markup Language — for fine-tuning delivery rate, pitch, volume, breaks, and pronunciation
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Streaming Speech Memory Language — for real-time audio
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Standard Sound Module Language — for equalizer settings
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> SSML is Speech Synthesis Markup Language — it gives you fine control over how TTS reads your text, including pauses, emphasis, speaking speed, and specific pronunciation of words.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

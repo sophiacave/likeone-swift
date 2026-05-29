@@ -184,8 +184,108 @@ Format your response as:
 
   <div class="divider"><span>Test Your Understanding</span></div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Prompt Augmentation Quiz","questions":[{"q":"What is the most important instruction to include in a RAG prompt to prevent hallucination?","options":["Set the temperature to 0","Include \"Answer ONLY based on the provided context\"","Use GPT-4 instead of GPT-3.5","Always include at least 10 retrieved chunks"],"correct":1,"explanation":"Explicit grounding instructions tell the model to restrict itself to the retrieved context. Without this, the model may blend context with its training knowledge, which can introduce confident but incorrect information."},{"q":"Why should you add \"If the context doesn\u0027t contain the answer, say I don\u0027t have that information\"?","options":["To reduce API costs","To prevent the model from hallucinating an answer to a question the retrieved context cannot support","To make responses shorter","To improve vector search recall"],"correct":1,"explanation":"Without this instruction, the model may fill gaps in the context with plausible-sounding invented information. Explicitly handling the \"I don\u0027t know\" case forces the model to acknowledge the limits of its retrieved knowledge rather than fabricate."},{"q":"Where should grounding instructions be placed in a chat API prompt?","options":["In the user message alongside the question","In the system message","In the assistant message as a prefix","Grounding instructions should not be used"],"correct":1,"explanation":"The system message sets persistent behavior for the entire conversation. Placing grounding rules there means they apply to every response and cannot be accidentally overridden by user input phrasing."},{"q":"Why is low temperature (0.0-0.2) recommended for RAG answers?","options":["It makes the model respond faster","It reduces hallucination by making the model more deterministic and less likely to improvise","It saves API tokens","It is required by all vector databases"],"correct":1,"explanation":"Temperature controls randomness. Low temperature makes the model stick closely to the context, reducing creative improvisation. For factual RAG answers you want reliability over creativity."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Prompt Augmentation Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the most important instruction to include in a RAG prompt to prevent hallucination?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Set the temperature to 0
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Include "Answer ONLY based on the provided context"
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Use GPT-4 instead of GPT-3.5
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Always include at least 10 retrieved chunks
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Explicit grounding instructions tell the model to restrict itself to the retrieved context. Without this, the model may blend context with its training knowledge, which can introduce confident but incorrect information.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why should you add "If the context doesn't contain the answer, say I don't have that information"?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>To reduce API costs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>To prevent the model from hallucinating an answer to a question the retrieved context cannot support
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>To make responses shorter
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>To improve vector search recall
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Without this instruction, the model may fill gaps in the context with plausible-sounding invented information. Explicitly handling the "I don't know" case forces the model to acknowledge the limits of its retrieved knowledge rather than fabricate.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Where should grounding instructions be placed in a chat API prompt?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>In the user message alongside the question
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>In the system message
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>In the assistant message as a prefix
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Grounding instructions should not be used
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The system message sets persistent behavior for the entire conversation. Placing grounding rules there means they apply to every response and cannot be accidentally overridden by user input phrasing.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Why is low temperature (0.0-0.2) recommended for RAG answers?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It makes the model respond faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It reduces hallucination by making the model more deterministic and less likely to improvise
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It saves API tokens
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It is required by all vector databases
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Temperature controls randomness. Low temperature makes the model stick closely to the context, reducing creative improvisation. For factual RAG answers you want reliability over creativity.</div>
+</div>
+</div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"Prompt Augmentation Vocabulary","cards":[{"front":"Grounding Instruction","back":"A directive in the system prompt like \"Answer ONLY based on the provided context\" that constrains the LLM to use retrieved facts, not training memory."},{"front":"Augmented Prompt","back":"A prompt that includes retrieved document chunks as context alongside the user question. The bridge between retrieval and generation."},{"front":"Context Delimiter","back":"Clear separators (--- or triple backticks) around context blocks so the LLM can distinguish retrieved content from instructions."},{"front":"Citation Prompt","back":"An instruction asking the model to reference specific sources: \"Cite the source for each claim.\" Increases answer verifiability."},{"front":"Fallback Instruction","back":"\"If the context doesn\u0027t contain the answer, say I don\u0027t know.\" Prevents hallucination on unanswerable questions."},{"front":"System vs User Role","back":"Grounding rules go in the system message (persistent behavior). Context + question go in the user message (per-turn input)."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Prompt Augmentation Vocabulary</h3>
+<details class="flash-card">
+<summary class="flash-front">Grounding Instruction</summary>
+<div class="flash-back">A directive in the system prompt like "Answer ONLY based on the provided context" that constrains the LLM to use retrieved facts, not training memory.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Augmented Prompt</summary>
+<div class="flash-back">A prompt that includes retrieved document chunks as context alongside the user question. The bridge between retrieval and generation.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Context Delimiter</summary>
+<div class="flash-back">Clear separators (--- or triple backticks) around context blocks so the LLM can distinguish retrieved content from instructions.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Citation Prompt</summary>
+<div class="flash-back">An instruction asking the model to reference specific sources: "Cite the source for each claim." Increases answer verifiability.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Fallback Instruction</summary>
+<div class="flash-back">"If the context doesn't contain the answer, say I don't know." Prevents hallucination on unanswerable questions.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">System vs User Role</summary>
+<div class="flash-back">Grounding rules go in the system message (persistent behavior). Context + question go in the user message (per-turn input).</div>
+</details>
+</div>
 
 </div>

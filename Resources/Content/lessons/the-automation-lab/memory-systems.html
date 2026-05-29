@@ -171,7 +171,33 @@
     </div>
   </div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"Memory Types","cards":[{"front":"Short-Term Memory","back":"Exists only during the current conversation (the context window). Vanishes when the session ends. Fast but ephemeral — like a mental scratchpad."},{"front":"Long-Term Memory","back":"Persisted in a database (agent_memory table). Survives across sessions. Makes agents smarter over time. Use for user preferences, past decisions, learned facts."},{"front":"Shared Memory","back":"A key-value store accessible to ALL agents (brain_context). The communication bus that lets agents coordinate without talking directly to each other."},{"front":"What is the context window problem?","back":"LLMs have a max context size. After many tool calls, older context gets pushed out. Solution: checkpoint critical state to long-term memory before overflow."},{"front":"What are vector embeddings?","back":"Numerical arrays that capture the meaning of text. Enable semantic search \u2014 find memories by meaning, not just exact key match. Powered by pgvector in Supabase."},{"front":"When to use long-term vs shared memory?","back":"Long-term: one agent remembering things across its own sessions. Shared: passing information between different agents or storing system-wide state."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Memory Types</h3>
+<details class="flash-card">
+<summary class="flash-front">Short-Term Memory</summary>
+<div class="flash-back">Exists only during the current conversation (the context window). Vanishes when the session ends. Fast but ephemeral — like a mental scratchpad.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Long-Term Memory</summary>
+<div class="flash-back">Persisted in a database (agent_memory table). Survives across sessions. Makes agents smarter over time. Use for user preferences, past decisions, learned facts.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Shared Memory</summary>
+<div class="flash-back">A key-value store accessible to ALL agents (brain_context). The communication bus that lets agents coordinate without talking directly to each other.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the context window problem?</summary>
+<div class="flash-back">LLMs have a max context size. After many tool calls, older context gets pushed out. Solution: checkpoint critical state to long-term memory before overflow.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are vector embeddings?</summary>
+<div class="flash-back">Numerical arrays that capture the meaning of text. Enable semantic search — find memories by meaning, not just exact key match. Powered by pgvector in Supabase.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">When to use long-term vs shared memory?</summary>
+<div class="flash-back">Long-term: one agent remembering things across its own sessions. Shared: passing information between different agents or storing system-wide state.</div>
+</details>
+</div>
 
   <div class="section">
     <h2>When to Use Each Memory Type</h2>
@@ -187,6 +213,98 @@
     <p style="font-size:.82rem;color:#71717a">If in doubt, default to shared memory. It is always better for another agent to have access to a memory it does not need than for it to lack a memory it does need.</p>
   </div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Memory Systems Quiz","questions":[{"q":"Which type of memory disappears when a conversation ends?","options":["Long-term","Shared","Short-term","All of them"],"correct":2,"explanation":"Short-term memory only exists during the current session (context window). Long-term and shared memory persist in databases."},{"q":"An agent needs to remember a user\u0027s preferences across multiple sessions. Which memory type should it use?","options":["Short-term","Shared","Long-term","None needed"],"correct":2,"explanation":"Long-term memory (agent_memory table) persists across sessions \u2014 perfect for storing user preferences, past decisions, and learned facts."},{"q":"Two agents need to coordinate \u2014 Agent A writes a result that Agent B should act on. Which memory type enables this?","options":["Short-term (session context)","Long-term (agent_memory)","Shared (brain_context)","No memory needed"],"correct":2,"explanation":"Shared memory (brain_context) is the communication bus between agents. Agent A writes, Agent B reads \u2014 no direct connection needed."},{"q":"After 50 tool calls, an agent suddenly forgets the user\u0027s name. What happened?","options":["The agent crashed","The context window overflowed and older information was pushed out","The database was deleted","Short-term memory corrupted"],"correct":1,"explanation":"Context overflow is the most common cause of agent amnesia. The fix: checkpoint critical state to long-term memory before the context fills up."},{"q":"What advantage does vector search have over key-value lookup?","options":["It is faster","It finds memories by semantic meaning, not just exact key match","It uses less storage","It works without a database"],"correct":1,"explanation":"Vector search matches by meaning. A query about \u0027design preferences\u0027 can find a memory stored under \u0027ui settings\u0027 because the meanings are similar."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Memory Systems Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which type of memory disappears when a conversation ends?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Long-term
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Shared
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Short-term
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>All of them
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Short-term memory only exists during the current session (context window). Long-term and shared memory persist in databases.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>An agent needs to remember a user's preferences across multiple sessions. Which memory type should it use?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Short-term
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Shared
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Long-term
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>None needed
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Long-term memory (agent_memory table) persists across sessions — perfect for storing user preferences, past decisions, and learned facts.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Two agents need to coordinate — Agent A writes a result that Agent B should act on. Which memory type enables this?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Short-term (session context)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Long-term (agent_memory)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Shared (brain_context)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>No memory needed
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Shared memory (brain_context) is the communication bus between agents. Agent A writes, Agent B reads — no direct connection needed.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>After 50 tool calls, an agent suddenly forgets the user's name. What happened?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The agent crashed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The context window overflowed and older information was pushed out
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The database was deleted
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Short-term memory corrupted
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Context overflow is the most common cause of agent amnesia. The fix: checkpoint critical state to long-term memory before the context fills up.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What advantage does vector search have over key-value lookup?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It finds memories by semantic meaning, not just exact key match
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It uses less storage
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It works without a database
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Vector search matches by meaning. A query about 'design preferences' can find a memory stored under 'ui settings' because the meanings are similar.</div>
+</div>
+</div>
 
 </div>

@@ -138,7 +138,45 @@ Screen 3: Invoice Detail
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
 
-<div data-learn="QuizMC" data-props='{"questions":[{"q":"What is the user story format?","options":["As a developer, I want to use React, so that the code is clean","As a [user], I want to [action], so that [benefit]","First do this, then do that, then deploy","Feature: name, Description: text, Priority: high"],"correct":1,"explanation":"The user story format is: As a [type of user], I want to [do something], so that [I get this benefit]. It focuses on people and outcomes, not technology."},{"q":"What should you build first?","options":["Every feature you can think of","The most impressive feature to show off","The smallest useful version (MVP)","The database and backend first"],"correct":2,"explanation":"Build the smallest version that is actually useful to one person. You can always add features later, but you cannot add features to something that does not exist."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the user story format?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>As a developer, I want to use React, so that the code is clean
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>As a [user], I want to [action], so that [benefit]
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>First do this, then do that, then deploy
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Feature: name, Description: text, Priority: high
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The user story format is: As a [type of user], I want to [do something], so that [I get this benefit]. It focuses on people and outcomes, not technology.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What should you build first?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Every feature you can think of
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The most impressive feature to show off
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The smallest useful version (MVP)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The database and backend first
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Build the smallest version that is actually useful to one person. You can always add features later, but you cannot add features to something that does not exist.</div>
+</div>
+</div>
 
 </div>
 
@@ -147,7 +185,33 @@ Screen 3: Invoice Detail
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
 
-<div data-learn="FlashDeck" data-props='{"title":"Feature Thinking","cards":[{"front":"What is a user story?","back":"A simple sentence: As a [type of user], I want to [do something], so that [I get this benefit]. It describes features from the user perspective, not the code perspective."},{"front":"What is screen-by-screen thinking?","back":"Describing your app by walking through each screen — what the user sees, what they can click, and what happens next. Like giving a tour of a house before it is built."},{"front":"What is an MVP?","back":"Minimum Viable Product. The smallest version of your app that is actually useful to one person. Build this first, then add features."},{"front":"Should you tell AI which database to use?","back":"Usually no. Describe WHAT data needs to be saved, not HOW. Let AI choose the technical implementation."},{"front":"What makes a good feature description?","back":"Focus on what the user does and sees, not on technical implementation. Be specific about design, but let AI choose the code."},{"front":"What is the biggest feature description mistake?","back":"Trying to build everything at once. Start with the core feature, get it working, then add one feature at a time."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Feature Thinking</h3>
+<details class="flash-card">
+<summary class="flash-front">What is a user story?</summary>
+<div class="flash-back">A simple sentence: As a [type of user], I want to [do something], so that [I get this benefit]. It describes features from the user perspective, not the code perspective.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is screen-by-screen thinking?</summary>
+<div class="flash-back">Describing your app by walking through each screen — what the user sees, what they can click, and what happens next. Like giving a tour of a house before it is built.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is an MVP?</summary>
+<div class="flash-back">Minimum Viable Product. The smallest version of your app that is actually useful to one person. Build this first, then add features.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Should you tell AI which database to use?</summary>
+<div class="flash-back">Usually no. Describe WHAT data needs to be saved, not HOW. Let AI choose the technical implementation.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What makes a good feature description?</summary>
+<div class="flash-back">Focus on what the user does and sees, not on technical implementation. Be specific about design, but let AI choose the code.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the biggest feature description mistake?</summary>
+<div class="flash-back">Trying to build everything at once. Start with the core feature, get it working, then add one feature at a time.</div>
+</details>
+</div>
 
 </div>
 

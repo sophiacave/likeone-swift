@@ -98,9 +98,141 @@ print(f"cat · dog = {cosine_similarity(cat, dog):.4f}")  # ~0.9949
 print(f"cat · car = {cosine_similarity(cat, car):.4f}")  # ~0.2688</code></pre>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Similarity & Embedding Review","cards":[{"front":"Cosine Similarity = 1.0","back":"The two vectors point in the exact same direction. The words are synonyms or near-synonyms — like car and automobile."},{"front":"Cosine Similarity = 0.0","back":"The vectors are perpendicular — completely unrelated concepts with no semantic overlap."},{"front":"768-1536 Dimensions","back":"Real word embeddings use hundreds of dimensions to capture nuance. Each dimension encodes some aspect of meaning. The 2D visualizations in this course simplify the math but the principles are identical."},{"front":"Semantic Search","back":"Convert a query to a vector and find the nearest document vectors. Matches by meaning, not keywords — so affordable places to eat finds budget-friendly restaurants."},{"front":"RAG","back":"Retrieval-Augmented Generation. Search a vector database for relevant documents, include them in the AI&#39;s prompt, then generate a grounded response from your actual data."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Similarity & Embedding Review</h3>
+<details class="flash-card">
+<summary class="flash-front">Cosine Similarity = 1.0</summary>
+<div class="flash-back">The two vectors point in the exact same direction. The words are synonyms or near-synonyms — like car and automobile.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Cosine Similarity = 0.0</summary>
+<div class="flash-back">The vectors are perpendicular — completely unrelated concepts with no semantic overlap.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">768-1536 Dimensions</summary>
+<div class="flash-back">Real word embeddings use hundreds of dimensions to capture nuance. Each dimension encodes some aspect of meaning. The 2D visualizations in this course simplify the math but the principles are identical.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Semantic Search</summary>
+<div class="flash-back">Convert a query to a vector and find the nearest document vectors. Matches by meaning, not keywords — so affordable places to eat finds budget-friendly restaurants.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">RAG</summary>
+<div class="flash-back">Retrieval-Augmented Generation. Search a vector database for relevant documents, include them in the AI's prompt, then generate a grounded response from your actual data.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Similarity Challenge — 6 Questions","questions":[{"q":"Which pair of words would have the HIGHEST cosine similarity?","options":["happy and banana","dog and skyscraper","car and automobile","king and purple"],"correct":2,"explanation":"Car and automobile are synonyms — they appear in nearly identical contexts so their embedding vectors point in almost the same direction. Cosine similarity would be around 0.95."},{"q":"Why are embeddings useful for search engines?","options":["They make pages load faster","They allow matching by meaning, not just keywords","They compress images","They prevent typos"],"correct":1,"explanation":"With embeddings, searching affordable places to eat can match budget-friendly restaurants — even with zero keyword overlap. Both phrases map to nearby vectors because they mean similar things."},{"q":"Paris : France :: Tokyo : ? works because:","options":["The model memorized geography facts","The vector from Paris to France captures capital-of and applying it to Tokyo lands near Japan","All cities are near all countries","Tokyo and France have similar spelling"],"correct":1,"explanation":"The vector offset from Paris to France represents capital-of. Adding this same offset to Tokyo points toward Japan. Learned from patterns in text, not from explicit geography lessons."},{"q":"A cosine similarity of 0.0 between two word vectors means:","options":["The words are synonyms","The words are completely unrelated (perpendicular vectors)","The words are antonyms","An error occurred in the calculation"],"correct":1,"explanation":"Cosine similarity of 0 means the vectors are perpendicular — they share no directional component. The words exist in completely unrelated semantic regions."},{"q":"Real word embeddings typically use how many dimensions?","options":["2-3 dimensions","50-100 dimensions","768-1536 dimensions","1 million dimensions"],"correct":2,"explanation":"Modern embeddings typically use 768 to 1536 dimensions. More dimensions capture more nuance in meaning. The 2D visualizations in this course simplify the concept but the math is identical."},{"q":"RAG (Retrieval-Augmented Generation) uses embeddings to:","options":["Generate images from text","Find relevant documents to include in the AI context before generating a response","Compress AI models to run faster","Translate between languages"],"correct":1,"explanation":"RAG converts your question to a vector, searches a database for the most similar document vectors, retrieves those documents, and includes them in the AI prompt. This gives the AI access to specific knowledge without retraining."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Similarity Challenge — 6 Questions</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which pair of words would have the HIGHEST cosine similarity?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>happy and banana
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>dog and skyscraper
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>car and automobile
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>king and purple
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Car and automobile are synonyms — they appear in nearly identical contexts so their embedding vectors point in almost the same direction. Cosine similarity would be around 0.95.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why are embeddings useful for search engines?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>They make pages load faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>They allow matching by meaning, not just keywords
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>They compress images
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>They prevent typos
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> With embeddings, searching affordable places to eat can match budget-friendly restaurants — even with zero keyword overlap. Both phrases map to nearby vectors because they mean similar things.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Paris : France :: Tokyo : ? works because:</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The model memorized geography facts
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The vector from Paris to France captures capital-of and applying it to Tokyo lands near Japan
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>All cities are near all countries
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Tokyo and France have similar spelling
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The vector offset from Paris to France represents capital-of. Adding this same offset to Tokyo points toward Japan. Learned from patterns in text, not from explicit geography lessons.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>A cosine similarity of 0.0 between two word vectors means:</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The words are synonyms
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The words are completely unrelated (perpendicular vectors)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The words are antonyms
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>An error occurred in the calculation
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Cosine similarity of 0 means the vectors are perpendicular — they share no directional component. The words exist in completely unrelated semantic regions.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>Real word embeddings typically use how many dimensions?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>2-3 dimensions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>50-100 dimensions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>768-1536 dimensions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>1 million dimensions
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Modern embeddings typically use 768 to 1536 dimensions. More dimensions capture more nuance in meaning. The 2D visualizations in this course simplify the concept but the math is identical.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">6</span>RAG (Retrieval-Augmented Generation) uses embeddings to:</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Generate images from text
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Find relevant documents to include in the AI context before generating a response
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Compress AI models to run faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Translate between languages
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> RAG converts your question to a vector, searches a database for the most similar document vectors, retrieves those documents, and includes them in the AI prompt. This gives the AI access to specific knowledge without retraining.</div>
+</div>
+</div>
 
 </div>
 
@@ -150,7 +282,63 @@ print(f"cat · car = {cosine_similarity(cat, car):.4f}")  # ~0.2688</code></pre>
 <div class="lesson-section">
   <span class="section-label">Part 2</span>
   <h2 class="section-title">Full course review.</h2>
-<div data-learn="QuizMC" data-props='{"title":"Full Course Review","questions":[{"q":"A neuron computes: weighted sum + bias, then applies an activation function. What is the activation function for?","options":["To speed up computation","To introduce non-linearity so the network can learn complex patterns","To store the weights","To connect layers together"],"correct":1,"explanation":"Without activation functions, stacking layers is just multiplying matrices — the whole network reduces to one linear equation. Non-linearity lets networks learn curves, edges, language, and everything complex."},{"q":"You searched for affordable dining and a semantic search returned budget-friendly restaurants. This works because:","options":["The search engine matched the word dining","Both phrases have similar embedding vectors despite zero keyword overlap","The database has a synonym dictionary","The user corrected the query"],"correct":1,"explanation":"Semantic search converts queries and documents to embedding vectors. Affordable dining and budget-friendly restaurants mean similar things, so their vectors point in similar directions — even with zero shared words."},{"q":"What is the relationship between tokens, embeddings, and the context window?","options":["They are three names for the same thing","Tokens are the input units, each token gets an embedding vector, and the context window limits how many tokens fit","Embeddings control the context window size","Tokens are larger than embeddings"],"correct":1,"explanation":"Text → tokens (subword chunks) → embedding vectors (numbers capturing meaning). The context window is the maximum number of tokens the model can process at once. All three are parts of the same pipeline."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Full Course Review</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>A neuron computes: weighted sum + bias, then applies an activation function. What is the activation function for?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>To speed up computation
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>To introduce non-linearity so the network can learn complex patterns
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>To store the weights
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>To connect layers together
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Without activation functions, stacking layers is just multiplying matrices — the whole network reduces to one linear equation. Non-linearity lets networks learn curves, edges, language, and everything complex.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>You searched for affordable dining and a semantic search returned budget-friendly restaurants. This works because:</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The search engine matched the word dining
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Both phrases have similar embedding vectors despite zero keyword overlap
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The database has a synonym dictionary
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The user corrected the query
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Semantic search converts queries and documents to embedding vectors. Affordable dining and budget-friendly restaurants mean similar things, so their vectors point in similar directions — even with zero shared words.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the relationship between tokens, embeddings, and the context window?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>They are three names for the same thing
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Tokens are the input units, each token gets an embedding vector, and the context window limits how many tokens fit
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Embeddings control the context window size
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Tokens are larger than embeddings
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Text → tokens (subword chunks) → embedding vectors (numbers capturing meaning). The context window is the maximum number of tokens the model can process at once. All three are parts of the same pipeline.</div>
+</div>
+</div>
 
 </div>
 
@@ -159,7 +347,99 @@ print(f"cat · car = {cosine_similarity(cat, car):.4f}")  # ~0.2688</code></pre>
   <span class="section-label">Final Challenge</span>
   <h2 class="section-title">The AI Foundations gauntlet.</h2>
 
-<div data-learn="QuizMC" data-props='{"title":"AI Foundations Gauntlet","questions":[{"q":"Which of these is a core component inside an artificial neuron?","options":["Pixels","Weights","Bluetooth","Megabytes"],"correct":1,"explanation":"Weights are the learnable parameters inside each neuron. They determine how much influence each input has on the output."},{"q":"What does \"few-shot prompting\" mean?","options":["Sending very short prompts","Giving Claude 2-3 examples of what you want before asking","Using Claude for only a few minutes","Limiting Claude to a few words of response"],"correct":1,"explanation":"Few-shot means providing examples in your prompt. Claude learns the pattern from your examples and applies it to the new task."},{"q":"In embedding space, what does cosine similarity measure?","options":["How long two texts are","How semantically similar two concepts are","The file size of a document","How fast the model runs"],"correct":1,"explanation":"Cosine similarity measures the angle between two vectors in embedding space. Closer angles = more semantically similar concepts."},{"q":"What is RAG (Retrieval-Augmented Generation)?","options":["A type of neural network layer","A technique that retrieves relevant data and feeds it to the AI before generating a response","A way to compress images","A programming language for AI"],"correct":1,"explanation":"RAG searches your data for relevant context, then gives it to the AI so it can generate accurate, grounded responses from your actual information."},{"q":"What does the temperature parameter control?","options":["The speed of the AI response","How creative vs deterministic the output is","The number of tokens generated","The size of the context window"],"correct":1,"explanation":"Temperature controls randomness. Low temperature (0) = deterministic and focused. High temperature (1) = more creative and varied."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">AI Foundations Gauntlet</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which of these is a core component inside an artificial neuron?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Pixels
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Weights
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Bluetooth
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Megabytes
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Weights are the learnable parameters inside each neuron. They determine how much influence each input has on the output.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What does "few-shot prompting" mean?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Sending very short prompts
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Giving Claude 2-3 examples of what you want before asking
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Using Claude for only a few minutes
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Limiting Claude to a few words of response
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Few-shot means providing examples in your prompt. Claude learns the pattern from your examples and applies it to the new task.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>In embedding space, what does cosine similarity measure?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>How long two texts are
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>How semantically similar two concepts are
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The file size of a document
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>How fast the model runs
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Cosine similarity measures the angle between two vectors in embedding space. Closer angles = more semantically similar concepts.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What is RAG (Retrieval-Augmented Generation)?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A type of neural network layer
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A technique that retrieves relevant data and feeds it to the AI before generating a response
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A way to compress images
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A programming language for AI
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> RAG searches your data for relevant context, then gives it to the AI so it can generate accurate, grounded responses from your actual information.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What does the temperature parameter control?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The speed of the AI response
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>How creative vs deterministic the output is
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The number of tokens generated
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The size of the context window
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Temperature controls randomness. Low temperature (0) = deterministic and focused. High temperature (1) = more creative and varied.</div>
+</div>
+</div>
 
 </div>
 

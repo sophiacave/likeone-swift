@@ -264,8 +264,64 @@ Use full RLHF when:
 ```
 </div>
 
-<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the key advantage of DPO over RLHF?", "options": ["DPO produces higher quality models than RLHF", "DPO requires no preference data", "DPO eliminates the need for a separate reward model and reinforcement learning, collapsing both into supervised learning", "DPO works without any base model fine-tuning"], "correct": 2, "explanation": "The correct answer is: DPO eliminates the need for a separate reward model and reinforcement learning, collapsing both into supervised learning"}, {"q": "In what order should the training pipeline be executed?", "options": ["Alignment -> SFT -> Pre-training", "Pre-training -> Alignment -> SFT", "Pre-training -> SFT -> Alignment (DPO/RLHF)", "SFT -> Pre-training -> Alignment"], "correct": 2, "explanation": "The correct answer is: Pre-training -> SFT -> Alignment (DPO/RLHF)"}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the key advantage of DPO over RLHF?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>DPO produces higher quality models than RLHF
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>DPO requires no preference data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>DPO eliminates the need for a separate reward model and reinforcement learning, collapsing both into supervised learning
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>DPO works without any base model fine-tuning
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: DPO eliminates the need for a separate reward model and reinforcement learning, collapsing both into supervised learning</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>In what order should the training pipeline be executed?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Alignment -> SFT -> Pre-training
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Pre-training -> Alignment -> SFT
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Pre-training -> SFT -> Alignment (DPO/RLHF)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>SFT -> Pre-training -> Alignment
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: Pre-training -> SFT -> Alignment (DPO/RLHF)</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the three stages of RLHF?", "back": "Stage 1: Supervised Fine-Tuning (SFT). Stage 2: Reward Model Training (predict human preferences). Stage 3: RL Optimization with PPO (maximize reward score with KL penalty)."}, {"front": "What is the DPO beta parameter?", "back": "Beta controls KL penalty strength. 0.1 = standard default. 0.05 = stronger preference learning. 0.5 = model stays close to SFT behavior. Higher beta = more conservative alignment."}, {"front": "What are the three methods for collecting preference data?", "back": "1. Human annotation ($0.10-0.50 per comparison). 2. Synthetic AI feedback (stronger model ranks responses). 3. Implicit production data (user thumbs up/down, conversation continuation)."}, {"front": "When should you use SFT only vs adding DPO?", "back": "SFT only: objectively correct answers, format matters most, <200 examples. Add DPO: subjective quality tasks, tone/style control needed, SFT outputs correct but not preferred, 500+ preference pairs available."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Vocabulary</h3>
+<details class="flash-card">
+<summary class="flash-front">What are the three stages of RLHF?</summary>
+<div class="flash-back">Stage 1: Supervised Fine-Tuning (SFT). Stage 2: Reward Model Training (predict human preferences). Stage 3: RL Optimization with PPO (maximize reward score with KL penalty).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the DPO beta parameter?</summary>
+<div class="flash-back">Beta controls KL penalty strength. 0.1 = standard default. 0.05 = stronger preference learning. 0.5 = model stays close to SFT behavior. Higher beta = more conservative alignment.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are the three methods for collecting preference data?</summary>
+<div class="flash-back">1. Human annotation ($0.10-0.50 per comparison). 2. Synthetic AI feedback (stronger model ranks responses). 3. Implicit production data (user thumbs up/down, conversation continuation).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">When should you use SFT only vs adding DPO?</summary>
+<div class="flash-back">SFT only: objectively correct answers, format matters most, <200 examples. Add DPO: subjective quality tasks, tone/style control needed, SFT outputs correct but not preferred, 500+ preference pairs available.</div>
+</details>
+</div>
 
 </div>

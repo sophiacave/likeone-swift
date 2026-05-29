@@ -108,13 +108,95 @@ The goal is 100% accuracy. Anything less means refining your patterns.</code></d
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Click, Type & Navigate","cards":[{"front":"Click and Verify Pattern","back":"After every click: wait 500ms, take a screenshot, verify the expected change occurred. If not, retry. Never assume a click worked without visual confirmation."},{"front":"Form Filling Order","back":"Click field to focus -> verify cursor is active -> type text -> take screenshot to verify -> Tab or click to next field. For dropdowns: click to open -> screenshot to see options -> click option -> verify selection."},{"front":"Keyboard vs. Mouse","back":"Tab for moving between fields, Enter for submitting, Ctrl+A for selecting all, Ctrl+L for URL bar. Keyboard actions are often faster and more reliable than mouse clicks -- no coordinate targeting needed."},{"front":"The Overlay Problem","back":"Cookie banners, popups, chat widgets can block clicks. The AI sees the target element but the overlay intercepts the click. Always dismiss overlays before interacting with page content."},{"front":"Clearing Pre-filled Fields","back":"Never type into a pre-filled field without clearing it first. Use Ctrl+A then type to replace existing content. Otherwise new text appends to old text."},{"front":"Date Picker Strategy","back":"If the input accepts typed dates (MM/DD/YYYY), type directly instead of using the calendar picker. Faster, more reliable, fewer click-coordinate risks."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Click, Type & Navigate</h3>
+<details class="flash-card">
+<summary class="flash-front">Click and Verify Pattern</summary>
+<div class="flash-back">After every click: wait 500ms, take a screenshot, verify the expected change occurred. If not, retry. Never assume a click worked without visual confirmation.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Form Filling Order</summary>
+<div class="flash-back">Click field to focus -> verify cursor is active -> type text -> take screenshot to verify -> Tab or click to next field. For dropdowns: click to open -> screenshot to see options -> click option -> verify selection.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Keyboard vs. Mouse</summary>
+<div class="flash-back">Tab for moving between fields, Enter for submitting, Ctrl+A for selecting all, Ctrl+L for URL bar. Keyboard actions are often faster and more reliable than mouse clicks -- no coordinate targeting needed.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Overlay Problem</summary>
+<div class="flash-back">Cookie banners, popups, chat widgets can block clicks. The AI sees the target element but the overlay intercepts the click. Always dismiss overlays before interacting with page content.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Clearing Pre-filled Fields</summary>
+<div class="flash-back">Never type into a pre-filled field without clearing it first. Use Ctrl+A then type to replace existing content. Otherwise new text appends to old text.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Date Picker Strategy</summary>
+<div class="flash-back">If the input accepts typed dates (MM/DD/YYYY), type directly instead of using the calendar picker. Faster, more reliable, fewer click-coordinate risks.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Click, type & navigate quiz.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Click, Type & Navigate","questions":[{"q":"What is the click-and-verify pattern?","options":["Click and immediately move to the next action","Click, wait, take a screenshot, and verify the expected change occurred before proceeding -- retry if the change did not happen","Click twice to make sure it registers","Click and check the browser console for errors"],"correct":1,"explanation":"Every click should be followed by verification. Take a screenshot after clicking and confirm the expected result. If a button should open a modal and the modal did not appear, the click missed or the page was not ready. Verify, then proceed."},{"q":"Why is typing into an unfocused field dangerous?","options":["It causes the browser to crash","Keystrokes go to the page body, potentially triggering keyboard shortcuts or doing nothing instead of entering text in the intended field","Unfocused fields cannot accept text","It causes duplicate text entry"],"correct":1,"explanation":"If no field is focused, keystrokes go to the page body. A keystroke like the letter d might trigger a bookmark shortcut. The letter f might open find-in-page. Always click the target field and verify the cursor is active before typing."},{"q":"What is the fastest way to navigate to a known URL in browser automation?","options":["Click the Back button and navigate through history","Find and click a link on the current page","Use Ctrl+L (or Cmd+L) to focus the URL bar and type the URL directly -- no coordinate targeting needed","Open a new tab and click the address bar"],"correct":2,"explanation":"Ctrl+L focuses the URL bar regardless of what is on the page. Type the URL and press Enter. This skips all the coordinate-targeting risk of clicking navigation elements and works from any page state."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Click, Type & Navigate</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the click-and-verify pattern?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Click and immediately move to the next action
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Click, wait, take a screenshot, and verify the expected change occurred before proceeding -- retry if the change did not happen
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Click twice to make sure it registers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Click and check the browser console for errors
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Every click should be followed by verification. Take a screenshot after clicking and confirm the expected result. If a button should open a modal and the modal did not appear, the click missed or the page was not ready. Verify, then proceed.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why is typing into an unfocused field dangerous?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It causes the browser to crash
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Keystrokes go to the page body, potentially triggering keyboard shortcuts or doing nothing instead of entering text in the intended field
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Unfocused fields cannot accept text
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It causes duplicate text entry
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> If no field is focused, keystrokes go to the page body. A keystroke like the letter d might trigger a bookmark shortcut. The letter f might open find-in-page. Always click the target field and verify the cursor is active before typing.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the fastest way to navigate to a known URL in browser automation?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Click the Back button and navigate through history
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Find and click a link on the current page
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Use Ctrl+L (or Cmd+L) to focus the URL bar and type the URL directly -- no coordinate targeting needed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Open a new tab and click the address bar
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Ctrl+L focuses the URL bar regardless of what is on the page. Type the URL and press Enter. This skips all the coordinate-targeting risk of clicking navigation elements and works from any page state.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

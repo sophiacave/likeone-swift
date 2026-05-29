@@ -197,6 +197,110 @@
     </div>
   </div>
 
-<div data-learn="QuizMC" data-props='{"title":"Memory Architecture Quiz","questions":[{"q":"What is the key limitation of short-term memory?","options":["It is too slow","It is lost when the session ends — the agent cannot learn across sessions","It cannot store user preferences","It uses too much storage"],"correct":1,"explanation":"Short-term memory lives within a single session. When the session ends, the context is gone. The agent must re-learn from scratch on every new session."},{"q":"In the code example, where does long-term memory get injected?","options":["In the messages array as a user message","In the system prompt as additional context","In the tools parameter","In the response"],"correct":1,"explanation":"Long-term memories are loaded from the database and appended to the system prompt. This gives Claude persistent context without cluttering the message history."},{"q":"What should you NOT store in long-term memory?","options":["Successful resolutions","Failure patterns that should not be retried","Raw conversation logs — too noisy, save the insight instead","User preferences"],"correct":2,"explanation":"Raw conversation logs are too noisy and consume too much storage and context window. Save the insight: what was learned, what worked, what failed. Not every word of the conversation."},{"q":"What is RAG and why does it matter for agent memory?","options":["A model architecture that replaces transformers","Retrieval-Augmented Generation — retrieve only relevant memories from a vector store, enabling memory to scale to millions of entries","A type of fine-tuning","A caching strategy"],"correct":1,"explanation":"RAG stores memories as embeddings and retrieves only the most relevant ones on each turn. This means your agent can have millions of memories without overflowing the context window."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Memory Architecture Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the key limitation of short-term memory?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is too slow
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It is lost when the session ends — the agent cannot learn across sessions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It cannot store user preferences
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It uses too much storage
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Short-term memory lives within a single session. When the session ends, the context is gone. The agent must re-learn from scratch on every new session.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>In the code example, where does long-term memory get injected?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>In the messages array as a user message
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>In the system prompt as additional context
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>In the tools parameter
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>In the response
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Long-term memories are loaded from the database and appended to the system prompt. This gives Claude persistent context without cluttering the message history.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What should you NOT store in long-term memory?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Successful resolutions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Failure patterns that should not be retried
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Raw conversation logs — too noisy, save the insight instead
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>User preferences
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Raw conversation logs are too noisy and consume too much storage and context window. Save the insight: what was learned, what worked, what failed. Not every word of the conversation.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What is RAG and why does it matter for agent memory?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A model architecture that replaces transformers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Retrieval-Augmented Generation — retrieve only relevant memories from a vector store, enabling memory to scale to millions of entries
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A type of fine-tuning
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A caching strategy
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> RAG stores memories as embeddings and retrieves only the most relevant ones on each turn. This means your agent can have millions of memories without overflowing the context window.</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Memory Architecture","cards":[{"front":"Short-term memory","back":"The conversation history (messages array) for the current session. Lost when the session ends. Implementation: the messages parameter in the Claude API."},{"front":"Long-term memory","back":"Persistent storage (database, vector store) that survives across sessions. The agent loads relevant memories on boot and saves new learnings after each task."},{"front":"Context window overflow","back":"When memory grows larger than the model can process. Solutions: sliding window (keep last N messages), RAG (retrieve relevant memories only), or summarization (compress old memories)."},{"front":"RAG (Retrieval-Augmented Generation)","back":"Store memories as vector embeddings. On each turn, retrieve only the most semantically relevant memories. Scales to millions without overflowing context."},{"front":"What to store in long-term memory","back":"Resolutions, user preferences, failure patterns, domain knowledge. NOT raw conversation logs or temporary state."},{"front":"The goldfish problem","back":"An agent without long-term memory starts every session from zero. It repeats the same mistakes, asks the same questions, and never improves. Memory is the cure."},{"front":"How to inject long-term memory","back":"Load relevant memories from the database on boot. Append them to the system prompt as context. The agent sees its own past knowledge alongside the current conversation."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Memory Architecture</h3>
+<details class="flash-card">
+<summary class="flash-front">Short-term memory</summary>
+<div class="flash-back">The conversation history (messages array) for the current session. Lost when the session ends. Implementation: the messages parameter in the Claude API.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Long-term memory</summary>
+<div class="flash-back">Persistent storage (database, vector store) that survives across sessions. The agent loads relevant memories on boot and saves new learnings after each task.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Context window overflow</summary>
+<div class="flash-back">When memory grows larger than the model can process. Solutions: sliding window (keep last N messages), RAG (retrieve relevant memories only), or summarization (compress old memories).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">RAG (Retrieval-Augmented Generation)</summary>
+<div class="flash-back">Store memories as vector embeddings. On each turn, retrieve only the most semantically relevant memories. Scales to millions without overflowing context.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What to store in long-term memory</summary>
+<div class="flash-back">Resolutions, user preferences, failure patterns, domain knowledge. NOT raw conversation logs or temporary state.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The goldfish problem</summary>
+<div class="flash-back">An agent without long-term memory starts every session from zero. It repeats the same mistakes, asks the same questions, and never improves. Memory is the cure.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How to inject long-term memory</summary>
+<div class="flash-back">Load relevant memories from the database on boot. Append them to the system prompt as context. The agent sees its own past knowledge alongside the current conversation.</div>
+</details>
+</div>

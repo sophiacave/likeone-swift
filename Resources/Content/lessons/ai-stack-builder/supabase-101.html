@@ -237,10 +237,128 @@ eyJhbGciOi... <span style="color:#71717a">// SECRET, never in browser</span>
 </div>
 
 <div style="margin:1.5rem 0">
-<div data-learn="QuizMC" data-props='{"title":"Supabase 101 — Mastery Check","questions":[{"q":"What is the difference between the anon key and the service role key?","options":["They are the same key with different names","The anon key is public and safe for frontend use; the service role key is secret and bypasses ALL RLS","The anon key is for Edge Functions only","The service role key is used for read operations only"],"correct":1,"explanation":"The anon key is designed to be public — it can be safely included in frontend JavaScript. RLS policies control what it can access. The service role key bypasses ALL RLS and should only ever exist in server-side code (edge functions, never in the browser)."},{"q":"What does enabling RLS on a table do without adding any policies?","options":["Allows everyone to read but not write","Blocks all access to the table — default-deny","Allows service role access only","Has no effect until policies are added"],"correct":1,"explanation":"Enabling RLS with no policies creates a default-deny state — nobody can access the table. You must explicitly create policies to grant access. This is the safe default: deny all, then open up only what is needed."},{"q":"What is JSONB in Postgres and why use it for an AI brain table?","options":["A faster version of JSON that supports indexing and querying inside the JSON structure","A text format for storing binary data","A UUID generator","A real-time subscription type"],"correct":0,"explanation":"JSONB is a binary JSON storage format in Postgres. Unlike plain text JSON, JSONB allows you to index and query inside the structure (e.g., WHERE value->>name = Alex). For an AI brain table, this lets you store flexible, schema-less data while still querying it efficiently."},{"q":"What does an upsert (INSERT ... ON CONFLICT DO UPDATE) do?","options":["Inserts a row only if the key does not exist","Updates a row only if the key exists","Creates the row if new, or updates it if the key already exists — in one atomic query","Deletes the old row and creates a new one"],"correct":2,"explanation":"Upsert combines INSERT and UPDATE into one atomic operation. If the key exists, it updates the row. If not, it creates a new one. No need to check first — the database handles it. This is the standard write pattern for key-value brain tables."},{"q":"What does pgvector enable that regular Postgres cannot do?","options":["Faster SQL queries","Storing AI embeddings and searching by semantic similarity — finding related content by meaning, not keywords","Better authentication","Real-time subscriptions"],"correct":1,"explanation":"pgvector adds a vector data type and similarity search operators to Postgres. You store AI embeddings (numerical representations of text meaning) and search by cosine similarity — finding semantically related content even when the exact words differ."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Supabase 101 — Mastery Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the difference between the anon key and the service role key?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>They are the same key with different names
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The anon key is public and safe for frontend use; the service role key is secret and bypasses ALL RLS
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The anon key is for Edge Functions only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The service role key is used for read operations only
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The anon key is designed to be public — it can be safely included in frontend JavaScript. RLS policies control what it can access. The service role key bypasses ALL RLS and should only ever exist in server-side code (edge functions, never in the browser).</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What does enabling RLS on a table do without adding any policies?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Allows everyone to read but not write
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Blocks all access to the table — default-deny
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Allows service role access only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Has no effect until policies are added
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Enabling RLS with no policies creates a default-deny state — nobody can access the table. You must explicitly create policies to grant access. This is the safe default: deny all, then open up only what is needed.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is JSONB in Postgres and why use it for an AI brain table?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A faster version of JSON that supports indexing and querying inside the JSON structure
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A text format for storing binary data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A UUID generator
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A real-time subscription type
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> JSONB is a binary JSON storage format in Postgres. Unlike plain text JSON, JSONB allows you to index and query inside the structure (e.g., WHERE value->>name = Alex). For an AI brain table, this lets you store flexible, schema-less data while still querying it efficiently.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What does an upsert (INSERT ... ON CONFLICT DO UPDATE) do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Inserts a row only if the key does not exist
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Updates a row only if the key exists
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Creates the row if new, or updates it if the key already exists — in one atomic query
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Deletes the old row and creates a new one
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Upsert combines INSERT and UPDATE into one atomic operation. If the key exists, it updates the row. If not, it creates a new one. No need to check first — the database handles it. This is the standard write pattern for key-value brain tables.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What does pgvector enable that regular Postgres cannot do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Faster SQL queries
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Storing AI embeddings and searching by semantic similarity — finding related content by meaning, not keywords
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Better authentication
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Real-time subscriptions
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> pgvector adds a vector data type and similarity search operators to Postgres. You store AI embeddings (numerical representations of text meaning) and search by cosine similarity — finding semantically related content even when the exact words differ.</div>
+</div>
+</div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Supabase 101 Flashcards","cards":[{"front":"What SQL command enables Row Level Security on a table?","back":"ALTER TABLE table_name ENABLE ROW LEVEL SECURITY; — This must be followed by CREATE POLICY statements, otherwise the table is locked to all users (default-deny)."},{"front":"What is pgvector and what does it enable?","back":"pgvector is a Postgres extension that adds a vector data type and similarity search operators. It enables storing AI embeddings and finding semantically similar rows — the foundation of AI memory and RAG (Retrieval-Augmented Generation)."},{"front":"How do you connect to Supabase from a JavaScript frontend?","back":"import { createClient } from @supabase/supabase-js; const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY); — then use supabase.from(table).select() for queries."},{"front":"What is the difference between the anon key and service role key?","back":"Anon key: public, safe for frontend, access controlled by RLS policies. Service role key: secret, bypasses ALL RLS, server-side only. If the service role key leaks, your entire database is exposed."},{"front":"What is JSONB and why use it?","back":"JSONB is binary JSON storage in Postgres. Unlike text JSON, it supports indexing and querying inside the structure. Perfect for AI brain tables where values have varying shapes — no schema changes needed for new data types."},{"front":"What does an upsert do?","back":"INSERT ... ON CONFLICT (key) DO UPDATE SET ... — creates a new row if the key does not exist, or updates the existing row if it does. One atomic query, no race conditions, no need to check first."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Supabase 101 Flashcards</h3>
+<details class="flash-card">
+<summary class="flash-front">What SQL command enables Row Level Security on a table?</summary>
+<div class="flash-back">ALTER TABLE table_name ENABLE ROW LEVEL SECURITY; — This must be followed by CREATE POLICY statements, otherwise the table is locked to all users (default-deny).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is pgvector and what does it enable?</summary>
+<div class="flash-back">pgvector is a Postgres extension that adds a vector data type and similarity search operators. It enables storing AI embeddings and finding semantically similar rows — the foundation of AI memory and RAG (Retrieval-Augmented Generation).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you connect to Supabase from a JavaScript frontend?</summary>
+<div class="flash-back">import { createClient } from @supabase/supabase-js; const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY); — then use supabase.from(table).select() for queries.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the difference between the anon key and service role key?</summary>
+<div class="flash-back">Anon key: public, safe for frontend, access controlled by RLS policies. Service role key: secret, bypasses ALL RLS, server-side only. If the service role key leaks, your entire database is exposed.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is JSONB and why use it?</summary>
+<div class="flash-back">JSONB is binary JSON storage in Postgres. Unlike text JSON, it supports indexing and querying inside the structure. Perfect for AI brain tables where values have varying shapes — no schema changes needed for new data types.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What does an upsert do?</summary>
+<div class="flash-back">INSERT ... ON CONFLICT (key) DO UPDATE SET ... — creates a new row if the key does not exist, or updates the existing row if it does. One atomic query, no race conditions, no need to check first.</div>
+</details>
+</div>
 
 </div>
 

@@ -301,10 +301,132 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOi...</code></pre>
 </div>
 
 <div style="margin:1.5rem 0">
-<div data-learn="QuizMC" data-props='{"title":"Full Stack Architecture — Mastery Check","questions":[{"q":"Which service in the stack hosts the checkout page when a user buys a course?","options":["Vercel","Supabase","Stripe","Make.com"],"correct":2,"explanation":"Stripe hosts the checkout page entirely. Your edge function creates a session and returns a URL, and the frontend redirects the user there. You never handle raw card data — Stripe manages the entire payment UI and PCI compliance."},{"q":"What triggers the Make.com revenue alert scenario?","options":["A scheduled timer every hour","A Supabase webhook when a new row is inserted into the revenue table","The user clicking a button on the frontend","A Stripe webhook directly to Make.com"],"correct":1,"explanation":"Supabase can fire webhooks when database rows are created. The revenue table gets a new row after a successful Stripe payment (via the webhook handler edge function). That Supabase event triggers the Make.com scenario to alert Slack."},{"q":"Why does Claude read from brain_context via an edge function rather than directly from the frontend?","options":["The frontend can read brain_context directly with the anon key","The service role key that bypasses RLS must stay server-side — never in the browser","Edge functions are faster than direct database queries","The brain_context table does not support direct queries"],"correct":1,"explanation":"The brain_context table uses the service role key for full access, which bypasses RLS. This key must never be exposed to the browser. Edge functions run server-side, keeping the key secure while allowing Claude to read and write the full brain."},{"q":"A subscriber reports they never got a welcome email, but their email IS in the database. Where do you look first?","options":["Stripe webhook dashboard","Supabase edge function logs for the subscribe function","Make.com execution history","Vercel build logs"],"correct":1,"explanation":"The subscribe edge function both inserts the row AND sends the email. If the row exists but no email was sent, the function either errored during the Resend call (wrong API key, unverified domain) or the email was sent but bounced. Check the edge function logs first."},{"q":"What would happen if you removed the UNIQUE constraint on stripe_session_id in the revenue table?","options":["Nothing — Stripe only sends each event once","Duplicate webhook deliveries could create duplicate revenue rows, inflating your numbers","Stripe would reject the webhook","The edge function would crash"],"correct":1,"explanation":"Stripe may retry webhooks multiple times. Without UNIQUE on stripe_session_id, each retry could insert another revenue row for the same payment. The constraint prevents this — if a duplicate session_id is inserted, the database rejects it. This is idempotency at the database level."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Full Stack Architecture — Mastery Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which service in the stack hosts the checkout page when a user buys a course?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Vercel
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Supabase
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Stripe
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Make.com
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Stripe hosts the checkout page entirely. Your edge function creates a session and returns a URL, and the frontend redirects the user there. You never handle raw card data — Stripe manages the entire payment UI and PCI compliance.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What triggers the Make.com revenue alert scenario?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A scheduled timer every hour
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A Supabase webhook when a new row is inserted into the revenue table
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The user clicking a button on the frontend
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A Stripe webhook directly to Make.com
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Supabase can fire webhooks when database rows are created. The revenue table gets a new row after a successful Stripe payment (via the webhook handler edge function). That Supabase event triggers the Make.com scenario to alert Slack.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why does Claude read from brain_context via an edge function rather than directly from the frontend?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The frontend can read brain_context directly with the anon key
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The service role key that bypasses RLS must stay server-side — never in the browser
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Edge functions are faster than direct database queries
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The brain_context table does not support direct queries
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The brain_context table uses the service role key for full access, which bypasses RLS. This key must never be exposed to the browser. Edge functions run server-side, keeping the key secure while allowing Claude to read and write the full brain.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>A subscriber reports they never got a welcome email, but their email IS in the database. Where do you look first?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Stripe webhook dashboard
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Supabase edge function logs for the subscribe function
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Make.com execution history
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Vercel build logs
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The subscribe edge function both inserts the row AND sends the email. If the row exists but no email was sent, the function either errored during the Resend call (wrong API key, unverified domain) or the email was sent but bounced. Check the edge function logs first.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What would happen if you removed the UNIQUE constraint on stripe_session_id in the revenue table?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Nothing — Stripe only sends each event once
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Duplicate webhook deliveries could create duplicate revenue rows, inflating your numbers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Stripe would reject the webhook
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The edge function would crash
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Stripe may retry webhooks multiple times. Without UNIQUE on stripe_session_id, each retry could insert another revenue row for the same payment. The constraint prevents this — if a duplicate session_id is inserted, the database rejects it. This is idempotency at the database level.</div>
+</div>
+</div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Full Stack Architecture Flashcards","cards":[{"front":"Why does Claude read brain_context via an edge function instead of directly from the frontend?","back":"The service role key that bypasses RLS must stay server-side — never in the browser. Edge functions run server-side, keeping the key secure while allowing Claude to read and write the full brain."},{"front":"What is the role of Stripe in the stack?","back":"Stripe hosts the entire checkout page and handles PCI compliance. Your edge function creates a session and returns a URL — the frontend redirects users there. You never touch raw credit card data."},{"front":"How does Make.com fit into the architecture?","back":"Make.com is the automation glue connecting services without direct API integrations. It triggers on Supabase webhooks (new rows), filters data, and routes to Slack, Google Sheets, or email — no code required."},{"front":"What triggers the revenue logging flow?","back":"User completes payment on Stripe → Stripe fires checkout.session.completed webhook → your edge function verifies the signature → inserts a row into the revenue table → Make.com alerts Slack."},{"front":"Why use Vercel for the frontend?","back":"Vercel auto-deploys from GitHub on every push to main. It serves your Next.js app from global edge servers closest to each user, with zero-config SSL, preview deploys for branches, and environment variable management."},{"front":"What is the UNIQUE constraint on stripe_session_id for?","back":"Idempotency at the database level. If Stripe retries a webhook and the handler tries to insert the same session_id twice, the database rejects the duplicate. This prevents double-counting revenue from retry deliveries."},{"front":"Name the 6 services in the stack and their roles.","back":"Vercel (frontend hosting + CDN), Supabase (database + auth + edge functions), Stripe (payments), Resend (email delivery), Make.com (visual automation), Claude (AI intelligence). Total base cost: ~$29/month."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Full Stack Architecture Flashcards</h3>
+<details class="flash-card">
+<summary class="flash-front">Why does Claude read brain_context via an edge function instead of directly from the frontend?</summary>
+<div class="flash-back">The service role key that bypasses RLS must stay server-side — never in the browser. Edge functions run server-side, keeping the key secure while allowing Claude to read and write the full brain.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the role of Stripe in the stack?</summary>
+<div class="flash-back">Stripe hosts the entire checkout page and handles PCI compliance. Your edge function creates a session and returns a URL — the frontend redirects users there. You never touch raw credit card data.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How does Make.com fit into the architecture?</summary>
+<div class="flash-back">Make.com is the automation glue connecting services without direct API integrations. It triggers on Supabase webhooks (new rows), filters data, and routes to Slack, Google Sheets, or email — no code required.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What triggers the revenue logging flow?</summary>
+<div class="flash-back">User completes payment on Stripe → Stripe fires checkout.session.completed webhook → your edge function verifies the signature → inserts a row into the revenue table → Make.com alerts Slack.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why use Vercel for the frontend?</summary>
+<div class="flash-back">Vercel auto-deploys from GitHub on every push to main. It serves your Next.js app from global edge servers closest to each user, with zero-config SSL, preview deploys for branches, and environment variable management.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the UNIQUE constraint on stripe_session_id for?</summary>
+<div class="flash-back">Idempotency at the database level. If Stripe retries a webhook and the handler tries to insert the same session_id twice, the database rejects the duplicate. This prevents double-counting revenue from retry deliveries.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Name the 6 services in the stack and their roles.</summary>
+<div class="flash-back">Vercel (frontend hosting + CDN), Supabase (database + auth + edge functions), Stripe (payments), Resend (email delivery), Make.com (visual automation), Claude (AI intelligence). Total base cost: ~$29/month.</div>
+</details>
+</div>
 
 </div>
 

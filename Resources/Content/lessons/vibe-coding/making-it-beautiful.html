@@ -62,7 +62,35 @@
   <span class="section-label">Copy These</span>
   <h2 class="section-title">Design prompts that produce beautiful results.</h2>
 
-<div data-learn="FlashDeck" data-props='{"title":"Design Prompt Templates","cards":[{"front":"The \"Like Apple\" prompt\n\nWhen you want clean, minimal, and premium.","back":"PROMPT: \"Style this like an Apple product page. Minimal design, lots of white space, clean sans-serif font, subtle shadows on cards, smooth hover animations. Color palette: white background, dark gray text, one accent color (blue).\""},{"front":"The \"Dark Mode\" prompt\n\nWhen you want moody, modern, and technical.","back":"PROMPT: \"Dark mode design. Background: very dark gray (not pure black). Text: light gray with white for headings. Accent color: electric purple. Cards with subtle borders, not shadows. Monospace font for data. Rounded corners everywhere.\""},{"front":"The \"Warm & Friendly\" prompt\n\nWhen you want approachable and human.","back":"PROMPT: \"Warm, friendly design. Off-white background with soft shadows. Rounded corners on everything. Color palette: warm cream, soft orange accents, dark brown text. Use a rounded sans-serif font. Add gentle hover transitions. It should feel like a cozy coffee shop, not a corporate tool.\""},{"front":"The \"Reference Site\" prompt\n\nWhen you have a specific site in mind.","back":"PROMPT: \"Style this similar to [website name]. I specifically like their: spacing, color palette, and card layout. Keep the same overall aesthetic but use [your accent color] instead of theirs.\"\n\nYou can also screenshot a site and share the image with AI tools that support image input."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Design Prompt Templates</h3>
+<details class="flash-card">
+<summary class="flash-front">The "Like Apple" prompt
+
+When you want clean, minimal, and premium.</summary>
+<div class="flash-back">PROMPT: "Style this like an Apple product page. Minimal design, lots of white space, clean sans-serif font, subtle shadows on cards, smooth hover animations. Color palette: white background, dark gray text, one accent color (blue)."</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The "Dark Mode" prompt
+
+When you want moody, modern, and technical.</summary>
+<div class="flash-back">PROMPT: "Dark mode design. Background: very dark gray (not pure black). Text: light gray with white for headings. Accent color: electric purple. Cards with subtle borders, not shadows. Monospace font for data. Rounded corners everywhere."</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The "Warm & Friendly" prompt
+
+When you want approachable and human.</summary>
+<div class="flash-back">PROMPT: "Warm, friendly design. Off-white background with soft shadows. Rounded corners on everything. Color palette: warm cream, soft orange accents, dark brown text. Use a rounded sans-serif font. Add gentle hover transitions. It should feel like a cozy coffee shop, not a corporate tool."</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The "Reference Site" prompt
+
+When you have a specific site in mind.</summary>
+<div class="flash-back">PROMPT: "Style this similar to [website name]. I specifically like their: spacing, color palette, and card layout. Keep the same overall aesthetic but use [your accent color] instead of theirs."
+
+You can also screenshot a site and share the image with AI tools that support image input.</div>
+</details>
+</div>
 
 </div>
 
@@ -107,7 +135,45 @@
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
 
-<div data-learn="QuizMC" data-props='{"questions":[{"q":"What is the #1 difference between amateur and professional design?","options":["Expensive fonts","Lots of colors","White space and consistent spacing","Complex animations"],"correct":2,"explanation":"White space (breathing room between elements) and consistent spacing are the biggest differentiators between amateur and professional design. Everything else is secondary."},{"q":"How many accent colors should you typically use?","options":["As many as possible for visual interest","One — keep everything else neutral","At least three for variety","None — all black and white"],"correct":1,"explanation":"One accent color for buttons, links, and interactive elements. Everything else stays neutral. One color = clean. Five colors = chaos."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the #1 difference between amateur and professional design?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Expensive fonts
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Lots of colors
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>White space and consistent spacing
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Complex animations
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> White space (breathing room between elements) and consistent spacing are the biggest differentiators between amateur and professional design. Everything else is secondary.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>How many accent colors should you typically use?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>As many as possible for visual interest
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>One — keep everything else neutral
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>At least three for variety
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>None — all black and white
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> One accent color for buttons, links, and interactive elements. Everything else stays neutral. One color = clean. Five colors = chaos.</div>
+</div>
+</div>
 
 </div>
 
@@ -116,7 +182,33 @@
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
 
-<div data-learn="FlashDeck" data-props='{"title":"Design for Vibe Coders","cards":[{"front":"What is white space?","back":"Empty space between elements. It gives content room to breathe. The #1 thing that makes design look professional."},{"front":"How do you tell AI about colors?","back":"Use descriptions: \"warm cream background, terracotta accent, dark brown text\" or \"dark mode with electric purple accents.\" Mood words work."},{"front":"How many accent colors should you use?","back":"One. Use it for buttons, links, and interactive elements. Keep everything else neutral (grays, whites, blacks)."},{"front":"What does mobile-first mean?","back":"Design for phone screens first, then adapt for desktop. More than half your users will see your app on mobile."},{"front":"What is the max width rule?","back":"Content should not stretch wider than about 800px on desktop. Center it on the page. Text that stretches edge-to-edge is hard to read."},{"front":"How can you reference a design you like?","back":"Tell AI: \"Style this similar to [website name]. I like their spacing, colors, and card layout.\" You can also share screenshots."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Design for Vibe Coders</h3>
+<details class="flash-card">
+<summary class="flash-front">What is white space?</summary>
+<div class="flash-back">Empty space between elements. It gives content room to breathe. The #1 thing that makes design look professional.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you tell AI about colors?</summary>
+<div class="flash-back">Use descriptions: "warm cream background, terracotta accent, dark brown text" or "dark mode with electric purple accents." Mood words work.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How many accent colors should you use?</summary>
+<div class="flash-back">One. Use it for buttons, links, and interactive elements. Keep everything else neutral (grays, whites, blacks).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What does mobile-first mean?</summary>
+<div class="flash-back">Design for phone screens first, then adapt for desktop. More than half your users will see your app on mobile.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the max width rule?</summary>
+<div class="flash-back">Content should not stretch wider than about 800px on desktop. Center it on the page. Text that stretches edge-to-edge is hard to read.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How can you reference a design you like?</summary>
+<div class="flash-back">Tell AI: "Style this similar to [website name]. I like their spacing, colors, and card layout." You can also share screenshots.</div>
+</details>
+</div>
 
 </div>
 

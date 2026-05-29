@@ -51,13 +51,73 @@
 <div class="lesson-section">
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
-  <div data-learn="QuizMC" data-props='{"questions":[{"q":"According to cognitive science, which study method is LEAST effective?","options":["Active recall through self-testing","Spaced repetition with increasing intervals","Highlighting and re-reading notes","Interleaving multiple topics"],"correct":2,"explanation":"Highlighting and re-reading are the two least effective study methods according to a major meta-analysis. Active recall, spaced repetition, and interleaving are all significantly more effective."},{"q":"What makes AI-generated flashcards better than typical student-made ones?","options":["They use fancier vocabulary","They include more facts per card","They test relationships between concepts, not just isolated facts","They are automatically sorted alphabetically"],"correct":2,"explanation":"AI processes the entire material at once and creates cards that test connections between ideas — which mirrors how exam questions actually work, testing understanding over memorization."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>According to cognitive science, which study method is LEAST effective?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Active recall through self-testing
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Spaced repetition with increasing intervals
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Highlighting and re-reading notes
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Interleaving multiple topics
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Highlighting and re-reading are the two least effective study methods according to a major meta-analysis. Active recall, spaced repetition, and interleaving are all significantly more effective.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What makes AI-generated flashcards better than typical student-made ones?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>They use fancier vocabulary
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>They include more facts per card
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>They test relationships between concepts, not just isolated facts
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>They are automatically sorted alphabetically
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> AI processes the entire material at once and creates cards that test connections between ideas — which mirrors how exam questions actually work, testing understanding over memorization.</div>
+</div>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Study with AI","cards":[{"front":"What are the 3 gold-standard learning techniques?","back":"Active recall (self-testing), spaced repetition (increasing review intervals), and interleaving (mixing topics during study sessions)."},{"front":"What&#39;s the secret to better AI flashcards?","back":"Ask for cards that connect concepts from different parts of the material, not just isolated fact cards. Then generate extra cards targeting the ones you got wrong."},{"front":"How do you create a practice exam with AI?","back":"Feed it your syllabus and notes. Ask it to act as a professor and create a timed exam with multiple question types plus an answer key with explanations."},{"front":"What is the AI-powered Feynman technique?","back":"Explain a concept to AI. Ask it to act as a curious student who asks follow-up questions about gaps — without giving you the answer. Where you stumble = where you need to study."},{"front":"Why is the test-gap-study-test loop so effective?","back":"It targets your actual weak spots instead of wasting time reviewing material you already know, making every study minute count."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Study with AI</h3>
+<details class="flash-card">
+<summary class="flash-front">What are the 3 gold-standard learning techniques?</summary>
+<div class="flash-back">Active recall (self-testing), spaced repetition (increasing review intervals), and interleaving (mixing topics during study sessions).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What's the secret to better AI flashcards?</summary>
+<div class="flash-back">Ask for cards that connect concepts from different parts of the material, not just isolated fact cards. Then generate extra cards targeting the ones you got wrong.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you create a practice exam with AI?</summary>
+<div class="flash-back">Feed it your syllabus and notes. Ask it to act as a professor and create a timed exam with multiple question types plus an answer key with explanations.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the AI-powered Feynman technique?</summary>
+<div class="flash-back">Explain a concept to AI. Ask it to act as a curious student who asks follow-up questions about gaps — without giving you the answer. Where you stumble = where you need to study.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why is the test-gap-study-test loop so effective?</summary>
+<div class="flash-back">It targets your actual weak spots instead of wasting time reviewing material you already know, making every study minute count.</div>
+</details>
+</div>
 </div>
 
 </div>

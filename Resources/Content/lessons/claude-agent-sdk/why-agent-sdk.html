@@ -126,9 +126,131 @@
 </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Agent SDK Foundations","cards":[{"front":"What is the Claude Agent SDK?","back":"A software development kit that lets you build AI agents that can autonomously execute tasks using tools like Bash, file operations, and MCP servers. Unlike the raw API (which just sends/receives messages), the SDK provides the full agent runtime."},{"front":"API vs. Agent SDK","back":"The API is a request/response interface — you send a message, get an answer. The Agent SDK is an agent framework — you define a mission, and Claude executes it using tools, making decisions along the way until the task is complete."},{"front":"What are built-in tools?","back":"The SDK ships with pre-built tools: Bash (run terminal commands), Read/Write/Edit (file operations), Grep/Glob (search). These give the agent hands — the ability to interact with the file system and operating environment."},{"front":"What is autonomous execution?","back":"The agent runs a tool loop automatically: call a tool, read the result, decide the next action, repeat until done. No human needs to approve each step (unless you configure it that way with permission modes)."},{"front":"What is sub-agent delegation?","back":"A main agent can create specialized child agents for specific tasks. Each sub-agent gets its own tools, instructions, and context. The parent coordinates. Think: a manager delegating to specialists."},{"front":"What is session persistence?","back":"Agents can save conversation state and resume later. This enables long-running tasks, multi-session workflows, and agents that remember previous interactions across restarts."},{"front":"What prerequisites do I need?","back":"Comfort with TypeScript/JavaScript, familiarity with npm, and understanding of async/await. No prior AI or machine learning experience needed — this course covers everything else."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Agent SDK Foundations</h3>
+<details class="flash-card">
+<summary class="flash-front">What is the Claude Agent SDK?</summary>
+<div class="flash-back">A software development kit that lets you build AI agents that can autonomously execute tasks using tools like Bash, file operations, and MCP servers. Unlike the raw API (which just sends/receives messages), the SDK provides the full agent runtime.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">API vs. Agent SDK</summary>
+<div class="flash-back">The API is a request/response interface — you send a message, get an answer. The Agent SDK is an agent framework — you define a mission, and Claude executes it using tools, making decisions along the way until the task is complete.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are built-in tools?</summary>
+<div class="flash-back">The SDK ships with pre-built tools: Bash (run terminal commands), Read/Write/Edit (file operations), Grep/Glob (search). These give the agent hands — the ability to interact with the file system and operating environment.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is autonomous execution?</summary>
+<div class="flash-back">The agent runs a tool loop automatically: call a tool, read the result, decide the next action, repeat until done. No human needs to approve each step (unless you configure it that way with permission modes).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is sub-agent delegation?</summary>
+<div class="flash-back">A main agent can create specialized child agents for specific tasks. Each sub-agent gets its own tools, instructions, and context. The parent coordinates. Think: a manager delegating to specialists.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is session persistence?</summary>
+<div class="flash-back">Agents can save conversation state and resume later. This enables long-running tasks, multi-session workflows, and agents that remember previous interactions across restarts.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What prerequisites do I need?</summary>
+<div class="flash-back">Comfort with TypeScript/JavaScript, familiarity with npm, and understanding of async/await. No prior AI or machine learning experience needed — this course covers everything else.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Why Agent SDK — Comprehension Check","questions":[{"q":"What is the main difference between the Claude API and the Claude Agent SDK?","options":["The SDK uses a different AI model","The API is free but the SDK costs money","The API handles chat; the SDK enables autonomous agents that execute tasks with tools","The SDK only works with Python"],"correct":2,"explanation":"The API is a message-in, message-out interface. The Agent SDK provides a complete agent runtime with built-in tools, automatic tool execution loops, session management, and more — enabling Claude to act autonomously."},{"q":"Which of these tasks would benefit MOST from the Agent SDK (vs. the raw API)?","options":["Generating a single blog post from a prompt","Analyzing a codebase, finding bugs, and fixing them across multiple files","Translating a paragraph from English to Spanish","Answering a factual question about history"],"correct":1,"explanation":"Analyzing a codebase requires reading multiple files, understanding relationships, making edits, and potentially running tests — a multi-step autonomous workflow. The SDK handles the tool loop, file operations, and decision-making. The other tasks are single-turn responses the API handles fine."},{"q":"What does the tools: \"defaults\" option give your agent?","options":["Access to the internet only","Built-in file tools (Read, Write, Edit), Bash, search tools (Grep, Glob)","A connection to OpenAI models","Nothing — it is a placeholder"],"correct":1,"explanation":"The defaults tools preset gives Claude access to file system operations (Read, Write, Edit), terminal commands (Bash), and search tools (Grep, Glob). These are the core capabilities that let an agent interact with your local environment."},{"q":"What is session persistence used for?","options":["Saving your API key","Resuming agent conversations across restarts and maintaining state over time","Connecting to a database","Logging errors to a file"],"correct":1,"explanation":"Session persistence lets agents save their conversation state and resume later. This enables long-running workflows, multi-session tasks, and agents that remember previous interactions — critical for production agent systems."},{"q":"You want Claude to automatically read a log file, find errors, and write a summary report. Which approach is best?","options":["Use the Claude API with a very long prompt","Copy the log file contents and paste them into Claude.ai","Build an agent with the SDK that uses file tools to read, analyze, and write","Email the log file to Anthropic support"],"correct":2,"explanation":"This is a multi-step autonomous task: read a file, analyze its contents, and write a new file. The Agent SDK handles this naturally — Claude uses Read to get the log, processes it, and uses Write to create the report. No manual copying or pasting needed."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Why Agent SDK — Comprehension Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the main difference between the Claude API and the Claude Agent SDK?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The SDK uses a different AI model
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The API is free but the SDK costs money
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The API handles chat; the SDK enables autonomous agents that execute tasks with tools
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The SDK only works with Python
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The API is a message-in, message-out interface. The Agent SDK provides a complete agent runtime with built-in tools, automatic tool execution loops, session management, and more — enabling Claude to act autonomously.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Which of these tasks would benefit MOST from the Agent SDK (vs. the raw API)?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Generating a single blog post from a prompt
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Analyzing a codebase, finding bugs, and fixing them across multiple files
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Translating a paragraph from English to Spanish
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Answering a factual question about history
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Analyzing a codebase requires reading multiple files, understanding relationships, making edits, and potentially running tests — a multi-step autonomous workflow. The SDK handles the tool loop, file operations, and decision-making. The other tasks are single-turn responses the API handles fine.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What does the tools: "defaults" option give your agent?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Access to the internet only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Built-in file tools (Read, Write, Edit), Bash, search tools (Grep, Glob)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A connection to OpenAI models
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Nothing — it is a placeholder
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The defaults tools preset gives Claude access to file system operations (Read, Write, Edit), terminal commands (Bash), and search tools (Grep, Glob). These are the core capabilities that let an agent interact with your local environment.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What is session persistence used for?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Saving your API key
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Resuming agent conversations across restarts and maintaining state over time
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Connecting to a database
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Logging errors to a file
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Session persistence lets agents save their conversation state and resume later. This enables long-running workflows, multi-session tasks, and agents that remember previous interactions — critical for production agent systems.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>You want Claude to automatically read a log file, find errors, and write a summary report. Which approach is best?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Use the Claude API with a very long prompt
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Copy the log file contents and paste them into Claude.ai
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Build an agent with the SDK that uses file tools to read, analyze, and write
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Email the log file to Anthropic support
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> This is a multi-step autonomous task: read a file, analyze its contents, and write a new file. The Agent SDK handles this naturally — Claude uses Read to get the log, processes it, and uses Write to create the report. No manual copying or pasting needed.</div>
+</div>
+</div>
 
 </div>
 

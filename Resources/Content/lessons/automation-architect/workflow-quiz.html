@@ -177,9 +177,141 @@
     </div>
   </div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Advanced Workflow Patterns","questions":[{"q":"What advantage does AI classification have over a traditional rules engine?","options":["It is always faster","It handles ambiguous and novel inputs without explicit rules","It never makes mistakes","It does not need any data"],"correct":1,"explanation":"AI classification handles ambiguous and novel inputs gracefully. A rules engine only matches patterns you have explicitly coded — AI generalizes from training data."},{"q":"In an automation workflow, what is a dead letter queue?","options":["A queue for emails marked as spam","A place where failed messages go for retry or inspection","A queue that automatically deletes old messages","A priority queue for urgent tasks"],"correct":1,"explanation":"A dead letter queue captures messages that failed processing. This prevents data loss and lets you debug and retry failed automations."},{"q":"What should happen when an AI classifier returns low confidence?","options":["Ignore the message entirely","Route it to a random team","Flag it for human review","Delete the data"],"correct":2,"explanation":"Low confidence means the AI is not sure. Flagging for human review prevents misrouting while keeping data safe. This is called a human-in-the-loop pattern."},{"q":"What is idempotency and why does it matter in automations?","options":["Running the same operation twice produces the same result — prevents duplicate processing","It means the system runs faster each time","It means all operations are reversible","It means the system auto-scales"],"correct":0,"explanation":"Idempotency means re-running an operation produces the same result. Critical in automations because webhooks can fire twice — without idempotency you would process duplicates."},{"q":"Which pattern best handles a step in your workflow that might fail?","options":["Ignore the error and continue","Retry with exponential backoff, then dead letter queue","Delete the entire workflow","Send an angry email to the API provider"],"correct":1,"explanation":"Retry with exponential backoff handles transient failures like network blips and rate limits. If retries exhaust, the dead letter queue preserves the data for manual recovery."},{"q":"What is the best way to test an AI-powered workflow before going live?","options":["Deploy directly to production","Run it with sample data in a staging environment","Only test the AI model, skip the rest","Ask users to test it for you"],"correct":1,"explanation":"Always test with sample data in staging first. This catches issues in the full pipeline — trigger, AI processing, routing, and actions — before real data flows through."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Advanced Workflow Patterns</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What advantage does AI classification have over a traditional rules engine?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is always faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It handles ambiguous and novel inputs without explicit rules
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It never makes mistakes
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It does not need any data
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> AI classification handles ambiguous and novel inputs gracefully. A rules engine only matches patterns you have explicitly coded — AI generalizes from training data.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>In an automation workflow, what is a dead letter queue?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A queue for emails marked as spam
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A place where failed messages go for retry or inspection
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A queue that automatically deletes old messages
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A priority queue for urgent tasks
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A dead letter queue captures messages that failed processing. This prevents data loss and lets you debug and retry failed automations.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What should happen when an AI classifier returns low confidence?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Ignore the message entirely
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Route it to a random team
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Flag it for human review
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Delete the data
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Low confidence means the AI is not sure. Flagging for human review prevents misrouting while keeping data safe. This is called a human-in-the-loop pattern.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What is idempotency and why does it matter in automations?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Running the same operation twice produces the same result — prevents duplicate processing
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It means the system runs faster each time
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It means all operations are reversible
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It means the system auto-scales
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Idempotency means re-running an operation produces the same result. Critical in automations because webhooks can fire twice — without idempotency you would process duplicates.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>Which pattern best handles a step in your workflow that might fail?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Ignore the error and continue
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Retry with exponential backoff, then dead letter queue
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Delete the entire workflow
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Send an angry email to the API provider
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Retry with exponential backoff handles transient failures like network blips and rate limits. If retries exhaust, the dead letter queue preserves the data for manual recovery.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">6</span>What is the best way to test an AI-powered workflow before going live?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Deploy directly to production
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Run it with sample data in a staging environment
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Only test the AI model, skip the rest
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Ask users to test it for you
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Always test with sample data in staging first. This catches issues in the full pipeline — trigger, AI processing, routing, and actions — before real data flows through.</div>
+</div>
+</div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"Advanced Automation Patterns","cards":[{"front":"Dead letter queue","back":"A holding queue for messages that failed processing. Prevents data loss and enables retry and debugging."},{"front":"Idempotency","back":"An operation that produces the same result no matter how many times you repeat it. Essential when webhooks can fire more than once."},{"front":"Exponential backoff","back":"A retry strategy that waits progressively longer between attempts: 1s, 2s, 4s, 8s. Avoids hammering a struggling API."},{"front":"Human-in-the-loop","back":"Low-confidence AI decisions are escalated to a human instead of acted upon automatically."},{"front":"Staging environment","back":"A copy of production used for testing. Run full pipeline tests with sample data here before going live."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Advanced Automation Patterns</h3>
+<details class="flash-card">
+<summary class="flash-front">Dead letter queue</summary>
+<div class="flash-back">A holding queue for messages that failed processing. Prevents data loss and enables retry and debugging.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Idempotency</summary>
+<div class="flash-back">An operation that produces the same result no matter how many times you repeat it. Essential when webhooks can fire more than once.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Exponential backoff</summary>
+<div class="flash-back">A retry strategy that waits progressively longer between attempts: 1s, 2s, 4s, 8s. Avoids hammering a struggling API.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Human-in-the-loop</summary>
+<div class="flash-back">Low-confidence AI decisions are escalated to a human instead of acted upon automatically.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Staging environment</summary>
+<div class="flash-back">A copy of production used for testing. Run full pipeline tests with sample data here before going live.</div>
+</details>
+</div>
 
 
   <div class="course-complete" id="courseComplete">

@@ -251,8 +251,104 @@ result = agent.run(<span style="color:#fbbf24">"Research AI agents in 2026 and s
 </div>
 
 
-<div data-learn="FlashDeck" data-props='{"title":"AI Agent Architecture","cards":[{"front":"What is an AI agent?","back":"Claude given a goal, tools, memory, and guardrails — then set free to accomplish complex tasks autonomously. The core pattern is a tool loop that keeps calling Claude until the task is complete."},{"front":"The four agent components","back":"1. Goal (system prompt), 2. Tools (actions it can take), 3. Memory (conversation, persistent, or RAG), 4. Guardrails (max steps, human approval, budget caps)."},{"front":"The tool loop pattern","back":"A while loop: call Claude with tools \u2192 if stop_reason is tool_use, execute tools and send results back \u2192 repeat until stop_reason is end_turn. This is the foundation of ALL agents."},{"front":"Claude Agent SDK","back":"Anthropic\u0027s production framework for building agents. Handles the tool loop, error handling, and multi-agent orchestration. The @tool decorator auto-generates JSON schemas from type hints."},{"front":"When to require human approval","back":"Before destructive actions: deleting data, sending emails, spending money, modifying permissions, or any irreversible operation. Gate these with explicit human confirmation."}]}'></div>
-<div data-learn="QuizMC" data-props='{"title":"Building Agents Quiz","questions":[{"q":"What is the core pattern behind every AI agent?","options":["A single large prompt","A tool loop that keeps calling Claude until the task is complete","A database of pre-written responses","A fine-tuned model"],"correct":1,"explanation":"Every agent is fundamentally a tool loop: call Claude, process tool calls, send results back, repeat until done. Everything else (memory, guardrails, planning) is built on top of this core loop."},{"q":"An agent has access to 25 tools. What is likely to happen?","options":["It will be extremely capable","It will make poor tool choices — too many options cause confusion","It will run faster","It will automatically organize the tools into categories"],"correct":1,"explanation":"More tools means more confusion for the model. With 25+ tools, Claude has to evaluate each one for every decision, leading to poor tool selection. Start with 3-5 tools and add more only when clearly needed."},{"q":"You are deploying a support agent that can send emails and close tickets. Which guardrail is most critical?","options":["Budget limit","Human approval before sending emails or closing tickets","Full logging","Scope lock to support topics only"],"correct":1,"explanation":"Sending emails and closing tickets are real-world, potentially irreversible actions. A human approval gate ensures the agent cannot take these actions without explicit confirmation. This is the most critical guardrail for agents with real-world effects."},{"q":"What does the Claude Agent SDK provide over a raw tool loop?","options":["A different AI model","Built-in tool loop, error handling, turn limits, and multi-agent orchestration","Faster API responses","Free API credits"],"correct":1,"explanation":"The Agent SDK handles the tool loop, error handling, and turn limits automatically. The @tool decorator generates JSON schemas from type hints. For production agents, this saves significant boilerplate code."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">AI Agent Architecture</h3>
+<details class="flash-card">
+<summary class="flash-front">What is an AI agent?</summary>
+<div class="flash-back">Claude given a goal, tools, memory, and guardrails — then set free to accomplish complex tasks autonomously. The core pattern is a tool loop that keeps calling Claude until the task is complete.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The four agent components</summary>
+<div class="flash-back">1. Goal (system prompt), 2. Tools (actions it can take), 3. Memory (conversation, persistent, or RAG), 4. Guardrails (max steps, human approval, budget caps).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The tool loop pattern</summary>
+<div class="flash-back">A while loop: call Claude with tools → if stop_reason is tool_use, execute tools and send results back → repeat until stop_reason is end_turn. This is the foundation of ALL agents.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Claude Agent SDK</summary>
+<div class="flash-back">Anthropic's production framework for building agents. Handles the tool loop, error handling, and multi-agent orchestration. The @tool decorator auto-generates JSON schemas from type hints.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">When to require human approval</summary>
+<div class="flash-back">Before destructive actions: deleting data, sending emails, spending money, modifying permissions, or any irreversible operation. Gate these with explicit human confirmation.</div>
+</details>
+</div>
+<div class="quiz-block">
+<h3 class="quiz-title">Building Agents Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the core pattern behind every AI agent?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A single large prompt
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A tool loop that keeps calling Claude until the task is complete
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A database of pre-written responses
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A fine-tuned model
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Every agent is fundamentally a tool loop: call Claude, process tool calls, send results back, repeat until done. Everything else (memory, guardrails, planning) is built on top of this core loop.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>An agent has access to 25 tools. What is likely to happen?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It will be extremely capable
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It will make poor tool choices — too many options cause confusion
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It will run faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It will automatically organize the tools into categories
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> More tools means more confusion for the model. With 25+ tools, Claude has to evaluate each one for every decision, leading to poor tool selection. Start with 3-5 tools and add more only when clearly needed.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>You are deploying a support agent that can send emails and close tickets. Which guardrail is most critical?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Budget limit
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Human approval before sending emails or closing tickets
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Full logging
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Scope lock to support topics only
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Sending emails and closing tickets are real-world, potentially irreversible actions. A human approval gate ensures the agent cannot take these actions without explicit confirmation. This is the most critical guardrail for agents with real-world effects.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What does the Claude Agent SDK provide over a raw tool loop?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A different AI model
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Built-in tool loop, error handling, turn limits, and multi-agent orchestration
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Faster API responses
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Free API credits
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The Agent SDK handles the tool loop, error handling, and turn limits automatically. The @tool decorator generates JSON schemas from type hints. For production agents, this saves significant boilerplate code.</div>
+</div>
+</div>
 
 </div>
 

@@ -143,7 +143,45 @@ it. Make sure it stays running."</code></pre>
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
 
-<div data-learn="QuizMC" data-props='{"questions":[{"q":"What does deploying your app mean?","options":["Deleting it from your computer","Putting it on a server so anyone with the link can use it","Converting it to a mobile app","Selling it on an app store"],"correct":1,"explanation":"Deploying means copying your app to a server on the internet so anyone with the URL can access it. Like sharing a Google Doc instead of keeping it on your desktop."},{"q":"Which platform is the easiest if you built your app on Replit?","options":["Vercel","AWS","Replit Deploy","Heroku"],"correct":2,"explanation":"If you built on Replit, deploying is one click — your app is already running on their servers. Just click Deploy and share the link."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What does deploying your app mean?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Deleting it from your computer
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Putting it on a server so anyone with the link can use it
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Converting it to a mobile app
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Selling it on an app store
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Deploying means copying your app to a server on the internet so anyone with the URL can access it. Like sharing a Google Doc instead of keeping it on your desktop.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Which platform is the easiest if you built your app on Replit?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Vercel
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>AWS
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Replit Deploy
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Heroku
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> If you built on Replit, deploying is one click — your app is already running on their servers. Just click Deploy and share the link.</div>
+</div>
+</div>
 
 </div>
 
@@ -152,7 +190,33 @@ it. Make sure it stays running."</code></pre>
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
 
-<div data-learn="FlashDeck" data-props='{"title":"Deployment Basics","cards":[{"front":"What is deployment?","back":"Putting your app on a server on the internet so anyone with the link can use it. Like sharing a document via Google Drive instead of keeping it on your desktop."},{"front":"What are the three main hosting platforms?","back":"Replit Deploy (easiest, one-click), Vercel (most popular, auto-deploys from GitHub), and Netlify (great alternative, drag-and-drop)."},{"front":"How much does hosting cost?","back":"All three platforms have generous free tiers. You can host most personal projects and prototypes for free. Paid plans start when you need more traffic or features."},{"front":"How do you get a custom domain?","back":"Buy a domain ($10-15/year) from Namecheap or Cloudflare, then connect it to your hosting platform in the project settings. AI can walk you through the DNS setup."},{"front":"What should you check before sharing your deployed app?","back":"Test on mobile, test in incognito/private window, check page title, click all buttons, and make sure there is a favicon."},{"front":"How long does deployment take?","back":"Under 5 minutes for most platforms. Replit is one click. Vercel and Netlify take a few minutes for initial setup, then auto-deploy on every update."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Deployment Basics</h3>
+<details class="flash-card">
+<summary class="flash-front">What is deployment?</summary>
+<div class="flash-back">Putting your app on a server on the internet so anyone with the link can use it. Like sharing a document via Google Drive instead of keeping it on your desktop.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are the three main hosting platforms?</summary>
+<div class="flash-back">Replit Deploy (easiest, one-click), Vercel (most popular, auto-deploys from GitHub), and Netlify (great alternative, drag-and-drop).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How much does hosting cost?</summary>
+<div class="flash-back">All three platforms have generous free tiers. You can host most personal projects and prototypes for free. Paid plans start when you need more traffic or features.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you get a custom domain?</summary>
+<div class="flash-back">Buy a domain ($10-15/year) from Namecheap or Cloudflare, then connect it to your hosting platform in the project settings. AI can walk you through the DNS setup.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What should you check before sharing your deployed app?</summary>
+<div class="flash-back">Test on mobile, test in incognito/private window, check page title, click all buttons, and make sure there is a favicon.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How long does deployment take?</summary>
+<div class="flash-back">Under 5 minutes for most platforms. Replit is one click. Vercel and Netlify take a few minutes for initial setup, then auto-deploy on every update.</div>
+</details>
+</div>
 
 </div>
 

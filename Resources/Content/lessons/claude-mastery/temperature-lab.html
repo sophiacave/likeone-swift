@@ -196,10 +196,106 @@ response = client.messages.create(
 </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Temperature Concepts","cards":[{"front":"Temperature","back":"A parameter (0.0-1.0) controlling the randomness of AI output. 0 = deterministic and precise (always picks most probable token). 1 = creative and unpredictable (samples from wider distribution). Claude default is 1.0."},{"front":"Temperature 0","back":"The model always picks the most probable next token. Produces identical output for the same input every time. Best for code, classification, extraction, and factual Q&A. If reproducibility matters, use 0."},{"front":"Temperature 0.3-0.5","back":"A balanced range good for conversation, summarization, editing, and analysis. Reliable output with natural variation. Most production chatbots use this range."},{"front":"Top-P (Nucleus Sampling)","back":"Alternative sampling parameter. top_p=0.9 means only consider tokens in the top 90% of probability mass. Prevents rare, incoherent tokens. Anthropic recommends using either temperature OR top_p, not both."},{"front":"Claude default temperature","back":"1.0 — the maximum. This is more random than most use cases need. For production applications, always set temperature explicitly. Common starting points: 0.0 for code/classification, 0.3 for general tasks, 0.7-0.8 for creative writing."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Temperature Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">Temperature</summary>
+<div class="flash-back">A parameter (0.0-1.0) controlling the randomness of AI output. 0 = deterministic and precise (always picks most probable token). 1 = creative and unpredictable (samples from wider distribution). Claude default is 1.0.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Temperature 0</summary>
+<div class="flash-back">The model always picks the most probable next token. Produces identical output for the same input every time. Best for code, classification, extraction, and factual Q&A. If reproducibility matters, use 0.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Temperature 0.3-0.5</summary>
+<div class="flash-back">A balanced range good for conversation, summarization, editing, and analysis. Reliable output with natural variation. Most production chatbots use this range.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Top-P (Nucleus Sampling)</summary>
+<div class="flash-back">Alternative sampling parameter. top_p=0.9 means only consider tokens in the top 90% of probability mass. Prevents rare, incoherent tokens. Anthropic recommends using either temperature OR top_p, not both.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Claude default temperature</summary>
+<div class="flash-back">1.0 — the maximum. This is more random than most use cases need. For production applications, always set temperature explicitly. Common starting points: 0.0 for code/classification, 0.3 for general tasks, 0.7-0.8 for creative writing.</div>
+</details>
+</div>
 
 
-<div data-learn="QuizMC" data-props='{"title":"Temperature Decisions","questions":[{"q":"You are building a function that classifies customer emails as urgent or not urgent. What temperature should you use?","options":["0.0 — needs deterministic, consistent results","0.5 — balanced is best","0.8 — some creativity helps","1.0 — maximum variation"],"correct":0,"explanation":"Classification tasks require consistency and reproducibility. Temperature 0 ensures the model always picks the most probable classification — not a creative one. Running the same email through twice should give the same result."},{"q":"You want Claude to help brainstorm 20 different campaign slogans. What temperature range fits best?","options":["0.0 — precise answers only","0.1-0.2 — slightly flexible","0.7-0.8 — creative variety","Temperature does not affect brainstorming"],"correct":2,"explanation":"Temperature 0.7-0.8 introduces enough randomness to generate varied, surprising ideas — exactly what brainstorming needs. Each generation will produce different slogans, giving you a wide creative spread."},{"q":"What is Claude\u0027s default temperature if you do not set it explicitly?","options":["0.0 — deterministic by default","0.5 — balanced by default","0.7 — creative by default","1.0 — maximum randomness by default"],"correct":3,"explanation":"Claude\u0027s default temperature is 1.0 — maximum randomness. This surprises many developers who expect a conservative default. For production applications, always set temperature explicitly to get predictable behavior."},{"q":"A developer sets temperature to 0.9 for a code generation task and gets buggy output. Why?","options":["The model is too smart for the task","High temperature introduces random token choices into syntax and logic","The API key has expired","Temperature 0.9 disables code generation"],"correct":1,"explanation":"High temperature causes the model to occasionally select less probable tokens. In creative writing, this produces interesting variety. In code, it produces subtle bugs — wrong variable names, incorrect operators, broken syntax. Always use temperature 0 for code."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Temperature Decisions</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>You are building a function that classifies customer emails as urgent or not urgent. What temperature should you use?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>0.0 — needs deterministic, consistent results
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>0.5 — balanced is best
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>0.8 — some creativity helps
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>1.0 — maximum variation
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Classification tasks require consistency and reproducibility. Temperature 0 ensures the model always picks the most probable classification — not a creative one. Running the same email through twice should give the same result.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>You want Claude to help brainstorm 20 different campaign slogans. What temperature range fits best?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>0.0 — precise answers only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>0.1-0.2 — slightly flexible
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>0.7-0.8 — creative variety
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Temperature does not affect brainstorming
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Temperature 0.7-0.8 introduces enough randomness to generate varied, surprising ideas — exactly what brainstorming needs. Each generation will produce different slogans, giving you a wide creative spread.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is Claude's default temperature if you do not set it explicitly?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>0.0 — deterministic by default
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>0.5 — balanced by default
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>0.7 — creative by default
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>1.0 — maximum randomness by default
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Claude's default temperature is 1.0 — maximum randomness. This surprises many developers who expect a conservative default. For production applications, always set temperature explicitly to get predictable behavior.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>A developer sets temperature to 0.9 for a code generation task and gets buggy output. Why?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The model is too smart for the task
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>High temperature introduces random token choices into syntax and logic
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The API key has expired
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Temperature 0.9 disables code generation
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> High temperature causes the model to occasionally select less probable tokens. In creative writing, this produces interesting variety. In code, it produces subtle bugs — wrong variable names, incorrect operators, broken syntax. Always use temperature 0 for code.</div>
+</div>
+</div>
 </div>
 
 <div class="progress-footer">

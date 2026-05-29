@@ -241,7 +241,115 @@
     <p style="font-size:.85rem;color:#a1a1aa">This is the power of MCP's architecture — the protocol handles all the complexity of multiple connections, different transports, and varying capabilities. You configure which servers to connect to, and the Host handles the rest.</p>
   </div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"MCP Architecture Concepts","cards":[{"front":"Host","back":"The AI application the user interacts with — Claude Desktop, Claude Code, or a custom SDK app. Contains one or more MCP Clients."},{"front":"MCP Client","back":"A protocol bridge inside the Host that maintains a 1:1 connection with a single MCP Server. Handles negotiation and message routing."},{"front":"MCP Server","back":"A lightweight program that exposes tools, resources, or prompts to the AI through the MCP protocol."},{"front":"JSON-RPC","back":"The message format used for communication between MCP Client and Server. Structured as method calls with parameters and responses."},{"front":"Data Flow","back":"User asks a question, Host identifies a tool is needed, Client sends tools/call to Server, Server executes and returns data, Host generates an informed answer."},{"front":"Initialize Handshake","back":"The first message in every MCP connection. The Client sends an initialize request with its protocol version and capabilities. The Server responds with its own capabilities (tools, resources, prompts). The Client then sends an initialized notification to complete the handshake."},{"front":"Capability Negotiation","back":"During initialize, the Server declares what it supports — tools (callable functions), resources (readable data), and prompts (reusable templates). The Client declares its capabilities too, like roots (filesystem access) and sampling (LLM inference)."},{"front":"listChanged Flag","back":"A capability flag that indicates a Server can notify the Client when its available tools, resources, or prompts change at runtime — enabling dynamic discovery without reconnecting."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">MCP Architecture Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">Host</summary>
+<div class="flash-back">The AI application the user interacts with — Claude Desktop, Claude Code, or a custom SDK app. Contains one or more MCP Clients.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">MCP Client</summary>
+<div class="flash-back">A protocol bridge inside the Host that maintains a 1:1 connection with a single MCP Server. Handles negotiation and message routing.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">MCP Server</summary>
+<div class="flash-back">A lightweight program that exposes tools, resources, or prompts to the AI through the MCP protocol.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">JSON-RPC</summary>
+<div class="flash-back">The message format used for communication between MCP Client and Server. Structured as method calls with parameters and responses.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Data Flow</summary>
+<div class="flash-back">User asks a question, Host identifies a tool is needed, Client sends tools/call to Server, Server executes and returns data, Host generates an informed answer.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Initialize Handshake</summary>
+<div class="flash-back">The first message in every MCP connection. The Client sends an initialize request with its protocol version and capabilities. The Server responds with its own capabilities (tools, resources, prompts). The Client then sends an initialized notification to complete the handshake.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Capability Negotiation</summary>
+<div class="flash-back">During initialize, the Server declares what it supports — tools (callable functions), resources (readable data), and prompts (reusable templates). The Client declares its capabilities too, like roots (filesystem access) and sampling (LLM inference).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">listChanged Flag</summary>
+<div class="flash-back">A capability flag that indicates a Server can notify the Client when its available tools, resources, or prompts change at runtime — enabling dynamic discovery without reconnecting.</div>
+</details>
+</div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Architecture Check","questions":[{"q":"Which MCP component is responsible for maintaining a 1:1 connection with a single MCP Server?","options":["Host","MCP Client","MCP Server","Transport Layer"],"correct":1,"explanation":"The MCP Client lives inside the Host and maintains a 1:1 connection with one MCP Server. It handles protocol negotiation, capability exchange, and message routing."},{"q":"What protocol does the MCP Client use to communicate with the MCP Server?","options":["REST","GraphQL","JSON-RPC","gRPC"],"correct":2,"explanation":"MCP uses JSON-RPC (JSON Remote Procedure Call) for communication between the MCP Client and MCP Server."},{"q":"What must happen before a Client can call any tools on a Server?","options":["The Client must authenticate with an API key","The initialize handshake must complete, ending with an initialized notification","The Server must be registered in a central registry","The Host must restart"],"correct":1,"explanation":"The initialize handshake is mandatory. The Client sends initialize, the Server responds with its capabilities, and the Client sends an initialized notification. Only after this sequence can tools be called."},{"q":"In a setup where Claude Desktop is connected to 3 MCP servers, how many MCP Clients exist inside the Host?","options":["1 — the Host has a single Client that manages all servers","3 — one Client per Server connection","It depends on the transport type","None — the Host communicates directly with servers"],"correct":1,"explanation":"MCP uses a 1:1 relationship between Clients and Servers. If the Host is connected to 3 servers, it contains 3 separate MCP Clients, each managing one connection."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Architecture Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which MCP component is responsible for maintaining a 1:1 connection with a single MCP Server?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Host
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>MCP Client
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>MCP Server
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Transport Layer
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The MCP Client lives inside the Host and maintains a 1:1 connection with one MCP Server. It handles protocol negotiation, capability exchange, and message routing.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What protocol does the MCP Client use to communicate with the MCP Server?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>REST
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>GraphQL
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>JSON-RPC
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>gRPC
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> MCP uses JSON-RPC (JSON Remote Procedure Call) for communication between the MCP Client and MCP Server.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What must happen before a Client can call any tools on a Server?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The Client must authenticate with an API key
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The initialize handshake must complete, ending with an initialized notification
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The Server must be registered in a central registry
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The Host must restart
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The initialize handshake is mandatory. The Client sends initialize, the Server responds with its capabilities, and the Client sends an initialized notification. Only after this sequence can tools be called.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>In a setup where Claude Desktop is connected to 3 MCP servers, how many MCP Clients exist inside the Host?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>1 — the Host has a single Client that manages all servers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>3 — one Client per Server connection
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It depends on the transport type
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>None — the Host communicates directly with servers
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> MCP uses a 1:1 relationship between Clients and Servers. If the Host is connected to 3 servers, it contains 3 separate MCP Clients, each managing one connection.</div>
+</div>
+</div>
 </div>

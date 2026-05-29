@@ -182,13 +182,95 @@ Every percentage point moved from cloud to local saves money forever.</code></di
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Cost Optimization","cards":[{"front":"Cost Routing Framework","back":"Local (free): classification, triage, extraction, templates. Cloud (paid): long-form writing, complex reasoning, creative work. Hybrid: draft locally, polish on cloud. Route by task complexity."},{"front":"Token Reduction Techniques","back":"Prompt compression (concise system prompts), context windowing (last 5-10 messages + summary), output capping (min needed tokens), response caching (reuse repeated answers)."},{"front":"The 80/20 Split","back":"80% of requests go to local models (free). 20% go to cloud APIs (paid). Typical savings: 60-80% reduction in AI costs compared to all-cloud. Hardware pays for itself in 2 months."},{"front":"Cost Dashboard","back":"Log every request: model, tokens, task type, cost, routing destination. Daily summaries show total spend, local/cloud split, and savings vs. all-cloud baseline."},{"front":"Daily Spending Cap","back":"Set a maximum daily cloud spend. When the limit is reached, halt cloud requests and route everything to local models. Prevents runaway costs from bugs or traffic spikes."},{"front":"Quality vs. Cost Balance","back":"Never sacrifice visible quality for cost savings. A bad client email saves $0.02 but costs you the client. Route quality-critical tasks to cloud without guilt. Optimize the routine tasks."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Cost Optimization</h3>
+<details class="flash-card">
+<summary class="flash-front">Cost Routing Framework</summary>
+<div class="flash-back">Local (free): classification, triage, extraction, templates. Cloud (paid): long-form writing, complex reasoning, creative work. Hybrid: draft locally, polish on cloud. Route by task complexity.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Token Reduction Techniques</summary>
+<div class="flash-back">Prompt compression (concise system prompts), context windowing (last 5-10 messages + summary), output capping (min needed tokens), response caching (reuse repeated answers).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The 80/20 Split</summary>
+<div class="flash-back">80% of requests go to local models (free). 20% go to cloud APIs (paid). Typical savings: 60-80% reduction in AI costs compared to all-cloud. Hardware pays for itself in 2 months.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Cost Dashboard</summary>
+<div class="flash-back">Log every request: model, tokens, task type, cost, routing destination. Daily summaries show total spend, local/cloud split, and savings vs. all-cloud baseline.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Daily Spending Cap</summary>
+<div class="flash-back">Set a maximum daily cloud spend. When the limit is reached, halt cloud requests and route everything to local models. Prevents runaway costs from bugs or traffic spikes.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Quality vs. Cost Balance</summary>
+<div class="flash-back">Never sacrifice visible quality for cost savings. A bad client email saves $0.02 but costs you the client. Route quality-critical tasks to cloud without guilt. Optimize the routine tasks.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Cost optimization quiz.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Cost Optimization","questions":[{"q":"What is the hybrid draft-and-polish approach?","options":["Using two cloud models for the same task","Generate a rough draft on a local model (free), then refine it with a cloud model (one API call) -- cutting cloud usage by 60-80% for content tasks","Running the same prompt on local and cloud and choosing the better output","Using a local model to check cloud model outputs"],"correct":1,"explanation":"The local model handles the heavy lifting of generating the initial draft (free). The cloud model only needs to refine and polish (one API call instead of iterating). For a blog post that might take 3-4 cloud iterations, you reduce it to 1 local draft + 1 cloud polish."},{"q":"Why is a daily spending cap essential for cost optimization?","options":["It makes the AI produce better outputs","A bug that generates thousands of cloud requests in an hour can cost hundreds of dollars -- a daily cap halts cloud requests when the limit is reached, preventing runaway costs","Spending caps are required by cloud API providers","Spending caps improve response times"],"correct":1,"explanation":"Without a cap, a single bug -- an infinite loop, a retry storm, a traffic spike -- can burn through your entire budget in minutes. A daily cap is a circuit breaker: when you hit $X, cloud requests stop and everything routes to local models. The business keeps running, just on local."},{"q":"When should you NOT route a task to a local model for cost savings?","options":["Never -- local models should always be used","When the task is quality-critical (client communication, strategic plans, creative writing) and local model output would be visibly worse -- saving $0.02 on a bad client email costs you the client","When the local model is busy","When the task requires more than 100 tokens"],"correct":1,"explanation":"Cost optimization is about routing ROUTINE tasks locally. Quality-critical tasks -- anything client-facing, strategic, or creative -- should go to the best available model regardless of cost. The savings come from the 80% of tasks that are routine, not from cheapening the 20% that matter most."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Cost Optimization</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the hybrid draft-and-polish approach?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Using two cloud models for the same task
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Generate a rough draft on a local model (free), then refine it with a cloud model (one API call) -- cutting cloud usage by 60-80% for content tasks
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Running the same prompt on local and cloud and choosing the better output
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Using a local model to check cloud model outputs
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The local model handles the heavy lifting of generating the initial draft (free). The cloud model only needs to refine and polish (one API call instead of iterating). For a blog post that might take 3-4 cloud iterations, you reduce it to 1 local draft + 1 cloud polish.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why is a daily spending cap essential for cost optimization?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It makes the AI produce better outputs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A bug that generates thousands of cloud requests in an hour can cost hundreds of dollars -- a daily cap halts cloud requests when the limit is reached, preventing runaway costs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Spending caps are required by cloud API providers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Spending caps improve response times
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Without a cap, a single bug -- an infinite loop, a retry storm, a traffic spike -- can burn through your entire budget in minutes. A daily cap is a circuit breaker: when you hit $X, cloud requests stop and everything routes to local models. The business keeps running, just on local.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>When should you NOT route a task to a local model for cost savings?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Never -- local models should always be used
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>When the task is quality-critical (client communication, strategic plans, creative writing) and local model output would be visibly worse -- saving $0.02 on a bad client email costs you the client
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>When the local model is busy
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>When the task requires more than 100 tokens
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Cost optimization is about routing ROUTINE tasks locally. Quality-critical tasks -- anything client-facing, strategic, or creative -- should go to the best available model regardless of cost. The savings come from the 80% of tasks that are routine, not from cheapening the 20% that matter most.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

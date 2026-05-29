@@ -168,7 +168,42 @@ z = <span style="color:#fb923c">-1.5</span>
 </div>
 <p style="font-size:.85rem;color:#71717a;margin-top:.5rem">Notice: Step and ReLU both output 0 for negative inputs, but sigmoid still outputs 0.18 — it never fully "turns off." That is why sigmoid is useful for probability outputs (like "92% chance this is spam") but ReLU is preferred for the hidden layers inside the network because it trains faster and more reliably.</p>
 
-<div data-learn="FlashDeck" data-props='{"title":"Activation Functions — Flip for Details","cards":[{"front":"📐 STEP FUNCTION (1957)\n\nThe original. Outputs 0 or 1.\nUsed in the first Perceptron.","back":"HOW IT WORKS: If the weighted sum is >= 0, output 1. Otherwise, output 0.\n\nPROBLEM: No gradient — the network cannot learn gradually. It is either on or off. Like a light switch with no dimmer.\n\nUSED TODAY: Almost never. Historical importance only."},{"front":"⚡ ReLU (Modern Standard)\n\nRectified Linear Unit.\nThe workhorse of modern AI.","back":"HOW IT WORKS: max(0, z). If positive, pass it through. If negative, output 0.\n\nWHY IT WORKS: Dead simple, trains extremely fast, and avoids the vanishing gradient problem that killed earlier activations.\n\nUSED TODAY: Almost everywhere — image classifiers, language models, recommendation systems."},{"front":"🎯 SIGMOID (Probabilities)\n\nSquashes output to between 0 and 1.\nPerfect for yes/no decisions.","back":"HOW IT WORKS: 1/(1+e^-z). Smoothly maps any number to the range (0, 1).\n\nWHY IT WORKS: The output can be interpreted as a probability. Is this email spam? 0.92 = 92% likely spam.\n\nUSED TODAY: Final layer of binary classifiers. Replaced by ReLU in hidden layers."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Activation Functions — Flip for Details</h3>
+<details class="flash-card">
+<summary class="flash-front">📐 STEP FUNCTION (1957)
+
+The original. Outputs 0 or 1.
+Used in the first Perceptron.</summary>
+<div class="flash-back">HOW IT WORKS: If the weighted sum is >= 0, output 1. Otherwise, output 0.
+
+PROBLEM: No gradient — the network cannot learn gradually. It is either on or off. Like a light switch with no dimmer.
+
+USED TODAY: Almost never. Historical importance only.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">⚡ ReLU (Modern Standard)
+
+Rectified Linear Unit.
+The workhorse of modern AI.</summary>
+<div class="flash-back">HOW IT WORKS: max(0, z). If positive, pass it through. If negative, output 0.
+
+WHY IT WORKS: Dead simple, trains extremely fast, and avoids the vanishing gradient problem that killed earlier activations.
+
+USED TODAY: Almost everywhere — image classifiers, language models, recommendation systems.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">🎯 SIGMOID (Probabilities)
+
+Squashes output to between 0 and 1.
+Perfect for yes/no decisions.</summary>
+<div class="flash-back">HOW IT WORKS: 1/(1+e^-z). Smoothly maps any number to the range (0, 1).
+
+WHY IT WORKS: The output can be interpreted as a probability. Is this email spam? 0.92 = 92% likely spam.
+
+USED TODAY: Final layer of binary classifiers. Replaced by ReLU in hidden layers.</div>
+</details>
+</div>
 
 </div>
 
@@ -177,7 +212,63 @@ z = <span style="color:#fb923c">-1.5</span>
   <span class="section-label">Knowledge Check</span>
   <h2 class="section-title">Test your understanding.</h2>
 
-<div data-learn="QuizMC" data-props='{"title":"Neuron Mastery","questions":[{"q":"What does a weight in a neural network control?","options":["The physical size of a neuron","How much influence an input has on the output","The number of connections in the network","The speed at which data flows"],"correct":1,"explanation":"Weights determine how much each input contributes to the neuron output. Higher weights mean more influence. Training a neural network means finding the right weights."},{"q":"Why are activation functions necessary?","options":["They make the network run faster","They add non-linearity so the network can learn complex patterns","They reduce the number of neurons needed","They store the training data"],"correct":1,"explanation":"Without activation functions, a neural network is just a linear equation — no matter how many layers you stack. Non-linearity is what allows networks to learn curves, edges, language, and everything else."},{"q":"Which activation function is used in most modern neural networks?","options":["Step function","Sigmoid","ReLU","Logarithm"],"correct":2,"explanation":"ReLU (Rectified Linear Unit) is the standard. It is simple (max(0, z)), trains fast, and avoids the vanishing gradient problem that plagued older activations like sigmoid in hidden layers."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Neuron Mastery</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What does a weight in a neural network control?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The physical size of a neuron
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>How much influence an input has on the output
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The number of connections in the network
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The speed at which data flows
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Weights determine how much each input contributes to the neuron output. Higher weights mean more influence. Training a neural network means finding the right weights.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why are activation functions necessary?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>They make the network run faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>They add non-linearity so the network can learn complex patterns
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>They reduce the number of neurons needed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>They store the training data
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Without activation functions, a neural network is just a linear equation — no matter how many layers you stack. Non-linearity is what allows networks to learn curves, edges, language, and everything else.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Which activation function is used in most modern neural networks?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Step function
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Sigmoid
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>ReLU
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Logarithm
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> ReLU (Rectified Linear Unit) is the standard. It is simple (max(0, z)), trains fast, and avoids the vanishing gradient problem that plagued older activations like sigmoid in hidden layers.</div>
+</div>
+</div>
 
   <div class="narration" style="margin-top:1.5rem">
     <strong>This is the real building block of AI.</strong> Every neural network — from image classifiers to large language models — is made of neurons that compute exactly this: weighted sum + bias, passed through an activation function. Stack thousands of these together and you get intelligence.

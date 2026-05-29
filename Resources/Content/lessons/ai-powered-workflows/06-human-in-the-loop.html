@@ -126,7 +126,29 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Human-in-the-Loop Design","cards":[{"front":"Approval Gate","back":"Workflow pauses and waits for thumbs-up before proceeding. AI drafts a blog post, you review, it publishes only after approval."},{"front":"Review Queue","back":"Workflow completes but flags items for after-the-fact review. AI responds to tickets automatically, daily human review catches issues."},{"front":"Escalation Path","back":"Routine cases handled automatically, humans only for exceptions. Refunds under $50 auto-processed, larger ones go to a manager."},{"front":"The Bottleneck Trap","back":"A workflow that stops dead until someone clicks approve — and that person is on vacation. Always set timeouts and backup approvers."},{"front":"The Trust Ladder","back":"Start with approval gates. As AI proves accurate, move to review queues. Eventually escalation-only. Climb based on evidence, not faith."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Human-in-the-Loop Design</h3>
+<details class="flash-card">
+<summary class="flash-front">Approval Gate</summary>
+<div class="flash-back">Workflow pauses and waits for thumbs-up before proceeding. AI drafts a blog post, you review, it publishes only after approval.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Review Queue</summary>
+<div class="flash-back">Workflow completes but flags items for after-the-fact review. AI responds to tickets automatically, daily human review catches issues.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Escalation Path</summary>
+<div class="flash-back">Routine cases handled automatically, humans only for exceptions. Refunds under $50 auto-processed, larger ones go to a manager.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Bottleneck Trap</summary>
+<div class="flash-back">A workflow that stops dead until someone clicks approve — and that person is on vacation. Always set timeouts and backup approvers.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Trust Ladder</summary>
+<div class="flash-back">Start with approval gates. As AI proves accurate, move to review queues. Eventually escalation-only. Climb based on evidence, not faith.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -175,7 +197,63 @@ client = anthropic.Anthropic()
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Lesson 6 Quiz</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Human-in-the-Loop","questions":[{"q":"What is the core principle for deciding where to add human checkpoints?","options":["Add human checkpoints to every step for maximum safety","Remove all human checkpoints to maximize automation","Human involvement only where it adds genuine value — machine everywhere else","Only add checkpoints to financial workflows"],"correct":2,"explanation":"The goal is human involvement only where it adds value — publishing content with your brand name, high-value refunds, sensitive communications. Everywhere else, the machine handles it efficiently."},{"q":"How should you handle the risk of an approval gate creating bottlenecks when the approver is unavailable?","options":["Shut down the workflow until the approver returns","Design around the constraint — set timeouts, designate backup approvers, batch reviews","Remove the approval gate entirely","Only run the workflow when the approver is known to be available"],"correct":1,"explanation":"Your workflow should work with human schedules, not against them. Set timeouts with auto-approve fallbacks, designate backup approvers, and batch reviews so humans make 10 decisions in one sitting rather than 10 separate interruptions."},{"q":"What evidence should drive moving a workflow checkpoint up the trust ladder?","options":["The workflow has been running for a specific number of days","Tracked accuracy data showing the AI makes consistently correct decisions in that category","Your personal feeling that the workflow seems reliable","The number of times the workflow has run successfully"],"correct":1,"explanation":"You climb the trust ladder based on evidence, not faith. Track the AI&#39;s accuracy over time. When it is right 98% of the time on a specific category of decision, that category graduates to the next level of autonomy."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Human-in-the-Loop</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the core principle for deciding where to add human checkpoints?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Add human checkpoints to every step for maximum safety
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Remove all human checkpoints to maximize automation
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Human involvement only where it adds genuine value — machine everywhere else
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Only add checkpoints to financial workflows
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The goal is human involvement only where it adds value — publishing content with your brand name, high-value refunds, sensitive communications. Everywhere else, the machine handles it efficiently.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>How should you handle the risk of an approval gate creating bottlenecks when the approver is unavailable?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Shut down the workflow until the approver returns
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Design around the constraint — set timeouts, designate backup approvers, batch reviews
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Remove the approval gate entirely
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Only run the workflow when the approver is known to be available
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Your workflow should work with human schedules, not against them. Set timeouts with auto-approve fallbacks, designate backup approvers, and batch reviews so humans make 10 decisions in one sitting rather than 10 separate interruptions.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What evidence should drive moving a workflow checkpoint up the trust ladder?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The workflow has been running for a specific number of days
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Tracked accuracy data showing the AI makes consistently correct decisions in that category
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Your personal feeling that the workflow seems reliable
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The number of times the workflow has run successfully
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> You climb the trust ladder based on evidence, not faith. Track the AI's accuracy over time. When it is right 98% of the time on a specific category of decision, that category graduates to the next level of autonomy.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

@@ -111,7 +111,41 @@
   <span class="section-label">Decision Guide</span>
   <h2 class="section-title">How to know when you need a real database.</h2>
 
-<div data-learn="FlashDeck" data-props='{"title":"Do I Need a Database?","cards":[{"front":"My app is just for me.\nNo login. No other users.\nI just want my data saved.","back":"Use Local Storage or a JSON file.\n\nSimplest option. Tell AI: \"Save all data to the browser local storage\" or \"Save data to a JSON file.\" Perfect for personal tools and prototypes."},{"front":"I want multiple people to use my app.\nThey each need their own account.\nData needs to be secure.","back":"Use Supabase (recommended for beginners).\n\nTell AI: \"Add Supabase for the database and user authentication. Users should only see their own data.\" Supabase has a generous free tier."},{"front":"I want data to persist but I do not\nneed user accounts. It is a simple\nsingle-user tool.","back":"Use SQLite.\n\nTell AI: \"Use SQLite to store the data. No user accounts needed.\" SQLite is fast, simple, and requires no external services."},{"front":"I am not sure yet.\nI just want to prototype.\nI will figure out the database later.","back":"Start with Local Storage.\n\nGet the app working first. You can always upgrade to a real database later. Tell AI: \"For now, save everything to local storage. We will add a database later.\""}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Do I Need a Database?</h3>
+<details class="flash-card">
+<summary class="flash-front">My app is just for me.
+No login. No other users.
+I just want my data saved.</summary>
+<div class="flash-back">Use Local Storage or a JSON file.
+
+Simplest option. Tell AI: "Save all data to the browser local storage" or "Save data to a JSON file." Perfect for personal tools and prototypes.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">I want multiple people to use my app.
+They each need their own account.
+Data needs to be secure.</summary>
+<div class="flash-back">Use Supabase (recommended for beginners).
+
+Tell AI: "Add Supabase for the database and user authentication. Users should only see their own data." Supabase has a generous free tier.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">I want data to persist but I do not
+need user accounts. It is a simple
+single-user tool.</summary>
+<div class="flash-back">Use SQLite.
+
+Tell AI: "Use SQLite to store the data. No user accounts needed." SQLite is fast, simple, and requires no external services.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">I am not sure yet.
+I just want to prototype.
+I will figure out the database later.</summary>
+<div class="flash-back">Start with Local Storage.
+
+Get the app working first. You can always upgrade to a real database later. Tell AI: "For now, save everything to local storage. We will add a database later."</div>
+</details>
+</div>
 
 </div>
 
@@ -125,7 +159,45 @@
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
 
-<div data-learn="QuizMC" data-props='{"questions":[{"q":"What is a database, in simple terms?","options":["A special programming language","A filing cabinet your app can read and write to","A type of website","An AI model that stores code"],"correct":1,"explanation":"A database is just a place for your app to remember things — like a filing cabinet it can read from and write to. Without one, your app forgets everything when you close it."},{"q":"If you are building a personal tool just for yourself, which storage option is simplest?","options":["Supabase cloud database","A SQL server you manage yourself","Local Storage in the browser","A custom API with authentication"],"correct":2,"explanation":"Local Storage saves data right in your browser. It is the simplest option for personal tools. No setup, no external service, just tell AI to use it."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is a database, in simple terms?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A special programming language
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A filing cabinet your app can read and write to
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A type of website
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>An AI model that stores code
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A database is just a place for your app to remember things — like a filing cabinet it can read from and write to. Without one, your app forgets everything when you close it.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>If you are building a personal tool just for yourself, which storage option is simplest?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Supabase cloud database
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A SQL server you manage yourself
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Local Storage in the browser
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A custom API with authentication
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Local Storage saves data right in your browser. It is the simplest option for personal tools. No setup, no external service, just tell AI to use it.</div>
+</div>
+</div>
 
 </div>
 
@@ -134,7 +206,33 @@
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
 
-<div data-learn="FlashDeck" data-props='{"title":"Database Basics","cards":[{"front":"What is Local Storage?","back":"Data saved in your browser. Simplest option. Works for personal tools. Disappears if you clear your browser data."},{"front":"What is SQLite?","back":"A small database that lives inside your app. No external service needed. Good for single-user tools and small projects."},{"front":"What is Supabase?","back":"A cloud database service with user authentication. Data lives on the internet, accessible from any device. Free tier available. Best for multi-user apps."},{"front":"How do you describe data to AI?","back":"List what your app needs to remember, what details about each thing, and how things relate to each other. Use plain English, no technical terms needed."},{"front":"When should you upgrade from Local Storage to a real database?","back":"When you need multiple users, data accessible from different devices, or user accounts with security."},{"front":"What question should you answer first about databases?","back":"What does my app need to remember? Answer that in plain English and AI builds the right database."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Database Basics</h3>
+<details class="flash-card">
+<summary class="flash-front">What is Local Storage?</summary>
+<div class="flash-back">Data saved in your browser. Simplest option. Works for personal tools. Disappears if you clear your browser data.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is SQLite?</summary>
+<div class="flash-back">A small database that lives inside your app. No external service needed. Good for single-user tools and small projects.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is Supabase?</summary>
+<div class="flash-back">A cloud database service with user authentication. Data lives on the internet, accessible from any device. Free tier available. Best for multi-user apps.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you describe data to AI?</summary>
+<div class="flash-back">List what your app needs to remember, what details about each thing, and how things relate to each other. Use plain English, no technical terms needed.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">When should you upgrade from Local Storage to a real database?</summary>
+<div class="flash-back">When you need multiple users, data accessible from different devices, or user accounts with security.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What question should you answer first about databases?</summary>
+<div class="flash-back">What does my app need to remember? Answer that in plain English and AI builds the right database.</div>
+</details>
+</div>
 
 </div>
 

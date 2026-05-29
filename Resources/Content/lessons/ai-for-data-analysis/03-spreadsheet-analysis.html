@@ -170,7 +170,29 @@ print(f"\nMonth-over-month growth:\n{monthly['growth_pct']}")</code></pre>
 <div class="lesson-section">
   <span class="section-label" style="color: var(--blue);">Key Concepts</span>
   <h2 class="section-title">Learn the Terms</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Spreadsheet Analysis Essentials","cards":[{"front":"Copy and Paste Method","back":"Select data in Excel or Google Sheets and paste directly into the AI chat — works great for datasets under a few hundred rows"},{"front":"Describe and Sample Method","back":"For massive datasets, paste the first 20-30 rows and describe the full scope — AI can suggest approaches without seeing every row"},{"front":"Clear Column Headers","back":"Use descriptive names like monthly_revenue instead of Col_F — AI reads headers to understand what each column means"},{"front":"AI-Generated Formulas","back":"Ask AI to write spreadsheet formulas for you in plain English — no need to memorize VLOOKUP or SUMIF syntax ever again"},{"front":"The Sweet Spot","back":"Use AI to figure out the analysis approach, then implement formulas and templates natively in the spreadsheet for ongoing use"}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Spreadsheet Analysis Essentials</h3>
+<details class="flash-card">
+<summary class="flash-front">Copy and Paste Method</summary>
+<div class="flash-back">Select data in Excel or Google Sheets and paste directly into the AI chat — works great for datasets under a few hundred rows</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Describe and Sample Method</summary>
+<div class="flash-back">For massive datasets, paste the first 20-30 rows and describe the full scope — AI can suggest approaches without seeing every row</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Clear Column Headers</summary>
+<div class="flash-back">Use descriptive names like monthly_revenue instead of Col_F — AI reads headers to understand what each column means</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">AI-Generated Formulas</summary>
+<div class="flash-back">Ask AI to write spreadsheet formulas for you in plain English — no need to memorize VLOOKUP or SUMIF syntax ever again</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Sweet Spot</summary>
+<div class="flash-back">Use AI to figure out the analysis approach, then implement formulas and templates natively in the spreadsheet for ongoing use</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -181,7 +203,63 @@ print(f"\nMonth-over-month growth:\n{monthly['growth_pct']}")</code></pre>
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Lesson 3 Quiz</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Spreadsheet Analysis","questions":[{"q":"Which column header style gives AI the best understanding of your data?","options":["Col_F","field6","monthly_revenue","data"],"correct":2,"explanation":"Clear, descriptive headers like monthly_revenue tell the AI exactly what each column means — it reads your headers to interpret the data correctly."},{"q":"What is the sweet spot for using AI vs staying in the spreadsheet?","options":["Always use AI for everything","Always stay in the spreadsheet","Use AI to figure out the approach, then implement it natively for ongoing use","Only use AI for data under 100 rows"],"correct":2,"explanation":"AI is brilliant for figuring out the right analysis approach and writing formulas. For recurring reports and live data, implement the solution natively in the spreadsheet going forward."},{"q":"Why should you specify date formats when giving data to AI?","options":["AI cannot read dates at all","Different formats can be misinterpreted, leading to wrong analysis","AI only understands one date format","Dates are not useful for analysis"],"correct":1,"explanation":"03/15/2024 could be March 15 or the 3rd day of the 15th month depending on locale. Telling AI the exact format prevents misinterpretation and wrong results."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Spreadsheet Analysis</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which column header style gives AI the best understanding of your data?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Col_F
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>field6
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>monthly_revenue
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>data
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Clear, descriptive headers like monthly_revenue tell the AI exactly what each column means — it reads your headers to interpret the data correctly.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the sweet spot for using AI vs staying in the spreadsheet?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Always use AI for everything
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Always stay in the spreadsheet
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Use AI to figure out the approach, then implement it natively for ongoing use
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Only use AI for data under 100 rows
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> AI is brilliant for figuring out the right analysis approach and writing formulas. For recurring reports and live data, implement the solution natively in the spreadsheet going forward.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why should you specify date formats when giving data to AI?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>AI cannot read dates at all
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Different formats can be misinterpreted, leading to wrong analysis
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>AI only understands one date format
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Dates are not useful for analysis
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> 03/15/2024 could be March 15 or the 3rd day of the 15th month depending on locale. Telling AI the exact format prevents misinterpretation and wrong results.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

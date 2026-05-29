@@ -167,13 +167,95 @@ Money-touching code gets extra quality gates.</code></div>
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Financial Automation","cards":[{"front":"Financial Agent Stack","back":"Payment processing (Stripe), data aggregation (normalize transactions), reporting (daily/weekly/monthly summaries), alerts (anomaly detection). All sovereign -- your data, your hardware."},{"front":"Stripe Integration Pattern","back":"Use Stripe API for charges, invoices, subscriptions. Webhook events for real-time updates. Restricted keys for least-privilege access. Test mode for development."},{"front":"Revenue Dashboard","back":"Daily aggregation of Stripe data. Write summaries to brain for historical tracking. Compare day-over-day for anomaly detection. Revenue by period, by product, by customer."},{"front":"Webhook-Driven Events","back":"Real-time notifications from Stripe: payment succeeded, refund processed, payment failed, subscription canceled. Each triggers an automated response from the agent."},{"front":"Financial Security Rules","back":"API keys in environment variables only. Restricted keys for least privilege. Verify webhook signatures. Hard spending limits in code. Human review for transactions above threshold."},{"front":"Audit Trail Requirement","back":"Every financial action logged to brain with timestamp. Invoice created, refund processed, payment received -- all recorded. Essential for tax compliance and debugging."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Financial Automation</h3>
+<details class="flash-card">
+<summary class="flash-front">Financial Agent Stack</summary>
+<div class="flash-back">Payment processing (Stripe), data aggregation (normalize transactions), reporting (daily/weekly/monthly summaries), alerts (anomaly detection). All sovereign -- your data, your hardware.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Stripe Integration Pattern</summary>
+<div class="flash-back">Use Stripe API for charges, invoices, subscriptions. Webhook events for real-time updates. Restricted keys for least-privilege access. Test mode for development.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Revenue Dashboard</summary>
+<div class="flash-back">Daily aggregation of Stripe data. Write summaries to brain for historical tracking. Compare day-over-day for anomaly detection. Revenue by period, by product, by customer.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Webhook-Driven Events</summary>
+<div class="flash-back">Real-time notifications from Stripe: payment succeeded, refund processed, payment failed, subscription canceled. Each triggers an automated response from the agent.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Financial Security Rules</summary>
+<div class="flash-back">API keys in environment variables only. Restricted keys for least privilege. Verify webhook signatures. Hard spending limits in code. Human review for transactions above threshold.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Audit Trail Requirement</summary>
+<div class="flash-back">Every financial action logged to brain with timestamp. Invoice created, refund processed, payment received -- all recorded. Essential for tax compliance and debugging.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Financial automation quiz.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Financial Automation","questions":[{"q":"Why should you use Stripe restricted API keys instead of the full secret key?","options":["Restricted keys are faster","Restricted keys limit permissions to only what the specific function needs -- a revenue dashboard needs read-only, an invoice generator needs only invoice access. Leaked restricted keys cause less damage.","Restricted keys are free while full keys cost extra","Restricted keys work in all environments"],"correct":1,"explanation":"Least privilege: give each function only the access it needs. If your read-only revenue dashboard key leaks, the attacker can see transactions but cannot create charges or refunds. A leaked full secret key compromises everything."},{"q":"What is the most important financial automation anti-pattern?","options":["Running reports too frequently","Using test mode during development","Processing large financial transactions without human review -- set a threshold above which any transaction requires human confirmation before execution","Logging too many transactions to the brain"],"correct":2,"explanation":"A $50,000 accidental refund is catastrophic and may be irreversible. Hard thresholds (any transaction above $X requires human review) prevent AI errors from causing real financial damage. This is enforced in code, not just agent instructions."},{"q":"Why are webhooks preferred over polling for financial events?","options":["Webhooks use less code","Webhooks push events to your server in real time as they happen -- no delay, no missed events, no wasted API calls polling for changes that may not exist","Webhooks are required by Stripe","Webhooks are more secure than API calls"],"correct":1,"explanation":"Polling checks every few minutes and misses events between checks. Webhooks fire instantly when a payment succeeds, a refund processes, or a subscription cancels. Real-time awareness enables real-time responses: immediate confirmation emails, instant anomaly detection, zero lag."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Financial Automation</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why should you use Stripe restricted API keys instead of the full secret key?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Restricted keys are faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Restricted keys limit permissions to only what the specific function needs -- a revenue dashboard needs read-only, an invoice generator needs only invoice access. Leaked restricted keys cause less damage.
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Restricted keys are free while full keys cost extra
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Restricted keys work in all environments
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Least privilege: give each function only the access it needs. If your read-only revenue dashboard key leaks, the attacker can see transactions but cannot create charges or refunds. A leaked full secret key compromises everything.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the most important financial automation anti-pattern?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Running reports too frequently
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Using test mode during development
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Processing large financial transactions without human review -- set a threshold above which any transaction requires human confirmation before execution
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Logging too many transactions to the brain
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A $50,000 accidental refund is catastrophic and may be irreversible. Hard thresholds (any transaction above $X requires human review) prevent AI errors from causing real financial damage. This is enforced in code, not just agent instructions.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why are webhooks preferred over polling for financial events?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Webhooks use less code
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Webhooks push events to your server in real time as they happen -- no delay, no missed events, no wasted API calls polling for changes that may not exist
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Webhooks are required by Stripe
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Webhooks are more secure than API calls
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Polling checks every few minutes and misses events between checks. Webhooks fire instantly when a payment succeeds, a refund processes, or a subscription cancels. Real-time awareness enables real-time responses: immediate confirmation emails, instant anomaly detection, zero lag.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

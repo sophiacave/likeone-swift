@@ -182,11 +182,89 @@ async function ragQuery(userQuestion: string): Promise&lt;string&gt; {
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Database Choices for AI","cards":[{"front":"PostgreSQL + pgvector","back":"One database for structured data AND vector search. One connection, one backup, full SQL power alongside semantic similarity search."},{"front":"Vector Embeddings","back":"High-dimensional numerical representations of text or data. Enable searching by meaning — find deployment docs when someone asks how to fix their deploy."},{"front":"JSONB Columns","back":"PostgreSQL&#39;s flexible schema storage. Handles conversation logs, AI outputs, and varying metadata without needing a separate NoSQL database."},{"front":"Dedicated Vector DBs (Pinecone, Qdrant)","back":"Built for massive scale — billions of vectors with sub-millisecond latency. Only needed when pgvector&#39;s performance isn&#39;t enough."},{"front":"Co-located Content + Embeddings","back":"Store embeddings alongside the content they represent in the same row. One similarity search returns full content with all metadata."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Database Choices for AI</h3>
+<details class="flash-card">
+<summary class="flash-front">PostgreSQL + pgvector</summary>
+<div class="flash-back">One database for structured data AND vector search. One connection, one backup, full SQL power alongside semantic similarity search.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Vector Embeddings</summary>
+<div class="flash-back">High-dimensional numerical representations of text or data. Enable searching by meaning — find deployment docs when someone asks how to fix their deploy.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">JSONB Columns</summary>
+<div class="flash-back">PostgreSQL's flexible schema storage. Handles conversation logs, AI outputs, and varying metadata without needing a separate NoSQL database.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Dedicated Vector DBs (Pinecone, Qdrant)</summary>
+<div class="flash-back">Built for massive scale — billions of vectors with sub-millisecond latency. Only needed when pgvector's performance isn't enough.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Co-located Content + Embeddings</summary>
+<div class="flash-back">Store embeddings alongside the content they represent in the same row. One similarity search returns full content with all metadata.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
-  <div data-learn="QuizMC" data-props='{"title":"Database Choices Quiz","questions":[{"q":"Why does pgvector on Supabase work well for most AI apps?","options":["It is faster than all dedicated vector databases","For most applications under 1 million vectors, pgvector performs well — and you get semantic search without adding a separate database to manage","It is completely free","It scales to billions of vectors automatically"],"correct":1,"explanation":"pgvector gives you semantic similarity search inside PostgreSQL, meaning one connection, one backup strategy, one set of credentials — and full SQL power alongside vector search for the vast majority of use cases."},{"q":"What is the practical advantage of storing embeddings alongside content in the same database row?","options":["It uses less storage","You can query by vector similarity and retrieve the full content with all its metadata in one query, rather than cross-referencing two separate systems","It is faster to generate embeddings","It makes backups easier"],"correct":1,"explanation":"Co-locating content and its embedding means a single similarity search returns everything you need — the matching text, its metadata, and related structured fields — without expensive cross-database joins."},{"q":"Before reaching for a separate NoSQL database, what should PostgreSQL users try first?","options":["MongoDB Atlas free tier","Redis cache","PostgreSQL JSONB columns for flexible schema data","DynamoDB"],"correct":2,"explanation":"PostgreSQL JSONB columns provide most of the flexibility of a NoSQL database — storing variable-shape documents alongside your relational data — without adding another service to manage."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Database Choices Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why does pgvector on Supabase work well for most AI apps?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is faster than all dedicated vector databases
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>For most applications under 1 million vectors, pgvector performs well — and you get semantic search without adding a separate database to manage
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It is completely free
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It scales to billions of vectors automatically
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> pgvector gives you semantic similarity search inside PostgreSQL, meaning one connection, one backup strategy, one set of credentials — and full SQL power alongside vector search for the vast majority of use cases.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the practical advantage of storing embeddings alongside content in the same database row?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It uses less storage
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>You can query by vector similarity and retrieve the full content with all its metadata in one query, rather than cross-referencing two separate systems
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It is faster to generate embeddings
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It makes backups easier
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Co-locating content and its embedding means a single similarity search returns everything you need — the matching text, its metadata, and related structured fields — without expensive cross-database joins.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Before reaching for a separate NoSQL database, what should PostgreSQL users try first?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>MongoDB Atlas free tier
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Redis cache
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>PostgreSQL JSONB columns for flexible schema data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>DynamoDB
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> PostgreSQL JSONB columns provide most of the flexibility of a NoSQL database — storing variable-shape documents alongside your relational data — without adding another service to manage.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

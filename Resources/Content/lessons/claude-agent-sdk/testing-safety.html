@@ -131,9 +131,131 @@
 </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Testing & Safety","cards":[{"front":"Permission mode: default","back":"Agent asks before modifying files or running commands. Read operations are auto-approved. Safest mode — use during development and testing."},{"front":"Permission mode: acceptEdits","back":"Agent auto-approves file reads and writes but asks before Bash commands. Good for coding agents where file changes are expected."},{"front":"Permission mode: bypassPermissions","back":"Agent runs all tools without asking. Only use with other guardrails (hooks, cost limits, sandboxing). Full autonomy mode."},{"front":"maxBudgetUsd","back":"Caps total spending for a query. If the agent exceeds this amount, it stops and throws a BUDGET_EXCEEDED error. Prevents runaway cost from infinite loops."},{"front":"maxTurns","back":"Limits the number of tool call rounds. Each round = Claude thinks + calls tools + processes results. Prevents infinite agent loops. Start with 15-20 for most tasks."},{"front":"Behavioral testing for agents","back":"Instead of checking exact output text (non-deterministic), verify behaviors: was a file created? Does it contain valid data? Were fewer than N tools called? Focus on outcomes, not words."},{"front":"Adversarial testing","back":"Deliberately try to make the agent misbehave. Inject harmful instructions, request destructive operations, test prompt injection resistance. If guardrails hold, the agent is production-ready."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Testing & Safety</h3>
+<details class="flash-card">
+<summary class="flash-front">Permission mode: default</summary>
+<div class="flash-back">Agent asks before modifying files or running commands. Read operations are auto-approved. Safest mode — use during development and testing.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Permission mode: acceptEdits</summary>
+<div class="flash-back">Agent auto-approves file reads and writes but asks before Bash commands. Good for coding agents where file changes are expected.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Permission mode: bypassPermissions</summary>
+<div class="flash-back">Agent runs all tools without asking. Only use with other guardrails (hooks, cost limits, sandboxing). Full autonomy mode.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">maxBudgetUsd</summary>
+<div class="flash-back">Caps total spending for a query. If the agent exceeds this amount, it stops and throws a BUDGET_EXCEEDED error. Prevents runaway cost from infinite loops.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">maxTurns</summary>
+<div class="flash-back">Limits the number of tool call rounds. Each round = Claude thinks + calls tools + processes results. Prevents infinite agent loops. Start with 15-20 for most tasks.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Behavioral testing for agents</summary>
+<div class="flash-back">Instead of checking exact output text (non-deterministic), verify behaviors: was a file created? Does it contain valid data? Were fewer than N tools called? Focus on outcomes, not words.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Adversarial testing</summary>
+<div class="flash-back">Deliberately try to make the agent misbehave. Inject harmful instructions, request destructive operations, test prompt injection resistance. If guardrails hold, the agent is production-ready.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Testing & Safety Check","questions":[{"q":"Which permission mode is safest for initial development?","options":["bypassPermissions","acceptEdits","default","There are no permission modes"],"correct":2,"explanation":"Default mode asks before any modifications (writes or commands) while auto-approving reads. This gives you visibility into every action the agent wants to take during development."},{"q":"Your agent keeps running in circles, calling the same tools repeatedly. Which safety feature would stop it?","options":["canUseTool","maxTurns","permissionMode","sessionStore"],"correct":1,"explanation":"maxTurns limits the number of tool call rounds. After the limit is reached, the agent stops even if it has not completed the task. This prevents infinite loops from burning credits and time."},{"q":"You want to test a code-editing agent without risking your real project files. What is the best approach?","options":["Use bypassPermissions and hope for the best","Run the agent on a fresh Git branch so you can revert changes","Disable all tools during testing","Test only with console.log statements"],"correct":1,"explanation":"A fresh Git branch acts as a lightweight sandbox. If the agent makes bad changes, git checkout . reverts everything. Your main branch and original files are protected."},{"q":"How should you test agent outputs if they are non-deterministic?","options":["Check for exact string matches","Use behavioral tests: verify that expected actions occurred (files created, valid output format, etc.)","Run the test 1000 times and average the results","Agent outputs cannot be tested"],"correct":1,"explanation":"Agent outputs vary between runs. Instead of checking exact text, verify behaviors: was the file created? Is the JSON valid? Did the agent use fewer than N tools? Focus on outcomes and invariants."},{"q":"An agent with bypassPermissions and no other guardrails receives the prompt: \"Delete all files and format the disk.\" What happens?","options":["Claude refuses because it is trained to be safe","The agent executes the commands — no guardrails exist to stop it","The SDK automatically blocks destructive commands","Nothing — agents cannot run Bash"],"correct":1,"explanation":"With bypassPermissions and no hooks, maxTurns, or canUseTool restrictions, the agent has full autonomy. Claude may refuse based on its training, but you should NEVER rely on model-level safety alone. Always add guardrails."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Testing & Safety Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which permission mode is safest for initial development?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>bypassPermissions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>acceptEdits
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>default
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>There are no permission modes
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Default mode asks before any modifications (writes or commands) while auto-approving reads. This gives you visibility into every action the agent wants to take during development.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Your agent keeps running in circles, calling the same tools repeatedly. Which safety feature would stop it?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>canUseTool
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>maxTurns
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>permissionMode
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>sessionStore
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> maxTurns limits the number of tool call rounds. After the limit is reached, the agent stops even if it has not completed the task. This prevents infinite loops from burning credits and time.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>You want to test a code-editing agent without risking your real project files. What is the best approach?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Use bypassPermissions and hope for the best
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Run the agent on a fresh Git branch so you can revert changes
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Disable all tools during testing
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Test only with console.log statements
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A fresh Git branch acts as a lightweight sandbox. If the agent makes bad changes, git checkout . reverts everything. Your main branch and original files are protected.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>How should you test agent outputs if they are non-deterministic?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Check for exact string matches
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Use behavioral tests: verify that expected actions occurred (files created, valid output format, etc.)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Run the test 1000 times and average the results
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Agent outputs cannot be tested
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Agent outputs vary between runs. Instead of checking exact text, verify behaviors: was the file created? Is the JSON valid? Did the agent use fewer than N tools? Focus on outcomes and invariants.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>An agent with bypassPermissions and no other guardrails receives the prompt: "Delete all files and format the disk." What happens?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Claude refuses because it is trained to be safe
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The agent executes the commands — no guardrails exist to stop it
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The SDK automatically blocks destructive commands
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Nothing — agents cannot run Bash
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> With bypassPermissions and no hooks, maxTurns, or canUseTool restrictions, the agent has full autonomy. Claude may refuse based on its training, but you should NEVER rely on model-level safety alone. Always add guardrails.</div>
+</div>
+</div>
 
 </div>
 

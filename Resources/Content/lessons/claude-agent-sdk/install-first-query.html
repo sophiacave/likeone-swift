@@ -179,9 +179,127 @@ npx tsx first-agent.ts</code></pre>
 </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Install & First Query","cards":[{"front":"What Node.js version does the SDK require?","back":"Node.js 18 or later. Check with: node --version. Install from nodejs.org if needed."},{"front":"How does the SDK find your API key?","back":"It reads the ANTHROPIC_API_KEY environment variable automatically. Set it with: export ANTHROPIC_API_KEY=\"sk-ant-...\" in your shell profile."},{"front":"What does tools: \"defaults\" give you?","back":"The defaults preset enables built-in tools: Bash (terminal commands), Read/Write/Edit (file operations), and Grep/Glob (search). These let the agent interact with your local environment."},{"front":"What does query() return?","back":"A result object containing: text (Claude response), cost (USD spent), toolCalls (number of tool invocations), sessionId (for resuming later), and other metadata."},{"front":"What happens inside a query() call when tools are enabled?","back":"The SDK runs an automatic tool loop: Claude decides to use a tool, the SDK executes it, sends results back to Claude, and repeats until Claude has enough information to respond. All transparent to you."},{"front":"What is the difference between query() with and without tools?","back":"Without tools, query() is essentially an API call — Claude can only think and respond. With tools, Claude can read files, run commands, search code, and take real actions during the query."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Install & First Query</h3>
+<details class="flash-card">
+<summary class="flash-front">What Node.js version does the SDK require?</summary>
+<div class="flash-back">Node.js 18 or later. Check with: node --version. Install from nodejs.org if needed.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How does the SDK find your API key?</summary>
+<div class="flash-back">It reads the ANTHROPIC_API_KEY environment variable automatically. Set it with: export ANTHROPIC_API_KEY="sk-ant-..." in your shell profile.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What does tools: "defaults" give you?</summary>
+<div class="flash-back">The defaults preset enables built-in tools: Bash (terminal commands), Read/Write/Edit (file operations), and Grep/Glob (search). These let the agent interact with your local environment.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What does query() return?</summary>
+<div class="flash-back">A result object containing: text (Claude response), cost (USD spent), toolCalls (number of tool invocations), sessionId (for resuming later), and other metadata.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What happens inside a query() call when tools are enabled?</summary>
+<div class="flash-back">The SDK runs an automatic tool loop: Claude decides to use a tool, the SDK executes it, sends results back to Claude, and repeats until Claude has enough information to respond. All transparent to you.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the difference between query() with and without tools?</summary>
+<div class="flash-back">Without tools, query() is essentially an API call — Claude can only think and respond. With tools, Claude can read files, run commands, search code, and take real actions during the query.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Install & First Query Check","questions":[{"q":"Where should you store your Anthropic API key?","options":["Hardcoded in your TypeScript file","In an environment variable (ANTHROPIC_API_KEY)","In a public GitHub repository","In the package.json file"],"correct":1,"explanation":"Always use environment variables for API keys. The SDK reads ANTHROPIC_API_KEY automatically. Never hardcode keys in source code or commit them to version control."},{"q":"What does the tools: \"defaults\" option enable?","options":["Internet access only","Built-in tools like Bash, Read, Write, Edit, Grep, and Glob","Access to third-party APIs","A graphical user interface"],"correct":1,"explanation":"The defaults preset gives Claude access to core system tools: terminal commands (Bash), file operations (Read, Write, Edit), and search (Grep, Glob). These are the fundamental capabilities that make an agent useful."},{"q":"You run your agent script and get: \"Cannot find module @anthropic-ai/claude-agent\". What is the most likely cause?","options":["Your API key is wrong","You need to upgrade Node.js","You did not run npm install in the project directory","The SDK does not exist"],"correct":2,"explanation":"This error means Node.js cannot find the installed package. Either you forgot to run npm install, or your terminal is in a different directory from where package.json and node_modules live."},{"q":"What information does the result object from query() contain?","options":["Only the text response","Text, cost, tool call count, and session ID","Only the session ID","The full conversation history"],"correct":1,"explanation":"The result object includes the text response, the cost in USD, how many tool calls were made, the session ID for resuming later, and other metadata about the query execution."},{"q":"An agent with tools enabled receives the prompt \"Read package.json\". What happens internally?","options":["Claude outputs the file contents from memory","The SDK runs a tool loop: Claude requests the Read tool, the SDK reads the file, sends contents back to Claude, Claude formulates a response","The SDK sends an HTTP request to a file server","Nothing — Claude cannot read files"],"correct":1,"explanation":"The SDK runs an automatic tool loop. Claude recognizes it needs to read a file, outputs a tool call request, the SDK executes the Read tool, returns the file contents to Claude, and Claude processes them into a response."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Install & First Query Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Where should you store your Anthropic API key?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Hardcoded in your TypeScript file
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>In an environment variable (ANTHROPIC_API_KEY)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>In a public GitHub repository
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>In the package.json file
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Always use environment variables for API keys. The SDK reads ANTHROPIC_API_KEY automatically. Never hardcode keys in source code or commit them to version control.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What does the tools: "defaults" option enable?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Internet access only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Built-in tools like Bash, Read, Write, Edit, Grep, and Glob
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Access to third-party APIs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A graphical user interface
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The defaults preset gives Claude access to core system tools: terminal commands (Bash), file operations (Read, Write, Edit), and search (Grep, Glob). These are the fundamental capabilities that make an agent useful.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>You run your agent script and get: "Cannot find module @anthropic-ai/claude-agent". What is the most likely cause?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Your API key is wrong
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>You need to upgrade Node.js
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>You did not run npm install in the project directory
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The SDK does not exist
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> This error means Node.js cannot find the installed package. Either you forgot to run npm install, or your terminal is in a different directory from where package.json and node_modules live.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What information does the result object from query() contain?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Only the text response
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Text, cost, tool call count, and session ID
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Only the session ID
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The full conversation history
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The result object includes the text response, the cost in USD, how many tool calls were made, the session ID for resuming later, and other metadata about the query execution.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>An agent with tools enabled receives the prompt "Read package.json". What happens internally?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Claude outputs the file contents from memory
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The SDK runs a tool loop: Claude requests the Read tool, the SDK reads the file, sends contents back to Claude, Claude formulates a response
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The SDK sends an HTTP request to a file server
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Nothing — Claude cannot read files
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The SDK runs an automatic tool loop. Claude recognizes it needs to read a file, outputs a tool call request, the SDK executes the Read tool, returns the file contents to Claude, and Claude processes them into a response.</div>
+</div>
+</div>
 
 </div>
 

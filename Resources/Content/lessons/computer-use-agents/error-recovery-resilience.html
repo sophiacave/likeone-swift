@@ -102,13 +102,95 @@ Answer each with YES or NO and a brief explanation."</code></div>
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Error Recovery & Resilience","cards":[{"front":"The Error Recovery Framework","back":"Detect (screenshot does not match expected), Diagnose (what kind of error?), Recover (dismiss popup, re-login, retry, escalate), Resume (return to workflow at the point of failure)."},{"front":"Exponential Backoff","back":"Retry with increasing wait times: 1s, 2s, 4s, 8s, capped at 30s. Prevents hammering overloaded servers. Appropriate for transient failures like slow page loads and rate limiting."},{"front":"Alternative Path Strategy","back":"When the primary approach fails, try a different route to the same goal. Cannot click the menu? Try the keyboard shortcut. Cannot find the link? Navigate via URL directly."},{"front":"Visual Assertions","back":"Pre-condition (is the expected page visible?), Post-condition (did the expected change occur?), Negative (did an error or unexpected state NOT appear?). The test suite for visual agents."},{"front":"Cookie Banner Handler","back":"Standard pattern: look for Accept/Accept All/I Agree/Got It buttons, click the first one found, verify the banner disappeared. Run after every initial page load."},{"front":"CAPTCHA Strategy","back":"Do not try to solve CAPTCHAs with AI. Use authenticated sessions that skip them, use API endpoints where available, or escalate to human. Attempting to solve them is unreliable and often violates ToS."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Error Recovery & Resilience</h3>
+<details class="flash-card">
+<summary class="flash-front">The Error Recovery Framework</summary>
+<div class="flash-back">Detect (screenshot does not match expected), Diagnose (what kind of error?), Recover (dismiss popup, re-login, retry, escalate), Resume (return to workflow at the point of failure).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Exponential Backoff</summary>
+<div class="flash-back">Retry with increasing wait times: 1s, 2s, 4s, 8s, capped at 30s. Prevents hammering overloaded servers. Appropriate for transient failures like slow page loads and rate limiting.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Alternative Path Strategy</summary>
+<div class="flash-back">When the primary approach fails, try a different route to the same goal. Cannot click the menu? Try the keyboard shortcut. Cannot find the link? Navigate via URL directly.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Visual Assertions</summary>
+<div class="flash-back">Pre-condition (is the expected page visible?), Post-condition (did the expected change occur?), Negative (did an error or unexpected state NOT appear?). The test suite for visual agents.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Cookie Banner Handler</summary>
+<div class="flash-back">Standard pattern: look for Accept/Accept All/I Agree/Got It buttons, click the first one found, verify the banner disappeared. Run after every initial page load.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">CAPTCHA Strategy</summary>
+<div class="flash-back">Do not try to solve CAPTCHAs with AI. Use authenticated sessions that skip them, use API endpoints where available, or escalate to human. Attempting to solve them is unreliable and often violates ToS.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Error recovery quiz.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Error Recovery & Resilience","questions":[{"q":"What are the four steps of the error recovery framework?","options":["Retry, Restart, Report, Resume","Detect (screenshot mismatch), Diagnose (classify the error), Recover (take corrective action), Resume (return to workflow)","Log, Alert, Retry, Abort","Screenshot, Analyze, Fix, Continue"],"correct":1,"explanation":"The framework is systematic: first detect that something went wrong (the screen does not match expectations), then diagnose what kind of error it is, then execute the appropriate recovery action, then resume the original workflow from the point of failure."},{"q":"When should you use an alternative path strategy instead of a simple retry?","options":["Always -- retries are wasteful","When the primary approach fails for a structural reason (element moved, navigation broken) rather than a transient reason (slow load, network hiccup)","Only when the page returns a 404 error","Never -- simple retries always work eventually"],"correct":1,"explanation":"Simple retries work for transient issues -- the page was slow, the network hiccupped. But if the button is genuinely missing or the menu structure changed, retrying the same approach will fail every time. An alternative path (keyboard shortcut, direct URL, different navigation) routes around the structural problem."},{"q":"How should a vision agent handle CAPTCHAs?","options":["Use OCR to read and solve the CAPTCHA automatically","Use authenticated sessions that skip CAPTCHAs, use API endpoints where available, or escalate to a human -- do not try to solve them with AI","Refresh the page until the CAPTCHA disappears","Click randomly until the CAPTCHA is solved"],"correct":1,"explanation":"CAPTCHAs are designed to block automation. AI solving is unreliable and often violates terms of service. The smart strategies are: avoid CAPTCHAs entirely (authenticated sessions, API access) or escalate to a human when one appears."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Error Recovery & Resilience</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What are the four steps of the error recovery framework?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Retry, Restart, Report, Resume
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Detect (screenshot mismatch), Diagnose (classify the error), Recover (take corrective action), Resume (return to workflow)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Log, Alert, Retry, Abort
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Screenshot, Analyze, Fix, Continue
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The framework is systematic: first detect that something went wrong (the screen does not match expectations), then diagnose what kind of error it is, then execute the appropriate recovery action, then resume the original workflow from the point of failure.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>When should you use an alternative path strategy instead of a simple retry?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Always -- retries are wasteful
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>When the primary approach fails for a structural reason (element moved, navigation broken) rather than a transient reason (slow load, network hiccup)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Only when the page returns a 404 error
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Never -- simple retries always work eventually
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Simple retries work for transient issues -- the page was slow, the network hiccupped. But if the button is genuinely missing or the menu structure changed, retrying the same approach will fail every time. An alternative path (keyboard shortcut, direct URL, different navigation) routes around the structural problem.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>How should a vision agent handle CAPTCHAs?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Use OCR to read and solve the CAPTCHA automatically
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Use authenticated sessions that skip CAPTCHAs, use API endpoints where available, or escalate to a human -- do not try to solve them with AI
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Refresh the page until the CAPTCHA disappears
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Click randomly until the CAPTCHA is solved
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> CAPTCHAs are designed to block automation. AI solving is unreliable and often violates terms of service. The smart strategies are: avoid CAPTCHAs entirely (authenticated sessions, API access) or escalate to a human when one appears.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

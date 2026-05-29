@@ -214,7 +214,29 @@ Do NOT ask me to paste the raw data. Help me analyze it without exposing it.</co
 <div class="lesson-section">
   <span class="section-label">Key Concepts</span>
   <h2 class="section-title">Review the 5 things to never share with AI.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"5 Things to Never Paste into AI","cards":[{"front":"Passwords and API Keys","back":"Never share credentials with AI — not even to check something. Use a password manager instead. Exposed keys can compromise entire systems."},{"front":"Other People&#39;s Personal Data","back":"Names, emails, health records, financial info — if it could identify a person, do not share it. This may violate GDPR or CCPA."},{"front":"Confidential Business Information","back":"Trade secrets, unreleased financials, legal strategy, and M&A details belong to the company and should never enter consumer AI tools."},{"front":"Private Communications","back":"Other people&#39;s emails, DMs, or messages should never be pasted into AI without their explicit consent."},{"front":"Regulated Data","back":"HIPAA health info, FERPA student records, PCI credit card numbers, and NDA-covered data have legal protections that AI tools may violate."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">5 Things to Never Paste into AI</h3>
+<details class="flash-card">
+<summary class="flash-front">Passwords and API Keys</summary>
+<div class="flash-back">Never share credentials with AI — not even to check something. Use a password manager instead. Exposed keys can compromise entire systems.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Other People's Personal Data</summary>
+<div class="flash-back">Names, emails, health records, financial info — if it could identify a person, do not share it. This may violate GDPR or CCPA.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Confidential Business Information</summary>
+<div class="flash-back">Trade secrets, unreleased financials, legal strategy, and M&A details belong to the company and should never enter consumer AI tools.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Private Communications</summary>
+<div class="flash-back">Other people's emails, DMs, or messages should never be pasted into AI without their explicit consent.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Regulated Data</summary>
+<div class="flash-back">HIPAA health info, FERPA student records, PCI credit card numbers, and NDA-covered data have legal protections that AI tools may violate.</div>
+</details>
+</div>
 </div>
 
 <!-- INTERACTIVE: MATCH -->
@@ -227,7 +249,81 @@ Do NOT ask me to paste the raw data. Help me analyze it without exposing it.</co
 <div class="lesson-section">
   <span class="section-label">Knowledge Check</span>
   <h2 class="section-title">Check your understanding.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Privacy and Data Protection","questions":[{"q":"What is the key difference between free/consumer AI plans and business/API plans?","options":["Business plans are always faster","Free plans may use your data for training; business plans typically do not","Business plans have better AI models","Free plans have stricter privacy controls"],"correct":1,"explanation":"Free and consumer plans may store, review, or use your prompts for training. Business and API plans typically offer stronger guarantees: no training on your data, stricter access controls, and compliance certifications."},{"q":"You need AI to help analyze a sensitive contract. What is the safest approach?","options":["Paste the full contract into a free AI chat","Describe the key terms without pasting the actual document","Use a different AI tool for sensitive work","Ask AI to anonymize the contract for you first"],"correct":1,"explanation":"Describing rather than pasting is a core safe practice. Instead of sharing the actual contract, explain the situation in general terms. This keeps you productive without exposing confidential content."},{"q":"Which of these would be safe to include in an AI prompt without anonymizing?","options":["A customer\u0027s full name and email","The general category of a problem you are solving","Specific employee performance data","An unreleased product roadmap"],"correct":1,"explanation":"Describing the general category of a problem — without any identifying details — is safe. Names, emails, employee data, and proprietary information should all be anonymized or excluded."},{"q":"What is the \"rule of thumb\" for free or consumer AI plans?","options":["They are safe for all professional use","Treat every prompt as if it could be seen by someone else","Only avoid sharing financial data","Always opt out of training data usage in settings"],"correct":1,"explanation":"The lesson\u0027s rule of thumb: if you are using a free or consumer plan, treat every prompt as if it could be seen by someone else. This mindset naturally keeps you cautious about what you share."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Privacy and Data Protection</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the key difference between free/consumer AI plans and business/API plans?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Business plans are always faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Free plans may use your data for training; business plans typically do not
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Business plans have better AI models
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Free plans have stricter privacy controls
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Free and consumer plans may store, review, or use your prompts for training. Business and API plans typically offer stronger guarantees: no training on your data, stricter access controls, and compliance certifications.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>You need AI to help analyze a sensitive contract. What is the safest approach?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Paste the full contract into a free AI chat
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Describe the key terms without pasting the actual document
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Use a different AI tool for sensitive work
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Ask AI to anonymize the contract for you first
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Describing rather than pasting is a core safe practice. Instead of sharing the actual contract, explain the situation in general terms. This keeps you productive without exposing confidential content.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Which of these would be safe to include in an AI prompt without anonymizing?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A customer's full name and email
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The general category of a problem you are solving
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Specific employee performance data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>An unreleased product roadmap
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Describing the general category of a problem — without any identifying details — is safe. Names, emails, employee data, and proprietary information should all be anonymized or excluded.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What is the "rule of thumb" for free or consumer AI plans?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>They are safe for all professional use
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Treat every prompt as if it could be seen by someone else
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Only avoid sharing financial data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Always opt out of training data usage in settings
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The lesson's rule of thumb: if you are using a free or consumer plan, treat every prompt as if it could be seen by someone else. This mindset naturally keeps you cautious about what you share.</div>
+</div>
+</div>
 </div>
 
 <!-- NEXT -->

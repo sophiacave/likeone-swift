@@ -177,14 +177,110 @@ Format it as a printable one-page checklist I can bring to the meeting.</code></
 
 <!-- LEARN COMPONENTS -->
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Vendor Evaluation Criteria","cards":[{"front":"SOC 2 Type II","back":"The minimum security certification required before sharing enterprise data with any AI vendor. Equivalent standards: ISO 27001, FedRAMP for government."},{"front":"Pilot / Proof of Concept","back":"A 30-90 day trial on YOUR real data. Any confident vendor offers this. No pilot = no deal."},{"front":"Data Ownership Clause","back":"A contract term stating your data stays yours, cannot be used for model training without written consent, and must be fully deleted on termination."},{"front":"Performance SLA","back":"Contractual minimums for accuracy, uptime, and response time, tied to service credits or termination rights if not met."},{"front":"Model Change Notification","back":"A contract clause giving you 60 days notice and testing rights before a vendor switches the underlying AI model powering their product."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Vendor Evaluation Criteria</h3>
+<details class="flash-card">
+<summary class="flash-front">SOC 2 Type II</summary>
+<div class="flash-back">The minimum security certification required before sharing enterprise data with any AI vendor. Equivalent standards: ISO 27001, FedRAMP for government.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Pilot / Proof of Concept</summary>
+<div class="flash-back">A 30-90 day trial on YOUR real data. Any confident vendor offers this. No pilot = no deal.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Data Ownership Clause</summary>
+<div class="flash-back">A contract term stating your data stays yours, cannot be used for model training without written consent, and must be fully deleted on termination.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Performance SLA</summary>
+<div class="flash-back">Contractual minimums for accuracy, uptime, and response time, tied to service credits or termination rights if not met.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Model Change Notification</summary>
+<div class="flash-back">A contract clause giving you 60 days notice and testing rights before a vendor switches the underlying AI model powering their product.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
 </div>
 
 <div class="lesson-section">
-  <div data-learn="QuizMC" data-props='{"title":"Vendor Selection Check","questions":[{"q":"An AI vendor refuses to offer a pilot period and asks you to sign a two-year contract upfront. What should you do?","options":["Negotiate the contract length down to one year","Walk away — confident vendors always offer a pilot","Accept if the demo was impressive enough","Ask for a discount to offset the risk"],"correct":1,"explanation":"Any vendor who won\u0027t let you test their product on your real data before committing is not confident in their product. No pilot is a disqualifying red flag."},{"q":"Which of the following is a NON-NEGOTIABLE contract term for AI vendor agreements?","options":["Custom branding on the interface","A data ownership clause preventing training on your data without consent","Access to the vendor\u0027s source code","Co-marketing rights for case studies"],"correct":1,"explanation":"Data ownership is one of the five non-negotiables. Your data stays yours, cannot be used for training without written consent, and must be fully deletable on termination."},{"q":"A vendor claims their AI is \u0027proprietary\u0027 and won\u0027t disclose what model it\u0027s built on. This is:","options":["A sign of valuable IP that should make you more interested","A red flag — they\u0027re likely hiding something or obscuring a commodity wrapper","Standard practice — no vendors disclose their underlying models","Only a concern in regulated industries"],"correct":1,"explanation":"Most enterprise AI tools are built on OpenAI, Anthropic, or open-source models. That is fine. Refusing to disclose the underlying model is not fine — it often means they\u0027re hiding a commodity wrapper or have something to conceal."},{"q":"When should you BUILD a custom AI solution rather than buying a vendor product?","options":["When your team lacks ML engineering talent","When the problem is common across all industries","When AI is your core competitive differentiator and you have proprietary data","When you need the fastest time to value"],"correct":2,"explanation":"Build when AI touches your core differentiator or when you have proprietary data that creates a competitive moat. For common back-office problems, buying a vendor solution is faster and cheaper."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Vendor Selection Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>An AI vendor refuses to offer a pilot period and asks you to sign a two-year contract upfront. What should you do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Negotiate the contract length down to one year
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Walk away — confident vendors always offer a pilot
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Accept if the demo was impressive enough
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Ask for a discount to offset the risk
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Any vendor who won't let you test their product on your real data before committing is not confident in their product. No pilot is a disqualifying red flag.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Which of the following is a NON-NEGOTIABLE contract term for AI vendor agreements?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Custom branding on the interface
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A data ownership clause preventing training on your data without consent
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Access to the vendor's source code
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Co-marketing rights for case studies
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Data ownership is one of the five non-negotiables. Your data stays yours, cannot be used for training without written consent, and must be fully deletable on termination.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>A vendor claims their AI is 'proprietary' and won't disclose what model it's built on. This is:</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A sign of valuable IP that should make you more interested
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A red flag — they're likely hiding something or obscuring a commodity wrapper
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Standard practice — no vendors disclose their underlying models
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Only a concern in regulated industries
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Most enterprise AI tools are built on OpenAI, Anthropic, or open-source models. That is fine. Refusing to disclose the underlying model is not fine — it often means they're hiding a commodity wrapper or have something to conceal.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>When should you BUILD a custom AI solution rather than buying a vendor product?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>When your team lacks ML engineering talent
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>When the problem is common across all industries
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>When AI is your core competitive differentiator and you have proprietary data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>When you need the fastest time to value
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Build when AI touches your core differentiator or when you have proprietary data that creates a competitive moat. For common back-office problems, buying a vendor solution is faster and cheaper.</div>
+</div>
+</div>
 </div>
 
 </div>

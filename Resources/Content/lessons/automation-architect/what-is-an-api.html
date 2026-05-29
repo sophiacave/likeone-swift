@@ -183,10 +183,154 @@
     </div>
   </div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"API Concepts","cards":[{"front":"GET","back":"Read data without modifying it. Safe and idempotent. Example: GET /users returns a list of users."},{"front":"POST","back":"Create a new resource. Sends a body with data. Returns 201 Created on success. NOT idempotent — calling twice creates two resources."},{"front":"PUT","back":"Update or replace an existing resource. Idempotent — same result if called multiple times."},{"front":"DELETE","back":"Remove a resource. Example: DELETE /users/42 removes user with id 42."},{"front":"API Key","back":"A secret string included in every request to prove identity. Usually sent as Authorization: Bearer sk_live_... header. Simple and widely used."},{"front":"OAuth 2.0","back":"User grants your app permission via login flow. You receive an access token that expires and can be refreshed. User can revoke access anytime."},{"front":"Rate Limiting","back":"APIs cap how many requests you can make per time period. Exceeding returns 429 Too Many Requests. Check X-RateLimit-Remaining header."},{"front":"401 vs 403","back":"401 = not authenticated (missing or invalid credentials). 403 = authenticated but not authorized (no permission for this resource)."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">API Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">GET</summary>
+<div class="flash-back">Read data without modifying it. Safe and idempotent. Example: GET /users returns a list of users.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">POST</summary>
+<div class="flash-back">Create a new resource. Sends a body with data. Returns 201 Created on success. NOT idempotent — calling twice creates two resources.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">PUT</summary>
+<div class="flash-back">Update or replace an existing resource. Idempotent — same result if called multiple times.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">DELETE</summary>
+<div class="flash-back">Remove a resource. Example: DELETE /users/42 removes user with id 42.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">API Key</summary>
+<div class="flash-back">A secret string included in every request to prove identity. Usually sent as Authorization: Bearer sk_live_... header. Simple and widely used.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">OAuth 2.0</summary>
+<div class="flash-back">User grants your app permission via login flow. You receive an access token that expires and can be refreshed. User can revoke access anytime.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Rate Limiting</summary>
+<div class="flash-back">APIs cap how many requests you can make per time period. Exceeding returns 429 Too Many Requests. Check X-RateLimit-Remaining header.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">401 vs 403</summary>
+<div class="flash-back">401 = not authenticated (missing or invalid credentials). 403 = authenticated but not authorized (no permission for this resource).</div>
+</details>
+</div>
 
 
-  <div data-learn="QuizMC" data-props='{"title":"API Concepts Quiz","questions":[{"q":"Which HTTP method retrieves data without modifying anything?","options":["POST","PUT","GET","DELETE"],"correct":2,"explanation":"GET is the read-only method. It fetches data from the server without creating, updating, or deleting anything."},{"q":"What does a 404 status code mean?","options":["Authentication failed","Request was malformed","Resource not found","Server error"],"correct":2,"explanation":"404 Not Found means the server understood the request but there is no resource at that URL."},{"q":"What is the difference between POST and PUT?","options":["POST updates, PUT creates","POST creates, PUT updates or replaces","They are identical","POST deletes, PUT reads"],"correct":1,"explanation":"POST creates a new resource. PUT updates or replaces an existing resource. PUT is idempotent — POST is not."},{"q":"You get a 401 error from an API. What should you check FIRST?","options":["The server logs","Your API key or authentication header","The request body format","The internet connection"],"correct":1,"explanation":"401 Unauthorized means your credentials are missing or invalid. Check that your API key is correct, in the right header, and has not expired or been revoked."},{"q":"What is rate limiting and why does it matter for automations?","options":["It limits file download speeds","APIs cap requests per time period — automations in loops can hit this limit","It limits the number of users on an API","It only applies to free tier accounts"],"correct":1,"explanation":"Rate limiting caps how many requests you can make per minute or hour. An automation running in a loop can easily exceed this, getting 429 errors. Build in delays and check X-RateLimit-Remaining headers."},{"q":"Which authentication method lets the user revoke access to your app at any time?","options":["API Key","OAuth 2.0","Basic Auth","No authentication"],"correct":1,"explanation":"OAuth 2.0 grants access through a user login flow. The user can revoke the token at any time through their account settings, immediately cutting off your app access."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">API Concepts Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which HTTP method retrieves data without modifying anything?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>POST
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>PUT
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>GET
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>DELETE
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> GET is the read-only method. It fetches data from the server without creating, updating, or deleting anything.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What does a 404 status code mean?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Authentication failed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Request was malformed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Resource not found
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Server error
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> 404 Not Found means the server understood the request but there is no resource at that URL.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the difference between POST and PUT?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>POST updates, PUT creates
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>POST creates, PUT updates or replaces
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>They are identical
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>POST deletes, PUT reads
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> POST creates a new resource. PUT updates or replaces an existing resource. PUT is idempotent — POST is not.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>You get a 401 error from an API. What should you check FIRST?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The server logs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Your API key or authentication header
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The request body format
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The internet connection
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> 401 Unauthorized means your credentials are missing or invalid. Check that your API key is correct, in the right header, and has not expired or been revoked.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What is rate limiting and why does it matter for automations?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It limits file download speeds
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>APIs cap requests per time period — automations in loops can hit this limit
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It limits the number of users on an API
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It only applies to free tier accounts
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Rate limiting caps how many requests you can make per minute or hour. An automation running in a loop can easily exceed this, getting 429 errors. Build in delays and check X-RateLimit-Remaining headers.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">6</span>Which authentication method lets the user revoke access to your app at any time?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>API Key
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>OAuth 2.0
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Basic Auth
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>No authentication
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> OAuth 2.0 grants access through a user login flow. The user can revoke the token at any time through their account settings, immediately cutting off your app access.</div>
+</div>
+</div>
 
 </div>
 

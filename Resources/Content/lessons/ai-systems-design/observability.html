@@ -178,8 +178,68 @@ You don't have to build everything from scratch. The AI observability ecosystem 
 Choose based on your needs: if cost is the primary concern, Helicone. If quality evaluation is the priority, Braintrust. If you need full control, OpenTelemetry. Most mature teams use a combination.
 </div>
 
-<div data-learn="QuizMC" data-props='{"questions": [{"q": "What makes AI observability fundamentally different from traditional web observability?", "options": ["AI systems are slower", "A successful HTTP response can still contain incorrect or harmful content", "AI systems use more servers", "AI APIs don&#39;t return error codes"], "correct": 1, "explanation": "A model call can return 200 OK with fast latency and valid JSON but still produce hallucinated, off-topic, or unsafe content. Correctness is not binary in AI systems, which is why you need quality evaluation beyond standard operational metrics."}, {"q": "What should you do before shipping any prompt change or model upgrade?", "options": ["Test it manually once", "Run it against your evaluation pipeline and check for score regressions", "Just deploy and monitor", "Ask the model if the change is good"], "correct": 1, "explanation": "Run evals before every prompt change, model upgrade, or system modification. If the eval score drops, the change does not ship. This is eval-driven development -- define what good looks like first, then verify the system passes."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What makes AI observability fundamentally different from traditional web observability?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>AI systems are slower
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A successful HTTP response can still contain incorrect or harmful content
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>AI systems use more servers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>AI APIs don't return error codes
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A model call can return 200 OK with fast latency and valid JSON but still produce hallucinated, off-topic, or unsafe content. Correctness is not binary in AI systems, which is why you need quality evaluation beyond standard operational metrics.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What should you do before shipping any prompt change or model upgrade?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Test it manually once
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Run it against your evaluation pipeline and check for score regressions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Just deploy and monitor
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Ask the model if the change is good
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Run evals before every prompt change, model upgrade, or system modification. If the eval score drops, the change does not ship. This is eval-driven development -- define what good looks like first, then verify the system passes.</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the three layers of AI observability?", "back": "1) Operational metrics (uptime, errors, latency), 2) Business metrics (satisfaction, task completion, revenue), 3) Model metrics (quality scores, hallucination rates, token efficiency)."}, {"front": "Why should you track latency percentiles instead of averages?", "back": "Averages hide tail latency. p50 shows typical experience, p95 shows worst case for most users, p99 reveals your tail latency problem. A 1s average can mask 30s p99 spikes."}, {"front": "What is eval-driven development?", "back": "Write evaluation test cases before writing prompts -- like TDD for AI. Define what good looks like first with a golden dataset of 50-100 cases, then engineer the system to pass those evals."}, {"front": "What privacy guardrail should traces follow?", "back": "Never log raw user inputs without PII scrubbing. Log prompt templates and metadata, not actual user content. If content must be logged, use a separate access-controlled, auto-expiring store."}, {"front": "Name three AI observability tools and their strengths.", "back": "Helicone: proxy-based cost tracking. Braintrust: evaluation and quality scoring. LangSmith: tracing and dataset management for LangChain apps."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Vocabulary</h3>
+<details class="flash-card">
+<summary class="flash-front">What are the three layers of AI observability?</summary>
+<div class="flash-back">1) Operational metrics (uptime, errors, latency), 2) Business metrics (satisfaction, task completion, revenue), 3) Model metrics (quality scores, hallucination rates, token efficiency).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why should you track latency percentiles instead of averages?</summary>
+<div class="flash-back">Averages hide tail latency. p50 shows typical experience, p95 shows worst case for most users, p99 reveals your tail latency problem. A 1s average can mask 30s p99 spikes.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is eval-driven development?</summary>
+<div class="flash-back">Write evaluation test cases before writing prompts -- like TDD for AI. Define what good looks like first with a golden dataset of 50-100 cases, then engineer the system to pass those evals.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What privacy guardrail should traces follow?</summary>
+<div class="flash-back">Never log raw user inputs without PII scrubbing. Log prompt templates and metadata, not actual user content. If content must be logged, use a separate access-controlled, auto-expiring store.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Name three AI observability tools and their strengths.</summary>
+<div class="flash-back">Helicone: proxy-based cost tracking. Braintrust: evaluation and quality scoring. LangSmith: tracing and dataset management for LangChain apps.</div>
+</details>
+</div>
 
 </div>

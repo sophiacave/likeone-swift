@@ -176,7 +176,29 @@ relevant = recall(<span style="color:#fbbf24">"customer billing history"</span>,
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Shared Memory and State","cards":[{"front":"Context Passing","back":"Each agent receives accumulated context from all previous agents in its prompt. Simple but context windows fill up after 5-6 agents."},{"front":"Shared Memory Store","back":"All agents read from and write to a central database or key-value store. Scales well but requires infrastructure and careful schema design."},{"front":"Vector Store","back":"Store agent outputs as embeddings. Agents retrieve by semantic search. Handles massive context but complex to set up."},{"front":"Race Conditions","back":"Agent A reads state, Agent B updates it, Agent A writes based on stale data — silently overwriting Agent B&#39;s work. Prevent with locking and namespaces."},{"front":"State Corruption Prevention","back":"Optimistic locking with version numbers, agent-specific namespaces, append-only logs, or a designated state manager agent."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Shared Memory and State</h3>
+<details class="flash-card">
+<summary class="flash-front">Context Passing</summary>
+<div class="flash-back">Each agent receives accumulated context from all previous agents in its prompt. Simple but context windows fill up after 5-6 agents.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Shared Memory Store</summary>
+<div class="flash-back">All agents read from and write to a central database or key-value store. Scales well but requires infrastructure and careful schema design.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Vector Store</summary>
+<div class="flash-back">Store agent outputs as embeddings. Agents retrieve by semantic search. Handles massive context but complex to set up.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Race Conditions</summary>
+<div class="flash-back">Agent A reads state, Agent B updates it, Agent A writes based on stale data — silently overwriting Agent B's work. Prevent with locking and namespaces.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">State Corruption Prevention</summary>
+<div class="flash-back">Optimistic locking with version numbers, agent-specific namespaces, append-only logs, or a designated state manager agent.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">

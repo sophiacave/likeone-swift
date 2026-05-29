@@ -174,8 +174,68 @@ Build a dashboard that answers these questions daily:
 Set budget alerts at 80% and 100% of your monthly target. Set anomaly alerts for any single hour that exceeds 3x the hourly average. These alerts have saved teams from five-figure surprise bills caused by prompt template bugs or retry storms.
 </div>
 
-<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the highest-leverage AI cost optimization?", "options": ["Negotiating volume discounts with providers", "Using the right model for each task&#39;s complexity level", "Reducing the number of API calls", "Switching to open-source models exclusively"], "correct": 1, "explanation": "Model routing -- using cheap models for simple tasks and expensive models only for complex ones -- typically reduces costs 40-60%. The price difference between model tiers (60x between Opus and Haiku) makes this the highest-impact lever."}, {"q": "How does setting a lower max_tokens improve responses beyond cost savings?", "options": ["It makes the model think harder", "It forces the model to prioritize essential information, often producing more concise and focused output", "It reduces latency but not quality", "It has no effect on quality"], "correct": 1, "explanation": "A lower max_tokens constraint forces the model to be concise and prioritize essential information. For many tasks, 500 tokens produces a better, more focused response than an unconstrained 4,000-token output."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the highest-leverage AI cost optimization?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Negotiating volume discounts with providers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Using the right model for each task's complexity level
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Reducing the number of API calls
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Switching to open-source models exclusively
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Model routing -- using cheap models for simple tasks and expensive models only for complex ones -- typically reduces costs 40-60%. The price difference between model tiers (60x between Opus and Haiku) makes this the highest-impact lever.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>How does setting a lower max_tokens improve responses beyond cost savings?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It makes the model think harder
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It forces the model to prioritize essential information, often producing more concise and focused output
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It reduces latency but not quality
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It has no effect on quality
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A lower max_tokens constraint forces the model to be concise and prioritize essential information. For many tasks, 500 tokens produces a better, more focused response than an unconstrained 4,000-token output.</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the three levels of token budget enforcement?", "back": "1) Request-level: cap tokens per API call. 2) Session-level: cap total tokens for an agent run or session. 3) User-level: daily/monthly caps per user or API key for abuse prevention and tiered pricing."}, {"front": "How much more expensive is Claude Opus vs. Haiku on input tokens?", "back": "Approximately 60x. Opus is $15/MTok input vs. Haiku at $0.25/MTok. A 2,000-token system prompt costs $0.03/call on Opus vs. $0.0005/call on Haiku."}, {"front": "Name four prompt engineering techniques that reduce cost.", "back": "1) System prompt compression (concise rules). 2) Few-shot pruning (1-2 examples, not 5-6). 3) Context window management (retrieve relevant chunks only). 4) Structured output (JSON instead of prose, 40-60% shorter)."}, {"front": "What should a cost dashboard answer daily?", "back": "Cost per successful request, cost per user segment, worst cost-to-value features, cache hit rate, and retry spending. Set budget alerts at 80%/100% and anomaly alerts for 3x hourly average."}, {"front": "What quality guard is essential when implementing model routing?", "back": "Measure quality per-tier to ensure the cheap path satisfies users. Route 80% of traffic to cheaper models, but verify with eval scores that quality degradation stays under 5% on user-facing metrics."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Vocabulary</h3>
+<details class="flash-card">
+<summary class="flash-front">What are the three levels of token budget enforcement?</summary>
+<div class="flash-back">1) Request-level: cap tokens per API call. 2) Session-level: cap total tokens for an agent run or session. 3) User-level: daily/monthly caps per user or API key for abuse prevention and tiered pricing.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How much more expensive is Claude Opus vs. Haiku on input tokens?</summary>
+<div class="flash-back">Approximately 60x. Opus is $15/MTok input vs. Haiku at $0.25/MTok. A 2,000-token system prompt costs $0.03/call on Opus vs. $0.0005/call on Haiku.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Name four prompt engineering techniques that reduce cost.</summary>
+<div class="flash-back">1) System prompt compression (concise rules). 2) Few-shot pruning (1-2 examples, not 5-6). 3) Context window management (retrieve relevant chunks only). 4) Structured output (JSON instead of prose, 40-60% shorter).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What should a cost dashboard answer daily?</summary>
+<div class="flash-back">Cost per successful request, cost per user segment, worst cost-to-value features, cache hit rate, and retry spending. Set budget alerts at 80%/100% and anomaly alerts for 3x hourly average.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What quality guard is essential when implementing model routing?</summary>
+<div class="flash-back">Measure quality per-tier to ensure the cheap path satisfies users. Route 80% of traffic to cheaper models, but verify with eval scores that quality degradation stays under 5% on user-facing metrics.</div>
+</details>
+</div>
 
 </div>

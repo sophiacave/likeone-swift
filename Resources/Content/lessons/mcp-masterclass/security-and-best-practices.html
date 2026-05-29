@@ -278,7 +278,111 @@ server.tool(<span class="str">"read_file"</span>, { path: z.string() }, <span cl
     </div>
   </div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"MCP Security Practices","cards":[{"front":"Principle of Least Privilege","back":"Connect with minimal permissions. A read-only DB user prevents destructive queries even if a prompt injection gets through. The single most important security practice."},{"front":"Input Validation — Path Traversal","back":"Always resolve() file paths and check they start with the allowed directory. Raw paths like \"../../etc/passwd\" can escape the sandbox."},{"front":"Error Sanitization","back":"Never return raw error objects. Strip stack traces, file paths, connection strings, and API keys. Log the real error to stderr, return a generic message to the AI."},{"front":"Rate Limiting","back":"Cap tool calls per minute to prevent AI retry loops from overwhelming your systems. A simple in-memory counter with a sliding time window works for most servers."},{"front":"Human-in-the-Loop","back":"For destructive actions, use a two-call pattern: first call returns a preview, second call with confirmed=true executes. The human sees the preview in chat before approving."},{"front":"Audit Logging","back":"Log every tool call with timestamp, tool name, arguments, and success/failure. Use console.error() (not console.log()) to avoid corrupting stdio transport."},{"front":"Prompt Injection Defense","back":"You cannot prevent prompt injection at the server level — that is the AI model and host responsibility. What you CAN do: validate inputs, limit permissions, and assume every tool call might be malicious."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">MCP Security Practices</h3>
+<details class="flash-card">
+<summary class="flash-front">Principle of Least Privilege</summary>
+<div class="flash-back">Connect with minimal permissions. A read-only DB user prevents destructive queries even if a prompt injection gets through. The single most important security practice.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Input Validation — Path Traversal</summary>
+<div class="flash-back">Always resolve() file paths and check they start with the allowed directory. Raw paths like "../../etc/passwd" can escape the sandbox.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Error Sanitization</summary>
+<div class="flash-back">Never return raw error objects. Strip stack traces, file paths, connection strings, and API keys. Log the real error to stderr, return a generic message to the AI.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Rate Limiting</summary>
+<div class="flash-back">Cap tool calls per minute to prevent AI retry loops from overwhelming your systems. A simple in-memory counter with a sliding time window works for most servers.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Human-in-the-Loop</summary>
+<div class="flash-back">For destructive actions, use a two-call pattern: first call returns a preview, second call with confirmed=true executes. The human sees the preview in chat before approving.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Audit Logging</summary>
+<div class="flash-back">Log every tool call with timestamp, tool name, arguments, and success/failure. Use console.error() (not console.log()) to avoid corrupting stdio transport.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Prompt Injection Defense</summary>
+<div class="flash-back">You cannot prevent prompt injection at the server level — that is the AI model and host responsibility. What you CAN do: validate inputs, limit permissions, and assume every tool call might be malicious.</div>
+</details>
+</div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Security Quiz","questions":[{"q":"Which security practice specifically prevents a prompt injection from executing DROP TABLE on your database?","options":["Rate limiting","Audit logging","Principle of least privilege","Transport security"],"correct":2,"explanation":"Principle of least privilege means connecting with minimal permissions — e.g. a read-only DB user. Even if a prompt injection gets through, destructive queries are impossible because the server does not have permission to execute them."},{"q":"What should your MCP server return when a tool call fails internally?","options":["The full stack trace so Claude can debug it","A sanitized error message with no internal details","An empty response with HTTP 500","The raw exception object"],"correct":1,"explanation":"Error handling and information leakage prevention: always catch errors and strip internal details (passwords, paths, IPs, stack traces) before returning to the AI. Only safe, user-friendly error messages should leave your server."},{"q":"Why is console.log() dangerous in MCP servers using stdio transport?","options":["It is too slow for production use","It writes to stdout, corrupting the JSON-RPC message stream","It leaks sensitive data to the browser console","It causes memory leaks in Node.js"],"correct":1,"explanation":"Stdio transport uses stdout for JSON-RPC protocol messages. Any console.log() output gets mixed into the message stream, breaking the protocol. Always use console.error() for server-side logging."},{"q":"What is the best defense against path traversal attacks in a filesystem MCP server?","options":["Using a firewall to block external requests","Resolving the path and checking it starts with the allowed directory","Encrypting all file contents","Running the server as root so it can access all paths"],"correct":1,"explanation":"Always resolve() the path to normalize \"../\" sequences, then verify the resolved path starts with your allowed directory. This prevents any attempt to escape the sandbox, regardless of how the path is crafted."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Security Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which security practice specifically prevents a prompt injection from executing DROP TABLE on your database?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Rate limiting
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Audit logging
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Principle of least privilege
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Transport security
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Principle of least privilege means connecting with minimal permissions — e.g. a read-only DB user. Even if a prompt injection gets through, destructive queries are impossible because the server does not have permission to execute them.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What should your MCP server return when a tool call fails internally?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The full stack trace so Claude can debug it
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A sanitized error message with no internal details
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>An empty response with HTTP 500
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The raw exception object
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Error handling and information leakage prevention: always catch errors and strip internal details (passwords, paths, IPs, stack traces) before returning to the AI. Only safe, user-friendly error messages should leave your server.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why is console.log() dangerous in MCP servers using stdio transport?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is too slow for production use
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It writes to stdout, corrupting the JSON-RPC message stream
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It leaks sensitive data to the browser console
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It causes memory leaks in Node.js
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Stdio transport uses stdout for JSON-RPC protocol messages. Any console.log() output gets mixed into the message stream, breaking the protocol. Always use console.error() for server-side logging.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What is the best defense against path traversal attacks in a filesystem MCP server?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Using a firewall to block external requests
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Resolving the path and checking it starts with the allowed directory
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Encrypting all file contents
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Running the server as root so it can access all paths
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Always resolve() the path to normalize "../" sequences, then verify the resolved path starts with your allowed directory. This prevents any attempt to escape the sandbox, regardless of how the path is crafted.</div>
+</div>
+</div>
 </div>

@@ -324,8 +324,64 @@ Set up the ProductionLogger for your deployed model. Run 50 test interactions si
 </div>
 </div>
 
-<div data-learn="QuizMC" data-props='{"questions": [{"q": "What is the key principle that makes a data flywheel work?", "options": ["Hiring more human annotators over time", "Automatic data collection from production use, with zero-human-intervention conversion to training examples", "Using larger base models for each retraining cycle", "Increasing the training compute budget each iteration"], "correct": 1, "explanation": "The correct answer is: Automatic data collection from production use, with zero-human-intervention conversion to training examples"}, {"q": "What is the recommended retraining strategy for production systems?", "options": ["Retrain daily with whatever data is available", "Only retrain when users explicitly complain", "Incremental retrain weekly for fast iteration, full retrain every 4-6 weeks for consistency", "Never retrain -- deploy once and maintain"], "correct": 2, "explanation": "The correct answer is: Incremental retrain weekly for fast iteration, full retrain every 4-6 weeks for consistency"}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the key principle that makes a data flywheel work?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Hiring more human annotators over time
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Automatic data collection from production use, with zero-human-intervention conversion to training examples
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Using larger base models for each retraining cycle
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Increasing the training compute budget each iteration
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: Automatic data collection from production use, with zero-human-intervention conversion to training examples</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the recommended retraining strategy for production systems?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Retrain daily with whatever data is available
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Only retrain when users explicitly complain
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Incremental retrain weekly for fast iteration, full retrain every 4-6 weeks for consistency
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Never retrain -- deploy once and maintain
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: Incremental retrain weekly for fast iteration, full retrain every 4-6 weeks for consistency</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What are the four retraining triggers?", "back": "1. Scheduled (weekly/bi-weekly), 2. Data-driven (every N new examples), 3. Performance-driven (metrics drop below threshold), 4. Distribution shift (incoming queries differ from training data)"}, {"front": "How do you convert negative user feedback into training data?", "back": "The thumbs-down response becomes the &#39;rejected&#39; example for DPO. Generate an improved response with the latest model as the &#39;chosen&#39; example. This creates preference pairs from production feedback."}, {"front": "What is the golden rule of retraining?", "back": "Never deploy a retrained model without running the full evaluation pipeline. Every model version must pass the quality gate before reaching production. Automated retraining without automated evaluation is a deployment risk."}, {"front": "What privacy measures are required for production data logging?", "back": "Strip PII (names, emails, phones), hash user IDs, comply with privacy policy, encrypt logs at rest, and separate PII-stripped training data from raw production logs."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Vocabulary</h3>
+<details class="flash-card">
+<summary class="flash-front">What are the four retraining triggers?</summary>
+<div class="flash-back">1. Scheduled (weekly/bi-weekly), 2. Data-driven (every N new examples), 3. Performance-driven (metrics drop below threshold), 4. Distribution shift (incoming queries differ from training data)</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you convert negative user feedback into training data?</summary>
+<div class="flash-back">The thumbs-down response becomes the 'rejected' example for DPO. Generate an improved response with the latest model as the 'chosen' example. This creates preference pairs from production feedback.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the golden rule of retraining?</summary>
+<div class="flash-back">Never deploy a retrained model without running the full evaluation pipeline. Every model version must pass the quality gate before reaching production. Automated retraining without automated evaluation is a deployment risk.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What privacy measures are required for production data logging?</summary>
+<div class="flash-back">Strip PII (names, emails, phones), hash user IDs, comply with privacy policy, encrypt logs at rest, and separate PII-stripped training data from raw production logs.</div>
+</details>
+</div>
 
 </div>

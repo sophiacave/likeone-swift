@@ -157,13 +157,95 @@ Verify: does the AI correctly describe what is on screen?</code></div>
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Computer Use API","cards":[{"front":"The Four Computer Use Actions","back":"Screenshot (capture the screen), Click (move cursor and click at x,y coordinates), Type (send keystrokes to active element), Scroll (scroll up or down on the page)."},{"front":"The Coordinate System","back":"Origin (0,0) is the top-left corner. X increases rightward, Y increases downward. Always report actual screen resolution to the API for accurate targeting."},{"front":"The Execution Loop","back":"Send task -> Claude requests screenshot -> You capture and send it -> Claude suggests action -> You execute and send new screenshot -> Repeat until task complete."},{"front":"Sandbox Rule","back":"NEVER run computer use on your primary desktop. Always use a VM, Docker container, or cloud instance. One wrong click on your real machine can cause real damage."},{"front":"Screenshot After Every Action","back":"Always capture and send a screenshot after every click, type, or scroll action. Without it, the AI has no way to verify what happened and cannot plan the next step."},{"front":"Action Limits","back":"Cap the number of actions per session (start with 20). Prevents runaway behavior if the agent enters a confused loop. Increase gradually as you build confidence."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Computer Use API</h3>
+<details class="flash-card">
+<summary class="flash-front">The Four Computer Use Actions</summary>
+<div class="flash-back">Screenshot (capture the screen), Click (move cursor and click at x,y coordinates), Type (send keystrokes to active element), Scroll (scroll up or down on the page).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Coordinate System</summary>
+<div class="flash-back">Origin (0,0) is the top-left corner. X increases rightward, Y increases downward. Always report actual screen resolution to the API for accurate targeting.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The Execution Loop</summary>
+<div class="flash-back">Send task -> Claude requests screenshot -> You capture and send it -> Claude suggests action -> You execute and send new screenshot -> Repeat until task complete.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Sandbox Rule</summary>
+<div class="flash-back">NEVER run computer use on your primary desktop. Always use a VM, Docker container, or cloud instance. One wrong click on your real machine can cause real damage.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Screenshot After Every Action</summary>
+<div class="flash-back">Always capture and send a screenshot after every click, type, or scroll action. Without it, the AI has no way to verify what happened and cannot plan the next step.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Action Limits</summary>
+<div class="flash-back">Cap the number of actions per session (start with 20). Prevents runaway behavior if the agent enters a confused loop. Increase gradually as you build confidence.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Computer use API quiz.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Computer Use API","questions":[{"q":"What are the four actions available through Claude computer use?","options":["Read, Write, Delete, Update","Screenshot, Click, Type, Scroll","Open, Close, Minimize, Maximize","Select, Copy, Paste, Undo"],"correct":1,"explanation":"The computer use tool provides exactly four action types: Screenshot (capture the screen), Click (at specific coordinates), Type (send keystrokes), and Scroll (up or down). These four actions can replicate any human interaction with a screen."},{"q":"Why must you always send a screenshot after executing an action?","options":["Screenshots reduce API costs","The AI needs to verify the result of its action and plan the next step -- without seeing the outcome, it is operating blind","Screenshots are required by the API protocol","Screenshots help with debugging only"],"correct":1,"explanation":"Computer use is a visual feedback loop. The AI acts, then needs to SEE what happened. Did the button click work? Did the page load? Did an error appear? Without a post-action screenshot, the AI cannot verify or adapt."},{"q":"Why should you never run computer use on your primary desktop?","options":["It runs slower on primary desktops","The API does not support primary desktops","One wrong click from the AI could open your email, send messages, or delete files -- a sandbox isolates the damage","Primary desktops have resolution issues"],"correct":2,"explanation":"Computer use gives AI control of the mouse and keyboard. A confused agent can click anything visible on screen. In a sandbox (VM, Docker, cloud instance), the blast radius is contained. On your real desktop, the consequences are real."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Computer Use API</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What are the four actions available through Claude computer use?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Read, Write, Delete, Update
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Screenshot, Click, Type, Scroll
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Open, Close, Minimize, Maximize
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Select, Copy, Paste, Undo
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The computer use tool provides exactly four action types: Screenshot (capture the screen), Click (at specific coordinates), Type (send keystrokes), and Scroll (up or down). These four actions can replicate any human interaction with a screen.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why must you always send a screenshot after executing an action?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Screenshots reduce API costs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The AI needs to verify the result of its action and plan the next step -- without seeing the outcome, it is operating blind
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Screenshots are required by the API protocol
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Screenshots help with debugging only
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Computer use is a visual feedback loop. The AI acts, then needs to SEE what happened. Did the button click work? Did the page load? Did an error appear? Without a post-action screenshot, the AI cannot verify or adapt.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why should you never run computer use on your primary desktop?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It runs slower on primary desktops
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The API does not support primary desktops
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>One wrong click from the AI could open your email, send messages, or delete files -- a sandbox isolates the damage
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Primary desktops have resolution issues
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Computer use gives AI control of the mouse and keyboard. A confused agent can click anything visible on screen. In a sandbox (VM, Docker, cloud instance), the blast radius is contained. On your real desktop, the consequences are real.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

@@ -220,7 +220,25 @@ Text to audit:
 <div class="lesson-section">
   <span class="section-label">Key Concepts</span>
   <h2 class="section-title">Review the 4 types of AI bias.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"4 Types of AI Bias","cards":[{"front":"Representation Bias","back":"Some groups are over- or under-represented in training data. AI knows more about some cultures, languages, and experiences than others."},{"front":"Confirmation Bias","back":"AI tends to agree with you. If you phrase a question with an implied answer, AI will reinforce your existing belief rather than challenge it."},{"front":"Cultural and Language Bias","back":"Most AI training data is English-language and Western-centric. Advice, examples, and frameworks skew toward North American and European perspectives."},{"front":"Recency Bias","back":"AI has a knowledge cutoff. It does not know about events, research, or cultural shifts after its training data ends — and presents outdated info with full confidence."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">4 Types of AI Bias</h3>
+<details class="flash-card">
+<summary class="flash-front">Representation Bias</summary>
+<div class="flash-back">Some groups are over- or under-represented in training data. AI knows more about some cultures, languages, and experiences than others.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Confirmation Bias</summary>
+<div class="flash-back">AI tends to agree with you. If you phrase a question with an implied answer, AI will reinforce your existing belief rather than challenge it.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Cultural and Language Bias</summary>
+<div class="flash-back">Most AI training data is English-language and Western-centric. Advice, examples, and frameworks skew toward North American and European perspectives.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Recency Bias</summary>
+<div class="flash-back">AI has a knowledge cutoff. It does not know about events, research, or cultural shifts after its training data ends — and presents outdated info with full confidence.</div>
+</details>
+</div>
 </div>
 
 <!-- INTERACTIVE: MATCH -->
@@ -232,7 +250,81 @@ Text to audit:
 <div class="lesson-section">
   <span class="section-label">Knowledge Check</span>
   <h2 class="section-title">Check your understanding.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Bias in AI","questions":[{"q":"Where does AI bias primarily come from?","options":["Deliberately programmed prejudice by developers","Patterns in the training data that reflect human biases","Random errors in the algorithm","Biased prompts from end users"],"correct":1,"explanation":"AI bias comes from training data. AI learns from text written by humans — and humans have biases. The AI is not making moral judgments; it is doing math on patterns from an unequal world."},{"q":"You ask AI: \"Why is remote work better than office work?\" What type of bias does this demonstrate?","options":["Representation Bias","Recency Bias","Confirmation Bias","Cultural Bias"],"correct":2,"explanation":"This is Confirmation Bias. The question already implies an answer, so the AI will reinforce that framing. Rephrasing neutrally — \"Compare remote work and office work\" — reduces this."},{"q":"Which technique helps counter confirmation bias in AI prompts?","options":["Use shorter prompts","Ask for multiple perspectives or ask AI to compare both sides","Repeat the question multiple times","Use a different AI tool"],"correct":1,"explanation":"Asking for multiple perspectives — or framing questions neutrally rather than with implied answers — is the most effective technique for reducing confirmation bias."},{"q":"What should you do if AI output contains suspicious statistics?","options":["Trust them since AI is trained on large datasets","Publish them with a disclaimer","Verify the source with external authoritative references","Ask AI to confirm the number again"],"correct":2,"explanation":"Always verify AI-generated statistics with external sources. AI can and does invent plausible-sounding numbers. Asking AI to confirm does not help — it may just repeat the error."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Bias in AI</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Where does AI bias primarily come from?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Deliberately programmed prejudice by developers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Patterns in the training data that reflect human biases
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Random errors in the algorithm
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Biased prompts from end users
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> AI bias comes from training data. AI learns from text written by humans — and humans have biases. The AI is not making moral judgments; it is doing math on patterns from an unequal world.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>You ask AI: "Why is remote work better than office work?" What type of bias does this demonstrate?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Representation Bias
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Recency Bias
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Confirmation Bias
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Cultural Bias
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> This is Confirmation Bias. The question already implies an answer, so the AI will reinforce that framing. Rephrasing neutrally — "Compare remote work and office work" — reduces this.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Which technique helps counter confirmation bias in AI prompts?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Use shorter prompts
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Ask for multiple perspectives or ask AI to compare both sides
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Repeat the question multiple times
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Use a different AI tool
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Asking for multiple perspectives — or framing questions neutrally rather than with implied answers — is the most effective technique for reducing confirmation bias.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What should you do if AI output contains suspicious statistics?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Trust them since AI is trained on large datasets
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Publish them with a disclaimer
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Verify the source with external authoritative references
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Ask AI to confirm the number again
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Always verify AI-generated statistics with external sources. AI can and does invent plausible-sounding numbers. Asking AI to confirm does not help — it may just repeat the error.</div>
+</div>
+</div>
 </div>
 
 <!-- NEXT -->

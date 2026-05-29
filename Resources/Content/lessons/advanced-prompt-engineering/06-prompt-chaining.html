@@ -64,7 +64,29 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Prompt Chaining Patterns","cards":[{"front":"Generate → Critique → Revise","back":"Create something, evaluate it against criteria, then improve it based on the critique. Best for writing, proposals, and designs."},{"front":"Extract → Transform → Load","back":"Pull data from messy sources, clean and restructure it, then format for the destination. Best for data workflows."},{"front":"Brainstorm → Filter → Develop","back":"Generate many ideas, evaluate and select the best, then flesh out the winners. Best for ideation and strategy."},{"front":"What is a Gate Check?","back":"A validation step between chain steps that checks output for accuracy, completeness, and consistency — catching errors before they compound."},{"front":"What is a Parallel Chain?","back":"Running two branches simultaneously (e.g., research + audience analysis) then merging results at a single point before the final output."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Prompt Chaining Patterns</h3>
+<details class="flash-card">
+<summary class="flash-front">Generate → Critique → Revise</summary>
+<div class="flash-back">Create something, evaluate it against criteria, then improve it based on the critique. Best for writing, proposals, and designs.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Extract → Transform → Load</summary>
+<div class="flash-back">Pull data from messy sources, clean and restructure it, then format for the destination. Best for data workflows.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Brainstorm → Filter → Develop</summary>
+<div class="flash-back">Generate many ideas, evaluate and select the best, then flesh out the winners. Best for ideation and strategy.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is a Gate Check?</summary>
+<div class="flash-back">A validation step between chain steps that checks output for accuracy, completeness, and consistency — catching errors before they compound.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is a Parallel Chain?</summary>
+<div class="flash-back">Running two branches simultaneously (e.g., research + audience analysis) then merging results at a single point before the final output.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -175,7 +197,63 @@ Step 3: "Using the top insight from: [Step 2 output]. Create [final deliverable]
 </div>
 
 <div class="lesson-section">
-  <div data-learn="QuizMC" data-props='{"title":"Prompt Chaining Quiz","questions":[{"q":"Why does prompt chaining produce better results than one mega-prompt?","options":["It is faster","Each step focuses on one thing well, and the model isn’t forced to spread attention across too many tasks at once","It costs less","It uses fewer tokens"],"correct":1,"explanation":"When a single prompt asks the AI to research, analyze, write, format, and review simultaneously, quality drops across all tasks. Chaining keeps each step focused."},{"q":"What does a Gate Check do in a prompt chain?","options":["It stops the chain from running too long","It validates output from the previous step for accuracy and completeness before passing it forward","It generates a summary of the chain","It selects the best model for each step"],"correct":1,"explanation":"Gate checks catch errors early. Without them, a mistake in step 2 compounds through steps 3, 4, and 5 — making the final output worse than if you’d caught it immediately."},{"q":"What is the key rule for making each step in a chain work well?","options":["Keep each step under 100 words","Each step should produce clean, structured output that the next step can consume without confusion","Each step should use a different model","Always use JSON between steps"],"correct":1,"explanation":"The output format of each step must be designed to be the clean input for the next step. Messy handoffs between steps are the primary cause of chain failures."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Prompt Chaining Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why does prompt chaining produce better results than one mega-prompt?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Each step focuses on one thing well, and the model isn’t forced to spread attention across too many tasks at once
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It costs less
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It uses fewer tokens
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> When a single prompt asks the AI to research, analyze, write, format, and review simultaneously, quality drops across all tasks. Chaining keeps each step focused.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What does a Gate Check do in a prompt chain?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It stops the chain from running too long
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It validates output from the previous step for accuracy and completeness before passing it forward
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It generates a summary of the chain
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It selects the best model for each step
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Gate checks catch errors early. Without them, a mistake in step 2 compounds through steps 3, 4, and 5 — making the final output worse than if you’d caught it immediately.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the key rule for making each step in a chain work well?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Keep each step under 100 words
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Each step should produce clean, structured output that the next step can consume without confusion
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Each step should use a different model
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Always use JSON between steps
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The output format of each step must be designed to be the clean input for the next step. Messy handoffs between steps are the primary cause of chain failures.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

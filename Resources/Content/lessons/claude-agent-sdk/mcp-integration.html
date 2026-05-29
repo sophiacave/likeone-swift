@@ -135,9 +135,127 @@
 </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"MCP Integration","cards":[{"front":"What is MCP?","back":"Model Context Protocol — an open standard that defines how AI agents connect to external tools and data sources. One protocol for databases, APIs, cloud services, and everything else. Think: USB for AI."},{"front":"stdio vs SSE MCP servers","back":"stdio servers run as local child processes (fast, private, no network). SSE servers run remotely via HTTP (cloud services, shared tools, production). Choose based on where the server needs to run."},{"front":"How do you add MCP servers to an agent?","back":"Use the mcpServers config option. Each server gets a name, a command (for stdio) or url (for SSE), and optional args and env for configuration."},{"front":"What happens when MCP tools are added?","back":"The MCP server tools become available alongside built-in tools (Bash, Read, etc.). Claude sees all tools and chooses the right one for each task automatically."},{"front":"What are common MCP servers?","back":"SQLite/Postgres (database queries), GitHub (issues, PRs), Slack (messaging), Filesystem (sandboxed file access), Memory (persistent knowledge graph). The ecosystem is growing rapidly."},{"front":"What is the biggest MCP pitfall?","back":"Missing environment variables. MCP servers often need API tokens passed via the env option. If tools fail silently, check that credentials are properly configured."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">MCP Integration</h3>
+<details class="flash-card">
+<summary class="flash-front">What is MCP?</summary>
+<div class="flash-back">Model Context Protocol — an open standard that defines how AI agents connect to external tools and data sources. One protocol for databases, APIs, cloud services, and everything else. Think: USB for AI.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">stdio vs SSE MCP servers</summary>
+<div class="flash-back">stdio servers run as local child processes (fast, private, no network). SSE servers run remotely via HTTP (cloud services, shared tools, production). Choose based on where the server needs to run.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you add MCP servers to an agent?</summary>
+<div class="flash-back">Use the mcpServers config option. Each server gets a name, a command (for stdio) or url (for SSE), and optional args and env for configuration.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What happens when MCP tools are added?</summary>
+<div class="flash-back">The MCP server tools become available alongside built-in tools (Bash, Read, etc.). Claude sees all tools and chooses the right one for each task automatically.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are common MCP servers?</summary>
+<div class="flash-back">SQLite/Postgres (database queries), GitHub (issues, PRs), Slack (messaging), Filesystem (sandboxed file access), Memory (persistent knowledge graph). The ecosystem is growing rapidly.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the biggest MCP pitfall?</summary>
+<div class="flash-back">Missing environment variables. MCP servers often need API tokens passed via the env option. If tools fail silently, check that credentials are properly configured.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"MCP Integration Check","questions":[{"q":"What problem does MCP solve for AI agents?","options":["It makes Claude respond faster","It provides a standard protocol for connecting agents to external tools and services","It reduces API costs","It replaces the need for an API key"],"correct":1,"explanation":"MCP standardizes how agents connect to external services. Without MCP, you would write custom integration code for every database, API, and service. With MCP, you plug in a server and the agent knows how to use it."},{"q":"Which MCP server type runs as a local child process?","options":["SSE server","REST server","stdio server","WebSocket server"],"correct":2,"explanation":"stdio servers run locally as child processes and communicate via stdin/stdout. They are fast, private, and require no network. SSE servers run remotely via HTTP."},{"q":"You want your agent to query a PostgreSQL database. What do you need?","options":["Write raw SQL in the user prompt","Install an MCP server for Postgres and add it to mcpServers config","Give Claude the database password in the system prompt","Use the built-in Bash tool to run psql commands"],"correct":1,"explanation":"A Postgres MCP server provides structured database tools (query, inspect schema, etc.) with proper connection management. This is safer and more reliable than raw Bash commands."},{"q":"An MCP server starts but its tools keep failing silently. What should you check first?","options":["The Claude model version","The environment variables and credentials passed to the server","The system prompt","The network speed"],"correct":1,"explanation":"Silent tool failures usually mean missing or incorrect credentials. MCP servers need API tokens and connection strings passed via the env option in the server configuration."},{"q":"Why should you limit the number of MCP servers connected to a single agent?","options":["Each server costs extra money","Too many tools can confuse Claude about which one to use","MCP has a maximum of 3 servers","They slow down the computer"],"correct":1,"explanation":"Each MCP server adds tools to Claude context. With too many tools available, Claude may struggle to choose the right one or get confused about tool capabilities. Start with 1-2 servers and add more only as needed."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">MCP Integration Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What problem does MCP solve for AI agents?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It makes Claude respond faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It provides a standard protocol for connecting agents to external tools and services
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It reduces API costs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It replaces the need for an API key
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> MCP standardizes how agents connect to external services. Without MCP, you would write custom integration code for every database, API, and service. With MCP, you plug in a server and the agent knows how to use it.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Which MCP server type runs as a local child process?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>SSE server
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>REST server
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>stdio server
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>WebSocket server
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> stdio servers run locally as child processes and communicate via stdin/stdout. They are fast, private, and require no network. SSE servers run remotely via HTTP.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>You want your agent to query a PostgreSQL database. What do you need?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Write raw SQL in the user prompt
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Install an MCP server for Postgres and add it to mcpServers config
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Give Claude the database password in the system prompt
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Use the built-in Bash tool to run psql commands
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A Postgres MCP server provides structured database tools (query, inspect schema, etc.) with proper connection management. This is safer and more reliable than raw Bash commands.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>An MCP server starts but its tools keep failing silently. What should you check first?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The Claude model version
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The environment variables and credentials passed to the server
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The system prompt
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The network speed
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Silent tool failures usually mean missing or incorrect credentials. MCP servers need API tokens and connection strings passed via the env option in the server configuration.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>Why should you limit the number of MCP servers connected to a single agent?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Each server costs extra money
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Too many tools can confuse Claude about which one to use
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>MCP has a maximum of 3 servers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>They slow down the computer
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Each MCP server adds tools to Claude context. With too many tools available, Claude may struggle to choose the right one or get confused about tool capabilities. Start with 1-2 servers and add more only as needed.</div>
+</div>
+</div>
 
 </div>
 

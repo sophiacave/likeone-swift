@@ -131,9 +131,127 @@ or development tasks."""</span></code></pre>
 </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Guardrail Architecture","cards":[{"front":"Defense in depth","back":"Using multiple overlapping security layers so that if one fails, others still protect the system. No single defense catches everything — layers compensate for each other weaknesses."},{"front":"The four defense layers","back":"1) Input sanitization (filter before model). 2) System prompt hardening (resist overrides). 3) Output filtering (validate before user). 4) Behavioral boundaries (structural limits on actions)."},{"front":"Input sanitization","back":"Pattern matching against known injection signatures, length limits, encoding detection, and suspicious content flagging. The first line of defense — catches obvious attacks before they reach the model."},{"front":"System prompt hardening","back":"Writing prompts that resist override: reinforcement phrases, explicit refusal instructions, boundary markers, and statements that security rules take absolute priority over user messages."},{"front":"Output filtering","back":"Scanning model outputs for system prompt fragments, PII patterns (SSN, credit cards), suspicious URLs, and harmful content before the response reaches the user."},{"front":"Structural vs behavioral defenses","back":"Structural: the agent physically cannot access certain data (tool scoping). Behavioral: the agent is told not to access certain data (prompt instructions). Structural defenses cannot be bypassed by clever prompts."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Guardrail Architecture</h3>
+<details class="flash-card">
+<summary class="flash-front">Defense in depth</summary>
+<div class="flash-back">Using multiple overlapping security layers so that if one fails, others still protect the system. No single defense catches everything — layers compensate for each other weaknesses.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The four defense layers</summary>
+<div class="flash-back">1) Input sanitization (filter before model). 2) System prompt hardening (resist overrides). 3) Output filtering (validate before user). 4) Behavioral boundaries (structural limits on actions).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Input sanitization</summary>
+<div class="flash-back">Pattern matching against known injection signatures, length limits, encoding detection, and suspicious content flagging. The first line of defense — catches obvious attacks before they reach the model.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">System prompt hardening</summary>
+<div class="flash-back">Writing prompts that resist override: reinforcement phrases, explicit refusal instructions, boundary markers, and statements that security rules take absolute priority over user messages.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Output filtering</summary>
+<div class="flash-back">Scanning model outputs for system prompt fragments, PII patterns (SSN, credit cards), suspicious URLs, and harmful content before the response reaches the user.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Structural vs behavioral defenses</summary>
+<div class="flash-back">Structural: the agent physically cannot access certain data (tool scoping). Behavioral: the agent is told not to access certain data (prompt instructions). Structural defenses cannot be bypassed by clever prompts.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Guardrail Architecture Check","questions":[{"q":"Why does defense in depth use multiple security layers?","options":["Each layer is expensive so you need fewer of each","No single defense catches all attacks — layers compensate for each other weaknesses","It looks more impressive to auditors","Multiple layers make the AI slower, which is more secure"],"correct":1,"explanation":"Every defense has blind spots. Input filters miss encoding tricks. System prompts can be overridden. Output validators miss novel attacks. Multiple layers mean an attack must bypass ALL of them to succeed."},{"q":"An attacker uses Base64 encoding to bypass your input sanitization. Which layer should catch this?","options":["Input sanitization (the same layer that was bypassed)","System prompt hardening — the model should refuse the decoded content","Output filtering — catch the harmful content in the response","All of the above, ideally"],"correct":3,"explanation":"Defense in depth means multiple layers. Input sanitization should detect Base64 patterns. System prompt hardening should resist the decoded instruction. Output filtering should catch harmful content in the response. Ideally, at least one layer catches it."},{"q":"Which defense is more reliable: a system prompt instruction saying \"never access user passwords\" or a tool that physically cannot query the passwords table?","options":["The system prompt instruction","The tool restriction — structural limits cannot be overridden by prompt manipulation","They are equally reliable","Neither is reliable"],"correct":1,"explanation":"Structural defenses (tool scoping) physically prevent the action regardless of what the model is told. System prompt instructions are behavioral — they rely on the model following them, which can be bypassed by injection."},{"q":"Your output filter detects that a response contains 3 consecutive lines from your system prompt. What should it do?","options":["Let it through — system prompts are not sensitive","Block the response and return a generic error message","Delete the system prompt","Ask the user to rephrase"],"correct":1,"explanation":"System prompt fragments in the output indicate a prompt leaking attack. Block the response, return a safe generic message, and log the incident for security review. Never expose system prompt contents."},{"q":"A well-designed guardrail system should:","options":["Rely entirely on the model built-in safety training","Use only input filtering","Combine input sanitization, prompt hardening, output filtering, and structural boundaries","Use only output filtering"],"correct":2,"explanation":"A complete guardrail system layers all four defenses: input sanitization catches attacks before the model, prompt hardening resists overrides, output filtering catches harmful outputs, and structural boundaries limit what the agent can physically do."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Guardrail Architecture Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why does defense in depth use multiple security layers?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Each layer is expensive so you need fewer of each
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>No single defense catches all attacks — layers compensate for each other weaknesses
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It looks more impressive to auditors
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Multiple layers make the AI slower, which is more secure
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Every defense has blind spots. Input filters miss encoding tricks. System prompts can be overridden. Output validators miss novel attacks. Multiple layers mean an attack must bypass ALL of them to succeed.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>An attacker uses Base64 encoding to bypass your input sanitization. Which layer should catch this?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Input sanitization (the same layer that was bypassed)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>System prompt hardening — the model should refuse the decoded content
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Output filtering — catch the harmful content in the response
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>All of the above, ideally
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Defense in depth means multiple layers. Input sanitization should detect Base64 patterns. System prompt hardening should resist the decoded instruction. Output filtering should catch harmful content in the response. Ideally, at least one layer catches it.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Which defense is more reliable: a system prompt instruction saying "never access user passwords" or a tool that physically cannot query the passwords table?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The system prompt instruction
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The tool restriction — structural limits cannot be overridden by prompt manipulation
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>They are equally reliable
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Neither is reliable
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Structural defenses (tool scoping) physically prevent the action regardless of what the model is told. System prompt instructions are behavioral — they rely on the model following them, which can be bypassed by injection.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Your output filter detects that a response contains 3 consecutive lines from your system prompt. What should it do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Let it through — system prompts are not sensitive
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Block the response and return a generic error message
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Delete the system prompt
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Ask the user to rephrase
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> System prompt fragments in the output indicate a prompt leaking attack. Block the response, return a safe generic message, and log the incident for security review. Never expose system prompt contents.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>A well-designed guardrail system should:</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Rely entirely on the model built-in safety training
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Use only input filtering
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Combine input sanitization, prompt hardening, output filtering, and structural boundaries
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Use only output filtering
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A complete guardrail system layers all four defenses: input sanitization catches attacks before the model, prompt hardening resists overrides, output filtering catches harmful outputs, and structural boundaries limit what the agent can physically do.</div>
+</div>
+</div>
 
 </div>
 

@@ -146,7 +146,99 @@ queue = [
     </div>
   </div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Conflict Resolution Strategies","questions":[{"q":"Two agents need to update a user subscription simultaneously. Operations are quick (<1 second). Best strategy?","options":["Conscience Layer","Priority Queue","Locking","Swarm pattern"],"correct":2,"explanation":"Quick operations plus two writers equals locking. Acquire lock, write, release. Simple and effective for fast operations."},{"q":"Five agents submit reports to a dashboard. Security alerts must appear before routine analytics. Best strategy?","options":["Locking","Conscience Layer","Swarm","Priority Queue"],"correct":3,"explanation":"Different importance levels call for a priority queue. Security agents get higher priority and their writes are processed first."},{"q":"An agent wants to delete user data for GDPR compliance. Another wants to retain it for fraud investigation. Both are valid. Best strategy?","options":["Locking","Priority Queue","Conscience Layer","Rollback"],"correct":2,"explanation":"Ethical conflict with competing valid interests requires the conscience layer \u2014 an arbiter must weigh values (privacy vs. safety) and make a judgment call."},{"q":"What is a race condition?","options":["An agent running faster than expected","Two agents reading and writing the same data simultaneously, causing one write to be lost","A scheduling conflict between cron jobs","A memory overflow error"],"correct":1,"explanation":"A race condition occurs when two agents both read the same value, calculate changes independently, and then both write \u2014 the second write overwrites the first."},{"q":"What is a deadlock?","options":["When an agent runs out of memory","When Agent A locks resource X and waits for Y, while Agent B locks Y and waits for X \u2014 neither can proceed","When a database transaction is too slow","When an agent loses its identity"],"correct":1,"explanation":"Deadlocks happen when two agents each hold a lock the other needs. Neither can proceed. Prevented by always acquiring locks in the same order, or using lock timeouts."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Conflict Resolution Strategies</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Two agents need to update a user subscription simultaneously. Operations are quick (<1 second). Best strategy?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Conscience Layer
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Priority Queue
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Locking
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Swarm pattern
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Quick operations plus two writers equals locking. Acquire lock, write, release. Simple and effective for fast operations.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Five agents submit reports to a dashboard. Security alerts must appear before routine analytics. Best strategy?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Locking
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Conscience Layer
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Swarm
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Priority Queue
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Different importance levels call for a priority queue. Security agents get higher priority and their writes are processed first.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>An agent wants to delete user data for GDPR compliance. Another wants to retain it for fraud investigation. Both are valid. Best strategy?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Locking
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Priority Queue
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Conscience Layer
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Rollback
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Ethical conflict with competing valid interests requires the conscience layer — an arbiter must weigh values (privacy vs. safety) and make a judgment call.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What is a race condition?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>An agent running faster than expected
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Two agents reading and writing the same data simultaneously, causing one write to be lost
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A scheduling conflict between cron jobs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A memory overflow error
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A race condition occurs when two agents both read the same value, calculate changes independently, and then both write — the second write overwrites the first.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What is a deadlock?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>When an agent runs out of memory
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>When Agent A locks resource X and waits for Y, while Agent B locks Y and waits for X — neither can proceed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>When a database transaction is too slow
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>When an agent loses its identity
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Deadlocks happen when two agents each hold a lock the other needs. Neither can proceed. Prevented by always acquiring locks in the same order, or using lock timeouts.</div>
+</div>
+</div>
 
   <div class="section">
     <h2>Choosing the Right Strategy</h2>
@@ -184,6 +276,32 @@ queue = [
     </div>
   </div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"Conflict Resolution Concepts","cards":[{"front":"What is a race condition?","back":"When two agents read the same value, calculate independently, and both write \u2014 the second write overwrites the first, silently losing data."},{"front":"What is a rollback?","back":"Undoing a change to restore data to its last safe state. Like Ctrl-Z for database operations. Implemented via database transactions (BEGIN/ROLLBACK)."},{"front":"Locking (Pessimistic Concurrency)","back":"Agent acquires a lock before writing. Others must wait. Simple, reliable for quick ops. Risk: deadlocks if agents lock resources in different orders."},{"front":"Priority Queue","back":"Writes are ordered by importance level. Higher-priority agents go first. Risk: low-priority tasks may starve."},{"front":"Conscience Layer","back":"An arbiter agent reviews conflicting writes and decides based on system values. Best for ethical/policy conflicts where both sides are valid."},{"front":"What is a deadlock?","back":"Agent A locks X, waits for Y. Agent B locks Y, waits for X. Neither can proceed. Fix: always acquire locks in the same global order, or use timeouts."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Conflict Resolution Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">What is a race condition?</summary>
+<div class="flash-back">When two agents read the same value, calculate independently, and both write — the second write overwrites the first, silently losing data.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is a rollback?</summary>
+<div class="flash-back">Undoing a change to restore data to its last safe state. Like Ctrl-Z for database operations. Implemented via database transactions (BEGIN/ROLLBACK).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Locking (Pessimistic Concurrency)</summary>
+<div class="flash-back">Agent acquires a lock before writing. Others must wait. Simple, reliable for quick ops. Risk: deadlocks if agents lock resources in different orders.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Priority Queue</summary>
+<div class="flash-back">Writes are ordered by importance level. Higher-priority agents go first. Risk: low-priority tasks may starve.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Conscience Layer</summary>
+<div class="flash-back">An arbiter agent reviews conflicting writes and decides based on system values. Best for ethical/policy conflicts where both sides are valid.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is a deadlock?</summary>
+<div class="flash-back">Agent A locks X, waits for Y. Agent B locks Y, waits for X. Neither can proceed. Fix: always acquire locks in the same global order, or use timeouts.</div>
+</details>
+</div>
 
 </div>

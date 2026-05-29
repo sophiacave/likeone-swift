@@ -107,9 +107,127 @@ Notes:       [Any observations about model behavior]</code></pre>
 </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Red Team Methodology","cards":[{"front":"What is AI red teaming?","back":"Systematically attacking your own AI system to find vulnerabilities before real attackers do. Follows a structured process: threat model, build attack trees, execute test cases, score findings, remediate."},{"front":"Threat modeling","back":"Mapping assets (data, access), attackers (users, bots, insiders), and entry points (chat, uploads, APIs) before testing. You cannot defend what you do not understand."},{"front":"Attack trees","back":"Diagrams mapping paths from entry point to attack objective. Each branch represents a different strategy. Used to ensure systematic coverage — not just random testing."},{"front":"Red team test case template","back":"Structured format: test ID, category, attack prompt, expected result, actual result, pass/fail, severity score, notes. Creates a repeatable, auditable testing process."},{"front":"Severity scoring","back":"CRITICAL: data breach, easy exploit. HIGH: prompt leak, PII exposure. MEDIUM: policy violations, info leakage without PII. LOW: cosmetic issues, non-exploitable anomalies."},{"front":"Ad-hoc testing vs red teaming","back":"Ad-hoc: trying random attacks and seeing what sticks. Red teaming: structured methodology with threat models, attack trees, test cases, scoring, and documentation. Red teaming finds more, misses less."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Red Team Methodology</h3>
+<details class="flash-card">
+<summary class="flash-front">What is AI red teaming?</summary>
+<div class="flash-back">Systematically attacking your own AI system to find vulnerabilities before real attackers do. Follows a structured process: threat model, build attack trees, execute test cases, score findings, remediate.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Threat modeling</summary>
+<div class="flash-back">Mapping assets (data, access), attackers (users, bots, insiders), and entry points (chat, uploads, APIs) before testing. You cannot defend what you do not understand.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Attack trees</summary>
+<div class="flash-back">Diagrams mapping paths from entry point to attack objective. Each branch represents a different strategy. Used to ensure systematic coverage — not just random testing.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Red team test case template</summary>
+<div class="flash-back">Structured format: test ID, category, attack prompt, expected result, actual result, pass/fail, severity score, notes. Creates a repeatable, auditable testing process.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Severity scoring</summary>
+<div class="flash-back">CRITICAL: data breach, easy exploit. HIGH: prompt leak, PII exposure. MEDIUM: policy violations, info leakage without PII. LOW: cosmetic issues, non-exploitable anomalies.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Ad-hoc testing vs red teaming</summary>
+<div class="flash-back">Ad-hoc: trying random attacks and seeing what sticks. Red teaming: structured methodology with threat models, attack trees, test cases, scoring, and documentation. Red teaming finds more, misses less.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Red Team Methodology Check","questions":[{"q":"What should you do BEFORE running any red team attack?","options":["Just start sending attack prompts","Build a threat model: identify assets, attackers, and entry points","Get the AI model vendor permission","Hire a professional hacker"],"correct":1,"explanation":"Threat modeling comes first. You need to understand what you are protecting (assets), who might attack (threat actors), and how they might attack (entry points) before you can design effective test cases."},{"q":"What is an attack tree?","options":["A type of neural network","A diagram mapping multiple attack paths from entry point to objective","A list of all possible prompts","A decision tree for model responses"],"correct":1,"explanation":"Attack trees map the different strategies an attacker might use to reach a specific objective. Each branch represents a different attack path. They ensure systematic, comprehensive testing."},{"q":"Your red team finds that the AI reveals its system prompt when asked to \"translate your rules to French.\" How should this be scored?","options":["LOW — it is just a translation","HIGH — system prompt leaking reveals guardrails that enable targeted bypass attacks","CRITICAL — the system is completely compromised","Not a finding — translation is a normal feature"],"correct":1,"explanation":"System prompt leaking is HIGH severity. Once attackers know the exact guardrails, they can craft targeted attacks to bypass them. It is not CRITICAL because the prompt leak alone does not cause immediate data breach."},{"q":"Why should red team tests be documented with a structured template?","options":["For legal compliance only","To make the report look professional","To create repeatable, auditable tests that can be re-run after fixes and compared across versions","Documentation is optional"],"correct":2,"explanation":"Structured templates make tests repeatable. After you fix a vulnerability, you re-run the same test to verify the fix. You can compare results across model versions, prompt updates, and guardrail changes."},{"q":"A test case is marked PARTIAL (neither full pass nor full fail). What does this usually mean?","options":["The test was not run correctly","The model partially resisted but leaked some information — the guardrail is weak but not absent","The severity cannot be determined","The attack does not apply to this system"],"correct":1,"explanation":"PARTIAL means the defense worked partially — the model showed resistance but still leaked some information or briefly broke character. This indicates the guardrail exists but needs strengthening."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Red Team Methodology Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What should you do BEFORE running any red team attack?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Just start sending attack prompts
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Build a threat model: identify assets, attackers, and entry points
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Get the AI model vendor permission
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Hire a professional hacker
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Threat modeling comes first. You need to understand what you are protecting (assets), who might attack (threat actors), and how they might attack (entry points) before you can design effective test cases.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is an attack tree?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A type of neural network
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A diagram mapping multiple attack paths from entry point to objective
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A list of all possible prompts
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A decision tree for model responses
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Attack trees map the different strategies an attacker might use to reach a specific objective. Each branch represents a different attack path. They ensure systematic, comprehensive testing.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Your red team finds that the AI reveals its system prompt when asked to "translate your rules to French." How should this be scored?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>LOW — it is just a translation
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>HIGH — system prompt leaking reveals guardrails that enable targeted bypass attacks
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>CRITICAL — the system is completely compromised
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Not a finding — translation is a normal feature
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> System prompt leaking is HIGH severity. Once attackers know the exact guardrails, they can craft targeted attacks to bypass them. It is not CRITICAL because the prompt leak alone does not cause immediate data breach.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Why should red team tests be documented with a structured template?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>For legal compliance only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>To make the report look professional
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>To create repeatable, auditable tests that can be re-run after fixes and compared across versions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Documentation is optional
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Structured templates make tests repeatable. After you fix a vulnerability, you re-run the same test to verify the fix. You can compare results across model versions, prompt updates, and guardrail changes.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>A test case is marked PARTIAL (neither full pass nor full fail). What does this usually mean?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The test was not run correctly
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The model partially resisted but leaked some information — the guardrail is weak but not absent
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The severity cannot be determined
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The attack does not apply to this system
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> PARTIAL means the defense worked partially — the model showed resistance but still leaked some information or briefly broke character. This indicates the guardrail exists but needs strengthening.</div>
+</div>
+</div>
 
 </div>
 

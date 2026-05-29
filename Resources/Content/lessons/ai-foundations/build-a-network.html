@@ -165,10 +165,70 @@ probs = model(X)
   <span class="section-label">Knowledge Check</span>
   <h2 class="section-title">Test your understanding.</h2>
 
-<div data-learn="FlashDeck" data-props='{"title":"Network Architecture Concepts","cards":[{"front":"Input Layer","back":"The first layer of a neural network. It receives raw data — pixels, text, numbers — and passes it to the hidden layers for processing."},{"front":"Hidden Layer","back":"Middle layers that find patterns and intermediate representations. Each hidden layer builds on the previous one to detect increasingly complex features."},{"front":"Output Layer","back":"The final layer that makes the prediction or decision. For a cat/dog classifier, the output layer has one neuron per class."},{"front":"Forward Pass","back":"When data flows from input through hidden layers to output. Each neuron multiplies inputs by weights, adds bias, and applies an activation function."},{"front":"Network Architecture","back":"The structure of a neural network — how many layers, how many neurons per layer, how they connect. Architecture determines what the network can learn."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Network Architecture Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">Input Layer</summary>
+<div class="flash-back">The first layer of a neural network. It receives raw data — pixels, text, numbers — and passes it to the hidden layers for processing.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Hidden Layer</summary>
+<div class="flash-back">Middle layers that find patterns and intermediate representations. Each hidden layer builds on the previous one to detect increasingly complex features.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Output Layer</summary>
+<div class="flash-back">The final layer that makes the prediction or decision. For a cat/dog classifier, the output layer has one neuron per class.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Forward Pass</summary>
+<div class="flash-back">When data flows from input through hidden layers to output. Each neuron multiplies inputs by weights, adds bias, and applies an activation function.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Network Architecture</summary>
+<div class="flash-back">The structure of a neural network — how many layers, how many neurons per layer, how they connect. Architecture determines what the network can learn.</div>
+</details>
+</div>
 
 
-<div data-learn="QuizMC" data-props='{"title":"Network Architecture","questions":[{"q":"Why do neural networks need hidden layers?","options":["To hide the computation from users","To find intermediate patterns that are too complex for a single layer","To reduce the amount of training data needed","To make the network smaller"],"correct":1,"explanation":"Hidden layers find intermediate representations — first layer might detect edges, second detects shapes, third detects objects. Each layer builds on the previous one to learn increasingly complex patterns."},{"q":"For a cats vs dogs image classifier, why do you need 2 output neurons?","options":["One for each pixel in the image","One outputs cat probability, the other outputs dog probability","Two outputs make the network faster","It is just a convention with no real purpose"],"correct":1,"explanation":"Each output neuron represents one class. The network learns to activate the cat neuron when it sees a cat and the dog neuron when it sees a dog. The outputs are often probabilities that sum to 1."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Network Architecture</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why do neural networks need hidden layers?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>To hide the computation from users
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>To find intermediate patterns that are too complex for a single layer
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>To reduce the amount of training data needed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>To make the network smaller
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Hidden layers find intermediate representations — first layer might detect edges, second detects shapes, third detects objects. Each layer builds on the previous one to learn increasingly complex patterns.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>For a cats vs dogs image classifier, why do you need 2 output neurons?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>One for each pixel in the image
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>One outputs cat probability, the other outputs dog probability
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Two outputs make the network faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It is just a convention with no real purpose
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Each output neuron represents one class. The network learns to activate the cat neuron when it sees a cat and the dog neuron when it sees a dog. The outputs are often probabilities that sum to 1.</div>
+</div>
+</div>
 
   <div class="narration" style="margin-top:1.5rem">
     <strong>Neural networks are layers of neurons connected together.</strong> Input neurons receive data. Hidden neurons find patterns. Output neurons make decisions. The magic is in the connections — each one has a weight that gets adjusted during training.

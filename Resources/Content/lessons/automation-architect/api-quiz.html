@@ -194,9 +194,141 @@ remaining = response.headers.<span style="color:#34d399">get</span>(<span style=
 </div>
   </div>
 
-  <div data-learn="QuizMC" data-props='{"title":"API Knowledge Check","questions":[{"q":"Which HTTP method is used to retrieve data without modifying it?","options":["POST","GET","PUT","DELETE"],"correct":1,"explanation":"GET is the read-only method. It retrieves data from the server without changing anything."},{"q":"What does a 201 status code mean?","options":["OK — request succeeded","Resource was created successfully","Resource not found","Server error"],"correct":1,"explanation":"201 Created means the server successfully created a new resource, typically returned after a POST request."},{"q":"Where is an API key typically sent in a request?","options":["In the URL path","In the response body","In the Authorization header","In the status code"],"correct":2,"explanation":"Best practice is to send API keys in headers such as Authorization: Bearer token or X-API-Key: key. This keeps credentials out of URLs where they might be logged."},{"q":"What does a 404 status code indicate?","options":["Authentication required","Request was malformed","The requested resource was not found","Server crashed"],"correct":2,"explanation":"404 Not Found means the server understood your request but the resource at that URL does not exist."},{"q":"Which content type header indicates you are sending JSON data?","options":["text/html","application/json","multipart/form-data","text/plain"],"correct":1,"explanation":"application/json tells the server that your request body contains JSON-formatted data."},{"q":"What is the difference between PUT and POST?","options":["PUT creates, POST updates","PUT updates or replaces, POST creates","They are identical","PUT deletes, POST reads"],"correct":1,"explanation":"PUT updates or replaces an existing resource. POST creates a new resource. PUT is idempotent — same result each time."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">API Knowledge Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which HTTP method is used to retrieve data without modifying it?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>POST
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>GET
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>PUT
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>DELETE
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> GET is the read-only method. It retrieves data from the server without changing anything.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What does a 201 status code mean?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>OK — request succeeded
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Resource was created successfully
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Resource not found
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Server error
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> 201 Created means the server successfully created a new resource, typically returned after a POST request.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Where is an API key typically sent in a request?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>In the URL path
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>In the response body
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>In the Authorization header
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>In the status code
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Best practice is to send API keys in headers such as Authorization: Bearer token or X-API-Key: key. This keeps credentials out of URLs where they might be logged.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What does a 404 status code indicate?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Authentication required
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Request was malformed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The requested resource was not found
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Server crashed
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> 404 Not Found means the server understood your request but the resource at that URL does not exist.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>Which content type header indicates you are sending JSON data?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>text/html
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>application/json
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>multipart/form-data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>text/plain
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> application/json tells the server that your request body contains JSON-formatted data.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">6</span>What is the difference between PUT and POST?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>PUT creates, POST updates
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>PUT updates or replaces, POST creates
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>They are identical
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>PUT deletes, POST reads
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> PUT updates or replaces an existing resource. POST creates a new resource. PUT is idempotent — same result each time.</div>
+</div>
+</div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"API Headers & Auth","cards":[{"front":"Authorization header","back":"Sends authentication credentials with a request. Common formats: Bearer <token> for OAuth, X-API-Key: <key> for API keys."},{"front":"Content-Type header","back":"Tells the server the format of your request body. Use application/json when sending JSON data."},{"front":"Accept header","back":"Tells the server what format you want in the response. Example: Accept: application/json."},{"front":"Bearer token","back":"An OAuth access token sent in the Authorization header: Authorization: Bearer <token>"},{"front":"401 vs 403","back":"401 Unauthorized = no valid credentials sent. 403 Forbidden = credentials are valid but you do not have permission."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">API Headers & Auth</h3>
+<details class="flash-card">
+<summary class="flash-front">Authorization header</summary>
+<div class="flash-back">Sends authentication credentials with a request. Common formats: Bearer <token> for OAuth, X-API-Key: <key> for API keys.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Content-Type header</summary>
+<div class="flash-back">Tells the server the format of your request body. Use application/json when sending JSON data.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Accept header</summary>
+<div class="flash-back">Tells the server what format you want in the response. Example: Accept: application/json.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Bearer token</summary>
+<div class="flash-back">An OAuth access token sent in the Authorization header: Authorization: Bearer <token></div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">401 vs 403</summary>
+<div class="flash-back">401 Unauthorized = no valid credentials sent. 403 Forbidden = credentials are valid but you do not have permission.</div>
+</details>
+</div>
 
 
 </div>

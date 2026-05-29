@@ -114,13 +114,95 @@ CMD ["node", "agent.js"]</code></div>
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Production Patterns","cards":[{"front":"Headless Browser Execution","back":"Browsers run without a visible display using Xvfb (virtual framebuffer) or Playwright headless mode. Screenshots are captured from memory. Docker containers package the agent, browser, and virtual display together."},{"front":"Cost Reduction Strategies","back":"Minimize screenshots (batch actions), reduce resolution (960-1280 for simple pages), use DOM when possible, cache page analysis, use cheaper models for simple tasks. Can reduce costs by 80%+."},{"front":"URL Allowlisting","back":"The agent can only navigate to pre-approved domains. Prevents the agent from being tricked into visiting malicious sites or interacting with unintended services. Block all non-approved navigation."},{"front":"Queue-Based Execution","back":"Tasks go into a queue. Worker containers pull tasks, execute, report results. If a worker crashes, the task goes back to the queue. Handles load spikes and failures gracefully."},{"front":"Fresh Browser Profiles","back":"Each task gets a clean browser -- no cookies, passwords, or history from previous tasks. Prevents credential leakage between tasks. Essential for security and isolation."},{"front":"Circuit Breaker Pattern","back":"If a target website goes down, pause tasks for that domain. Detect repeated failures and stop sending tasks. Resume when the site recovers. Prevents wasting API tokens on guaranteed failures."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Production Patterns</h3>
+<details class="flash-card">
+<summary class="flash-front">Headless Browser Execution</summary>
+<div class="flash-back">Browsers run without a visible display using Xvfb (virtual framebuffer) or Playwright headless mode. Screenshots are captured from memory. Docker containers package the agent, browser, and virtual display together.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Cost Reduction Strategies</summary>
+<div class="flash-back">Minimize screenshots (batch actions), reduce resolution (960-1280 for simple pages), use DOM when possible, cache page analysis, use cheaper models for simple tasks. Can reduce costs by 80%+.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">URL Allowlisting</summary>
+<div class="flash-back">The agent can only navigate to pre-approved domains. Prevents the agent from being tricked into visiting malicious sites or interacting with unintended services. Block all non-approved navigation.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Queue-Based Execution</summary>
+<div class="flash-back">Tasks go into a queue. Worker containers pull tasks, execute, report results. If a worker crashes, the task goes back to the queue. Handles load spikes and failures gracefully.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Fresh Browser Profiles</summary>
+<div class="flash-back">Each task gets a clean browser -- no cookies, passwords, or history from previous tasks. Prevents credential leakage between tasks. Essential for security and isolation.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Circuit Breaker Pattern</summary>
+<div class="flash-back">If a target website goes down, pause tasks for that domain. Detect repeated failures and stop sending tasks. Resume when the site recovers. Prevents wasting API tokens on guaranteed failures.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Production patterns quiz.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Production Patterns","questions":[{"q":"What is the primary cost reduction strategy for production vision agents?","options":["Use the most expensive model for every screenshot","Minimize the number of screenshots by batching related actions (type email, Tab, type password, THEN screenshot) and use DOM interaction for known pages instead of vision","Run agents only during off-peak hours","Use larger screenshots for more detail"],"correct":1,"explanation":"Every screenshot costs tokens. Batching related actions into fewer screenshots and using DOM interaction (which costs zero image tokens) for known page structures can reduce costs by 80% or more. Reserve vision for pages without known selectors."},{"q":"Why should each task get a fresh browser profile in production?","options":["Fresh profiles load pages faster","To prevent cookies, saved passwords, and session state from one task leaking into another -- essential for security and isolation between tasks","Fresh profiles use less memory","Browser profiles expire after one use anyway"],"correct":1,"explanation":"Shared browser profiles create security risks. Task A logs into Service X, and Task B inherits those cookies and has unauthorized access. Fresh profiles ensure each task starts clean with no carry-over state."},{"q":"What is a circuit breaker pattern and why is it important for production agents?","options":["It physically disconnects the server to prevent damage","It detects repeated failures against a target site and pauses tasks for that domain, preventing wasted API tokens on tasks guaranteed to fail until the site recovers","It limits the number of browser tabs the agent can open","It automatically fixes broken CSS selectors"],"correct":1,"explanation":"If a target website goes down and you keep sending tasks, every task fails and burns API tokens on screenshots of error pages. A circuit breaker detects the pattern (3 failures in a row), pauses tasks for that domain, and resumes when the site is back."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Production Patterns</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the primary cost reduction strategy for production vision agents?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Use the most expensive model for every screenshot
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Minimize the number of screenshots by batching related actions (type email, Tab, type password, THEN screenshot) and use DOM interaction for known pages instead of vision
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Run agents only during off-peak hours
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Use larger screenshots for more detail
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Every screenshot costs tokens. Batching related actions into fewer screenshots and using DOM interaction (which costs zero image tokens) for known page structures can reduce costs by 80% or more. Reserve vision for pages without known selectors.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why should each task get a fresh browser profile in production?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Fresh profiles load pages faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>To prevent cookies, saved passwords, and session state from one task leaking into another -- essential for security and isolation between tasks
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Fresh profiles use less memory
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Browser profiles expire after one use anyway
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Shared browser profiles create security risks. Task A logs into Service X, and Task B inherits those cookies and has unauthorized access. Fresh profiles ensure each task starts clean with no carry-over state.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is a circuit breaker pattern and why is it important for production agents?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It physically disconnects the server to prevent damage
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It detects repeated failures against a target site and pauses tasks for that domain, preventing wasted API tokens on tasks guaranteed to fail until the site recovers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It limits the number of browser tabs the agent can open
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It automatically fixes broken CSS selectors
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> If a target website goes down and you keep sending tasks, every task fails and burns API tokens on screenshots of error pages. A circuit breaker detects the pattern (3 failures in a row), pauses tasks for that domain, and resumes when the site is back.</div>
+</div>
+</div>
 </div>
 
 <div class="lesson-section">

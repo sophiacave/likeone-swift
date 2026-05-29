@@ -124,9 +124,127 @@
 </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Session Management","cards":[{"front":"What is a session in the Agent SDK?","back":"A stored conversation history that allows multi-turn interactions. Sessions let Claude remember previous queries, tool calls, and results — enabling continuity across multiple interactions."},{"front":"sessionId","back":"A unique identifier for each session (e.g., sess_abc123). Pass it to subsequent query() calls to resume an existing conversation. Returned in every query result."},{"front":"Session store","back":"A persistence backend that saves session data (conversation history) to disk, a database, or other storage. Required for sessions to survive application restarts."},{"front":"FileSessionStore","back":"A built-in session store that saves sessions as files on disk. Pass a directory path: new FileSessionStore(\"./sessions\"). Simple and effective for single-server deployments."},{"front":"Forking a session","back":"Creating a copy of a session at a specific point to explore different directions. Both branches share the same history up to the fork point but diverge afterward. Use forkSession option."},{"front":"Context window limit and sessions","back":"Sessions accumulate tokens over time. Very long sessions can hit the model context limit (e.g., 200K tokens for Sonnet). Monitor session length and start fresh for unrelated tasks."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Session Management</h3>
+<details class="flash-card">
+<summary class="flash-front">What is a session in the Agent SDK?</summary>
+<div class="flash-back">A stored conversation history that allows multi-turn interactions. Sessions let Claude remember previous queries, tool calls, and results — enabling continuity across multiple interactions.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">sessionId</summary>
+<div class="flash-back">A unique identifier for each session (e.g., sess_abc123). Pass it to subsequent query() calls to resume an existing conversation. Returned in every query result.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Session store</summary>
+<div class="flash-back">A persistence backend that saves session data (conversation history) to disk, a database, or other storage. Required for sessions to survive application restarts.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">FileSessionStore</summary>
+<div class="flash-back">A built-in session store that saves sessions as files on disk. Pass a directory path: new FileSessionStore("./sessions"). Simple and effective for single-server deployments.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Forking a session</summary>
+<div class="flash-back">Creating a copy of a session at a specific point to explore different directions. Both branches share the same history up to the fork point but diverge afterward. Use forkSession option.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Context window limit and sessions</summary>
+<div class="flash-back">Sessions accumulate tokens over time. Very long sessions can hit the model context limit (e.g., 200K tokens for Sonnet). Monitor session length and start fresh for unrelated tasks.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Session Management Check","questions":[{"q":"What is the purpose of passing sessionId to a query() call?","options":["To track API costs","To resume a previous conversation so Claude remembers the history","To authenticate with a different API key","To select a different model"],"correct":1,"explanation":"The sessionId tells the SDK to load the previous conversation history before sending the new query. Claude sees the full conversation and can continue from where it left off."},{"q":"You restart your application and want to resume an agent conversation. What do you need?","options":["The exact same code that started the conversation","A session store configured with persistence, and the session ID","Nothing — sessions survive restarts automatically","A backup of the Claude API"],"correct":1,"explanation":"Sessions only survive restarts if you have configured a persistent session store (like FileSessionStore). You also need the session ID from the previous conversation to load the right session."},{"q":"What does forking a session do?","options":["Deletes the original session","Creates a copy of the session at a specific point to explore a different direction","Merges two sessions together","Splits the session between two agents"],"correct":1,"explanation":"Forking creates a branch from an existing session. Both the original and the fork share history up to the fork point, then diverge. This lets you explore multiple approaches from the same starting context."},{"q":"A session has been running for hours with hundreds of tool calls. What risk should you watch for?","options":["The API key might expire","The session might hit the model context window limit","The session store will automatically delete it","Tool permissions might change"],"correct":1,"explanation":"Sessions accumulate tokens with every message and tool call. Very long sessions can exceed the model context window (e.g., 200K tokens), causing failures. Monitor session length and consider starting fresh."},{"q":"You resume a session from two weeks ago. What potential problem might arise?","options":["The API key has definitely changed","Files Claude remembers reading may have changed since then","Sessions expire after one week","The model version will be different"],"correct":1,"explanation":"Claude remembers file contents from when it last read them. If files have been modified in the two weeks since, Claude working from stale data. Instruct it to re-read relevant files when resuming after long gaps."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Session Management Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the purpose of passing sessionId to a query() call?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>To track API costs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>To resume a previous conversation so Claude remembers the history
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>To authenticate with a different API key
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>To select a different model
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The sessionId tells the SDK to load the previous conversation history before sending the new query. Claude sees the full conversation and can continue from where it left off.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>You restart your application and want to resume an agent conversation. What do you need?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The exact same code that started the conversation
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A session store configured with persistence, and the session ID
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Nothing — sessions survive restarts automatically
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A backup of the Claude API
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Sessions only survive restarts if you have configured a persistent session store (like FileSessionStore). You also need the session ID from the previous conversation to load the right session.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What does forking a session do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Deletes the original session
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Creates a copy of the session at a specific point to explore a different direction
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Merges two sessions together
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Splits the session between two agents
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Forking creates a branch from an existing session. Both the original and the fork share history up to the fork point, then diverge. This lets you explore multiple approaches from the same starting context.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>A session has been running for hours with hundreds of tool calls. What risk should you watch for?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The API key might expire
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The session might hit the model context window limit
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The session store will automatically delete it
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Tool permissions might change
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Sessions accumulate tokens with every message and tool call. Very long sessions can exceed the model context window (e.g., 200K tokens), causing failures. Monitor session length and consider starting fresh.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>You resume a session from two weeks ago. What potential problem might arise?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The API key has definitely changed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Files Claude remembers reading may have changed since then
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Sessions expire after one week
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The model version will be different
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Claude remembers file contents from when it last read them. If files have been modified in the two weeks since, Claude working from stale data. Instruct it to re-read relevant files when resuming after long gaps.</div>
+</div>
+</div>
 
 </div>
 

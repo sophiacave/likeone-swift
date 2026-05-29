@@ -253,7 +253,29 @@ msg = AgentMessage(
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Communication Patterns","cards":[{"front":"Direct Messaging","back":"Agent A sends output directly to Agent B. Like a relay baton. Best for sequential workflows and simple handoffs. Watch for format mismatches."},{"front":"Broadcast (Pub/Sub)","back":"One agent publishes, multiple agents receive and decide whether to act. Best for parallel processing. Watch for race conditions and duplicate work."},{"front":"Blackboard (Shared Space)","back":"All agents read from and write to a shared workspace. Best for complex problems needing full context. Watch for stale reads and write conflicts."},{"front":"Communication Contracts","back":"Agreed-upon formats, protocols, and expectations for how information flows. Structured messages with from, to, type, payload, and metadata fields."},{"front":"Why Systems Fail at the Seams","back":"Format mismatches and lost context at handoff points cause cascading failures. Invest heavily in defining message formats explicitly between agents."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Communication Patterns</h3>
+<details class="flash-card">
+<summary class="flash-front">Direct Messaging</summary>
+<div class="flash-back">Agent A sends output directly to Agent B. Like a relay baton. Best for sequential workflows and simple handoffs. Watch for format mismatches.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Broadcast (Pub/Sub)</summary>
+<div class="flash-back">One agent publishes, multiple agents receive and decide whether to act. Best for parallel processing. Watch for race conditions and duplicate work.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Blackboard (Shared Space)</summary>
+<div class="flash-back">All agents read from and write to a shared workspace. Best for complex problems needing full context. Watch for stale reads and write conflicts.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Communication Contracts</summary>
+<div class="flash-back">Agreed-upon formats, protocols, and expectations for how information flows. Structured messages with from, to, type, payload, and metadata fields.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why Systems Fail at the Seams</summary>
+<div class="flash-back">Format mismatches and lost context at handoff points cause cascading failures. Invest heavily in defining message formats explicitly between agents.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">

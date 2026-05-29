@@ -122,7 +122,45 @@ Fix all issues you find.</code></pre>
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
 
-<div data-learn="QuizMC" data-props='{"questions":[{"q":"Why should you not rely on color alone to show errors?","options":["Colors look different on every screen","Colorblind users cannot distinguish the color change","Colors slow down the app","Red is considered rude in some cultures"],"correct":1,"explanation":"About 8% of men are colorblind. If your only error indicator is a red border, they will not see it. Always pair color with text or icons."},{"q":"What is the fastest way to test keyboard accessibility?","options":["Install a special testing tool","Read through all the code","Put your mouse aside and press Tab through the whole app","Ask a screen reader user to test it"],"correct":2,"explanation":"The Tab test takes 30 seconds. Navigate your entire app using only the Tab key. If you cannot reach everything or cannot see what is focused, you have accessibility issues to fix."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why should you not rely on color alone to show errors?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Colors look different on every screen
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Colorblind users cannot distinguish the color change
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Colors slow down the app
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Red is considered rude in some cultures
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> About 8% of men are colorblind. If your only error indicator is a red border, they will not see it. Always pair color with text or icons.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the fastest way to test keyboard accessibility?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Install a special testing tool
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Read through all the code
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Put your mouse aside and press Tab through the whole app
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Ask a screen reader user to test it
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The Tab test takes 30 seconds. Navigate your entire app using only the Tab key. If you cannot reach everything or cannot see what is focused, you have accessibility issues to fix.</div>
+</div>
+</div>
 
 </div>
 
@@ -131,7 +169,33 @@ Fix all issues you find.</code></pre>
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
 
-<div data-learn="FlashDeck" data-props='{"title":"Accessibility Essentials","cards":[{"front":"What percentage of adults has a disability?","back":"One in four (25%). Building accessible apps is not a niche concern — it affects a quarter of your potential users."},{"front":"What is alt text?","back":"A text description of an image that screen readers read aloud. Every image needs descriptive alt text."},{"front":"What is the WCAG AA contrast ratio?","back":"At least 4.5:1 for normal text. This ensures text is readable for people with low vision. AI can check and fix this for you."},{"front":"What is the Tab test?","back":"Navigate your entire app using only the Tab key. If you cannot reach every interactive element or see what is focused, your keyboard accessibility needs work."},{"front":"What is the curb cut effect?","back":"Features designed for disabled people that benefit everyone. Like curb cuts on sidewalks — designed for wheelchairs, used by everyone with strollers, luggage, or carts."},{"front":"How do you make a vibe-coded app accessible?","back":"Add one prompt: ask AI to audit for alt text, keyboard navigation, color contrast, form labels, and heading structure. AI knows the rules — you just need to ask."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Accessibility Essentials</h3>
+<details class="flash-card">
+<summary class="flash-front">What percentage of adults has a disability?</summary>
+<div class="flash-back">One in four (25%). Building accessible apps is not a niche concern — it affects a quarter of your potential users.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is alt text?</summary>
+<div class="flash-back">A text description of an image that screen readers read aloud. Every image needs descriptive alt text.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the WCAG AA contrast ratio?</summary>
+<div class="flash-back">At least 4.5:1 for normal text. This ensures text is readable for people with low vision. AI can check and fix this for you.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the Tab test?</summary>
+<div class="flash-back">Navigate your entire app using only the Tab key. If you cannot reach every interactive element or see what is focused, your keyboard accessibility needs work.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the curb cut effect?</summary>
+<div class="flash-back">Features designed for disabled people that benefit everyone. Like curb cuts on sidewalks — designed for wheelchairs, used by everyone with strollers, luggage, or carts.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you make a vibe-coded app accessible?</summary>
+<div class="flash-back">Add one prompt: ask AI to audit for alt text, keyboard navigation, color contrast, form labels, and heading structure. AI knows the rules — you just need to ask.</div>
+</details>
+</div>
 
 </div>
 

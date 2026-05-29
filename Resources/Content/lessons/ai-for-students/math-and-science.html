@@ -56,13 +56,73 @@
 <div class="lesson-section">
   <span class="section-label">Quick Check</span>
   <h2 class="section-title">Lock it in.</h2>
-  <div data-learn="QuizMC" data-props='{"questions":[{"q":"What is the FIRST rung on the hint ladder?","options":["Ask AI to solve the entire problem","Ask for the first step only","Ask what concept or technique is relevant","Ask for a full guided walkthrough"],"correct":2,"explanation":"Rung 1 is a concept check: ask what technique applies, then try the problem yourself. Only escalate to more help if you&#39;re genuinely stuck."},{"q":"Why is AI unreliable for complex math calculations?","options":["It was trained only on basic arithmetic","It predicts what math notation should look like rather than actually computing","It can only handle problems under 10 steps","It uses an outdated version of calculus"],"correct":1,"explanation":"LLMs predict text patterns, including mathematical notation. They excel at standard textbook problems but fail on unusual setups because they&#39;re pattern-matching, not computing."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the FIRST rung on the hint ladder?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Ask AI to solve the entire problem
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Ask for the first step only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Ask what concept or technique is relevant
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Ask for a full guided walkthrough
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Rung 1 is a concept check: ask what technique applies, then try the problem yourself. Only escalate to more help if you're genuinely stuck.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why is AI unreliable for complex math calculations?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It was trained only on basic arithmetic
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>It predicts what math notation should look like rather than actually computing
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It can only handle problems under 10 steps
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It uses an outdated version of calculus
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> LLMs predict text patterns, including mathematical notation. They excel at standard textbook problems but fail on unusual setups because they're pattern-matching, not computing.</div>
+</div>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts to remember.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Math & Science with AI","cards":[{"front":"What are the 4 rungs of the hint ladder?","back":"1) Concept check (what technique applies?), 2) First step only, 3) Guided walkthrough with reasoning, 4) Full solution + general strategy. Always start at Rung 1."},{"front":"How do you verify AI math answers?","back":"Plug the answer back into the original equation. Use estimation for sanity checks. Verify critical work with Wolfram Alpha or Symbolab (actual computation engines)."},{"front":"What&#39;s the follow-up after any AI math help?","back":"Ask AI to generate 3 similar problems and solve them without AI. If you get 2/3 right, you&#39;ve learned the concept. If not, go back to Rung 3."},{"front":"How does AI help with lab report analysis?","back":"Share your data and expected results, then ask AI to help brainstorm reasons for discrepancies. This generates the hypotheses your professor wants to see in the analysis section."},{"front":"Why use both AI and Wolfram Alpha?","back":"AI excels at conceptual explanations and strategy. Wolfram Alpha excels at accurate computation. Together they cover understanding + accuracy."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Math & Science with AI</h3>
+<details class="flash-card">
+<summary class="flash-front">What are the 4 rungs of the hint ladder?</summary>
+<div class="flash-back">1) Concept check (what technique applies?), 2) First step only, 3) Guided walkthrough with reasoning, 4) Full solution + general strategy. Always start at Rung 1.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How do you verify AI math answers?</summary>
+<div class="flash-back">Plug the answer back into the original equation. Use estimation for sanity checks. Verify critical work with Wolfram Alpha or Symbolab (actual computation engines).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What's the follow-up after any AI math help?</summary>
+<div class="flash-back">Ask AI to generate 3 similar problems and solve them without AI. If you get 2/3 right, you've learned the concept. If not, go back to Rung 3.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How does AI help with lab report analysis?</summary>
+<div class="flash-back">Share your data and expected results, then ask AI to help brainstorm reasons for discrepancies. This generates the hypotheses your professor wants to see in the analysis section.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why use both AI and Wolfram Alpha?</summary>
+<div class="flash-back">AI excels at conceptual explanations and strategy. Wolfram Alpha excels at accurate computation. Together they cover understanding + accuracy.</div>
+</details>
+</div>
 </div>
 
 </div>

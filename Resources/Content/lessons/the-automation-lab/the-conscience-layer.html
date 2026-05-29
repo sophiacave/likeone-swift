@@ -190,7 +190,129 @@ audit_entry = {
     <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Without an audit trail, blocked actions disappear silently. The agent does not act, but nobody knows why. Logging every evaluation — especially blocks — makes the system transparent and debuggable.</p>
   </div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Conscience Layer \u2014 Priority Hierarchy","questions":[{"q":"An agent is asked to publish content that includes a user\u0027s private health data because it would increase engagement. What does the conscience layer do?","options":["Publishes it \u2014 engagement is a core goal","Refuses \u2014 user privacy is a Prime Directive that overrides task goals","Asks for human approval","Strips the health data and publishes the rest"],"correct":1,"explanation":"Prime Directives (Tier 1) override all tasks (Tier 5). Sharing private health data harms the user \u2014 the conscience layer blocks this unconditionally."},{"q":"A content writer agent is about to publish a report showing the business is losing money. Should it soften the language?","options":["Yes \u2014 protect stakeholder morale","No \u2014 honesty is a Prime Directive; accurate reporting enables good decisions","Only soften if losses are over 20%","Yes \u2014 the marketing team can handle messaging"],"correct":1,"explanation":"Honesty is a Prime Directive. Misleading stakeholders, even to protect morale, violates Tier 1."},{"q":"Which tier has the HIGHEST priority?","options":["Safety","Operations","Tasks","Prime Directives"],"correct":3,"explanation":"Tier 1: Prime Directives override everything. They represent core values the system will never violate."},{"q":"An agent finds a way to save money but it requires exposing an API key in a public repo. What should the conscience layer do?","options":["Allow it \u2014 cost savings are an operational priority","Block it \u2014 safety rules outrank operational efficiency","Ask the user to decide","Allow it temporarily with a warning"],"correct":1,"explanation":"Safety (Tier 4) outranks Operations (Tier 3). Exposing credentials is a safety violation \u2014 blocked unconditionally."},{"q":"GDPR agent wants to delete user data. Fraud agent wants to retain it. Both have valid rules. How does the conscience layer resolve this?","options":["The last agent to run wins","Deadlock \u2014 neither acts","The conscience layer compares tier levels and the higher-tier rule wins","It always deletes \u2014 privacy is more important"],"correct":2,"explanation":"The conscience layer resolves conflicts by tier precedence. If both rules are the same tier, the system applies a predefined policy (e.g., retain with restricted access for 30 days, then delete)."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Conscience Layer — Priority Hierarchy</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>An agent is asked to publish content that includes a user's private health data because it would increase engagement. What does the conscience layer do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Publishes it — engagement is a core goal
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Refuses — user privacy is a Prime Directive that overrides task goals
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Asks for human approval
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Strips the health data and publishes the rest
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Prime Directives (Tier 1) override all tasks (Tier 5). Sharing private health data harms the user — the conscience layer blocks this unconditionally.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>A content writer agent is about to publish a report showing the business is losing money. Should it soften the language?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Yes — protect stakeholder morale
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>No — honesty is a Prime Directive; accurate reporting enables good decisions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Only soften if losses are over 20%
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Yes — the marketing team can handle messaging
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Honesty is a Prime Directive. Misleading stakeholders, even to protect morale, violates Tier 1.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Which tier has the HIGHEST priority?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Safety
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Operations
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Tasks
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Prime Directives
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Tier 1: Prime Directives override everything. They represent core values the system will never violate.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>An agent finds a way to save money but it requires exposing an API key in a public repo. What should the conscience layer do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Allow it — cost savings are an operational priority
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Block it — safety rules outrank operational efficiency
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Ask the user to decide
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Allow it temporarily with a warning
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Safety (Tier 4) outranks Operations (Tier 3). Exposing credentials is a safety violation — blocked unconditionally.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>GDPR agent wants to delete user data. Fraud agent wants to retain it. Both have valid rules. How does the conscience layer resolve this?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The last agent to run wins
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Deadlock — neither acts
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The conscience layer compares tier levels and the higher-tier rule wins
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It always deletes — privacy is more important
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The conscience layer resolves conflicts by tier precedence. If both rules are the same tier, the system applies a predefined policy (e.g., retain with restricted access for 30 days, then delete).</div>
+</div>
+</div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"The 5 Conscience Tiers","cards":[{"front":"Tier 1: Prime Directives","back":"Highest priority. Core ethical rules that can NEVER be violated \u2014 never harm, never deceive, never expose private data. Override everything."},{"front":"Tier 2: Identity","back":"Rules maintaining consistent personality and user respect \u2014 voice, tone, name safety, preferences. Shapes HOW the agent works."},{"front":"Tier 3: Operations","back":"Business rules \u2014 budget limits, logging requirements, deployment procedures, scope boundaries."},{"front":"Tier 4: Safety","back":"Technical safety \u2014 never expose credentials, validate inputs, enable RLS, no destructive ops without confirmation."},{"front":"Tier 5: Tasks","back":"The actual work. Always subordinate to all tiers above. If a task requires violating safety, the task doesn\u0027t get done."},{"front":"How does the conscience layer resolve conflicts?","back":"Rules are checked from highest tier to lowest. The first blocking rule wins. Higher tiers always override lower tiers. Same-tier conflicts use predefined policies."},{"front":"What is Constitutional AI?","back":"Anthropic\u0027s approach: Claude is trained with a set of principles (the constitution) that guide behavior. Higher-priority principles override lower ones. A conscience layer built into the model itself."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">The 5 Conscience Tiers</h3>
+<details class="flash-card">
+<summary class="flash-front">Tier 1: Prime Directives</summary>
+<div class="flash-back">Highest priority. Core ethical rules that can NEVER be violated — never harm, never deceive, never expose private data. Override everything.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Tier 2: Identity</summary>
+<div class="flash-back">Rules maintaining consistent personality and user respect — voice, tone, name safety, preferences. Shapes HOW the agent works.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Tier 3: Operations</summary>
+<div class="flash-back">Business rules — budget limits, logging requirements, deployment procedures, scope boundaries.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Tier 4: Safety</summary>
+<div class="flash-back">Technical safety — never expose credentials, validate inputs, enable RLS, no destructive ops without confirmation.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Tier 5: Tasks</summary>
+<div class="flash-back">The actual work. Always subordinate to all tiers above. If a task requires violating safety, the task doesn't get done.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How does the conscience layer resolve conflicts?</summary>
+<div class="flash-back">Rules are checked from highest tier to lowest. The first blocking rule wins. Higher tiers always override lower tiers. Same-tier conflicts use predefined policies.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is Constitutional AI?</summary>
+<div class="flash-back">Anthropic's approach: Claude is trained with a set of principles (the constitution) that guide behavior. Higher-priority principles override lower ones. A conscience layer built into the model itself.</div>
+</details>
+</div>
 </div>

@@ -259,10 +259,106 @@ history.append({<span style="color:#fbbf24">"role"</span>: <span style="color:#f
 <p style="font-size:.85rem;color:#a1a1aa;margin-top:.75rem">With Opus 4.6's 1M token window, multiply all of these by 5x. That is enough to hold an entire codebase (most production repos are under 1M tokens), a full college textbook, or a week of conversation history.</p>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Context Window Key Concepts","cards":[{"front":"What is a context window?","back":"The total amount of text an AI can see at once — including prompt, system instructions, conversation history, and the response. Claude supports 200K tokens standard, up to 1M with Opus 4.6."},{"front":"What is a token?","back":"A chunk of text, typically 3-4 characters for English. AI models process tokens, not words. You pay per token and are limited per token. Understanding tokenization helps with cost estimation and context management."},{"front":"Lost in the middle phenomenon","back":"The tendency of large-context models to lose or ignore information buried in the middle of a very long input. Claude is specifically tuned to minimize this. Mitigation: put critical info at top, use structure, repeat key facts."},{"front":"English prose token density","back":"About 4 characters per token — the most efficient content type. A 10,000-character document is roughly 2,500 tokens."},{"front":"Context window management","back":"In production apps, you must actively track token usage and trim old messages when the context gets full. Always budget for output tokens — the response needs room too."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Context Window Key Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">What is a context window?</summary>
+<div class="flash-back">The total amount of text an AI can see at once — including prompt, system instructions, conversation history, and the response. Claude supports 200K tokens standard, up to 1M with Opus 4.6.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is a token?</summary>
+<div class="flash-back">A chunk of text, typically 3-4 characters for English. AI models process tokens, not words. You pay per token and are limited per token. Understanding tokenization helps with cost estimation and context management.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Lost in the middle phenomenon</summary>
+<div class="flash-back">The tendency of large-context models to lose or ignore information buried in the middle of a very long input. Claude is specifically tuned to minimize this. Mitigation: put critical info at top, use structure, repeat key facts.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">English prose token density</summary>
+<div class="flash-back">About 4 characters per token — the most efficient content type. A 10,000-character document is roughly 2,500 tokens.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Context window management</summary>
+<div class="flash-back">In production apps, you must actively track token usage and trim old messages when the context gets full. Always budget for output tokens — the response needs room too.</div>
+</details>
+</div>
 
 
-<div data-learn="QuizMC" data-props='{"title":"Context Window Comprehension","questions":[{"q":"Claude Opus 4.6 can handle up to how many tokens in a single conversation?","options":["128K tokens","200K tokens","500K tokens","1 million tokens"],"correct":3,"explanation":"Claude Opus 4.6 extends to 1 million tokens — roughly 2,500 pages of text. The standard context for Sonnet and Haiku is 200K tokens."},{"q":"What does the lost in the middle phenomenon describe?","options":["Tokens being dropped mid-response","Models losing track of information buried in the middle of long inputs","Context windows shrinking during a conversation","Tokens costing more as the context grows"],"correct":1,"explanation":"Lost in the middle describes how some models struggle to recall information placed in the middle of a long context. They perform better on content at the beginning and end. Claude is specifically optimized to reduce this problem."},{"q":"You have a 200K token context window and send 195K tokens of input. What happens to Claude\u0027s response?","options":["Claude refuses to respond","Claude responds normally with up to 200K tokens of output","Claude can only generate ~5K tokens of output before hitting the limit","The extra tokens are silently truncated from the input"],"correct":2,"explanation":"The context window is shared between input and output. If you use 195K of the 200K window on input, Claude only has ~5K tokens left for its response. Always budget for output when loading long documents."},{"q":"Which content type uses the most tokens per character?","options":["English prose","Python code","JSON data","Non-English text (CJK)"],"correct":3,"explanation":"Non-English text, especially CJK characters, tokenizes at roughly 2 characters per token — the most expensive content type. English prose is the most efficient at ~4 characters per token."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Context Window Comprehension</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Claude Opus 4.6 can handle up to how many tokens in a single conversation?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>128K tokens
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>200K tokens
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>500K tokens
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>1 million tokens
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Claude Opus 4.6 extends to 1 million tokens — roughly 2,500 pages of text. The standard context for Sonnet and Haiku is 200K tokens.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What does the lost in the middle phenomenon describe?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Tokens being dropped mid-response
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Models losing track of information buried in the middle of long inputs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Context windows shrinking during a conversation
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Tokens costing more as the context grows
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Lost in the middle describes how some models struggle to recall information placed in the middle of a long context. They perform better on content at the beginning and end. Claude is specifically optimized to reduce this problem.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>You have a 200K token context window and send 195K tokens of input. What happens to Claude's response?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Claude refuses to respond
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Claude responds normally with up to 200K tokens of output
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Claude can only generate ~5K tokens of output before hitting the limit
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The extra tokens are silently truncated from the input
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The context window is shared between input and output. If you use 195K of the 200K window on input, Claude only has ~5K tokens left for its response. Always budget for output when loading long documents.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Which content type uses the most tokens per character?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>English prose
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Python code
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>JSON data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Non-English text (CJK)
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Non-English text, especially CJK characters, tokenizes at roughly 2 characters per token — the most expensive content type. English prose is the most efficient at ~4 characters per token.</div>
+</div>
+</div>
 
 </div>
 

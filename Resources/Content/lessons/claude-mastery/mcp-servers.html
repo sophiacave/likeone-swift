@@ -202,10 +202,106 @@ server.tool(
 </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"MCP Key Concepts","cards":[{"front":"Model Context Protocol (MCP)","back":"An open standard by Anthropic that defines how AI models communicate with external tools and data sources. Like USB for AI — one standard connector that works with any MCP-compatible client."},{"front":"The three MCP primitives","back":"Tools (actions Claude can take), Resources (data Claude can read), and Prompts (reusable prompt templates). Most servers start with tools and add the others as needed."},{"front":"MCP Client","back":"The application that connects to MCP servers — Claude Code, Claude Desktop, Cursor, etc. The client discovers available tools and lets the AI model call them."},{"front":"MCP Server","back":"A program you write that exposes tools, resources, and/or prompts via the MCP protocol. It runs locally and connects to your data sources. Built with @modelcontextprotocol/sdk."},{"front":"MCP security model","back":"Servers run locally by default. Data never leaves the machine unless the server explicitly sends it. The developer controls all permissions. Each server runs in its own process."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">MCP Key Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">Model Context Protocol (MCP)</summary>
+<div class="flash-back">An open standard by Anthropic that defines how AI models communicate with external tools and data sources. Like USB for AI — one standard connector that works with any MCP-compatible client.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The three MCP primitives</summary>
+<div class="flash-back">Tools (actions Claude can take), Resources (data Claude can read), and Prompts (reusable prompt templates). Most servers start with tools and add the others as needed.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">MCP Client</summary>
+<div class="flash-back">The application that connects to MCP servers — Claude Code, Claude Desktop, Cursor, etc. The client discovers available tools and lets the AI model call them.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">MCP Server</summary>
+<div class="flash-back">A program you write that exposes tools, resources, and/or prompts via the MCP protocol. It runs locally and connects to your data sources. Built with @modelcontextprotocol/sdk.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">MCP security model</summary>
+<div class="flash-back">Servers run locally by default. Data never leaves the machine unless the server explicitly sends it. The developer controls all permissions. Each server runs in its own process.</div>
+</details>
+</div>
 
 
-<div data-learn="QuizMC" data-props='{"title":"MCP Comprehension","questions":[{"q":"What does MCP stand for?","options":["Machine Code Protocol","Model Context Protocol","Multi-Channel Pipeline","Managed Claude Proxy"],"correct":1,"explanation":"MCP stands for Model Context Protocol — an open standard by Anthropic for how AI models communicate with external tools and data sources."},{"q":"How does MCP differ from inline tool use in the API?","options":["MCP is slower","MCP packages tools into reusable servers that any MCP client can discover and use — tool use is one-off per API call","MCP only works with Opus","There is no difference"],"correct":1,"explanation":"Inline tool use defines tools per API call. MCP packages tools into reusable servers with a standard protocol — any MCP-compatible client (Claude Code, Claude Desktop, Cursor) can discover and use them automatically."},{"q":"Where does an MCP server run by default?","options":["On Anthropic servers","On the cloud provider closest to you","Locally on your machine","Inside Claude model weights"],"correct":2,"explanation":"MCP servers run locally by default. This is a security feature — your data never leaves your machine unless the server explicitly sends it to an external service."},{"q":"What are the three primitives an MCP server can expose?","options":["Read, Write, Execute","Tools, Resources, Prompts","Input, Output, Error","Query, Mutation, Subscription"],"correct":1,"explanation":"MCP servers can expose Tools (actions), Resources (readable data), and Prompts (reusable templates). Most servers start with tools — the most common primitive — and add the others as needed."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">MCP Comprehension</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What does MCP stand for?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Machine Code Protocol
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Model Context Protocol
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Multi-Channel Pipeline
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Managed Claude Proxy
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> MCP stands for Model Context Protocol — an open standard by Anthropic for how AI models communicate with external tools and data sources.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>How does MCP differ from inline tool use in the API?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>MCP is slower
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>MCP packages tools into reusable servers that any MCP client can discover and use — tool use is one-off per API call
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>MCP only works with Opus
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>There is no difference
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Inline tool use defines tools per API call. MCP packages tools into reusable servers with a standard protocol — any MCP-compatible client (Claude Code, Claude Desktop, Cursor) can discover and use them automatically.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Where does an MCP server run by default?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>On Anthropic servers
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>On the cloud provider closest to you
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Locally on your machine
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Inside Claude model weights
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> MCP servers run locally by default. This is a security feature — your data never leaves your machine unless the server explicitly sends it to an external service.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>What are the three primitives an MCP server can expose?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Read, Write, Execute
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Tools, Resources, Prompts
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Input, Output, Error
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Query, Mutation, Subscription
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> MCP servers can expose Tools (actions), Resources (readable data), and Prompts (reusable templates). Most servers start with tools — the most common primitive — and add the others as needed.</div>
+</div>
+</div>
 
 </div>
 

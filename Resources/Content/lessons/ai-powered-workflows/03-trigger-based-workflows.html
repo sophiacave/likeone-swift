@@ -124,7 +124,29 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Trigger-Based Workflows","cards":[{"front":"Time-Based Trigger","back":"Scheduled and predictable — every Monday at 9am, generate the weekly report. Best for recurring tasks on a known schedule."},{"front":"Event-Based Trigger","back":"Reactive and immediate — when a customer signs up, send the welcome sequence. Best for response-driven work."},{"front":"Condition-Based Trigger","back":"Watchful and threshold-driven — when inventory drops below 50 units, alert the team. Best for monitoring and safety nets."},{"front":"Manual Trigger","back":"Human-initiated but machine-executed — click a button to run the deployment pipeline. Best for complex tasks you still want control over."},{"front":"Webhooks","back":"Small HTTP requests that fire when something happens in a tool. If a tool has webhooks, it can trigger a workflow — and almost every modern tool does."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Trigger-Based Workflows</h3>
+<details class="flash-card">
+<summary class="flash-front">Time-Based Trigger</summary>
+<div class="flash-back">Scheduled and predictable — every Monday at 9am, generate the weekly report. Best for recurring tasks on a known schedule.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Event-Based Trigger</summary>
+<div class="flash-back">Reactive and immediate — when a customer signs up, send the welcome sequence. Best for response-driven work.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Condition-Based Trigger</summary>
+<div class="flash-back">Watchful and threshold-driven — when inventory drops below 50 units, alert the team. Best for monitoring and safety nets.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Manual Trigger</summary>
+<div class="flash-back">Human-initiated but machine-executed — click a button to run the deployment pipeline. Best for complex tasks you still want control over.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Webhooks</summary>
+<div class="flash-back">Small HTTP requests that fire when something happens in a tool. If a tool has webhooks, it can trigger a workflow — and almost every modern tool does.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -182,7 +204,63 @@ scheduler.start()</code></pre>
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Lesson 3 Quiz</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Trigger-Based Workflows","questions":[{"q":"What is a trigger in workflow automation?","options":["A type of database query","The output of the final step in a workflow","The starting condition that sets the entire workflow in motion","A way to pause a workflow mid-execution"],"correct":2,"explanation":"A trigger is the starting gun — the moment that sets everything in motion. Without a trigger you still have a checklist. With one, you have automation that reacts to the world without manual initiation."},{"q":"In the freelance designer example, what event trigger starts the automated response workflow?","options":["The designer checks their email manually","A form submission from the website inquiry","The designer clicks a calendar invite","A time-based schedule every morning"],"correct":1,"explanation":"The website form submission is the event trigger. That submission kicks off AI categorizing the project type, checking calendar availability, drafting a personalized response, and sending it — all within 60 seconds."},{"q":"What do webhooks enable in event-triggered workflows?","options":["They slow down workflows for safety checks","They are small HTTP requests that fire when something happens in a tool, allowing your workflow platform to react instantly","They require manual setup for each individual event","They only work with certain email platforms"],"correct":1,"explanation":"Webhooks are how modern tools communicate events — a payment succeeds, a deal changes stages, a form submits. Your workflow platform listens for these signals and springs into action. Almost every modern tool supports them."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Trigger-Based Workflows</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is a trigger in workflow automation?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A type of database query
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The output of the final step in a workflow
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The starting condition that sets the entire workflow in motion
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A way to pause a workflow mid-execution
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A trigger is the starting gun — the moment that sets everything in motion. Without a trigger you still have a checklist. With one, you have automation that reacts to the world without manual initiation.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>In the freelance designer example, what event trigger starts the automated response workflow?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The designer checks their email manually
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A form submission from the website inquiry
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The designer clicks a calendar invite
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A time-based schedule every morning
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The website form submission is the event trigger. That submission kicks off AI categorizing the project type, checking calendar availability, drafting a personalized response, and sending it — all within 60 seconds.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What do webhooks enable in event-triggered workflows?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>They slow down workflows for safety checks
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>They are small HTTP requests that fire when something happens in a tool, allowing your workflow platform to react instantly
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>They require manual setup for each individual event
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>They only work with certain email platforms
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Webhooks are how modern tools communicate events — a payment succeeds, a deal changes stages, a form submits. Your workflow platform listens for these signals and springs into action. Almost every modern tool supports them.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

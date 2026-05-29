@@ -70,7 +70,29 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Domain-Specific Prompt Patterns","cards":[{"front":"Code Generation Prompt — what must you specify?","back":"Stack, requirements (e.g. RFC compliance), return types, edge cases, no external libraries, documentation style, and test framework."},{"front":"Code Review Prompt — what should you ask AI to check?","back":"Security vulnerabilities, performance issues, error handling gaps, readability — with severity, problematic line, and a fix for each."},{"front":"Blog Post Prompt — what context is essential?","back":"Topic, audience, their baseline knowledge, unique angle, tone, length, and a practical takeaway. Without these, output is generic."},{"front":"Data Analysis Prompt — how do you structure it?","back":"Ask for: top trends with quantified change + likely cause + confidence rating, plus anomalies, plus 2 recommended actions."},{"front":"Research Synthesis Prompt — what 4 things to extract?","back":"Main argument, key evidence, methodology, and limitations — then synthesize: agreements, contradictions, unanswered questions."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Domain-Specific Prompt Patterns</h3>
+<details class="flash-card">
+<summary class="flash-front">Code Generation Prompt — what must you specify?</summary>
+<div class="flash-back">Stack, requirements (e.g. RFC compliance), return types, edge cases, no external libraries, documentation style, and test framework.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Code Review Prompt — what should you ask AI to check?</summary>
+<div class="flash-back">Security vulnerabilities, performance issues, error handling gaps, readability — with severity, problematic line, and a fix for each.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Blog Post Prompt — what context is essential?</summary>
+<div class="flash-back">Topic, audience, their baseline knowledge, unique angle, tone, length, and a practical takeaway. Without these, output is generic.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Data Analysis Prompt — how do you structure it?</summary>
+<div class="flash-back">Ask for: top trends with quantified change + likely cause + confidence rating, plus anomalies, plus 2 recommended actions.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Research Synthesis Prompt — what 4 things to extract?</summary>
+<div class="flash-back">Main argument, key evidence, methodology, and limitations — then synthesize: agreements, contradictions, unanswered questions.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -180,7 +202,63 @@ Avoid: [common mistakes in this domain]</code>
 </div>
 
 <div class="lesson-section">
-  <div data-learn="QuizMC" data-props='{"title":"Domain-Specific Prompts Quiz","questions":[{"q":"When writing a code generation prompt, what should you specify beyond the task itself?","options":["Only the programming language","Stack, return types, edge cases, library restrictions, documentation style, and test framework","Just a description of what the function should do","The AI model to use"],"correct":1,"explanation":"Coding prompts need precision across multiple dimensions — the AI must understand your stack, patterns, type signatures, and constraints or you’ll spend more time fixing than coding."},{"q":"What four questions help you adapt to ANY domain?","options":["Who, what, when, where","What does good look like, what are the common mistakes, what terminology matters, what is the expected output format","Role, context, task, format","Audience, tone, length, examples"],"correct":1,"explanation":"These four domain-adaptation questions ensure your prompt activates the right knowledge, avoids common pitfalls, uses the correct terminology, and matches domain conventions."},{"q":"For a writing prompt, what is the most critical missing element that makes output sound generic?","options":["Not specifying word count","Not defining audience, baseline knowledge, angle, and tone","Not asking for bullet points","Not specifying the title"],"correct":1,"explanation":"Without knowing the audience, what they already know, the unique angle, and the tone — the AI writes for nobody in particular. Voice and audience clarity are the keys to non-generic writing."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Domain-Specific Prompts Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>When writing a code generation prompt, what should you specify beyond the task itself?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Only the programming language
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Stack, return types, edge cases, library restrictions, documentation style, and test framework
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Just a description of what the function should do
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The AI model to use
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Coding prompts need precision across multiple dimensions — the AI must understand your stack, patterns, type signatures, and constraints or you’ll spend more time fixing than coding.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What four questions help you adapt to ANY domain?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Who, what, when, where
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>What does good look like, what are the common mistakes, what terminology matters, what is the expected output format
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Role, context, task, format
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Audience, tone, length, examples
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> These four domain-adaptation questions ensure your prompt activates the right knowledge, avoids common pitfalls, uses the correct terminology, and matches domain conventions.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>For a writing prompt, what is the most critical missing element that makes output sound generic?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Not specifying word count
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Not defining audience, baseline knowledge, angle, and tone
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Not asking for bullet points
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Not specifying the title
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Without knowing the audience, what they already know, the unique angle, and the tone — the AI writes for nobody in particular. Voice and audience clarity are the keys to non-generic writing.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

@@ -140,9 +140,127 @@
 </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Hooks & Lifecycle","cards":[{"front":"What are hooks in the Agent SDK?","back":"Callback functions that fire at specific lifecycle points: before tool calls (PreToolUse), after tool calls (PostToolUse), on permission requests, and on stop. They let you observe, modify, or block agent behavior."},{"front":"PreToolUse hook","back":"Fires before every tool execution. Receives tool name and parameters. Return allow to proceed or deny to block. Use for input validation, security enforcement, and logging."},{"front":"PostToolUse hook","back":"Fires after every tool execution. Receives tool name, parameters, and result. Can modify the result before Claude sees it. Use for output sanitization, redaction, and audit logging."},{"front":"PermissionRequest hook","back":"Fires when the agent needs explicit approval for an action. Enables human-in-the-loop workflows where sensitive operations require confirmation before proceeding."},{"front":"What can you do with hooks?","back":"Block dangerous commands, enforce path restrictions, log all tool activity for audits, redact sensitive data from results, implement approval workflows, and validate output quality."},{"front":"Hooks vs canUseTool","back":"canUseTool is a simple allow/deny gate based on tool name and params. Hooks are more powerful — they can modify parameters, transform results, log activity, and implement complex policies."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Hooks & Lifecycle</h3>
+<details class="flash-card">
+<summary class="flash-front">What are hooks in the Agent SDK?</summary>
+<div class="flash-back">Callback functions that fire at specific lifecycle points: before tool calls (PreToolUse), after tool calls (PostToolUse), on permission requests, and on stop. They let you observe, modify, or block agent behavior.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">PreToolUse hook</summary>
+<div class="flash-back">Fires before every tool execution. Receives tool name and parameters. Return allow to proceed or deny to block. Use for input validation, security enforcement, and logging.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">PostToolUse hook</summary>
+<div class="flash-back">Fires after every tool execution. Receives tool name, parameters, and result. Can modify the result before Claude sees it. Use for output sanitization, redaction, and audit logging.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">PermissionRequest hook</summary>
+<div class="flash-back">Fires when the agent needs explicit approval for an action. Enables human-in-the-loop workflows where sensitive operations require confirmation before proceeding.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What can you do with hooks?</summary>
+<div class="flash-back">Block dangerous commands, enforce path restrictions, log all tool activity for audits, redact sensitive data from results, implement approval workflows, and validate output quality.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Hooks vs canUseTool</summary>
+<div class="flash-back">canUseTool is a simple allow/deny gate based on tool name and params. Hooks are more powerful — they can modify parameters, transform results, log activity, and implement complex policies.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Hooks & Lifecycle Check","questions":[{"q":"When does the PreToolUse hook fire?","options":["After Claude generates its response","Before a tool is executed, letting you inspect or block the call","When the agent starts up","Only when errors occur"],"correct":1,"explanation":"PreToolUse fires before every tool execution. It receives the tool name and parameters, giving you the opportunity to validate, modify, or deny the call before it runs."},{"q":"Your agent should never delete files. Which hook implementation is correct?","options":["PostToolUse that logs deletions","PreToolUse that returns deny when Bash command contains rm","PermissionRequest that asks the user","Stop hook that checks for deletions"],"correct":1,"explanation":"PreToolUse is the right place to block operations. By checking Bash commands for rm patterns and returning deny, you prevent deletions before they happen. PostToolUse would be too late."},{"q":"What can a PostToolUse hook do with tool results?","options":["Nothing — results are read-only","Modify or redact the result before Claude sees it","Delete the tool call from history","Change which tool was called"],"correct":1,"explanation":"PostToolUse can modify the tool result before it is sent back to Claude. This enables sanitization (removing sensitive data), truncation (shortening large outputs), and transformation."},{"q":"You want to build a compliance system that records every action your agent takes. Which approach works best?","options":["Read the agent logs after it finishes","Use PreToolUse and PostToolUse hooks to log every tool call and result in real time","Ask Claude to describe what it did","Check the file system for changes"],"correct":1,"explanation":"Hooks give you real-time visibility into every tool call (PreToolUse) and every result (PostToolUse). This creates a complete, timestamped audit trail of everything the agent does."},{"q":"What happens when PreToolUse returns { action: \"deny\", message: \"Blocked\" }?","options":["The tool runs anyway but the result is hidden","The tool call is blocked and Claude receives the denial message, adapting its approach","The entire agent session is terminated","An error is thrown"],"correct":1,"explanation":"When PreToolUse denies a tool call, the SDK sends the denial message back to Claude instead of running the tool. Claude adapts — it might try a different approach or inform the user that the operation was blocked."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Hooks & Lifecycle Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>When does the PreToolUse hook fire?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>After Claude generates its response
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Before a tool is executed, letting you inspect or block the call
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>When the agent starts up
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Only when errors occur
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> PreToolUse fires before every tool execution. It receives the tool name and parameters, giving you the opportunity to validate, modify, or deny the call before it runs.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Your agent should never delete files. Which hook implementation is correct?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>PostToolUse that logs deletions
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>PreToolUse that returns deny when Bash command contains rm
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>PermissionRequest that asks the user
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Stop hook that checks for deletions
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> PreToolUse is the right place to block operations. By checking Bash commands for rm patterns and returning deny, you prevent deletions before they happen. PostToolUse would be too late.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What can a PostToolUse hook do with tool results?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Nothing — results are read-only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Modify or redact the result before Claude sees it
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Delete the tool call from history
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Change which tool was called
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> PostToolUse can modify the tool result before it is sent back to Claude. This enables sanitization (removing sensitive data), truncation (shortening large outputs), and transformation.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>You want to build a compliance system that records every action your agent takes. Which approach works best?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Read the agent logs after it finishes
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Use PreToolUse and PostToolUse hooks to log every tool call and result in real time
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Ask Claude to describe what it did
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Check the file system for changes
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Hooks give you real-time visibility into every tool call (PreToolUse) and every result (PostToolUse). This creates a complete, timestamped audit trail of everything the agent does.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What happens when PreToolUse returns { action: "deny", message: "Blocked" }?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The tool runs anyway but the result is hidden
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The tool call is blocked and Claude receives the denial message, adapting its approach
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The entire agent session is terminated
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>An error is thrown
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> When PreToolUse denies a tool call, the SDK sends the denial message back to Claude instead of running the tool. Claude adapts — it might try a different approach or inform the user that the operation was blocked.</div>
+</div>
+</div>
 
 </div>
 

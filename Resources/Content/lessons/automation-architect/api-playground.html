@@ -191,9 +191,87 @@ payload = {
 </div>
   </div>
 
-  <div data-learn="QuizMC" data-props='{"title":"API Playground Check","questions":[{"q":"Which endpoint and method would you use to list all users?","options":["POST /users","GET /users","DELETE /users","PUT /users"],"correct":1,"explanation":"GET /users retrieves the list of all users without modifying any data."},{"q":"What status code does the sandbox return when you successfully create an order?","options":["200 OK","404 Not Found","201 Created","500 Server Error"],"correct":2,"explanation":"POST requests that successfully create a resource return 201 Created."},{"q":"What happens when you send a request to an endpoint that does not exist in the sandbox?","options":["The server crashes","You get a 200 OK with empty data","You get a 404 Not Found with available endpoints listed","You get a 201 Created"],"correct":2,"explanation":"The sandbox returns 404 Not Found and lists the available endpoints so you know what to try."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">API Playground Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which endpoint and method would you use to list all users?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>POST /users
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>GET /users
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>DELETE /users
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>PUT /users
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> GET /users retrieves the list of all users without modifying any data.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What status code does the sandbox return when you successfully create an order?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>200 OK
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>404 Not Found
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>201 Created
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>500 Server Error
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> POST requests that successfully create a resource return 201 Created.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What happens when you send a request to an endpoint that does not exist in the sandbox?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The server crashes
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>You get a 200 OK with empty data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>You get a 404 Not Found with available endpoints listed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>You get a 201 Created
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The sandbox returns 404 Not Found and lists the available endpoints so you know what to try.</div>
+</div>
+</div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"API Request Anatomy","cards":[{"front":"Request Method","back":"Tells the server what operation to perform: GET (read), POST (create), PUT (update), DELETE (remove)."},{"front":"Endpoint URL","back":"The address of the resource you want to interact with. Example: /users, /orders/42."},{"front":"Request Body","back":"JSON data sent with POST and PUT requests. Tells the server what to create or update."},{"front":"Response Status Code","back":"A 3-digit number the server sends back. 2xx = success, 4xx = client error, 5xx = server error."},{"front":"Response Body","back":"The JSON data the server sends back. Contains the result of your request."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">API Request Anatomy</h3>
+<details class="flash-card">
+<summary class="flash-front">Request Method</summary>
+<div class="flash-back">Tells the server what operation to perform: GET (read), POST (create), PUT (update), DELETE (remove).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Endpoint URL</summary>
+<div class="flash-back">The address of the resource you want to interact with. Example: /users, /orders/42.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Request Body</summary>
+<div class="flash-back">JSON data sent with POST and PUT requests. Tells the server what to create or update.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Response Status Code</summary>
+<div class="flash-back">A 3-digit number the server sends back. 2xx = success, 4xx = client error, 5xx = server error.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Response Body</summary>
+<div class="flash-back">The JSON data the server sends back. Contains the result of your request.</div>
+</details>
+</div>
 
 
 </div>

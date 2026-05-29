@@ -352,8 +352,134 @@ db = <span style="color:#34d399">create_client</span>(os.environ[<span style="co
   </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Production Automation Patterns","cards":[{"front":"Why respond to webhooks immediately?","back":"Webhook senders expect a response within 3-5 seconds. If you do not respond in time, they retry — causing duplicate processing. Always acknowledge first, process in the background."},{"front":"Idempotency","back":"An operation that produces the same result even if executed multiple times. Check for existing records (by unique key) before inserting to prevent duplicates from webhook retries."},{"front":"Dead letter queue","back":"A storage location for messages that failed processing. Preserves the original payload and error details for manual inspection and automated retry."},{"front":"Payload validation","back":"Check that all required fields exist and have correct types BEFORE processing. Reject invalid data at the gate — do not let it reach your database."},{"front":"Partial failure","back":"When step 3 of 5 succeeds but step 4 fails. Each step should be independently retriable. Save state after each step so retry knows where to resume."},{"front":"Exponential backoff","back":"A retry strategy that waits progressively longer between attempts (1s, 2s, 4s, 8s). Prevents hammering a struggling service while it recovers."},{"front":"Integration testing an automation","back":"Send a real HTTP POST to your webhook with test data. Then verify: database row created? Email sent? Dead letter queue empty? Duplicates handled?"},{"front":"The three test layers","back":"(1) Unit test: validate individual functions like payload validation. (2) Integration test: send real HTTP request, check full pipeline. (3) Failure test: send bad data, verify graceful handling."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Production Automation Patterns</h3>
+<details class="flash-card">
+<summary class="flash-front">Why respond to webhooks immediately?</summary>
+<div class="flash-back">Webhook senders expect a response within 3-5 seconds. If you do not respond in time, they retry — causing duplicate processing. Always acknowledge first, process in the background.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Idempotency</summary>
+<div class="flash-back">An operation that produces the same result even if executed multiple times. Check for existing records (by unique key) before inserting to prevent duplicates from webhook retries.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Dead letter queue</summary>
+<div class="flash-back">A storage location for messages that failed processing. Preserves the original payload and error details for manual inspection and automated retry.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Payload validation</summary>
+<div class="flash-back">Check that all required fields exist and have correct types BEFORE processing. Reject invalid data at the gate — do not let it reach your database.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Partial failure</summary>
+<div class="flash-back">When step 3 of 5 succeeds but step 4 fails. Each step should be independently retriable. Save state after each step so retry knows where to resume.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Exponential backoff</summary>
+<div class="flash-back">A retry strategy that waits progressively longer between attempts (1s, 2s, 4s, 8s). Prevents hammering a struggling service while it recovers.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Integration testing an automation</summary>
+<div class="flash-back">Send a real HTTP POST to your webhook with test data. Then verify: database row created? Email sent? Dead letter queue empty? Duplicates handled?</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The three test layers</summary>
+<div class="flash-back">(1) Unit test: validate individual functions like payload validation. (2) Integration test: send real HTTP request, check full pipeline. (3) Failure test: send bad data, verify graceful handling.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Your First Automation Quiz","questions":[{"q":"Why should a webhook handler respond with 200 before processing the data?","options":["To make the response faster for users","Because webhook senders retry if they do not get a response within 3-5 seconds","Because 200 is the only valid status code","To save server memory"],"correct":1,"explanation":"Webhook senders like Stripe and GitHub expect a response within seconds. No response = retry = duplicate processing. Always acknowledge receipt immediately, then process asynchronously."},{"q":"What is an idempotency check?","options":["A security scan of the payload","Verifying the webhook URL is correct","Checking if this exact payload was already processed to prevent duplicates","A test that runs after deployment"],"correct":2,"explanation":"An idempotency check queries your database for an existing record with the same unique key (like email + timestamp). If found, skip processing. This prevents duplicates from webhook retries."},{"q":"A webhook automation saves to the database successfully but fails to send the email. What should happen?","options":["Delete the database record and start over","Save the failure to a dead letter queue for retry","Ignore the email failure — database is enough","Crash the entire server to alert the developer"],"correct":1,"explanation":"This is a partial failure. The dead letter queue preserves the original payload so a scheduled retry job can attempt the email again without re-saving to the database."},{"q":"Which is NOT a good practice for production automations?","options":["Validate payloads before processing","Respond to webhooks immediately","Process data synchronously inside the webhook handler and block until done","Use a dead letter queue for failures"],"correct":2,"explanation":"Processing synchronously blocks the webhook response. If processing takes more than 3-5 seconds, the sender retries. Always respond immediately and process asynchronously."},{"q":"What should you test BEFORE deploying an automation?","options":["Only that the happy path works","Validation, full pipeline, AND failure scenarios","Only the database connection","Only the email sending"],"correct":1,"explanation":"Test all three layers: unit tests for validation, integration tests for the full pipeline with real HTTP requests, and failure tests to verify graceful error handling."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Your First Automation Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why should a webhook handler respond with 200 before processing the data?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>To make the response faster for users
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Because webhook senders retry if they do not get a response within 3-5 seconds
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Because 200 is the only valid status code
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>To save server memory
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Webhook senders like Stripe and GitHub expect a response within seconds. No response = retry = duplicate processing. Always acknowledge receipt immediately, then process asynchronously.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is an idempotency check?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A security scan of the payload
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Verifying the webhook URL is correct
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Checking if this exact payload was already processed to prevent duplicates
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>A test that runs after deployment
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> An idempotency check queries your database for an existing record with the same unique key (like email + timestamp). If found, skip processing. This prevents duplicates from webhook retries.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>A webhook automation saves to the database successfully but fails to send the email. What should happen?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Delete the database record and start over
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Save the failure to a dead letter queue for retry
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Ignore the email failure — database is enough
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Crash the entire server to alert the developer
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> This is a partial failure. The dead letter queue preserves the original payload so a scheduled retry job can attempt the email again without re-saving to the database.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Which is NOT a good practice for production automations?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Validate payloads before processing
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Respond to webhooks immediately
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Process data synchronously inside the webhook handler and block until done
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Use a dead letter queue for failures
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Processing synchronously blocks the webhook response. If processing takes more than 3-5 seconds, the sender retries. Always respond immediately and process asynchronously.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What should you test BEFORE deploying an automation?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Only that the happy path works
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Validation, full pipeline, AND failure scenarios
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Only the database connection
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Only the email sending
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Test all three layers: unit tests for validation, integration tests for the full pipeline with real HTTP requests, and failure tests to verify graceful error handling.</div>
+</div>
+</div>
 
 </div>

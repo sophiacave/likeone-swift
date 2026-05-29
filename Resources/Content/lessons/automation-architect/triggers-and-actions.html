@@ -185,8 +185,134 @@ ACTIONS = {
     </div>
   </div>
 
-  <div data-learn="FlashDeck" data-props='{"title":"Triggers vs Actions","cards":[{"front":"What is a Trigger?","back":"An event that starts an automation — the \"when\" that fires before any actions execute. Three types: webhook (real-time), schedule (time-based), event (internal system)."},{"front":"What is an Action?","back":"The task performed after a trigger fires. Can be anything: send email, save to database, call API, send notification, create record, update dashboard."},{"front":"Webhook Trigger","back":"Receives real-time HTTP POST data from an external system. Zero delay. Used for: payments, form submissions, GitHub events, Slack messages."},{"front":"Schedule Trigger","back":"Fires on a time-based schedule using cron expressions. Used for: daily reports, data sync, cleanup tasks, digest emails."},{"front":"Event Trigger","back":"Fires when something happens inside your own system — user signup, status change, threshold crossed. Internal, not from external services."},{"front":"Payload","back":"The structured data that flows from trigger to action. Contains the event details — who, what, when. The action reads the payload to know what to do."},{"front":"Idempotent Action","back":"An action that produces the same result even if run multiple times. Critical because webhooks can fire twice. Example: check if record exists before creating."},{"front":"Dead Letter Queue","back":"Where failed messages go when an action cannot process them. Preserves data for manual inspection and retry instead of losing it forever."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Triggers vs Actions</h3>
+<details class="flash-card">
+<summary class="flash-front">What is a Trigger?</summary>
+<div class="flash-back">An event that starts an automation — the "when" that fires before any actions execute. Three types: webhook (real-time), schedule (time-based), event (internal system).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is an Action?</summary>
+<div class="flash-back">The task performed after a trigger fires. Can be anything: send email, save to database, call API, send notification, create record, update dashboard.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Webhook Trigger</summary>
+<div class="flash-back">Receives real-time HTTP POST data from an external system. Zero delay. Used for: payments, form submissions, GitHub events, Slack messages.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Schedule Trigger</summary>
+<div class="flash-back">Fires on a time-based schedule using cron expressions. Used for: daily reports, data sync, cleanup tasks, digest emails.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Event Trigger</summary>
+<div class="flash-back">Fires when something happens inside your own system — user signup, status change, threshold crossed. Internal, not from external services.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Payload</summary>
+<div class="flash-back">The structured data that flows from trigger to action. Contains the event details — who, what, when. The action reads the payload to know what to do.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Idempotent Action</summary>
+<div class="flash-back">An action that produces the same result even if run multiple times. Critical because webhooks can fire twice. Example: check if record exists before creating.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Dead Letter Queue</summary>
+<div class="flash-back">Where failed messages go when an action cannot process them. Preserves data for manual inspection and retry instead of losing it forever.</div>
+</details>
+</div>
 
-  <div data-learn="QuizMC" data-props='{"title":"Triggers & Actions Check","questions":[{"q":"What is the role of a trigger in automation?","options":["Transform data into a new format","Start the automation when an event occurs","Store the result of an action","Connect two APIs together"],"correct":1,"explanation":"A trigger is the event that kicks off your automation — nothing runs until the trigger fires."},{"q":"Which of these is an action, not a trigger?","options":["New email arrives","Form submitted","Schedule fires","Send Slack notification"],"correct":3,"explanation":"Send Slack notification is what happens after a trigger — it is an action. The others are events that can start a workflow."},{"q":"A webhook trigger listens for what type of data?","options":["CSV files","Incoming HTTP POST requests","Database queries","Scheduled cron jobs"],"correct":1,"explanation":"A webhook is a URL that receives real-time HTTP POST data when an external event occurs."},{"q":"Why should automation actions be idempotent?","options":["It makes them run faster","Webhooks can fire twice, so the action must be safe to repeat","Idempotent actions use less memory","It is required by all automation platforms"],"correct":1,"explanation":"Webhooks can be retried by the sender, causing your trigger to fire multiple times. An idempotent action (like checking before creating) prevents duplicate records or double-sends."},{"q":"What is a dead letter queue?","options":["A queue for deleted emails","A storage location for messages that failed to process","A type of webhook trigger","An action that sends error notifications"],"correct":1,"explanation":"A dead letter queue stores messages that could not be processed successfully. This preserves the data for manual inspection and retry instead of losing it."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Triggers & Actions Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the role of a trigger in automation?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Transform data into a new format
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Start the automation when an event occurs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Store the result of an action
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Connect two APIs together
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A trigger is the event that kicks off your automation — nothing runs until the trigger fires.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Which of these is an action, not a trigger?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>New email arrives
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Form submitted
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Schedule fires
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Send Slack notification
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Send Slack notification is what happens after a trigger — it is an action. The others are events that can start a workflow.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>A webhook trigger listens for what type of data?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>CSV files
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Incoming HTTP POST requests
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Database queries
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Scheduled cron jobs
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A webhook is a URL that receives real-time HTTP POST data when an external event occurs.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Why should automation actions be idempotent?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It makes them run faster
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Webhooks can fire twice, so the action must be safe to repeat
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Idempotent actions use less memory
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It is required by all automation platforms
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Webhooks can be retried by the sender, causing your trigger to fire multiple times. An idempotent action (like checking before creating) prevents duplicate records or double-sends.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What is a dead letter queue?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>A queue for deleted emails
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>A storage location for messages that failed to process
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>A type of webhook trigger
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>An action that sends error notifications
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A dead letter queue stores messages that could not be processed successfully. This preserves the data for manual inspection and retry instead of losing it.</div>
+</div>
+</div>
 
 </div>

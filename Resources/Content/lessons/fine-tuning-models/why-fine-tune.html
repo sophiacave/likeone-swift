@@ -185,8 +185,68 @@ This course takes you from decision through deployment:
 By the end, you will have fine-tuned a model on your own data, evaluated it rigorously, deployed it to production, and set up a continuous improvement pipeline.
 </div>
 
-<div data-learn="QuizMC" data-props='{"questions": [{"q": "What does fine-tuning primarily change about a model?", "options": ["Its core world knowledge and factual accuracy", "Its context window size and processing speed", "Its output behavior: style, format, task-specific reasoning, and tone", "Its fundamental architecture and parameter count"], "correct": 2, "explanation": "The correct answer is: Its output behavior: style, format, task-specific reasoning, and tone"}, {"q": "According to the decision tree, what should you try FIRST when a model does not produce desired output?", "options": ["Fine-tune on 500 examples", "Better prompting: few-shot examples, system prompts, chain-of-thought", "Train a model from scratch on your data", "Switch to a completely different model provider"], "correct": 1, "explanation": "The correct answer is: Better prompting: few-shot examples, system prompts, chain-of-thought"}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What does fine-tuning primarily change about a model?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Its core world knowledge and factual accuracy
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Its context window size and processing speed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Its output behavior: style, format, task-specific reasoning, and tone
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Its fundamental architecture and parameter count
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: Its output behavior: style, format, task-specific reasoning, and tone</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>According to the decision tree, what should you try FIRST when a model does not produce desired output?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Fine-tune on 500 examples
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Better prompting: few-shot examples, system prompts, chain-of-thought
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Train a model from scratch on your data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Switch to a completely different model provider
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The correct answer is: Better prompting: few-shot examples, system prompts, chain-of-thought</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"cards": [{"front": "What is the most common fine-tuning mistake?", "back": "Trying to teach a model new factual knowledge. Fine-tuning adjusts behavior (style, format, tone), not knowledge. Use RAG for knowledge injection."}, {"front": "What are the five signals that fine-tuning is the right approach?", "back": "1. Consistent output format required, 2. High volume of similar queries, 3. Quality training data available (100-5,000 examples), 4. Latency matters, 5. Prompting has plateaued"}, {"front": "What percentage of use cases are solved by better prompting and RAG alone?", "back": "Approximately 80%. Fine-tuning is for the remaining 20% where specific output behavior at scale, reduced latency, or lower per-query cost is needed."}, {"front": "Why did fine-tuning fail for the medical QA use case?", "back": "The 7B base model was too small for the task complexity. Fine-tuning cannot improve a model&#39;s reasoning ceiling. The fix was using a larger base model (70B) with RAG."}, {"front": "How does fine-tuning reduce per-query cost?", "back": "By baking instructions into the weights, fine-tuning eliminates long system prompts and few-shot examples, reducing token count per request and thus API cost."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Vocabulary</h3>
+<details class="flash-card">
+<summary class="flash-front">What is the most common fine-tuning mistake?</summary>
+<div class="flash-back">Trying to teach a model new factual knowledge. Fine-tuning adjusts behavior (style, format, tone), not knowledge. Use RAG for knowledge injection.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are the five signals that fine-tuning is the right approach?</summary>
+<div class="flash-back">1. Consistent output format required, 2. High volume of similar queries, 3. Quality training data available (100-5,000 examples), 4. Latency matters, 5. Prompting has plateaued</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What percentage of use cases are solved by better prompting and RAG alone?</summary>
+<div class="flash-back">Approximately 80%. Fine-tuning is for the remaining 20% where specific output behavior at scale, reduced latency, or lower per-query cost is needed.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why did fine-tuning fail for the medical QA use case?</summary>
+<div class="flash-back">The 7B base model was too small for the task complexity. Fine-tuning cannot improve a model's reasoning ceiling. The fix was using a larger base model (70B) with RAG.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How does fine-tuning reduce per-query cost?</summary>
+<div class="flash-back">By baking instructions into the weights, fine-tuning eliminates long system prompts and few-shot examples, reducing token count per request and thus API cost.</div>
+</details>
+</div>
 
 </div>

@@ -245,11 +245,89 @@ ORDER BY 1 DESC;</code></pre>
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"API Management Essentials","cards":[{"front":"API Key Storage Rule","back":"Keys live in environment variables, never in code. Every platform (Vercel, Supabase, AWS) has secure env var storage — use it."},{"front":"Server-Side Only Calls","back":"Never call AI APIs from the browser. Your edge function or backend makes the call; the frontend receives the result."},{"front":"Per-User Rate Limiting","back":"Prevents any single user from burning your budget. Starting point: 20 requests/hour for free users, 100 for paid."},{"front":"Exponential Backoff","back":"When a call fails, wait 1s, then 2s, then 4s. Avoids hammering a struggling API and getting further rate-limited."},{"front":"Graceful Degradation","back":"If all AI providers are down, your app still functions — show cached responses, display status messages, or queue requests for later."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">API Management Essentials</h3>
+<details class="flash-card">
+<summary class="flash-front">API Key Storage Rule</summary>
+<div class="flash-back">Keys live in environment variables, never in code. Every platform (Vercel, Supabase, AWS) has secure env var storage — use it.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Server-Side Only Calls</summary>
+<div class="flash-back">Never call AI APIs from the browser. Your edge function or backend makes the call; the frontend receives the result.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Per-User Rate Limiting</summary>
+<div class="flash-back">Prevents any single user from burning your budget. Starting point: 20 requests/hour for free users, 100 for paid.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Exponential Backoff</summary>
+<div class="flash-back">When a call fails, wait 1s, then 2s, then 4s. Avoids hammering a struggling API and getting further rate-limited.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Graceful Degradation</summary>
+<div class="flash-back">If all AI providers are down, your app still functions — show cached responses, display status messages, or queue requests for later.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
-  <div data-learn="QuizMC" data-props='{"title":"API Management Quiz","questions":[{"q":"Why should AI API calls NEVER be made directly from the browser?","options":["It is too slow","Your API key would be visible in browser JavaScript, exposing it to anyone who inspects the page","It violates browser security policies","It costs more per request"],"correct":1,"explanation":"Browser JavaScript is visible to anyone using developer tools. An AI API key in frontend code is effectively public — anyone can scrape it and rack up thousands of dollars in minutes."},{"q":"What should you track per feature to make informed product and pricing decisions?","options":["Total monthly API spend only","Cost per feature, not just total cost — your chatbot might cost $0.02 per conversation while document analysis costs $0.50","Number of API calls only","Average response time only"],"correct":1,"explanation":"Feature-level cost tracking reveals which parts of your product are expensive — informing which features to optimize, which to price higher, and which to reconsider building at all."},{"q":"What is graceful degradation in the context of AI apps?","options":["Using a cheaper model when the expensive one is too slow","When all AI providers are down, your app still functions without AI — showing cached responses or queuing requests rather than an error page","Reducing response quality to save costs","Disabling AI features for free users"],"correct":1,"explanation":"A blank screen when your AI provider goes down is a terrible user experience. Graceful degradation means your app continues to provide value — with cached data, manual options, or queued processing — even without live AI."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">API Management Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Why should AI API calls NEVER be made directly from the browser?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It is too slow
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Your API key would be visible in browser JavaScript, exposing it to anyone who inspects the page
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It violates browser security policies
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It costs more per request
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Browser JavaScript is visible to anyone using developer tools. An AI API key in frontend code is effectively public — anyone can scrape it and rack up thousands of dollars in minutes.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What should you track per feature to make informed product and pricing decisions?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Total monthly API spend only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Cost per feature, not just total cost — your chatbot might cost $0.02 per conversation while document analysis costs $0.50
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Number of API calls only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Average response time only
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Feature-level cost tracking reveals which parts of your product are expensive — informing which features to optimize, which to price higher, and which to reconsider building at all.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is graceful degradation in the context of AI apps?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Using a cheaper model when the expensive one is too slow
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>When all AI providers are down, your app still functions without AI — showing cached responses or queuing requests rather than an error page
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Reducing response quality to save costs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Disabling AI features for free users
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A blank screen when your AI provider goes down is a terrible user experience. Graceful degradation means your app continues to provide value — with cached data, manual options, or queued processing — even without live AI.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

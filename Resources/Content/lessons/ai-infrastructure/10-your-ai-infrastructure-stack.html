@@ -252,11 +252,89 @@ async function logOperation(
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Your AI Infrastructure Stack","cards":[{"front":"Week 1: Foundation","back":"Set up Vercel + Supabase. Deploy a basic app. Confirm CI/CD works — push to main, see it live."},{"front":"Week 2: AI Integration","back":"Add your first AI API call through an edge function. Store keys in env vars. Log every call to your operations table."},{"front":"Week 3: Vector Search","back":"Enable pgvector. Build a RAG pipeline — embed content, store vectors, query by similarity, inject context into prompts."},{"front":"Week 4: Hardening","back":"Add rate limiting, input validation, output checking, response caching, cost alerts, and post-deploy smoke tests."},{"front":"Biggest Pitfall: Over-Engineering Day One","back":"You don&#39;t need Kubernetes or multi-region deployment for your first 1,000 users. Start simple. Add complexity when simple breaks."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Your AI Infrastructure Stack</h3>
+<details class="flash-card">
+<summary class="flash-front">Week 1: Foundation</summary>
+<div class="flash-back">Set up Vercel + Supabase. Deploy a basic app. Confirm CI/CD works — push to main, see it live.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Week 2: AI Integration</summary>
+<div class="flash-back">Add your first AI API call through an edge function. Store keys in env vars. Log every call to your operations table.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Week 3: Vector Search</summary>
+<div class="flash-back">Enable pgvector. Build a RAG pipeline — embed content, store vectors, query by similarity, inject context into prompts.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Week 4: Hardening</summary>
+<div class="flash-back">Add rate limiting, input validation, output checking, response caching, cost alerts, and post-deploy smoke tests.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Biggest Pitfall: Over-Engineering Day One</summary>
+<div class="flash-back">You don't need Kubernetes or multi-region deployment for your first 1,000 users. Start simple. Add complexity when simple breaks.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
-  <div data-learn="QuizMC" data-props='{"title":"AI Infrastructure Stack Quiz","questions":[{"q":"What is the correct build order for a production AI infrastructure?","options":["AI integration first, then database, then frontend","Foundation (Vercel + Supabase) → AI integration → vector search → hardening (rate limiting, caching, alerts)","Security first, then everything else","All layers simultaneously"],"correct":1,"explanation":"This order minimizes rework: first prove CI/CD works with a deployed app, then add AI calls, then add vector search for RAG, then harden with production-grade rate limiting, caching, validation, and monitoring."},{"q":"When should you add Kubernetes and multi-region deployment to your AI infrastructure?","options":["From day one for scalability","After you hit 100 users","Never — Vercel handles it","Only when simple infrastructure breaks under real load — not before"],"correct":3,"explanation":"Over-engineering on day one is a primary failure mode. Vercel and Supabase handle 90% of what you need at 1,000 users. Add complexity only when and because the simple thing breaks."},{"q":"Why is single AI provider dependency an architectural risk?","options":["It costs more","If your entire app breaks when one provider goes down, your architecture is fragile — even a cached response fallback is better than an error page","Providers charge more for single-provider usage","It limits your model options"],"correct":1,"explanation":"Every major AI provider has outages. Building automatic failover — whether to another provider or to cached responses — is the difference between a 5-minute user disruption and a full service outage."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">AI Infrastructure Stack Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the correct build order for a production AI infrastructure?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>AI integration first, then database, then frontend
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Foundation (Vercel + Supabase) → AI integration → vector search → hardening (rate limiting, caching, alerts)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Security first, then everything else
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>All layers simultaneously
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> This order minimizes rework: first prove CI/CD works with a deployed app, then add AI calls, then add vector search for RAG, then harden with production-grade rate limiting, caching, validation, and monitoring.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>When should you add Kubernetes and multi-region deployment to your AI infrastructure?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>From day one for scalability
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>After you hit 100 users
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Never — Vercel handles it
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Only when simple infrastructure breaks under real load — not before
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Over-engineering on day one is a primary failure mode. Vercel and Supabase handle 90% of what you need at 1,000 users. Add complexity only when and because the simple thing breaks.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why is single AI provider dependency an architectural risk?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It costs more
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>If your entire app breaks when one provider goes down, your architecture is fragile — even a cached response fallback is better than an error page
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Providers charge more for single-provider usage
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It limits your model options
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Every major AI provider has outages. Building automatic failover — whether to another provider or to cached responses — is the difference between a 5-minute user disruption and a full service outage.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

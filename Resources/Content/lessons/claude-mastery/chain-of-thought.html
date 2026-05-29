@@ -203,9 +203,105 @@ response = client.messages.create(
 </div>
 </div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Chain-of-Thought Key Concepts","cards":[{"front":"Chain-of-Thought (CoT) prompting","back":"Asking Claude to show its step-by-step reasoning before arriving at an answer. Dramatically improves accuracy on math, logic, coding, and analysis by making intermediate steps visible for self-correction."},{"front":"Extended thinking","back":"Claude\u0027s built-in deep reasoning mode. You set a thinking budget (tokens), and Claude reasons internally before responding. Available on Sonnet 4.6 and Opus 4.6. Use the thinking parameter in the API."},{"front":"Structured CoT with XML tags","back":"Wrapping reasoning in XML tags (\u003creasoning\u003e...\u003c/reasoning\u003e \u003canswer\u003e...\u003c/answer\u003e) so production code can parse the final answer separately from the reasoning."},{"front":"When NOT to use CoT","back":"Simple classification, translation, factual lookups, and creative writing. CoT adds token cost and latency without accuracy benefit on tasks that don\u0027t have multi-step reasoning."},{"front":"Compound discount example","back":"25% off then 10% off is NOT 35% off. It is 25% off the original, then 10% off the reduced price = 32.5% total. CoT catches this; direct answering often misses it."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Chain-of-Thought Key Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">Chain-of-Thought (CoT) prompting</summary>
+<div class="flash-back">Asking Claude to show its step-by-step reasoning before arriving at an answer. Dramatically improves accuracy on math, logic, coding, and analysis by making intermediate steps visible for self-correction.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Extended thinking</summary>
+<div class="flash-back">Claude's built-in deep reasoning mode. You set a thinking budget (tokens), and Claude reasons internally before responding. Available on Sonnet 4.6 and Opus 4.6. Use the thinking parameter in the API.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Structured CoT with XML tags</summary>
+<div class="flash-back">Wrapping reasoning in XML tags (<reasoning>...</reasoning> <answer>...</answer>) so production code can parse the final answer separately from the reasoning.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">When NOT to use CoT</summary>
+<div class="flash-back">Simple classification, translation, factual lookups, and creative writing. CoT adds token cost and latency without accuracy benefit on tasks that don't have multi-step reasoning.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Compound discount example</summary>
+<div class="flash-back">25% off then 10% off is NOT 35% off. It is 25% off the original, then 10% off the reduced price = 32.5% total. CoT catches this; direct answering often misses it.</div>
+</details>
+</div>
 
-<div data-learn="QuizMC" data-props='{"title":"Chain-of-Thought Comprehension","questions":[{"q":"A store offers 20% off, then an additional 10% off the sale price. Without CoT, Claude says the total discount is 30%. What is the actual answer?","options":["30% — Claude was correct","28% — compound discounts multiply","25% — sequential discounts are always less","The discounts cannot be combined"],"correct":1,"explanation":"Compound discounts are multiplicative, not additive. 20% off leaves 80%, then 10% off that leaves 72% — so 28% total discount, not 30%. CoT forces Claude to compute each step sequentially."},{"q":"Which approach gives Claude the deepest reasoning on hard problems?","options":["Prompt-based CoT (think step by step)","Structured CoT with XML tags","Extended thinking with a budget","Temperature 0"],"correct":2,"explanation":"Extended thinking gives Claude a dedicated reasoning budget. It can think for thousands of tokens internally before producing a clean final answer. This is the most powerful option for genuinely hard problems."},{"q":"When is chain-of-thought prompting NOT worth the extra tokens?","options":["Multi-step math problems","Simple spam/not-spam classification","Code debugging with complex logic","Analyzing tradeoffs between two architectures"],"correct":1,"explanation":"Simple binary classification doesn\u0027t benefit from step-by-step reasoning. The model already knows the answer in one step. Adding CoT just costs more tokens and adds latency without improving accuracy."},{"q":"In production, what is the best way to separate Claude\u0027s reasoning from its final answer?","options":["Ask Claude to put the answer at the end","Use XML tags: reasoning and answer blocks","Check the last sentence only","Use a separate API call"],"correct":1,"explanation":"XML tags give you a reliable, parseable boundary between reasoning and answer. Your code can extract the answer block programmatically without parsing natural language."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Chain-of-Thought Comprehension</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>A store offers 20% off, then an additional 10% off the sale price. Without CoT, Claude says the total discount is 30%. What is the actual answer?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>30% — Claude was correct
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>28% — compound discounts multiply
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>25% — sequential discounts are always less
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>The discounts cannot be combined
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Compound discounts are multiplicative, not additive. 20% off leaves 80%, then 10% off that leaves 72% — so 28% total discount, not 30%. CoT forces Claude to compute each step sequentially.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Which approach gives Claude the deepest reasoning on hard problems?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Prompt-based CoT (think step by step)
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Structured CoT with XML tags
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Extended thinking with a budget
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Temperature 0
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Extended thinking gives Claude a dedicated reasoning budget. It can think for thousands of tokens internally before producing a clean final answer. This is the most powerful option for genuinely hard problems.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>When is chain-of-thought prompting NOT worth the extra tokens?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Multi-step math problems
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Simple spam/not-spam classification
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Code debugging with complex logic
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Analyzing tradeoffs between two architectures
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Simple binary classification doesn't benefit from step-by-step reasoning. The model already knows the answer in one step. Adding CoT just costs more tokens and adds latency without improving accuracy.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>In production, what is the best way to separate Claude's reasoning from its final answer?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Ask Claude to put the answer at the end
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Use XML tags: reasoning and answer blocks
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Check the last sentence only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Use a separate API call
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> XML tags give you a reliable, parseable boundary between reasoning and answer. Your code can extract the answer block programmatically without parsing natural language.</div>
+</div>
+</div>
 
 
 </div>

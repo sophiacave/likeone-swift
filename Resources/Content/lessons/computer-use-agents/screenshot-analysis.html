@@ -95,13 +95,95 @@ what the AI sees well and where it struggles.</code></div>
 <div class="lesson-section">
   <span class="section-label">Review</span>
   <h2 class="section-title">Key concepts.</h2>
-  <div data-learn="FlashDeck" data-props='{"title":"Screenshot Analysis","cards":[{"front":"Three Layers of Visual Understanding","back":"Layer 1: Text extraction (most reliable). Layer 2: Element identification (buttons, inputs, links). Layer 3: Layout comprehension (spatial relationships between elements)."},{"front":"Screenshot Resolution Sweet Spot","back":"1920x1080 -- high enough to read text clearly, low enough to keep token costs reasonable. 4K works but costs more without significant accuracy gains."},{"front":"PNG vs JPEG for Screenshots","back":"PNG preserves every pixel -- best for reading small text. JPEG compresses and costs fewer tokens -- good for most workflows at 85% quality. Choose based on whether you need pixel-perfect text reading."},{"front":"Structured Element Extraction","back":"Ask Claude to return interactive elements as structured JSON with type, text, coordinates, and state. This makes elements programmatically accessible for automation decisions."},{"front":"Coordinate Accuracy","back":"AI-estimated coordinates are approximate, not pixel-perfect. Always aim for element centers, not edges. Add tolerance zones for critical clicks."},{"front":"Page State Awareness","back":"Screenshots capture a moment in time. If the page is still loading, you capture a spinner. Always verify the page is fully loaded before capturing for analysis."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Screenshot Analysis</h3>
+<details class="flash-card">
+<summary class="flash-front">Three Layers of Visual Understanding</summary>
+<div class="flash-back">Layer 1: Text extraction (most reliable). Layer 2: Element identification (buttons, inputs, links). Layer 3: Layout comprehension (spatial relationships between elements).</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Screenshot Resolution Sweet Spot</summary>
+<div class="flash-back">1920x1080 -- high enough to read text clearly, low enough to keep token costs reasonable. 4K works but costs more without significant accuracy gains.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">PNG vs JPEG for Screenshots</summary>
+<div class="flash-back">PNG preserves every pixel -- best for reading small text. JPEG compresses and costs fewer tokens -- good for most workflows at 85% quality. Choose based on whether you need pixel-perfect text reading.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Structured Element Extraction</summary>
+<div class="flash-back">Ask Claude to return interactive elements as structured JSON with type, text, coordinates, and state. This makes elements programmatically accessible for automation decisions.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Coordinate Accuracy</summary>
+<div class="flash-back">AI-estimated coordinates are approximate, not pixel-perfect. Always aim for element centers, not edges. Add tolerance zones for critical clicks.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Page State Awareness</summary>
+<div class="flash-back">Screenshots capture a moment in time. If the page is still loading, you capture a spinner. Always verify the page is fully loaded before capturing for analysis.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Check Your Understanding</span>
   <h2 class="section-title">Screenshot analysis quiz.</h2>
-  <div data-learn="QuizMC" data-props='{"title":"Screenshot Analysis","questions":[{"q":"What is the most reliable layer of Claude visual understanding?","options":["Layout comprehension","Element identification","Text extraction -- Claude can read text in screenshots with high accuracy across languages, fonts, and sizes","Color detection"],"correct":2,"explanation":"Text extraction is the most reliable visual capability. Claude reads headings, labels, error messages, and body text with high accuracy. When in doubt, start by asking the AI to read the text before asking it to identify elements or understand layout."},{"q":"Why should you ask for structured element extraction instead of a general page description?","options":["Structured data uses fewer tokens","General descriptions are always inaccurate","Structured JSON output (type, text, coordinates, state) is programmatically actionable -- your automation code can find specific elements and decide what to interact with","Structured output is required by the computer use API"],"correct":2,"explanation":"A general description like this is a login page is not actionable by code. Structured output like {type: input, text: Email, coordinates: [400, 250]} lets your automation loop find the email field and type in it programmatically."},{"q":"What is the recommended screenshot resolution for computer use?","options":["4K (3840x2160) for maximum detail","1920x1080 -- high enough to read text clearly, low enough for reasonable token costs","800x600 for minimum token usage","Whatever the user default display resolution is"],"correct":1,"explanation":"1920x1080 is the sweet spot. Higher resolutions cost more tokens without meaningfully improving accuracy for most tasks. Lower resolutions may make small text unreadable. Consistency matters more than maximum resolution."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Screenshot Analysis</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the most reliable layer of Claude visual understanding?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Layout comprehension
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Element identification
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Text extraction -- Claude can read text in screenshots with high accuracy across languages, fonts, and sizes
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Color detection
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Text extraction is the most reliable visual capability. Claude reads headings, labels, error messages, and body text with high accuracy. When in doubt, start by asking the AI to read the text before asking it to identify elements or understand layout.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Why should you ask for structured element extraction instead of a general page description?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Structured data uses fewer tokens
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>General descriptions are always inaccurate
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Structured JSON output (type, text, coordinates, state) is programmatically actionable -- your automation code can find specific elements and decide what to interact with
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Structured output is required by the computer use API
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> A general description like this is a login page is not actionable by code. Structured output like {type: input, text: Email, coordinates: [400, 250]} lets your automation loop find the email field and type in it programmatically.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the recommended screenshot resolution for computer use?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>4K (3840x2160) for maximum detail
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>1920x1080 -- high enough to read text clearly, low enough for reasonable token costs
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>800x600 for minimum token usage
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Whatever the user default display resolution is
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> 1920x1080 is the sweet spot. Higher resolutions cost more tokens without meaningfully improving accuracy for most tasks. Lower resolutions may make small text unreadable. Consistency matters more than maximum resolution.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

@@ -185,9 +185,87 @@ ticket = {<span style="color:#fb923c">"email"</span>: <span style="color:#fb923c
 <span style="color:#34d399">run_workflow</span>(ticket, api_key=<span style="color:#fb923c">"sk-ant-..."</span>)</code></pre>
 </div>
   </div>
-<div data-learn="FlashDeck" data-props='{"title":"AI Workflow Components","cards":[{"front":"Webhook Trigger","back":"Receives incoming HTTP data to start the pipeline. Every workflow begins with a trigger."},{"front":"AI Classify","back":"Claude reads the incoming content and assigns an intent label with a confidence score."},{"front":"Filter","back":"A condition gate — only passes data that meets the threshold. Example: confidence > 80%."},{"front":"Transform","back":"Reshapes the data structure for the next step. Example: extract team name and priority from the AI output."},{"front":"Send to Team (action)","back":"The final step — routes the processed data to the correct destination, creates a ticket, sends a notification."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">AI Workflow Components</h3>
+<details class="flash-card">
+<summary class="flash-front">Webhook Trigger</summary>
+<div class="flash-back">Receives incoming HTTP data to start the pipeline. Every workflow begins with a trigger.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">AI Classify</summary>
+<div class="flash-back">Claude reads the incoming content and assigns an intent label with a confidence score.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Filter</summary>
+<div class="flash-back">A condition gate — only passes data that meets the threshold. Example: confidence > 80%.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Transform</summary>
+<div class="flash-back">Reshapes the data structure for the next step. Example: extract team name and priority from the AI output.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Send to Team (action)</summary>
+<div class="flash-back">The final step — routes the processed data to the correct destination, creates a ticket, sends a notification.</div>
+</details>
+</div>
 
-  <div data-learn="QuizMC" data-props='{"title":"AI Workflow Quiz","questions":[{"q":"What is the purpose of the Filter step in an AI workflow?","options":["To classify the content","To receive incoming data","To only pass data that meets a confidence threshold","To format the final output"],"correct":2,"explanation":"The Filter step acts as a condition gate — it lets through only the data that meets your criteria, such as AI confidence above 80%."},{"q":"What does the Transform step do?","options":["Sends data to the team","Classifies intent","Reshapes the data structure for the next step","Receives the webhook payload"],"correct":2,"explanation":"Transform reshapes data — it takes the AI output and formats it into exactly what the action step needs, like extracting team name and priority."},{"q":"Why add a Filter between AI Classify and the action?","options":["To make the workflow longer","To prevent low-confidence misclassifications from being acted upon automatically","To increase processing speed","To store data in a database"],"correct":1,"explanation":"Filtering by confidence prevents the workflow from acting on uncertain AI outputs. Low-confidence results can be sent to a human review queue instead."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">AI Workflow Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the purpose of the Filter step in an AI workflow?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>To classify the content
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>To receive incoming data
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>To only pass data that meets a confidence threshold
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>To format the final output
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> The Filter step acts as a condition gate — it lets through only the data that meets your criteria, such as AI confidence above 80%.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What does the Transform step do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Sends data to the team
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Classifies intent
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Reshapes the data structure for the next step
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Receives the webhook payload
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Transform reshapes data — it takes the AI output and formats it into exactly what the action step needs, like extracting team name and priority.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why add a Filter between AI Classify and the action?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>To make the workflow longer
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>To prevent low-confidence misclassifications from being acted upon automatically
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>To increase processing speed
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>To store data in a database
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Filtering by confidence prevents the workflow from acting on uncertain AI outputs. Low-confidence results can be sent to a human review queue instead.</div>
+</div>
+</div>
 
 </div>
 

@@ -49,7 +49,29 @@
 </div>
 
 <div class="lesson-section">
-  <div data-learn="FlashDeck" data-props='{"title":"Context Window Mastery — Key Concepts","cards":[{"front":"What is the context window?","back":"The total amount of text an AI model can see at once — your prompt plus its response. Claude handles up to 200K tokens, GPT-4 up to 128K."},{"front":"What is the &#39;lost in the middle&#39; effect?","back":"AI models pay more attention to content at the beginning and end of the context window than to content in the middle — so you must front-load critical instructions."},{"front":"What is the rolling context technique?","back":"Asking the AI to summarize work so far in ~200 words (what&#39;s decided, built, and remaining), then continuing in a fresh context with that summary — essentially a checkpoint."},{"front":"Why is overlap crucial when chunking documents?","back":"Important context can span chunk boundaries. A 10-15% overlap between chunks prevents information from falling through the cracks at split points."},{"front":"What are structured references?","back":"Instead of pasting full files, you paste function signatures, class names, and key logic blocks — letting the AI reason about architecture without seeing every line of code."}]}'></div>
+  <div class="flash-block">
+<h3 class="quiz-title">Context Window Mastery — Key Concepts</h3>
+<details class="flash-card">
+<summary class="flash-front">What is the context window?</summary>
+<div class="flash-back">The total amount of text an AI model can see at once — your prompt plus its response. Claude handles up to 200K tokens, GPT-4 up to 128K.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the 'lost in the middle' effect?</summary>
+<div class="flash-back">AI models pay more attention to content at the beginning and end of the context window than to content in the middle — so you must front-load critical instructions.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What is the rolling context technique?</summary>
+<div class="flash-back">Asking the AI to summarize work so far in ~200 words (what's decided, built, and remaining), then continuing in a fresh context with that summary — essentially a checkpoint.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why is overlap crucial when chunking documents?</summary>
+<div class="flash-back">Important context can span chunk boundaries. A 10-15% overlap between chunks prevents information from falling through the cracks at split points.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">What are structured references?</summary>
+<div class="flash-back">Instead of pasting full files, you paste function signatures, class names, and key logic blocks — letting the AI reason about architecture without seeing every line of code.</div>
+</details>
+</div>
 </div>
 
 <div class="lesson-section">
@@ -176,7 +198,63 @@ INPUT: [the thing to process]</code>
 </div>
 
 <div class="lesson-section">
-  <div data-learn="QuizMC" data-props='{"title":"Context Window Mastery Quiz","questions":[{"q":"What is the ‘lost in the middle’ effect?","options":["The AI forgets earlier conversations","Content in the middle of a long context gets less attention than content at the beginning or end","The AI runs out of tokens mid-response","Long prompts cause the AI to lose track of the task"],"correct":1,"explanation":"Research shows AI models pay more attention to content at the beginning and end of the context window than to content in the middle — so structure your prompts with critical info first."},{"q":"What is the correct structure order for a well-organized prompt?","options":["Input first, then task, then rules","System instructions, task, constraints, reference material, examples, input","Examples first, then instructions, then input","Input, examples, instructions"],"correct":1,"explanation":"Front-loading the most critical elements (instructions, task, constraints) ensures the AI prioritizes them. Reference material and input go later since they’re supporting details."},{"q":"Why is a 10-15% overlap important when chunking large documents?","options":["It makes the chunks easier to process","Important context can span chunk boundaries — overlap prevents information from falling through the cracks","It reduces the total token count","It helps the AI remember previous chunks"],"correct":1,"explanation":"If you split a document at a page boundary, key context might span both sides of that boundary. Overlap ensures nothing gets lost between chunks."}]}'></div>
+  <div class="quiz-block">
+<h3 class="quiz-title">Context Window Mastery Quiz</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the ‘lost in the middle’ effect?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>The AI forgets earlier conversations
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Content in the middle of a long context gets less attention than content at the beginning or end
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>The AI runs out of tokens mid-response
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Long prompts cause the AI to lose track of the task
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Research shows AI models pay more attention to content at the beginning and end of the context window than to content in the middle — so structure your prompts with critical info first.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the correct structure order for a well-organized prompt?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Input first, then task, then rules
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>System instructions, task, constraints, reference material, examples, input
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Examples first, then instructions, then input
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Input, examples, instructions
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Front-loading the most critical elements (instructions, task, constraints) ensures the AI prioritizes them. Reference material and input go later since they’re supporting details.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why is a 10-15% overlap important when chunking large documents?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>It makes the chunks easier to process
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>Important context can span chunk boundaries — overlap prevents information from falling through the cracks
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>It reduces the total token count
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>It helps the AI remember previous chunks
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> If you split a document at a page boundary, key context might span both sides of that boundary. Overlap ensures nothing gets lost between chunks.</div>
+</div>
+</div>
 </div>
 
 <nav class="lesson-nav">

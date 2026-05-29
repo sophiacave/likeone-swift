@@ -238,6 +238,110 @@
   </div>
 </div>
 
-<div data-learn="QuizMC" data-props='{"title":"Agent Evaluation","questions":[{"q":"What is the recommended deploy threshold across all 5 dimensions?","options":["50 — above average is good enough","70 — meets the baseline for production reliability","90 — near-perfect only","100 — must be perfect"],"correct":1,"explanation":"70 across all five dimensions is the standard deploy threshold. Below 70 on any dimension means meaningful risk of poor user experience or production failures."},{"q":"An agent is 95% accurate but takes 45 seconds per query. Should you deploy?","options":["Yes — accuracy is all that matters","No — investigate caching, parallel tool calls, or faster models for simple tasks","Yes — users will wait for accuracy","No — shut down the entire project"],"correct":1,"explanation":"Speed is one of five critical dimensions. 45 seconds frustrates users even with perfect accuracy. Cache frequent queries, parallelize tool calls, route simple tasks to faster models."},{"q":"Why should you run each test case multiple times?","options":["To waste more API credits","LLM outputs are non-deterministic — an agent that passes 3/5 times is only 60% reliable","To warm up the model","Multiple runs average out network latency"],"correct":1,"explanation":"LLMs can give different responses to the same input. Running each test 3-5 times reveals the true reliability rate. An agent that sometimes fails is not reliable enough for production."},{"q":"Your agent scores 85 on accuracy, speed, reliability, and cost — but 40 on user satisfaction. What does this mean?","options":["Deploy — 4 out of 5 is passing","The agent is technically solid but users are not happy — fix tone, format, or transparency before deploying","Ignore user satisfaction — it is subjective","Average the scores — 77 overall is passing"],"correct":1,"explanation":"All five dimensions must meet the threshold. High technical scores with low user satisfaction means the agent may be correct but unhelpful — wrong tone, confusing output, or poor transparency about limitations."}]}'></div>
+<div class="quiz-block">
+<h3 class="quiz-title">Agent Evaluation</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What is the recommended deploy threshold across all 5 dimensions?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>50 — above average is good enough
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>70 — meets the baseline for production reliability
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>90 — near-perfect only
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>100 — must be perfect
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> 70 across all five dimensions is the standard deploy threshold. Below 70 on any dimension means meaningful risk of poor user experience or production failures.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>An agent is 95% accurate but takes 45 seconds per query. Should you deploy?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Yes — accuracy is all that matters
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>No — investigate caching, parallel tool calls, or faster models for simple tasks
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Yes — users will wait for accuracy
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>No — shut down the entire project
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> Speed is one of five critical dimensions. 45 seconds frustrates users even with perfect accuracy. Cache frequent queries, parallelize tool calls, route simple tasks to faster models.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Why should you run each test case multiple times?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>To waste more API credits
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>LLM outputs are non-deterministic — an agent that passes 3/5 times is only 60% reliable
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>To warm up the model
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Multiple runs average out network latency
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> LLMs can give different responses to the same input. Running each test 3-5 times reveals the true reliability rate. An agent that sometimes fails is not reliable enough for production.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Your agent scores 85 on accuracy, speed, reliability, and cost — but 40 on user satisfaction. What does this mean?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option A">
+<span class="quiz-letter">A</span>Deploy — 4 out of 5 is passing
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option B">
+<span class="quiz-letter">B</span>The agent is technically solid but users are not happy — fix tone, format, or transparency before deploying
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option C">
+<span class="quiz-letter">C</span>Ignore user satisfaction — it is subjective
+</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'" aria-label="Option D">
+<span class="quiz-letter">D</span>Average the scores — 77 overall is passing
+</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>Explanation:</strong> All five dimensions must meet the threshold. High technical scores with low user satisfaction means the agent may be correct but unhelpful — wrong tone, confusing output, or poor transparency about limitations.</div>
+</div>
+</div>
 
-<div data-learn="FlashDeck" data-props='{"title":"Agent Evaluation Framework","cards":[{"front":"The five evaluation dimensions","back":"Accuracy (correct responses), Speed (response time), Reliability (no crashes), Cost Efficiency (affordable at scale), User Satisfaction (users are happy). All five must score 70+ to deploy."},{"front":"How to measure accuracy","back":"Build a test suite with known inputs and expected outputs. Run each test case 3-5 times. Count how often the response contains the expected content. Target: 85%+."},{"front":"How to measure reliability","back":"Run 100+ test cases. Count errors, crashes, and silent failures. Reliability = (successful runs / total runs). Target: 95%+."},{"front":"Why run tests multiple times?","back":"LLM outputs are non-deterministic. The same input can produce different outputs. Running 3-5 times reveals the true success rate, not a lucky single run."},{"front":"Production monitoring","back":"Pre-launch testing is not enough. Log every production interaction, review failures weekly, measure accuracy drift. User patterns change and model behavior shifts over time."},{"front":"The speed-accuracy tradeoff","back":"Faster models (Haiku) are cheaper and quicker but less accurate. Powerful models (Opus) are more accurate but slower and expensive. Route based on query complexity."},{"front":"Test suite best practices","back":"Include happy path, ambiguous inputs, edge cases, and adversarial prompts. Real users are messy — your test suite should be too."}]}'></div>
+<div class="flash-block">
+<h3 class="quiz-title">Agent Evaluation Framework</h3>
+<details class="flash-card">
+<summary class="flash-front">The five evaluation dimensions</summary>
+<div class="flash-back">Accuracy (correct responses), Speed (response time), Reliability (no crashes), Cost Efficiency (affordable at scale), User Satisfaction (users are happy). All five must score 70+ to deploy.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How to measure accuracy</summary>
+<div class="flash-back">Build a test suite with known inputs and expected outputs. Run each test case 3-5 times. Count how often the response contains the expected content. Target: 85%+.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">How to measure reliability</summary>
+<div class="flash-back">Run 100+ test cases. Count errors, crashes, and silent failures. Reliability = (successful runs / total runs). Target: 95%+.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Why run tests multiple times?</summary>
+<div class="flash-back">LLM outputs are non-deterministic. The same input can produce different outputs. Running 3-5 times reveals the true success rate, not a lucky single run.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Production monitoring</summary>
+<div class="flash-back">Pre-launch testing is not enough. Log every production interaction, review failures weekly, measure accuracy drift. User patterns change and model behavior shifts over time.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">The speed-accuracy tradeoff</summary>
+<div class="flash-back">Faster models (Haiku) are cheaper and quicker but less accurate. Powerful models (Opus) are more accurate but slower and expensive. Route based on query complexity.</div>
+</details>
+<details class="flash-card">
+<summary class="flash-front">Test suite best practices</summary>
+<div class="flash-back">Include happy path, ambiguous inputs, edge cases, and adversarial prompts. Real users are messy — your test suite should be too.</div>
+</details>
+</div>
