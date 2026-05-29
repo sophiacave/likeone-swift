@@ -13,7 +13,7 @@ RUN swift build -c release -Xswiftc -cross-module-optimization \
     && find .build -name "*.resources" -type d -exec cp -r {} /output/ \; \
     && ls -la /output/
 
-FROM ubuntu:jammy
+FROM swift:6.0-jammy-slim
 RUN apt-get update && apt-get install -y \
     ca-certificates \
     libsqlite3-0 \
@@ -22,6 +22,7 @@ WORKDIR /app
 COPY --from=build /output/ .
 COPY --from=build /app/Resources ./Resources
 COPY --from=build /app/Public ./Public
+RUN chmod +x ./LOServer && ls -la ./LOServer && ./LOServer --version 2>&1 || echo "Binary exists but may not support --version"
 ENV ENVIRONMENT=production
 EXPOSE 8080
 ENTRYPOINT ["./LOServer", "serve", "--env", "production", "--hostname", "0.0.0.0", "--port", "8080"]
