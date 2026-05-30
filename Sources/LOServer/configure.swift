@@ -26,6 +26,9 @@ func configure(_ app: Application) async throws {
     // Serve static files from Public/
     app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
 
+    // Custom error pages (404, 500)
+    app.middleware.use(CustomErrorMiddleware())
+
     // Register routes
     try routes(app)
 }

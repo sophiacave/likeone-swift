@@ -1,0 +1,16 @@
+#extend("layout"):
+    #export("content"):
+        <section class="error-page">
+            <div class="site-container" style="max-width:600px; text-align:center; padding:120px 20px 80px;">
+                <div style="font-size:4rem; margin-bottom:16px; opacity:0.5;">#(code)</div>
+                <h1 style="font-size:1.5rem; font-weight:700; margin-bottom:12px;">#(heading)</h1>
+                <p style="color:var(--text-muted); margin-bottom:32px;">#(message)</p>
+                <div style="display:flex; gap:12px; justify-content:center;">
+                    <a href="/" class="cert-share-btn" style="text-decoration:none;">Home</a>
+                    <a href="/academy" class="cert-share-btn cert-share-copy" style="text-decoration:none;">Academy</a>
+                    <a href="/search" class="cert-share-btn cert-share-copy" style="text-decoration:none;">Search</a>
+                </div>
+            </div>
+        </section>
+    #endexport
+#endextend
