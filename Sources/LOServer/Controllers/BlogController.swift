@@ -69,9 +69,11 @@ struct BlogController: RouteCollection {
         "build-first-ai-workflow-30-minutes": "/blog/the-ai-stack-that-runs-our-company-2026/",
         "ai-for-content-marketing-complete-guide": "/blog/the-ai-stack-that-runs-our-company-2026/",
         "claude-vs-chatgpt-business-automation-2026": "/blog/chatgpt-vs-claude-vs-gemini-2026/",
+        // Batch 3: fixed redirects
+        "chatgpt-vs-claude-vs-gemini-comparison-2026": "/blog/chatgpt-vs-claude-vs-gemini-2026/",
         // Batch 1: original high-impression legacy URLs (deduplicated)
-        "claude-custom-instructions-guide": "/academy/claude-for-beginners/custom-instructions/",
-        "what-are-agentic-loops-explained": "/blog/how-to-build-ai-agent-that-works-2026/",
+        // "claude-custom-instructions-guide" — REMOVED: now a real blog post
+        // "what-are-agentic-loops-explained" — REMOVED: now a real blog post
         "how-to-use-claude-projects-complete-guide": "/academy/claude-for-beginners/what-claude-can-do/",
         "how-to-use-claude-for-data-analysis-2026": "/blog/chatgpt-vs-claude-vs-gemini-2026/",
         "best-ai-tools-2026-ranked": "/blog/chatgpt-vs-claude-vs-gemini-2026/",
