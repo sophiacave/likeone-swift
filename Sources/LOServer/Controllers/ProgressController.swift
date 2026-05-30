@@ -49,17 +49,20 @@ struct ProgressController: RouteCollection {
         }
 
         // Check if course is now complete
+        let isPro = user.subscription == "pro" || user.subscription == "founding"
         let courseComplete = try await checkCourseCompletion(
             userID: user.id!,
             courseSlug: input.courseSlug,
+            isPro: isPro,
             db: req.db
         )
 
-        // Check if any track is now complete
+        // Check if any track is now complete (certs only for Pro)
         var trackCompleted: String? = nil
         if courseComplete {
             trackCompleted = try await checkTrackCompletion(
                 userID: user.id!,
+                isPro: isPro,
                 db: req.db
             )
         }
@@ -69,7 +72,8 @@ struct ProgressController: RouteCollection {
             courseSlug: input.courseSlug,
             lessonSlug: input.lessonSlug,
             courseComplete: courseComplete,
-            trackCompleted: trackCompleted
+            trackCompleted: trackCompleted,
+            needsPro: courseComplete && !isPro
         ))
         return response
     }
@@ -165,7 +169,7 @@ struct ProgressController: RouteCollection {
 
     // MARK: - Completion logic
 
-    private func checkCourseCompletion(userID: UUID, courseSlug: String, db: Database) async throws -> Bool {
+    private func checkCourseCompletion(userID: UUID, courseSlug: String, isPro: Bool, db: Database) async throws -> Bool {
         let totalLessons = lessons.lessonCount(forCourse: courseSlug)
         guard totalLessons > 0 else { return false }
 
@@ -175,29 +179,31 @@ struct ProgressController: RouteCollection {
             .count()
 
         if completed >= totalLessons {
-            // Auto-issue course certificate if not already issued
-            let existing = try await CertificateModel.query(on: db)
-                .filter(\.$userID == userID)
-                .filter(\.$courseSlug == courseSlug)
-                .first()
+            // Only issue certificates for Pro/Founding subscribers
+            if isPro {
+                let existing = try await CertificateModel.query(on: db)
+                    .filter(\.$userID == userID)
+                    .filter(\.$courseSlug == courseSlug)
+                    .first()
 
-            if existing == nil {
-                let course = courses.course(slug: courseSlug)
-                let cert = CertificateModel(
-                    userID: userID,
-                    type: "course",
-                    courseSlug: courseSlug,
-                    title: course?.title ?? courseSlug,
-                    recipientName: ""  // Filled from user profile later
-                )
-                try await cert.save(on: db)
+                if existing == nil {
+                    let course = courses.course(slug: courseSlug)
+                    let cert = CertificateModel(
+                        userID: userID,
+                        type: "course",
+                        courseSlug: courseSlug,
+                        title: course?.title ?? courseSlug,
+                        recipientName: ""
+                    )
+                    try await cert.save(on: db)
+                }
             }
             return true
         }
         return false
     }
 
-    private func checkTrackCompletion(userID: UUID, db: Database) async throws -> String? {
+    private func checkTrackCompletion(userID: UUID, isPro: Bool, db: Database) async throws -> String? {
         for track in tracks.allTracks() {
             let courseSlugs = track.courses.isEmpty ? courses.allCourses().map(\.slug) : track.courses
 
@@ -212,8 +218,7 @@ struct ProgressController: RouteCollection {
                 if completed < total { allDone = false; break }
             }
 
-            if allDone && !courseSlugs.isEmpty {
-                // Check if track cert already issued
+            if allDone && !courseSlugs.isEmpty && isPro {
                 let existing = try await CertificateModel.query(on: db)
                     .filter(\.$userID == userID)
                     .filter(\.$trackSlug == track.slug)
@@ -248,6 +253,7 @@ struct CompleteResult: Content {
     let lessonSlug: String
     let courseComplete: Bool
     let trackCompleted: String?
+    let needsPro: Bool?
 }
 
 struct CourseProgressResult: Content {
