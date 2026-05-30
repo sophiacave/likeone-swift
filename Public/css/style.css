@@ -344,6 +344,34 @@ a:focus-visible, button:focus-visible {
     color: var(--text-primary);
     border: 1px solid var(--border);
 }
+.signin-google-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.signin-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 20px 0;
+    color: var(--text-muted);
+    font-size: .8rem;
+}
+.signin-divider::before, .signin-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+.signin-error {
+    margin-top: 16px;
+    padding: 10px 16px;
+    background: rgba(239, 68, 68, .1);
+    border: 1px solid rgba(239, 68, 68, .3);
+    border-radius: var(--radius);
+    color: #f87171;
+    font-size: .85rem;
+}
 
 /* ============================================
    ACADEMY

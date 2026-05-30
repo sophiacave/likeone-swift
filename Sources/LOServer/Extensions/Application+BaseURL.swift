@@ -5,7 +5,7 @@ extension Application {
         let env = Environment.get("BASE_URL")
         if let env { return env }
         return environment == .production
-            ? "https://likeone-swift.fly.dev"
+            ? "https://app.likeone.ai"
             : "http://localhost:8080"
     }
 }

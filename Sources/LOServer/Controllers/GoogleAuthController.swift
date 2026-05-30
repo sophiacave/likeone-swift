@@ -3,90 +3,54 @@ import Fluent
 import LOCore
 
 struct GoogleAuthController: RouteCollection {
-    static let clientID = "469463762089-vhoi6gice7kj64tnru7v9q466suea49o.apps.googleusercontent.com"
+    // Use the same client ID as the Vercel site
+    static let clientID = "469463762089-i84flm8nn1spmk79qf5kp67pp8u0idlq.apps.googleusercontent.com"
 
     func boot(routes: RoutesBuilder) throws {
         let auth = routes.grouped("auth", "google")
-        auth.get(use: googleSignIn)
-        auth.get("callback", use: googleCallback)
+        auth.post("token", use: verifyToken)
     }
 
+    /// Verify a Google ID token from the client-side Sign In button
     @Sendable
-    func googleSignIn(req: Request) async throws -> Response {
-        let state = [UInt8].random(count: 16).map { String(format: "%02x", $0) }.joined()
-        let redirectURI = "\(req.application.baseURL)/auth/google/callback"
-            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let url = "https://accounts.google.com/o/oauth2/v2/auth"
-            + "?client_id=\(Self.clientID)"
-            + "&redirect_uri=\(redirectURI)"
-            + "&response_type=code"
-            + "&scope=openid%20email%20profile"
-            + "&state=\(state)"
-            + "&access_type=offline"
-        return req.redirect(to: url)
-    }
-
-    @Sendable
-    func googleCallback(req: Request) async throws -> Response {
-        struct CallbackQuery: Content {
-            let code: String
-            let state: String?
+    func verifyToken(req: Request) async throws -> Response {
+        struct TokenInput: Content {
+            let credential: String
         }
 
-        let callback = try req.query.decode(CallbackQuery.self)
+        let input = try req.content.decode(TokenInput.self)
 
-        guard let clientSecret = Environment.get("GOOGLE_CLIENT_SECRET") else {
-            throw Abort(.internalServerError, reason: "Google client secret not configured")
-        }
-
-        let redirectURI = "\(req.application.baseURL)/auth/google/callback"
-
-        // Exchange code for tokens
-        struct TokenRequest: Content {
-            let client_id: String
-            let client_secret: String
-            let code: String
-            let grant_type: String
-            let redirect_uri: String
-        }
-
-        let tokenResponse = try await req.client.post("https://oauth2.googleapis.com/token") { tokenReq in
-            try tokenReq.content.encode(TokenRequest(
-                client_id: Self.clientID,
-                client_secret: clientSecret,
-                code: callback.code,
-                grant_type: "authorization_code",
-                redirect_uri: redirectURI
-            ), as: .urlEncodedForm)
-        }
-
-        struct GoogleTokenResponse: Content {
-            let access_token: String?
-            let id_token: String?
-            let error: String?
-        }
-
-        let tokens = try tokenResponse.content.decode(GoogleTokenResponse.self)
-
-        guard let idToken = tokens.id_token else {
-            throw Abort(.unauthorized, reason: tokens.error ?? "No ID token from Google")
-        }
-
-        // Decode JWT payload for user info
-        let parts = idToken.split(separator: ".")
+        // Decode JWT payload (Google ID token)
+        let parts = input.credential.split(separator: ".")
         guard parts.count >= 2,
               let payloadData = Data(base64URLDecoded: String(parts[1])) else {
-            throw Abort(.unauthorized, reason: "Invalid Google ID token")
+            throw Abort(.unauthorized, reason: "Invalid token format")
         }
 
         struct GoogleClaims: Codable {
+            let iss: String?
+            let aud: String?
             let sub: String
             let email: String?
+            let email_verified: Bool?
             let name: String?
             let picture: String?
+            let exp: Int?
         }
 
         let claims = try JSONDecoder().decode(GoogleClaims.self, from: payloadData)
+
+        // Verify issuer and audience
+        guard claims.iss == "https://accounts.google.com" || claims.iss == "accounts.google.com" else {
+            throw Abort(.unauthorized, reason: "Invalid token issuer")
+        }
+        guard claims.aud == Self.clientID else {
+            throw Abort(.unauthorized, reason: "Invalid token audience")
+        }
+        // Check expiry
+        if let exp = claims.exp, Date(timeIntervalSince1970: TimeInterval(exp)) < Date() {
+            throw Abort(.unauthorized, reason: "Token expired")
+        }
 
         guard let email = claims.email else {
             throw Abort(.unauthorized, reason: "No email in Google token")
@@ -96,7 +60,6 @@ struct GoogleAuthController: RouteCollection {
         let user: UserModel
         if let existing = try await UserModel.query(on: req.db).filter(\.$email == email).first() {
             user = existing
-            // Update name/avatar if provided and not yet set
             if user.name == nil, let name = claims.name { user.name = name }
             if user.avatarURL == nil, let picture = claims.picture { user.avatarURL = picture }
             try await user.update(on: req.db)
@@ -115,7 +78,7 @@ struct GoogleAuthController: RouteCollection {
         let session = SessionModel(userID: user.id!, token: token)
         try await session.save(on: req.db)
 
-        let response = req.redirect(to: "/account")
+        let response = Response(status: .ok)
         response.cookies["lo_session"] = HTTPCookies.Value(
             string: token,
             expires: session.expiresAt,
@@ -124,6 +87,7 @@ struct GoogleAuthController: RouteCollection {
             isHTTPOnly: true,
             sameSite: .lax
         )
+        try response.content.encode(["status": "ok", "redirect": "/account"])
         return response
     }
 }

@@ -2,9 +2,9 @@
     #export("content"):
         <!-- OG meta for sharing -->
         <meta property="og:title" content="#(recipientName) earned: #(certTitle)">
-        <meta property="og:description" content="Verified certificate from Like One Academy. View and verify at swift.likeone.ai/cert/#(certId)">
+        <meta property="og:description" content="Verified certificate from Like One Academy. View and verify at app.likeone.ai/cert/#(certId)">
         <meta property="og:type" content="article">
-        <meta property="og:url" content="https://swift.likeone.ai/cert/#(certId)">
+        <meta property="og:url" content="https://app.likeone.ai/cert/#(certId)">
         <section class="cert-page">
             <div class="site-container" style="max-width:720px;">
                 <div class="cert-frame">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="cert-verify">
                             <div class="cert-id">ID: #(certId)</div>
-                            <div class="cert-verify-url">Verify: swift.likeone.ai/cert/#(certId)</div>
+                            <div class="cert-verify-url">Verify: app.likeone.ai/cert/#(certId)</div>
                         </div>
                     </div>
                 </div>
@@ -43,8 +43,8 @@
                         <span class="cert-verified-icon">&#x2714;</span> Verified Certificate
                     </div>
                     <div class="cert-share-row">
-                        <a class="cert-share-btn" href="https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=#(certTitle)&organizationName=Like%20One&issueYear=#(earnedYear)&issueMonth=#(earnedMonth)&certUrl=https://swift.likeone.ai/cert/#(certId)" target="_blank" rel="noopener">Add to LinkedIn</a>
-                        <a class="cert-share-btn cert-share-copy" href="https://swift.likeone.ai/cert/#(certId)" onclick="navigator.clipboard.writeText(this.href);this.textContent='Copied!';return false;">Copy Link</a>
+                        <a class="cert-share-btn" href="https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=#(certTitle)&organizationName=Like%20One&issueYear=#(earnedYear)&issueMonth=#(earnedMonth)&certUrl=https://app.likeone.ai/cert/#(certId)" target="_blank" rel="noopener">Add to LinkedIn</a>
+                        <a class="cert-share-btn cert-share-copy" href="https://app.likeone.ai/cert/#(certId)" onclick="navigator.clipboard.writeText(this.href);this.textContent='Copied!';return false;">Copy Link</a>
                     </div>
                 </div>
             </div>
