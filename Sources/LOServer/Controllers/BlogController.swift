@@ -81,8 +81,8 @@ struct BlogController: RouteCollection {
         "ai-automation-tools-compared-2026": "/blog/the-ai-stack-that-runs-our-company-2026/",
         // "train-ai-on-your-writing-style" — REMOVED: now a real blog post
         "ai-solopreneur-tech-stack-under-100": "/blog/the-ai-stack-that-runs-our-company-2026/",
-        "ai-survey-analysis-complete-guide": "/blog/chatgpt-vs-claude-vs-gemini-2026/",
-        "ai-feedback-analysis-guide": "/blog/chatgpt-vs-claude-vs-gemini-2026/",
+        "ai-survey-analysis-complete-guide": "/blog/how-to-use-claude-for-data-analysis-2026/",
+        "ai-feedback-analysis-guide": "/blog/how-to-use-claude-for-data-analysis-2026/",
         "ai-governance-small-teams-practical-guide": "/blog/why-businesses-fail-at-ai-implementation-2026/",
         "ai-governance-small-teams": "/blog/why-businesses-fail-at-ai-implementation-2026/",
         "10-claude-tips-changed-how-i-work": "/academy/claude-for-beginners/what-claude-can-do/",
