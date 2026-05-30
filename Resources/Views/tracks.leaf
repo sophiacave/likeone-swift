@@ -12,7 +12,7 @@
             <div class="site-container" style="max-width:900px;">
                 <div class="tracks-grid">
                     #for(track in tracks):
-                        <a href="/tracks/#(track.slug)" class="track-card" style="--track-color:#(track.badgeColor);">
+                        <a href="/tracks/#(track.slug)" class="track-card" data-track-slug="#(track.slug)" style="--track-color:#(track.badgeColor);">
                             <div class="track-card-header">
                                 <span class="track-card-emoji">#(track.emoji)</span>
                                 <span class="track-card-difficulty">#(track.difficulty)</span>
@@ -39,5 +39,51 @@
                 <a class="site-btn-primary" href="/tracks/ai-foundations-path">Start AI Foundations</a>
             </div>
         </section>
+        <script>
+        // Track progress: fetch track data, compute from localStorage
+        (function() {
+            var progress = JSON.parse(localStorage.getItem('lo_progress') || '{}');
+            var cards = document.querySelectorAll('.track-card[data-track-slug]');
+            if (!cards.length) return;
+
+            cards.forEach(function(card) {
+                var slug = card.getAttribute('data-track-slug');
+                fetch('/api/v1/tracks/' + slug, { credentials: 'same-origin' })
+                .then(function(r) { return r.ok ? r.json() : null; })
+                .then(function(track) {
+                    if (!track || !track.courses) return;
+                    var totalDone = 0, totalLessons = 0;
+
+                    // For each course in track, count completed lessons
+                    var promises = track.courses.map(function(courseSlug) {
+                        return fetch('/api/v1/courses/' + courseSlug + '/lessons', { credentials: 'same-origin' })
+                            .then(function(r) { return r.ok ? r.json() : []; })
+                            .then(function(lessons) {
+                                var done = progress[courseSlug] || [];
+                                totalLessons += lessons.length;
+                                totalDone += done.length;
+                            });
+                    });
+
+                    Promise.all(promises).then(function() {
+                        if (totalLessons > 0 && totalDone > 0) {
+                            var pct = Math.round((totalDone / totalLessons) * 100);
+                            var fill = card.querySelector('.track-card-bar-fill');
+                            if (fill) fill.style.width = pct + '%';
+                            // Add progress text
+                            var meta = card.querySelector('.track-card-meta');
+                            if (meta) {
+                                var span = document.createElement('span');
+                                span.style.color = 'var(--purple-400)';
+                                span.style.fontWeight = '600';
+                                span.textContent = pct + '% complete';
+                                meta.appendChild(span);
+                            }
+                        }
+                    });
+                }).catch(function() {});
+            });
+        })();
+        </script>
     #endexport
 #endextend
