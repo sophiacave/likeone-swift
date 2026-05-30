@@ -20,6 +20,12 @@ struct CertController: RouteCollection {
 
     @Sendable
     func downloadPDF(req: Request) async throws -> Response {
+        // PDF downloads require Pro subscription
+        let user = try await req.requireUser()
+        guard user.subscription == "pro" || user.subscription == "founding" else {
+            return req.redirect(to: "/pricing")
+        }
+
         let (cert, id) = try await findCert(req: req)
         let ctx = buildCertContext(cert: cert, id: id)
 
