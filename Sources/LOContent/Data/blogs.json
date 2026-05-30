@@ -1,6 +1,28 @@
 {
   "posts": [
     {
+      "slug": "how-to-build-rag-system-retrieval-augmented-generation-2026",
+      "title": "How to Build a RAG System in 2026 (The No-Hype, Actually-Works Guide)",
+      "description": "Retrieval Augmented Generation is the most practical AI architecture right now. Here is exactly how to build one — from embedding strategy to production deployment — without the PhD.",
+      "author": "Sophie Cave",
+      "date": "2026-05-30",
+      "category": "Engineering",
+      "tags": [
+        "rag",
+        "retrieval augmented generation",
+        "how to build rag",
+        "rag tutorial 2026",
+        "vector database",
+        "embeddings",
+        "chromadb",
+        "ai knowledge base",
+        "llm rag pipeline",
+        "rag system architecture"
+      ],
+      "image": "/blog/rag-system-guide-2026.webp",
+      "content": "<p>Everyone is talking about RAG. Most of them are doing it wrong.</p>\n\n<p>Retrieval Augmented Generation is the most practical AI architecture shipping right now. It's how you make an LLM actually useful with your own data — without fine-tuning, without training from scratch, without spending six figures on GPU time.</p>\n\n<p>We run a RAG system in production at Like One. Over 2,400 vectors across 7 collections, powering our AI brain with instant recall across hundreds of documents. This guide is what we learned building it.</p>\n\n<h2>What RAG Actually Is (30-Second Version)</h2>\n\n<p>An LLM knows what it was trained on. It doesn't know your company docs, your meeting notes, your product specs, or anything that happened after its training cutoff.</p>\n\n<p>RAG fixes this in three steps:</p>\n\n<ol>\n<li><strong>Chunk</strong> your documents into pieces</li>\n<li><strong>Embed</strong> those chunks into vectors (numerical representations of meaning)</li>\n<li><strong>Retrieve</strong> the most relevant chunks when a user asks a question, and feed them to the LLM as context</li>\n</ol>\n\n<p>That's it. No mysticism. You're giving the model a cheat sheet before it answers.</p>\n\n<h2>The Architecture That Actually Works</h2>\n\n<p>After building multiple RAG systems, here's the stack we recommend:</p>\n\n<p><strong>Embedding Model:</strong> Use a dedicated embedding model, not your chat model. OpenAI's <code>text-embedding-3-small</code> or Cohere's <code>embed-v4</code> are both excellent. Local options like <code>nomic-embed-text</code> via Ollama work great if you want zero API costs.</p>\n\n<p><strong>Vector Store:</strong> ChromaDB for prototyping and small-to-medium scale. It's local, fast, and requires zero infrastructure. Pinecone or Weaviate if you need managed hosting at scale. We run ChromaDB in production with 2,400+ vectors and it handles sub-second queries without breaking a sweat.</p>\n\n<p><strong>Chunking Strategy:</strong> This is where most people mess up. More on this below.</p>\n\n<p><strong>LLM:</strong> Claude (our pick), GPT-4, or Gemini for the generation step. The model matters less than your retrieval quality.</p>\n\n<h2>Step 1: Chunking — The Make-or-Break Decision</h2>\n\n<p>Bad chunking is the #1 reason RAG systems give bad answers. Here's what actually works:</p>\n\n<h3>Chunk Size</h3>\n\n<p>Aim for 200-500 tokens per chunk. Smaller chunks give more precise retrieval. Larger chunks give more context. The sweet spot depends on your content:</p>\n\n<ul>\n<li><strong>Technical docs:</strong> 200-300 tokens. You want precise function-level retrieval.</li>\n<li><strong>Business content:</strong> 300-500 tokens. Broader context helps with nuanced questions.</li>\n<li><strong>Legal/compliance:</strong> 400-600 tokens. You need full clause context.</li>\n</ul>\n\n<h3>Overlap</h3>\n\n<p>Always use overlapping chunks — 10-15% overlap prevents information from getting split across chunk boundaries. If your chunk size is 400 tokens, use a 50-token overlap.</p>\n\n<h3>Semantic Chunking vs. Fixed-Size</h3>\n\n<p>Fixed-size chunking (split every N tokens) is fast and predictable. Semantic chunking (split at natural boundaries like paragraphs or sections) preserves meaning better but is harder to implement consistently.</p>\n\n<p>Our recommendation: start with fixed-size + overlap. Move to semantic chunking only when you have evidence that chunk boundary issues are hurting retrieval quality.</p>\n\n<h2>Step 2: Embeddings — Getting Them Right</h2>\n\n<p>Embeddings convert text into vectors — arrays of numbers that capture semantic meaning. Similar concepts end up near each other in vector space.</p>\n\n<pre><code># Python example with ChromaDB\nimport chromadb\n\nclient = chromadb.PersistentClient(path=\"./my_rag_db\")\ncollection = client.get_or_create_collection(\n    name=\"knowledge_base\",\n    metadata={\"hf:space\": \"default\"}\n)\n\n# Add documents\ncollection.add(\n    documents=[\"Your document text here\", \"Another document\"],\n    ids=[\"doc1\", \"doc2\"],\n    metadatas=[{\"source\": \"manual\"}, {\"source\": \"auto\"}]\n)\n\n# Query\nresults = collection.query(\n    query_texts=[\"How does the billing system work?\"],\n    n_results=5\n)</code></pre>\n\n<p>Key principles:</p>\n\n<ul>\n<li><strong>Use the same embedding model for indexing and querying.</strong> Mixing models produces garbage results.</li>\n<li><strong>Store metadata with every chunk.</strong> Source file, date, section title, document type. You'll need this for filtering and attribution.</li>\n<li><strong>Normalize your text before embedding.</strong> Strip excessive whitespace, fix encoding issues, remove boilerplate headers/footers. Garbage in, garbage out.</li>\n</ul>\n\n<h2>Step 3: Retrieval — Quality Over Quantity</h2>\n\n<p>Retrieval is where your system earns its keep. The goal: find the 3-5 most relevant chunks for any given query.</p>\n\n<h3>Basic Similarity Search</h3>\n\n<p>Start here. Cosine similarity between the query embedding and your stored embeddings. Every vector database supports this out of the box.</p>\n\n<h3>Hybrid Search (The Upgrade)</h3>\n\n<p>Combine vector similarity with keyword search (BM25). Vector search catches semantic matches (\"revenue\" finds \"sales figures\"). Keyword search catches exact matches (\"Q3-2026\" finds that exact string). Together, they cover each other's blind spots.</p>\n\n<h3>Reranking (The Secret Weapon)</h3>\n\n<p>After your initial retrieval, run the results through a reranker model. Cohere Rerank or a cross-encoder model re-scores your results with much higher accuracy than embedding similarity alone. This single step can improve answer quality by 20-30%.</p>\n\n<pre><code># Pseudo-code for a hybrid + rerank pipeline\ninitial_results = vector_db.query(question, n=20)  # Cast a wide net\nkeyword_results = bm25_search(question, n=20)       # Keyword backup\nmerged = deduplicate(initial_results + keyword_results)\nfinal = reranker.rank(question, merged, top_n=5)    # Precision pass</code></pre>\n\n<h2>Step 4: Generation — Prompting With Retrieved Context</h2>\n\n<p>Once you have your relevant chunks, feed them to the LLM with a structured prompt:</p>\n\n<pre><code>You are a helpful assistant. Answer the user's question \nusing ONLY the provided context. If the context doesn't \ncontain enough information, say so — don't make things up.\n\nContext:\n{retrieved_chunks}\n\nQuestion: {user_question}</code></pre>\n\n<p>Critical rules:</p>\n\n<ul>\n<li><strong>Always include a \"don't hallucinate\" instruction.</strong> LLMs will fill gaps with plausible-sounding fiction if you let them.</li>\n<li><strong>Cite your sources.</strong> Include chunk metadata in your prompt and ask the model to reference which documents it used.</li>\n<li><strong>Set a token budget.</strong> Don't dump 50 chunks into context. 3-5 high-quality chunks beat 20 mediocre ones every time.</li>\n</ul>\n\n<h2>Production Lessons (What We Learned the Hard Way)</h2>\n\n<h3>1. Freshness Matters</h3>\n\n<p>Your knowledge base is only as good as its last update. We run automated embedding pipelines every 5 minutes. If your data changes daily, batch-update nightly at minimum. Stale vectors give stale answers.</p>\n\n<h3>2. Collections Are Your Friend</h3>\n\n<p>Don't dump everything into one giant collection. Separate by domain: one collection for docs, another for meeting notes, another for code. Query the relevant collection(s) based on the question type. We use 7 collections — each one tuned for its content type.</p>\n\n<h3>3. Evaluation Is Non-Negotiable</h3>\n\n<p>Build an eval set: 50-100 question-answer pairs with known correct answers. Run them through your pipeline weekly. Track:</p>\n\n<ul>\n<li><strong>Retrieval precision:</strong> Are the right chunks being found?</li>\n<li><strong>Answer accuracy:</strong> Is the generated answer correct?</li>\n<li><strong>Hallucination rate:</strong> How often does the model invent information?</li>\n</ul>\n\n<p>If you don't measure, you don't know if your changes help or hurt.</p>\n\n<h3>4. Handle \"I Don't Know\" Gracefully</h3>\n\n<p>The best RAG systems know when they don't have the answer. If retrieval confidence is low (similarity scores below your threshold), return \"I don't have enough information to answer that\" instead of a confident-sounding wrong answer. Users trust systems that admit limitations far more than systems that bluff.</p>\n\n<h3>5. Chunk Your Code Differently Than Your Prose</h3>\n\n<p>Code needs different chunking than text. Use AST-aware chunking for code (split at function/class boundaries). Embedding a random 300-token slice of a Python file produces awful results. Embedding a complete function with its docstring produces great ones.</p>\n\n<h2>Common Mistakes to Avoid</h2>\n\n<ul>\n<li><strong>Chunking too large.</strong> 2,000-token chunks feel safe but dilute retrieval precision. You'll get the right document but the wrong paragraph.</li>\n<li><strong>Skipping metadata.</strong> Without source tracking, your system can't cite its sources and you can't debug retrieval failures.</li>\n<li><strong>Ignoring the embedding model.</strong> Not all embedding models are equal. Test at least two on your actual data before committing.</li>\n<li><strong>Over-engineering on day one.</strong> Start with basic similarity search. Add hybrid search when you have evidence it's needed. Add reranking when you have evidence hybrid isn't enough. Premature optimization kills RAG projects.</li>\n<li><strong>Not versioning your index.</strong> When you change chunking strategy or embedding model, you need to re-embed everything. Track which version of your pipeline produced each vector.</li>\n</ul>\n\n<h2>The Bottom Line</h2>\n\n<p>RAG is the bridge between \"AI that sounds smart\" and \"AI that knows your stuff.\" The architecture is straightforward: chunk, embed, retrieve, generate. The execution is where it gets interesting.</p>\n\n<p>Start simple. Measure everything. Iterate on the parts that actually matter — chunking strategy and retrieval quality — before reaching for exotic techniques.</p>\n\n<p>The companies winning with AI right now aren't the ones with the fanciest models. They're the ones with the best retrieval pipelines feeding those models exactly the right context at exactly the right time.</p>\n\n<p>---</p>\n\n<p><em>Like One Academy has a full course on building RAG systems — from first embed to production deployment. Our nonprofit academy covers AI engineering across 52 courses with structured learning paths. <a href=\"/academy\">Start learning free</a>.</em></p>"
+    },
+    {
       "slug": "best-free-ai-courses-online-2026",
       "title": "The 10 Best Free AI Courses Online in 2026 (Actually Free, No Catch)",
       "description": "Most 'free AI courses' are bait for $2,000 bootcamps. Here are 10 that are genuinely free — including our own 501(c)(3) nonprofit academy with 52 courses and certificates.",
@@ -68,10 +90,10 @@
     {
       "slug": "mcp-server-security-audit-checklist-2026",
       "title": "MCP Server Security: The Checklist Nobody Wrote Yet",
-      "description": "",
+      "description": "Everyone's shipping MCP servers. Almost nobody's securing them. Here's the 20-rule security checklist we built after auditing four production servers — plus the open-source scanner to automate it.",
       "author": "Sophie Cave",
       "date": "2026-05-28",
-      "category": "",
+      "category": "Security",
       "tags": [
         "MCP",
         "Security",
@@ -105,10 +127,10 @@
     {
       "slug": "ai-assistive-technology-disabled-trans-communities-2026",
       "title": "AI as Assistive Technology: Building for Disabled and Trans Communities",
-      "description": "",
+      "description": "AI isn't just for productivity — for disabled and trans communities, it's assistive technology that removes barriers. How we're building tools that center accessibility and inclusion.",
       "author": "Sophie Cave",
       "date": "2026-05-26",
-      "category": "",
+      "category": "Accessibility",
       "tags": [
         "Assistive Technology",
         "AI for Good",
@@ -180,10 +202,10 @@
     {
       "slug": "apple-hig-design-system-web-apps-2026",
       "title": "Stealing Apple's Design Language for Your Web App (Without the Dogma)",
-      "description": "",
+      "description": "Apple's Human Interface Guidelines produce the most consistent UI in tech. Here's how to adopt their design language — spacing, typography, color — for your web app without the Apple ecosystem.",
       "author": "Sophie Cave",
       "date": "2026-05-19",
-      "category": "",
+      "category": "Design",
       "tags": [
         "Design Systems",
         "Apple HIG",
@@ -215,10 +237,10 @@
     {
       "slug": "the-ai-stack-that-runs-our-company-2026",
       "title": "The AI Stack That Runs Our Entire Company (2026 Breakdown)",
-      "description": "",
+      "description": "Our entire company runs on AI — Claude for code, Stripe for revenue, Resend for email, custom MCP servers for everything else. The full stack breakdown with real costs and honest trade-offs.",
       "author": "Sophie Cave",
       "date": "2026-05-17",
-      "category": "",
+      "category": "Engineering",
       "tags": [
         "AI Stack",
         "Build in Public",
@@ -253,10 +275,10 @@
     {
       "slug": "ai-archaeology-drone-lidar-future-2026",
       "title": "AI Is Finding Lost Cities — And the $1.7B Industry That Hasn't Noticed",
-      "description": "",
+      "description": "AI-powered drones and LiDAR are discovering lost cities faster than human archaeologists ever could. The intersection of machine learning and cultural heritage is a $1.7B industry about to be transformed.",
       "author": "Sophie Cave",
       "date": "2026-05-12",
-      "category": "",
+      "category": "Research",
       "tags": [
         "AI",
         "Drone Technology",
@@ -323,10 +345,10 @@
     {
       "slug": "build-personal-ai-assistant-with-memory-2026",
       "title": "How to Build a Personal AI Assistant That Actually Remembers You",
-      "description": "",
+      "description": "Most AI assistants forget everything between conversations. Here's how to build one with persistent memory using RAG, local embeddings, and a brain database — the system we use in production.",
       "author": "Sophie Cave",
       "date": "2026-05-08",
-      "category": "",
+      "category": "Engineering",
       "tags": [
         "AI Agents",
         "AI Tools",
@@ -339,10 +361,10 @@
     {
       "slug": "ai-agents-replacing-saas-2026",
       "title": "AI Agents Are Replacing SaaS — Here's What That Actually Means",
-      "description": "",
+      "description": "The $200B SaaS industry is about to be disrupted by AI agents that don't need dashboards. What this shift means for builders, users, and the future of software.",
       "author": "Sophie Cave",
       "date": "2026-05-07",
-      "category": "",
+      "category": "AI Strategy",
       "tags": [
         "AI Strategy",
         "AI Agents",
