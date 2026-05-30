@@ -2687,6 +2687,13 @@ a:focus-visible, button:focus-visible {
     border-radius: var(--radius);
     margin-bottom: 6px;
 }
+.account-progress-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-bottom: 10px;
+}
 .account-progress-link {
     font-size: .9rem;
     color: var(--text-primary);

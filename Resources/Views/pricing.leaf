@@ -110,23 +110,19 @@
 
         <section class="site-section">
             <div class="site-container" style="max-width:700px;">
-                <h2 class="site-section-title text-center">Common questions</h2>
+                <h2 class="site-section-title text-center">Questions</h2>
                 <div class="pricing-faq">
                     <div class="pricing-faq-item">
-                        <h3 class="pricing-faq-q">What's free vs Pro?</h3>
-                        <p class="pricing-faq-a">The first 3 lessons of every course are free &mdash; no account needed. Pro unlocks all 520+ lessons plus verified certificates. The Like One Foundation is a 501(c)(3) nonprofit. Pro subscriptions fund the Academy and HIV cure research.</p>
+                        <h3 class="pricing-faq-q">Can I try before I pay?</h3>
+                        <p class="pricing-faq-a">Yes. The first 3 lessons of every course are free &mdash; no account needed. Try any course, see if it clicks, then upgrade when you're ready for full access.</p>
                     </div>
                     <div class="pricing-faq-item">
-                        <h3 class="pricing-faq-q">What exactly does Pro add?</h3>
-                        <p class="pricing-faq-a">Verified completion certificates when you finish courses or learning tracks. Each certificate has a unique verification page, PDF download, and one-click LinkedIn sharing. The courses themselves are identical for free and Pro users.</p>
+                        <h3 class="pricing-faq-q">What if I cancel?</h3>
+                        <p class="pricing-faq-a">Cancel in one click from your account page. You keep access until your billing period ends, and any certificates you've earned are yours forever.</p>
                     </div>
                     <div class="pricing-faq-item">
-                        <h3 class="pricing-faq-q">Where does my money go?</h3>
-                        <p class="pricing-faq-a">Three places: keeping the Academy free, building accessibility tools for disabled communities, and donating to HIV cure research at UCSF. We publish our giving ledger.</p>
-                    </div>
-                    <div class="pricing-faq-item">
-                        <h3 class="pricing-faq-q">Can I cancel anytime?</h3>
-                        <p class="pricing-faq-a">Yes. Cancel in one click from your account page. No cancellation fee. No questions. Certificates you've already earned stay yours forever.</p>
+                        <h3 class="pricing-faq-q">Is this a real nonprofit?</h3>
+                        <p class="pricing-faq-a">The Like One Foundation is a registered 501(c)(3). A percentage of every Pro subscription goes directly to HIV cure research at UCSF and building accessibility tools.</p>
                     </div>
                 </div>
             </div>

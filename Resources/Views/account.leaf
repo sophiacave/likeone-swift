@@ -65,22 +65,60 @@
             document.getElementById('account-certs').innerHTML = '<div class="account-empty">No certificates yet.</div>';
         });
 
-        // Load progress for all courses with any completions
+        // Load progress with course details + continue links
         (function() {
             var progress = JSON.parse(localStorage.getItem('lo_progress') || '{}');
             var el = document.getElementById('account-progress');
             var slugs = Object.keys(progress).filter(function(k) { return progress[k].length > 0; });
             if (!slugs.length) {
-                el.innerHTML = '<div class="account-empty">Start a course to track your progress!</div>';
+                el.innerHTML = '<div class="account-empty">Start a course to track your progress! <a href="/academy" style="color:var(--purple-400);">Browse courses &rarr;</a></div>';
                 return;
             }
-            el.innerHTML = slugs.map(function(slug) {
-                var done = progress[slug].length;
-                return '<div class="account-progress-row">' +
-                    '<a href="/academy/' + slug + '" class="account-progress-link">' + slug.replace(/-/g, ' ') + '</a>' +
-                    '<span class="account-progress-count">' + done + ' lessons</span>' +
-                '</div>';
-            }).join('');
+            // Fetch course list for names and lesson counts
+            fetch('/api/v1/courses', { credentials: 'same-origin' })
+            .then(function(r) { return r.json(); })
+            .then(function(courses) {
+                var courseMap = {};
+                courses.forEach(function(c) { courseMap[c.slug] = c; });
+
+                // For each in-progress course, find next lesson
+                var promises = slugs.map(function(slug) {
+                    return fetch('/api/v1/courses/' + slug + '/lessons', { credentials: 'same-origin' })
+                        .then(function(r) { return r.json(); })
+                        .then(function(lessons) {
+                            var done = progress[slug] || [];
+                            var next = lessons.find(function(l) { return done.indexOf(l.slug) === -1; });
+                            return { slug: slug, course: courseMap[slug], done: done.length, total: lessons.length, next: next };
+                        });
+                });
+
+                Promise.all(promises).then(function(results) {
+                    results.sort(function(a, b) { return b.done - a.done; });
+                    el.innerHTML = results.map(function(r) {
+                        var name = r.course ? r.course.title : r.slug.replace(/-/g, ' ');
+                        var emoji = r.course ? r.course.emoji : '';
+                        var pct = r.total > 0 ? Math.round((r.done / r.total) * 100) : 0;
+                        var isComplete = r.done >= r.total && r.total > 0;
+                        var continueUrl = r.next ? '/academy/' + r.slug + '/' + r.next.slug : '/academy/' + r.slug;
+                        var btnText = isComplete ? 'Review' : 'Continue';
+
+                        return '<div class="account-progress-card">' +
+                            '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">' +
+                                '<a href="/academy/' + r.slug + '" style="font-weight:600;color:var(--text-primary);text-decoration:none;font-size:.95rem;">' + emoji + ' ' + name + '</a>' +
+                                '<span style="font-size:.75rem;color:var(--text-muted);">' + r.done + ' / ' + r.total + '</span>' +
+                            '</div>' +
+                            '<div style="height:4px;background:rgba(255,255,255,.05);border-radius:2px;margin-bottom:10px;">' +
+                                '<div style="height:100%;width:' + pct + '%;background:' + (isComplete ? 'var(--green,#34d399)' : 'var(--purple-400)') + ';border-radius:2px;transition:width .5s;"></div>' +
+                            '</div>' +
+                            '<a href="' + continueUrl + '" class="site-btn-primary" style="display:inline-block;font-size:.8rem;padding:6px 16px;text-decoration:none;">' + btnText + ' &rarr;</a>' +
+                        '</div>';
+                    }).join('');
+                });
+            }).catch(function() {
+                el.innerHTML = slugs.map(function(slug) {
+                    return '<div class="account-progress-row"><a href="/academy/' + slug + '">' + slug.replace(/-/g, ' ') + '</a></div>';
+                }).join('');
+            });
         })();
         </script>
     #endexport

@@ -14,7 +14,7 @@
     <meta name="twitter:title" content="#(title)">
     <meta name="twitter:description" content="#(description)">
     #if(canonicalUrl):<link rel="canonical" href="#(canonicalUrl)">#endif
-    <link rel="stylesheet" href="/css/style.css?v=231">
+    <link rel="stylesheet" href="/css/style.css?v=232">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
