@@ -48,11 +48,11 @@ struct ContentTests {
 
     // MARK: - Blog Provider
 
-    @Test("BlogProvider loads 16 posts from embedded JSON")
+    @Test("BlogProvider loads 18 posts from embedded JSON")
     func blogCount() {
         let provider = BlogProvider()
         let posts = provider.allPosts()
-        #expect(posts.count == 17, "Expected 16 blog posts, got \(posts.count)")
+        #expect(posts.count == 19, "Expected 19 blog posts, got \(posts.count)")
     }
 
     @Test("Blog post lookup by slug works")

@@ -1,0 +1,58 @@
+name: LOAcademy
+options:
+  bundleIdPrefix: ai.likeone
+  deploymentTarget:
+    iOS: "17.0"
+  xcodeVersion: "16.0"
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    DEVELOPMENT_TEAM: MW42T97LV9
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+
+packages:
+  LikeOneSwift:
+    path: ../
+
+targets:
+  LOAcademy:
+    type: application
+    platform: iOS
+    sources:
+      - path: .
+        excludes:
+          - project.yml
+          - "*.xcodeproj"
+    dependencies:
+      - package: LikeOneSwift
+        product: LOCore
+      - package: LikeOneSwift
+        product: LOContent
+      - package: LikeOneSwift
+        product: LODesign
+    entitlements:
+      path: LOAcademy.entitlements
+      properties:
+        com.apple.developer.applesignin:
+          - Default
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ai.likeone.academy
+        CODE_SIGN_STYLE: Automatic
+        INFOPLIST_VALUES: >-
+          CFBundleDisplayName=Like One Academy;
+          CFBundleName=LOAcademy;
+          UILaunchScreen_Generation=YES;
+          UIRequiresFullScreen=NO;
+          UISupportedInterfaceOrientations=UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown;
+        GENERATE_INFOPLIST_FILE: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        SUPPORTS_MACCATALYST: false
+      configs:
+        Release:
+          CODE_SIGN_STYLE: Manual
+          CODE_SIGN_IDENTITY: "Apple Distribution: Like One LLC (MW42T97LV9)"
+          PROVISIONING_PROFILE_SPECIFIER: "LOAcademy App Store"

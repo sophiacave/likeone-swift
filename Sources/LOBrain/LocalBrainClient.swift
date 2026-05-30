@@ -11,8 +11,17 @@ public final class LocalBrainClient: BrainClient, @unchecked Sendable {
     private let lock = NSLock()
 
     public init(dbPath: String? = nil) {
-        let home = FileManager.default.homeDirectoryForCurrentUser.path
-        self.dbPath = dbPath ?? "\(home)/.fractal_brain/local_brain.db"
+        if let dbPath {
+            self.dbPath = dbPath
+        } else {
+            #if os(macOS)
+            let home = FileManager.default.homeDirectoryForCurrentUser.path
+            self.dbPath = "\(home)/.fractal_brain/local_brain.db"
+            #else
+            let docs = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ?? "/tmp"
+            self.dbPath = "\(docs)/local_brain.db"
+            #endif
+        }
         self.isAvailable = FileManager.default.fileExists(atPath: self.dbPath)
     }
 

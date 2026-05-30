@@ -7,12 +7,14 @@ import LODesign
 struct LOAcademyApp: App {
     @StateObject private var academy = AcademyViewModel()
     @StateObject private var progress = ProgressViewModel()
+    @StateObject private var auth = AuthService()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(academy)
                 .environmentObject(progress)
+                .environmentObject(auth)
                 .preferredColorScheme(.dark)
         }
     }

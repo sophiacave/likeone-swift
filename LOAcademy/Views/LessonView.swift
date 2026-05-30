@@ -6,21 +6,33 @@ struct LessonView: View {
     let courseSlug: String
     let lesson: LessonSummary
     @EnvironmentObject var progress: ProgressViewModel
-    @Environment(\.dismiss) var dismiss
+    @State private var html: String?
+    @State private var isLoading = true
 
     var body: some View {
         VStack(spacing: 0) {
-            // Lesson content
-            if let html = loadLessonHTML() {
+            if let html {
                 LessonWebView(html: html)
+            } else if isLoading {
+                VStack(spacing: 16) {
+                    Spacer()
+                    ProgressView()
+                        .tint(Color.loPurple400)
+                    Text("Loading lesson...")
+                        .foregroundStyle(Color.loTextSecondary)
+                    Spacer()
+                }
             } else {
                 VStack(spacing: 16) {
                     Spacer()
-                    Image(systemName: "doc.text")
+                    Image(systemName: "wifi.slash")
                         .font(.system(size: 48))
                         .foregroundStyle(Color.loTextMuted)
-                    Text("Lesson content loading...")
+                    Text("Could not load lesson")
                         .foregroundStyle(Color.loTextSecondary)
+                    Button("Try Again") { Task { await loadLesson() } }
+                        .buttonStyle(.borderedProminent)
+                        .tint(Color.loPurple400)
                     Spacer()
                 }
             }
@@ -54,18 +66,36 @@ struct LessonView: View {
         .navigationTitle(lesson.title)
         .navigationBarTitleDisplayMode(.inline)
         .background(Color.loBgDark)
+        .task { await loadLesson() }
     }
 
     private var isDone: Bool {
         progress.isCompleted(courseSlug: courseSlug, lessonSlug: lesson.slug)
     }
 
-    private func loadLessonHTML() -> String? {
-        // Try to load from bundle
-        let path = Bundle.main.path(forResource: lesson.slug, ofType: "html", inDirectory: "Content/lessons/\(courseSlug)")
-        if let path, let content = try? String(contentsOfFile: path, encoding: .utf8) {
-            return content
+    private func loadLesson() async {
+        // Try bundle first
+        if let path = Bundle.main.path(forResource: lesson.slug, ofType: "html", inDirectory: "Content/lessons/\(courseSlug)"),
+           let content = try? String(contentsOfFile: path, encoding: .utf8) {
+            html = content
+            isLoading = false
+            return
         }
-        return nil
+
+        // Fetch from server
+        guard let url = URL(string: "https://likeone.ai/api/v1/lessons/\(courseSlug)/\(lesson.slug)/html") else {
+            isLoading = false
+            return
+        }
+
+        guard let (data, response) = try? await URLSession.shared.data(from: url),
+              (response as? HTTPURLResponse)?.statusCode == 200,
+              let content = String(data: data, encoding: .utf8) else {
+            isLoading = false
+            return
+        }
+
+        html = content
+        isLoading = false
     }
 }

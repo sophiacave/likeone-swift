@@ -51,13 +51,13 @@ struct ServerTests {
         }
     }
 
-    @Test("API blog returns 16 posts")
+    @Test("API blog returns 18 posts")
     func apiBlog() async throws {
         try await withApp { app in
             try await app.test(.GET, "api/v1/blog") { res async throws in
                 #expect(res.status == .ok)
                 let posts = try res.content.decode([CodableBlogPost].self)
-                #expect(posts.count == 17)
+                #expect(posts.count == 19)
             }
         }
     }

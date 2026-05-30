@@ -9,6 +9,7 @@ struct AuthController: RouteCollection {
         let auth = routes.grouped("auth")
         auth.get("apple", use: appleSignIn)
         auth.post("apple", "callback", use: appleCallback)
+        auth.post("apple", "mobile", use: appleMobile)
         auth.get("logout", use: logout)
         auth.get("me", use: me)
     }
@@ -125,6 +126,69 @@ struct AuthController: RouteCollection {
             isHTTPOnly: false,
             sameSite: .lax
         )
+        return response
+    }
+
+    @Sendable
+    func appleMobile(req: Request) async throws -> Response {
+        struct MobileAuthInput: Content {
+            let identityToken: String
+            let name: String?
+        }
+
+        struct MobileAuthResponse: Content {
+            let token: String
+            let email: String
+            let subscription: String
+        }
+
+        let input = try req.content.decode(MobileAuthInput.self)
+
+        // Decode identity token JWT
+        let parts = input.identityToken.split(separator: ".")
+        guard parts.count >= 2,
+              let payloadData = Data(base64URLDecoded: String(parts[1])) else {
+            throw Abort(.unauthorized, reason: "Invalid identity token")
+        }
+
+        struct AppleClaims: Codable {
+            let sub: String
+            let email: String?
+            let aud: String?
+        }
+
+        let claims = try JSONDecoder().decode(AppleClaims.self, from: payloadData)
+
+        guard let email = claims.email else {
+            throw Abort(.unauthorized, reason: "No email in identity token")
+        }
+
+        // Find or create user
+        let user: UserModel
+        if let existing = try await UserModel.query(on: req.db).filter(\.$email == email).first() {
+            user = existing
+            if let name = input.name, user.name == nil {
+                user.name = name
+                try await user.save(on: req.db)
+            }
+        } else {
+            user = UserModel(from: User(email: email, name: input.name, provider: .apple))
+            try await user.save(on: req.db)
+        }
+
+        // Create session token
+        let token = [UInt8].random(count: 32).map { String(format: "%02x", $0) }.joined()
+        let session = SessionModel(userID: user.id!, token: token)
+        try await session.save(on: req.db)
+
+        let responseBody = MobileAuthResponse(
+            token: token,
+            email: user.email,
+            subscription: user.subscription ?? "free"
+        )
+
+        let response = Response(status: .ok)
+        try response.content.encode(responseBody, as: .json)
         return response
     }
 

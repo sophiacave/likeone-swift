@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Course: Codable, Identifiable, Sendable {
+public struct Course: Codable, Identifiable, Sendable, Hashable {
     public let id: UUID
     public let slug: String
     public let title: String

@@ -5,7 +5,7 @@ import SwiftUI
 
 extension Color {
     /// Initialize from a hex string like "#a855f7"
-    init(hex: String) {
+    public init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet(charactersIn: "#"))
         let scanner = Scanner(string: hex)
         var rgb: UInt64 = 0
