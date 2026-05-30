@@ -72,9 +72,10 @@
         }
     });
 
-    /* Progress tracking with localStorage */
+    /* Progress tracking: localStorage + server sync */
     var LOP = {
         key: 'lo_progress',
+        _authed: null,
         get: function() { try { return JSON.parse(localStorage.getItem(this.key)) || {}; } catch(e) { return {}; } },
         save: function(data) { localStorage.setItem(this.key, JSON.stringify(data)); },
         mark: function(courseSlug, lessonSlug) {
@@ -82,6 +83,7 @@
             if (!d[courseSlug]) d[courseSlug] = [];
             if (d[courseSlug].indexOf(lessonSlug) === -1) d[courseSlug].push(lessonSlug);
             this.save(d);
+            this.syncToServer(courseSlug, lessonSlug);
         },
         isDone: function(courseSlug, lessonSlug) {
             var d = this.get();
@@ -90,6 +92,74 @@
         count: function(courseSlug) {
             var d = this.get();
             return d[courseSlug] ? d[courseSlug].length : 0;
+        },
+        syncToServer: function(courseSlug, lessonSlug) {
+            fetch('/api/v1/progress/complete', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ courseSlug: courseSlug, lessonSlug: lessonSlug }),
+                credentials: 'same-origin'
+            }).then(function(r) {
+                if (!r.ok) return;
+                LOP._authed = true;
+                return r.json();
+            }).then(function(data) {
+                if (!data) return;
+                if (data.courseComplete) {
+                    LOP.showCourseComplete(courseSlug);
+                }
+                if (data.trackCompleted) {
+                    LOP.showTrackComplete(data.trackCompleted);
+                }
+            }).catch(function() {});
+        },
+        loadFromServer: function(courseSlug) {
+            fetch('/api/v1/progress/course/' + courseSlug, { credentials: 'same-origin' })
+            .then(function(r) { return r.ok ? r.json() : null; })
+            .then(function(data) {
+                if (!data) return;
+                LOP._authed = true;
+                var d = LOP.get();
+                if (!d[courseSlug]) d[courseSlug] = [];
+                data.completedLessons.forEach(function(ls) {
+                    if (d[courseSlug].indexOf(ls) === -1) d[courseSlug].push(ls);
+                });
+                LOP.save(d);
+                LOP.refreshUI();
+            }).catch(function() {});
+        },
+        showCourseComplete: function(courseSlug) {
+            var toast = document.createElement('div');
+            toast.className = 'lo-toast lo-toast-success';
+            toast.innerHTML = '<strong>Course complete!</strong> You earned a certificate.';
+            document.body.appendChild(toast);
+            setTimeout(function() { toast.classList.add('lo-toast-show'); }, 10);
+            setTimeout(function() { toast.remove(); }, 5000);
+        },
+        showTrackComplete: function(trackSlug) {
+            var toast = document.createElement('div');
+            toast.className = 'lo-toast lo-toast-gold';
+            toast.innerHTML = '<strong>Track complete!</strong> You earned a learning track certificate!';
+            document.body.appendChild(toast);
+            setTimeout(function() { toast.classList.add('lo-toast-show'); }, 10);
+            setTimeout(function() { toast.remove(); }, 6000);
+        },
+        refreshUI: function() {
+            document.querySelectorAll('.lesson-row').forEach(function(row) {
+                var href = row.getAttribute('href');
+                if (!href) return;
+                var parts = href.split('/');
+                if (parts.length >= 4 && LOP.isDone(parts[2], parts[3]) && !row.classList.contains('lesson-done')) {
+                    row.classList.add('lesson-done');
+                    var right = row.querySelector('.lesson-row-right');
+                    if (right && !right.querySelector('.lesson-done-check')) {
+                        var check = document.createElement('span');
+                        check.className = 'lesson-done-check';
+                        check.textContent = '\u2714';
+                        right.prepend(check);
+                    }
+                }
+            });
         }
     };
 
@@ -182,6 +252,14 @@
                 }
             }
         });
+
+        // Server sync: merge server progress into localStorage (if authenticated)
+        (function() {
+            var path = window.location.pathname.split('/');
+            if (path.length >= 3 && path[1] === 'academy') {
+                LOP.loadFromServer(path[2]);
+            }
+        })();
 
         // Progress: Show progress bar on course cards
         document.querySelectorAll('.course-card').forEach(function(card) {

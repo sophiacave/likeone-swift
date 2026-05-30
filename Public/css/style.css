@@ -2202,6 +2202,37 @@ a:focus-visible, button:focus-visible {
     font-size: 1.1rem;
     flex-shrink: 0;
 }
+.track-course-status {
+    flex-shrink: 0;
+    min-width: 32px;
+    text-align: center;
+}
+.track-course-done {
+    border-color: rgba(52, 211, 153, .3);
+}
+.track-progress-wrap {
+    margin-bottom: 24px;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+.track-progress-label {
+    font-size: .85rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+.track-progress-bar {
+    height: 6px;
+    background: rgba(255,255,255,.05);
+    border-radius: 3px;
+    overflow: hidden;
+}
+.track-progress-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width .8s var(--ease-out);
+}
 
 /* ===== CERTIFICATE ===== */
 .cert-page {
@@ -2359,6 +2390,36 @@ a:focus-visible, button:focus-visible {
     color: var(--text-secondary);
 }
 .cert-share-copy:hover { border-color: var(--purple-400); color: var(--text-primary); }
+
+/* ===== TOAST NOTIFICATIONS ===== */
+.lo-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    padding: 14px 24px;
+    border-radius: var(--radius);
+    font-size: .9rem;
+    font-weight: 500;
+    color: #fff;
+    z-index: 9999;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform .3s var(--ease-spring), opacity .3s;
+    pointer-events: none;
+}
+.lo-toast-show {
+    transform: translateY(0);
+    opacity: 1;
+}
+.lo-toast-success {
+    background: linear-gradient(135deg, #059669, #34d399);
+    box-shadow: 0 4px 20px rgba(52, 211, 153, .3);
+}
+.lo-toast-gold {
+    background: linear-gradient(135deg, #d97706, #fbbf24);
+    box-shadow: 0 4px 20px rgba(251, 191, 36, .3);
+    color: #1a1a24;
+}
 
 /* Responsive: Pages + Tracks + Certs */
 @media (max-width: 768px) {

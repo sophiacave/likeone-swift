@@ -20,9 +20,17 @@
 
         <section class="site-section" style="padding-top:24px;">
             <div class="site-container" style="max-width:800px;">
+                <!-- Track progress bar (filled by JS) -->
+                <div class="track-progress-wrap" id="track-progress" style="display:none;">
+                    <div class="track-progress-label"><span id="track-done">0</span> of #(track.courseCount) courses complete</div>
+                    <div class="track-progress-bar">
+                        <div class="track-progress-fill" id="track-fill" style="width:0%;background:#(track.badgeColor);"></div>
+                    </div>
+                </div>
+
                 <div class="track-courses-list">
                     #for(course in courses):
-                        <a href="/academy/#(course.slug)" class="track-course-row">
+                        <a href="/academy/#(course.slug)" class="track-course-row" data-course="#(course.slug)">
                             <div class="track-course-num">#(course.order)</div>
                             <div class="track-course-info">
                                 <span class="track-course-emoji">#(course.emoji)</span>
@@ -31,10 +39,52 @@
                                     <div class="track-course-desc">#(course.description)</div>
                                 </div>
                             </div>
+                            <div class="track-course-status"></div>
                             <div class="track-course-arrow">&rarr;</div>
                         </a>
                     #endfor
                 </div>
+
+                <script>
+                (function() {
+                    fetch('/api/v1/progress/track/#(track.slug)', { credentials: 'same-origin' })
+                    .then(function(r) { return r.ok ? r.json() : null; })
+                    .then(function(data) {
+                        if (!data) return;
+                        var wrap = document.getElementById('track-progress');
+                        var doneEl = document.getElementById('track-done');
+                        var fill = document.getElementById('track-fill');
+                        var done = data.courses.filter(function(c) { return c.isComplete; }).length;
+                        var total = data.courses.length;
+                        var pct = total > 0 ? Math.round(done / total * 100) : 0;
+
+                        wrap.style.display = '';
+                        doneEl.textContent = done;
+                        fill.style.width = pct + '%';
+
+                        data.courses.forEach(function(c) {
+                            var row = document.querySelector('[data-course="' + c.courseSlug + '"]');
+                            if (!row) return;
+                            var status = row.querySelector('.track-course-status');
+                            if (c.isComplete) {
+                                status.innerHTML = '<span style="color:var(--green,#34d399);font-weight:700;">&#x2714;</span>';
+                                row.classList.add('track-course-done');
+                            } else if (c.completedLessons > 0) {
+                                var cp = Math.round(c.completedLessons / c.totalLessons * 100);
+                                status.innerHTML = '<span style="font-size:.75rem;color:var(--text-muted);">' + cp + '%</span>';
+                            }
+                        });
+
+                        if (data.certificateId) {
+                            var cta = document.querySelector('.site-section-alt .site-btn-primary');
+                            if (cta) {
+                                cta.textContent = 'View Certificate';
+                                cta.href = '/cert/' + data.certificateId;
+                            }
+                        }
+                    }).catch(function() {});
+                })();
+                </script>
             </div>
         </section>
 
