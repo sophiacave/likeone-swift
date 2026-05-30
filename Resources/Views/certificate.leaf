@@ -43,6 +43,7 @@
                         <span class="cert-verified-icon">&#x2714;</span> Verified Certificate
                     </div>
                     <div class="cert-share-row">
+                        <a class="cert-share-btn" href="/cert/#(certId)/pdf" download>Download PDF</a>
                         <a class="cert-share-btn" href="https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=#(certTitle)&organizationName=Like%20One&issueYear=#(earnedYear)&issueMonth=#(earnedMonth)&certUrl=https://app.likeone.ai/cert/#(certId)" target="_blank" rel="noopener">Add to LinkedIn</a>
                         <a class="cert-share-btn cert-share-copy" href="https://app.likeone.ai/cert/#(certId)" onclick="navigator.clipboard.writeText(this.href);this.textContent='Copied!';return false;">Copy Link</a>
                     </div>
