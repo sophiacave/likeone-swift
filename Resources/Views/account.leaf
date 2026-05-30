@@ -1,20 +1,80 @@
 #extend("layout"):
     #export("content"):
         <section class="site-section">
-            <div class="site-container" style="max-width: 600px;">
+            <div class="site-container" style="max-width: 700px;">
                 <h1 class="site-section-title">Your Account</h1>
-                <div class="site-card" style="margin-top: 2rem;">
-                    <div style="padding: 2rem;">
-                        <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Signed in as</p>
-                        <h2 style="color: var(--text-primary); margin-bottom: 0.25rem;">#(name)</h2>
-                        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">#(email)</p>
-                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem;">
-                            <span style="background: var(--purple-900); color: var(--purple-400); padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; text-transform: capitalize;">#(subscription)</span>
-                        </div>
-                        <a href="/auth/logout" class="site-btn-secondary" style="display: inline-block;">Sign Out</a>
+
+                <!-- Profile Card -->
+                <div class="account-card" style="margin-top: 2rem;">
+                    <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Signed in as</p>
+                    <h2 style="color: var(--text-primary); margin-bottom: 0.25rem;">#(name)</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">#(email)</p>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+                        <span class="account-badge">#(subscription)</span>
+                    </div>
+                    <a href="/auth/logout" class="site-btn-secondary" style="display: inline-block;">Sign Out</a>
+                </div>
+
+                <!-- Certificates -->
+                <div style="margin-top: 2.5rem;">
+                    <h2 class="account-section-title">Certificates</h2>
+                    <div id="account-certs" class="account-certs-list">
+                        <div class="account-empty">Loading...</div>
+                    </div>
+                </div>
+
+                <!-- Learning Progress -->
+                <div style="margin-top: 2.5rem;">
+                    <h2 class="account-section-title">Learning Progress</h2>
+                    <div id="account-progress" class="account-progress-list">
+                        <div class="account-empty">Loading...</div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <script>
+        // Load certificates
+        fetch('/api/v1/progress/certificates', { credentials: 'same-origin' })
+        .then(function(r) { return r.ok ? r.json() : []; })
+        .then(function(certs) {
+            var el = document.getElementById('account-certs');
+            if (!certs.length) {
+                el.innerHTML = '<div class="account-empty">No certificates yet. Complete a course or track to earn one!</div>';
+                return;
+            }
+            el.innerHTML = certs.map(function(c) {
+                var date = new Date(c.earnedAt || c.earned_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                return '<a href="/cert/' + c.id + '" class="account-cert-row">' +
+                    '<div class="account-cert-info">' +
+                        '<div class="account-cert-type">' + (c.type === 'track' ? 'Track' : 'Course') + '</div>' +
+                        '<div class="account-cert-title">' + c.title + '</div>' +
+                        '<div class="account-cert-date">' + date + '</div>' +
+                    '</div>' +
+                    '<div class="account-cert-view">View &rarr;</div>' +
+                '</a>';
+            }).join('');
+        }).catch(function() {
+            document.getElementById('account-certs').innerHTML = '<div class="account-empty">No certificates yet.</div>';
+        });
+
+        // Load progress for all courses with any completions
+        (function() {
+            var progress = JSON.parse(localStorage.getItem('lo_progress') || '{}');
+            var el = document.getElementById('account-progress');
+            var slugs = Object.keys(progress).filter(function(k) { return progress[k].length > 0; });
+            if (!slugs.length) {
+                el.innerHTML = '<div class="account-empty">Start a course to track your progress!</div>';
+                return;
+            }
+            el.innerHTML = slugs.map(function(slug) {
+                var done = progress[slug].length;
+                return '<div class="account-progress-row">' +
+                    '<a href="/academy/' + slug + '" class="account-progress-link">' + slug.replace(/-/g, ' ') + '</a>' +
+                    '<span class="account-progress-count">' + done + ' lessons</span>' +
+                '</div>';
+            }).join('');
+        })();
+        </script>
     #endexport
 #endextend

@@ -2419,6 +2419,95 @@ a:focus-visible, button:focus-visible {
 }
 .cert-share-copy:hover { border-color: var(--purple-400); color: var(--text-primary); }
 
+/* ===== ACCOUNT ===== */
+.account-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+}
+.account-badge {
+    background: var(--purple-900);
+    color: var(--purple-400);
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: .8rem;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.account-section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+.account-empty {
+    padding: 20px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: .9rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+.account-cert-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 8px;
+    transition: border-color .2s;
+}
+.account-cert-row:hover { border-color: var(--purple-400); }
+.account-cert-type {
+    font-size: .65rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--purple-400);
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+.account-cert-title {
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.account-cert-date {
+    font-size: .75rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+.account-cert-view {
+    color: var(--text-muted);
+    font-size: .85rem;
+}
+.account-progress-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 6px;
+}
+.account-progress-link {
+    font-size: .9rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    text-transform: capitalize;
+}
+.account-progress-link:hover { color: var(--purple-400); }
+.account-progress-count {
+    font-size: .8rem;
+    color: var(--text-muted);
+}
+
 /* ===== TOAST NOTIFICATIONS ===== */
 .lo-toast {
     position: fixed;
