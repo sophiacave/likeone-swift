@@ -82,7 +82,44 @@
                                 cta.href = '/cert/' + data.certificateId;
                             }
                         }
-                    }).catch(function() {});
+                    }).catch(function() {
+                        // Fallback: use localStorage progress for unauthenticated users
+                        showLocalProgress();
+                    });
+
+                    function showLocalProgress() {
+                        var lp = JSON.parse(localStorage.getItem('lo_progress') || '{}');
+                        var rows = document.querySelectorAll('[data-course]');
+                        var done = 0, total = rows.length;
+
+                        rows.forEach(function(row) {
+                            var slug = row.getAttribute('data-course');
+                            var completed = (lp[slug] || []).length;
+                            if (completed > 0) {
+                                var status = row.querySelector('.track-course-status');
+                                fetch('/api/v1/courses/' + slug + '/lessons')
+                                .then(function(r) { return r.json(); })
+                                .then(function(lessons) {
+                                    var pct = Math.round(completed / lessons.length * 100);
+                                    if (completed >= lessons.length) {
+                                        status.innerHTML = '<span style="color:var(--green,#34d399);font-weight:700;">&#x2714;</span>';
+                                        done++;
+                                    } else {
+                                        status.innerHTML = '<span style="font-size:.75rem;color:var(--text-muted);">' + pct + '%</span>';
+                                    }
+                                    // Update overall bar
+                                    var wrap = document.getElementById('track-progress');
+                                    var doneEl = document.getElementById('track-done');
+                                    var fill = document.getElementById('track-fill');
+                                    if (done > 0 || completed > 0) {
+                                        wrap.style.display = '';
+                                        doneEl.textContent = done;
+                                        fill.style.width = Math.round(done / total * 100) + '%';
+                                    }
+                                }).catch(function() {});
+                            }
+                        });
+                    }
                 })();
                 </script>
             </div>
