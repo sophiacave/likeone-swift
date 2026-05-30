@@ -67,6 +67,7 @@ a:focus-visible, button:focus-visible {
 .header-site {
     position: sticky;
     top: 0;
+    z-index: 100;
     z-index: 50;
     background: rgba(10, 10, 15, 0.72);
     backdrop-filter: saturate(180%) blur(20px);
@@ -96,6 +97,15 @@ a:focus-visible, button:focus-visible {
     background-clip: text;
 }
 .site-nav-links { display: flex; gap: 24px; align-items: center; }
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 4px 8px;
+}
 .header-site-link {
     color: var(--text-secondary);
     text-decoration: none;
@@ -1622,8 +1632,30 @@ a:focus-visible, button:focus-visible {
 @media (max-width: 768px) {
     .site-stats-grid { grid-template-columns: repeat(2, 1fr); }
     .site-hero { padding: 80px 16px 60px; }
-    .site-nav-links { gap: 16px; }
-    .header-site-link { display: none; }
+    .mobile-menu-btn { display: block; }
+    .site-nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-dark);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        padding: 16px 24px;
+        gap: 4px;
+    }
+    .site-nav-links.nav-open { display: flex; }
+    .site-nav-links .header-site-link {
+        display: block;
+        padding: 10px 0;
+        font-size: .95rem;
+        border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+    .site-nav-links .header-signin-btn {
+        margin-top: 8px;
+        text-align: center;
+    }
     .academy-grid { grid-template-columns: 1fr; }
     .academy-stats { gap: 24px; }
     .academy-hero { padding: 60px 16px 32px; }

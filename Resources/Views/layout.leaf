@@ -39,6 +39,7 @@
         <header class="header-site">
             <nav class="header-site-nav" aria-label="Main navigation">
                 <a class="header-site-brand" href="/">like<span class="accent">one</span></a>
+                <button class="mobile-menu-btn" aria-label="Menu" onclick="document.querySelector('.site-nav-links').classList.toggle('nav-open');">&#9776;</button>
                 <div class="site-nav-links">
                     <a class="header-site-link" href="/academy">Academy</a>
                     <a class="header-site-link" href="/tracks">Tracks</a>
