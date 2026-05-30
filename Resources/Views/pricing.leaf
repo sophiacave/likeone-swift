@@ -4,7 +4,7 @@
             <div class="site-container text-center">
                 <span class="site-section-tag">PRICING</span>
                 <h1 class="page-hero-title">Learn free.<br><span class="accent-gradient">Prove it with Pro.</span></h1>
-                <p class="page-hero-desc">Every course and lesson is free forever. Pro adds verified certificates, PDF downloads, and LinkedIn credentials.</p>
+                <p class="page-hero-desc">Every course and lesson is free forever &mdash; no account required. Pro adds verified certificates you can share on LinkedIn and download as PDF.</p>
             </div>
         </section>
 
@@ -17,15 +17,15 @@
                         <div class="pricing-price">$0</div>
                         <div class="pricing-period">forever</div>
                         <ul class="pricing-features">
-                            <li>52 courses across 7 levels</li>
-                            <li>521 hands-on lessons</li>
+                            <li>52 courses, beginner to advanced</li>
+                            <li>520+ hands-on lessons</li>
                             <li>Interactive quizzes &amp; visual aids</li>
                             <li>Flashcard study mode</li>
                             <li>Progress tracking</li>
                             <li>Full-text search</li>
                             <li>No account required</li>
                         </ul>
-                        <a class="site-btn-primary" href="/academy" style="width:100%;text-align:center;">Start Learning</a>
+                        <a class="site-btn-primary" href="/academy" style="width:100%;text-align:center;">Start Learning Free</a>
                     </div>
 
                     <div class="pricing-card pricing-card-pro">
@@ -39,12 +39,12 @@
                             <li>PDF certificate downloads</li>
                             <li>LinkedIn-ready credentials</li>
                             <li>Learning track certificates</li>
-                            <li>Priority support</li>
+                            <li>Sharable verification pages</li>
                             <li>Cancel anytime</li>
                         </ul>
                         <form method="POST" action="/checkout">
                             <input type="hidden" name="plan" value="academy-pro-monthly">
-                            <button type="submit" class="site-btn-primary" style="width:100%;border:none;cursor:pointer;">Subscribe Monthly</button>
+                            <button type="submit" class="site-btn-primary" style="width:100%;border:none;cursor:pointer;">Get Pro &mdash; $19/mo</button>
                         </form>
                     </div>
 
@@ -52,54 +52,89 @@
                         <div class="pricing-badge pricing-badge-save">SAVE 35%</div>
                         <h2 class="pricing-plan-name">Academy Pro</h2>
                         <div class="pricing-price">$149</div>
-                        <div class="pricing-period">per year</div>
+                        <div class="pricing-period">per year <span style="color:var(--green,#34d399);font-weight:600;">($12.42/mo)</span></div>
                         <ul class="pricing-features">
                             <li>Everything in Pro</li>
                             <li>Save $79 vs monthly</li>
                             <li>Founding member badge</li>
-                            <li>Early access to new courses</li>
-                            <li>Direct support from founder</li>
                             <li>All future features included</li>
                             <li>Lock in this price forever</li>
+                            <li>Support free education</li>
+                            <li>Fund HIV cure research</li>
                         </ul>
                         <form method="POST" action="/checkout">
                             <input type="hidden" name="plan" value="academy-pro-annual">
-                            <button type="submit" class="site-btn-primary" style="width:100%;border:none;cursor:pointer;">Subscribe Annually</button>
+                            <button type="submit" class="site-btn-primary" style="width:100%;border:none;cursor:pointer;">Go Annual &mdash; Save 35%</button>
                         </form>
+                    </div>
+                </div>
+
+                <!-- Trust signals -->
+                <div style="display:flex;justify-content:center;gap:32px;margin-top:32px;flex-wrap:wrap;">
+                    <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text-muted);">
+                        <span style="color:var(--green,#34d399);">&#x2714;</span> 501(c)(3) nonprofit
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text-muted);">
+                        <span style="color:var(--green,#34d399);">&#x2714;</span> Secure checkout via Stripe
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text-muted);">
+                        <span style="color:var(--green,#34d399);">&#x2714;</span> Cancel anytime, no questions
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- What Pro gets you -->
         <section class="site-section-alt">
-            <div class="site-container" style="max-width:700px;">
-                <h2 class="site-section-title text-center">Why is it free?</h2>
-                <div class="pricing-faq">
-                    <div class="pricing-faq-item">
-                        <h3 class="pricing-faq-q">How can you afford to give this away?</h3>
-                        <p class="pricing-faq-a">Like One is a 501(c)(3) nonprofit. Our mission is education access, not profit extraction. We keep costs near zero with efficient infrastructure and a small team.</p>
-                    </div>
-                    <div class="pricing-faq-item">
-                        <h3 class="pricing-faq-q">Will the free courses ever go behind a paywall?</h3>
-                        <p class="pricing-faq-a">No. The Academy will always be free. Pro subscriptions fund the free education and unlock certificates as proof of your learning.</p>
-                    </div>
-                    <div class="pricing-faq-item">
-                        <h3 class="pricing-faq-q">Where does the money go?</h3>
-                        <p class="pricing-faq-a">Revenue from Pro subscriptions funds three things: keeping the Academy free, building accessibility tools for disabled communities, and donating to HIV cure research at UCSF.</p>
-                    </div>
-                    <div class="pricing-faq-item">
-                        <h3 class="pricing-faq-q">Can I try Pro before subscribing?</h3>
-                        <p class="pricing-faq-a">You can take every course for free right now. Pro adds verified certificates when you complete courses. If you learn here, we think you'll want the proof.</p>
+            <div class="site-container" style="max-width:800px;">
+                <h2 class="site-section-title text-center">What Pro certificates look like</h2>
+                <p style="text-align:center;color:var(--text-secondary);margin-bottom:28px;">Complete a course. Earn a verified certificate. Share it anywhere.</p>
+                <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;text-align:center;">
+                    <div style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--purple-400);margin-bottom:16px;">COURSE CERTIFICATE</div>
+                    <div style="font-size:.8rem;color:var(--text-muted);margin-bottom:4px;">This certifies that</div>
+                    <div style="font-size:1.5rem;font-weight:700;color:var(--text-primary);margin-bottom:4px;">Your Name</div>
+                    <div style="font-size:.8rem;color:var(--text-muted);margin-bottom:4px;">has completed</div>
+                    <div style="font-size:1.1rem;font-weight:600;color:var(--purple-400);margin-bottom:16px;">AI Foundations</div>
+                    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+                        <span style="font-size:.75rem;color:var(--text-muted);background:rgba(255,255,255,.05);padding:4px 12px;border-radius:20px;">Verified link</span>
+                        <span style="font-size:.75rem;color:var(--text-muted);background:rgba(255,255,255,.05);padding:4px 12px;border-radius:20px;">PDF download</span>
+                        <span style="font-size:.75rem;color:var(--text-muted);background:rgba(255,255,255,.05);padding:4px 12px;border-radius:20px;">Add to LinkedIn</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="site-section">
-            <div class="site-container text-center" style="padding-bottom:80px;">
-                <h2 style="font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:16px;color:var(--text-primary);">Ready?</h2>
-                <p style="font-size:1rem;color:var(--text-secondary);max-width:400px;margin:0 auto 28px;line-height:1.6;">Pick a course and start. Five minutes from now, you'll know something new.</p>
-                <a class="site-btn-primary" href="/academy">Browse All 52 Courses</a>
+            <div class="site-container" style="max-width:700px;">
+                <h2 class="site-section-title text-center">Common questions</h2>
+                <div class="pricing-faq">
+                    <div class="pricing-faq-item">
+                        <h3 class="pricing-faq-q">Will the free courses ever go behind a paywall?</h3>
+                        <p class="pricing-faq-a">No. Like One is a 501(c)(3) nonprofit. The Academy will always be free. Pro subscriptions fund the free education &mdash; they don't replace it.</p>
+                    </div>
+                    <div class="pricing-faq-item">
+                        <h3 class="pricing-faq-q">What exactly does Pro add?</h3>
+                        <p class="pricing-faq-a">Verified completion certificates when you finish courses or learning tracks. Each certificate has a unique verification page, PDF download, and one-click LinkedIn sharing. The courses themselves are identical for free and Pro users.</p>
+                    </div>
+                    <div class="pricing-faq-item">
+                        <h3 class="pricing-faq-q">Where does my money go?</h3>
+                        <p class="pricing-faq-a">Three places: keeping the Academy free, building accessibility tools for disabled communities, and donating to HIV cure research at UCSF. We publish our giving ledger.</p>
+                    </div>
+                    <div class="pricing-faq-item">
+                        <h3 class="pricing-faq-q">Can I cancel anytime?</h3>
+                        <p class="pricing-faq-a">Yes. Cancel in one click from your account page. No cancellation fee. No questions. Certificates you've already earned stay yours forever.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="site-section-alt">
+            <div class="site-container text-center" style="padding:60px 20px;">
+                <h2 style="font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:12px;color:var(--text-primary);">Start now. Decide later.</h2>
+                <p style="font-size:1rem;color:var(--text-secondary);max-width:440px;margin:0 auto 28px;line-height:1.6;">Every course is free. Take one. If you want the certificate, upgrade whenever you're ready.</p>
+                <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+                    <a class="site-btn-primary" href="/academy">Browse 52 Free Courses</a>
+                </div>
             </div>
         </section>
     #endexport
