@@ -50,8 +50,22 @@
 
                 <hr class="article-divider">
 
-                <div style="text-align: center; padding: 40px 0;">
-                    <a href="/blog" class="site-btn-secondary">More Articles</a>
+                #if(relatedPosts):
+                <div style="padding: 40px 0;">
+                    <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 24px; color: var(--text-primary);">Related Articles</h3>
+                    <div style="display: grid; gap: 20px;">
+                        #for(related in relatedPosts):
+                        <a href="/blog/#(related.slug)/" style="display: block; padding: 20px; border-radius: 12px; background: var(--surface-secondary); text-decoration: none; transition: background 0.2s;">
+                            <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 6px;">#(related.title)</div>
+                            <div style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;">#(related.description)</div>
+                        </a>
+                        #endfor
+                    </div>
+                </div>
+                #endif
+
+                <div style="text-align: center; padding: 20px 0 40px;">
+                    <a href="/blog" class="site-btn-secondary">All Articles</a>
                 </div>
             </div>
         </article>

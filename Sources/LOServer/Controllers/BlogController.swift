@@ -126,6 +126,15 @@ struct BlogController: RouteCollection {
         isoFormatter.dateFormat = "yyyy-MM-dd"
         let isoDate = isoFormatter.string(from: post.publishedAt)
 
+        let related = blog.relatedPosts(to: post, limit: 3).map { BlogCardContext(
+            slug: $0.slug,
+            title: $0.title,
+            description: $0.description,
+            author: $0.author,
+            date: formatDate($0.publishedAt),
+            tags: $0.tags
+        )}
+
         let context = BlogDetailContext(
             title: "\(post.title) | Like One",
             description: post.description,
@@ -142,7 +151,8 @@ struct BlogController: RouteCollection {
             ogImage: ogImage,
             ogType: "article",
             ogUrl: canonicalUrl,
-            isoDate: isoDate
+            isoDate: isoDate,
+            relatedPosts: related
         )
         let view = try await req.view.render("blog-post", context)
         var headers = HTTPHeaders()
@@ -182,4 +192,5 @@ struct BlogDetailContext: Content {
     let ogType: String?
     let ogUrl: String?
     let isoDate: String?
+    let relatedPosts: [BlogCardContext]?
 }

@@ -71,9 +71,12 @@ struct SEOController: RouteCollection {
         }
 
         // Blog posts
+        let isoFormatter = DateFormatter()
+        isoFormatter.dateFormat = "yyyy-MM-dd"
         for post in blog.allPosts() {
             xml += "  <url>\n"
             xml += "    <loc>\(baseURL)/blog/\(post.slug)/</loc>\n"
+            xml += "    <lastmod>\(isoFormatter.string(from: post.publishedAt))</lastmod>\n"
             xml += "    <changefreq>monthly</changefreq>\n"
             xml += "    <priority>0.7</priority>\n"
             xml += "  </url>\n"

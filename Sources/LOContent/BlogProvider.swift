@@ -34,6 +34,17 @@ public struct BlogProvider: Sendable {
         posts.filter { $0.tags.contains(tag) }
     }
 
+    public func relatedPosts(to post: BlogPost, limit: Int = 3) -> [BlogPost] {
+        let postTags = Set(post.tags)
+        return posts
+            .filter { $0.slug != post.slug }
+            .sorted { a, b in
+                Set(a.tags).intersection(postTags).count > Set(b.tags).intersection(postTags).count
+            }
+            .prefix(limit)
+            .map { $0 }
+    }
+
     public var tags: [String] {
         Array(Set(posts.flatMap { $0.tags })).sorted()
     }
