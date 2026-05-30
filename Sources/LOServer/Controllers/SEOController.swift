@@ -15,7 +15,7 @@ struct SEOController: RouteCollection {
 
     @Sendable
     func sitemap(req: Request) async throws -> Response {
-        let baseURL = "https://app.likeone.ai"
+        let baseURL = "https://likeone.ai"
         var xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
         xml += "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n"
 
@@ -129,7 +129,7 @@ struct SEOController: RouteCollection {
         User-agent: Amazonbot
         Disallow: /
 
-        Sitemap: https://app.likeone.ai/sitemap.xml
+        Sitemap: https://likeone.ai/sitemap.xml
         """
 
         let response = Response(status: .ok)

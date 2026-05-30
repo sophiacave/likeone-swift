@@ -20,7 +20,7 @@
         "@context": "https://schema.org",
         "@type": "EducationalOrganization",
         "name": "Like One",
-        "url": "https://app.likeone.ai",
+        "url": "https://likeone.ai",
         "description": "Free AI education for everyone. 52 courses, 521 lessons.",
         "sameAs": ["https://github.com/sophiacave/likeone-swift"],
         "founder": {

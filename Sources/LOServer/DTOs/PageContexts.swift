@@ -1,6 +1,6 @@
 import Vapor
 
-let siteBaseURL = "https://app.likeone.ai"
+let siteBaseURL = "https://likeone.ai"
 
 struct PageContext: Content {
     let title: String
