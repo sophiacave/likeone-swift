@@ -848,6 +848,31 @@ a:focus-visible, button:focus-visible {
     color: var(--text-secondary);
     font-style: italic;
 }
+.article-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: .9rem;
+    overflow-x: auto;
+    display: block;
+}
+.article-content thead { border-bottom: 2px solid var(--border); }
+.article-content th {
+    text-align: left;
+    padding: 10px 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: rgba(255,255,255,.03);
+    white-space: nowrap;
+}
+.article-content td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+    vertical-align: top;
+}
+.article-content tr:hover td { background: rgba(255,255,255,.02); }
+.article-content tbody tr:nth-child(even) td { background: rgba(255,255,255,.015); }
 
 /* Lesson List */
 .lesson-list { display: flex; flex-direction: column; gap: 4px; }

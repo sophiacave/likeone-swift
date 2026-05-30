@@ -4,7 +4,7 @@
         <section class="site-hero">
             <div class="site-hero-inner">
                 <h1 class="site-hero-title">Learn AI.<br><span class="accent-gradient">Build anything.</span></h1>
-                <p class="site-hero-desc">52 free courses. 521 hands-on lessons. From your first prompt to autonomous agents. No experience required.</p>
+                <p class="site-hero-desc">52 courses. 520+ hands-on lessons. Preview every course free &mdash; upgrade to Pro for full access and certificates.</p>
                 <div class="site-cta-row">
                     <a class="site-btn-primary" href="/academy/ai-foundations/what-is-a-neuron">Start Lesson 1</a>
                     <a class="site-btn-secondary" href="/academy">Browse Courses</a>
@@ -29,7 +29,7 @@
             <div class="site-container text-center">
                 <span class="site-section-tag">START HERE</span>
                 <h2 class="site-section-title">Pick a course. Start learning.</h2>
-                <p class="site-section-desc">Every course is free. Every lesson is hands-on. Choose your path.</p>
+                <p class="site-section-desc">First 3 lessons free on every course. Hands-on quizzes, flashcards, and visual aids.</p>
                 <div class="site-card-grid">
                     #for(course in featured):
                         <a href="/academy/#(course.slug)" class="site-card" style="text-decoration:none;color:inherit;">
@@ -121,7 +121,7 @@
         <section class="site-section" style="padding-bottom:120px;">
             <div class="site-container text-center">
                 <h2 style="font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin-bottom:16px;color:var(--text-primary);">Your first lesson takes 5 minutes.</h2>
-                <p style="font-size:1.1rem;color:var(--text-secondary);max-width:480px;margin:0 auto 32px;line-height:1.6;">No account required. No credit card. Just start reading and see if AI clicks for you.</p>
+                <p style="font-size:1.1rem;color:var(--text-secondary);max-width:480px;margin:0 auto 32px;line-height:1.6;">No account required to start. Preview any course free and see if AI clicks for you.</p>
                 <a class="site-btn-primary" href="/academy/ai-foundations/what-is-a-neuron" style="font-size:1rem;padding:14px 36px;">Start Learning &rarr;</a>
             </div>
         </section>

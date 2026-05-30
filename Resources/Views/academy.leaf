@@ -2,7 +2,7 @@
     #export("content"):
         <section class="academy-hero">
             <div class="site-container">
-                <span class="academy-tag">FREE AI ACADEMY</span>
+                <span class="academy-tag">AI ACADEMY</span>
                 <h1 class="academy-title">Learn by<br><span class="accent-gradient">building</span></h1>
                 <p class="academy-subtitle">#(description)</p>
                 <div class="academy-stats">
@@ -19,7 +19,7 @@
                         <span class="academy-stat-label">To Start</span>
                     </div>
                     <div class="academy-stat">
-                        <span class="academy-stat-num">7</span>
+                        <span class="academy-stat-num">3</span>
                         <span class="academy-stat-label">Levels</span>
                     </div>
                 </div>

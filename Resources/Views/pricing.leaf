@@ -131,7 +131,7 @@
         <section class="site-section-alt">
             <div class="site-container text-center" style="padding:60px 20px;">
                 <h2 style="font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:12px;color:var(--text-primary);">Start now. Decide later.</h2>
-                <p style="font-size:1rem;color:var(--text-secondary);max-width:440px;margin:0 auto 28px;line-height:1.6;">Every course is free. Take one. If you want the certificate, upgrade whenever you're ready.</p>
+                <p style="font-size:1rem;color:var(--text-secondary);max-width:440px;margin:0 auto 28px;line-height:1.6;">Preview any course with 3 free lessons. If you want full access and certificates, upgrade whenever you're ready.</p>
                 <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
                     <a class="site-btn-primary" href="/academy">Browse 52 Free Courses</a>
                 </div>

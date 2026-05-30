@@ -21,7 +21,7 @@
         "@type": "EducationalOrganization",
         "name": "Like One",
         "url": "https://likeone.ai",
-        "description": "Free AI education for everyone. 52 courses, 521 lessons.",
+        "description": "AI education from a 501(c)(3) nonprofit. 52 courses, 520+ lessons. Start free.",
         "sameAs": ["https://github.com/sophiacave/likeone-swift"],
         "founder": {
             "@type": "Person",

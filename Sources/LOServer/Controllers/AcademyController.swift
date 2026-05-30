@@ -34,7 +34,7 @@ struct AcademyController: RouteCollection {
 
         let context = AcademyContext(
             title: "Free AI Courses — Claude, Agents & Prompt Engineering | Like One Academy",
-            description: "52 courses, \(totalLessons)+ hands-on lessons. From your first AI conversation to building autonomous systems.",
+            description: "52 courses, \(totalLessons)+ lessons. First 3 free on every course. From prompts to autonomous agents.",
             totalCourses: allCourses.count,
             totalLessons: totalLessons,
             tiers: tiers.map { TierInfo(name: $0.name, emoji: $0.emoji, count: $0.count) },
