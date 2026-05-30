@@ -6,6 +6,7 @@ struct PagesController: RouteCollection {
         routes.get("about", use: about)
         routes.get("pricing", use: pricing)
         routes.get("foundation", use: foundation)
+        routes.get("consulting", use: consulting)
     }
 
     @Sendable
@@ -39,5 +40,16 @@ struct PagesController: RouteCollection {
             path: "/foundation"
         )
         return try await req.view.render("foundation", context)
+    }
+
+    @Sendable
+    func consulting(req: Request) async throws -> View {
+        let context = PageContext(
+            title: "AI Consulting | Like One",
+            heading: "Consulting",
+            description: "AI systems that run your operations autonomously. Custom agents, MCP servers, full-stack AI applications. From $500/month.",
+            path: "/consulting"
+        )
+        return try await req.view.render("consulting", context)
     }
 }

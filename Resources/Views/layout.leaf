@@ -44,6 +44,7 @@
                     <a class="header-site-link" href="/tracks">Tracks</a>
                     <a class="header-site-link" href="/blog">Blog</a>
                     <a class="header-site-link" href="/about">About</a>
+                    <a class="header-site-link" href="/consulting">Consulting</a>
                     <a class="header-site-link" href="/search" aria-label="Search">&#x1F50D;</a>
                     <a class="header-signin-btn" href="/signin">Sign In</a>
                 </div>

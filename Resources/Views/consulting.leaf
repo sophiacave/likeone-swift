@@ -1,0 +1,75 @@
+#extend("layout"):
+    #export("content"):
+        <section class="page-hero">
+            <div class="site-container text-center">
+                <span class="site-section-tag">CONSULTING</span>
+                <h1 class="page-hero-title">AI that actually<br><span class="accent-gradient">works for you.</span></h1>
+                <p class="page-hero-desc">We build AI systems that run your operations autonomously. Not slide decks. Not strategy sessions. Working systems.</p>
+            </div>
+        </section>
+
+        <section class="site-section">
+            <div class="site-container" style="max-width:900px;">
+                <div class="pricing-grid" style="grid-template-columns:1fr 1fr;">
+                    <div class="pricing-card">
+                        <div class="pricing-badge">ASYNC</div>
+                        <h2 class="pricing-plan-name">Starter</h2>
+                        <div class="pricing-price">$500</div>
+                        <div class="pricing-period">per month</div>
+                        <ul class="pricing-features">
+                            <li>Async access to Sophie + Faye stack</li>
+                            <li>24-hour turnaround on requests</li>
+                            <li>Monthly strategy call</li>
+                            <li>AI architecture review</li>
+                            <li>Academy Pro included (3 months)</li>
+                            <li>Cancel anytime</li>
+                        </ul>
+                        <form method="POST" action="/checkout">
+                            <input type="hidden" name="plan" value="consulting-starter">
+                            <button type="submit" class="site-btn-primary" style="width:100%;border:none;cursor:pointer;">Get Started</button>
+                        </form>
+                    </div>
+
+                    <div class="pricing-card pricing-card-pro">
+                        <div class="pricing-badge pricing-badge-pro">FULL SERVICE</div>
+                        <h2 class="pricing-plan-name">Retainer</h2>
+                        <div class="pricing-price">$5,000</div>
+                        <div class="pricing-period">per month</div>
+                        <ul class="pricing-features">
+                            <li>4 hrs/week synchronous collaboration</li>
+                            <li>Unlimited async support</li>
+                            <li>14-day time-to-first-deploy guarantee</li>
+                            <li>Custom AI agent development</li>
+                            <li>Infrastructure architecture</li>
+                            <li>Academy Pro included (lifetime)</li>
+                        </ul>
+                        <form method="POST" action="/checkout">
+                            <input type="hidden" name="plan" value="consulting-retainer">
+                            <button type="submit" class="site-btn-primary" style="width:100%;border:none;cursor:pointer;">Book Retainer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="site-section-alt">
+            <div class="site-container" style="max-width:700px;">
+                <h2 class="site-section-title text-center">What we build</h2>
+                <div class="pricing-faq">
+                    <div class="pricing-faq-item">
+                        <h3 class="pricing-faq-q">Autonomous AI agents</h3>
+                        <p class="pricing-faq-a">Agents that handle operations without human intervention. Grant applications, content pipelines, customer support, revenue operations. Not chatbots. Systems that do real work.</p>
+                    </div>
+                    <div class="pricing-faq-item">
+                        <h3 class="pricing-faq-q">MCP server infrastructure</h3>
+                        <p class="pricing-faq-a">Custom Model Context Protocol servers that connect AI to your existing tools. Databases, APIs, file systems, deployment pipelines. Secure by default.</p>
+                    </div>
+                    <div class="pricing-faq-item">
+                        <h3 class="pricing-faq-q">AI-native web applications</h3>
+                        <p class="pricing-faq-a">Full-stack applications with AI built into the architecture, not bolted on. Swift, Next.js, or whatever your stack needs. From prototype to production.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    #endexport
+#endextend

@@ -28,6 +28,7 @@ struct SEOController: RouteCollection {
             ("/about", "monthly", "0.7"),
             ("/pricing", "monthly", "0.7"),
             ("/foundation", "monthly", "0.7"),
+            ("/consulting", "monthly", "0.7"),
             ("/signin", "monthly", "0.3"),
             ("/search", "monthly", "0.5"),
         ]

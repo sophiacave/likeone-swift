@@ -143,6 +143,43 @@ struct StripeController: RouteCollection {
 
         try await user.save(on: db)
         logger.info("User \(user.email) upgraded to pro via Stripe checkout")
+
+        // Send welcome email
+        sendWelcomeEmail(to: user.email, name: user.name ?? "Academy Member", logger: logger)
+    }
+
+    private func sendWelcomeEmail(to email: String, name: String, logger: Logger) {
+        let subject = "Welcome to Academy Pro!"
+        let body = """
+        Hi \(name),
+
+        Your Academy Pro subscription is active. You now have full access to:
+
+        - Verified completion certificates for all 52 courses
+        - PDF certificate downloads
+        - LinkedIn-ready credentials
+        - Learning track certificates
+        - Priority support
+
+        Start learning: https://app.likeone.ai/academy
+        Your account: https://app.likeone.ai/account
+
+        Thank you for supporting free AI education. Your subscription directly funds keeping the Academy free for everyone and donating to HIV cure research at UCSF.
+
+        -- Sophie Cave
+        Founder, Like One
+        """
+
+        // Fire and forget — use send-email CLI
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: "/Users/sophiacave/bin/send-email")
+        process.arguments = ["--to", email, "--subject", subject, "--body", body]
+        do {
+            try process.run()
+            logger.info("Welcome email sent to \(email)")
+        } catch {
+            logger.error("Failed to send welcome email: \(error)")
+        }
     }
 
     private func handleSubscriptionUpdated(event: StripeWebhookEvent, db: Database, logger: Logger) async throws {
