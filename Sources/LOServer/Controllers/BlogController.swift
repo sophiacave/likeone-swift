@@ -115,6 +115,11 @@ struct BlogController: RouteCollection {
         }
 
         let post = blog.post(slug: slug)!
+        let canonicalUrl = "https://likeone.ai/blog/\(post.slug)/"
+        let ogImage: String? = post.image.flatMap { img in
+            let path = "Public\(img)"
+            return FileManager.default.fileExists(atPath: path) ? "https://likeone.ai\(img)" : nil
+        }
         let context = BlogDetailContext(
             title: "\(post.title) | Like One",
             description: post.description,
@@ -126,7 +131,11 @@ struct BlogController: RouteCollection {
                 date: formatDate(post.publishedAt),
                 tags: post.tags
             ),
-            content: post.content
+            content: post.content,
+            canonicalUrl: canonicalUrl,
+            ogImage: ogImage,
+            ogType: "article",
+            ogUrl: canonicalUrl
         )
         let view = try await req.view.render("blog-post", context)
         var headers = HTTPHeaders()
@@ -161,4 +170,8 @@ struct BlogDetailContext: Content {
     let description: String
     let post: BlogCardContext
     let content: String
+    let canonicalUrl: String?
+    let ogImage: String?
+    let ogType: String?
+    let ogUrl: String?
 }

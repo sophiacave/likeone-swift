@@ -22,17 +22,17 @@ struct SEOController: RouteCollection {
         // Static pages
         let staticPages: [(String, String, String)] = [
             ("/", "weekly", "1.0"),
-            ("/academy", "weekly", "0.9"),
-            ("/tracks", "weekly", "0.9"),
-            ("/blog", "weekly", "0.8"),
-            ("/about", "monthly", "0.7"),
-            ("/pricing", "monthly", "0.7"),
-            ("/foundation", "monthly", "0.7"),
-            ("/consulting", "monthly", "0.7"),
-            ("/privacy", "monthly", "0.3"),
-            ("/terms", "monthly", "0.3"),
-            ("/signin", "monthly", "0.3"),
-            ("/search", "monthly", "0.5"),
+            ("/academy/", "weekly", "0.9"),
+            ("/tracks/", "weekly", "0.9"),
+            ("/blog/", "weekly", "0.8"),
+            ("/about/", "monthly", "0.7"),
+            ("/pricing/", "monthly", "0.7"),
+            ("/foundation/", "monthly", "0.7"),
+            ("/consulting/", "monthly", "0.7"),
+            ("/privacy/", "monthly", "0.3"),
+            ("/terms/", "monthly", "0.3"),
+            ("/signin/", "monthly", "0.3"),
+            ("/search/", "monthly", "0.5"),
         ]
 
         for (path, freq, priority) in staticPages {
@@ -46,7 +46,7 @@ struct SEOController: RouteCollection {
         // Courses
         for course in courses.allCourses() {
             xml += "  <url>\n"
-            xml += "    <loc>\(baseURL)/academy/\(course.slug)</loc>\n"
+            xml += "    <loc>\(baseURL)/academy/\(course.slug)/</loc>\n"
             xml += "    <changefreq>weekly</changefreq>\n"
             xml += "    <priority>0.8</priority>\n"
             xml += "  </url>\n"
@@ -54,7 +54,7 @@ struct SEOController: RouteCollection {
             // Individual lessons
             for lesson in lessons.lessons(forCourse: course.slug) {
                 xml += "  <url>\n"
-                xml += "    <loc>\(baseURL)/academy/\(course.slug)/\(lesson.slug)</loc>\n"
+                xml += "    <loc>\(baseURL)/academy/\(course.slug)/\(lesson.slug)/</loc>\n"
                 xml += "    <changefreq>monthly</changefreq>\n"
                 xml += "    <priority>0.6</priority>\n"
                 xml += "  </url>\n"
@@ -64,7 +64,7 @@ struct SEOController: RouteCollection {
         // Tracks
         for track in tracks.allTracks() {
             xml += "  <url>\n"
-            xml += "    <loc>\(baseURL)/tracks/\(track.slug)</loc>\n"
+            xml += "    <loc>\(baseURL)/tracks/\(track.slug)/</loc>\n"
             xml += "    <changefreq>weekly</changefreq>\n"
             xml += "    <priority>0.8</priority>\n"
             xml += "  </url>\n"
@@ -73,7 +73,7 @@ struct SEOController: RouteCollection {
         // Blog posts
         for post in blog.allPosts() {
             xml += "  <url>\n"
-            xml += "    <loc>\(baseURL)/blog/\(post.slug)</loc>\n"
+            xml += "    <loc>\(baseURL)/blog/\(post.slug)/</loc>\n"
             xml += "    <changefreq>monthly</changefreq>\n"
             xml += "    <priority>0.7</priority>\n"
             xml += "  </url>\n"

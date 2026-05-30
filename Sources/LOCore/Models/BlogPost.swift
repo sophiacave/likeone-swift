@@ -9,6 +9,7 @@ public struct BlogPost: Codable, Identifiable, Sendable {
     public let author: String
     public let publishedAt: Date
     public let tags: [String]
+    public let image: String?
 
     public init(
         id: UUID = UUID(),
@@ -18,7 +19,8 @@ public struct BlogPost: Codable, Identifiable, Sendable {
         content: String,
         author: String = "Sophie Cave",
         publishedAt: Date = Date(),
-        tags: [String] = []
+        tags: [String] = [],
+        image: String? = nil
     ) {
         self.id = id
         self.slug = slug
@@ -28,5 +30,6 @@ public struct BlogPost: Codable, Identifiable, Sendable {
         self.author = author
         self.publishedAt = publishedAt
         self.tags = tags
+        self.image = image
     }
 }

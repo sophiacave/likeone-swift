@@ -55,7 +55,8 @@ public struct BlogProvider: Sendable {
                 content: post.content,
                 author: post.author,
                 publishedAt: formatter.date(from: post.date) ?? Date(),
-                tags: post.tags
+                tags: post.tags,
+                image: post.image
             )
         }
     }
