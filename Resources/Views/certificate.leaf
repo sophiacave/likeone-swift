@@ -1,0 +1,44 @@
+#extend("layout"):
+    #export("content"):
+        <section class="cert-page">
+            <div class="site-container" style="max-width:720px;">
+                <div class="cert-frame">
+                    <div class="cert-header">
+                        <div class="cert-logo">like<span class="accent">one</span></div>
+                        <div class="cert-academy">Academy</div>
+                    </div>
+
+                    <div class="cert-type-badge" style="background:#(badgeColor)20;color:#(badgeColor);">
+                        #if(certType == "track"):Learning Track Certificate#else:Course Certificate#endif
+                    </div>
+
+                    <div class="cert-body">
+                        <div class="cert-label">This certifies that</div>
+                        <div class="cert-recipient">#(recipientName)</div>
+                        <div class="cert-label">has successfully completed</div>
+                        <div class="cert-title">#(certTitle)</div>
+                        <div class="cert-date">Issued #(earnedDate)</div>
+                    </div>
+
+                    <div class="cert-footer">
+                        <div class="cert-signature">
+                            <div class="cert-sig-line"></div>
+                            <div class="cert-sig-name">Sophia Cave</div>
+                            <div class="cert-sig-role">Founder, Like One</div>
+                        </div>
+                        <div class="cert-verify">
+                            <div class="cert-id">ID: #(certId)</div>
+                            <div class="cert-verify-url">Verify: swift.likeone.ai/cert/#(certId)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cert-actions">
+                    <div class="cert-verified">
+                        <span class="cert-verified-icon">&#x2714;</span> Verified Certificate
+                    </div>
+                </div>
+            </div>
+        </section>
+    #endexport
+#endextend

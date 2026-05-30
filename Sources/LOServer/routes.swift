@@ -23,4 +23,5 @@ func routes(_ app: Application) throws {
     try app.register(collection: PagesController())
     try app.register(collection: TracksController(tracks: tracks, courses: courses))
     try app.register(collection: ProgressController(courses: courses, lessons: lessons, tracks: tracks))
+    try app.register(collection: CertController(tracks: tracks))
 }

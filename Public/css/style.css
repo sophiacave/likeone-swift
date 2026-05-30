@@ -2203,7 +2203,140 @@ a:focus-visible, button:focus-visible {
     flex-shrink: 0;
 }
 
-/* Responsive: Pages + Tracks */
+/* ===== CERTIFICATE ===== */
+.cert-page {
+    padding: 80px 20px 60px;
+}
+.cert-frame {
+    background: linear-gradient(135deg, #1a1a24 0%, #111118 100%);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+}
+.cert-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--purple-400), #e879f9, var(--purple-400));
+}
+.cert-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+.cert-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -.03em;
+    color: var(--text-primary);
+}
+.cert-academy {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+.cert-type-badge {
+    text-align: center;
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: 6px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 0 auto 32px;
+    width: fit-content;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.cert-body {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.cert-label {
+    font-size: .8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 8px;
+}
+.cert-recipient {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -.02em;
+    margin-bottom: 24px;
+}
+.cert-title {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    font-weight: 600;
+    color: var(--purple-400);
+    margin-bottom: 16px;
+}
+.cert-date {
+    font-size: .85rem;
+    color: var(--text-muted);
+}
+.cert-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+}
+.cert-sig-line {
+    width: 120px;
+    border-bottom: 1px solid var(--text-muted);
+    margin-bottom: 8px;
+}
+.cert-sig-name {
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-style: italic;
+}
+.cert-sig-role {
+    font-size: .7rem;
+    color: var(--text-muted);
+}
+.cert-verify {
+    text-align: right;
+}
+.cert-id {
+    font-size: .65rem;
+    color: var(--text-muted);
+    font-family: 'SF Mono', 'JetBrains Mono', monospace;
+    margin-bottom: 4px;
+}
+.cert-verify-url {
+    font-size: .6rem;
+    color: var(--text-muted);
+    font-family: 'SF Mono', 'JetBrains Mono', monospace;
+}
+.cert-actions {
+    text-align: center;
+    margin-top: 24px;
+}
+.cert-verified {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .85rem;
+    color: var(--green, #34d399);
+    font-weight: 600;
+}
+.cert-verified-icon {
+    font-size: 1.1rem;
+}
+
+/* Responsive: Pages + Tracks + Certs */
 @media (max-width: 768px) {
     .about-pillars { grid-template-columns: 1fr; }
     .about-team-grid { grid-template-columns: 1fr; }
@@ -2212,4 +2345,7 @@ a:focus-visible, button:focus-visible {
     .tracks-grid { grid-template-columns: 1fr; }
     .track-detail-header { flex-direction: column; }
     .track-course-desc { display: none; }
+    .cert-frame { padding: 32px 24px; }
+    .cert-footer { flex-direction: column; gap: 20px; align-items: center; }
+    .cert-verify { text-align: center; }
 }
