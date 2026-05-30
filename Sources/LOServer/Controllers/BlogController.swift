@@ -75,7 +75,7 @@ struct BlogController: RouteCollection {
         // "claude-custom-instructions-guide" — REMOVED: now a real blog post
         // "what-are-agentic-loops-explained" — REMOVED: now a real blog post
         "how-to-use-claude-projects-complete-guide": "/academy/claude-for-beginners/what-claude-can-do/",
-        "how-to-use-claude-for-data-analysis-2026": "/blog/chatgpt-vs-claude-vs-gemini-2026/",
+        // "how-to-use-claude-for-data-analysis-2026" — REMOVED: now a real blog post
         "best-ai-tools-2026-ranked": "/blog/chatgpt-vs-claude-vs-gemini-2026/",
         "best-free-ai-automation-courses-2026": "/academy/",
         "ai-automation-tools-compared-2026": "/blog/the-ai-stack-that-runs-our-company-2026/",
