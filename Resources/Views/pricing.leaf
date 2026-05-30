@@ -84,21 +84,25 @@
             </div>
         </section>
 
-        <!-- What Pro gets you -->
+        <!-- What Pro unlocks -->
         <section class="site-section-alt">
             <div class="site-container" style="max-width:800px;">
-                <h2 class="site-section-title text-center">What Pro certificates look like</h2>
-                <p style="text-align:center;color:var(--text-secondary);margin-bottom:28px;">Complete a course. Earn a verified certificate. Share it anywhere.</p>
-                <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;text-align:center;">
-                    <div style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--purple-400);margin-bottom:16px;">COURSE CERTIFICATE</div>
-                    <div style="font-size:.8rem;color:var(--text-muted);margin-bottom:4px;">This certifies that</div>
-                    <div style="font-size:1.5rem;font-weight:700;color:var(--text-primary);margin-bottom:4px;">Your Name</div>
-                    <div style="font-size:.8rem;color:var(--text-muted);margin-bottom:4px;">has completed</div>
-                    <div style="font-size:1.1rem;font-weight:600;color:var(--purple-400);margin-bottom:16px;">AI Foundations</div>
-                    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-                        <span style="font-size:.75rem;color:var(--text-muted);background:rgba(255,255,255,.05);padding:4px 12px;border-radius:20px;">Verified link</span>
-                        <span style="font-size:.75rem;color:var(--text-muted);background:rgba(255,255,255,.05);padding:4px 12px;border-radius:20px;">PDF download</span>
-                        <span style="font-size:.75rem;color:var(--text-muted);background:rgba(255,255,255,.05);padding:4px 12px;border-radius:20px;">Add to LinkedIn</span>
+                <h2 class="site-section-title text-center">What Pro unlocks</h2>
+                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px;">
+                    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;text-align:center;">
+                        <div style="font-size:2rem;margin-bottom:8px;">&#x1F513;</div>
+                        <div style="font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:6px;">Full Access</div>
+                        <div style="font-size:.85rem;color:var(--text-secondary);line-height:1.5;">All 520+ lessons across 52 courses. Learn at your pace from beginner to advanced.</div>
+                    </div>
+                    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;text-align:center;">
+                        <div style="font-size:2rem;margin-bottom:8px;">&#x1F4DC;</div>
+                        <div style="font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:6px;">Verified Certificates</div>
+                        <div style="font-size:.85rem;color:var(--text-secondary);line-height:1.5;">Earn credentials on completion. Download PDFs, share on LinkedIn, verify online.</div>
+                    </div>
+                    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;text-align:center;">
+                        <div style="font-size:2rem;margin-bottom:8px;">&#x1F49C;</div>
+                        <div style="font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:6px;">Fund the Mission</div>
+                        <div style="font-size:.85rem;color:var(--text-secondary);line-height:1.5;">Your subscription funds free AI education and HIV cure research at UCSF.</div>
                     </div>
                 </div>
             </div>

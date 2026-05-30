@@ -27,4 +27,5 @@ func routes(_ app: Application) throws {
     try app.register(collection: MagicLinkController())
     try app.register(collection: SEOController(courses: courses, blog: blog, tracks: tracks, lessons: lessons))
     try app.register(collection: StripeController(catalog: catalog))
+    try app.register(collection: SubscribeController())
 }

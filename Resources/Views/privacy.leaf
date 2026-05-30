@@ -1,0 +1,43 @@
+#extend("layout"):
+    #export("content"):
+        <section class="page-hero">
+            <div class="site-container">
+                <h1 class="page-hero-title">Privacy Policy</h1>
+                <p class="page-hero-desc">Last updated: May 30, 2026</p>
+            </div>
+        </section>
+
+        <section class="site-section">
+            <div class="site-container" style="max-width:700px;">
+                <div class="article-content">
+                    <h2>What we collect</h2>
+                    <p>When you create an account, we store your email address, name, and authentication provider (Google, Apple, or email). When you subscribe to our newsletter, we store your email address. When you purchase a Pro subscription, Stripe processes your payment &mdash; we never see or store your card details.</p>
+
+                    <h2>How we use it</h2>
+                    <p>Your email is used for account authentication, subscription management, and newsletter updates (if you opted in). Your learning progress is stored to track course completion and issue certificates. We do not sell, share, or rent your personal information to third parties.</p>
+
+                    <h2>Third-party services</h2>
+                    <ul>
+                        <li><strong>Stripe</strong> &mdash; payment processing. <a href="https://stripe.com/privacy">Stripe Privacy Policy</a></li>
+                        <li><strong>Google Sign-In</strong> &mdash; authentication. <a href="https://policies.google.com/privacy">Google Privacy Policy</a></li>
+                        <li><strong>Apple Sign-In</strong> &mdash; authentication. <a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a></li>
+                        <li><strong>Resend</strong> &mdash; email delivery. <a href="https://resend.com/legal/privacy-policy">Resend Privacy Policy</a></li>
+                        <li><strong>Cloudflare</strong> &mdash; CDN and DNS. <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a></li>
+                    </ul>
+
+                    <h2>Cookies</h2>
+                    <p>We use a single session cookie (<code>lo_session</code>) for authentication. We do not use tracking cookies, analytics pixels, or advertising cookies.</p>
+
+                    <h2>Data retention</h2>
+                    <p>Account data is retained while your account is active. Progress and certificate data is retained indefinitely so your credentials remain verifiable. Newsletter subscribers can unsubscribe at any time via the link in every email.</p>
+
+                    <h2>Your rights</h2>
+                    <p>You can request deletion of your account and all associated data by emailing <a href="mailto:hello@likeone.ai">hello@likeone.ai</a>. We will process deletion requests within 30 days.</p>
+
+                    <h2>Contact</h2>
+                    <p>Like One LLC &bull; <a href="mailto:hello@likeone.ai">hello@likeone.ai</a></p>
+                </div>
+            </div>
+        </section>
+    #endexport
+#endextend

@@ -1,0 +1,11 @@
+#extend("layout"):
+    #export("content"):
+        <section class="cert-page">
+            <div class="site-container" style="max-width:500px; text-align:center;">
+                <h1 style="font-size:1.5rem; font-weight:700; margin-bottom:12px;">Unsubscribed</h1>
+                <p style="color:var(--text-muted); margin-bottom:32px;">You've been removed from our mailing list. You won't receive any more emails from us.</p>
+                <a href="/" class="site-btn-secondary" style="text-decoration:none;">Back to Home</a>
+            </div>
+        </section>
+    #endexport
+#endextend

@@ -7,6 +7,8 @@ struct PagesController: RouteCollection {
         routes.get("pricing", use: pricing)
         routes.get("foundation", use: foundation)
         routes.get("consulting", use: consulting)
+        routes.get("privacy", use: privacy)
+        routes.get("terms", use: terms)
     }
 
     @Sendable
@@ -40,6 +42,28 @@ struct PagesController: RouteCollection {
             path: "/foundation"
         )
         return try await req.view.render("foundation", context)
+    }
+
+    @Sendable
+    func privacy(req: Request) async throws -> View {
+        let context = PageContext(
+            title: "Privacy Policy | Like One",
+            heading: "Privacy",
+            description: "Like One privacy policy. How we handle your data, cookies, and third-party services.",
+            path: "/privacy"
+        )
+        return try await req.view.render("privacy", context)
+    }
+
+    @Sendable
+    func terms(req: Request) async throws -> View {
+        let context = PageContext(
+            title: "Terms of Service | Like One",
+            heading: "Terms",
+            description: "Like One terms of service. Account, subscription, certificate, and usage terms.",
+            path: "/terms"
+        )
+        return try await req.view.render("terms", context)
     }
 
     @Sendable

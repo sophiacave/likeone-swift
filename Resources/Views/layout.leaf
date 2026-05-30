@@ -54,18 +54,54 @@
             #import("content")
         </main>
         <footer class="footer-site">
-            <div class="footer-site-inner">
-                <p class="footer-site-text">
-                    &copy; 2026 Like One. All rights reserved.
-                    &bull; <a href="/about">About</a>
-                    &bull; <a href="/pricing">Pricing</a>
-                    &bull; <a href="/foundation">Foundation</a>
-                    &bull; <a href="mailto:hello@likeone.ai">hello@likeone.ai</a>
-                </p>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-col-title">Academy</div>
+                    <a href="/academy" class="footer-link">Courses</a>
+                    <a href="/tracks" class="footer-link">Tracks</a>
+                    <a href="/pricing" class="footer-link">Pricing</a>
+                    <a href="/signin" class="footer-link">Sign In</a>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">Company</div>
+                    <a href="/about" class="footer-link">About</a>
+                    <a href="/foundation" class="footer-link">Foundation</a>
+                    <a href="/blog" class="footer-link">Blog</a>
+                    <a href="/consulting" class="footer-link">Consulting</a>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">Open Source</div>
+                    <a href="https://smithery.ai/server/@likeone/mcp-shield" class="footer-link" target="_blank" rel="noopener">MCP Shield</a>
+                    <a href="https://smithery.ai/server/@likeone/orchard-hig" class="footer-link" target="_blank" rel="noopener">Orchard HIG</a>
+                    <a href="https://smithery.ai/server/@likeone/orchard-sign" class="footer-link" target="_blank" rel="noopener">Orchard Sign</a>
+                    <a href="https://github.com/sophiacave/likeone-swift" class="footer-link" target="_blank" rel="noopener">GitHub</a>
+                </div>
+                <div class="footer-col">
+                    <div class="footer-col-title">Stay Updated</div>
+                    <p class="footer-subscribe-desc">AI education updates. No spam.</p>
+                    <form hx-post="/api/subscribe" hx-target="#subscribe-result" hx-swap="innerHTML" class="footer-subscribe-form">
+                        <input type="hidden" name="sourcePage" value="/">
+                        <input type="email" name="email" placeholder="your@email.com" required class="footer-subscribe-input">
+                        <button type="submit" class="footer-subscribe-btn">Subscribe</button>
+                    </form>
+                    <div id="subscribe-result"></div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Like One LLC. All rights reserved.</span>
+                <span class="footer-bottom-links">
+                    <a href="/privacy">Privacy</a>
+                    <a href="/terms">Terms</a>
+                    <a href="mailto:hello@likeone.ai">hello@likeone.ai</a>
+                </span>
             </div>
         </footer>
     </div>
     <script>
+    // Set subscribe form source page
+    var sp = document.querySelector('[name=sourcePage]');
+    if (sp) sp.value = window.location.pathname;
+
     document.addEventListener('click', function(e) {
         if (e.target.closest('.academy-filter-btn')) {
             document.querySelectorAll('.academy-filter-btn').forEach(function(b) { b.classList.remove('active'); });

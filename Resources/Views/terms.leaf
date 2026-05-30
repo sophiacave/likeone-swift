@@ -1,0 +1,46 @@
+#extend("layout"):
+    #export("content"):
+        <section class="page-hero">
+            <div class="site-container">
+                <h1 class="page-hero-title">Terms of Service</h1>
+                <p class="page-hero-desc">Last updated: May 30, 2026</p>
+            </div>
+        </section>
+
+        <section class="site-section">
+            <div class="site-container" style="max-width:700px;">
+                <div class="article-content">
+                    <h2>Agreement</h2>
+                    <p>By using likeone.ai, you agree to these terms. If you don't agree, please don't use the site.</p>
+
+                    <h2>Accounts</h2>
+                    <p>You may browse free lessons without an account. An account is required for progress tracking, certificates, and Pro subscriptions. You are responsible for maintaining the security of your account.</p>
+
+                    <h2>Free content</h2>
+                    <p>The first 3 lessons of every course are available free of charge. This content may be updated or reorganized at any time.</p>
+
+                    <h2>Pro subscriptions</h2>
+                    <p>Academy Pro unlocks all lessons and certificates. Subscriptions are billed monthly ($19/mo) or annually ($149/yr) through Stripe. You may cancel at any time from your account page &mdash; access continues until the end of your billing period. No refunds for partial periods.</p>
+
+                    <h2>Certificates</h2>
+                    <p>Certificates are issued upon course or track completion for Pro subscribers. Each certificate has a unique verification URL that remains active indefinitely, even after subscription cancellation. Certificates you've earned are yours to keep.</p>
+
+                    <h2>Intellectual property</h2>
+                    <p>Course content, visual aids, and the Like One brand are owned by Like One LLC. Your certificates and learning progress are yours. You may share certificates publicly.</p>
+
+                    <h2>Acceptable use</h2>
+                    <p>Don't scrape content, share Pro account credentials, or use the platform to harass others. We reserve the right to terminate accounts that violate these terms.</p>
+
+                    <h2>Limitation of liability</h2>
+                    <p>Like One provides educational content as-is. We make no guarantees about employment outcomes, career advancement, or certification value. Use the knowledge at your own discretion.</p>
+
+                    <h2>Changes</h2>
+                    <p>We may update these terms. Continued use after changes constitutes acceptance. Material changes will be announced via email to registered users.</p>
+
+                    <h2>Contact</h2>
+                    <p>Like One LLC &bull; <a href="mailto:hello@likeone.ai">hello@likeone.ai</a></p>
+                </div>
+            </div>
+        </section>
+    #endexport
+#endextend
