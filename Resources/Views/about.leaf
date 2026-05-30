@@ -15,7 +15,7 @@
                     <h2 class="site-section-title" style="text-align:left;">Built by someone the system forgot.</h2>
                     <p class="about-text">Like One was founded by Sophia Cave &mdash; a trans woman, self-taught engineer, and disability advocate who spent years navigating a tech industry that wasn't built for people like her.</p>
                     <p class="about-text">The AI revolution is creating the biggest shift in human capability since the internet. But the people who need it most &mdash; disabled workers, career changers, people locked out of $200K bootcamps &mdash; are being left behind. Again.</p>
-                    <p class="about-text">We built Like One to fix that. Every course is free. Every lesson is hands-on. No gatekeepers. No waitlists. No paywalls.</p>
+                    <p class="about-text">We built Like One to fix that. Every course starts free &mdash; preview any of our 52 courses with no account required. Pro unlocks full access and verified certificates, and the revenue funds the free education and HIV cure research.</p>
                 </div>
 
                 <div class="about-mission" style="margin-top:64px;">
@@ -25,7 +25,7 @@
                         <div class="about-pillar">
                             <div class="about-pillar-icon" style="background:rgba(168,85,247,.1);color:var(--purple-400);">01</div>
                             <h3 class="about-pillar-title">Free AI Education</h3>
-                            <p class="about-pillar-text">52 courses covering everything from "what is AI" to building autonomous agents. No account required to start. No credit card ever.</p>
+                            <p class="about-pillar-text">52 courses covering everything from "what is AI" to building autonomous agents. Preview every course free &mdash; no account required. Pro unlocks all 520+ lessons and certificates.</p>
                         </div>
                         <div class="about-pillar">
                             <div class="about-pillar-icon" style="background:rgba(52,211,153,.1);color:var(--green);">02</div>
@@ -65,7 +65,7 @@
                             <div class="about-stat-label">Free Courses</div>
                         </div>
                         <div class="about-stat">
-                            <div class="about-stat-num">521</div>
+                            <div class="about-stat-num">520+</div>
                             <div class="about-stat-label">Lessons</div>
                         </div>
                         <div class="about-stat">
@@ -74,7 +74,7 @@
                         </div>
                         <div class="about-stat">
                             <div class="about-stat-num">$0</div>
-                            <div class="about-stat-label">Cost to Learn</div>
+                            <div class="about-stat-label">To Start</div>
                         </div>
                     </div>
                 </div>

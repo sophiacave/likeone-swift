@@ -177,8 +177,8 @@ struct StripeController: RouteCollection {
         - Learning track certificates
         - Priority support
 
-        Start learning: https://app.likeone.ai/academy
-        Your account: https://app.likeone.ai/account
+        Start learning: https://likeone.ai/academy
+        Your account: https://likeone.ai/account
 
         Thank you for supporting free AI education. Your subscription directly funds keeping the Academy free for everyone and donating to HIV cure research at UCSF.
 

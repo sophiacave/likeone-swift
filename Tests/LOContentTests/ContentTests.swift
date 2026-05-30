@@ -52,7 +52,7 @@ struct ContentTests {
     func blogCount() {
         let provider = BlogProvider()
         let posts = provider.allPosts()
-        #expect(posts.count == 16, "Expected 16 blog posts, got \(posts.count)")
+        #expect(posts.count == 17, "Expected 16 blog posts, got \(posts.count)")
     }
 
     @Test("Blog post lookup by slug works")

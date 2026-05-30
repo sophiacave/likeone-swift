@@ -33,7 +33,7 @@ struct AcademyController: RouteCollection {
         let totalLessons = allCourses.reduce(0) { $0 + realLessonCount($1.slug) }
 
         let context = AcademyContext(
-            title: "Free AI Academy | Like One",
+            title: "Free AI Courses — Claude, Agents & Prompt Engineering | Like One Academy",
             description: "52 courses, \(totalLessons)+ hands-on lessons. From your first AI conversation to building autonomous systems.",
             totalCourses: allCourses.count,
             totalLessons: totalLessons,
