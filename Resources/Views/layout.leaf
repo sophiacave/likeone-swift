@@ -104,9 +104,55 @@
     if (sp) sp.value = window.location.pathname;
 
     // Auth state: swap Sign In → Account if authenticated
-    if (document.cookie.indexOf('lo_authed=1') !== -1) {
+    var isAuthed = document.cookie.indexOf('lo_authed=1') !== -1;
+    if (isAuthed) {
         var authBtn = document.getElementById('auth-btn');
         if (authBtn) { authBtn.href = '/account'; authBtn.textContent = 'Account'; }
+
+        // Cross-device sync: load all server progress once per session
+        if (!sessionStorage.getItem('progress_loaded')) {
+            fetch('/api/v1/progress/all', { credentials: 'same-origin' })
+            .then(function(r) { return r.ok ? r.json() : null; })
+            .then(function(serverProgress) {
+                if (!serverProgress) return;
+                var local = LOP.get();
+                var merged = false;
+                for (var course in serverProgress) {
+                    if (!local[course]) local[course] = [];
+                    serverProgress[course].forEach(function(ls) {
+                        if (local[course].indexOf(ls) === -1) {
+                            local[course].push(ls);
+                            merged = true;
+                        }
+                    });
+                }
+                if (merged) { LOP.save(local); LOP.refreshUI(); }
+                sessionStorage.setItem('progress_loaded', '1');
+            }).catch(function() {});
+        }
+
+        // Auth migration: upload orphaned localStorage progress to server
+        if (!sessionStorage.getItem('progress_synced')) {
+            var local = LOP.get();
+            var items = [];
+            for (var course in local) {
+                local[course].forEach(function(ls) {
+                    items.push({ courseSlug: course, lessonSlug: ls });
+                });
+            }
+            if (items.length > 0) {
+                fetch('/api/v1/progress/sync', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(items),
+                    credentials: 'same-origin'
+                }).then(function(r) {
+                    if (r.ok) sessionStorage.setItem('progress_synced', '1');
+                }).catch(function() {});
+            } else {
+                sessionStorage.setItem('progress_synced', '1');
+            }
+        }
     }
 
     document.addEventListener('click', function(e) {

@@ -12,6 +12,8 @@ struct ProgressController: RouteCollection {
         let api = routes.grouped("api", "v1", "progress")
 
         api.post("complete", use: markComplete)
+        api.post("sync", use: bulkSync)
+        api.get("all", use: allProgress)
         api.get("course", ":slug", use: courseProgress)
         api.get("track", ":slug", use: trackProgress)
         api.get("certificates", use: myCertificates)
@@ -75,6 +77,75 @@ struct ProgressController: RouteCollection {
             trackCompleted: trackCompleted,
             needsPro: courseComplete && !isPro
         ))
+        return response
+    }
+
+    // MARK: - Bulk sync (upload localStorage → server)
+
+    @Sendable
+    func bulkSync(req: Request) async throws -> Response {
+        let user = try await req.requireUser()
+        let items = try req.content.decode([SyncItem].self)
+
+        let isPro = user.subscription == "pro" || user.subscription == "founding"
+        var synced = 0
+
+        for item in items {
+            // Skip if already exists
+            let existing = try await ProgressModel.query(on: req.db)
+                .filter(\.$userID == user.id!)
+                .filter(\.$courseSlug == item.courseSlug)
+                .filter(\.$lessonSlug == item.lessonSlug)
+                .first()
+
+            if existing == nil {
+                let progress = ProgressModel(
+                    userID: user.id!,
+                    courseSlug: item.courseSlug,
+                    lessonSlug: item.lessonSlug
+                )
+                try await progress.save(on: req.db)
+                synced += 1
+            }
+        }
+
+        // Check completions for all affected courses
+        let affectedCourses = Set(items.map(\.courseSlug))
+        for courseSlug in affectedCourses {
+            let _ = try await checkCourseCompletion(
+                userID: user.id!,
+                courseSlug: courseSlug,
+                isPro: isPro,
+                db: req.db
+            )
+        }
+
+        let response = Response(status: .ok)
+        try response.content.encode(["synced": synced])
+        return response
+    }
+
+    // MARK: - All progress (download server → client)
+
+    @Sendable
+    func allProgress(req: Request) async throws -> Response {
+        let user = try await req.requireUser()
+
+        let all = try await ProgressModel.query(on: req.db)
+            .filter(\.$userID == user.id!)
+            .all()
+
+        // Group by course
+        var result: [String: [String]] = [:]
+        for p in all {
+            if result[p.courseSlug] == nil {
+                result[p.courseSlug] = []
+            }
+            result[p.courseSlug]?.append(p.lessonSlug)
+        }
+
+        let response = Response(status: .ok)
+        try response.content.encode(result)
         return response
     }
 
@@ -276,4 +347,9 @@ struct CourseStatus: Content {
     let completedLessons: Int
     let totalLessons: Int
     let isComplete: Bool
+}
+
+struct SyncItem: Content {
+    let courseSlug: String
+    let lessonSlug: String
 }
