@@ -112,8 +112,17 @@ struct AuthController: RouteCollection {
             string: token,
             expires: session.expiresAt,
             maxAge: 30 * 24 * 3600,
+            domain: ".likeone.ai",
             isSecure: true,
             isHTTPOnly: true,
+            sameSite: .lax
+        )
+        response.cookies["lo_authed"] = HTTPCookies.Value(
+            string: "1",
+            maxAge: 30 * 24 * 3600,
+            domain: ".likeone.ai",
+            isSecure: true,
+            isHTTPOnly: false,
             sameSite: .lax
         )
         return response
@@ -128,11 +137,13 @@ struct AuthController: RouteCollection {
         response.cookies["lo_session"] = HTTPCookies.Value(
             string: "",
             expires: Date(timeIntervalSince1970: 0),
+            domain: ".likeone.ai",
             isHTTPOnly: true
         )
         response.cookies["lo_authed"] = HTTPCookies.Value(
             string: "",
-            expires: Date(timeIntervalSince1970: 0)
+            expires: Date(timeIntervalSince1970: 0),
+            domain: ".likeone.ai"
         )
         return response
     }

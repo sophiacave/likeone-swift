@@ -83,14 +83,15 @@ struct GoogleAuthController: RouteCollection {
             string: token,
             expires: session.expiresAt,
             maxAge: 30 * 24 * 3600,
+            domain: ".likeone.ai",
             isSecure: true,
             isHTTPOnly: true,
             sameSite: .lax
         )
-        // Non-sensitive UI cookie for client-side auth state
         response.cookies["lo_authed"] = HTTPCookies.Value(
             string: "1",
             maxAge: 30 * 24 * 3600,
+            domain: ".likeone.ai",
             isSecure: true,
             isHTTPOnly: false,
             sameSite: .lax
