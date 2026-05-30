@@ -17,9 +17,14 @@ struct CertController: RouteCollection {
             throw Abort(.notFound, reason: "Certificate not found")
         }
 
+        let earnedDate = cert.earnedAt ?? Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM d, yyyy"
-        let dateStr = formatter.string(from: cert.earnedAt ?? Date())
+        let dateStr = formatter.string(from: earnedDate)
+
+        let cal = Calendar.current
+        let year = String(cal.component(.year, from: earnedDate))
+        let month = String(cal.component(.month, from: earnedDate))
 
         // Determine badge color from track or default purple
         var badgeColor = "#c084fc"
@@ -35,6 +40,8 @@ struct CertController: RouteCollection {
             certTitle: cert.title,
             recipientName: cert.recipientName,
             earnedDate: dateStr,
+            earnedYear: year,
+            earnedMonth: month,
             badgeColor: badgeColor
         )
         return try await req.view.render("certificate", context)
@@ -49,5 +56,7 @@ struct CertPageContext: Content {
     let certTitle: String
     let recipientName: String
     let earnedDate: String
+    let earnedYear: String
+    let earnedMonth: String
     let badgeColor: String
 }
