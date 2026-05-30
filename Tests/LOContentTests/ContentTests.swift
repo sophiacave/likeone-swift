@@ -48,7 +48,7 @@ struct ContentTests {
 
     // MARK: - Blog Provider
 
-    @Test("BlogProvider loads 18 posts from embedded JSON")
+    @Test("BlogProvider loads 20 posts from embedded JSON")
     func blogCount() {
         let provider = BlogProvider()
         let posts = provider.allPosts()
