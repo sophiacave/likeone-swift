@@ -2030,10 +2030,186 @@ a:focus-visible, button:focus-visible {
     font-weight: 500;
 }
 
-/* Responsive: Pages */
+/* ===== TRACKS ===== */
+.tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.track-card {
+    display: block;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .2s, border-color .2s;
+}
+.track-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--track-color, var(--purple-400));
+}
+.track-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.track-card-emoji { font-size: 2rem; }
+.track-card-difficulty {
+    font-size: .65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--text-muted);
+    background: rgba(255,255,255,.05);
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+.track-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+.track-card-desc {
+    font-size: .85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+.track-card-meta {
+    display: flex;
+    gap: 16px;
+    font-size: .75rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+.track-card-bar {
+    height: 4px;
+    background: rgba(255,255,255,.05);
+    border-radius: 2px;
+    overflow: hidden;
+}
+.track-card-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width .5s var(--ease-out);
+}
+
+/* Track detail */
+.track-back-link {
+    display: inline-block;
+    font-size: .8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+.track-back-link:hover { color: var(--purple-400); }
+.track-detail-header {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+.track-detail-emoji { font-size: 3rem; }
+.track-detail-title {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 800;
+    letter-spacing: -.02em;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+.track-detail-desc {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+.track-detail-meta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+.track-detail-badge {
+    font-size: .65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+.track-detail-stat {
+    font-size: .8rem;
+    color: var(--text-muted);
+}
+.track-courses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.track-course-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .2s;
+}
+.track-course-row:hover {
+    border-color: var(--purple-400);
+}
+.track-course-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(168, 85, 247, .1);
+    color: var(--purple-400);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.track-course-info {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+}
+.track-course-emoji { font-size: 1.5rem; flex-shrink: 0; }
+.track-course-title {
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+.track-course-desc {
+    font-size: .8rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.track-course-arrow {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+/* Responsive: Pages + Tracks */
 @media (max-width: 768px) {
     .about-pillars { grid-template-columns: 1fr; }
     .about-team-grid { grid-template-columns: 1fr; }
     .about-stats-grid { grid-template-columns: repeat(2, 1fr); }
     .pricing-grid { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto; }
+    .tracks-grid { grid-template-columns: 1fr; }
+    .track-detail-header { flex-direction: column; }
+    .track-course-desc { display: none; }
 }

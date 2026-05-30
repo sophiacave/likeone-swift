@@ -1,0 +1,51 @@
+#extend("layout"):
+    #export("content"):
+        <section class="page-hero" style="padding-bottom:32px;">
+            <div class="site-container">
+                <a href="/tracks" class="track-back-link">&larr; All Tracks</a>
+                <div class="track-detail-header">
+                    <span class="track-detail-emoji">#(track.emoji)</span>
+                    <div>
+                        <h1 class="track-detail-title">#(track.title)</h1>
+                        <p class="track-detail-desc">#(track.description)</p>
+                        <div class="track-detail-meta">
+                            <span class="track-detail-badge" style="background:#(track.badgeColor)20;color:#(track.badgeColor);">#(track.difficulty)</span>
+                            <span class="track-detail-stat">#(track.courseCount) courses</span>
+                            <span class="track-detail-stat">~#(track.estimatedHours) hours</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="site-section" style="padding-top:24px;">
+            <div class="site-container" style="max-width:800px;">
+                <div class="track-courses-list">
+                    #for(course in courses):
+                        <a href="/academy/#(course.slug)" class="track-course-row">
+                            <div class="track-course-num">#(course.order)</div>
+                            <div class="track-course-info">
+                                <span class="track-course-emoji">#(course.emoji)</span>
+                                <div>
+                                    <div class="track-course-title">#(course.title)</div>
+                                    <div class="track-course-desc">#(course.description)</div>
+                                </div>
+                            </div>
+                            <div class="track-course-arrow">&rarr;</div>
+                        </a>
+                    #endfor
+                </div>
+            </div>
+        </section>
+
+        <section class="site-section-alt">
+            <div class="site-container text-center" style="padding:48px 20px;">
+                <h2 style="font-size:clamp(1.25rem,3vw,1.75rem);font-weight:700;color:var(--text-primary);margin-bottom:12px;">Complete this track. Earn a certificate.</h2>
+                <p style="font-size:.95rem;color:var(--text-secondary);max-width:480px;margin:0 auto 24px;line-height:1.6;">Finish all #(track.courseCount) courses and we'll generate a verifiable credential you can share on LinkedIn.</p>
+                #if(count(courses) > 0):
+                    <a class="site-btn-primary" href="/academy/#(firstCourseSlug)">Start with Course 1</a>
+                #endif
+            </div>
+        </section>
+    #endexport
+#endextend

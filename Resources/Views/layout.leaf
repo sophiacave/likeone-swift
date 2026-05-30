@@ -41,9 +41,9 @@
                 <a class="header-site-brand" href="/">like<span class="accent">one</span></a>
                 <div class="site-nav-links">
                     <a class="header-site-link" href="/academy">Academy</a>
+                    <a class="header-site-link" href="/tracks">Tracks</a>
                     <a class="header-site-link" href="/blog">Blog</a>
                     <a class="header-site-link" href="/about">About</a>
-                    <a class="header-site-link" href="/pricing">Pricing</a>
                     <a class="header-site-link" href="/search" aria-label="Search">&#x1F50D;</a>
                     <a class="header-signin-btn" href="/signin">Sign In</a>
                 </div>

@@ -1,0 +1,43 @@
+#extend("layout"):
+    #export("content"):
+        <section class="page-hero">
+            <div class="site-container text-center">
+                <span class="site-section-tag">LEARNING TRACKS</span>
+                <h1 class="page-hero-title">Follow a path.<br><span class="accent-gradient">Earn a credential.</span></h1>
+                <p class="page-hero-desc">Curated sequences of courses designed to take you from curious to capable. Complete a track, earn a certificate.</p>
+            </div>
+        </section>
+
+        <section class="site-section">
+            <div class="site-container" style="max-width:900px;">
+                <div class="tracks-grid">
+                    #for(track in tracks):
+                        <a href="/tracks/#(track.slug)" class="track-card" style="--track-color:#(track.badgeColor);">
+                            <div class="track-card-header">
+                                <span class="track-card-emoji">#(track.emoji)</span>
+                                <span class="track-card-difficulty">#(track.difficulty)</span>
+                            </div>
+                            <h2 class="track-card-title">#(track.title)</h2>
+                            <p class="track-card-desc">#(track.description)</p>
+                            <div class="track-card-meta">
+                                <span class="track-card-courses">#(track.courseCount) courses</span>
+                                <span class="track-card-hours">~#(track.estimatedHours)h</span>
+                            </div>
+                            <div class="track-card-bar">
+                                <div class="track-card-bar-fill" style="width:0%;background:var(--track-color);"></div>
+                            </div>
+                        </a>
+                    #endfor
+                </div>
+            </div>
+        </section>
+
+        <section class="site-section-alt">
+            <div class="site-container text-center" style="padding:48px 20px;">
+                <h2 style="font-size:clamp(1.25rem,3vw,1.75rem);font-weight:700;color:var(--text-primary);margin-bottom:12px;">Not sure where to start?</h2>
+                <p style="font-size:.95rem;color:var(--text-secondary);max-width:440px;margin:0 auto 24px;line-height:1.6;">The AI Foundations Path takes you from zero to confident in about 6 hours. No experience needed.</p>
+                <a class="site-btn-primary" href="/tracks/ai-foundations-path">Start AI Foundations</a>
+            </div>
+        </section>
+    #endexport
+#endextend
