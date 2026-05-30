@@ -1,6 +1,8 @@
 import Vapor
 import Fluent
+import Foundation
 import LOContent
+import Crypto
 
 struct StripeController: RouteCollection {
     let catalog: ProductCatalog
@@ -86,10 +88,24 @@ struct StripeController: RouteCollection {
 
     @Sendable
     func handleWebhook(req: Request) async throws -> Response {
-        // Parse the event (in production, verify signature with webhook secret)
+        // Verify Stripe webhook signature
+        let rawBody: String
+        if let bodyData = req.body.data {
+            rawBody = String(buffer: bodyData)
+        } else {
+            return Response(status: .badRequest)
+        }
+
+        if let sigHeader = req.headers.first(name: "Stripe-Signature") {
+            guard verifyStripeSignature(payload: rawBody, header: sigHeader) else {
+                req.logger.warning("Invalid Stripe webhook signature")
+                return Response(status: .unauthorized)
+            }
+        }
+
         let event: StripeWebhookEvent
         do {
-            event = try req.content.decode(StripeWebhookEvent.self)
+            event = try JSONDecoder().decode(StripeWebhookEvent.self, from: Data(rawBody.utf8))
         } catch {
             req.logger.error("Failed to parse Stripe webhook: \(error)")
             return Response(status: .badRequest)
@@ -214,6 +230,44 @@ struct StripeController: RouteCollection {
         user.subscription = "free"
         try await user.save(on: db)
         logger.info("Subscription canceled for \(user.email)")
+    }
+    // MARK: - Signature Verification
+
+    private func verifyStripeSignature(payload: String, header: String) -> Bool {
+        // Load webhook secret from config
+        let configPath = FileManager.default.homeDirectoryForCurrentUser
+            .appendingPathComponent(".fractal_brain/faye_config.json").path
+        guard let data = FileManager.default.contents(atPath: configPath),
+              let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let secret = json["stripe_webhook_secret"] as? String else {
+            return true // No secret configured — allow (development mode)
+        }
+
+        // Parse header: t=timestamp,v1=signature
+        var timestamp = ""
+        var signatures: [String] = []
+        for part in header.split(separator: ",") {
+            let kv = part.split(separator: "=", maxSplits: 1)
+            guard kv.count == 2 else { continue }
+            if kv[0] == "t" { timestamp = String(kv[1]) }
+            if kv[0] == "v1" { signatures.append(String(kv[1])) }
+        }
+
+        guard !timestamp.isEmpty, !signatures.isEmpty else { return false }
+
+        // Check timestamp tolerance (5 minutes)
+        if let ts = Double(timestamp) {
+            let age = Date().timeIntervalSince1970 - ts
+            if age > 300 { return false }
+        }
+
+        // Compute expected signature
+        let signedPayload = "\(timestamp).\(payload)"
+        let key = SymmetricKey(data: Data(secret.utf8))
+        let mac = HMAC<SHA256>.authenticationCode(for: Data(signedPayload.utf8), using: key)
+        let expectedSig = mac.map { String(format: "%02x", $0) }.joined()
+
+        return signatures.contains(expectedSig)
     }
 }
 
