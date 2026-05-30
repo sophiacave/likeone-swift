@@ -51,7 +51,7 @@ struct ServerTests {
         }
     }
 
-    @Test("API blog returns 18 posts")
+    @Test("API blog returns all posts")
     func apiBlog() async throws {
         try await withApp { app in
             try await app.test(.GET, "api/v1/blog") { res async throws in

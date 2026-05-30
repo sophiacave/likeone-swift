@@ -122,6 +122,10 @@ struct BlogController: RouteCollection {
             let path = "Public\(img)"
             return FileManager.default.fileExists(atPath: path) ? "https://likeone.ai\(img)" : nil
         }
+        let isoFormatter = DateFormatter()
+        isoFormatter.dateFormat = "yyyy-MM-dd"
+        let isoDate = isoFormatter.string(from: post.publishedAt)
+
         let context = BlogDetailContext(
             title: "\(post.title) | Like One",
             description: post.description,
@@ -137,7 +141,8 @@ struct BlogController: RouteCollection {
             canonicalUrl: canonicalUrl,
             ogImage: ogImage,
             ogType: "article",
-            ogUrl: canonicalUrl
+            ogUrl: canonicalUrl,
+            isoDate: isoDate
         )
         let view = try await req.view.render("blog-post", context)
         var headers = HTTPHeaders()
@@ -176,4 +181,5 @@ struct BlogDetailContext: Content {
     let ogImage: String?
     let ogType: String?
     let ogUrl: String?
+    let isoDate: String?
 }

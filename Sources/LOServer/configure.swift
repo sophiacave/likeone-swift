@@ -24,6 +24,9 @@ func configure(_ app: Application) async throws {
     // Leaf templates
     app.views.use(.leaf)
 
+    // Cache headers (registered before FileMiddleware so it wraps static file responses)
+    app.middleware.use(CacheMiddleware())
+
     // Serve static files from Public/
     app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
 

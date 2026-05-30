@@ -1,5 +1,29 @@
 #extend("layout"):
     #export("content"):
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "#(post.title)",
+            "description": "#(description)",
+            "author": {"@type": "Person", "name": "#(post.author)"},
+            "publisher": {"@type": "Organization", "name": "Like One", "url": "https://likeone.ai"},
+            "datePublished": "#(isoDate)",
+            "url": "#(canonicalUrl)"
+            #if(ogImage):,"image": "#(ogImage)"#endif
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://likeone.ai/"},
+                {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://likeone.ai/blog/"},
+                {"@type": "ListItem", "position": 3, "name": "#(post.title)"}
+            ]
+        }
+        </script>
         <article class="blog-article">
             <div class="reading-column">
                 <a href="/blog" class="course-back">&larr; Back to Blog</a>
