@@ -119,6 +119,13 @@ struct MagicLinkController: RouteCollection {
             isHTTPOnly: true,
             sameSite: .lax
         )
+        response.cookies["lo_authed"] = HTTPCookies.Value(
+            string: "1",
+            maxAge: 30 * 24 * 3600,
+            isSecure: true,
+            isHTTPOnly: false,
+            sameSite: .lax
+        )
         return response
     }
 }

@@ -130,6 +130,10 @@ struct AuthController: RouteCollection {
             expires: Date(timeIntervalSince1970: 0),
             isHTTPOnly: true
         )
+        response.cookies["lo_authed"] = HTTPCookies.Value(
+            string: "",
+            expires: Date(timeIntervalSince1970: 0)
+        )
         return response
     }
 

@@ -14,7 +14,7 @@
     <meta name="twitter:title" content="#(title)">
     <meta name="twitter:description" content="#(description)">
     #if(canonicalUrl):<link rel="canonical" href="#(canonicalUrl)">#endif
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css?v=231">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -47,7 +47,7 @@
                     <a class="header-site-link" href="/about">About</a>
                     <a class="header-site-link" href="/consulting">Consulting</a>
                     <a class="header-site-link" href="/search" aria-label="Search">&#x1F50D;</a>
-                    <a class="header-signin-btn" href="/signin">Sign In</a>
+                    <a class="header-signin-btn" href="/signin" id="auth-btn">Sign In</a>
                 </div>
             </nav>
         </header>
@@ -102,6 +102,12 @@
     // Set subscribe form source page
     var sp = document.querySelector('[name=sourcePage]');
     if (sp) sp.value = window.location.pathname;
+
+    // Auth state: swap Sign In → Account if authenticated
+    if (document.cookie.indexOf('lo_authed=1') !== -1) {
+        var authBtn = document.getElementById('auth-btn');
+        if (authBtn) { authBtn.href = '/account'; authBtn.textContent = 'Account'; }
+    }
 
     document.addEventListener('click', function(e) {
         if (e.target.closest('.academy-filter-btn')) {

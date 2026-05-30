@@ -87,6 +87,14 @@ struct GoogleAuthController: RouteCollection {
             isHTTPOnly: true,
             sameSite: .lax
         )
+        // Non-sensitive UI cookie for client-side auth state
+        response.cookies["lo_authed"] = HTTPCookies.Value(
+            string: "1",
+            maxAge: 30 * 24 * 3600,
+            isSecure: true,
+            isHTTPOnly: false,
+            sameSite: .lax
+        )
         try response.content.encode(["status": "ok", "redirect": "/account"])
         return response
     }
