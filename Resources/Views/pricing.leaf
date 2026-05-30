@@ -72,13 +72,13 @@
                 <!-- Trust signals -->
                 <div style="display:flex;justify-content:center;gap:32px;margin-top:32px;flex-wrap:wrap;">
                     <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text-muted);">
-                        <span style="color:var(--green,#34d399);">&#x2714;</span> 501(c)(3) foundation
-                    </div>
-                    <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text-muted);">
                         <span style="color:var(--green,#34d399);">&#x2714;</span> Secure checkout via Stripe
                     </div>
                     <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text-muted);">
                         <span style="color:var(--green,#34d399);">&#x2714;</span> Cancel anytime, no questions
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text-muted);">
+                        <span style="color:var(--green,#34d399);">&#x2714;</span> 1% funds HIV cure research
                     </div>
                 </div>
             </div>
@@ -114,15 +114,19 @@
                 <div class="pricing-faq">
                     <div class="pricing-faq-item">
                         <h3 class="pricing-faq-q">Can I try before I pay?</h3>
-                        <p class="pricing-faq-a">Yes. The first 3 lessons of every course are free &mdash; no account needed. Try any course, see if it clicks, then upgrade when you're ready for full access.</p>
+                        <p class="pricing-faq-a">Yes. The first 3 lessons of every course are free &mdash; no account needed. Try any course, see if it clicks, then upgrade when you're ready.</p>
                     </div>
                     <div class="pricing-faq-item">
                         <h3 class="pricing-faq-q">What if I cancel?</h3>
-                        <p class="pricing-faq-a">Cancel in one click from your account page. You keep access until your billing period ends, and any certificates you've earned are yours forever.</p>
+                        <p class="pricing-faq-a">Cancel in one click from your account page. You keep access until your billing period ends, and certificates you've earned are yours forever.</p>
                     </div>
                     <div class="pricing-faq-item">
-                        <h3 class="pricing-faq-q">Is this a real nonprofit?</h3>
-                        <p class="pricing-faq-a">The Like One Foundation is a registered 501(c)(3). A percentage of every Pro subscription goes directly to HIV cure research at UCSF and building accessibility tools.</p>
+                        <h3 class="pricing-faq-q">Where does my subscription go?</h3>
+                        <p class="pricing-faq-a">Three places: keeping the Academy running, building the courses, and funding HIV cure research at UCSF through the Like One Foundation. 1% of revenue goes directly to research.</p>
+                    </div>
+                    <div class="pricing-faq-item">
+                        <h3 class="pricing-faq-q">How is this different from free AI tutorials?</h3>
+                        <p class="pricing-faq-a">Structure. Our 52 courses build on each other &mdash; from basics to autonomous agents. Every lesson has quizzes, flashcards, and visual aids. Pro adds verified certificates you can share on LinkedIn.</p>
                     </div>
                 </div>
             </div>
