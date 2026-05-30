@@ -70,15 +70,7 @@
                             var pct = Math.round((totalDone / totalLessons) * 100);
                             var fill = card.querySelector('.track-card-bar-fill');
                             if (fill) fill.style.width = pct + '%';
-                            // Add progress text
-                            var meta = card.querySelector('.track-card-meta');
-                            if (meta) {
-                                var span = document.createElement('span');
-                                span.style.color = 'var(--purple-400)';
-                                span.style.fontWeight = '600';
-                                span.textContent = pct + '% complete';
-                                meta.appendChild(span);
-                            }
+                            // Progress bar is sufficient — no text needed
                         }
                     });
                 }).catch(function() {});
