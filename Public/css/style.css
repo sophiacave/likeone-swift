@@ -321,11 +321,12 @@ a:focus-visible, button:focus-visible {
     font-weight: 600;
     text-decoration: none;
     transition: transform 0.2s, box-shadow 0.2s;
-    margin-bottom: 12px;
-    min-height: 52px;
+    margin-bottom: 16px;
+    min-height: 56px;
     font-family: inherit;
     cursor: pointer;
     border: none;
+    box-sizing: border-box;
 }
 .signin-btn:hover {
     transform: translateY(-2px);
@@ -344,16 +345,57 @@ a:focus-visible, button:focus-visible {
     color: var(--text-primary);
     border: 1px solid var(--border);
 }
-.signin-google-wrap {
+.signin-email {
+    background: var(--purple-400);
+    color: #fff;
+}
+.signin-email:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+    transform: none;
+}
+.signin-email-form {
     display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+.signin-email-input {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color .2s;
+    box-sizing: border-box;
+    min-height: 52px;
+}
+.signin-email-input:focus {
+    border-color: var(--purple-400);
+}
+.signin-email-input::placeholder {
+    color: var(--text-muted);
+}
+.signin-email-status {
+    margin-top: 12px;
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    font-size: .85rem;
+}
+.signin-email-sent {
+    background: rgba(52, 211, 153, .1);
+    border: 1px solid rgba(52, 211, 153, .3);
+    color: #34d399;
 }
 .signin-divider {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin: 20px 0;
+    margin: 28px 0;
     color: var(--text-muted);
     font-size: .8rem;
 }
