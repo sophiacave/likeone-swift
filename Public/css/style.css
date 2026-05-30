@@ -1995,6 +1995,29 @@ a:focus-visible, button:focus-visible {
     color: var(--green, #34d399);
     font-weight: 600;
 }
+.pricing-card-pro {
+    border-color: var(--purple-400);
+    box-shadow: 0 0 60px rgba(168, 85, 247, .12);
+    transform: scale(1.02);
+}
+.pricing-badge-pro {
+    color: var(--purple-400);
+    background: rgba(192, 132, 252, .1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+}
+.pricing-card-annual {
+    border-color: rgba(212, 165, 116, .4);
+    box-shadow: 0 0 40px rgba(212, 165, 116, .08);
+}
+.pricing-badge-save {
+    color: #d4a574;
+    background: rgba(212, 165, 116, .1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+}
 .pricing-card-coming {
     opacity: .65;
 }

@@ -12,7 +12,14 @@
                     <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;">
                         <span class="account-badge">#(subscription)</span>
                     </div>
-                    <a href="/auth/logout" class="site-btn-secondary" style="display: inline-block;">Sign Out</a>
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        #if(subscription == "pro" || subscription == "founding"):
+                            <a href="/billing" class="site-btn-primary" style="display: inline-block;">Manage Billing</a>
+                        #else:
+                            <a href="/pricing" class="site-btn-primary" style="display: inline-block;">Upgrade to Pro</a>
+                        #endif
+                        <a href="/auth/logout" class="site-btn-secondary" style="display: inline-block;">Sign Out</a>
+                    </div>
                 </div>
 
                 <!-- Certificates -->

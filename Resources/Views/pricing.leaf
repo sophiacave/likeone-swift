@@ -4,22 +4,22 @@
             <div class="site-container text-center">
                 <span class="site-section-tag">PRICING</span>
                 <h1 class="page-hero-title">Free. Not freemium.<br><span class="accent-gradient">Actually free.</span></h1>
-                <p class="page-hero-desc">Every course. Every lesson. Every quiz. No credit card. No trial period. No "upgrade to unlock." Just learn.</p>
+                <p class="page-hero-desc">Every course. Every lesson. Every quiz. No credit card. No trial. Pro unlocks certificates and downloads.</p>
             </div>
         </section>
 
         <section class="site-section">
-            <div class="site-container" style="max-width:900px;">
+            <div class="site-container" style="max-width:1000px;">
                 <div class="pricing-grid">
                     <div class="pricing-card pricing-card-free">
-                        <div class="pricing-badge">CURRENT</div>
+                        <div class="pricing-badge">FREE FOREVER</div>
                         <h2 class="pricing-plan-name">Academy</h2>
                         <div class="pricing-price">$0</div>
                         <div class="pricing-period">forever</div>
                         <ul class="pricing-features">
                             <li>52 courses across 7 levels</li>
                             <li>521 hands-on lessons</li>
-                            <li>Interactive quizzes with visual aids</li>
+                            <li>Interactive quizzes &amp; visual aids</li>
                             <li>Flashcard study mode</li>
                             <li>Progress tracking</li>
                             <li>Full-text search</li>
@@ -28,34 +28,44 @@
                         <a class="site-btn-primary" href="/academy" style="width:100%;text-align:center;">Start Learning</a>
                     </div>
 
-                    <div class="pricing-card pricing-card-coming">
-                        <div class="pricing-badge pricing-badge-soon">COMING SOON</div>
-                        <h2 class="pricing-plan-name">Certificate</h2>
-                        <div class="pricing-price">TBD</div>
-                        <div class="pricing-period">per certificate</div>
-                        <ul class="pricing-features">
-                            <li>Everything in Academy</li>
-                            <li>Verified completion certificate</li>
-                            <li>Shareable credential link</li>
-                            <li>PDF download</li>
-                            <li>LinkedIn-ready badge</li>
-                        </ul>
-                        <div class="pricing-coming-label">Notify Me</div>
-                    </div>
-
-                    <div class="pricing-card pricing-card-coming">
-                        <div class="pricing-badge pricing-badge-soon">COMING SOON</div>
-                        <h2 class="pricing-plan-name">Pro Tools</h2>
-                        <div class="pricing-price">TBD</div>
+                    <div class="pricing-card pricing-card-pro">
+                        <div class="pricing-badge pricing-badge-pro">MOST POPULAR</div>
+                        <h2 class="pricing-plan-name">Academy Pro</h2>
+                        <div class="pricing-price">$19</div>
                         <div class="pricing-period">per month</div>
                         <ul class="pricing-features">
                             <li>Everything in Academy</li>
-                            <li>AI Resume Builder</li>
-                            <li>Interview Buddy</li>
-                            <li>Job Application Tracker</li>
+                            <li>Verified completion certificates</li>
+                            <li>PDF certificate downloads</li>
+                            <li>LinkedIn-ready credentials</li>
+                            <li>Learning track certificates</li>
                             <li>Priority support</li>
+                            <li>Cancel anytime</li>
                         </ul>
-                        <div class="pricing-coming-label">Notify Me</div>
+                        <form method="POST" action="/checkout">
+                            <input type="hidden" name="plan" value="academy-pro-monthly">
+                            <button type="submit" class="site-btn-primary" style="width:100%;border:none;cursor:pointer;">Subscribe Monthly</button>
+                        </form>
+                    </div>
+
+                    <div class="pricing-card pricing-card-annual">
+                        <div class="pricing-badge pricing-badge-save">SAVE 35%</div>
+                        <h2 class="pricing-plan-name">Academy Pro</h2>
+                        <div class="pricing-price">$149</div>
+                        <div class="pricing-period">per year</div>
+                        <ul class="pricing-features">
+                            <li>Everything in Pro</li>
+                            <li>Save $79 vs monthly</li>
+                            <li>Founding member badge</li>
+                            <li>Early access to new courses</li>
+                            <li>Direct support from founder</li>
+                            <li>All future features included</li>
+                            <li>Lock in this price forever</li>
+                        </ul>
+                        <form method="POST" action="/checkout">
+                            <input type="hidden" name="plan" value="academy-pro-annual">
+                            <button type="submit" class="site-btn-primary" style="width:100%;border:none;cursor:pointer;">Subscribe Annually</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -71,15 +81,15 @@
                     </div>
                     <div class="pricing-faq-item">
                         <h3 class="pricing-faq-q">Will the free courses ever go behind a paywall?</h3>
-                        <p class="pricing-faq-a">No. The Academy will always be free. Future paid products (certificates, tools) will fund the free education, not replace it.</p>
+                        <p class="pricing-faq-a">No. The Academy will always be free. Pro subscriptions fund the free education and unlock certificates as proof of your learning.</p>
                     </div>
                     <div class="pricing-faq-item">
                         <h3 class="pricing-faq-q">Where does the money go?</h3>
-                        <p class="pricing-faq-a">Revenue from future paid products funds three things: keeping the Academy free, building accessibility tools, and donating to HIV cure research at UCSF.</p>
+                        <p class="pricing-faq-a">Revenue from Pro subscriptions funds three things: keeping the Academy free, building accessibility tools for disabled communities, and donating to HIV cure research at UCSF.</p>
                     </div>
                     <div class="pricing-faq-item">
-                        <h3 class="pricing-faq-q">Do I need an account?</h3>
-                        <p class="pricing-faq-a">Not to learn. Your progress is tracked locally in your browser. Accounts will be needed for certificates and pro tools when they launch.</p>
+                        <h3 class="pricing-faq-q">Can I try Pro before subscribing?</h3>
+                        <p class="pricing-faq-a">You can take every course for free right now. Pro adds verified certificates when you complete courses. If you learn here, we think you'll want the proof.</p>
                     </div>
                 </div>
             </div>
