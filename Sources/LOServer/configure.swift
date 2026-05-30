@@ -17,6 +17,7 @@ func configure(_ app: Application) async throws {
     app.migrations.add(CreateUsers())
     app.migrations.add(CreateSessions())
     app.migrations.add(CreateProgress())
+    app.migrations.add(CreateCertificates())
     try await app.autoMigrate()
 
     // Leaf templates
