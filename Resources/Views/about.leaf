@@ -4,7 +4,7 @@
             <div class="site-container">
                 <span class="site-section-tag">ABOUT</span>
                 <h1 class="page-hero-title">We believe AI should be<br><span class="accent-gradient">for everyone.</span></h1>
-                <p class="page-hero-desc">Like One is a 501(c)(3) nonprofit on a mission to make AI education free, accessible, and actually useful.</p>
+                <p class="page-hero-desc">Like One builds AI education and tools. The Like One Foundation, our 501(c)(3) nonprofit, funds HIV cure research and accessibility.</p>
             </div>
         </section>
 
@@ -62,7 +62,7 @@
                     <div class="about-stats-grid">
                         <div class="about-stat">
                             <div class="about-stat-num">52</div>
-                            <div class="about-stat-label">Free Courses</div>
+                            <div class="about-stat-label">Courses</div>
                         </div>
                         <div class="about-stat">
                             <div class="about-stat-num">520+</div>

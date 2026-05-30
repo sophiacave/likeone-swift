@@ -14,7 +14,7 @@ struct PagesController: RouteCollection {
         let context = PageContext(
             title: "About | Like One",
             heading: "About",
-            description: "Like One is a 501(c)(3) nonprofit making AI education free and accessible to everyone. Founded by Sophia Cave.",
+            description: "Like One builds AI education and tools. The Like One Foundation is a 501(c)(3) nonprofit funding HIV cure research. Founded by Sophia Cave.",
             path: "/about"
         )
         return try await req.view.render("about", context)

@@ -34,12 +34,12 @@
                         <div class="pricing-price">$19</div>
                         <div class="pricing-period">per month</div>
                         <ul class="pricing-features">
-                            <li>Everything in Academy</li>
-                            <li>Verified completion certificates</li>
-                            <li>PDF certificate downloads</li>
-                            <li>LinkedIn-ready credentials</li>
-                            <li>Learning track certificates</li>
-                            <li>Sharable verification pages</li>
+                            <li>Full access to all 520+ lessons</li>
+                            <li>52 complete courses, beginner to advanced</li>
+                            <li>Verified certificates on completion</li>
+                            <li>PDF downloads &amp; LinkedIn sharing</li>
+                            <li>Learning track certifications</li>
+                            <li>Fund free education &amp; HIV research</li>
                             <li>Cancel anytime</li>
                         </ul>
                         <form method="POST" action="/checkout">
@@ -72,7 +72,7 @@
                 <!-- Trust signals -->
                 <div style="display:flex;justify-content:center;gap:32px;margin-top:32px;flex-wrap:wrap;">
                     <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text-muted);">
-                        <span style="color:var(--green,#34d399);">&#x2714;</span> 501(c)(3) nonprofit
+                        <span style="color:var(--green,#34d399);">&#x2714;</span> 501(c)(3) foundation
                     </div>
                     <div style="display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--text-muted);">
                         <span style="color:var(--green,#34d399);">&#x2714;</span> Secure checkout via Stripe
@@ -110,7 +110,7 @@
                 <div class="pricing-faq">
                     <div class="pricing-faq-item">
                         <h3 class="pricing-faq-q">What's free vs Pro?</h3>
-                        <p class="pricing-faq-a">The first 3 lessons of every course are free &mdash; no account needed. Pro unlocks all 520+ lessons plus verified certificates. Like One is a 501(c)(3) nonprofit. Pro subscriptions fund keeping the Academy accessible.</p>
+                        <p class="pricing-faq-a">The first 3 lessons of every course are free &mdash; no account needed. Pro unlocks all 520+ lessons plus verified certificates. The Like One Foundation is a 501(c)(3) nonprofit. Pro subscriptions fund the Academy and HIV cure research.</p>
                     </div>
                     <div class="pricing-faq-item">
                         <h3 class="pricing-faq-q">What exactly does Pro add?</h3>

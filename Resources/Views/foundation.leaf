@@ -14,8 +14,8 @@
                     <span class="site-section-tag">WHY</span>
                     <h2 class="site-section-title" style="text-align:left;">Because capitalism forgot most people.</h2>
                     <p class="about-text">38 million people live with HIV worldwide. Antiretroviral therapy keeps them alive, but it's not a cure. The research to find one is underfunded because the market says lifelong medication is more profitable than ending a disease.</p>
-                    <p class="about-text">Like One exists to change that math. Every dollar we earn accelerates two things: free AI education that makes people economically sovereign, and direct funding for HIV cure research.</p>
-                    <p class="about-text">We're not a tech company that donates on the side. Giving is baked into our architecture.</p>
+                    <p class="about-text">Like One LLC builds the products and education. The Like One Foundation, a separate 501(c)(3) nonprofit, channels a percentage of that revenue directly into HIV cure research and accessibility tools.</p>
+                    <p class="about-text">Giving isn't a side project. It's baked into the architecture from day one.</p>
                 </div>
 
                 <div class="foundation-model" style="margin-top:64px;">
@@ -66,12 +66,12 @@
                             <span class="foundation-ledger-value">Monthly Recurring</span>
                         </div>
                         <div class="foundation-ledger-row">
-                            <span class="foundation-ledger-label">Total Donated</span>
-                            <span class="foundation-ledger-value" style="color:var(--purple-400);font-weight:700;">$20.00</span>
+                            <span class="foundation-ledger-label">Giving Rate</span>
+                            <span class="foundation-ledger-value" style="color:var(--purple-400);font-weight:700;">1% of revenue</span>
                         </div>
                         <div class="foundation-ledger-row">
                             <span class="foundation-ledger-label">Current Phase</span>
-                            <span class="foundation-ledger-value">Seed (1% of revenue)</span>
+                            <span class="foundation-ledger-value">Seed &mdash; scaling to 50% at convergence</span>
                         </div>
                     </div>
                     <p class="about-text" style="margin-top:20px;font-size:.875rem;color:var(--text-muted);">Updated monthly. All donations are tax-deductible. Like One Foundation Inc. is a registered 501(c)(3) nonprofit organization.</p>
