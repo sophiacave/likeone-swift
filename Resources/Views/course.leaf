@@ -30,12 +30,15 @@
                                 <span class="lesson-title">#(lesson.title)</span>
                             </div>
                             <div class="lesson-row-right">
-                                <span class="lesson-badge #if(lesson.isFree):lesson-free#else:lesson-pro#endif">
-                                    #if(lesson.isFree):Free#else:Pro#endif
-                                </span>
                                 #if(lesson.isFree):
+                                    #if(isPro):
+                                        <span class="lesson-badge lesson-free" style="background:rgba(52,211,153,.1);color:#34d399;">Unlocked</span>
+                                    #else:
+                                        <span class="lesson-badge lesson-free">Free</span>
+                                    #endif
                                     <span class="lesson-arrow">&rarr;</span>
                                 #else:
+                                    <span class="lesson-badge lesson-pro">Pro</span>
                                     <span class="lesson-lock">&#x1F512;</span>
                                 #endif
                             </div>

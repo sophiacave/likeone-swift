@@ -10,8 +10,10 @@ struct AcademyController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         let academy = routes.grouped("academy")
         academy.get(use: index)
-        academy.get(":slug", use: courseDetail)
-        academy.get(":slug", ":lessonSlug", use: lessonPage)
+        // Course detail and lessons use optional auth for Pro gating
+        let authAcademy = academy.grouped(OptionalAuthMiddleware())
+        authAcademy.get(":slug", use: courseDetail)
+        authAcademy.get(":slug", ":lessonSlug", use: lessonPage)
         academy.get("filter", use: filterCourses)
     }
 
@@ -49,6 +51,11 @@ struct AcademyController: RouteCollection {
             throw Abort(.notFound, reason: "Course not found")
         }
 
+        var isPro = false
+        if let user = req.authenticatedUser {
+            isPro = user.subscription == "pro" || user.subscription == "founding"
+        }
+
         let courseLessons = lessons.lessons(forCourse: slug)
 
         let context = CourseDetailContext(
@@ -58,9 +65,10 @@ struct AcademyController: RouteCollection {
                 slug: $0.slug,
                 title: $0.title,
                 order: $0.order,
-                isFree: $0.isFree,
+                isFree: isPro || $0.order <= 3,
                 courseSlug: slug
-            )}
+            )},
+            isPro: isPro
         )
         return try await req.view.render("course", context)
     }
@@ -79,9 +87,21 @@ struct AcademyController: RouteCollection {
         let prevLesson = currentIndex > 0 ? courseLessons[currentIndex - 1] : nil
         let nextLesson = currentIndex < courseLessons.count - 1 ? courseLessons[currentIndex + 1] : nil
 
-        // Read lesson HTML from filesystem
-        let contentPath = req.application.directory.resourcesDirectory + "Content/lessons/\(courseSlug)/\(lessonSlug).html"
-        let content = (try? String(contentsOfFile: contentPath, encoding: .utf8)) ?? "<p>Lesson content coming soon.</p>"
+        // Gate: first 3 lessons are free, rest require Pro
+        let isFreeLesson = lesson.order <= 3
+        var isPro = false
+        if let user = req.authenticatedUser {
+            isPro = user.subscription == "pro" || user.subscription == "founding"
+        }
+
+        let content: String
+        if isFreeLesson || isPro {
+            let contentPath = req.application.directory.resourcesDirectory + "Content/lessons/\(courseSlug)/\(lessonSlug).html"
+            content = (try? String(contentsOfFile: contentPath, encoding: .utf8)) ?? "<p>Lesson content coming soon.</p>"
+        } else {
+            // Paywall content
+            content = ""
+        }
 
         let context = LessonPageContext(
             title: "\(lesson.title) | \(course.title) | Like One Academy",
@@ -96,7 +116,8 @@ struct AcademyController: RouteCollection {
             prevSlug: prevLesson?.slug,
             prevTitle: prevLesson?.title,
             nextSlug: nextLesson?.slug,
-            nextTitle: nextLesson?.title
+            nextTitle: nextLesson?.title,
+            isLocked: !isFreeLesson && !isPro
         )
         return try await req.view.render("lesson", context)
     }
@@ -164,6 +185,7 @@ struct CourseDetailContext: Content {
     let title: String
     let course: CourseCard
     let lessons: [LessonItem]
+    let isPro: Bool
 }
 
 struct LessonItem: Content {
@@ -192,4 +214,5 @@ struct LessonPageContext: Content {
     let prevTitle: String?
     let nextSlug: String?
     let nextTitle: String?
+    let isLocked: Bool
 }
