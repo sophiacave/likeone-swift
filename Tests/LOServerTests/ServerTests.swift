@@ -166,6 +166,26 @@ struct ServerTests {
             }
         }
     }
+
+    @Test("Tracks page returns 200")
+    func tracksPage() async throws {
+        try await withApp { app in
+            try await app.test(.GET, "tracks") { res async in
+                #expect(res.status == .ok)
+                #expect(res.body.string.contains("Learning Tracks"))
+            }
+        }
+    }
+
+    @Test("Track detail page returns 200")
+    func trackDetailPage() async throws {
+        try await withApp { app in
+            try await app.test(.GET, "tracks/ai-foundations-path") { res async in
+                #expect(res.status == .ok)
+                #expect(res.body.string.contains("AI Foundations Path"))
+            }
+        }
+    }
 }
 
 // Decodable structs for testing

@@ -160,4 +160,20 @@ struct ContentTests {
                     "Lessons not sorted: \(lessons[i-1].title) before \(lessons[i].title)")
         }
     }
+
+    @Test("TrackProvider loads 6 learning tracks")
+    func trackCount() {
+        let provider = TrackProvider()
+        let tracks = provider.allTracks()
+        #expect(tracks.count == 6, "Expected 6 tracks, got \(tracks.count)")
+    }
+
+    @Test("Track lookup by slug works")
+    func trackBySlug() {
+        let provider = TrackProvider()
+        let track = provider.track(bySlug: "agent-architect")
+        #expect(track != nil)
+        #expect(track?.title == "Agent Architect")
+        #expect(track?.courses.count == 3)
+    }
 }
