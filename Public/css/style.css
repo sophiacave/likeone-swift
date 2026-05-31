@@ -2028,6 +2028,13 @@ a:focus-visible, button:focus-visible {
   .article-content pre { padding: 14px; font-size: 0.8rem; }
   .article-content pre code { font-size: 0.8rem; }
 
+  /* Inline code/prompt blocks: wrap text instead of horizontal scroll on mobile */
+  [style*="overflow-x:auto"], [style*="overflow-x: auto"] {
+    overflow-x: visible !important;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
   /* Lesson visuals: let SVGs scale fully */
   .lesson-visual { padding: 10px; }
   .quiz-visual { padding: 8px; }
