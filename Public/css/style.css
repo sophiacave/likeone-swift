@@ -1943,7 +1943,7 @@ a:focus-visible, button:focus-visible {
 .lo-versus__side--before { background: var(--vis-red-bg); border: 1px solid var(--vis-red-border); }
 .lo-versus__side--after  { background: var(--vis-green-bg); border: 1px solid var(--vis-green-border); }
 .lo-versus__tag {
-  display: inline-block; font-size: .65rem; font-weight: 700; letter-spacing: .08em;
+  display: inline-block; font-size: .75rem; font-weight: 700; letter-spacing: .08em;
   text-transform: uppercase; padding: 3px 10px; border-radius: 6px; margin-bottom: var(--sp-4);
 }
 .lo-versus__side--before .lo-versus__tag { color: var(--vis-red); background: rgba(252,165,165,.1); }
@@ -1979,7 +1979,7 @@ a:focus-visible, button:focus-visible {
 .lo-calc__row--blue   { background: var(--vis-blue-bg);   border: 1px solid var(--vis-blue-border); }
 .lo-calc__val { font-weight: 700; }
 .lo-calc__op  { color: var(--vis-tertiary); font-size: .75rem; }
-.lo-calc__sub { font-size: .65rem; color: var(--vis-tertiary); }
+.lo-calc__sub { font-size: .75rem; color: var(--vis-tertiary); }
 .lo-calc__total {
   margin-top: var(--sp-3); padding: var(--sp-3); border-radius: var(--r-sm);
   text-align: center; font-family: var(--vis-mono); font-size: 1.1rem; font-weight: 800;
@@ -2284,7 +2284,7 @@ a:focus-visible, button:focus-visible {
     box-shadow: 0 0 40px rgba(168, 85, 247, .08);
 }
 .pricing-badge {
-    font-size: .65rem;
+    font-size: .75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .1em;
@@ -2485,7 +2485,7 @@ a:focus-visible, button:focus-visible {
 }
 .track-card-emoji { font-size: 2rem; }
 .track-card-difficulty {
-    font-size: .65rem;
+    font-size: .75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .08em;
@@ -2559,7 +2559,7 @@ a:focus-visible, button:focus-visible {
     align-items: center;
 }
 .track-detail-badge {
-    font-size: .65rem;
+    font-size: .75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .08em;
@@ -2768,7 +2768,7 @@ a:focus-visible, button:focus-visible {
     text-align: right;
 }
 .cert-id {
-    font-size: .65rem;
+    font-size: .75rem;
     color: var(--text-muted);
     font-family: 'SF Mono', 'JetBrains Mono', monospace;
     margin-bottom: 4px;
@@ -2867,7 +2867,7 @@ a:focus-visible, button:focus-visible {
 }
 .account-cert-row:hover { border-color: var(--purple-400); }
 .account-cert-type {
-    font-size: .65rem;
+    font-size: .75rem;
     text-transform: uppercase;
     letter-spacing: .08em;
     color: var(--purple-400);
