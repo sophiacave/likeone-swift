@@ -55,7 +55,10 @@ a:focus-visible, button:focus-visible {
     left: 16px;
     background: var(--purple-500);
     color: white;
-    padding: 8px 16px;
+    padding: 10px 16px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
     border-radius: var(--radius);
     z-index: 100;
     transition: top 0.2s;
@@ -89,6 +92,9 @@ a:focus-visible, button:focus-visible {
     color: var(--text-primary);
     text-decoration: none;
     letter-spacing: -0.025em;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
 }
 .accent { color: var(--purple-400); }
 .accent-gradient {
@@ -105,13 +111,19 @@ a:focus-visible, button:focus-visible {
     color: var(--text-primary);
     font-size: 1.5rem;
     cursor: pointer;
-    padding: 4px 8px;
+    padding: 8px 12px;
+    min-width: 44px;
+    min-height: 44px;
 }
 .header-site-link {
     color: var(--text-secondary);
     text-decoration: none;
     font-size: 0.9rem;
     transition: color 0.2s;
+    padding: 10px 4px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
 }
 .header-site-link:hover { color: var(--text-primary); }
 .header-signin-btn {
@@ -119,7 +131,10 @@ a:focus-visible, button:focus-visible {
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 500;
-    padding: 7px 18px;
+    padding: 10px 18px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
     background: rgba(255, 255, 255, 0.08);
     border: none;
     border-radius: 980px;
@@ -152,7 +167,10 @@ a:focus-visible, button:focus-visible {
 }
 .site-cta-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 .site-btn-primary {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
     padding: 12px 28px;
     background: linear-gradient(135deg, var(--purple-500), var(--purple-600));
     color: white;
@@ -170,7 +188,10 @@ a:focus-visible, button:focus-visible {
 }
 .site-btn-primary:active { transform: scale(0.98); }
 .site-btn-secondary {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
     padding: 12px 28px;
     background: transparent;
     color: var(--text-secondary);
@@ -212,7 +233,7 @@ a:focus-visible, button:focus-visible {
     line-height: 1.2;
 }
 .site-stat-label {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -283,6 +304,120 @@ a:focus-visible, button:focus-visible {
     line-height: 1.5;
 }
 
+/* Homepage — Tier Grid */
+.homepage-tier-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.homepage-tier-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 32px 24px;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+}
+.homepage-tier-card:hover { transform: translateY(-2px); border-color: var(--purple-500); }
+.homepage-tier-emoji { font-size: 2.5rem; margin-bottom: 12px; }
+.homepage-tier-name { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+.homepage-tier-count { font-size: 2rem; font-weight: 800; color: var(--purple-400); margin-bottom: 8px; }
+.homepage-tier-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+.homepage-tier-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
+
+/* Homepage — Steps Grid */
+.homepage-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.homepage-step { text-align: center; padding: 24px; }
+.homepage-step-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px; font-size: 1.4rem;
+}
+.homepage-step-icon--learn { background: rgba(52, 211, 153, 0.1); }
+.homepage-step-icon--study { background: rgba(168, 85, 247, 0.1); }
+.homepage-step-icon--prove { background: rgba(251, 146, 60, 0.1); }
+.homepage-step-title { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
+.homepage-step-desc { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.55; }
+
+/* Homepage — Blog Grid */
+.homepage-blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+}
+.homepage-blog-card {
+    display: block;
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s, border-color 0.3s;
+}
+.homepage-blog-card:hover { transform: translateY(-2px); border-color: var(--purple-500); }
+.homepage-blog-date { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; }
+.homepage-blog-title { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; line-height: 1.3; }
+.homepage-blog-desc {
+    font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+/* Homepage — Final CTA */
+.homepage-final-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+.homepage-final-desc {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 480px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+}
+
+/* Homepage — Card tier label */
+.site-card-tier {
+    font-size: 0.75rem;
+    color: var(--purple-400);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+.site-card-tier-wrap {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+}
+.homepage-cta-wrap { margin-top: 32px; }
+
+/* Homepage responsive — mobile-first collapse */
+@media (max-width: 768px) {
+    .homepage-tier-grid { grid-template-columns: 1fr; gap: 16px; }
+    .homepage-steps-grid { grid-template-columns: 1fr; gap: 16px; }
+    .homepage-blog-grid { grid-template-columns: 1fr; gap: 12px; }
+    .homepage-tier-card { padding: 24px 20px; }
+    .homepage-step { padding: 16px; }
+    .site-section { padding: 60px 16px; }
+    .site-section-alt { padding: 60px 16px; }
+}
+
 /* API status */
 .api-status {
     margin-top: 24px;
@@ -319,7 +454,9 @@ a:focus-visible, button:focus-visible {
     margin-bottom: 12px;
 }
 .footer-link {
-    display: block;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
     font-size: .85rem;
     color: var(--text-muted);
     text-decoration: none;
@@ -339,8 +476,9 @@ a:focus-visible, button:focus-visible {
 }
 .footer-subscribe-input {
     flex: 1;
-    padding: 8px 12px;
-    font-size: .8rem;
+    padding: 10px 12px;
+    min-height: 44px;
+    font-size: .85rem;
     background: var(--bg-dark);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -350,7 +488,8 @@ a:focus-visible, button:focus-visible {
 .footer-subscribe-input:focus { border-color: var(--purple-400); }
 .footer-subscribe-input::placeholder { color: var(--text-muted); }
 .footer-subscribe-btn {
-    padding: 8px 14px;
+    padding: 10px 14px;
+    min-height: 44px;
     font-size: .75rem;
     font-weight: 600;
     background: var(--purple-400);
@@ -375,9 +514,9 @@ a:focus-visible, button:focus-visible {
     font-size: .75rem;
     color: var(--text-muted);
 }
-.footer-bottom a { color: var(--text-muted); text-decoration: none; }
+.footer-bottom a { color: var(--text-muted); text-decoration: none; padding: 10px 0; min-height: 44px; display: inline-flex; align-items: center; }
 .footer-bottom a:hover { color: var(--purple-400); }
-.footer-bottom-links { display: flex; gap: 16px; }
+.footer-bottom-links { display: flex; gap: 16px; align-items: center; }
 @media (max-width: 768px) {
     .footer-grid { grid-template-columns: repeat(2, 1fr); }
     .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
@@ -507,7 +646,7 @@ a:focus-visible, button:focus-visible {
 }
 .academy-tag {
     display: inline-block;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.15em;
     color: var(--purple-400);
@@ -547,7 +686,7 @@ a:focus-visible, button:focus-visible {
     line-height: 1.2;
 }
 .academy-stat-label {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -662,7 +801,7 @@ a:focus-visible, button:focus-visible {
 }
 .course-card-level {
     display: inline-block;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.05em;
     color: var(--purple-400);
@@ -699,7 +838,7 @@ a:focus-visible, button:focus-visible {
     color: var(--text-muted);
 }
 .course-card-tier {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
     text-transform: capitalize;
     padding: 2px 10px;
@@ -820,8 +959,8 @@ a:focus-visible, button:focus-visible {
     margin-bottom: 12px;
 }
 .blog-card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-.blog-tag {
-    font-size: 0.7rem;
+.blog-tag, .academy-tag {
+    font-size: 0.75rem;
     color: var(--text-muted);
     padding: 3px 10px;
     background: rgba(255, 255, 255, 0.04);
@@ -1022,7 +1161,7 @@ a:focus-visible, button:focus-visible {
     transition: transform 0.3s var(--ease-out);
 }
 .lesson-row:hover .lesson-arrow { transform: translateX(3px); color: var(--purple-400); }
-.lesson-lock { font-size: 0.7rem; opacity: 0.5; }
+.lesson-lock { font-size: 0.75rem; opacity: 0.5; }
 
 /* Lesson Page */
 .lesson-topbar {
@@ -1088,7 +1227,7 @@ a:focus-visible, button:focus-visible {
 }
 .lesson-content .section-label {
     display: inline-block;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.08em;
     color: var(--purple-400);
@@ -1188,7 +1327,7 @@ a:focus-visible, button:focus-visible {
     transition: width 0.5s var(--ease-out);
 }
 .course-progress-text {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
     margin-top: 4px;
 }
@@ -1483,7 +1622,7 @@ a:focus-visible, button:focus-visible {
     color: var(--text-secondary);
     transition: border-color 0.3s var(--ease-out);
 }
-.quiz-score-label { font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.7rem; }
+.quiz-score-label { font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.75rem; }
 .quiz-score-correct { color: #34d399; font-weight: 700; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
 .quiz-score-wrong { color: #f87171; font-weight: 700; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
 .quiz-score-divider { color: var(--border); }
@@ -1719,7 +1858,7 @@ a:focus-visible, button:focus-visible {
 }
 .lo-vis * { box-sizing: border-box; }
 .lo-vis__title {
-  font-size: .7rem; font-weight: 600; color: var(--vis-tertiary);
+  font-size: .75rem; font-weight: 600; color: var(--vis-tertiary);
   letter-spacing: .1em; text-transform: uppercase; text-align: center;
   margin-bottom: var(--sp-6);
 }
@@ -1743,7 +1882,7 @@ a:focus-visible, button:focus-visible {
   text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--sp-2);
 }
 .lo-step__num {
-  font-family: var(--vis-mono); font-size: .7rem; font-weight: 600;
+  font-family: var(--vis-mono); font-size: .75rem; font-weight: 600;
   letter-spacing: .08em; padding: 2px 10px; border-radius: 100px;
   border: 1.5px solid currentColor; opacity: .6;
 }
@@ -1790,7 +1929,7 @@ a:focus-visible, button:focus-visible {
   border-radius: var(--r-md); padding: var(--sp-6) var(--sp-4);
 }
 .lo-calc__heading {
-  font-size: .7rem; font-weight: 600; color: var(--vis-tertiary);
+  font-size: .75rem; font-weight: 600; color: var(--vis-tertiary);
   letter-spacing: .08em; text-transform: uppercase; text-align: center;
   margin-bottom: var(--sp-4);
 }
@@ -1823,7 +1962,7 @@ a:focus-visible, button:focus-visible {
 }
 .lo-visual * { box-sizing: border-box; }
 .lo-visual__title {
-  font-size: .7rem; font-weight: 600; color: #8b8b95;
+  font-size: .75rem; font-weight: 600; color: #8b8b95;
   letter-spacing: .1em; text-transform: uppercase; text-align: center; margin-bottom: 24px;
 }
 .lo-visual__caption {
@@ -1872,7 +2011,7 @@ a:focus-visible, button:focus-visible {
 }
 .lo-interactive__title {
   font-family: 'SF Mono','JetBrains Mono',monospace;
-  font-size: .7rem;
+  font-size: .75rem;
   font-weight: 700;
   color: #c084fc;
   text-transform: uppercase;
@@ -2229,7 +2368,7 @@ a:focus-visible, button:focus-visible {
     box-shadow: 0 0 12px rgba(168, 85, 247, .4);
 }
 .foundation-phase-marker {
-    font-size: .7rem;
+    font-size: .75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .1em;
@@ -2511,7 +2650,7 @@ a:focus-visible, button:focus-visible {
     color: var(--text-primary);
 }
 .cert-academy {
-    font-size: .7rem;
+    font-size: .75rem;
     text-transform: uppercase;
     letter-spacing: .15em;
     color: var(--text-muted);
@@ -2519,7 +2658,7 @@ a:focus-visible, button:focus-visible {
 }
 .cert-type-badge {
     text-align: center;
-    font-size: .7rem;
+    font-size: .75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .08em;
@@ -2579,7 +2718,7 @@ a:focus-visible, button:focus-visible {
     font-style: italic;
 }
 .cert-sig-role {
-    font-size: .7rem;
+    font-size: .75rem;
     color: var(--text-muted);
 }
 .cert-verify {

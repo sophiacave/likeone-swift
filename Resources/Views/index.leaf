@@ -36,13 +36,13 @@
                             <div class="site-card-emoji">#(course.emoji)</div>
                             <div class="site-card-title">#(course.title)</div>
                             <div class="site-card-desc">#(course.description)</div>
-                            <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border);">
-                                <span style="font-size:.7rem;color:var(--purple-400);text-transform:uppercase;letter-spacing:.05em;font-weight:600;">#(course.tier)</span>
+                            <div class="site-card-tier-wrap">
+                                <span class="site-card-tier">#(course.tier)</span>
                             </div>
                         </a>
                     #endfor
                 </div>
-                <div style="margin-top:32px;">
+                <div class="homepage-cta-wrap">
                     <a class="site-btn-secondary" href="/academy">All 52 Courses &rarr;</a>
                 </div>
             </div>
@@ -54,14 +54,14 @@
                 <span class="site-section-tag">YOUR JOURNEY</span>
                 <h2 class="site-section-title">Three tiers. One path.</h2>
                 <p class="site-section-desc">Start wherever you are. Every tier builds on the last.</p>
-                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;max-width:900px;margin-left:auto;margin-right:auto;">
+                <div class="homepage-tier-grid">
                     #for(tier in tiers):
-                        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px 24px;text-align:center;transition:transform .3s,border-color .3s;">
-                            <div style="font-size:2.5rem;margin-bottom:12px;">#(tier.emoji)</div>
-                            <div style="font-size:1.1rem;font-weight:600;color:var(--text-primary);margin-bottom:4px;">#(tier.name)</div>
-                            <div style="font-size:2rem;font-weight:800;color:var(--purple-400);margin-bottom:8px;">#(tier.count)</div>
-                            <div style="font-size:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;">COURSES</div>
-                            <div style="font-size:.9rem;color:var(--text-secondary);line-height:1.5;">#(tier.description)</div>
+                        <div class="homepage-tier-card">
+                            <div class="homepage-tier-emoji">#(tier.emoji)</div>
+                            <div class="homepage-tier-name">#(tier.name)</div>
+                            <div class="homepage-tier-count">#(tier.count)</div>
+                            <div class="homepage-tier-label">COURSES</div>
+                            <div class="homepage-tier-desc">#(tier.description)</div>
                         </div>
                     #endfor
                 </div>
@@ -74,21 +74,21 @@
                 <span class="site-section-tag">HOW IT WORKS</span>
                 <h2 class="site-section-title">Read. Practice. Prove it.</h2>
                 <p class="site-section-desc">Every lesson follows the same pattern. No filler. No fluff.</p>
-                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;max-width:900px;margin-left:auto;margin-right:auto;">
-                    <div style="text-align:center;padding:24px;">
-                        <div style="width:48px;height:48px;border-radius:12px;background:rgba(52,211,153,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.4rem;">1</div>
-                        <div style="font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:8px;">Learn the concept</div>
-                        <div style="font-size:.875rem;color:var(--text-secondary);line-height:1.55;">Visual diagrams, real code examples, and plain-language explanations. No jargon without context.</div>
+                <div class="homepage-steps-grid">
+                    <div class="homepage-step">
+                        <div class="homepage-step-icon homepage-step-icon--learn">1</div>
+                        <div class="homepage-step-title">Learn the concept</div>
+                        <div class="homepage-step-desc">Visual diagrams, real code examples, and plain-language explanations. No jargon without context.</div>
                     </div>
-                    <div style="text-align:center;padding:24px;">
-                        <div style="width:48px;height:48px;border-radius:12px;background:rgba(168,85,247,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.4rem;">2</div>
-                        <div style="font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:8px;">Study with flashcards</div>
-                        <div style="font-size:.875rem;color:var(--text-secondary);line-height:1.55;">Flip through key vocabulary. Study mode or browse mode. Lock in the terminology before the quiz.</div>
+                    <div class="homepage-step">
+                        <div class="homepage-step-icon homepage-step-icon--study">2</div>
+                        <div class="homepage-step-title">Study with flashcards</div>
+                        <div class="homepage-step-desc">Flip through key vocabulary. Study mode or browse mode. Lock in the terminology before the quiz.</div>
                     </div>
-                    <div style="text-align:center;padding:24px;">
-                        <div style="width:48px;height:48px;border-radius:12px;background:rgba(251,146,60,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.4rem;">3</div>
-                        <div style="font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:8px;">Prove it with quizzes</div>
-                        <div style="font-size:.875rem;color:var(--text-secondary);line-height:1.55;">One question at a time. Visual aids. Instant feedback. Retry until you get 100%. No guessing.</div>
+                    <div class="homepage-step">
+                        <div class="homepage-step-icon homepage-step-icon--prove">3</div>
+                        <div class="homepage-step-title">Prove it with quizzes</div>
+                        <div class="homepage-step-desc">One question at a time. Visual aids. Instant feedback. Retry until you get 100%. No guessing.</div>
                     </div>
                 </div>
             </div>
@@ -102,16 +102,16 @@
                     <h2 class="site-section-title">Built in public. Written with love.</h2>
                     <p class="site-section-desc">Real stories about building AI infrastructure, shipping products, and learning in the open.</p>
                 </div>
-                <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;">
+                <div class="homepage-blog-grid">
                     #for(post in latestPosts):
-                        <a href="/blog/#(post.slug)" style="display:block;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);text-decoration:none;color:inherit;transition:transform .3s,border-color .3s;">
-                            <div style="font-size:.8rem;color:var(--text-muted);margin-bottom:8px;">#(post.date)</div>
-                            <div style="font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:8px;line-height:1.3;">#(post.title)</div>
-                            <div style="font-size:.875rem;color:var(--text-secondary);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">#(post.description)</div>
+                        <a href="/blog/#(post.slug)/" class="homepage-blog-card">
+                            <div class="homepage-blog-date">#(post.date)</div>
+                            <div class="homepage-blog-title">#(post.title)</div>
+                            <div class="homepage-blog-desc">#(post.description)</div>
                         </a>
                     #endfor
                 </div>
-                <div style="text-align:center;margin-top:24px;">
+                <div class="homepage-cta-wrap">
                     <a class="site-btn-secondary" href="/blog">All Posts &rarr;</a>
                 </div>
             </div>
@@ -120,9 +120,9 @@
         <!-- FINAL CTA -->
         <section class="site-section" style="padding-bottom:120px;">
             <div class="site-container text-center">
-                <h2 style="font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin-bottom:16px;color:var(--text-primary);">Your first lesson takes 5 minutes.</h2>
-                <p style="font-size:1.1rem;color:var(--text-secondary);max-width:480px;margin:0 auto 32px;line-height:1.6;">No account required to start. Preview any course free and see if AI clicks for you.</p>
-                <a class="site-btn-primary" href="/academy/ai-foundations/what-is-a-neuron" style="font-size:1rem;padding:14px 36px;">Start Learning &rarr;</a>
+                <h2 class="homepage-final-title">Your first lesson takes 5 minutes.</h2>
+                <p class="homepage-final-desc">No account required to start. Preview any course free and see if AI clicks for you.</p>
+                <a class="site-btn-primary" href="/academy/ai-foundations/what-is-a-neuron">Start Learning &rarr;</a>
             </div>
         </section>
     #endexport
