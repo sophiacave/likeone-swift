@@ -13,6 +13,7 @@
     --radius: 12px;
     --radius-lg: 16px;
     --max-width: 1120px;
+    --surface-secondary: #1a1a24;
     --ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);
     --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -860,6 +861,13 @@ a:focus-visible, button:focus-visible {
     line-height: 1.75;
     color: #d4d4dc;
     letter-spacing: -0.003em;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+.article-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
 }
 .article-content h2 {
     font-size: 1.5rem;
@@ -898,6 +906,7 @@ a:focus-visible, button:focus-visible {
     padding: 20px;
     overflow-x: auto;
     margin: 1.5rem 0;
+    max-width: 100%;
 }
 .article-content pre code {
     background: none;
@@ -934,6 +943,7 @@ a:focus-visible, button:focus-visible {
     font-size: .9rem;
     overflow-x: auto;
     display: block;
+    max-width: 100%;
 }
 .article-content thead { border-bottom: 2px solid var(--border); }
 .article-content th {
@@ -1662,7 +1672,9 @@ a:focus-visible, button:focus-visible {
 }
 @media (max-width: 480px) {
     .site-cta-row { flex-direction: column; align-items: center; }
+    .site-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
     .academy-filter-row { gap: 6px; }
+    .reading-column { padding: 0 16px; }
 }
 
 /* ============================================
@@ -1703,6 +1715,7 @@ a:focus-visible, button:focus-visible {
   border-radius: var(--r-lg);
   padding: var(--sp-8) var(--sp-6);
   margin: var(--sp-6) 0;
+  max-width: 100%;
 }
 .lo-vis * { box-sizing: border-box; }
 .lo-vis__title {
@@ -1806,6 +1819,7 @@ a:focus-visible, button:focus-visible {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
   background: #0c0c10; border: 1px solid rgba(255,255,255,.08);
   border-radius: 18px; padding: 32px 24px; margin: 24px 0;
+  max-width: 100%;
 }
 .lo-visual * { box-sizing: border-box; }
 .lo-visual__title {
@@ -1830,6 +1844,18 @@ a:focus-visible, button:focus-visible {
   .lo-compare__divider { transform: rotate(90deg); padding: .5rem 0; }
   .lo-compute { grid-template-columns: 1fr !important; gap: .5rem; }
   .lo-compute__arrow { transform: rotate(90deg); padding: .25rem 0; }
+
+  /* Visual containers: tighter padding on mobile */
+  .lo-vis { padding: var(--sp-4) var(--sp-3); border-radius: var(--r-md); }
+  .lo-visual { padding: 20px 16px; border-radius: 14px; }
+
+  /* Code blocks: smaller font, tighter padding on mobile */
+  .article-content pre { padding: 14px; font-size: 0.8rem; }
+  .article-content pre code { font-size: 0.8rem; }
+
+  /* Lesson visuals: let SVGs scale fully */
+  .lesson-visual { padding: 10px; }
+  .quiz-visual { padding: 8px; }
 }
 
 /* ═══════════════════════════════════════════
