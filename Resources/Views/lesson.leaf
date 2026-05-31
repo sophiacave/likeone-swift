@@ -39,6 +39,7 @@
                         <p style="font-size:.75rem;color:var(--text-muted);margin-top:16px;">Already Pro? <a href="/signin" style="color:var(--purple-400);">Sign in</a> to access this lesson.</p>
                     </div>
                 #else:
+                    <h2 class="sr-only">Lesson Content</h2>
                     <div class="article-content lesson-content">
                         #unsafeHTML(content)
                     </div>

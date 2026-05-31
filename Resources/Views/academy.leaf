@@ -51,6 +51,7 @@
 
         <section class="academy-courses" aria-label="Course catalog">
             <div class="site-container">
+                <h2 class="sr-only">All Courses</h2>
                 <div class="academy-grid" id="course-grid">
                     #for(course in courses):
                         <a href="/academy/#(course.slug)" class="course-card" aria-label="#(course.title) — #(course.lessonCount) lessons">
