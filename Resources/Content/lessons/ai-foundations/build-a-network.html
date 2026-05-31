@@ -40,17 +40,17 @@
     <div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:16px 20px;font-family:'SF Mono','JetBrains Mono',monospace;">
       <div style="text-align:center;padding:12px 16px;border-radius:8px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.12);">
         <div style="font-size:.8rem;color:#38bdf8;font-weight:600;">INPUT</div>
-        <div style="font-size:.65rem;color:#52525b;margin-top:4px;">receives data</div>
+        <div style="font-size:.75rem;color:#52525b;margin-top:4px;">receives data</div>
       </div>
       <span style="color:#3f3f46;font-size:1rem;">&rarr;</span>
       <div style="text-align:center;padding:12px 16px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);">
         <div style="font-size:.8rem;color:#34d399;font-weight:600;">HIDDEN</div>
-        <div style="font-size:.65rem;color:#52525b;margin-top:4px;">finds patterns</div>
+        <div style="font-size:.75rem;color:#52525b;margin-top:4px;">finds patterns</div>
       </div>
       <span style="color:#3f3f46;font-size:1rem;">&rarr;</span>
       <div style="text-align:center;padding:12px 16px;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.12);">
         <div style="font-size:.8rem;color:#fb923c;font-weight:600;">OUTPUT</div>
-        <div style="font-size:.65rem;color:#52525b;margin-top:4px;">makes decision</div>
+        <div style="font-size:.75rem;color:#52525b;margin-top:4px;">makes decision</div>
       </div>
     </div>
   </div>
@@ -99,7 +99,7 @@
   <span class="section-label">The Code</span>
   <h2 class="section-title">A neural network in 15 lines of Python.</h2>
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — a complete neural network forward pass</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — a complete neural network forward pass</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> numpy <span style="color:#c084fc">as</span> np
 
 <span style="color:#71717a"># Input: 3 features (e.g., pixel brightness values)</span>
@@ -122,7 +122,7 @@ probs = np.exp(logits) / np.sum(np.exp(logits))
 <p style="font-size:.85rem;color:#71717a;margin-top:.5rem">The <code>@</code> operator is matrix multiplication — it computes every neuron's weighted sum in one shot. <code>np.maximum(0, ...)</code> is ReLU applied to the whole layer at once. That's the entire forward pass.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">PyTorch — the same network using a real ML framework</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">PyTorch — the same network using a real ML framework</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> torch
 <span style="color:#c084fc">import</span> torch.nn <span style="color:#c084fc">as</span> nn
 
@@ -151,19 +151,19 @@ probs = model(X)
       <div style="text-align:center;padding:12px 8px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);">
         <div style="font-size:1.1rem;margin-bottom:6px;">&#x1F517;</div>
         <div style="font-size:.75rem;color:#34d399;font-weight:600;">DENSE</div>
-        <div style="font-size:.65rem;color:#52525b;margin-top:4px;">every-to-every</div>
+        <div style="font-size:.75rem;color:#52525b;margin-top:4px;">every-to-every</div>
         <div style="font-size:.6rem;color:#3f3f46;margin-top:2px;">tables, final layers</div>
       </div>
       <div style="text-align:center;padding:12px 8px;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.12);">
         <div style="font-size:1.1rem;margin-bottom:6px;">&#x1F50D;</div>
         <div style="font-size:.75rem;color:#8b5cf6;font-weight:600;">CNN</div>
-        <div style="font-size:.65rem;color:#52525b;margin-top:4px;">sliding window</div>
+        <div style="font-size:.75rem;color:#52525b;margin-top:4px;">sliding window</div>
         <div style="font-size:.6rem;color:#3f3f46;margin-top:2px;">images, patterns</div>
       </div>
       <div style="text-align:center;padding:12px 8px;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.12);">
         <div style="font-size:1.1rem;margin-bottom:6px;">&#x1F4A1;</div>
         <div style="font-size:.75rem;color:#fb923c;font-weight:600;">TRANSFORMER</div>
-        <div style="font-size:.65rem;color:#52525b;margin-top:4px;">attention to all</div>
+        <div style="font-size:.75rem;color:#52525b;margin-top:4px;">attention to all</div>
         <div style="font-size:.6rem;color:#3f3f46;margin-top:2px;">language, GPT, Claude</div>
       </div>
     </div>
@@ -357,7 +357,7 @@ probs = model(X)
       <div style="font-size:.75rem;color:#fb923c;font-weight:600;">y2</div>
       <div style="font-size:.6rem;color:#52525b;">dog?</div>
     </div>
-    <span style="color:#52525b;font-size:.7rem;">= 1 neuron per category</span>
+    <span style="color:#52525b;font-size:.75rem;">= 1 neuron per category</span>
   </div>
 </div>
 <p class="quiz-q"><span class="quiz-num">2</span>For a cats vs dogs image classifier, why do you need 2 output neurons?</p>

@@ -37,7 +37,7 @@
 <p>In production, everything fails. APIs time out, rate limits kick in, tools crash, and network connections drop. Your agent needs to handle every failure mode gracefully:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — production error handling</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — production error handling</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { Claude, AgentError, BudgetExceededError } <span style="color:#c084fc">from</span> <span style="color:#fbbf24">"@anthropic-ai/claude-agent"</span>;
 
 <span style="color:#c084fc">async function</span> <span style="color:#38bdf8">runAgentSafely</span>(prompt: string) {
@@ -79,7 +79,7 @@
 <p>Long-running agents need a way to be stopped — by users, by timeouts, or by your system. Abort controllers provide clean cancellation:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — abort controller with timeout</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — abort controller with timeout</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">// Create a controller that aborts after 60 seconds</span>
 <span style="color:#c084fc">const</span> controller = <span style="color:#c084fc">new</span> AbortController();
 <span style="color:#c084fc">const</span> timeout = setTimeout(() => controller.abort(), <span style="color:#fb923c">60_000</span>);
@@ -104,7 +104,7 @@
 <p>In production, you need to know exactly how much each agent interaction costs and spot anomalies before they become expensive problems:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — cost tracking with hooks</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — cost tracking with hooks</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">const</span> metrics = {
   totalCost: <span style="color:#fb923c">0</span>,
   totalQueries: <span style="color:#fb923c">0</span>,

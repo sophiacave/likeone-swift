@@ -36,7 +36,7 @@
     <div style="font-size:1.1rem;font-weight:700;color:#34d399;margin-bottom:.4rem">1. Name</div>
     <p style="color:#e5e5e5;margin:0 0 .6rem;line-height:1.6">A name gives your agent <strong>identity</strong>. It makes the agent memorable to users and distinguishes it from generic assistants. A clear name also anchors your own thinking — you stop saying "the bot" and start saying "Scout found an issue."</p>
     <div style="background:rgba(52,211,153,.08);border-left:3px solid #34d399;padding:.6rem .8rem;border-radius:0 6px 6px 0">
-      <div style="font-size:.7rem;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
+      <div style="font-size:.75rem;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
       <div style="color:#a1a1aa;font-family:'JetBrains Mono',monospace;font-size:.82rem"><span style="color:#34d399">Scout</span> — a website monitoring agent. Short, active, implies watchfulness.</div>
     </div>
   </div>
@@ -46,7 +46,7 @@
     <div style="font-size:1.1rem;font-weight:700;color:#8b5cf6;margin-bottom:.4rem">2. Goal</div>
     <p style="color:#e5e5e5;margin:0 0 .6rem;line-height:1.6">One clear sentence that answers three questions: <strong>what</strong> does it do, <strong>for whom</strong>, and <strong>to what standard</strong>? A vague goal like "help with stuff" produces an agent that spins in circles. A precise goal gives the agent a finish line.</p>
     <div style="background:rgba(139,92,246,.08);border-left:3px solid #8b5cf6;padding:.6rem .8rem;border-radius:0 6px 6px 0">
-      <div style="font-size:.7rem;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
+      <div style="font-size:.75rem;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
       <div style="color:#a1a1aa;font-family:'JetBrains Mono',monospace;font-size:.82rem"><span style="color:#8b5cf6">"Monitor my portfolio site and fix downtime within 60 seconds, alerting me only if a restart fails."</span></div>
     </div>
   </div>
@@ -56,7 +56,7 @@
     <div style="font-size:1.1rem;font-weight:700;color:#fb923c;margin-bottom:.4rem">3. Tools</div>
     <p style="color:#e5e5e5;margin:0 0 .6rem;line-height:1.6">Tools are the agent's <strong>hands</strong>. Pick a focused set of 2-4 that directly serve the goal. Every extra tool is a decision the agent must make — and decisions cost tokens, time, and accuracy. Start lean; add tools only when the agent demonstrably needs them.</p>
     <div style="background:rgba(251,146,60,.08);border-left:3px solid #fb923c;padding:.6rem .8rem;border-radius:0 6px 6px 0">
-      <div style="font-size:.7rem;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
+      <div style="font-size:.75rem;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
       <div style="color:#a1a1aa;font-family:'JetBrains Mono',monospace;font-size:.82rem"><span style="color:#fb923c">health_check</span>, <span style="color:#fb923c">restart_service</span>, <span style="color:#fb923c">send_alert</span> — three tools, one per capability Scout needs.</div>
     </div>
   </div>
@@ -66,7 +66,7 @@
     <div style="font-size:1.1rem;font-weight:700;color:#38bdf8;margin-bottom:.4rem">4. Memory</div>
     <p style="color:#e5e5e5;margin:0 0 .6rem;line-height:1.6">Memory is what the agent carries <strong>between sessions</strong>. Without it, every conversation starts from zero. Good memory stores three things: <em>preferences</em> (how the user likes things), <em>outcomes</em> (what worked and what failed), and <em>patterns</em> (recurring situations the agent should recognize).</p>
     <div style="background:rgba(56,189,248,.08);border-left:3px solid #38bdf8;padding:.6rem .8rem;border-radius:0 6px 6px 0">
-      <div style="font-size:.7rem;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
+      <div style="font-size:.75rem;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
       <div style="color:#a1a1aa;font-family:'JetBrains Mono',monospace;font-size:.82rem"><span style="color:#38bdf8">Past incidents</span>, <span style="color:#38bdf8">normal response times</span>, <span style="color:#38bdf8">which restarts fixed which errors</span> — Scout gets smarter every run.</div>
     </div>
   </div>
@@ -76,7 +76,7 @@
     <div style="font-size:1.1rem;font-weight:700;color:#ef4444;margin-bottom:.4rem">5. Guardrails</div>
     <p style="color:#e5e5e5;margin:0 0 .6rem;line-height:1.6">Guardrails are <strong>hard safety constraints</strong> — lines the agent must never cross, even if explicitly asked. They protect against catastrophic mistakes like deleting data, leaking secrets, or spending money without approval. Think of them as the agent's conscience.</p>
     <div style="background:rgba(239,68,68,.08);border-left:3px solid #ef4444;padding:.6rem .8rem;border-radius:0 6px 6px 0">
-      <div style="font-size:.7rem;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
+      <div style="font-size:.75rem;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
       <div style="color:#a1a1aa;font-family:'JetBrains Mono',monospace;font-size:.82rem"><span style="color:#ef4444">"Never delete production data"</span> and <span style="color:#ef4444">"Never restart more than 2 times without human approval"</span></div>
     </div>
   </div>
@@ -154,7 +154,7 @@
   </div>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Agent design spec as code</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Agent design spec as code</div>
 <pre style="margin:0;color:#e5e5e5"><code>AGENT_CONFIG = {
     <span style="color:#fb923c">"name"</span>: <span style="color:#fb923c">"Scout"</span>,
     <span style="color:#fb923c">"goal"</span>: <span style="color:#fb923c">"Monitor my website and fix issues before I notice them"</span>,
@@ -216,7 +216,7 @@
 <p style="color:#a1a1aa;margin-bottom:1rem">Here is a complete system prompt built from Scout's design. Notice how every block maps back to a pillar:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">System Prompt — Scout agent (all 6 blocks)</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">System Prompt — Scout agent (all 6 blocks)</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#34d399"># IDENTITY</span>
 You are <span style="color:#34d399">Scout</span>, a website monitoring agent.
 You are professional, concise, and action-oriented.

@@ -53,7 +53,7 @@
 <div class="card">
 <h2>Layer 1: Input Sanitization</h2>
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — input sanitization layer</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — input sanitization layer</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> re
 
 INJECTION_PATTERNS = [
@@ -82,7 +82,7 @@ INJECTION_PATTERNS = [
 <div class="card">
 <h2>Layer 2: System Prompt Hardening</h2>
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Hardened system prompt pattern</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Hardened system prompt pattern</div>
 <pre style="margin:0;color:#e5e5e5"><code>HARDENED_PROMPT = <span style="color:#fbbf24">"""# Identity
 You are a customer service assistant for TechCo.
 
@@ -106,7 +106,7 @@ or development tasks."""</span></code></pre>
 <div class="card">
 <h2>Layer 3 & 4: Output Filtering + Behavioral Boundaries</h2>
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — output filtering</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — output filtering</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">validate_output</span>(response: str, system_prompt: str) -> dict:
     <span style="color:#fb923c">"""Check output for leaks and harmful content."""</span>
 

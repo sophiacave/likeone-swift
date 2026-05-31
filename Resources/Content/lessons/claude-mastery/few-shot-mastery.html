@@ -59,7 +59,7 @@
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#f87171;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Zero-shot (instructions only)</div>
+<div style="font-size:.75rem;color:#f87171;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Zero-shot (instructions only)</div>
 <pre style="margin:0;color:#e5e5e5"><code>Classify this review's sentiment
 as positive, negative, or neutral.
 
@@ -73,7 +73,7 @@ service was painfully slow."
 <span style="color:#71717a">#  element..." (verbose)</span></code></pre>
 </div>
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#34d399;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Few-shot (with examples)</div>
+<div style="font-size:.75rem;color:#34d399;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Few-shot (with examples)</div>
 <pre style="margin:0;color:#e5e5e5"><code>Review: "Loved every minute!"
 Sentiment: Positive
 
@@ -98,7 +98,7 @@ Sentiment: <span style="color:#34d399">Negative</span>
 <p>In the Claude API, few-shot examples go in the messages array as alternating user/assistant turns. Claude sees them as a conversation history and continues the pattern:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — few-shot sentiment classifier</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — few-shot sentiment classifier</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 client = anthropic.Anthropic()
@@ -140,7 +140,7 @@ client = anthropic.Anthropic()
 <p>Few-shot is not just for classification. It is powerful for teaching Claude any output format — including complex structured extraction:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — few-shot structured extraction</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — few-shot structured extraction</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> json
 
 <span style="color:#c084fc">def</span> <span style="color:#38bdf8">extract_event</span>(text: str) -> dict:

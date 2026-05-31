@@ -41,7 +41,7 @@
   <p class="section-text"><strong style="color: var(--red);">Cons:</strong> Context windows fill up fast. By agent 5 or 6, you're running out of room for the actual task. Doesn't scale.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Context passing: accumulate history in the prompt</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Context passing: accumulate history in the prompt</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">pipeline_with_context</span>(task: str, agents: list) -> str:
     <span style="color:#71717a"># Each agent sees ALL previous outputs (context grows with each step)</span>
     context = <span style="color:#fbbf24">f"Original task: {task}\n"</span>
@@ -63,7 +63,7 @@
   <p class="section-text"><strong style="color: var(--red);">Cons:</strong> Requires infrastructure. Agents need to know what to query. Stale data is a risk if updates lag.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Shared memory store with Supabase</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Shared memory store with Supabase</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> supabase <span style="color:#c084fc">import</span> create_client
 
 db = create_client(SUPABASE_URL, SUPABASE_KEY)
@@ -101,7 +101,7 @@ findings = mem.read(<span style="color:#fbbf24">"findings"</span>)              
   <p class="section-text"><strong style="color: var(--red);">Cons:</strong> More complex to set up. Embedding quality matters. Results can be unpredictable.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Vector store: semantic search for agent memory (pgvector)</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Vector store: semantic search for agent memory (pgvector)</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> sentence_transformers <span style="color:#c084fc">import</span> SentenceTransformer
 
 model = SentenceTransformer(<span style="color:#fbbf24">"all-MiniLM-L6-v2"</span>)  <span style="color:#71717a"># free, runs locally</span>

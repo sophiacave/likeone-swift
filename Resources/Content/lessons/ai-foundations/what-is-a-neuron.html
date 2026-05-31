@@ -135,7 +135,7 @@
 
       <!-- COLUMN 1: MULTIPLY -->
       <div>
-        <div style="text-align:center;font-size:.7rem;font-weight:600;color:#71717a;letter-spacing:.08em;margin-bottom:10px;">MULTIPLY</div>
+        <div style="text-align:center;font-size:.75rem;font-weight:600;color:#71717a;letter-spacing:.08em;margin-bottom:10px;">MULTIPLY</div>
 
         <div style="display:flex;align-items:center;gap:6px;padding:8px 10px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);margin-bottom:6px;">
           <span style="color:#34d399;font-size:.85rem;font-weight:600;">0.50</span>
@@ -162,9 +162,9 @@
         </div>
 
         <div style="display:flex;justify-content:space-between;padding:4px 10px;margin-top:4px;">
-          <span style="color:#3f3f46;font-size:.65rem;">input</span>
-          <span style="color:#3f3f46;font-size:.65rem;">weight</span>
-          <span style="color:#3f3f46;font-size:.65rem;">result</span>
+          <span style="color:#3f3f46;font-size:.75rem;">input</span>
+          <span style="color:#3f3f46;font-size:.75rem;">weight</span>
+          <span style="color:#3f3f46;font-size:.75rem;">result</span>
         </div>
       </div>
 
@@ -173,7 +173,7 @@
 
       <!-- COLUMN 2: ADD UP -->
       <div>
-        <div style="text-align:center;font-size:.7rem;font-weight:600;color:#71717a;letter-spacing:.08em;margin-bottom:10px;">ADD UP</div>
+        <div style="text-align:center;font-size:.75rem;font-weight:600;color:#71717a;letter-spacing:.08em;margin-bottom:10px;">ADD UP</div>
 
         <div style="padding:12px 14px;border-radius:10px;background:rgba(192,132,252,.04);border:1px solid rgba(192,132,252,.15);text-align:center;">
           <div style="color:#34d399;font-size:.85rem;margin-bottom:4px;">+ 0.40</div>
@@ -194,7 +194,7 @@
 
       <!-- COLUMN 3: DECIDE -->
       <div>
-        <div style="text-align:center;font-size:.7rem;font-weight:600;color:#71717a;letter-spacing:.08em;margin-bottom:10px;">DECIDE</div>
+        <div style="text-align:center;font-size:.75rem;font-weight:600;color:#71717a;letter-spacing:.08em;margin-bottom:10px;">DECIDE</div>
 
         <div style="padding:14px;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.15);text-align:center;">
           <div style="color:#fb923c;font-size:.9rem;font-weight:600;">ReLU(0.80)</div>
@@ -204,7 +204,7 @@
           <div style="margin-top:10px;padding:10px;border-radius:8px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.3);">
             <div style="color:#34d399;font-size:1.5rem;font-weight:700;line-height:1;">0.80</div>
           </div>
-          <div style="color:#34d399;font-size:.7rem;font-weight:600;letter-spacing:.1em;margin-top:6px;">FIRES</div>
+          <div style="color:#34d399;font-size:.75rem;font-weight:600;letter-spacing:.1em;margin-top:6px;">FIRES</div>
         </div>
       </div>
 
@@ -222,7 +222,7 @@
   <p class="section-text">Every artificial neuron does the same three-step dance: <strong>multiply</strong> inputs by weights, <strong>sum</strong> everything plus a bias, and <strong>decide</strong> whether to fire via an activation function. Here is the exact math in code:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — a single neuron from scratch</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — a single neuron from scratch</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> numpy <span style="color:#c084fc">as</span> np
 
 <span style="color:#71717a"># Three inputs and their weights</span>
@@ -349,7 +349,7 @@ output = max(<span style="color:#fb923c">0</span>, z)
   <p class="section-text">Every activation function takes the weighted sum <em>z</em> and transforms it. Here they are in Python — copy this code and run it yourself:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — the three activation functions</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — the three activation functions</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> numpy <span style="color:#c084fc">as</span> np
 
 <span style="color:#c084fc">def</span> <span style="color:#38bdf8">step</span>(z):
@@ -427,13 +427,13 @@ USED TODAY: Final layer of binary classifiers. Replaced by ReLU in hidden layers
     <div class="lo-interactive__body">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
         <div>
-          <div style="font-size:.7rem;font-weight:600;color:#34d399;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">Inputs</div>
+          <div style="font-size:.75rem;font-weight:600;color:#34d399;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">Inputs</div>
           <label><span style="color:#34d399;min-width:1.5rem;">x1</span> <input type="range" min="0" max="1" step="0.1" x-model.number="x1"> <span class="value-display" x-text="x1.toFixed(1)"></span></label>
           <label><span style="color:#8b5cf6;min-width:1.5rem;">x2</span> <input type="range" min="0" max="1" step="0.1" x-model.number="x2"> <span class="value-display" x-text="x2.toFixed(1)"></span></label>
           <label><span style="color:#38bdf8;min-width:1.5rem;">x3</span> <input type="range" min="0" max="1" step="0.1" x-model.number="x3"> <span class="value-display" x-text="x3.toFixed(1)"></span></label>
         </div>
         <div>
-          <div style="font-size:.7rem;font-weight:600;color:#c084fc;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">Weights &amp; Bias</div>
+          <div style="font-size:.75rem;font-weight:600;color:#c084fc;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">Weights &amp; Bias</div>
           <label><span style="color:#34d399;min-width:1.5rem;">w1</span> <input type="range" min="-1" max="1" step="0.1" x-model.number="w1"> <span class="value-display" x-text="w1.toFixed(1)"></span></label>
           <label><span style="color:#8b5cf6;min-width:1.5rem;">w2</span> <input type="range" min="-1" max="1" step="0.1" x-model.number="w2"> <span class="value-display" x-text="w2.toFixed(1)"></span></label>
           <label><span style="color:#38bdf8;min-width:1.5rem;">w3</span> <input type="range" min="-1" max="1" step="0.1" x-model.number="w3"> <span class="value-display" x-text="w3.toFixed(1)"></span></label>
@@ -443,12 +443,12 @@ USED TODAY: Final layer of binary classifiers. Replaced by ReLU in hidden layers
 
       <div class="lo-interactive__result">
         <div style="flex:1;">
-          <div style="font-size:.7rem;color:#71717a;margin-bottom:.25rem;">WEIGHTED SUM + BIAS</div>
+          <div style="font-size:.75rem;color:#71717a;margin-bottom:.25rem;">WEIGHTED SUM + BIAS</div>
           <div style="font-size:1rem;color:#c084fc;font-weight:600;" x-text="'z = ' + (x1*w1 + x2*w2 + x3*w3 + b).toFixed(2)"></div>
         </div>
         <div style="width:1px;height:32px;background:rgba(255,255,255,.06);"></div>
         <div style="flex:1;">
-          <div style="font-size:.7rem;color:#71717a;margin-bottom:.25rem;">ReLU OUTPUT</div>
+          <div style="font-size:.75rem;color:#71717a;margin-bottom:.25rem;">ReLU OUTPUT</div>
           <div style="font-size:1rem;font-weight:600;" :style="'color:' + (Math.max(0, x1*w1 + x2*w2 + x3*w3 + b) > 0 ? '#34d399' : '#ef4444')" x-text="Math.max(0, x1*w1 + x2*w2 + x3*w3 + b).toFixed(2)"></div>
         </div>
         <div style="width:1px;height:32px;background:rgba(255,255,255,.06);"></div>
@@ -459,7 +459,7 @@ USED TODAY: Final layer of binary classifiers. Replaced by ReLU in hidden layers
           <template x-if="Math.max(0, x1*w1 + x2*w2 + x3*w3 + b) <= 0">
             <div style="font-size:1.2rem;" title="Neuron stays silent">&#x1F534;</div>
           </template>
-          <div style="font-size:.65rem;color:#71717a;margin-top:.15rem;" x-text="Math.max(0, x1*w1 + x2*w2 + x3*w3 + b) > 0 ? 'FIRES' : 'SILENT'"></div>
+          <div style="font-size:.75rem;color:#71717a;margin-top:.15rem;" x-text="Math.max(0, x1*w1 + x2*w2 + x3*w3 + b) > 0 ? 'FIRES' : 'SILENT'"></div>
         </div>
       </div>
     </div>
@@ -487,7 +487,7 @@ USED TODAY: Final layer of binary classifiers. Replaced by ReLU in hidden layers
     <div style="flex:1;max-width:200px;text-align:center;padding:0 12px;">
       <div style="height:3px;background:#c084fc;border-radius:2px;opacity:.7;"></div>
       <div style="color:#c084fc;font-size:.9rem;font-weight:700;margin-top:6px;">weight = ?</div>
-      <div style="color:#52525b;font-size:.7rem;margin-top:2px;">how much this input matters</div>
+      <div style="color:#52525b;font-size:.75rem;margin-top:2px;">how much this input matters</div>
     </div>
     <div style="text-align:center;">
       <div style="width:40px;height:40px;border-radius:50%;border:2px solid #34d399;display:flex;align-items:center;justify-content:center;">
@@ -530,7 +530,7 @@ USED TODAY: Final layer of binary classifiers. Replaced by ReLU in hidden layers
         <line x1="10" y1="5" x2="10" y2="45" stroke="#3f3f46" stroke-width="0.5"/>
         <line x1="15" y1="40" x2="105" y2="10" stroke="#f87171" stroke-width="2.5" opacity="0.6"/>
       </svg>
-      <div style="font-size:.7rem;color:#52525b;margin-top:6px;">only straight lines</div>
+      <div style="font-size:.75rem;color:#52525b;margin-top:6px;">only straight lines</div>
     </div>
     <div style="text-align:center;padding:12px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1);">
       <div style="font-size:.75rem;font-weight:600;color:#34d399;margin-bottom:8px;">WITH ACTIVATION</div>
@@ -539,7 +539,7 @@ USED TODAY: Final layer of binary classifiers. Replaced by ReLU in hidden layers
         <line x1="10" y1="5" x2="10" y2="45" stroke="#3f3f46" stroke-width="0.5"/>
         <polyline points="15,40 30,38 50,30 70,18 90,12 105,10" fill="none" stroke="#34d399" stroke-width="2.5"/>
       </svg>
-      <div style="font-size:.7rem;color:#52525b;margin-top:6px;">curves and complexity</div>
+      <div style="font-size:.75rem;color:#52525b;margin-top:6px;">curves and complexity</div>
     </div>
   </div>
 </div>
@@ -579,7 +579,7 @@ USED TODAY: Final layer of binary classifiers. Replaced by ReLU in hidden layers
         <line x1="40" y1="32" x2="75" y2="6" stroke="#fb923c" stroke-width="2.5"/>
         <circle cx="40" cy="32" r="2.5" fill="#fb923c"/>
       </svg>
-      <div style="font-size:.65rem;color:#71717a;margin-top:4px;">modern standard</div>
+      <div style="font-size:.75rem;color:#71717a;margin-top:4px;">modern standard</div>
     </div>
     <div style="text-align:center;padding:10px 8px;border-radius:8px;opacity:.45;">
       <div style="font-size:.75rem;color:#71717a;margin-bottom:6px;">Sigmoid</div>

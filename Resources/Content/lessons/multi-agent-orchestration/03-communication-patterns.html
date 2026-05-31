@@ -46,7 +46,7 @@
   <p class="section-text"><strong style="color: var(--red);">Watch out for:</strong> Format mismatches. Always define the exact structure of what gets passed.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Direct messaging between two agents</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Direct messaging between two agents</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 client = anthropic.Anthropic()  <span style="color:#71717a"># reads ANTHROPIC_API_KEY from env</span>
@@ -94,7 +94,7 @@ analysis_result = run_agent(
   <p class="section-text"><strong style="color: var(--red);">Watch out for:</strong> Race conditions and duplicate work. Two agents might both try to handle the same task.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Broadcast: one event triggers multiple agents in parallel</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Broadcast: one event triggers multiple agents in parallel</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> asyncio
 
 <span style="color:#71717a"># Define specialist agents that all react to the same event</span>
@@ -129,7 +129,7 @@ results = asyncio.run(broadcast(ticket))
   <p class="section-text"><strong style="color: var(--red);">Watch out for:</strong> Stale reads and write conflicts. Two agents editing the same section simultaneously creates chaos.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Blackboard: agents read/write to shared state</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Blackboard: agents read/write to shared state</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># The blackboard is shared state that all agents can read and write</span>
 <span style="color:#71717a"># In production, this would be a database (Supabase, Redis, etc.)</span>
 blackboard = {
@@ -179,7 +179,7 @@ blackboard = editor_agent(blackboard)     <span style="color:#71717a"># reads bo
   <h2 class="section-title">Structured Message Contracts</h2>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Typed message contract with dataclass</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Typed message contract with dataclass</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> dataclasses <span style="color:#c084fc">import</span> dataclass, field
 <span style="color:#c084fc">from</span> datetime <span style="color:#c084fc">import</span> datetime
 <span style="color:#c084fc">from</span> typing <span style="color:#c084fc">import</span> Any

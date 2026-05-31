@@ -35,7 +35,7 @@
   <p class="section-text"><strong style="color: var(--blue);">Use when:</strong> You need tight control, the workflow is well-defined, and you have fewer than 5-6 agents.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Hub-spoke: orchestrator delegates to specialists</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Hub-spoke: orchestrator delegates to specialists</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 client = anthropic.Anthropic()
@@ -81,7 +81,7 @@ client = anthropic.Anthropic()
   <p class="section-text"><strong style="color: var(--blue);">Use when:</strong> Your workflow is truly linear — research, then write, then edit, then publish. No loops, no branches.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Pipeline: each agent transforms and passes forward</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Pipeline: each agent transforms and passes forward</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Define pipeline stages — each agent's output feeds the next agent's input</span>
 PIPELINE = [
     (<span style="color:#fbbf24">"researcher"</span>,  <span style="color:#fbbf24">"Research this topic. Return key findings as bullet points."</span>),
@@ -111,7 +111,7 @@ result = run_pipeline(<span style="color:#fbbf24">"Write about AI agents for sma
   <p class="section-text"><strong style="color: var(--blue);">Use when:</strong> The problem space is dynamic, you need maximum resilience, and you can tolerate some unpredictability.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Swarm: parallel agents converge on a shared blackboard</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Swarm: parallel agents converge on a shared blackboard</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> asyncio
 
 <span style="color:#71717a"># Swarm agents work independently on the same topic</span>

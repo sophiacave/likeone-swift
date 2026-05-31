@@ -73,7 +73,7 @@
 <p>Here is a fully functional tool use implementation. This code actually works — you can run it with your API key:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — complete tool use implementation</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — complete tool use implementation</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic, json
 
 client = anthropic.Anthropic()
@@ -159,7 +159,7 @@ response = client.messages.create(
 <p>The real power of tool use emerges when Claude chains multiple tools in sequence — using the result of one tool to decide what to do next. Here is a production pattern using a tool loop:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — agentic tool loop (multi-step)</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — agentic tool loop (multi-step)</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">run_agent</span>(user_message: str, tools: list, max_steps: int = <span style="color:#fb923c">10</span>):
     <span style="color:#fb923c">"""Run an agentic tool loop until Claude is done."""</span>
     messages = [{<span style="color:#fbbf24">"role"</span>: <span style="color:#fbbf24">"user"</span>, <span style="color:#fbbf24">"content"</span>: user_message}]
@@ -206,7 +206,7 @@ answer = run_agent(
 <p>Every tool definition has three parts: a name, a description, and an input schema. Here is what the weather tool definition looks like as the JSON Claude receives:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JSON — tool definition schema</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JSON — tool definition schema</div>
 <pre style="margin:0;color:#e5e5e5"><code>{
   <span style="color:#fbbf24">"name"</span>: <span style="color:#fbbf24">"get_weather"</span>,
   <span style="color:#fbbf24">"description"</span>: <span style="color:#fbbf24">"Get the current weather for a given location. Returns temperature, conditions, and humidity."</span>,
@@ -234,7 +234,7 @@ answer = run_agent(
 <p>In production, tools fail. APIs go down, databases timeout, rate limits kick in. Always handle tool errors gracefully:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — error handling for tool results</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — error handling for tool results</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># When a tool fails, send an error result back to Claude</span>
 <span style="color:#71717a"># Claude will adapt — it might try a different approach</span>
 <span style="color:#71717a"># or explain to the user that the tool is unavailable</span>

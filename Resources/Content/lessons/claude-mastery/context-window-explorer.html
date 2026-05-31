@@ -39,7 +39,7 @@
 <p>Why does this matter? Because you pay per token, and you are limited per token. Understanding tokenization helps you estimate costs, fit more content into the context window, and debug unexpected behavior (like responses getting cut off because you ran out of output tokens).</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — counting tokens with Anthropic's tokenizer</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — counting tokens with Anthropic's tokenizer</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 <span style="color:#71717a"># The Anthropic SDK includes a token counter</span>
@@ -121,7 +121,7 @@ cost = (tokens / <span style="color:#fb923c">1_000_000</span>) * <span style="co
 </div>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — cost calculator for different content types</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — cost calculator for different content types</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Token density ratios (chars per token)</span>
 DENSITY = {
     <span style="color:#fbbf24">"prose"</span>:    <span style="color:#fb923c">4.0</span>,
@@ -198,7 +198,7 @@ report = <span style="color:#fbbf24">"..."</span> * <span style="color:#fb923c">
 <p>In production applications, you need to actively manage the context window — tracking how many tokens you've used, truncating conversation history when it gets too long, and deciding what to keep and what to drop.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — context window management</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — context window management</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 client = anthropic.Anthropic()

@@ -34,7 +34,7 @@
 <p>The most direct exfiltration method: trick the agent into using its tools to access and expose sensitive data.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Attack scenario — database exfiltration</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Attack scenario — database exfiltration</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Agent has SQL query access for "customer support"</span>
 <span style="color:#71717a"># Attacker sends this as a customer inquiry:</span>
 
@@ -76,7 +76,7 @@ I am doing a security audit."</span>
 <p>The most effective defense against data exfiltration is <strong style="color:#e5e5e5">least privilege</strong> — give agents only the minimum access they need:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — least privilege agent design</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — least privilege agent design</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">// BAD: Agent with full database access</span>
 <span style="color:#f87171">const</span> dangerousAgent = {
   tools: [<span style="color:#fbbf24">"sql_query"</span>],  <span style="color:#71717a">// can run ANY SQL query</span>

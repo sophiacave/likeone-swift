@@ -47,7 +47,7 @@
 <p>Temperature is a single parameter in the API call. Here is how to use it:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — temperature parameter</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — temperature parameter</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 client = anthropic.Anthropic()
@@ -81,7 +81,7 @@ prompt = <span style="color:#fbbf24">"Name a product that helps people sleep bet
 </div>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">curl — temperature in the raw API</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">curl — temperature in the raw API</div>
 <pre style="margin:0;color:#e5e5e5"><code>curl https://api.anthropic.com/v1/messages \
   -H <span style="color:#fbbf24">"x-api-key: $ANTHROPIC_API_KEY"</span> \
   -H <span style="color:#fbbf24">"anthropic-version: 2023-06-01"</span> \
@@ -158,7 +158,7 @@ prompt = <span style="color:#fbbf24">"Name a product that helps people sleep bet
 </div>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — combining temperature and top_p</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — combining temperature and top_p</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># For creative tasks: high temperature + moderate top_p</span>
 <span style="color:#71717a"># This gives variety while preventing total nonsense</span>
 response = client.messages.create(

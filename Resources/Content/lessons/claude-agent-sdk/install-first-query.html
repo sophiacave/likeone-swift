@@ -32,7 +32,7 @@
 <p>The Agent SDK runs on Node.js 18 or later. Check if you already have it:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — check your Node.js version</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — check your Node.js version</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Check if Node.js is installed and what version</span>
 node --version
 <span style="color:#71717a"># You need v18.0.0 or higher</span>
@@ -61,7 +61,7 @@ node --version
 </div>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — set your API key</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — set your API key</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Add to your shell profile (~/.zshrc or ~/.bashrc)</span>
 <span style="color:#c084fc">export</span> ANTHROPIC_API_KEY=<span style="color:#fbbf24">"sk-ant-api03-your-key-here"</span>
 
@@ -79,7 +79,7 @@ source ~/.zshrc</code></pre>
 <p>Create a new project and install the Claude Agent SDK:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — create project and install</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — create project and install</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Create a new directory for your agent project</span>
 mkdir my-first-agent && cd my-first-agent
 
@@ -99,7 +99,7 @@ npm install typescript tsx --save-dev</code></pre>
 <p>The most basic SDK operation is <code>query()</code>. It sends a prompt to Claude and returns a result. Unlike a raw API call, the agent can use tools during query execution — reading files, running commands, whatever it needs to answer your question.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — first-agent.ts</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — first-agent.ts</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { Claude } <span style="color:#c084fc">from</span> <span style="color:#fbbf24">"@anthropic-ai/claude-agent"</span>;
 
 <span style="color:#71717a">// Create an agent instance</span>
@@ -119,7 +119,7 @@ npm install typescript tsx --save-dev</code></pre>
 </div>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — run your first agent</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — run your first agent</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Run with tsx (TypeScript executor)</span>
 npx tsx first-agent.ts</code></pre>
 </div>
@@ -130,7 +130,7 @@ npx tsx first-agent.ts</code></pre>
 <p>A query without tools is just a fancy API call. The real power starts when you give your agent tools. The <code>tools</code> option tells Claude what it can interact with:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — agent with file tools</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — agent with file tools</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { Claude } <span style="color:#c084fc">from</span> <span style="color:#fbbf24">"@anthropic-ai/claude-agent"</span>;
 
 <span style="color:#c084fc">const</span> agent = <span style="color:#c084fc">new</span> Claude({
@@ -156,7 +156,7 @@ npx tsx first-agent.ts</code></pre>
 <p>The <code>query()</code> method returns a result object with more than just text:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — inspecting the result</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — inspecting the result</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">const</span> result = <span style="color:#c084fc">await</span> agent.query(<span style="color:#fbbf24">"What files are in this directory?"</span>);
 
 <span style="color:#71717a">// The text response from Claude</span>

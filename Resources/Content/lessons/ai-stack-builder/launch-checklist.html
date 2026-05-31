@@ -143,7 +143,7 @@
 <p>Automate as many checks as possible. Run this script before every deploy — it catches the most common issues in under 30 seconds.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Bash — pre-launch.sh</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Bash — pre-launch.sh</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">#!/bin/bash</span>
 <span style="color:#71717a"># pre-launch.sh — Run before every deploy</span>
 <span style="color:#c084fc">set</span> -e
@@ -190,7 +190,7 @@ STATUS=$(<span style="color:#34d399">curl</span> -s -o /dev/null -w <span style=
 <p>After deploying, run this automated smoke test to verify everything works in production. It checks the critical paths your users will hit.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JavaScript — smoke-test.mjs</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JavaScript — smoke-test.mjs</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">// smoke-test.mjs — Run after every deploy</span>
 <span style="color:#c084fc">const</span> BASE = <span style="color:#fb923c">'https://your-app.vercel.app'</span>
 

@@ -87,17 +87,17 @@
   <div class="lesson-visual" aria-label="Evolution: One-Hot (every word equally far), Bag of Words (lost order), Embeddings (meaning preserved)">
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:16px;font-family:'SF Mono','JetBrains Mono',monospace;">
       <div style="text-align:center;padding:12px 8px;border-radius:8px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1);">
-        <div style="font-size:.7rem;color:#f87171;font-weight:600;">ONE-HOT</div>
+        <div style="font-size:.75rem;color:#f87171;font-weight:600;">ONE-HOT</div>
         <div style="font-size:.6rem;color:#52525b;margin-top:4px;">[1,0,0,0...]</div>
         <div style="font-size:.6rem;color:#3f3f46;margin-top:2px;">no meaning</div>
       </div>
       <div style="text-align:center;padding:12px 8px;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1);">
-        <div style="font-size:.7rem;color:#fb923c;font-weight:600;">BAG OF WORDS</div>
+        <div style="font-size:.75rem;color:#fb923c;font-weight:600;">BAG OF WORDS</div>
         <div style="font-size:.6rem;color:#52525b;margin-top:4px;">{cat:1, sat:1}</div>
         <div style="font-size:.6rem;color:#3f3f46;margin-top:2px;">lost order</div>
       </div>
       <div style="text-align:center;padding:12px 8px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);">
-        <div style="font-size:.7rem;color:#34d399;font-weight:600;">EMBEDDINGS</div>
+        <div style="font-size:.75rem;color:#34d399;font-weight:600;">EMBEDDINGS</div>
         <div style="font-size:.6rem;color:#52525b;margin-top:4px;">[0.2, 0.8, -0.1]</div>
         <div style="font-size:.6rem;color:#34d399;margin-top:2px;">meaning preserved</div>
       </div>
@@ -207,7 +207,7 @@ The AI learned these relationships from patterns in billions of sentences.</div>
   <p class="section-text">Here is how to generate embeddings and compute similarity in Python. <em>If you are not a coder, you can skip the code — the concepts above are what matter. The code is here for learners who want to see the mechanics behind the scenes.</em></p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — generate embeddings with sentence-transformers (free, runs locally)</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — generate embeddings with sentence-transformers (free, runs locally)</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> sentence_transformers <span style="color:#c084fc">import</span> SentenceTransformer
 <span style="color:#c084fc">import</span> numpy <span style="color:#c084fc">as</span> np
 
@@ -223,7 +223,7 @@ vectors = model.encode(words)
 </div>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — cosine similarity from scratch</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — cosine similarity from scratch</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">cosine_similarity</span>(a, b):
     <span style="color:#71717a">"""Measure the angle between two vectors. 1.0 = identical, 0 = unrelated."""</span>
     <span style="color:#c084fc">return</span> np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
@@ -238,7 +238,7 @@ king, queen, man, woman, dog, cat = vectors
 </div>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — vector arithmetic: king - man + woman = ?</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — vector arithmetic: king - man + woman = ?</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># The famous equation</span>
 result = king - man + woman
 
@@ -319,10 +319,10 @@ nearest = words[np.argmax(similarities)]
     <span style="color:#34d399;font-weight:600;">happy</span>
     <span style="color:#52525b;">&#x2194;</span>
     <span style="color:#34d399;font-weight:600;">joyful</span>
-    <span style="color:#52525b;font-size:.7rem;margin-left:8px;">nearby</span>
+    <span style="color:#52525b;font-size:.75rem;margin-left:8px;">nearby</span>
     <span style="color:#52525b;margin:0 8px;">|</span>
     <span style="color:#f87171;font-weight:600;">sad</span>
-    <span style="color:#52525b;font-size:.7rem;margin-left:8px;">far away</span>
+    <span style="color:#52525b;font-size:.75rem;margin-left:8px;">far away</span>
   </div>
 </div>
 <p class="quiz-q"><span class="quiz-num">1</span>Why do similar words end up close together in embedding space?</p>

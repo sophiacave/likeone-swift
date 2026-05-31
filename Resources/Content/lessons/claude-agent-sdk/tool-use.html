@@ -65,7 +65,7 @@
 <p>Here is an agent that uses multiple tools to accomplish a real task — analyzing a project structure:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — multi-tool agent</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — multi-tool agent</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { Claude } <span style="color:#c084fc">from</span> <span style="color:#fbbf24">"@anthropic-ai/claude-agent"</span>;
 
 <span style="color:#c084fc">const</span> agent = <span style="color:#c084fc">new</span> Claude({
@@ -94,7 +94,7 @@
 <p>Not every agent should have access to every tool. The <code>canUseTool</code> callback lets you control exactly which tools your agent can use — and even approve or deny specific invocations based on their parameters:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — custom tool permissions</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — custom tool permissions</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">const</span> agent = <span style="color:#c084fc">new</span> Claude({
   model: <span style="color:#fbbf24">"claude-sonnet-4-6"</span>,
   tools: <span style="color:#fbbf24">"defaults"</span>,
@@ -126,7 +126,7 @@
 <p>Instead of the full defaults set, you can enable only the tools you need:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — selective tool loading</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — selective tool loading</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">// Read-only agent — can look but not touch</span>
 <span style="color:#c084fc">const</span> readOnlyAgent = <span style="color:#c084fc">new</span> Claude({
   model: <span style="color:#fbbf24">"claude-sonnet-4-6"</span>,

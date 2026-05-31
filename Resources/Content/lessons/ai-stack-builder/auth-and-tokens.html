@@ -97,7 +97,7 @@
 <p>The Supabase client handles token management automatically — storing tokens, refreshing expired ones, and attaching them to requests. You rarely need to touch JWTs directly.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JavaScript — Frontend auth with Supabase</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JavaScript — Frontend auth with Supabase</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { createClient } <span style="color:#c084fc">from</span> <span style="color:#fb923c">'@supabase/supabase-js'</span>
 
 <span style="color:#c084fc">const</span> supabase = <span style="color:#34d399">createClient</span>(
@@ -134,7 +134,7 @@ console.<span style="color:#34d399">log</span>(session.access_token) <span style
 <p>When your frontend calls an edge function, it sends the JWT in the Authorization header. The edge function verifies it before doing anything — this is the security gate for your backend.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — Edge function with JWT verification</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — Edge function with JWT verification</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { createClient } <span style="color:#c084fc">from</span> <span style="color:#fb923c">"https://esm.sh/@supabase/supabase-js@2"</span>
 
 Deno.<span style="color:#34d399">serve</span>(<span style="color:#c084fc">async</span> (req) => {
@@ -173,7 +173,7 @@ Deno.<span style="color:#34d399">serve</span>(<span style="color:#c084fc">async<
 <p>Row Level Security is what makes JWT + Supabase truly powerful. Instead of checking permissions in your application code (where bugs can bypass them), <strong style="color:#e5e5e5">the database itself enforces who can see what</strong>.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — RLS policies that use JWT claims</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — RLS policies that use JWT claims</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">-- Enable RLS on a user-scoped table</span>
 <span style="color:#c084fc">ALTER TABLE</span> user_data <span style="color:#c084fc">ENABLE ROW LEVEL SECURITY</span>;
 

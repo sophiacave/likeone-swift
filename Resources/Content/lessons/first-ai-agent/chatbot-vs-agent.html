@@ -23,7 +23,7 @@
 </div>
 
 
-    <div class="lesson-visual"><div style="display:grid;grid-template-columns:1fr auto 1fr;gap:12px;padding:16px;font-family:'SF Mono','JetBrains Mono',monospace;align-items:center;"><div style="text-align:center;padding:12px;border-radius:8px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1);"><div style="font-size:.8rem;color:#f87171;font-weight:600;">CHATBOT</div><div style="font-size:.65rem;color:#52525b;margin-top:4px;">generates text</div></div><div style="font-size:.8rem;color:#52525b;">vs</div><div style="text-align:center;padding:12px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);"><div style="font-size:.8rem;color:#34d399;font-weight:600;">AGENT</div><div style="font-size:.65rem;color:#52525b;margin-top:4px;">takes action</div></div></div></div>
+    <div class="lesson-visual"><div style="display:grid;grid-template-columns:1fr auto 1fr;gap:12px;padding:16px;font-family:'SF Mono','JetBrains Mono',monospace;align-items:center;"><div style="text-align:center;padding:12px;border-radius:8px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1);"><div style="font-size:.8rem;color:#f87171;font-weight:600;">CHATBOT</div><div style="font-size:.75rem;color:#52525b;margin-top:4px;">generates text</div></div><div style="font-size:.8rem;color:#52525b;">vs</div><div style="text-align:center;padding:12px;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);"><div style="font-size:.8rem;color:#34d399;font-weight:600;">AGENT</div><div style="font-size:.75rem;color:#52525b;margin-top:4px;">takes action</div></div></div></div>
 
     <p>A chatbot generates text. An agent takes action. That is the entire distinction — and it changes everything about how you build AI systems.</p>
 
@@ -99,7 +99,7 @@
     <p>Here is a minimal agent skeleton in Python — this is the foundation everything else in this course builds on:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Minimal agent loop (the foundation)</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Minimal agent loop (the foundation)</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 client = anthropic.Anthropic()
@@ -183,15 +183,15 @@ tools = [<span style="color:#71717a"># your tool definitions here</span>]
     <p>Chatbot and agent are not binary — they exist on a spectrum. As you add tools, memory, and loops, the system moves from chatbot toward full agent:</p>
 
     <div style="display:flex;align-items:center;gap:.3rem;margin:1.5rem 0;flex-wrap:wrap;justify-content:center">
-      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(239,68,68,.08);font-size:.7rem;color:#ef4444;text-align:center">Chatbot<br><span style="font-size:.6rem;color:#a1a1aa">text only</span></div>
+      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(239,68,68,.08);font-size:.75rem;color:#ef4444;text-align:center">Chatbot<br><span style="font-size:.6rem;color:#a1a1aa">text only</span></div>
       <span style="color:#52525b">&rarr;</span>
-      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(251,146,60,.08);font-size:.7rem;color:#fb923c;text-align:center">+ Tools<br><span style="font-size:.6rem;color:#a1a1aa">can act once</span></div>
+      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(251,146,60,.08);font-size:.75rem;color:#fb923c;text-align:center">+ Tools<br><span style="font-size:.6rem;color:#a1a1aa">can act once</span></div>
       <span style="color:#52525b">&rarr;</span>
-      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(139,92,246,.08);font-size:.7rem;color:#8b5cf6;text-align:center">+ Memory<br><span style="font-size:.6rem;color:#a1a1aa">learns over time</span></div>
+      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(139,92,246,.08);font-size:.75rem;color:#8b5cf6;text-align:center">+ Memory<br><span style="font-size:.6rem;color:#a1a1aa">learns over time</span></div>
       <span style="color:#52525b">&rarr;</span>
-      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(52,211,153,.08);font-size:.7rem;color:#34d399;text-align:center">+ Loop<br><span style="font-size:.6rem;color:#a1a1aa">works until done</span></div>
+      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(52,211,153,.08);font-size:.75rem;color:#34d399;text-align:center">+ Loop<br><span style="font-size:.6rem;color:#a1a1aa">works until done</span></div>
       <span style="color:#52525b">&rarr;</span>
-      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(52,211,153,.15);font-size:.7rem;color:#34d399;font-weight:700;text-align:center">Full Agent<br><span style="font-size:.6rem;color:#a1a1aa">autonomous</span></div>
+      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(52,211,153,.15);font-size:.75rem;color:#34d399;font-weight:700;text-align:center">Full Agent<br><span style="font-size:.6rem;color:#a1a1aa">autonomous</span></div>
     </div>
   </div>
 </div>

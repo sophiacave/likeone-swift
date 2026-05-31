@@ -196,7 +196,7 @@
 <p>You do not need the API to use Claude — Claude.ai works with no setup. But the API is where the real power is: you control the model, the system prompt, the temperature, the tools, and every parameter. Here is the simplest possible API call using curl and then Python:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">curl — raw API call</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">curl — raw API call</div>
 <pre style="margin:0;color:#e5e5e5"><code>curl https://api.anthropic.com/v1/messages \
   -H <span style="color:#fbbf24">"x-api-key: $ANTHROPIC_API_KEY"</span> \
   -H <span style="color:#fbbf24">"anthropic-version: 2023-06-01"</span> \
@@ -211,7 +211,7 @@
 </div>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — using the Anthropic SDK</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — using the Anthropic SDK</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 <span style="color:#71717a"># pip install anthropic</span>
@@ -298,7 +298,7 @@ message = client.messages.create(
 </div>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — smart model routing</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — smart model routing</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">choose_model</span>(task_type: str, input_length: int) -> str:
     <span style="color:#fb923c">"""Route to the right Claude model based on the task."""</span>
     <span style="color:#c084fc">if</span> task_type <span style="color:#c084fc">in</span> (<span style="color:#fbbf24">"classification"</span>, <span style="color:#fbbf24">"extraction"</span>, <span style="color:#fbbf24">"summarization"</span>):

@@ -53,7 +53,7 @@
 <p>Setting up your first webhook takes 5 minutes in the Stripe Dashboard. Here is exactly what to configure and why.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Stripe Dashboard — Webhook configuration</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Stripe Dashboard — Webhook configuration</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Go to: Stripe Dashboard → Developers → Webhooks → "Add endpoint"</span>
 
 <span style="color:#c084fc">Endpoint URL:</span>
@@ -87,7 +87,7 @@
 <p><strong style="color:#e5e5e5">Always verify the signature. No exceptions.</strong> Here is the complete verification flow for a Supabase Edge Function:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — Supabase Edge Function: stripe-webhook</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — Supabase Edge Function: stripe-webhook</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> Stripe <span style="color:#c084fc">from</span> <span style="color:#fb923c">"https://esm.sh/stripe@14"</span>
 <span style="color:#c084fc">import</span> { createClient } <span style="color:#c084fc">from</span> <span style="color:#fb923c">"https://esm.sh/@supabase/supabase-js@2"</span>
 
@@ -145,7 +145,7 @@ Deno.<span style="color:#34d399">serve</span>(<span style="color:#c084fc">async<
 <p><strong style="color:#e5e5e5">"Idempotent"</strong> means running the same operation multiple times produces the same result. Here is the pattern:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — Idempotent webhook handler</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — Idempotent webhook handler</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">// Check if we already processed this event</span>
 <span style="color:#c084fc">const</span> { data: existing } = <span style="color:#c084fc">await</span> supabase
   .<span style="color:#34d399">from</span>(<span style="color:#fb923c">"webhook_events"</span>)
@@ -206,7 +206,7 @@ Deno.<span style="color:#34d399">serve</span>(<span style="color:#c084fc">async<
 <p>During development, Stripe cannot reach your <code style="color:#f59e0b">localhost</code>. The Stripe CLI solves this by creating a secure tunnel from Stripe to your local machine.</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — Local webhook testing with Stripe CLI</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — Local webhook testing with Stripe CLI</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Install and login to Stripe CLI</span>
 <span style="color:#c084fc">brew</span> install stripe/stripe-cli/stripe
 <span style="color:#c084fc">stripe</span> login

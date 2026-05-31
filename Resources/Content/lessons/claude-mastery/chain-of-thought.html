@@ -57,7 +57,7 @@ Step 4: Total discount = $200 - $135 = $65 = 32.5%
 <p>There are three ways to use chain-of-thought with Claude, each with different tradeoffs:</p>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Approach 1: prompt-based CoT (simplest)</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Approach 1: prompt-based CoT (simplest)</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 client = anthropic.Anthropic()
 
@@ -80,7 +80,7 @@ response = client.messages.create(
 </div>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Approach 2: structured CoT in system prompt</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Approach 2: structured CoT in system prompt</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># For production: enforce CoT format in the system prompt</span>
 response = client.messages.create(
     model=<span style="color:#fbbf24">"claude-sonnet-4-6"</span>,
@@ -110,7 +110,7 @@ answer = text.split(<span style="color:#fbbf24">"&lt;answer&gt;"</span>)[<span s
 </div>
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.7rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Approach 3: extended thinking (most powerful)</div>
+<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Approach 3: extended thinking (most powerful)</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Extended thinking: Claude reasons internally before responding</span>
 <span style="color:#71717a"># Available on Opus 4.6 and Sonnet 4.6</span>
 response = client.messages.create(
