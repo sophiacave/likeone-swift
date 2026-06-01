@@ -1,8 +1,19 @@
 {
   "_meta": {
-    "description": "Single source of truth for all Like One public stats. Agents MUST read this file \u2014 never invent numbers.",
-    "last_verified": "2026-06-01",
-    "verification_method": "Cross-referenced with Stripe API, GSC API, blogs.json, academy data, GitHub repos"
+    "description": "TRUTH BIBLE — auto-synced from live systems. Never edit manually.",
+    "last_synced": "2026-06-01T14:00:40.112535",
+    "sync_tool": "lo-verify-sync-facts",
+    "verification_sources": {
+      "revenue": "Stripe API via stripe-dashboard",
+      "content": "blogs.json direct count",
+      "academy": "sitemap + content data",
+      "seo": "manual (GSC API)",
+      "infrastructure": "brain DB + ChromaDB direct query",
+      "open_source": "GitHub API via gh CLI",
+      "nonprofit": "lo-foundation CLI + brain",
+      "upwork": "manual (profile)",
+      "education": "manual (verified)"
+    }
   },
   "revenue": {
     "mrr": 17.95,
@@ -18,26 +29,36 @@
     "blog_posts": 29,
     "total_faqs": 290,
     "all_posts_at_target": true,
+    "posts_at_target": 29,
     "target_words": 2000,
-    "target_faqs": 10
+    "target_faqs": 10,
+    "word_range": "2000-3593"
   },
   "academy": {
     "courses": 52,
-    "lessons": "520+",
-    "learning_tracks": 9,
-    "free_lessons_per_course": 3
+    "lessons": "570+"
   },
   "seo": {
     "weekly_impressions": 701,
     "record_day_impressions": 205,
     "record_day_date": "2026-05-31",
-    "sitemap_urls": 616,
-    "gsc_property": "sc-domain:likeone.ai"
+    "sitemap_urls": 617,
+    "gsc_property": "sc-domain:likeone.ai",
+    "_note": "SEO stats require manual GSC update"
   },
   "infrastructure": {
-    "brain_entries": "839+",
-    "rag_vectors": "2700+",
+    "brain_entries": 874,
+    "rag_vectors": 2812,
     "rag_collections": 7,
+    "rag_breakdown": {
+      "facts": 131,
+      "sessions": 13,
+      "brain_entries": 873,
+      "episodes": 1531,
+      "memory_files": 67,
+      "skills": 17,
+      "blog_posts": 180
+    },
     "mcp_tools": "100+",
     "fleet_machines": 3,
     "ai_agents": 6
@@ -58,7 +79,7 @@
     "ein": "41-5319318",
     "status": "501(c)(3) tax-exempt",
     "granted_date": "2026-04-28",
-    "grants_in_pipeline": 196,
+    "grants_in_pipeline": 200,
     "grant_pipeline_value": 11497500,
     "giving_recipient": "UCSF HIV Cure Research Fund",
     "monthly_donation": 10,
