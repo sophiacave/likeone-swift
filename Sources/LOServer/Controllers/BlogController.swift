@@ -135,6 +135,8 @@ struct BlogController: RouteCollection {
             tags: $0.tags
         )}
 
+        let faqContexts = post.faqs?.map { BlogFAQContext(question: $0.question, answer: $0.answer) }
+
         let context = BlogDetailContext(
             title: "\(post.title) | Like One",
             description: post.description,
@@ -152,7 +154,8 @@ struct BlogController: RouteCollection {
             ogType: "article",
             ogUrl: canonicalUrl,
             isoDate: isoDate,
-            relatedPosts: related
+            relatedPosts: related,
+            faqs: faqContexts
         )
         let view = try await req.view.render("blog-post", context)
         var headers = HTTPHeaders()
@@ -182,6 +185,11 @@ struct BlogCardContext: Content {
     let tags: [String]
 }
 
+struct BlogFAQContext: Content {
+    let question: String
+    let answer: String
+}
+
 struct BlogDetailContext: Content {
     let title: String
     let description: String
@@ -193,4 +201,5 @@ struct BlogDetailContext: Content {
     let ogUrl: String?
     let isoDate: String?
     let relatedPosts: [BlogCardContext]?
+    let faqs: [BlogFAQContext]?
 }

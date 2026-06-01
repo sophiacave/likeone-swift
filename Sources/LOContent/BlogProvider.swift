@@ -5,6 +5,11 @@ private struct RawBlogData: Codable {
     let posts: [RawBlogPost]
 }
 
+private struct RawBlogFAQ: Codable {
+    let question: String
+    let answer: String
+}
+
 private struct RawBlogPost: Codable {
     let slug: String
     let title: String
@@ -15,6 +20,7 @@ private struct RawBlogPost: Codable {
     let tags: [String]
     let image: String
     let content: String
+    let faqs: [RawBlogFAQ]?
 }
 
 public struct BlogProvider: Sendable {
@@ -67,7 +73,8 @@ public struct BlogProvider: Sendable {
                 author: post.author,
                 publishedAt: formatter.date(from: post.date) ?? Date(),
                 tags: post.tags,
-                image: post.image
+                image: post.image,
+                faqs: post.faqs?.map { BlogFAQ(question: $0.question, answer: $0.answer) }
             )
         }
     }

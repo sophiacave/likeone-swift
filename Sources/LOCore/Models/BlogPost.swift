@@ -1,5 +1,15 @@
 import Foundation
 
+public struct BlogFAQ: Codable, Sendable {
+    public let question: String
+    public let answer: String
+
+    public init(question: String, answer: String) {
+        self.question = question
+        self.answer = answer
+    }
+}
+
 public struct BlogPost: Codable, Identifiable, Sendable {
     public let id: UUID
     public let slug: String
@@ -10,6 +20,7 @@ public struct BlogPost: Codable, Identifiable, Sendable {
     public let publishedAt: Date
     public let tags: [String]
     public let image: String?
+    public let faqs: [BlogFAQ]?
 
     public init(
         id: UUID = UUID(),
@@ -20,7 +31,8 @@ public struct BlogPost: Codable, Identifiable, Sendable {
         author: String = "Sophie Cave",
         publishedAt: Date = Date(),
         tags: [String] = [],
-        image: String? = nil
+        image: String? = nil,
+        faqs: [BlogFAQ]? = nil
     ) {
         self.id = id
         self.slug = slug
@@ -31,5 +43,6 @@ public struct BlogPost: Codable, Identifiable, Sendable {
         self.publishedAt = publishedAt
         self.tags = tags
         self.image = image
+        self.faqs = faqs
     }
 }

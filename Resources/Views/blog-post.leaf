@@ -9,7 +9,9 @@
             "author": {"@type": "Person", "name": "#(post.author)"},
             "publisher": {"@type": "Organization", "name": "Like One", "url": "https://likeone.ai"},
             "datePublished": "#(isoDate)",
-            "url": "#(canonicalUrl)"
+            "dateModified": "#(isoDate)",
+            "url": "#(canonicalUrl)",
+            "mainEntityOfPage": {"@type": "WebPage", "@id": "#(canonicalUrl)"}
             #if(ogImage):,"image": "#(ogImage)"#endif
         }
         </script>
@@ -24,6 +26,26 @@
             ]
         }
         </script>
+        #if(faqs):
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                #for(faq in faqs):
+                {
+                    "@type": "Question",
+                    "name": "#(faq.question)",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "#(faq.answer)"
+                    }
+                }#if(!isLast):,#endif
+                #endfor
+            ]
+        }
+        </script>
+        #endif
         <article class="blog-article">
             <div class="reading-column">
                 <a href="/blog" class="course-back">&larr; Back to Blog</a>
