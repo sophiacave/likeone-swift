@@ -33,7 +33,7 @@ struct BlogController: RouteCollection {
     // Legacy blog URLs from old Next.js site that Google still indexes (~3,400 monthly impressions).
     private static let legacyRedirects: [String: String] = [
         // Batch 2: additional high-impression legacy URLs
-        "custom-gpts-vs-claude-projects": "/blog/chatgpt-vs-claude-vs-gemini-2026/",
+        "custom-gpts-vs-claude-projects": "/blog/custom-gpts-vs-claude-projects-which-is-better-2026/",
         "chatgpt-vs-claude-vs-gemini-for-coding": "/blog/chatgpt-vs-claude-vs-gemini-2026/",
         "claude-vs-chatgpt-for-writing-2026": "/blog/chatgpt-vs-claude-vs-gemini-2026/",
         "chatgpt-vs-claude-vs-gemini": "/blog/chatgpt-vs-claude-vs-gemini-2026/",
