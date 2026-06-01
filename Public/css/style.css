@@ -439,6 +439,27 @@ a:focus-visible, button:focus-visible {
 .related-heading { font-size: 1.1rem; font-weight: 700; margin-bottom: 24px; color: var(--text-primary); }
 .blog-article-tags { margin-bottom: 32px; }
 .blog-article-footer { text-align: center; padding: 20px 0 40px; }
+.blog-cta {
+    text-align: center !important;
+    padding: 40px 32px;
+    margin: 32px 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+.blog-cta .blog-cta-heading {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    text-align: center;
+}
+.blog-cta .blog-cta-text {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    text-align: center;
+}
 
 /* Homepage responsive — mobile-first collapse */
 @media (max-width: 768px) {
