@@ -129,7 +129,7 @@
     {
       "slug": "what-are-agentic-loops-explained",
       "title": "What Are Agentic Loops? The Core Pattern Behind Every AI Agent",
-      "description": "Agentic loops are the fundamental architecture that makes AI agents work. Here is how they function, why they matter, and how to build one that actually delivers results.",
+      "description": "Agentic loops let AI agents think, act, and self-correct autonomously. Learn the observe-think-act pattern with real code examples and build your first working agent loop.",
       "author": "Sophie Cave",
       "date": "2026-05-30",
       "category": "Engineering",
@@ -151,7 +151,7 @@
     {
       "slug": "claude-custom-instructions-guide",
       "title": "Claude Custom Instructions: The Complete Guide to Making Claude Work Your Way",
-      "description": "Custom instructions transform Claude from a generic chatbot into your personalized AI partner. Here is exactly how to write them — with templates, best practices, and the mistakes that waste your time.",
+      "description": "Set up Claude custom instructions in 5 minutes. Includes copy-paste templates, project-level vs conversation-level instructions, and the 3 mistakes that make Claude ignore your rules.",
       "author": "Sophie Cave",
       "date": "2026-05-30",
       "category": "AI Tools",
