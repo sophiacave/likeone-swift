@@ -1,0 +1,81 @@
+{
+  "_meta": {
+    "description": "Single source of truth for all Like One public stats. Agents MUST read this file \u2014 never invent numbers.",
+    "last_verified": "2026-06-01",
+    "verification_method": "Cross-referenced with Stripe API, GSC API, blogs.json, academy data, GitHub repos"
+  },
+  "revenue": {
+    "mrr": 17.95,
+    "subscribers": 4,
+    "stripe_account": "acct_1T9sH92L9FGg4gn2",
+    "pricing": {
+      "pro_monthly": 19.0,
+      "pro_annual": 149.0,
+      "legacy_monthly": 4.9
+    }
+  },
+  "content": {
+    "blog_posts": 29,
+    "total_faqs": 290,
+    "all_posts_at_target": true,
+    "target_words": 2000,
+    "target_faqs": 10
+  },
+  "academy": {
+    "courses": 52,
+    "lessons": "520+",
+    "learning_tracks": 9,
+    "free_lessons_per_course": 3
+  },
+  "seo": {
+    "weekly_impressions": 701,
+    "record_day_impressions": 205,
+    "record_day_date": "2026-05-31",
+    "sitemap_urls": 616,
+    "gsc_property": "sc-domain:likeone.ai"
+  },
+  "infrastructure": {
+    "brain_entries": "839+",
+    "rag_vectors": "2700+",
+    "rag_collections": 7,
+    "mcp_tools": "100+",
+    "fleet_machines": 3,
+    "ai_agents": 6
+  },
+  "open_source": {
+    "published_mcp_servers": 5,
+    "repos": [
+      "claude-brain",
+      "mcp-shield",
+      "orchard-hig",
+      "orchard-sign",
+      "lo-eyes"
+    ],
+    "github_org": "sophiacave"
+  },
+  "nonprofit": {
+    "name": "Like One Foundation",
+    "ein": "41-5319318",
+    "status": "501(c)(3) tax-exempt",
+    "granted_date": "2026-04-28",
+    "grants_in_pipeline": 196,
+    "grant_pipeline_value": 11497500,
+    "giving_recipient": "UCSF HIV Cure Research Fund",
+    "monthly_donation": 10,
+    "total_donated": 20
+  },
+  "upwork": {
+    "completed_projects": 48,
+    "job_success_score": "100%"
+  },
+  "education": {
+    "university": "University of California, Berkeley",
+    "degree": "Bachelor of Arts",
+    "dates": "2009-2013"
+  },
+  "ios_app": {
+    "bundle_id": "ai.likeone.academy",
+    "status": "TestFlight uploaded",
+    "build": 2
+  }
+}
