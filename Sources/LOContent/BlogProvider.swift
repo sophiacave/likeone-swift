@@ -76,6 +76,6 @@ public struct BlogProvider: Sendable {
                 image: post.image,
                 faqs: post.faqs?.map { BlogFAQ(question: $0.question, answer: $0.answer) }
             )
-        }
+        }.sorted { $0.publishedAt > $1.publishedAt }
     }
 }
