@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "TRUTH BIBLE — auto-synced from live systems. Never edit manually.",
-    "last_synced": "2026-06-02T13:09:02.021707",
+    "last_synced": "2026-06-05T11:13:06.408315",
     "sync_tool": "lo-verify-sync-facts",
     "verification_sources": {
       "revenue": "Stripe API via stripe-dashboard",
@@ -32,23 +32,32 @@
     "posts_at_target": 30,
     "target_words": 2000,
     "target_faqs": 10,
-    "word_range": "1519-3618"
+    "word_range": "1552-3618"
   },
   "academy": {
     "courses": 52,
     "lessons": "570+"
   },
   "seo": {
-    "weekly_impressions": 701,
+    "weekly_impressions": 860,
     "record_day_impressions": 205,
     "record_day_date": "2026-05-31",
     "sitemap_urls": 619,
     "gsc_property": "sc-domain:likeone.ai",
-    "_note": "SEO stats require manual GSC update"
+    "_note": "SEO stats require manual GSC update",
+    "weekly_impressions_period": "2026-05-29 to 2026-06-05",
+    "best_click_day": {
+      "date": "2026-06-04",
+      "clicks": 4,
+      "ctr": "3.33%"
+    },
+    "total_clicks_8d": 9,
+    "avg_ctr": "1.05%",
+    "custom_instructions_lifetime_impressions": 1369
   },
   "infrastructure": {
-    "brain_entries": 889,
-    "rag_vectors": 2819,
+    "brain_entries": 901,
+    "rag_vectors": 2840,
     "rag_collections": 7,
     "rag_breakdown": {
       "facts": 131,
@@ -61,7 +70,8 @@
     },
     "mcp_tools": "100+",
     "fleet_machines": 3,
-    "ai_agents": 6
+    "ai_agents": 6,
+    "brain_archived": 195
   },
   "open_source": {
     "published_mcp_servers": 5,
@@ -70,16 +80,18 @@
       "mcp-shield",
       "orchard-hig",
       "orchard-sign",
-      "lo-eyes"
+      "lo-eyes",
+      "sovereign-brain"
     ],
-    "github_org": "sophiacave"
+    "github_org": "sophiacave",
+    "total_repos": 6
   },
   "nonprofit": {
     "name": "Like One Foundation",
     "ein": "41-5319318",
     "status": "501(c)(3) tax-exempt",
     "granted_date": "2026-04-28",
-    "grants_in_pipeline": 207,
+    "grants_in_pipeline": 245,
     "grant_pipeline_value": 11497500,
     "giving_recipient": "UCSF HIV Cure Research Fund",
     "monthly_donation": 10,
