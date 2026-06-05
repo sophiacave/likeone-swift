@@ -23,14 +23,40 @@
         "@context": "https://schema.org",
         "@type": "EducationalOrganization",
         "name": "Like One",
+        "alternateName": ["Like One Academy", "likeone.ai"],
         "url": "https://likeone.ai",
+        "logo": "https://likeone.ai/images/logo.png",
         "description": "AI education from a 501(c)(3) nonprofit. 52 courses, 520+ lessons. Start free.",
-        "sameAs": ["https://github.com/sophiacave/likeone-swift"],
+        "sameAs": [
+            "https://github.com/sophiacave/likeone-swift",
+            "https://github.com/sophiacave/sovereign-brain",
+            "https://github.com/sophiacave/mcp-shield",
+            "https://github.com/sophiacave/claude-brain",
+            "https://bsky.app/profile/likeone.bsky.social"
+        ],
         "founder": {
             "@type": "Person",
             "name": "Sophia Cave"
         },
-        "nonprofitStatus": "Nonprofit501c3"
+        "nonprofitStatus": "Nonprofit501c3",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "hello@likeone.ai",
+            "contactType": "customer support"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Like One",
+        "url": "https://likeone.ai",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://likeone.ai/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
     }
     </script>
     <script src="https://unpkg.com/htmx.org@2.0.4" defer></script>

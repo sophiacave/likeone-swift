@@ -71,6 +71,7 @@ struct BlogController: RouteCollection {
         "claude-vs-chatgpt-business-automation-2026": "/blog/chatgpt-vs-claude-vs-gemini-2026/",
         // Batch 3: fixed redirects
         "chatgpt-vs-claude-vs-gemini-comparison-2026": "/blog/chatgpt-vs-claude-vs-gemini-2026/",
+        "claude-agent-sdk-tutorial-build-first-ai-agent": "/blog/how-to-build-ai-agent-that-works-2026/",
         // Batch 1: original high-impression legacy URLs (deduplicated)
         // "claude-custom-instructions-guide" — REMOVED: now a real blog post
         // "what-are-agentic-loops-explained" — REMOVED: now a real blog post
