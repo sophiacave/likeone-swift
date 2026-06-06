@@ -1131,7 +1131,7 @@ a:focus-visible, button:focus-visible {
     color: var(--text-secondary);
     font-style: italic;
 }
-.article-content table {
+.article-content table:not(.lo-table) {
     width: 100%;
     border-collapse: collapse;
     margin: 1.5rem 0;
@@ -1140,8 +1140,8 @@ a:focus-visible, button:focus-visible {
     display: block;
     max-width: 100%;
 }
-.article-content thead { border-bottom: 2px solid var(--border); }
-.article-content th {
+.article-content thead:not(.lo-table thead) { border-bottom: 2px solid var(--border); }
+.article-content th:not(.lo-table th) {
     text-align: left;
     padding: 10px 14px;
     font-weight: 600;
@@ -1339,15 +1339,17 @@ a:focus-visible, button:focus-visible {
     overflow: hidden;
 }
 
-/* Table — fills container completely */
+/* Table — fills container completely, columns stretch to fit */
 .lo-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
     font-size: 0.875rem;
     line-height: 1.6;
 }
 
-/* Caption — sits inside the card, its own row */
+/* Caption — sits inside the card, generous top spacing */
 .lo-table caption {
     font-size: 0.7rem;
     font-weight: 600;
@@ -1355,38 +1357,42 @@ a:focus-visible, button:focus-visible {
     color: #52525b;
     text-transform: uppercase;
     text-align: left;
-    padding: 16px 22px 0;
+    padding: 18px 22px 12px;
     caption-side: top;
 }
 
-/* Header — darker band, full bleed */
+/* Header — distinct band, full bleed */
 .lo-table thead th {
     font-weight: 600;
     font-size: 0.8rem;
     letter-spacing: 0.01em;
     color: #a1a1aa;
     text-align: left;
-    padding: 12px 22px;
-    background: rgba(255, 255, 255, 0.02);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 12px 22px 14px;
+    background: rgba(255, 255, 255, 0.025);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Data cells — cell padding IS the breathing room */
+/* Data cells — generous padding, full-bleed bands */
 .lo-table tbody td {
-    padding: 12px 22px;
+    padding: 13px 22px;
     color: #d4d4dc;
     font-size: 0.875rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-/* Last row — no bottom border (container edge handles it) */
-.lo-table tbody tr:last-child td {
-    border-bottom: none;
+/* Alternating rows — subtle bands make rows read edge-to-edge */
+.lo-table tbody tr:nth-child(odd) td {
+    background: rgba(255, 255, 255, 0.015);
 }
 
-/* Hover */
+/* Row separators — visible enough to delineate */
+.lo-table tbody tr + tr td {
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Hover — lifts above the stripe */
 .lo-table tbody tr:hover td {
-    background: rgba(192, 132, 252, 0.04);
+    background: rgba(192, 132, 252, 0.05);
 }
 
 /* First column — label role */
