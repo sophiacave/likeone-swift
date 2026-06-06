@@ -63,23 +63,46 @@
 
   <p class="section-text" style="margin-top:1.25rem">Here is how these three metrics compare in practice:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.5;overflow-x:auto">
-<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">  SIMILARITY METRICS COMPARED</span>
-
-  Word Pair           Cosine    Euclidean    Dot Product
-  ──────────          ──────    ─────────    ───────────
-  <span style="color:#34d399">cat ↔ dog</span>           0.95      0.31         0.92
-  <span style="color:#38bdf8">cat ↔ kitten</span>        0.89      0.47         0.85
-  <span style="color:#fb923c">cat ↔ car</span>           0.27      1.22         0.24
-  <span style="color:#ef4444">cat ↔ algebra</span>       0.05      1.38         0.04
-
-  <span style="color:#71717a">Higher cosine = more similar (max 1.0)</span>
-  <span style="color:#71717a">Lower Euclidean = more similar (min 0.0)</span>
-  <span style="color:#71717a">Higher dot product = more similar</span>
-
-  <span style="color:#71717a">In practice: cosine similarity is the standard for NLP</span>
-  <span style="color:#71717a">because it ignores vector length (document size)</span></code></pre>
+<div class="lo-table-wrap">
+  <table class="lo-table">
+    <caption>SIMILARITY METRICS COMPARED</caption>
+    <thead>
+      <tr>
+        <th>Word Pair</th>
+        <th>Cosine</th>
+        <th>Euclidean</th>
+        <th>Dot Product</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="col-green">cat ↔ dog</span></td>
+        <td>0.95</td>
+        <td>0.31</td>
+        <td>0.92</td>
+      </tr>
+      <tr>
+        <td><span class="col-blue">cat ↔ kitten</span></td>
+        <td>0.89</td>
+        <td>0.47</td>
+        <td>0.85</td>
+      </tr>
+      <tr>
+        <td><span class="col-orange">cat ↔ car</span></td>
+        <td>0.27</td>
+        <td>1.22</td>
+        <td>0.24</td>
+      </tr>
+      <tr>
+        <td><span style="color:#ef4444">cat ↔ algebra</span></td>
+        <td>0.05</td>
+        <td>1.38</td>
+        <td>0.04</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+<p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Higher cosine = more similar (max 1.0). Lower Euclidean = more similar (min 0.0). Higher dot product = more similar. In practice: cosine similarity is the standard for NLP because it ignores vector length (document size).</p>
 
   <div style="display:grid;gap:.75rem;margin-top:1rem">
     <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">

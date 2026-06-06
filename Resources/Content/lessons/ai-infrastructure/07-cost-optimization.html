@@ -168,20 +168,23 @@ $$ LANGUAGE sql;</code></pre>
   <h2 class="section-title">AI Cost Calculator</h2>
   <p class="section-text">Use this reference to estimate monthly AI costs before you build. Plug in your expected usage numbers and model choices to get a realistic budget.</p>
 
-<div class="code-block"><div class="code-label">Cost Calculator Reference</div>
-<pre><code>MODEL PRICING (per 1M tokens, as of 2025):
-──────────────────────────────────────────────────────
-Model                    │ Input      │ Output
-─────────────────────────┼────────────┼──────────────
-Claude Opus 4            │ $15.00     │ $75.00
-Claude Sonnet 4          │  $3.00     │ $15.00
-Claude Haiku 3.5         │  $0.80     │  $4.00
-GPT-4o                   │  $2.50     │ $10.00
-GPT-4o-mini              │  $0.15     │  $0.60
-BGE-small (HuggingFace)  │  FREE      │  N/A
-──────────────────────────────────────────────────────
+<div class="lo-table-wrap"><table class="lo-table">
+<caption>Model Pricing (per 1M tokens, as of 2025)</caption>
+<thead>
+<tr><th>Model</th><th class="col-green">Input</th><th class="col-purple">Output</th></tr>
+</thead>
+<tbody>
+<tr><td>Claude Opus 4</td><td>$15.00</td><td>$75.00</td></tr>
+<tr><td>Claude Sonnet 4</td><td>$3.00</td><td>$15.00</td></tr>
+<tr><td>Claude Haiku 3.5</td><td>$0.80</td><td>$4.00</td></tr>
+<tr><td>GPT-4o</td><td>$2.50</td><td>$10.00</td></tr>
+<tr><td>GPT-4o-mini</td><td>$0.15</td><td>$0.60</td></tr>
+<tr><td>BGE-small (HuggingFace)</td><td>FREE</td><td>N/A</td></tr>
+</tbody>
+</table></div>
 
-EXAMPLE CALCULATION — 1,000 daily active users:
+<div class="code-block"><div class="code-label">Cost Calculator Reference</div>
+<pre><code>EXAMPLE CALCULATION — 1,000 daily active users:
 ──────────────────────────────────────────────────────
 Assumption: 5 AI interactions per user per day
 Avg input: 500 tokens | Avg output: 300 tokens

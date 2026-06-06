@@ -1407,6 +1407,7 @@ a:focus-visible, button:focus-visible {
 .lo-table .col-purple { color: #c084fc; }
 .lo-table .col-blue { color: #38bdf8; }
 .lo-table .col-orange { color: #fb923c; }
+.lo-table .col-red { color: #ef4444; }
 .lo-table .col-dim { color: #52525b; }
 
 /* Mobile */

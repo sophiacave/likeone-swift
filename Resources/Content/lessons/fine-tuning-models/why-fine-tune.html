@@ -93,13 +93,19 @@ START: "My model does not do what I want."
 
 **Cost comparison by approach:**
 
-| Approach | Setup Cost | Per-Query Cost | Time to Deploy |
-|----------|-----------|---------------|----------------|
-| Better prompts | $0 | Base API price | Hours |
-| RAG | $50-500 | Base + retrieval | Days |
-| Fine-tuning (LoRA) | $10-500 | Reduced (shorter prompts) | Days-Weeks |
-| Full fine-tuning | $500-50,000 | Same as LoRA | Weeks |
-| Train from scratch | $100K-10M+ | Varies | Months |
+<div class="lo-table-wrap"><table class="lo-table">
+<caption>Cost Comparison by Approach</caption>
+<thead>
+<tr><th class="col-green">Approach</th><th class="col-purple">Setup Cost</th><th class="col-blue">Per-Query Cost</th><th class="col-orange">Time to Deploy</th></tr>
+</thead>
+<tbody>
+<tr><td>Better prompts</td><td>$0</td><td>Base API price</td><td>Hours</td></tr>
+<tr><td>RAG</td><td>$50-500</td><td>Base + retrieval</td><td>Days</td></tr>
+<tr><td>Fine-tuning (LoRA)</td><td>$10-500</td><td>Reduced (shorter prompts)</td><td>Days-Weeks</td></tr>
+<tr><td>Full fine-tuning</td><td>$500-50,000</td><td>Same as LoRA</td><td>Weeks</td></tr>
+<tr><td>Train from scratch</td><td>$100K-10M+</td><td>Varies</td><td>Months</td></tr>
+</tbody>
+</table></div>
 
 <div class="callout">
 <strong>The 80/20 rule:</strong> 80% of use cases are solved by better prompting and RAG. Fine-tuning is for the remaining 20% where you need specific output behavior at scale, reduced latency, or lower per-query cost.

@@ -124,26 +124,22 @@ Content to review: [PASTE YOUR CONTENT]"</code></div>
 
 <div class="demo-container">
   <h3>Automated Scoring Matrix</h3>
-  <pre>
-QUALITY GATE SCORECARD
-──────────────────────────────────────────────
-Category     │ Points │ Score │ Pass Threshold
-─────────────┼────────┼───────┼───────────────
-Technical    │ 5      │ __/5  │ 4/5 minimum
-Brand        │ 5      │ __/5  │ 5/5 required
-Strategic    │ 5      │ __/5  │ 4/5 minimum
-─────────────┼────────┼───────┼───────────────
-TOTAL        │ 15     │ __/15 │ 13/15 to pass
-
-RESULT: ☐ PASS → proceed to output
-        ☐ FAIL → return to generation with fix notes
-        ☐ HOLD → human review needed (ambiguous issues)
-
-FIX NOTES (if fail):
-- Issue: _______________
-- Which gate failed: _______________
-- Specific fix instruction: _______________
-  </pre>
+  <div class="lo-table-wrap"><table class="lo-table">
+  <caption>Quality Gate Scorecard</caption>
+  <thead>
+  <tr><th>Category</th><th class="col-green">Points</th><th class="col-purple">Score</th><th class="col-orange">Pass Threshold</th></tr>
+  </thead>
+  <tbody>
+  <tr><td>Technical</td><td>5</td><td>__/5</td><td>4/5 minimum</td></tr>
+  <tr><td>Brand</td><td>5</td><td>__/5</td><td>5/5 required</td></tr>
+  <tr><td>Strategic</td><td>5</td><td>__/5</td><td>4/5 minimum</td></tr>
+  </tbody>
+  <tfoot>
+  <tr><td><strong>TOTAL</strong></td><td><strong>15</strong></td><td><strong>__/15</strong></td><td><strong>13/15 to pass</strong></td></tr>
+  </tfoot>
+  </table></div>
+  <p><strong>RESULT:</strong> PASS — proceed to output | FAIL — return to generation with fix notes | HOLD — human review needed (ambiguous issues)</p>
+  <p><strong>FIX NOTES (if fail):</strong> Issue: _______________ | Which gate failed: _______________ | Specific fix instruction: _______________</p>
   <p>Encode this scorecard into your quality review template. The AI fills in scores and fix instructions automatically. You review the scorecard, not the content — saving time while maintaining rigor.</p>
 </div>
 

@@ -74,20 +74,25 @@
   <h2 class="section-title">Latency Profiles: Traditional vs. AI</h2>
   <p class="section-text">One of the most jarring differences when building AI systems is the latency profile. Traditional web apps aim for sub-100ms responses. AI systems routinely take 2-30 seconds for a single operation. Understanding these numbers shapes every architectural decision.</p>
 
-<div class="code-block"><div class="code-label">Latency Comparison Table</div>
-<pre><code>Operation                    │ Traditional Web │ AI-Powered
-─────────────────────────────┼─────────────────┼───────────
-Static page load             │     50-100ms    │   50-100ms
-Database query               │      5-50ms     │    5-50ms
-API call to third party      │    100-500ms    │  100-500ms
-LLM inference (small model)  │       N/A       │   500ms-3s
-LLM inference (large model)  │       N/A       │   2-30s
-Embedding generation         │       N/A       │  100-500ms
-Vector similarity search     │       N/A       │   10-100ms
-Full RAG pipeline            │       N/A       │   1-10s
-─────────────────────────────┼─────────────────┼───────────
-Typical end-to-end           │    200-500ms    │   3-15s</code></pre>
-</div>
+<div class="lo-table-wrap"><table class="lo-table">
+<caption>Latency Comparison Table</caption>
+<thead>
+<tr><th>Operation</th><th class="col-green">Traditional Web</th><th class="col-purple">AI-Powered</th></tr>
+</thead>
+<tbody>
+<tr><td>Static page load</td><td>50-100ms</td><td>50-100ms</td></tr>
+<tr><td>Database query</td><td>5-50ms</td><td>5-50ms</td></tr>
+<tr><td>API call to third party</td><td>100-500ms</td><td>100-500ms</td></tr>
+<tr><td>LLM inference (small model)</td><td>N/A</td><td>500ms-3s</td></tr>
+<tr><td>LLM inference (large model)</td><td>N/A</td><td>2-30s</td></tr>
+<tr><td>Embedding generation</td><td>N/A</td><td>100-500ms</td></tr>
+<tr><td>Vector similarity search</td><td>N/A</td><td>10-100ms</td></tr>
+<tr><td>Full RAG pipeline</td><td>N/A</td><td>1-10s</td></tr>
+</tbody>
+<tfoot>
+<tr><td><strong>Typical end-to-end</strong></td><td><strong>200-500ms</strong></td><td><strong>3-15s</strong></td></tr>
+</tfoot>
+</table></div>
 
   <p class="section-text">This is why streaming is non-negotiable in AI apps. If a user has to wait 10 seconds staring at a blank screen, they'll leave. Streaming partial tokens as they're generated turns a 10-second wait into an engaging experience where the user reads along as the response builds.</p>
   <p class="section-text">It also explains why caching matters so much more in AI systems. Shaving 50ms off a 200ms response is nice. Eliminating a 5-second LLM call entirely by serving a cached result is transformative — both for user experience and for your budget.</p>
@@ -98,22 +103,26 @@ Typical end-to-end           │    200-500ms    │   3-15s</code></pre>
   <h2 class="section-title">The Economics of AI Infrastructure</h2>
   <p class="section-text">AI infrastructure costs behave fundamentally differently from traditional hosting. In a traditional app, your biggest costs are fixed — servers, databases, CDN bandwidth. In an AI app, your biggest cost is variable — every API call has a direct marginal cost.</p>
 
-<div class="code-block"><div class="code-label">Monthly Cost Comparison — 10,000 Active Users</div>
-<pre><code>Component                │ Traditional App │ AI-Powered App
-─────────────────────────┼─────────────────┼────────────────
-Hosting (Vercel)         │      $20/mo     │      $20/mo
-Database (Supabase)      │      $25/mo     │      $25/mo
-CDN / Bandwidth          │      $10/mo     │      $10/mo
-Authentication           │      $0/mo      │       $0/mo
-─── Fixed costs total ───┼──── $55/mo ─────┼──── $55/mo ────
-                         │                 │
-AI API calls             │      $0/mo      │  $200-2000/mo
-Embedding generation     │      $0/mo      │    $5-50/mo
-Vector search compute    │      $0/mo      │     $0-10/mo
-─── Variable costs ──────┼──── $0/mo ──────┼─ $205-2060/mo ─
-                         │                 │
-TOTAL                    │    ~$55/mo      │  $260-2115/mo</code></pre>
-</div>
+<div class="lo-table-wrap"><table class="lo-table">
+<caption>Monthly Cost Comparison — 10,000 Active Users</caption>
+<thead>
+<tr><th>Component</th><th class="col-green">Traditional App</th><th class="col-purple">AI-Powered App</th></tr>
+</thead>
+<tbody>
+<tr><td>Hosting (Vercel)</td><td>$20/mo</td><td>$20/mo</td></tr>
+<tr><td>Database (Supabase)</td><td>$25/mo</td><td>$25/mo</td></tr>
+<tr><td>CDN / Bandwidth</td><td>$10/mo</td><td>$10/mo</td></tr>
+<tr><td>Authentication</td><td>$0/mo</td><td>$0/mo</td></tr>
+<tr><td><strong>Fixed costs total</strong></td><td><strong>$55/mo</strong></td><td><strong>$55/mo</strong></td></tr>
+<tr><td>AI API calls</td><td>$0/mo</td><td>$200-2,000/mo</td></tr>
+<tr><td>Embedding generation</td><td>$0/mo</td><td>$5-50/mo</td></tr>
+<tr><td>Vector search compute</td><td>$0/mo</td><td>$0-10/mo</td></tr>
+<tr><td><strong>Variable costs</strong></td><td><strong>$0/mo</strong></td><td><strong>$205-2,060/mo</strong></td></tr>
+</tbody>
+<tfoot>
+<tr><td><strong>TOTAL</strong></td><td><strong>~$55/mo</strong></td><td><strong>$260-2,115/mo</strong></td></tr>
+</tfoot>
+</table></div>
 
   <p class="section-text">The variable cost component is what makes or breaks AI businesses. Without caching, rate limiting, and model tiering, costs scale linearly with every user interaction. With those optimizations, you can reduce AI costs by 40-70% — turning a money pit into a viable business.</p>
   <p class="section-text">This is why infrastructure decisions matter so much more for AI apps. A bad database choice in a traditional app costs you some performance. A bad caching strategy in an AI app can cost you thousands of dollars per month.</p>

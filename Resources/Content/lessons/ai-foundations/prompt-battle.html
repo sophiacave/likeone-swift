@@ -80,23 +80,41 @@
 
   <p class="section-text" style="margin-top:1.25rem">Here is the decision tree. Follow it before every prompt you write:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.5;overflow-x:auto">
-<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">  PROMPT TECHNIQUE DECISION TREE</span>
-
-  Is the task simple and well-defined?
-  ├── <span style="color:#34d399">YES</span> → <span style="color:#34d399">Zero-Shot</span> (just ask clearly)
-  └── <span style="color:#ef4444">NO</span> → Does it need a specific output format?
-       ├── <span style="color:#34d399">YES</span> → <span style="color:#8b5cf6">Few-Shot</span> (show 2-3 examples)
-       └── <span style="color:#ef4444">NO</span> → Does it need reasoning or accuracy?
-            ├── <span style="color:#34d399">YES</span> → <span style="color:#fb923c">Chain-of-Thought</span> (think step by step)
-            └── <span style="color:#ef4444">NO</span> → Does it need expertise or tone?
-                 ├── <span style="color:#34d399">YES</span> → <span style="color:#38bdf8">Role-Play</span> (set a persona)
-                 └── <span style="color:#ef4444">NO</span> → <span style="color:#34d399">Zero-Shot</span> (default)
-
-  <span style="color:#71717a">PRO TIP: You can combine techniques!</span>
-  <span style="color:#71717a">Role-Play + Chain-of-Thought = expert reasoning</span>
-  <span style="color:#71717a">Few-Shot + Role-Play = patterned expert output</span></code></pre>
+<div class="lo-table-wrap">
+  <table class="lo-table">
+    <caption>PROMPT TECHNIQUE DECISION TREE</caption>
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th class="col-green">YES</th>
+        <th style="color:#ef4444">NO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Is the task simple and well-defined?</td>
+        <td><span class="col-green">Zero-Shot</span> (just ask clearly)</td>
+        <td>Next question ↓</td>
+      </tr>
+      <tr>
+        <td>Does it need a specific output format?</td>
+        <td><span class="col-purple">Few-Shot</span> (show 2-3 examples)</td>
+        <td>Next question ↓</td>
+      </tr>
+      <tr>
+        <td>Does it need reasoning or accuracy?</td>
+        <td><span class="col-orange">Chain-of-Thought</span> (think step by step)</td>
+        <td>Next question ↓</td>
+      </tr>
+      <tr>
+        <td>Does it need expertise or tone?</td>
+        <td><span class="col-blue">Role-Play</span> (set a persona)</td>
+        <td><span class="col-green">Zero-Shot</span> (default)</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+<p style="font-size:.82rem;color:#71717a;margin-top:.5rem">PRO TIP: You can combine techniques! Role-Play + Chain-of-Thought = expert reasoning. Few-Shot + Role-Play = patterned expert output.</p>
 
   <div style="display:grid;gap:.75rem;margin-top:1rem">
     <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
@@ -509,25 +527,91 @@ Answer: POSITIVE</code></pre>
   <span class="section-label">Remember</span>
   <h2 class="section-title">The prompt engineer's cheat sheet.</h2>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.5;overflow-x:auto">
-<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">  PROMPT ENGINEERING CHEAT SHEET</span>
+<div class="lo-table-wrap">
+  <table class="lo-table">
+    <caption>PROMPT ENGINEERING CHEAT SHEET</caption>
+    <thead>
+      <tr>
+        <th>Technique</th>
+        <th>Best For</th>
+        <th>Key Phrase</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="col-green">Zero-Shot</span></td>
+        <td>Simple, clear tasks</td>
+        <td>"Classify this as..."</td>
+      </tr>
+      <tr>
+        <td><span class="col-purple">Few-Shot</span></td>
+        <td>Custom formats/styles</td>
+        <td>"Here are 3 examples..."</td>
+      </tr>
+      <tr>
+        <td><span class="col-orange">Chain-of-Thought</span></td>
+        <td>Math, logic, debugging</td>
+        <td>"Think step by step..."</td>
+      </tr>
+      <tr>
+        <td><span class="col-blue">Role-Play</span></td>
+        <td>Expert voice/persona</td>
+        <td>"You are a senior..."</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-  Technique        Best For                   Key Phrase
-  ─────────        ────────                   ──────────
-  <span style="color:#34d399">Zero-Shot</span>        Simple, clear tasks        "Classify this as..."
-  <span style="color:#8b5cf6">Few-Shot</span>         Custom formats/styles      "Here are 3 examples..."
-  <span style="color:#fb923c">Chain-of-Thought</span> Math, logic, debugging     "Think step by step..."
-  <span style="color:#38bdf8">Role-Play</span>        Expert voice/persona       "You are a senior..."
+<div class="lo-table-wrap">
+  <table class="lo-table">
+    <caption>TEMPERATURE GUIDE</caption>
+    <thead>
+      <tr>
+        <th>Range</th>
+        <th>Best For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="col-green">0.0 - 0.2</span></td>
+        <td>Code, math, facts, data extraction</td>
+      </tr>
+      <tr>
+        <td><span class="col-orange">0.3 - 0.6</span></td>
+        <td>Business writing, explanations, general use</td>
+      </tr>
+      <tr>
+        <td><span style="color:#ef4444">0.7 - 1.0</span></td>
+        <td>Brainstorming, creative writing, idea generation</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-  <span style="color:#71717a">TEMPERATURE GUIDE</span>
-  <span style="color:#34d399">0.0 - 0.2</span>  Code, math, facts, data extraction
-  <span style="color:#fb923c">0.3 - 0.6</span>  Business writing, explanations, general use
-  <span style="color:#ef4444">0.7 - 1.0</span>  Brainstorming, creative writing, idea generation
-
-  <span style="color:#71717a">POWER COMBOS</span>
-  Role + CoT        Expert-level reasoning with visible logic
-  Few-Shot + Guard  Consistent format with safety constraints
-  System + Examples Production-ready AI applications</code></pre>
+<div class="lo-table-wrap">
+  <table class="lo-table">
+    <caption>POWER COMBOS</caption>
+    <thead>
+      <tr>
+        <th>Combo</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Role + CoT</td>
+        <td>Expert-level reasoning with visible logic</td>
+      </tr>
+      <tr>
+        <td>Few-Shot + Guard</td>
+        <td>Consistent format with safety constraints</td>
+      </tr>
+      <tr>
+        <td>System + Examples</td>
+        <td>Production-ready AI applications</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
   <div class="narration" style="margin-top:1rem">

@@ -140,19 +140,23 @@ export function createServiceClient() {
   <h2 class="section-title">Detailed Cost Breakdown by Platform</h2>
   <p class="section-text">Understanding the real costs at different scales helps you plan your budget and choose platforms wisely. Here's a breakdown for three common stages.</p>
 
-<div class="code-block"><div class="code-label">Cost Comparison — Three Growth Stages</div>
-<pre><code>                    │  MVP (0-100     │  Growth (100-   │  Scale (10K+
-Service             │  users)         │  10K users)     │  users)
-────────────────────┼─────────────────┼─────────────────┼──────────────
-Vercel              │  $0 (hobby)     │  $20/mo (pro)   │  $20+/mo
-Supabase            │  $0 (free)      │  $25/mo (pro)   │  $50+/mo
-Anthropic API       │  $5-20/mo       │  $50-500/mo     │  $500-5K/mo
-OpenAI API          │  $5-10/mo       │  $20-200/mo     │  $200-2K/mo
-HuggingFace         │  $0 (free)      │  $0-9/mo        │  $9-99/mo
-Domain + DNS        │  $12/yr         │  $12/yr         │  $12/yr
-────────────────────┼─────────────────┼─────────────────┼──────────────
-TOTAL               │  $10-30/mo      │  $115-755/mo    │  $780-7K+/mo</code></pre>
-</div>
+<div class="lo-table-wrap"><table class="lo-table">
+<caption>Cost Comparison — Three Growth Stages</caption>
+<thead>
+<tr><th>Service</th><th class="col-green">MVP (0-100 users)</th><th class="col-purple">Growth (100-10K users)</th><th class="col-orange">Scale (10K+ users)</th></tr>
+</thead>
+<tbody>
+<tr><td>Vercel</td><td>$0 (hobby)</td><td>$20/mo (pro)</td><td>$20+/mo</td></tr>
+<tr><td>Supabase</td><td>$0 (free)</td><td>$25/mo (pro)</td><td>$50+/mo</td></tr>
+<tr><td>Anthropic API</td><td>$5-20/mo</td><td>$50-500/mo</td><td>$500-5K/mo</td></tr>
+<tr><td>OpenAI API</td><td>$5-10/mo</td><td>$20-200/mo</td><td>$200-2K/mo</td></tr>
+<tr><td>HuggingFace</td><td>$0 (free)</td><td>$0-9/mo</td><td>$9-99/mo</td></tr>
+<tr><td>Domain + DNS</td><td>$12/yr</td><td>$12/yr</td><td>$12/yr</td></tr>
+</tbody>
+<tfoot>
+<tr><td><strong>TOTAL</strong></td><td><strong>$10-30/mo</strong></td><td><strong>$115-755/mo</strong></td><td><strong>$780-7K+/mo</strong></td></tr>
+</tfoot>
+</table></div>
 
   <p class="section-text">The critical insight: at the MVP stage, the modern stack (Vercel + Supabase) is nearly free. At growth stage, AI API costs dominate — not infrastructure. This is why caching and model tiering matter so much more than choosing a cheaper hosting provider.</p>
   <p class="section-text">Compare this to a hyperscaler setup: a single GPU instance on AWS (g5.xlarge) costs $1,006/month before you even write a line of code. The modern stack lets you defer that cost until you genuinely need self-hosted model inference.</p>

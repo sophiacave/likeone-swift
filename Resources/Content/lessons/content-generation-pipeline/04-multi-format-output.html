@@ -116,22 +116,24 @@ Voice guidelines: [DESCRIBE YOUR TONE IN 2-3 SENTENCES]."</code></div>
 
 <div class="demo-container">
   <h3>Format Transformation Chain</h3>
-  <pre>
-SOURCE: 1,500-word blog post
-
-STEP 1 — Extract core message (1 sentence)
-STEP 2 — Extract 5 key points (1 sentence each)
-STEP 3 — Extract best quote/stat/story
-
-THEN IN PARALLEL:
-├── Twitter template  → hook + 5 point tweets + CTA tweet
-├── LinkedIn template → personal angle + 3 key points + question
-├── Email template    → subject + preview + teaser + CTA link
-├── YouTube template  → 2-column script with visual cues
-└── Carousel template → 8-slide breakdown with design notes
-
-QUALITY GATE: Each output checked against platform specs
-  </pre>
+  <div class="lo-table-wrap"><table class="lo-table">
+  <caption>Format Transformation Pipeline</caption>
+  <thead>
+  <tr><th>Step</th><th class="col-green">Action</th><th class="col-purple">Output</th></tr>
+  </thead>
+  <tbody>
+  <tr><td>Source</td><td>1,500-word blog post</td><td>Raw content</td></tr>
+  <tr><td>Step 1</td><td>Extract core message</td><td>1 sentence</td></tr>
+  <tr><td>Step 2</td><td>Extract 5 key points</td><td>1 sentence each</td></tr>
+  <tr><td>Step 3</td><td>Extract best quote/stat/story</td><td>Atomic content unit</td></tr>
+  <tr><td>Parallel A</td><td>Twitter template</td><td>Hook + 5 point tweets + CTA tweet</td></tr>
+  <tr><td>Parallel B</td><td>LinkedIn template</td><td>Personal angle + 3 key points + question</td></tr>
+  <tr><td>Parallel C</td><td>Email template</td><td>Subject + preview + teaser + CTA link</td></tr>
+  <tr><td>Parallel D</td><td>YouTube template</td><td>2-column script with visual cues</td></tr>
+  <tr><td>Parallel E</td><td>Carousel template</td><td>8-slide breakdown with design notes</td></tr>
+  <tr><td>Quality Gate</td><td>Each output checked</td><td>Verified against platform specs</td></tr>
+  </tbody>
+  </table></div>
   <p>Steps 1-3 run once. The five format steps run in parallel from the same extracted data. Total pipeline: 8 steps, 5 formats, one source.</p>
 </div>
 

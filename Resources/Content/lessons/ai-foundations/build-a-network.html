@@ -74,20 +74,46 @@
 
   <p class="section-text" style="margin-top:1.25rem">The number and size of layers defines what the network can learn:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.5;overflow-x:auto">
-<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">  NETWORK DEPTH vs CAPABILITY</span>
-
-  Layers    What It Can Learn              Real Example
-  ──────    ─────────────────              ────────────
-  <span style="color:#34d399">1</span>         Linear boundaries              Is x > 5?
-  <span style="color:#38bdf8">2-3</span>       Curves and simple patterns      Digit recognition
-  <span style="color:#8b5cf6">5-20</span>      Complex visual patterns          Image classification
-  <span style="color:#fb923c">50-100</span>    Abstract reasoning               Language understanding
-  <span style="color:#ef4444">100+</span>      Deep abstraction                 GPT, Claude, DALL-E
-
-  <span style="color:#71717a">More layers = more abstraction = more data needed</span>
-  <span style="color:#71717a">GPT-4 has ~120 layers. Your brain has ~6 cortical layers.</span></code></pre>
+<div class="lo-table-wrap">
+  <table class="lo-table">
+    <caption>NETWORK DEPTH VS CAPABILITY</caption>
+    <thead>
+      <tr>
+        <th>Layers</th>
+        <th>What It Can Learn</th>
+        <th>Real Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="col-green">1</span></td>
+        <td>Linear boundaries</td>
+        <td>Is x > 5?</td>
+      </tr>
+      <tr>
+        <td><span class="col-blue">2-3</span></td>
+        <td>Curves and simple patterns</td>
+        <td>Digit recognition</td>
+      </tr>
+      <tr>
+        <td><span class="col-purple">5-20</span></td>
+        <td>Complex visual patterns</td>
+        <td>Image classification</td>
+      </tr>
+      <tr>
+        <td><span class="col-orange">50-100</span></td>
+        <td>Abstract reasoning</td>
+        <td>Language understanding</td>
+      </tr>
+      <tr>
+        <td><span style="color:#ef4444">100+</span></td>
+        <td>Deep abstraction</td>
+        <td>GPT, Claude, DALL-E</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+<p style="font-size:.82rem;color:#71717a;margin-top:.5rem">More layers = more abstraction = more data needed. GPT-4 has ~120 layers. Your brain has ~6 cortical layers.</p>
 
   <div class="narration" style="margin-top:1rem">
     <strong>Architecture is everything.</strong> A shallow network with 2 layers can separate cats from dogs. A deep network with 100+ layers can understand language, generate images, and reason about abstract concepts. The same building blocks — neurons, weights, activations — but radically different capabilities depending on how you stack them.

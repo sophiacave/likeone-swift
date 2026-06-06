@@ -98,21 +98,46 @@
 
   <p class="section-text" style="margin-top:1.25rem">Different embedding models produce different numbers of dimensions. More dimensions capture more nuance, but cost more compute:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.5;overflow-x:auto">
-<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">  POPULAR EMBEDDING MODELS</span>
-
-  Model                     Dimensions    Use Case
-  ──────────────────        ──────────    ────────────────────
-  <span style="color:#34d399">all-MiniLM-L6-v2</span>         384           Fast, lightweight, free
-  <span style="color:#38bdf8">BGE-small-en</span>              384           Fast RAG, free via HuggingFace
-  <span style="color:#8b5cf6">text-embedding-3-small</span>    1536          OpenAI API, good accuracy
-  <span style="color:#fb923c">text-embedding-3-large</span>    3072          OpenAI API, best accuracy
-  <span style="color:#ef4444">voyage-3</span>                  1024          Anthropic-recommended
-
-  <span style="color:#71717a">Rule of thumb: 384 dims = good for most use cases</span>
-  <span style="color:#71717a">1024+ dims = when you need maximum precision</span>
-  <span style="color:#71717a">All models: higher dims = more nuance, more compute</span></code></pre>
+<div class="lo-table-wrap">
+  <table class="lo-table">
+    <caption>POPULAR EMBEDDING MODELS</caption>
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Dimensions</th>
+        <th>Use Case</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="col-green">all-MiniLM-L6-v2</span></td>
+        <td>384</td>
+        <td>Fast, lightweight, free</td>
+      </tr>
+      <tr>
+        <td><span class="col-blue">BGE-small-en</span></td>
+        <td>384</td>
+        <td>Fast RAG, free via HuggingFace</td>
+      </tr>
+      <tr>
+        <td><span class="col-purple">text-embedding-3-small</span></td>
+        <td>1536</td>
+        <td>OpenAI API, good accuracy</td>
+      </tr>
+      <tr>
+        <td><span class="col-orange">text-embedding-3-large</span></td>
+        <td>3072</td>
+        <td>OpenAI API, best accuracy</td>
+      </tr>
+      <tr>
+        <td><span style="color:#ef4444">voyage-3</span></td>
+        <td>1024</td>
+        <td>Anthropic-recommended</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+<p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Rule of thumb: 384 dims = good for most use cases. 1024+ dims = when you need maximum precision. All models: higher dims = more nuance, more compute.</p>
 
   <div class="narration" style="margin-top:1rem">
     <strong>The key insight:</strong> nobody programs the meaning into the vectors. The model discovers meaning by observing patterns in how humans use language. Words that appear in similar contexts converge to similar vectors. Meaning emerges from usage.
