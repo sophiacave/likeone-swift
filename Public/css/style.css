@@ -1361,14 +1361,14 @@ a:focus-visible, button:focus-visible {
     caption-side: top;
 }
 
-/* Header — distinct band, full bleed */
+/* Header — distinct band, generous vertical breathing */
 .lo-table thead th {
     font-weight: 600;
     font-size: 0.8rem;
     letter-spacing: 0.01em;
     color: #a1a1aa;
     text-align: left;
-    padding: 12px 22px 14px;
+    padding: 16px 22px;
     background: rgba(255, 255, 255, 0.025);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -1414,7 +1414,8 @@ a:focus-visible, button:focus-visible {
     .lo-table-wrap { margin: 16px 0; border-radius: 12px; }
     .lo-table { font-size: 0.8rem; }
     .lo-table caption { padding: 12px 16px 0; }
-    .lo-table thead th { padding: 14px 16px 14px; font-size: 0.74rem; }
+    .lo-table { table-layout: auto; }
+    .lo-table thead th { padding: 16px 16px; font-size: 0.74rem; }
     .lo-table tbody td { padding: 10px 16px; }
 }
 
