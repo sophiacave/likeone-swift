@@ -9,18 +9,33 @@
         </section>
 
         <section class="site-section">
-            <div class="site-container" style="max-width:900px;">
-                <div class="pricing-grid" style="grid-template-columns:1fr 1fr;">
+            <div class="site-container" style="max-width:1100px;">
+                <div class="pricing-grid" style="grid-template-columns:1fr 1fr 1fr;">
+                    <div class="pricing-card">
+                        <div class="pricing-badge">ONE-TIME</div>
+                        <h2 class="pricing-plan-name">Strategy Call</h2>
+                        <div class="pricing-price">$150</div>
+                        <div class="pricing-period">per hour</div>
+                        <ul class="pricing-features">
+                            <li>1:1 video or async session</li>
+                            <li>AI architecture assessment</li>
+                            <li>Claude Code / MCP setup guidance</li>
+                            <li>Written action plan delivered</li>
+                            <li>No commitment</li>
+                        </ul>
+                        <a href="mailto:hello@likeone.ai?subject=Consulting%20Strategy%20Call" class="site-btn-primary" style="display:block;text-align:center;text-decoration:none;">Book a Call</a>
+                    </div>
+
                     <div class="pricing-card">
                         <div class="pricing-badge">ASYNC</div>
                         <h2 class="pricing-plan-name">Starter</h2>
                         <div class="pricing-price">$500</div>
                         <div class="pricing-period">per month</div>
                         <ul class="pricing-features">
-                            <li>Async access to Sophie + Faye stack</li>
+                            <li>Async access to our AI stack</li>
                             <li>24-hour turnaround on requests</li>
                             <li>Monthly strategy call</li>
-                            <li>AI architecture review</li>
+                            <li>MCP server builds + Claude setup</li>
                             <li>Academy Pro included (3 months)</li>
                             <li>Cancel anytime</li>
                         </ul>
@@ -39,8 +54,8 @@
                             <li>4 hrs/week synchronous collaboration</li>
                             <li>Unlimited async support</li>
                             <li>14-day time-to-first-deploy guarantee</li>
-                            <li>Custom AI agent development</li>
-                            <li>Infrastructure architecture</li>
+                            <li>Custom AI agent + MCP development</li>
+                            <li>Full infrastructure architecture</li>
                             <li>Academy Pro included (lifetime)</li>
                         </ul>
                         <form method="POST" action="/checkout">
