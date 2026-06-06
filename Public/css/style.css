@@ -1329,85 +1329,87 @@ a:focus-visible, button:focus-visible {
    Gestalt: proximity, alignment, common region
    ═══════════════════════════════════════════ */
 
-/* Container — common region, generous breathing room */
+/* Container — inset grouped card. Zero padding.
+   Table fills edge-to-edge. Container IS the shape. */
 .lo-table-wrap {
-    background: rgba(10, 10, 15, 0.8);
+    background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 14px;
-    padding: 4px 4px;
     margin: 24px 0;
     overflow: hidden;
 }
 
-/* Table base */
+/* Table — fills container completely */
 .lo-table {
     width: 100%;
     border-collapse: collapse;
-    border-spacing: 0;
     font-size: 0.875rem;
-    line-height: 1.7;
+    line-height: 1.6;
 }
 
-/* Caption — contextual label */
+/* Caption — sits inside the card, its own row */
 .lo-table caption {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     color: #52525b;
     text-transform: uppercase;
     text-align: left;
-    padding: 14px 20px 8px;
+    padding: 16px 22px 0;
+    caption-side: top;
 }
 
-/* Header — clear hierarchy, ample spacing */
+/* Header — darker band, full bleed */
 .lo-table thead th {
     font-weight: 600;
     font-size: 0.8rem;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
     color: #a1a1aa;
     text-align: left;
-    padding: 10px 20px 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px 22px;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Data cells — spacious, readable */
+/* Data cells — cell padding IS the breathing room */
 .lo-table tbody td {
-    padding: 11px 20px;
+    padding: 12px 22px;
     color: #d4d4dc;
     font-size: 0.875rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-/* Row separators — ultra-subtle for proximity grouping */
-.lo-table tbody tr + tr td {
-    border-top: 1px solid rgba(255, 255, 255, 0.03);
+/* Last row — no bottom border (container edge handles it) */
+.lo-table tbody tr:last-child td {
+    border-bottom: none;
 }
 
-/* Hover — gentle acknowledgment */
+/* Hover */
 .lo-table tbody tr:hover td {
-    background: rgba(192, 132, 252, 0.03);
+    background: rgba(192, 132, 252, 0.04);
 }
 
-/* First column — label styling (dimmer, stable) */
+/* First column — label role */
 .lo-table td:first-child,
 .lo-table th:first-child {
     color: #71717a;
     font-weight: 500;
 }
 
-/* Column accent colors */
+/* Accent colors */
 .lo-table .col-green { color: #34d399; }
 .lo-table .col-purple { color: #c084fc; }
 .lo-table .col-blue { color: #38bdf8; }
 .lo-table .col-orange { color: #fb923c; }
 .lo-table .col-dim { color: #52525b; }
 
-/* Mobile — proportional scaling */
+/* Mobile */
 @media (max-width: 640px) {
     .lo-table-wrap { margin: 16px 0; border-radius: 12px; }
     .lo-table { font-size: 0.8rem; }
-    .lo-table caption { padding: 10px 14px 6px; font-size: 0.68rem; }
-    .lo-table thead th { padding: 8px 14px 10px; font-size: 0.74rem; }
-    .lo-table tbody td { padding: 9px 14px; font-size: 0.8rem; }
+    .lo-table caption { padding: 12px 16px 0; }
+    .lo-table thead th { padding: 10px 16px; font-size: 0.74rem; }
+    .lo-table tbody td { padding: 10px 16px; }
 }
 
 /* Responsive flow diagrams — horizontal on desktop, vertical on mobile */
