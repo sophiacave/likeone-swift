@@ -103,20 +103,28 @@
     </div>
   </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.5;overflow-x:auto">
-<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">  BIOLOGICAL vs ARTIFICIAL NEURON</span>
-
-  Feature          <span style="color:#34d399">Biological</span>              <span style="color:#8b5cf6">Artificial</span>
-  ───────          ──────────              ──────────
-  Inputs           Dendrites               Numbers (x1, x2, x3...)
-  Connection       Synapse strength        Weight (w1, w2, w3...)
-  Processing       Cell body               Weighted sum + bias
-  Decision         Fire / don't fire       Activation function
-  Output           Electrical pulse        A number
-  Speed            ~200 operations/sec     ~1 billion operations/sec
-  Count            ~86 billion (brain)     ~175 billion (GPT-4)
-  Learning         Synapse adjustment      Weight adjustment
-  Energy           ~20 watts (brain)       ~500,000 watts (GPU cluster)</code></pre>
+<div class="lo-table-wrap">
+  <table class="lo-table">
+    <caption>Biological vs Artificial Neuron</caption>
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th class="col-green">Biological</th>
+        <th class="col-purple">Artificial</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Inputs</td><td>Dendrites</td><td>Numbers (x1, x2, x3...)</td></tr>
+      <tr><td>Connection</td><td>Synapse strength</td><td>Weight (w1, w2, w3...)</td></tr>
+      <tr><td>Processing</td><td>Cell body</td><td>Weighted sum + bias</td></tr>
+      <tr><td>Decision</td><td>Fire / don't fire</td><td>Activation function</td></tr>
+      <tr><td>Output</td><td>Electrical pulse</td><td>A number</td></tr>
+      <tr><td>Speed</td><td>~200 ops/sec</td><td>~1 billion ops/sec</td></tr>
+      <tr><td>Count</td><td>~86 billion (brain)</td><td>~175 billion (GPT-4)</td></tr>
+      <tr><td>Learning</td><td>Synapse adjustment</td><td>Weight adjustment</td></tr>
+      <tr><td>Energy</td><td>~20 watts (brain)</td><td>~500K watts (GPU cluster)</td></tr>
+    </tbody>
+  </table>
 </div>
 
   <div class="narration" style="margin-top:1rem">
