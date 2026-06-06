@@ -79,21 +79,44 @@
 
   <p class="section-text" style="margin-top:1.25rem">Here is the full flow visualized — data enters left, flows right, and a prediction emerges:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.5;overflow-x:auto">
-<pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">  DATA FLOW THROUGH A NEURAL NETWORK</span>
-
-  <span style="color:#38bdf8">Raw Data</span>          <span style="color:#34d399">Pattern Detection</span>        <span style="color:#fb923c">Decision</span>
-  ─────────         ──────────────────        ──────────
-  pixels     ──▶    edges → shapes    ──▶     "cat" (92%)
-  numbers    ──▶    trends → clusters ──▶     "buy" (78%)
-  words      ──▶    syntax → meaning  ──▶     "positive" (85%)
-
-  <span style="color:#71717a">INPUT LAYER        HIDDEN LAYERS            OUTPUT LAYER</span>
-  <span style="color:#71717a">(receives data)    (finds patterns)         (makes prediction)</span>
-
-  <span style="color:#71717a">Each arrow = a weight (learned during training)</span>
-  <span style="color:#71717a">Each node  = weighted sum + bias + activation</span>
-  <span style="color:#71717a">Training   = adjusting ALL weights to reduce errors</span></code></pre>
+<div class="lo-table-wrap">
+  <table class="lo-table">
+    <caption>DATA FLOW THROUGH A NEURAL NETWORK</caption>
+    <thead>
+      <tr>
+        <th class="col-blue">Raw Data</th>
+        <th class="col-green">Pattern Detection</th>
+        <th class="col-orange">Decision</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>INPUT LAYER</td>
+        <td>HIDDEN LAYERS</td>
+        <td>OUTPUT LAYER</td>
+      </tr>
+      <tr>
+        <td>(receives data)</td>
+        <td>(finds patterns)</td>
+        <td>(makes prediction)</td>
+      </tr>
+      <tr>
+        <td>Each arrow = a weight (learned during training)</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Each node  = weighted sum + bias + activation</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Training</td>
+        <td>= adjusting ALL weights to reduce errors</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
   <div class="narration" style="margin-top:1rem">
