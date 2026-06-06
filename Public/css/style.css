@@ -1414,7 +1414,7 @@ a:focus-visible, button:focus-visible {
     .lo-table-wrap { margin: 16px 0; border-radius: 12px; }
     .lo-table { font-size: 0.8rem; }
     .lo-table caption { padding: 12px 16px 0; }
-    .lo-table thead th { padding: 10px 16px; font-size: 0.74rem; }
+    .lo-table thead th { padding: 14px 16px 14px; font-size: 0.74rem; }
     .lo-table tbody td { padding: 10px 16px; }
 }
 
