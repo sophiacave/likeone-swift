@@ -1413,7 +1413,7 @@ a:focus-visible, button:focus-visible {
 @media (max-width: 640px) {
     .lo-table-wrap { margin: 16px 0; border-radius: 12px; }
     .lo-table { font-size: 0.8rem; }
-    .lo-table caption { padding: 12px 16px 0; }
+    .lo-table caption { padding: 14px 16px 10px; }
     .lo-table { table-layout: auto; }
     .lo-table thead th { padding: 16px 16px; font-size: 0.74rem; }
     .lo-table tbody td { padding: 10px 16px; }
