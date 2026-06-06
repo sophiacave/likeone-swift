@@ -81,6 +81,14 @@
                     </div>
                 </div>
 
+                <div class="blog-cta" style="margin-top:24px;border-color:#c084fc33;">
+                    <p class="blog-cta-heading">Need help building this?</p>
+                    <p class="blog-cta-text">We build MCP servers, Claude workflows, and AI agents for teams. Strategy calls start at $150/hr.</p>
+                    <div class="site-cta-row">
+                        <a href="/consulting/" class="site-btn-primary">Consulting</a>
+                    </div>
+                </div>
+
                 #if(relatedPosts):
                 <div class="related-section">
                     <h3 class="related-heading">Related Articles</h3>
