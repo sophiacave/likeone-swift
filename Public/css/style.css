@@ -1326,73 +1326,88 @@ a:focus-visible, button:focus-visible {
 
 /* ═══════════════════════════════════════════
    DATA TABLES — Apple HIG / Swift-inspired
+   Gestalt: proximity, alignment, common region
    ═══════════════════════════════════════════ */
+
+/* Container — common region groups table as one unit */
+.lo-table-wrap {
+    background: rgba(10, 10, 15, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 6px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+/* Table base — system font for readability */
 .lo-table {
     width: 100%;
-    border-collapse: separate;
+    border-collapse: collapse;
     border-spacing: 0;
-    font-size: 0.85rem;
-    line-height: 1.5;
-    margin: 1rem 0;
+    font-size: 0.82rem;
+    line-height: 1.65;
 }
+
+/* Caption — small label above the table */
 .lo-table caption {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
-    letter-spacing: 0.06em;
-    color: #71717a;
+    letter-spacing: 0.08em;
+    color: #52525b;
     text-transform: uppercase;
     text-align: left;
-    padding: 0 0 10px;
+    padding: 10px 14px 6px;
 }
+
+/* Header — clear visual hierarchy via weight + separator */
 .lo-table thead th {
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
     color: #a1a1aa;
     text-align: left;
-    padding: 10px 14px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    white-space: nowrap;
+    padding: 8px 14px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
+
+/* Data cells — generous touch targets, readable spacing */
 .lo-table tbody td {
-    padding: 10px 14px;
+    padding: 9px 14px;
     color: #d4d4dc;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    vertical-align: top;
+    font-size: 0.82rem;
 }
-.lo-table tbody tr:last-child td {
-    border-bottom: none;
+
+/* Row separators — ultra-subtle for proximity grouping */
+.lo-table tbody tr + tr td {
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
 }
-.lo-table tbody tr:hover {
-    background: rgba(255, 255, 255, 0.02);
+
+/* Hover — gentle acknowledgment */
+.lo-table tbody tr:hover td {
+    background: rgba(192, 132, 252, 0.03);
 }
+
+/* First column — label styling (dimmer, stable) */
+.lo-table td:first-child,
+.lo-table th:first-child {
+    color: #71717a;
+    font-weight: 500;
+}
+
 /* Column accent colors */
 .lo-table .col-green { color: #34d399; }
 .lo-table .col-purple { color: #c084fc; }
 .lo-table .col-blue { color: #38bdf8; }
 .lo-table .col-orange { color: #fb923c; }
-.lo-table .col-dim { color: #71717a; font-size: 0.8rem; }
-/* Feature/label column */
-.lo-table td:first-child {
-    color: #a1a1aa;
-    font-weight: 500;
-    white-space: nowrap;
-}
-/* Table container with rounded card style */
-.lo-table-wrap {
-    background: #0a0a0f;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 12px;
-    padding: 16px;
-    margin: 16px 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
+.lo-table .col-dim { color: #52525b; }
+
+/* Mobile — tighter but still readable */
 @media (max-width: 640px) {
-    .lo-table { font-size: 0.8rem; }
-    .lo-table thead th,
-    .lo-table tbody td { padding: 8px 10px; }
-    .lo-table td:first-child { white-space: normal; }
-    .lo-table-wrap { padding: 10px; }
+    .lo-table-wrap { padding: 4px; margin: 14px 0; border-radius: 12px; }
+    .lo-table { font-size: 0.78rem; }
+    .lo-table caption { padding: 8px 10px 4px; }
+    .lo-table thead th { padding: 6px 10px 8px; font-size: 0.72rem; }
+    .lo-table tbody td { padding: 7px 10px; }
 }
 
 /* Responsive flow diagrams — horizontal on desktop, vertical on mobile */
