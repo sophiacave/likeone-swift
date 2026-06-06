@@ -1316,6 +1316,10 @@ a:focus-visible, button:focus-visible {
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
 }
+.lesson-visual:focus-visible {
+    outline: 2px solid var(--purple);
+    outline-offset: 2px;
+}
 .lesson-visual svg {
     width: 100%;
     height: auto;

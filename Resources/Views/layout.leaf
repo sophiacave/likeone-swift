@@ -643,5 +643,17 @@
         });
     });
     </script>
+    <script>
+    // Make scrollable visual aids keyboard-accessible (WCAG 2.1.1)
+    document.querySelectorAll('.lesson-visual').forEach(function(el) {
+        if (el.scrollWidth > el.clientWidth) {
+            el.setAttribute('tabindex', '0');
+            el.setAttribute('role', 'region');
+            if (!el.getAttribute('aria-label')) {
+                el.setAttribute('aria-label', 'Scrollable diagram');
+            }
+        }
+    });
+    </script>
 </body>
 </html>
