@@ -38,21 +38,30 @@ targets:
       properties:
         com.apple.developer.applesignin:
           - Default
+    info:
+      path: Info.plist
+      properties:
+        CFBundleDisplayName: Like One Academy
+        CFBundleName: LOAcademy
+        UILaunchScreen: {}
+        UIRequiresFullScreen: false
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+          - UIInterfaceOrientationPortraitUpsideDown
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: ai.likeone.academy
         CODE_SIGN_STYLE: Automatic
-        INFOPLIST_VALUES: >-
-          CFBundleDisplayName=Like One Academy;
-          CFBundleName=LOAcademy;
-          UILaunchScreen_Generation=YES;
-          UIRequiresFullScreen=NO;
-          UISupportedInterfaceOrientations=UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown;
-        GENERATE_INFOPLIST_FILE: YES
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         SUPPORTS_MACCATALYST: false
       configs:
         Release:
-          CODE_SIGN_STYLE: Manual
-          CODE_SIGN_IDENTITY: "Apple Distribution: Like One LLC (MW42T97LV9)"
-          PROVISIONING_PROFILE_SPECIFIER: "LOAcademy App Store"
+          CODE_SIGN_STYLE: Automatic
+          DEVELOPMENT_TEAM: MW42T97LV9

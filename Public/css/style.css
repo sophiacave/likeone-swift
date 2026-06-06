@@ -2056,14 +2056,16 @@ a:focus-visible, button:focus-visible {
   .article-content pre code { font-size: 0.8rem; }
 
   /* Inline code/prompt blocks: wrap text instead of horizontal scroll on mobile */
-  [style*="overflow-x:auto"], [style*="overflow-x: auto"] {
+  /* But NOT lesson-visual diagrams — those need to scroll */
+  .article-content [style*="overflow-x:auto"],
+  .article-content [style*="overflow-x: auto"] {
     overflow-x: visible !important;
     word-break: break-word;
     overflow-wrap: break-word;
   }
 
-  /* Lesson visuals: let SVGs scale fully */
-  .lesson-visual { padding: 10px; }
+  /* Lesson visuals: let SVGs scale, diagrams scroll */
+  .lesson-visual { padding: 10px; overflow-x: auto !important; }
   .quiz-visual { padding: 8px; }
 }
 

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interview Prep — AI Automation Engineer</title>
+<style>
+:root { --bg: #0d1117; --fg: #c9d1d9; --accent: #a855f7; --accent2: #7c3aed; --card: #161b22; --border: #30363d; --muted: #8b949e; --green: #3fb950; --blue: #58a6ff; --orange: #f0883e; --red: #f85149; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; }
+.container { max-width: 900px; margin: 0 auto; padding: 20px; }
+h1 { color: var(--accent); font-size: 1.8rem; margin-bottom: 4px; }
+h2 { color: var(--accent2); font-size: 1.3rem; margin: 24px 0 10px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+h3 { color: var(--blue); font-size: 1.05rem; margin: 14px 0 6px; }
+.subtitle { color: var(--muted); margin-bottom: 16px; }
+.search-box { width: 100%; padding: 12px 16px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; color: var(--fg); font-size: 1rem; margin: 16px 0; outline: none; }
+.search-box:focus { border-color: var(--accent); }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin: 10px 0; }
+.card-title { color: var(--green); font-weight: 700; font-family: monospace; font-size: 0.95rem; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; margin: 2px; }
+.tag-q { background: var(--accent2); color: white; }
+.tag-tech { background: #1f3d2e; color: var(--green); }
+.tag-story { background: #3d2e1f; color: var(--orange); }
+.tag-strategy { background: #1f2e3d; color: var(--blue); }
+.tag-red { background: #3d1f1f; color: var(--red); }
+.q { color: var(--orange); font-weight: 600; margin-top: 8px; }
+.a { color: var(--fg); margin: 4px 0 12px; padding-left: 12px; border-left: 2px solid var(--border); }
+.proof { color: var(--green); font-size: 0.85rem; }
+.warn { color: var(--red); font-size: 0.85rem; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin: 12px 0; }
+.stat { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 10px; text-align: center; }
+.stat-val { font-size: 1.3rem; font-weight: bold; color: var(--accent); }
+.stat-lbl { font-size: 0.75rem; color: var(--muted); }
+nav { background: var(--card); padding: 10px 20px; border-bottom: 1px solid var(--border); }
+nav a { color: var(--muted); text-decoration: none; margin-right: 16px; font-size: 0.9rem; }
+.hidden { display: none; }
+</style>
+</head>
+<body>
+<nav>
+<a href="https://likeone.ai">likeone.ai</a>
+<a href="../consulting/index.html">Capabilities</a>
+<a href="#"><strong>Interview Prep</strong></a>
+</nav>
+<div class="container">
+
+<h1>Interview Strategy Wiki</h1>
+<p class="subtitle">AI Automation & Generative AI Engineer — Resourceful Talent Group<br>
+Ken Arslanian | June 2, 2026 | 11:30am EST | Zoom</p>
+
+<div class="stats">
+<div class="stat"><div class="stat-val">40+</div><div class="stat-lbl">Q&A Prepared</div></div>
+<div class="stat"><div class="stat-val">15</div><div class="stat-lbl">Job Requirements</div></div>
+<div class="stat"><div class="stat-val">100%</div><div class="stat-lbl">Requirements Match</div></div>
+<div class="stat"><div class="stat-val">8</div><div class="stat-lbl">Solution Areas</div></div>
+</div>
+
+<input type="text" id="s" class="search-box" placeholder="Search questions, topics, strategies..." oninput="f()">
+
+<!-- ═══════════════════════════════════════════ -->
+<h2>Intel: Know Your Audience</h2>
+
+<div class="card" data-tags="intel ken recruiter">
+<div class="card-title">Who Is Ken Arslanian</div>
+<span class="tag tag-strategy">strategy</span>
+<p>Recruitment Specialist at Resourceful Talent Group (Providence, RI). 2K LinkedIn followers. He is the MIDDLEMAN — screens candidates for an unnamed "rapidly growing US organization." Co-founders: Alex Ubaydov (also founded Ecomsolutions, 2003) + Jonathan Raude. Firm specializes in IT staffing, tech, healthcare, finance.</p>
+<p class="proof">Implication: This is a vibe check. Ken validates you're real, communicates well, and can do the work. Technical deep-dives come in round 2 with the actual client.</p>
+</div>
+
+<div class="card" data-tags="intel company client">
+<div class="card-title">The Actual Client</div>
+<span class="tag tag-red">unknown</span>
+<p>Not named. Described as "rapidly growing organization in the U.S." The job posting mentions operations, sales, customer support, recruiting, and productivity — suggesting a mid-stage company scaling internal AI tooling. Could be ecommerce-related given the Ecomsolutions heritage.</p>
+<p class="proof">Power move: "Can you tell me more about the end client? Understanding their industry would help me tailor my approach."</p>
+</div>
+
+<div class="card" data-tags="intel compensation salary pay">
+<div class="card-title">Compensation Context</div>
+<span class="tag tag-strategy">strategy</span>
+<p>AI Engineer average salary in 2026: $200K+. This is full-time 40hr/week. Upwork-sourced roles typically pay $60-120/hr for AI engineers. Ask early: "What's the compensation range for this role?"</p>
+<p class="warn">Don't name a number first. Get their range. If pressed: "I'm flexible on comp — the right project matters more, but I'd want to be in line with market rates for this skillset."</p>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2>Likely Questions + Killer Answers</h2>
+
+<h3>Background & Experience</h3>
+
+<div class="card" data-tags="question background experience intro">
+<span class="tag tag-q">likely first question</span>
+<div class="q">Q: Tell me about yourself / Walk me through your background</div>
+<div class="a">"I'm an AI engineer and founder of Like One, a 501(c)(3) nonprofit focused on AI accessibility. In the last 8 weeks I built an entire AI company from scratch — 52 courses, 30 blog posts, 5 open-source tools, an iOS app, and a production RAG system with 2,800+ vectors. Before that, I completed 48 projects on Upwork with a 100% success rate. I studied at UC Berkeley. My daily work is exactly what this role describes — building LLM integrations, automation pipelines, AI agents, and production systems in Python."</div>
+<div class="proof">Proof: likeone.ai, GitHub (sophiacave), 48 Upwork projects, UC Berkeley BA</div>
+</div>
+
+<div class="card" data-tags="question python experience technical">
+<span class="tag tag-q">question</span>
+<div class="q">Q: Tell me about your Python experience</div>
+<div class="a">"Python is my primary language. I've built a unified brain API that wraps SQLite, vector search, and knowledge graphs. I built a Telegram bot with agentic RAG, tool calling, and web search integration. I have 20+ CLI tools in Python — deployment scripts, content pipelines, email systems, revenue dashboards. Everything from low-level SQLite extensions to high-level API servers."</div>
+<div class="proof">Proof: brain_api.py, lo-gateway, brain_server.py, 20+ ~/bin/ tools</div>
+</div>
+
+<div class="card" data-tags="question rag vector embeddings retrieval">
+<span class="tag tag-q">question</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: Tell me about your RAG experience</div>
+<div class="a">"I built a production RAG system from scratch. It uses sqlite-vec for vector search with 2,800+ embeddings at 1024 dimensions, FTS5 for keyword search, and a knowledge graph with 1,065 edges for multi-hop reasoning. I call it 'hybrid retrieval' — three signals combined and re-ranked. The system also has an anti-hallucination layer that grounds answers against a verified facts database before responding. Search latency is 20-55 milliseconds."</div>
+<div class="proof">Proof: brain_api.py hybrid_search(), vec_brain table, brain_graph, facts.json</div>
+</div>
+
+<div class="card" data-tags="question llm api openai anthropic integration">
+<span class="tag tag-q">question</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: What LLM APIs have you worked with?</div>
+<div class="a">"Anthropic (Claude API + Claude Agent SDK), Ollama for local inference (qwen3, deepseek-r1, llama), and I've built around the OpenAI-compatible endpoint format. I run three models locally — a 30-billion parameter model for general reasoning, a 32-billion parameter chain-of-thought model for deep analysis, and an embedding model for vector search. I'm also familiar with the Model Context Protocol (MCP) — I've published 5 MCP servers on GitHub."</div>
+<div class="proof">Proof: 5 published MCP servers, Ollama integration, Claude SDK usage, brain_api.py</div>
+</div>
+
+<div class="card" data-tags="question agent ai chatbot workflow automation">
+<span class="tag tag-q">question</span>
+<div class="q">Q: Have you built AI agents or chatbots?</div>
+<div class="a">"Yes — I built a full AI agent that lives on Telegram. It does three-layer tool detection: the LLM decides which tools to call using native function calling, with keyword fallback and automatic web search for anything the brain doesn't know. It has persistent memory across conversations, a self-model that tracks its own emotional state, and anti-repetition logic. It can check revenue, search the web, query our knowledge base, and execute system tools — all from natural language."</div>
+<div class="proof">Proof: @faye_twin_bot, lo-gateway v5.6, brain_api tool calling</div>
+</div>
+
+<div class="card" data-tags="question automation workflow n8n zapier make">
+<span class="tag tag-q">question</span>
+<div class="q">Q: Experience with workflow automation (n8n, Zapier, Make)?</div>
+<div class="a">"I've used Make.com for integrations and I'm familiar with the n8n architecture. But honestly, for most of my work I build custom Python automation because it gives me more control. I have 13 cron jobs running right now — embedding pipelines, content generation, wiki updates, system monitoring, email nurture sequences. I think the key skill isn't knowing one tool — it's understanding the automation pattern and picking the right approach."</div>
+<div class="proof">Proof: 13 active crons, embed_local.py, generate_wiki.py, nurture-cron</div>
+</div>
+
+<div class="card" data-tags="question cloud aws gcp azure deploy">
+<span class="tag tag-q">question</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: Cloud infrastructure experience?</div>
+<div class="a">"I run a production server via Cloudflare Tunnel at zero cost, use GCP for monitoring and cron jobs, and recently submitted a $200K grant to AWS Imagine. I've deployed on Vercel, Fly.io, and bare metal. My approach is pragmatic — I optimize for cost and reliability over complexity. Our entire production stack runs on $0/month hosting."</div>
+<div class="proof">Proof: Cloudflare Tunnel, GCP Watcher, AWS grant submitted, Vercel deploys</div>
+</div>
+
+<div class="card" data-tags="question vector database pinecone weaviate chroma">
+<span class="tag tag-q">question</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: Vector database experience?</div>
+<div class="a">"I've worked with ChromaDB and built a custom solution using sqlite-vec — a native vector search extension for SQLite. I chose it because it gives me vector search, full-text search, and knowledge graph traversal in a single file with zero dependencies. 2,800+ vectors, 1024 dimensions, 20ms search latency. I understand the tradeoffs between managed services like Pinecone and embedded solutions — I pick what fits the use case."</div>
+<div class="proof">Proof: sqlite-vec migration (recovered 2,819 vectors from ChromaDB), vec_brain table</div>
+</div>
+
+<h3>Working Style & Fit</h3>
+
+<div class="card" data-tags="question remote independent work style">
+<span class="tag tag-q">question</span>
+<div class="q">Q: How do you work independently in a remote environment?</div>
+<div class="a">"I built an entire company remotely by myself — 52 courses, 30 blog posts, 5 open-source tools, an iOS app, and a production website. I use a structured sprint methodology: understand the problem, define success criteria, sketch 3 approaches, decide, build, validate. Every task gets verified before it's considered done. I write to a persistent brain so nothing gets lost between sessions."</div>
+<div class="proof">Proof: Divine Sprint Protocol, brain checkpoints, 40/40 megatest passing</div>
+</div>
+
+<div class="card" data-tags="question team collaboration communication">
+<span class="tag tag-q">question</span>
+<div class="q">Q: How do you collaborate with teams?</div>
+<div class="a">"I'm used to working with cross-functional teams through my Upwork projects — 48 projects with a 100% job success score means I communicate well, deliver on time, and handle feedback gracefully. I document everything, use structured handoffs, and I'm comfortable in fast-moving environments where priorities shift."</div>
+<div class="proof">Proof: 48 Upwork projects, 100% JSS</div>
+</div>
+
+<div class="card" data-tags="question availability hours timezone est">
+<span class="tag tag-q">likely question</span>
+<div class="q">Q: Can you commit to 40 hours/week in EST?</div>
+<div class="a">"Absolutely. I'm based in California and I'm happy to align my schedule to EST hours. I've already confirmed this in our messages."</div>
+</div>
+
+<div class="card" data-tags="question hallucination accuracy reliability">
+<span class="tag tag-q">question</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: How do you handle AI hallucination / accuracy issues?</div>
+<div class="a">"I built a five-layer anti-hallucination system called the Truth Engine. It includes: source grounding against a verified facts database, output validation before responses are sent, guardian verification for sensitive content, a pre-publish gate for external content, and monitoring for stale data. The key principle: retrieve verified data FIRST, then generate. Never let the model invent facts."</div>
+<div class="proof">Proof: Truth Engine, facts.json, lo-verify CLI, anti-hallucination prompt in Telegram bot</div>
+</div>
+
+<div class="card" data-tags="question security privacy data">
+<span class="tag tag-q">question</span>
+<div class="q">Q: How do you handle AI security and data privacy?</div>
+<div class="a">"I published an open-source MCP security scanner called mcp-shield. I run all sensitive AI workloads locally — our LLMs run on-device, embeddings are generated locally, and the knowledge base never leaves our machine. I follow OWASP guidelines and have privacy filters that separate public and private data in our systems."</div>
+<div class="proof">Proof: mcp-shield (GitHub), local Ollama, privacy filter in brain_api.py</div>
+</div>
+
+<h3>Scenario Questions</h3>
+
+<div class="card" data-tags="question scenario build rag system">
+<span class="tag tag-q">scenario</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: How would you build a RAG system for a company's internal docs?</div>
+<div class="a">"First I'd audit the document types and volume. Then: 1) Chunk documents intelligently (not just fixed-size), 2) Embed using a strong model like mxbai-embed-large, 3) Store in a vector database with metadata filtering, 4) Build hybrid retrieval (semantic + keyword + metadata), 5) Add a grounding layer to verify answers against source documents, 6) Build an evaluation pipeline to measure retrieval quality. I've done exactly this — our brain system uses this architecture."</div>
+</div>
+
+<div class="card" data-tags="question scenario automate business process">
+<span class="tag tag-q">scenario</span>
+<div class="q">Q: How would you automate a manual business process with AI?</div>
+<div class="a">"Start by mapping the current workflow end-to-end. Identify the repetitive parts that AI can handle vs. the judgment calls that need humans. Build the automation incrementally — start with the highest-ROI step, validate it works, then expand. I always build with monitoring so you can catch failures early. For example, I automated our entire content pipeline: blog generation, SEO optimization, FAQ creation, schema markup, and deployment."</div>
+</div>
+
+<div class="card" data-tags="question scenario chatbot customer support">
+<span class="tag tag-q">scenario</span>
+<div class="q">Q: How would you build an AI chatbot for customer support?</div>
+<div class="a">"I'd build it in layers: 1) Knowledge base from support docs and FAQs, 2) Intent detection to route queries, 3) RAG retrieval for accurate answers, 4) Escalation logic for complex cases, 5) Anti-hallucination to prevent wrong answers, 6) Analytics to track resolution rates. My Telegram bot does all of this — tool detection, knowledge retrieval, fact-checking, and graceful fallback."</div>
+</div>
+
+<h3>Your Questions for Ken</h3>
+
+<div class="card" data-tags="ask question strategy power">
+<div class="card-title">Questions to Ask (Power Moves)</div>
+<span class="tag tag-strategy">strategy</span>
+<div class="a">
+1. "Can you tell me about the end client? Understanding their industry helps me tailor my approach."<br>
+2. "What's the compensation range for this role?"<br>
+3. "What does the full interview process look like after this call?"<br>
+4. "What's the biggest AI challenge the client is trying to solve right now?"<br>
+5. "How large is the engineering team I'd be working with?"<br>
+6. "Is this a new role or backfill? What does success look like in the first 90 days?"<br>
+7. "What tech stack is the client currently using?"
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2>Solutions I Can Offer</h2>
+
+<div class="card" data-tags="solution rag knowledge base search">
+<div class="card-title">Production RAG Systems</div>
+<span class="tag tag-tech">proven</span>
+<p>Built: Hybrid retrieval (vector + keyword + graph), 2,800+ vectors, 20ms latency, anti-hallucination grounding. Can build this for any company's internal docs, product data, or customer support knowledge base.</p>
+</div>
+
+<div class="card" data-tags="solution agent automation tool">
+<div class="card-title">AI Agent Development</div>
+<span class="tag tag-tech">proven</span>
+<p>Built: Multi-tool AI agent with LLM-driven tool selection, web search, database queries, API calls. Can build agents for sales, recruiting, operations, or customer support automation.</p>
+</div>
+
+<div class="card" data-tags="solution chatbot customer support">
+<div class="card-title">AI Chatbots & Customer Support</div>
+<span class="tag tag-tech">proven</span>
+<p>Built: Telegram bot with intent detection, knowledge retrieval, fact-checking, personality, memory. Can build customer-facing chatbots for any platform (web, Slack, Teams, WhatsApp).</p>
+</div>
+
+<div class="card" data-tags="solution llm integration api">
+<div class="card-title">LLM API Integration</div>
+<span class="tag tag-tech">proven</span>
+<p>Built: Integrations with Anthropic, OpenAI-compatible endpoints, Ollama. Published 5 MCP servers. Can integrate any LLM into existing business systems with structured outputs and error handling.</p>
+</div>
+
+<div class="card" data-tags="solution content seo automation">
+<div class="card-title">Content & SEO Automation</div>
+<span class="tag tag-tech">proven</span>
+<p>Built: 30 blog posts with automated FAQ generation, JSON-LD schema, OG images, internal linking. 772 impressions/week growing 10% WoW. Can build content pipelines for any company.</p>
+</div>
+
+<div class="card" data-tags="solution workflow automation pipeline">
+<div class="card-title">Workflow Automation</div>
+<span class="tag tag-tech">proven</span>
+<p>Built: 13 automated cron jobs, deployment pipelines, email nurture sequences, monitoring systems. Can automate any repetitive business process with Python + APIs.</p>
+</div>
+
+<div class="card" data-tags="solution voice ai conversational">
+<div class="card-title">Voice & Conversational AI</div>
+<span class="tag tag-tech">in progress</span>
+<p>Building: Voice input/output for Telegram bot. Experience with speech-to-text, text-to-speech, conversational design. Can build voice-first AI interfaces.</p>
+</div>
+
+<div class="card" data-tags="solution evaluation testing quality">
+<div class="card-title">AI Evaluation & Quality</div>
+<span class="tag tag-tech">proven</span>
+<p>Built: Truth Engine (5-layer anti-hallucination), automated testing (40/40 megatest), facts.json grounding, self-correcting RAG. Can build evaluation pipelines for any AI system.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2>Red Flags to Watch For</h2>
+
+<div class="card" data-tags="warning red flag">
+<div class="card-title">Watch for These</div>
+<span class="tag tag-red">awareness</span>
+<div class="a">
+- Vague about the client company (normal for first call, but push gently)<br>
+- No clear compensation range (may be feeling you out)<br>
+- "Trial period" or unpaid work requests (hard no)<br>
+- Excessive rounds of interviews (more than 3 is a yellow flag)<br>
+- Pressure to commit before knowing the client
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2>Recruiter Screening Questions (Ken Will Ask These)</h2>
+
+<div class="card" data-tags="question recruiter why role motivation">
+<span class="tag tag-q">very likely</span>
+<div class="q">Q: Why are you interested in this role?</div>
+<div class="a">"Because it's literally what I do every day. I build RAG systems, LLM integrations, AI agents, and automation pipelines — not as a side project, but as my primary work. I founded a company on these exact technologies. This role would let me apply what I've built to a larger organization's challenges, and I'm excited about working on problems at a bigger scale."</div>
+</div>
+
+<div class="card" data-tags="question recruiter salary compensation rate money">
+<span class="tag tag-q">very likely</span> <span class="tag tag-strategy">strategy</span>
+<div class="q">Q: What are your salary/rate expectations?</div>
+<div class="a">"I'm flexible on compensation — the right project and team matter more to me than hitting a specific number. But I'd want to be in line with market rates for this skillset. What's the range the client has budgeted for this role?"</div>
+<div class="warn">NEVER name a number first. Get their range. AI engineer market rate 2026: $150-220K salary, $75-120/hr contract. If pressed hard: "I'm looking for something in the $150-180K range, but I'm open to discussion depending on the full package."</div>
+</div>
+
+<div class="card" data-tags="question recruiter start date availability when">
+<span class="tag tag-q">very likely</span>
+<div class="q">Q: When can you start?</div>
+<div class="a">"I can start immediately. I'm currently running my own projects but I'm ready to commit full-time to the right opportunity."</div>
+</div>
+
+<div class="card" data-tags="question recruiter weakness strength biggest">
+<span class="tag tag-q">possible</span>
+<div class="q">Q: What's your biggest strength? Weakness?</div>
+<div class="a">"Strength: I ship fast and I ship complete. In 8 weeks I built an entire production system from scratch — server, database, AI brain, mobile app, 52 courses, 5 open-source tools. I don't just prototype, I build for production. Weakness: I sometimes over-engineer solutions. I'll build a full agentic RAG pipeline when a simple keyword search might do. I've gotten better at starting simple and adding complexity only when needed."</div>
+</div>
+
+<div class="card" data-tags="question recruiter team conflict challenge difficult">
+<span class="tag tag-q">possible</span>
+<div class="q">Q: Tell me about a challenging project or conflict</div>
+<div class="a">"At First Media, I was asked to build an AI production pipeline for 50+ brands including Disney and Paramount. The challenge was that every brand had different style guides, approval workflows, and content formats. I solved it by building a modular template architecture — one system that could generate hundreds of weekly content variants while respecting each brand's rules. The key was designing the system before writing code."</div>
+</div>
+
+<div class="card" data-tags="question recruiter long term career goal future">
+<span class="tag tag-q">possible</span>
+<div class="q">Q: Where do you see yourself in 2-3 years?</div>
+<div class="a">"Leading AI infrastructure at a company where I can build the systems that make everyone else more productive. I want to go deep on production AI — not just prototyping, but building things that run reliably at scale. That's why this role appeals to me."</div>
+</div>
+
+<div class="card" data-tags="question recruiter why leave current job founder">
+<span class="tag tag-q">likely</span>
+<div class="q">Q: Why are you looking to leave your current situation / why not keep running your company?</div>
+<div class="a">"Like One is a nonprofit — it's a mission, not a money-making business. I built it to prove what one person can do with AI. Now I want to apply those skills in a team environment where I can build at larger scale and have a stable income while continuing the nonprofit work on the side."</div>
+</div>
+
+<div class="card" data-tags="question recruiter remote work communication async">
+<span class="tag tag-q">likely</span>
+<div class="q">Q: How do you handle remote communication and staying aligned?</div>
+<div class="a">"I'm very disciplined about async communication. I document everything — every decision, every technical choice goes into our brain system. I use structured handoffs so anyone can pick up where I left off. On my Upwork projects, I maintained 100% client satisfaction across 48 projects, all remote. I over-communicate status rather than under-communicate."</div>
+</div>
+
+<h2>Technical Deep-Dive Questions (Client Round 2)</h2>
+
+<div class="card" data-tags="question technical rag fine-tuning when decision">
+<span class="tag tag-q">top 2026 question</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: When would you use RAG vs fine-tuning vs both?</div>
+<div class="a">"RAG when you need the model to access current or private data — documents, databases, knowledge bases. The model stays general, and retrieval provides specifics. Fine-tuning when you need the model to behave differently — match a specific tone, follow a format, or learn a domain's reasoning patterns. Both when you need domain behavior AND current data — fine-tune for the reasoning, RAG for the facts. In practice, I reach for RAG first because it's faster to iterate, easier to debug, and you can update the knowledge without retraining. I only fine-tune when RAG alone can't get the behavior right."</div>
+<div class="proof">Our system: RAG-first with 2,824 vectors. No fine-tuning needed because the retrieval + prompt engineering handles everything.</div>
+</div>
+
+<div class="card" data-tags="question technical chunking strategy document size overlap">
+<span class="tag tag-q">common</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: What's your chunking strategy for RAG?</div>
+<div class="a">"It depends on the document type. For structured data like our brain entries, I chunk by semantic unit — each entry is its own chunk with key, description, and truncated value. For long documents, I use overlapping windows — typically 500-800 tokens with 100 token overlap to maintain context across boundaries. The key insight: chunk size should match your embedding model's sweet spot. mxbai-embed-large handles up to 512 tokens well, so I keep chunks under that. I also store metadata (source, category, timestamp) alongside each chunk for filtering during retrieval."</div>
+</div>
+
+<div class="card" data-tags="question technical evaluation metrics rag quality ragas">
+<span class="tag tag-q">common</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: How do you evaluate RAG quality?</div>
+<div class="a">"Multi-layered. First, retrieval quality — are we finding the right documents? I measure this with similarity scores and manual spot-checks. Second, answer quality — is the generated response faithful to the retrieved context? I built a Truth Engine that cross-references answers against a verified facts database before they're sent. Third, end-to-end testing — I run a megatest suite of known questions and verify the answers are correct. 40 tests, all passing. The goal is catching hallucinations before they reach the user, not after."</div>
+<div class="proof">Proof: lo-verify CLI, facts.json, megatest (40/40 S+)</div>
+</div>
+
+<div class="card" data-tags="question technical agent failure modes production breaks">
+<span class="tag tag-q">advanced</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: What breaks in production AI agent systems?</div>
+<div class="a">"Three main failure modes. First, tool call hallucination — the agent invents tool calls that don't exist or passes wrong parameters. I solve this with native function calling (the LLM gets a schema) plus keyword fallback. Second, infinite loops — the agent keeps retrying a failed action. I use max-turn limits and error detection. Third, context poisoning — old bad responses in chat history get repeated. I built an anti-repetition engine that tracks recent responses and blocks overused phrases. The meta-lesson: always have a fallback path and never trust the LLM to self-correct without guardrails."</div>
+</div>
+
+<div class="card" data-tags="question technical react framework chain thought agentic">
+<span class="tag tag-q">common</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: Explain the ReAct framework</div>
+<div class="a">"ReAct interleaves reasoning with actions in a loop. The agent thinks about what to do, takes an action (like searching or calling a tool), observes the result, then reasons again. This is better than pure chain-of-thought because CoT can hallucinate facts — ReAct grounds reasoning in real tool outputs. Our Telegram bot does this: it reasons about which tool to call (LLM function calling), executes the tool, gets real data, then generates a response grounded in that data. The key is that the action step provides external grounding that prevents the model from making things up."</div>
+</div>
+
+<div class="card" data-tags="question technical prompt engineering structured output">
+<span class="tag tag-q">common</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: How do you approach prompt engineering?</div>
+<div class="a">"I treat prompts as code, not magic. Structured system prompts with clear sections: identity, data rules, response format, constraints. I version-control them. For structured outputs, I use JSON schemas and function calling rather than hoping the model formats things correctly. The biggest lesson: be specific about what NOT to do. Anti-instructions ('never invent facts', 'never say you can't if data exists') are often more important than positive instructions."</div>
+<div class="proof">Proof: Telegram bot system prompt (anti-hallucination rules, response format, data-first policy)</div>
+</div>
+
+<div class="card" data-tags="question technical embedding model selection dimension">
+<span class="tag tag-q">common</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: How do you choose an embedding model?</div>
+<div class="a">"Three factors: quality, speed, and dimension size. For our system I use mxbai-embed-large (1024 dimensions) — it's the best quality model that runs locally via Ollama. Higher dimensions capture more nuance but use more storage and compute. For a production system, I'd benchmark 2-3 models on your actual data with a test set of known-relevant pairs. The model that gives the highest retrieval recall on YOUR documents wins — not the one that scores highest on generic benchmarks."</div>
+</div>
+
+<div class="card" data-tags="question technical latency optimization speed performance">
+<span class="tag tag-q">common</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: How do you keep AI system latency low?</div>
+<div class="a">"Layer your response times. Fast stuff first: keyword search (instant), vector search (20ms), tool detection (4 seconds with a small model). Then slow stuff in the background: deep reasoning (30 seconds with a large model). Our Telegram bot uses two-phase responses — instant status message ('searching...') then the full answer. Users see immediate feedback. For the retrieval layer specifically, sqlite-vec gives us 20-55ms search across 2,800+ vectors because it runs in-process, no network hop."</div>
+</div>
+
+<div class="card" data-tags="question technical hallucination reduction accuracy trust">
+<span class="tag tag-q">hot topic 2026</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: How do you reduce hallucinations in production?</div>
+<div class="a">"Five layers. 1) Source grounding — retrieve verified data BEFORE generating. Never let the model answer from memory alone. 2) Facts database — cross-reference claims against a canonical source of truth. 3) Prompt constraints — explicit anti-hallucination rules: 'only state what appears in the provided context.' 4) Output validation — check generated responses for claims not supported by retrieved context. 5) Monitoring — log and review responses over time, catch patterns. The key principle: the model should be a reasoning engine over YOUR data, not a knowledge source."</div>
+<div class="proof">Proof: Truth Engine (5 layers), facts.json, anti-hallucination prompt in Telegram</div>
+</div>
+
+<div class="card" data-tags="question technical cost optimization token llm api pricing">
+<span class="tag tag-q">practical</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: How do you manage LLM costs?</div>
+<div class="a">"Three strategies. First, use local models for everything that doesn't need frontier-level reasoning — our system runs qwen3 30B locally for most queries, reserving cloud APIs for complex tasks only. Second, smart context management — don't stuff the full database into every prompt. Our agentic query system caps context at 2,000 characters, sending only the most relevant snippets. Third, cache aggressively — if the same question comes up twice, serve from cache rather than re-running the full pipeline. Our entire AI stack runs at $0/month for inference because it's local."</div>
+</div>
+
+<div class="card" data-tags="question technical vector database comparison tradeoff pinecone">
+<span class="tag tag-q">common</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: Compare vector database options — when would you use Pinecone vs Chroma vs something else?</div>
+<div class="a">"Pinecone: managed, scales easily, good for teams that don't want to manage infrastructure. Chroma: good for prototyping, easy Python API, but we had reliability issues (data loss). Weaviate/Qdrant: self-hosted, good for companies that need control. pgvector: great if you're already on Postgres. sqlite-vec: what I chose — single file, zero dependencies, runs in-process with sub-100ms latency. The tradeoff is scale: sqlite-vec is perfect up to millions of vectors on a single machine. If you need distributed search across billions of vectors, go Pinecone or Qdrant. For 99% of business use cases, embedded is enough."</div>
+</div>
+
+<div class="card" data-tags="question technical production deploy monitoring observability">
+<span class="tag tag-q">common</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: How do you monitor AI systems in production?</div>
+<div class="a">"Automated health checks on cron — our system runs 13 cron jobs including embedding pipeline monitoring, server uptime checks, and content freshness detection. For the AI specifically: I log every tool call, every retrieval result, and every generated response. I track which queries lead to tool failures or empty results. I have a data staleness detector that flags when facts are older than 30 days. And I run periodic megatests — 40 known queries that must return correct answers. If any fail, I know something changed."</div>
+</div>
+
+<div class="card" data-tags="question technical security api key management credentials">
+<span class="tag tag-q">important</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: How do you handle security in AI applications?</div>
+<div class="a">"Multiple layers. Credential management: all secrets in macOS Keychain or config files with restricted permissions — never in code, never in environment variables in scripts. API security: I published mcp-shield, an open-source security scanner for MCP integrations. Data privacy: sensitive data has privacy filters — our brain_api.py separates public and private entries. AI-specific: prompt injection defense (never trust user input as instructions), output sanitization, and rate limiting. I follow OWASP guidelines adapted for AI systems."</div>
+</div>
+
+<div class="card" data-tags="question technical langchain llamaindex framework comparison">
+<span class="tag tag-q">likely</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: Experience with LangChain, LlamaIndex, CrewAI?</div>
+<div class="a">"I'm familiar with all of them conceptually. LangChain for chaining LLM calls with tools, LlamaIndex for document indexing and retrieval, CrewAI for multi-agent coordination. In practice, I built my own lightweight framework because I wanted zero external dependencies and full control. brain_api.py does what LangChain's chains do, our hybrid_search does what LlamaIndex does, and our Divine Sprint Protocol does what CrewAI does — but tuned exactly to our needs. I can work with any of these frameworks, but I also know how to build equivalent systems from scratch when that makes more sense."</div>
+</div>
+
+<div class="card" data-tags="question technical make n8n zapier workflow automation low code">
+<span class="tag tag-q">likely</span>
+<div class="q">Q: Experience with Make/n8n/Zapier for workflow automation?</div>
+<div class="a">"I've used Make.com for integrations and I understand the low-code automation paradigm well. For most of our work though, I write custom Python automation because the business logic is complex enough to need code. The sweet spot: use Make/n8n for simple integrations (webhook triggers, data routing), use code for anything that needs conditional logic, error handling, or AI. I've built webhook architectures, cron-based scheduling, API integration pipelines, and event-driven automation — the underlying patterns are the same regardless of the tool."</div>
+</div>
+
+<div class="card" data-tags="question situational deadline pressure fast delivery urgent">
+<span class="tag tag-q">possible</span>
+<div class="q">Q: How do you handle tight deadlines or urgent requests?</div>
+<div class="a">"I follow a sprint methodology even under pressure. Step one: scope it — what's the minimum viable solution? Step two: build the critical path first, skip polish. Step three: ship and iterate. Today I completed three full sprints in a single session — a database migration, a Telegram bot upgrade, and a full interview wiki. When the process is good, speed follows naturally."</div>
+</div>
+
+<div class="card" data-tags="question startup saas product team experience">
+<span class="tag tag-q">likely</span>
+<div class="q">Q: Have you worked with startups or SaaS/product teams?</div>
+<div class="a">"Like One IS a startup — I went from zero to production in 8 weeks. 501(c)(3) nonprofit, revenue, paying customers, 52 courses, open source tools, iOS app on TestFlight. Before that, my Upwork consulting included work with VC/PE firms, SaaS companies, and startups adopting AI. At First Media I worked with 50+ brand teams including Disney and Paramount. I'm comfortable with the pace, ambiguity, and ownership that comes with startup environments."</div>
+</div>
+
+<div class="card" data-tags="question technical api integration third party system design">
+<span class="tag tag-q">likely</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: Walk me through how you'd integrate an LLM into an existing business system</div>
+<div class="a">"First, understand the current workflow and where AI adds the most value — usually the repetitive, high-volume tasks. Then: 1) Build a proof of concept with the simplest possible integration — maybe an API call to Claude that processes one type of input. 2) Add guardrails — error handling, fallback responses, rate limiting. 3) Build the data pipeline — if it needs context, add RAG. 4) Deploy with monitoring — log inputs, outputs, latency, errors. 5) Iterate based on real usage data. The key is starting with a narrow, high-value use case and expanding from there."</div>
+</div>
+
+<div class="card" data-tags="question technical operations sales customer support recruiting use case">
+<span class="tag tag-q">matches job posting</span>
+<div class="q">Q: What AI automation solutions would you build for operations/sales/support?</div>
+<div class="a">"Operations: automated reporting dashboards, document processing pipelines, workflow triggers. Sales: lead scoring with LLM analysis, personalized outreach generation, CRM data enrichment. Customer support: RAG-powered knowledge base chatbot, ticket classification and routing, response drafting. Recruiting: resume parsing and matching, interview question generation, candidate outreach. Productivity: meeting summarization, email drafting, task prioritization. I've built versions of most of these — our grant pipeline automates discovery, tracking, and application drafting across 200+ opportunities."</div>
+</div>
+
+<div class="card" data-tags="question technical troubleshoot debug edge case error unreliable">
+<span class="tag tag-q">matches job posting</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: How do you troubleshoot unreliable AI outputs?</div>
+<div class="a">"Systematic debugging. First, check the retrieval — is the right context being found? I log every search query and result. Second, check the prompt — is the instruction clear? Often adding a negative constraint ('don't do X') fixes issues faster than adding positive instructions. Third, check the model — is it the right size for the task? We use qwen3 30B for general tasks but switch to deepseek-r1 32B for reasoning-heavy ones. Fourth, check the data — stale or incorrect source data causes most 'hallucinations.' Our Truth Engine caught 18 issues in its first run."</div>
+</div>
+
+<div class="card" data-tags="question technical scale scalable architecture growth">
+<span class="tag tag-q">important</span> <span class="tag tag-tech">technical</span>
+<div class="q">Q: How do you build AI solutions that scale?</div>
+<div class="a">"Design for the next 10x, build for today. Our brain started with 100 entries, now it's at 885 with 2,824 vectors — the architecture didn't change because I chose sqlite-vec which handles millions of vectors in a single file. For API services, I use stateless designs with database-backed state so you can run multiple instances. For LLM costs, I use tiered models — cheap fast model for simple tasks, expensive model only when needed. The principle: make the expensive thing happen as rarely as possible while keeping quality high."</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<h2>Resume Deep-Dive: Every Bullet Explained</h2>
+
+<h3>Like One — AI Automation Engineer & Founder (2024–Present)</h3>
+
+<div class="card" data-tags="resume like one rag pipeline vector embedding ollama">
+<div class="card-title">Built production RAG pipeline in Python</div>
+<span class="tag tag-tech">resume bullet</span>
+<div class="q">Q: Walk me through your RAG pipeline</div>
+<div class="a">"Our RAG system has three layers. First, we ingest documents — brain entries, blog posts, session notes, episodic memories — and chunk them for embedding. Second, we embed using mxbai-embed-large via Ollama locally, producing 1024-dimensional vectors. Third, we store them in sqlite-vec inside our SQLite brain database — currently 2,824 vectors across 7 collections. Retrieval uses hybrid search: FTS5 keyword matching, cosine similarity vector search, and knowledge graph traversal with 1,065 edges. The three signals are scored and re-ranked. We also have a grounding layer that checks answers against a verified facts.json before responding. The whole thing runs on a single file — no Pinecone, no external services. Search latency is 20-55ms."</div>
+<div class="proof">Show: brain-search CLI, brain_api.py hybrid_search(), vec_brain table schema</div>
+</div>
+
+<div class="card" data-tags="resume multi-agent orchestration fleet brain sqlite">
+<div class="card-title">Architected multi-agent orchestration system</div>
+<span class="tag tag-tech">resume bullet</span>
+<div class="q">Q: How does your multi-agent system work?</div>
+<div class="a">"We have 6 AI agents across 3 machines — an M3 MacBook Pro (64GB) for planning and code, an M4 for parallel execution, and a GCP instance for monitoring. They share a single SQLite brain database with 885 entries. Coordination uses three patterns: hub-spoke (one orchestrator routes tasks), pipeline (sequential handoff between specialists), and swarm (parallel execution with merge). Session state is written to brain keys so any agent can pick up where another left off. We call it the Divine Sprint Protocol — a 6-phase process inspired by Google's Design Sprint: understand, define, sketch, decide, prototype, validate."</div>
+<div class="proof">Show: divine-sprint-protocol/DIVINE-SPRINT-SOP.md, sprint-engine CLI, brain session keys</div>
+</div>
+
+<div class="card" data-tags="resume mcp tools automation 100 api">
+<div class="card-title">Developed 100+ automation tools via MCP</div>
+<span class="tag tag-tech">resume bullet</span>
+<div class="q">Q: What are MCP servers and what did you build?</div>
+<div class="a">"MCP — Model Context Protocol — is Anthropic's standard for connecting AI models to external tools. Think of it like USB for AI. I've published 5 MCP servers on GitHub: claude-brain for persistent AI memory, mcp-shield for security scanning, orchard-hig for Apple design compliance, orchard-sign for code signing diagnostics, and lo-eyes for visual frontend inspection. Beyond those, I built 22 internal MCP tools for our system — brain boot, search, file operations, screen capture, fleet dispatch, browser automation. Each tool has a defined schema so the AI knows exactly how to call it."</div>
+<div class="proof">Show: GitHub repos, .mcp.json config, fractal-mac-link/server.js (22 tools)</div>
+</div>
+
+<div class="card" data-tags="resume python cli email automation resend stripe seo">
+<div class="card-title">Built Python CLI toolchain</div>
+<span class="tag tag-tech">resume bullet</span>
+<div class="q">Q: Tell me about your automation toolchain</div>
+<div class="a">"I have 20+ Python CLI tools in ~/bin/ that automate everything: send-email sends via Resend API, stripe-dashboard checks revenue and subscribers, lo-foundation tracks 200+ grants, lo-deploy does 7-step deployment chains, brain-search does semantic search, brain-wiki generates HTML documentation, lo-verify runs anti-hallucination audits. Each tool is standalone, tested, and wired into cron jobs — 13 crons running right now for embedding, monitoring, wiki generation, email nurture, and system health. The principle: no manual operational tasks. Everything automated."</div>
+<div class="proof">Show: ~/bin/ directory, crontab -l, lo-verify output</div>
+</div>
+
+<div class="card" data-tags="resume stripe webhook subscription billing payment">
+<div class="card-title">Implemented Stripe API integration</div>
+<span class="tag tag-tech">resume bullet</span>
+<div class="q">Q: Tell me about your Stripe integration</div>
+<div class="a">"Full production Stripe setup: webhook-driven subscription management, automated billing with Pro tiers ($19/month and $149/year), customer portal for self-service, coupon system, and a revenue dashboard CLI that shows MRR, subscriber count, and recent charges in real-time. Currently serving 4 active subscribers at $17.95 MRR. The webhook pipeline handles checkout.session.completed, subscription.created, subscription.updated, and subscription.deleted events. It's production-grade — not a toy integration."</div>
+<div class="proof">Show: stripe-dashboard revenue output, StripeController.swift, webhook handlers</div>
+</div>
+
+<div class="card" data-tags="resume education platform 52 courses lessons academy">
+<div class="card-title">Designed full-stack AI education platform</div>
+<span class="tag tag-tech">resume bullet</span>
+<div class="q">Q: Tell me about the education platform</div>
+<div class="a">"Like One Academy has 52 courses with 570+ lessons covering everything from AI basics to advanced agent building. The platform runs on Swift Vapor with Leaf templates and HTMX for interactivity. Content is stored as structured data — each course has tracks, lessons, and metadata. The first 3 lessons are free, then it gates to Pro. I built the full content pipeline: automated lesson generation, structured data schemas, Course JSON-LD for SEO, a sitemap with 617 URLs, and internal cross-linking between related content. It's a real ed-tech platform, not a blog with a paywall."</div>
+<div class="proof">Show: likeone.ai/academy, CourseProvider.swift, sitemap.xml</div>
+</div>
+
+<div class="card" data-tags="resume browser automation playwright chrome cdp">
+<div class="card-title">Built browser automation system</div>
+<span class="tag tag-tech">resume bullet</span>
+<div class="q">Q: Tell me about your browser automation</div>
+<div class="a">"I built a browser automation system called lo-mcp-chrome that uses Playwright over Chrome DevTools Protocol. It connects to a real Chrome instance — not headless — which means it passes reCAPTCHA and bot detection. I've used it for form submissions on grant portals, login flows across 20+ platforms, data extraction, and autonomous web interactions. The system includes a password manager that reads from macOS Keychain for auto-login. For portals without bot detection, I use Playwright standalone in headless mode."</div>
+<div class="proof">Show: lo-mcp-chrome architecture, password_manager.py, grant portal success logs</div>
+</div>
+
+<div class="card" data-tags="resume swift vapor cloudflare server deploy production">
+<div class="card-title">Deployed production Swift web server</div>
+<span class="tag tag-tech">resume bullet</span>
+<div class="q">Q: Why Swift for a web server? How does the deployment work?</div>
+<div class="a">"Swift Vapor gives us type safety, great performance, and native Apple ecosystem integration — important for our iOS app. The server runs on our MacBook via Cloudflare Tunnel, which gives us a free HTTPS endpoint at likeone.ai without any hosting costs. Deployment is a one-command process: build the release binary, copy SPM resource bundles, restart the launchd service. The whole production stack costs $0/month. We also have cron-based embedding updates every 5 minutes and automated health monitoring."</div>
+<div class="proof">Show: likeone.ai (live), lo-swift-deploy script, Cloudflare Tunnel config</div>
+</div>
+
+<h3>SC Strategic Advisory (2020–2024)</h3>
+
+<div class="card" data-tags="resume upwork consulting 48 projects strategy automation">
+<div class="card-title">48 AI strategy projects, 100% success</div>
+<span class="tag tag-story">experience</span>
+<div class="q">Q: Tell me about your consulting work</div>
+<div class="a">"Over 4 years I completed 48 projects on Upwork with a 100% Job Success Score. The work ranged from competitive analyses for VC/PE firms to AI implementation roadmaps for enterprises. I built financial models, investor-grade due diligence pipelines supporting capital raises over $50M, and AI automation roadmaps for companies transitioning from manual to LLM-powered workflows. Every project was remote, independent, and delivered on time. The 100% score means zero negative reviews across 48 clients."</div>
+<div class="proof">Proof: Upwork profile, JSS score, client testimonials</div>
+</div>
+
+<h3>First Media US — Sr. Editor, AI Production (Nov 2021–Mar 2026)</h3>
+
+<div class="card" data-tags="resume first media production ai content pipelines disney">
+<div class="card-title">AI-assisted production pipelines at scale</div>
+<span class="tag tag-story">experience</span>
+<div class="q">Q: Tell me about your work at First Media</div>
+<div class="a">"First Media is a digital media company producing content at massive scale. I built AI-assisted production pipelines using Claude, GPT, Gemini, Runway, and Pika — including a 1,200-piece 3D emoji library generated via custom Photoshop scripting, which reduced manual production by 30%. I architected scalable automation systems serving 50+ brands including Disney Pixar and Paramount, enabling hundreds of weekly content variants through modular template architecture. I also built cross-functional workflow automation using Slack APIs, Notion integrations, and Frame.io review pipelines serving international teams across 15+ locales."</div>
+<div class="proof">Proof: Portfolio samples, production metrics, brand list</div>
+</div>
+
+<h3>GTxcel — Video Producer / Marketing Manager (Jun 2012–Apr 2014)</h3>
+
+<div class="card" data-tags="resume gtxcel video production marketing department">
+<div class="card-title">Built production department from scratch</div>
+<span class="tag tag-story">experience</span>
+<div class="q">Q: What did you do at GTxcel?</div>
+<div class="a">"GTxcel was a digital advertising platform in Berkeley. I built their entire in-house production department from scratch — hiring, workflow design, and end-to-end delivery systems for digital advertising content. This was early in my career but it taught me how to build systems, manage processes, and deliver under pressure. The skills I developed there — workflow design, system building, quality control — are the same ones I apply to AI automation today."</div>
+</div>
+
+<h3>Education & Open Source</h3>
+
+<div class="card" data-tags="resume berkeley education film studies degree">
+<div class="card-title">UC Berkeley, BA Film Studies</div>
+<span class="tag tag-story">education</span>
+<div class="q">Q: Your degree is in Film Studies — how does that relate to AI engineering?</div>
+<div class="a">"Film Studies taught me storytelling, system thinking, and production workflows — which directly translate to building AI systems. Understanding narrative structure helps me design better user experiences. Production workflow expertise is why I'm good at automation. And honestly, being self-taught in engineering while having a humanities background gives me a unique perspective — I think about the human side of technology, not just the code. My 48 Upwork projects and everything I've built since speak to my technical skills."</div>
+</div>
+
+<div class="card" data-tags="resume open source github mcp claude brain shield">
+<div class="card-title">5 Published MCP Servers</div>
+<span class="tag tag-tech">open source</span>
+<div class="q">Q: Tell me about your open source work</div>
+<div class="a">"I've published 5 MCP servers on GitHub, all with test suites: claude-brain (persistent memory for Claude AI — 4 tools, 28 tests), mcp-shield (security scanning — 20 rules, 26 tests), orchard-hig (Apple HIG compliance — 22 rules, 52 tests), orchard-sign (code signing diagnostics — 22 patterns, 44 tests), and lo-eyes (visual frontend inspection — 4 tools). These aren't toy projects — they solve real problems developers face when building with AI. I built them to give back to the community."</div>
+<div class="proof">Show: github.com/sophiacave, test suites, download counts</div>
+</div>
+
+<div class="card" data-tags="resume rag system production open source project">
+<div class="card-title">Production RAG System (Open Source Project)</div>
+<span class="tag tag-tech">project</span>
+<div class="q">Q: Can you explain the RAG system listed on your resume?</div>
+<div class="a">"This is the brain that powers everything. Python ingestion pipeline → Ollama embeddings → sqlite-vec vector store (2,824 vectors across 7 collections: episodes, brain entries, blog posts, facts, memory files, skills, sessions). Semantic search with hybrid keyword/vector matching. The system started on ChromaDB but I migrated it to sqlite-vec for zero-dependency operation — single SQLite file, no external services. It includes a knowledge graph with 1,065 edges that enables multi-hop reasoning. The REST API on port 8788 exposes search, ask, read, write, web search, and tool execution endpoints."</div>
+<div class="proof">Show: brain_api.py, brain_server.py, curl http://localhost:8788/stats</div>
+</div>
+
+</div>
+
+<script>
+function f(){
+    const q=document.getElementById('s').value.toLowerCase();
+    document.querySelectorAll('.card').forEach(c=>{
+        const text=(c.textContent+' '+(c.dataset.tags||'')).toLowerCase();
+        c.style.display=text.includes(q)?'':'none';
+    });
+}
+</script>
+</body>
+</html>

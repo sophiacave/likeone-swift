@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Like One AI Studio — Capabilities</title>
+<meta name="description" content="Sovereign AI infrastructure. 928 brain entries, 2866 semantic vectors, 1065 knowledge graph edges.">
+<style>
+:root {
+    --bg: #0d1117; --fg: #c9d1d9; --accent: #a855f7; --accent2: #7c3aed;
+    --card-bg: #161b22; --border: #30363d; --muted: #8b949e;
+    --green: #3fb950; --red: #f85149; --blue: #58a6ff;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; }
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+h1 { color: var(--accent); font-size: 1.8rem; margin-bottom: 8px; }
+h2 { color: var(--accent2); font-size: 1.3rem; margin: 20px 0 10px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+h3 { color: var(--blue); font-size: 1.1rem; margin: 12px 0 6px; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 16px 0; }
+.stat { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px; text-align: center; }
+.stat-value { font-size: 1.5rem; font-weight: bold; color: var(--accent); }
+.stat-label { font-size: 0.8rem; color: var(--muted); }
+.search-box { width: 100%; padding: 10px 14px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; color: var(--fg); font-size: 1rem; margin: 16px 0; outline: none; }
+.search-box:focus { border-color: var(--accent); }
+.entry { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin: 8px 0; }
+.entry-key { font-family: 'SF Mono', monospace; color: var(--green); font-weight: 600; font-size: 0.9rem; }
+.entry-desc { color: var(--fg); margin: 4px 0; }
+.entry-value { color: var(--muted); font-size: 0.85rem; white-space: pre-wrap; max-height: 200px; overflow-y: auto; }
+.entry-meta { font-size: 0.75rem; color: var(--muted); margin-top: 6px; }
+.category-nav { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+.category-tag { background: var(--accent2); color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; cursor: pointer; }
+.category-tag:hover { background: var(--accent); }
+.private-toggle { float: right; padding: 6px 12px; background: var(--red); color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.8rem; }
+.private-toggle.showing { background: var(--green); }
+.private { display: none; }
+.private.show { display: block; }
+.hidden { display: none; }
+nav { background: var(--card-bg); padding: 10px 20px; border-bottom: 1px solid var(--border); display: flex; gap: 16px; align-items: center; }
+nav a { color: var(--muted); font-size: 0.9rem; } nav a:hover { color: var(--accent); }
+.badge { background: var(--accent); color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; }
+
+.hero { text-align: center; padding: 40px 0 20px; }
+.hero h1 { font-size: 2.2rem; }
+.hero p { color: var(--muted); max-width: 600px; margin: 8px auto; }
+</style>
+</head>
+<body>
+<nav>
+    <a href="https://likeone.ai">likeone.ai</a>
+    <a href="index.html"><strong>Capabilities</strong></a>
+</nav>
+<div class="container">
+<div class="hero">
+    <h1>Like One AI Studio</h1>
+    <p>Sovereign AI infrastructure. 928 brain entries, 2866 semantic vectors, 1065 knowledge graph edges. Built by Sophia Cave.</p>
+</div>
+
+<div class="stats">
+    <div class="stat"><div class="stat-value">928</div><div class="stat-label">Brain Entries</div></div>
+    <div class="stat"><div class="stat-value">2866</div><div class="stat-label">Vectors (1024d)</div></div>
+    <div class="stat"><div class="stat-value">1065</div><div class="stat-label">Knowledge Graph</div></div>
+    <div class="stat"><div class="stat-value">23</div><div class="stat-label">Categories</div></div>
+</div>
+
+<input type="text" id="searchBox" class="search-box" placeholder="Search capabilities..." oninput="filterEntries()">
+
+<h2>What We Built (In Plain English)</h2>
+
+<div class="entry">
+    <div class="entry-key">The AI Brain</div>
+    <div class="entry-desc">Think of it like a second brain that remembers everything about our company — every project, every plan, every decision. It holds 928 pieces of knowledge and can find any of them in 20 milliseconds using meaning-based search (not just keyword matching). It also understands how ideas connect to each other through a map of 1065 relationships.</div>
+</div>
+
+<div class="entry">
+    <div class="entry-key">The AI Assistant (Telegram)</div>
+    <div class="entry-desc">We have an AI assistant that lives on Telegram — you text it like a friend and it can answer questions about our company, search the internet, check our revenue, look up grant opportunities, or just chat. It thinks with a 30-billion-parameter brain running locally on our laptop. No cloud. No subscription. It remembers past conversations and gets smarter over time.</div>
+</div>
+
+<div class="entry">
+    <div class="entry-key">The Website</div>
+    <div class="entry-desc">likeone.ai runs on a server we built in Swift (Apple's programming language). It hosts 52 free AI courses with 570+ lessons, 30 in-depth blog posts, and a paid Pro tier ($19/month). Google shows our content to about 772 people per week, and that number is growing 10% every week. The whole thing costs $0/month to host thanks to Cloudflare.</div>
+</div>
+
+<div class="entry">
+    <div class="entry-key">The Open Source Tools</div>
+    <div class="entry-desc">We published 5 free tools that other developers can use: a persistent memory system for Claude AI, a security scanner for AI integrations, two Apple design compliance checkers, and a visual frontend inspector. All free, all on GitHub.</div>
+</div>
+
+<div class="entry">
+    <div class="entry-key">The Nonprofit</div>
+    <div class="entry-desc">Like One Foundation is a registered 501(c)(3) tax-exempt nonprofit. Our mission: make AI accessible to disabled and marginalized communities. We've submitted 9 grant applications totaling millions in potential funding, including a $200K application to Amazon Web Services. We donate monthly to UCSF's HIV cure research.</div>
+</div>
+
+<div class="entry">
+    <div class="entry-key">The iOS App</div>
+    <div class="entry-desc">Like One Academy is on Apple's TestFlight — a native iPhone app that gives you access to all 52 courses. Built in Swift, signed with Apple certificates, currently awaiting App Store review.</div>
+</div>
+
+<div class="entry">
+    <div class="entry-key">How It All Connects</div>
+    <div class="entry-desc">Every system shares the same brain. The Telegram bot reads the same knowledge as the website. The blog posts feed into the SEO engine. Revenue from subscribers funds the nonprofit. Grant writing is informed by the brain's data. The AI assistant helps manage all of it. One person built this entire ecosystem in 8 weeks.</div>
+</div>
+
+<h2>Technical Details</h2>
+
+<div class="entry">
+    <div class="entry-key">Sovereign Brain</div>
+    <div class="entry-desc"><strong>What it is:</strong> A SQLite database with vector search (sqlite-vec v0.1.9). 2866 embeddings at 1024 dimensions using mxbai-embed-large. Knowledge graph with 1065 edges. REST API on port 8788.<br><strong>In plain terms:</strong> The AI can understand what you mean, not just what you typed. Ask "how's the money" and it knows you mean revenue.</div>
+</div>
+<div class="entry">
+    <div class="entry-key">Local AI Models</div>
+    <div class="entry-desc"><strong>What it is:</strong> Ollama running qwen3:30b (30B params, default), deepseek-r1:32b (reasoning), qwen3:14b (fast), mxbai-embed-large (embeddings). All local on M3 Max 64GB.<br><strong>In plain terms:</strong> Three AI brains of different sizes. The medium one handles most conversations in 9 seconds. The big one does deep thinking in 30 seconds. Nothing leaves our laptop.</div>
+</div>
+<div class="entry">
+    <div class="entry-key">Production Server</div>
+    <div class="entry-desc"><strong>What it is:</strong> Swift Vapor 4 + Leaf templates + HTMX + Fluent ORM. Cloudflare Tunnel ($0/month). 180 blog post vectors, sitemap with 617 URLs.<br><strong>In plain terms:</strong> The website runs on our laptop and Cloudflare makes it available to the world for free. No AWS bills. No server farms.</div>
+</div>
+<div class="entry">
+    <div class="entry-key">AI Agent System</div>
+    <div class="entry-desc"><strong>What it is:</strong> Claude Code with 22 MCP tools. Divine Sprint Protocol (6-phase design sprint). Three-machine fleet (M3 Forge + M4 Mirror + GCP Watcher).<br><strong>In plain terms:</strong> The AI follows a structured process for every task: understand the problem, define success, sketch 3 approaches, decide, build, verify. Like a whole engineering team in software.</div>
+</div>
+<div class="entry">
+    <div class="entry-key">Telegram Gateway</div>
+    <div class="entry-desc"><strong>What it is:</strong> python-telegram-bot v22.7. Three-layer tool detection (LLM function calling + keyword + auto-web). Agentic RAG. Anti-hallucination. Self-model memory. Chat continuity.<br><strong>In plain terms:</strong> Text the bot anything. It figures out what you need, searches the right place (brain, web, or tools), checks the facts, and responds honestly. If it doesn't know, it says so.</div>
+</div>
+<div class="entry">
+    <div class="entry-key">SEO + Content</div>
+    <div class="entry-desc"><strong>What it is:</strong> 772 impressions/week (+10% WoW). 30 posts at 2000+ words with 10 FAQs each (300 total). FAQPage + Article + Course JSON-LD schema. OG images. Internal cross-linking.<br><strong>In plain terms:</strong> Google is showing our content to more people every week. Each blog post is deeply researched, has structured data that helps Google understand it, and links to related content so readers stay on the site.</div>
+</div>
+<div class="entry">
+    <div class="entry-key">Revenue</div>
+    <div class="entry-desc"><strong>What it is:</strong> Stripe ($17.95 MRR, 4 subscribers). Pro tiers: $19/mo + $149/yr. Webhook pipeline. Customer portal.<br><strong>In plain terms:</strong> Real paying customers. Not a lot yet, but the infrastructure is production-grade — subscriptions, billing portal, automatic webhooks. Ready to scale.</div>
+</div>
+<div class="entry">
+    <div class="entry-key">Open Source</div>
+    <div class="entry-desc"><strong>What it is:</strong> 5 published MCP servers on GitHub: claude-brain, mcp-shield, orchard-hig, orchard-sign, lo-eyes.<br><strong>In plain terms:</strong> Free tools we gave to the developer community. They help other people build with Claude AI, check security, follow Apple's design guidelines, and inspect their websites.</div>
+</div>
+
+<h2>Nonprofit</h2>
+<div class="entry">
+    <div class="entry-key">Like One Foundation</div>
+    <div class="entry-desc"><strong>Status:</strong> 501(c)(3) tax-exempt. EIN 41-5319318. Granted April 28, 2026.<br><strong>Mission:</strong> AI accessibility for disabled and marginalized communities. One disabled trans woman proving the system wrong.</div>
+</div>
+<div class="entry">
+    <div class="entry-key">Grants Pipeline</div>
+    <div class="entry-desc"><strong>Submitted:</strong> 9 applications including AWS Imagine Pathfinder ($200K + $100K credits).<br><strong>Tracked:</strong> 200+ opportunities, $11.5M total pipeline value. Brain-powered grant discovery and tracking.</div>
+</div>
+<div class="entry">
+    <div class="entry-key">HIV Cure Advocacy</div>
+    <div class="entry-desc"><strong>Active:</strong> $10/month recurring donation to UCSF HIV Cure Research Fund. Revenue-linked — as the company grows, giving grows.</div>
+</div>
+
+</div>
+<script>
+function filterEntries() {
+    const q = document.getElementById('searchBox').value.toLowerCase();
+    document.querySelectorAll('.entry').forEach(el => {
+        const text = el.textContent.toLowerCase();
+        el.style.display = text.includes(q) ? '' : 'none';
+    });
+}
+function togglePrivate() {
+    const btn = document.getElementById('privToggle');
+    const showing = btn.classList.toggle('showing');
+    btn.textContent = showing ? 'Hide Private' : 'Show Private';
+    document.querySelectorAll('.private').forEach(el => {
+        el.classList.toggle('show', showing);
+    });
+}
+function filterCategory(cat) {
+    document.querySelectorAll('.entry').forEach(el => {
+        if (cat === 'all') { el.style.display = ''; return; }
+        el.style.display = el.dataset.category === cat ? '' : 'none';
+    });
+    document.getElementById('searchBox').value = '';
+}
+</script>
+</body>
+</html>
