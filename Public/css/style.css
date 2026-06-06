@@ -1312,7 +1312,9 @@ a:focus-visible, button:focus-visible {
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: var(--radius);
     padding: 16px;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 .lesson-visual svg {
     width: 100%;
