@@ -1329,52 +1329,52 @@ a:focus-visible, button:focus-visible {
    Gestalt: proximity, alignment, common region
    ═══════════════════════════════════════════ */
 
-/* Container — common region groups table as one unit */
+/* Container — common region, generous breathing room */
 .lo-table-wrap {
     background: rgba(10, 10, 15, 0.8);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 14px;
-    padding: 6px;
-    margin: 20px 0;
+    padding: 4px 4px;
+    margin: 24px 0;
     overflow: hidden;
 }
 
-/* Table base — system font for readability */
+/* Table base */
 .lo-table {
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
-    font-size: 0.82rem;
-    line-height: 1.65;
+    font-size: 0.875rem;
+    line-height: 1.7;
 }
 
-/* Caption — small label above the table */
+/* Caption — contextual label */
 .lo-table caption {
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.08em;
     color: #52525b;
     text-transform: uppercase;
     text-align: left;
-    padding: 10px 14px 6px;
+    padding: 14px 20px 8px;
 }
 
-/* Header — clear visual hierarchy via weight + separator */
+/* Header — clear hierarchy, ample spacing */
 .lo-table thead th {
     font-weight: 600;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     letter-spacing: 0.02em;
     color: #a1a1aa;
     text-align: left;
-    padding: 8px 14px 10px;
+    padding: 10px 20px 12px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Data cells — generous touch targets, readable spacing */
+/* Data cells — spacious, readable */
 .lo-table tbody td {
-    padding: 9px 14px;
+    padding: 11px 20px;
     color: #d4d4dc;
-    font-size: 0.82rem;
+    font-size: 0.875rem;
 }
 
 /* Row separators — ultra-subtle for proximity grouping */
@@ -1401,13 +1401,13 @@ a:focus-visible, button:focus-visible {
 .lo-table .col-orange { color: #fb923c; }
 .lo-table .col-dim { color: #52525b; }
 
-/* Mobile — tighter but still readable */
+/* Mobile — proportional scaling */
 @media (max-width: 640px) {
-    .lo-table-wrap { padding: 4px; margin: 14px 0; border-radius: 12px; }
-    .lo-table { font-size: 0.78rem; }
-    .lo-table caption { padding: 8px 10px 4px; }
-    .lo-table thead th { padding: 6px 10px 8px; font-size: 0.72rem; }
-    .lo-table tbody td { padding: 7px 10px; }
+    .lo-table-wrap { margin: 16px 0; border-radius: 12px; }
+    .lo-table { font-size: 0.8rem; }
+    .lo-table caption { padding: 10px 14px 6px; font-size: 0.68rem; }
+    .lo-table thead th { padding: 8px 14px 10px; font-size: 0.74rem; }
+    .lo-table tbody td { padding: 9px 14px; font-size: 0.8rem; }
 }
 
 /* Responsive flow diagrams — horizontal on desktop, vertical on mobile */
