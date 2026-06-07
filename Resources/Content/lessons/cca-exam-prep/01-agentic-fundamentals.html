@@ -1,0 +1,199 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>What "agentic" means in the context of the CCA exam</li>
+    <li>The three levels of AI autonomy (assistive → agentic → autonomous)</li>
+    <li>Core components of an agentic system (perception, planning, action, memory)</li>
+    <li>How the CCA exam tests agentic architecture decisions</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>Domain 1: Agentic Architecture (27% of Exam)</h2>
+
+<p>This is the largest domain on the CCA exam. Nearly one-third of all questions test your ability to design, debug, and reason about agentic systems. If you master this domain, you've secured your foundation for passing.</p>
+
+<p>The exam doesn't test trivia. It tests <strong>architectural judgment</strong>. You'll be dropped into production scenarios and asked: "What's the right design decision here?"</p>
+
+<div class="tip-box">
+<strong>Exam weight:</strong> 27% = ~16 questions out of 60. You need strong performance here to pass (720/1000).
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>What "Agentic" Means (Precisely)</h2>
+
+<p>An <strong>agentic system</strong> is an AI system that can:</p>
+<ol>
+<li><strong>Perceive</strong> its environment (read files, query APIs, observe state)</li>
+<li><strong>Plan</strong> a sequence of actions toward a goal</li>
+<li><strong>Act</strong> on the environment (write files, call tools, send messages)</li>
+<li><strong>Reflect</strong> on the results and adjust</li>
+</ol>
+
+<p>This is different from a chatbot (responds to prompts) or an assistant (follows single instructions). An agent operates in a <strong>loop</strong> — perceive, plan, act, reflect — until the goal is achieved or a stopping condition is met.</p>
+
+<h3>The Three Levels of AI Autonomy</h3>
+
+<pre><code>Level 1: ASSISTIVE
+  Human provides instruction → AI responds → Human reviews
+  Example: "Summarize this document" → summary → done
+  Control: Human in the loop at every step
+
+Level 2: AGENTIC
+  Human provides goal → AI plans + executes multi-step → Human reviews result
+  Example: "Fix this bug" → AI reads code, identifies issue, writes fix, runs tests → done
+  Control: Human reviews at boundaries (start + end)
+
+Level 3: AUTONOMOUS
+  Human provides objective → AI operates indefinitely toward objective
+  Example: "Keep the system healthy" → AI monitors, patches, deploys, alerts
+  Control: Human sets guardrails, AI operates within them
+
+CCA exam focus: Level 2 (Agentic) — multi-step execution with tool use.</code></pre>
+
+<div class="callout">
+<strong>Exam tip:</strong> The CCA exam focuses on Level 2 systems. Questions test whether you can design appropriate guardrails, tool schemas, and stopping conditions for multi-step agents.
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>Core Components of Agentic Architecture</h2>
+
+<p>Every agentic system has four components. The exam tests your ability to design each one correctly.</p>
+
+<h3>1. Perception Layer</h3>
+<p>How the agent observes its environment:</p>
+<ul>
+<li><strong>Tool results</strong> — API responses, file contents, database queries</li>
+<li><strong>Context</strong> — conversation history, system state, user preferences</li>
+<li><strong>Feedback</strong> — error messages, test results, validation output</li>
+</ul>
+
+<pre><code># Perception in Claude: tool results inform the next action
+tools = [
+    {"name": "read_file", "description": "Read a file from the filesystem"},
+    {"name": "run_tests", "description": "Execute test suite and return results"},
+    {"name": "search_code", "description": "Search codebase for patterns"},
+]
+# Agent perceives via tool results → plans next action</code></pre>
+
+<h3>2. Planning Layer</h3>
+<p>How the agent decides what to do:</p>
+<ul>
+<li><strong>Goal decomposition</strong> — breaking complex objectives into steps</li>
+<li><strong>Tool selection</strong> — choosing the right tool for each step</li>
+<li><strong>Dependency ordering</strong> — parallel vs sequential execution</li>
+</ul>
+
+<pre><code># Planning in Claude: the model reasons about next steps
+system_prompt = """
+You are a code review agent. When given a PR:
+1. Read the changed files (use read_file)
+2. Check for security issues (use search_code for patterns)
+3. Run the test suite (use run_tests)
+4. Summarize findings
+
+Execute steps in order. If tests fail, investigate before summarizing.
+"""</code></pre>
+
+<h3>3. Action Layer</h3>
+<p>How the agent changes its environment:</p>
+<ul>
+<li><strong>Tool use</strong> — calling MCP tools, APIs, file operations</li>
+<li><strong>Output generation</strong> — writing code, creating documents, sending messages</li>
+<li><strong>Side effects</strong> — database writes, deployments, notifications</li>
+</ul>
+
+<h3>4. Memory Layer</h3>
+<p>How the agent maintains state across interactions:</p>
+<ul>
+<li><strong>Working memory</strong> — current conversation context window</li>
+<li><strong>Episodic memory</strong> — records of past actions and outcomes</li>
+<li><strong>Semantic memory</strong> — knowledge base (vector search, brain entries)</li>
+<li><strong>Procedural memory</strong> — learned skills and patterns</li>
+</ul>
+
+<div class="tip-box">
+<strong>Key insight:</strong> Claude's context window IS working memory. Everything else (episodic, semantic, procedural) must be built with external systems — CLAUDE.md, MCP tools, vector databases.
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>Exam Scenario Pattern</h2>
+
+<p>Here's how the CCA exam tests this domain:</p>
+
+<div class="demo-container">
+<h4>Sample Scenario</h4>
+<p><em>You're building a customer support agent that handles refund requests. The agent needs to:</em></p>
+<ol>
+<li>Verify the customer's order exists</li>
+<li>Check if the order is within the refund window</li>
+<li>Process the refund via Stripe</li>
+<li>Send a confirmation email</li>
+</ol>
+<p><em>Which architecture pattern is most appropriate?</em></p>
+
+<p><strong>A)</strong> Single prompt with all logic in the system message<br>
+<strong>B)</strong> Sequential tool chain with explicit error handling at each step<br>
+<strong>C)</strong> Multi-agent system with separate agents for verification and processing<br>
+<strong>D)</strong> Autonomous loop that retries until successful</p>
+
+<p><strong>Answer: B.</strong> This is a simple sequential workflow with clear steps. Multi-agent (C) is over-engineering. Single prompt (A) has no tool use. Autonomous loop (D) has no stopping condition for failures. Sequential tool chain with error handling is the right level of complexity.</p>
+</div>
+
+<p>The exam rewards <strong>appropriate complexity</strong>. Don't over-engineer. Don't under-engineer. Match the architecture to the problem.</p>
+</div>
+
+<div class="lesson-section">
+<h2>What You'll Build in This Module</h2>
+
+<p>Over the next 4 lessons in this module, you'll learn:</p>
+<ul>
+<li><strong>Lesson 2:</strong> How to design agentic loops that don't break (stopping conditions, error recovery, infinite loop prevention)</li>
+<li><strong>Lesson 3:</strong> Multi-agent topologies (when to use parallel agents, supervisor patterns, and message passing)</li>
+<li><strong>Lesson 4:</strong> Session management and state persistence (how to maintain context across tool calls)</li>
+<li><strong>Lesson 5:</strong> Practice scenarios for Domain 1 (exam-style questions with explanations)</li>
+</ul>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+<li><strong>Agentic ≠ autonomous.</strong> The exam tests Level 2 (goal + multi-step), not Level 3 (indefinite operation).</li>
+<li><strong>Four components:</strong> Perceive, plan, act, reflect. Know which layer each architectural decision affects.</li>
+<li><strong>Match complexity to problem.</strong> Simple problems get simple architectures. Only use multi-agent when single-agent isn't sufficient.</li>
+<li><strong>Memory is external.</strong> Claude's context window is working memory. Everything else requires tools (CLAUDE.md, MCP, vector DB).</li>
+<li><strong>Guardrails matter.</strong> Every agentic system needs explicit stopping conditions, error handling, and safety boundaries.</li>
+</ol>
+</div>
+
+<div class="quiz-block">
+<h3 class="quiz-title">Quick Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>What percentage of the CCA exam covers Agentic Architecture?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>15%</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>20%</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>27%</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>35%</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>27%</strong> — the largest domain. About 16 of 60 questions.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>A refund processing agent fails at step 3 (Stripe API error). What should it do?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Retry indefinitely until it works</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Return an error to the user with context about what failed</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Skip step 3 and continue to step 4</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Start over from step 1</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>B.</strong> Appropriate error handling: stop, report what failed, give context. Don't retry indefinitely (no guardrail), don't skip critical steps, don't restart without reason.</div>
+</div>
+</div>
+
+</div>
