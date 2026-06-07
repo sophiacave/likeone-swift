@@ -66,6 +66,9 @@
                         </a>
                     #endif
                 </nav>
+
+                <!-- Brain-powered recommendations (Phase 4) -->
+                <div hx-get="/api/v1/recommend?topic=#(courseTitle) #(lessonTitle)&limit=3&exclude=#(courseSlug)" hx-trigger="load" hx-swap="innerHTML"></div>
             </div>
         </article>
     #endexport

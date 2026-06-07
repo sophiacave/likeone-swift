@@ -103,6 +103,9 @@
                 </div>
                 #endif
 
+                <!-- Brain-powered recommendations (Phase 4) -->
+                <div hx-get="/api/v1/recommend?topic=#(title)&limit=3&exclude=#(slug)" hx-trigger="load" hx-swap="innerHTML"></div>
+
                 <div class="blog-article-footer">
                     <a href="/blog" class="site-btn-secondary">All Articles</a>
                 </div>
