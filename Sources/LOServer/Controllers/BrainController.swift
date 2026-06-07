@@ -6,11 +6,15 @@ struct BrainController: RouteCollection {
     let brain: LocalBrainClient
 
     func boot(routes: RoutesBuilder) throws {
-        let api = routes.grouped("api", "v1", "brain")
-        api.get("status", use: status)
-        api.get("boot", use: bootBrain)
-        api.get("search", use: search)
-        api.get(":key", use: readKey)
+        // Status is safe to expose publicly (no private data)
+        let publicAPI = routes.grouped("api", "v1", "brain")
+        publicAPI.get("status", use: status)
+
+        // All other brain endpoints require authentication (private data)
+        let protectedAPI = routes.grouped("api", "v1", "brain").grouped(AuthMiddleware())
+        protectedAPI.get("boot", use: bootBrain)
+        protectedAPI.get("search", use: search)
+        protectedAPI.get(":key", use: readKey)
     }
 
     @Sendable
