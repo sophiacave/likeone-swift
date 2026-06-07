@@ -1,0 +1,65 @@
+#extend("layout"):
+    #export("content"):
+        <section class="site-section">
+            <div class="site-container" style="max-width: 800px;">
+                <h1 class="site-section-title">Dashboard</h1>
+
+                <!-- Stats Grid -->
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:2rem;">
+                    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.8rem;font-weight:700;color:var(--purple-400);">#(viewsToday)</div>
+                        <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px;">Views Today</div>
+                    </div>
+                    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.8rem;font-weight:700;color:var(--purple-400);">#(views7d)</div>
+                        <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px;">Views 7d</div>
+                    </div>
+                    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.8rem;font-weight:700;color:var(--purple-400);">#(views30d)</div>
+                        <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px;">Views 30d</div>
+                    </div>
+                    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.8rem;font-weight:700;color:var(--green,#34d399);">#(totalUsers)</div>
+                        <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px;">Users</div>
+                    </div>
+                    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.8rem;font-weight:700;color:var(--green,#34d399);">#(activeUsers7d)</div>
+                        <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px;">Active 7d</div>
+                    </div>
+                    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.8rem;font-weight:700;color:gold;">#(totalSubscribers)</div>
+                        <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px;">Subscribers</div>
+                    </div>
+                    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.8rem;font-weight:700;color:var(--text-primary);">#(lessonsCompleted)</div>
+                        <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px;">Lessons Done</div>
+                    </div>
+                    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.8rem;font-weight:700;color:var(--text-primary);">#(certificates)</div>
+                        <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px;">Certificates</div>
+                    </div>
+                </div>
+
+                <!-- Top Pages -->
+                #if(count(topPages) > 0):
+                <div style="margin-top:2.5rem;">
+                    <h2 class="account-section-title">Top Pages (7 days)</h2>
+                    <div style="margin-top:12px;">
+                    #for(page in topPages):
+                        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:.85rem;">
+                            <span style="color:var(--text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:70%;">#(page.path)</span>
+                            <span style="color:var(--purple-400);font-weight:600;">#(page.views)</span>
+                        </div>
+                    #endfor
+                    </div>
+                </div>
+                #endif
+
+                <!-- Brain -->
+                <div style="margin-top:2.5rem;padding:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;">
+                    <div style="font-size:.85rem;color:var(--text-muted);">Brain: #(brainVectors) content vectors indexed</div>
+                </div>
+            </div>
+        </section>
+    #endexport
+#endextend

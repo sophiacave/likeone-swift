@@ -21,6 +21,7 @@ func configure(_ app: Application) async throws {
     app.migrations.add(CreateSubscribers())
     app.migrations.add(AddUserMemoryFields())
     app.migrations.add(AddSubscriberPreferences())
+    app.migrations.add(CreatePageViews())
     try await app.autoMigrate()
 
     // Leaf templates
@@ -34,6 +35,9 @@ func configure(_ app: Application) async throws {
 
     // Serve static files from Public/
     app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
+
+    // Page view tracking (privacy-first, local only — Phase 6)
+    app.middleware.use(TrackingMiddleware())
 
     // Custom error pages (404, 500)
     app.middleware.use(CustomErrorMiddleware())
