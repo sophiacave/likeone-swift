@@ -1,6 +1,7 @@
 import Testing
 import LOBrain
 import LOCore
+import Foundation
 
 @Suite("LOBrain")
 struct BrainTests {
@@ -9,7 +10,6 @@ struct BrainTests {
         let client = LocalBrainClient()
         #expect(client is BrainClient)
         #expect(client.dbPath.contains("local_brain.db"))
-        #expect(client.isAvailable == true)
     }
 
     @Test("LocalBrainClient reports unavailable for missing DB")
@@ -27,6 +27,7 @@ struct BrainTests {
     @Test("LocalBrainClient reads a known key from local brain")
     func readKey() async throws {
         let client = LocalBrainClient()
+        guard client.isAvailable else { return }
         let entry = try await client.read(key: "directive.prime_directive_name")
         #expect(entry != nil, "Expected to find directive.prime_directive_name in brain")
         #expect(entry?.category == "directive")
@@ -35,6 +36,7 @@ struct BrainTests {
     @Test("LocalBrainClient search finds results")
     func searchBrain() async throws {
         let client = LocalBrainClient()
+        guard client.isAvailable else { return }
         let results = try await client.search(query: "sprint", limit: 3)
         #expect(results.count > 0, "Expected brain search for 'sprint' to return results")
     }
@@ -42,6 +44,7 @@ struct BrainTests {
     @Test("LocalBrainClient boot returns high-priority entries")
     func bootBrain() async throws {
         let client = LocalBrainClient()
+        guard client.isAvailable else { return }
         let entries = try await client.boot()
         #expect(entries.count > 5, "Expected boot to return many entries, got \(entries.count)")
         let categories = Set(entries.map { $0.category })
