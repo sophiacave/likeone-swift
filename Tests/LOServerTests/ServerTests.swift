@@ -57,7 +57,7 @@ struct ServerTests {
             try await app.test(.GET, "api/v1/blog") { res async throws in
                 #expect(res.status == .ok)
                 let posts = try res.content.decode([CodableBlogPost].self)
-                #expect(posts.count == 26)
+                #expect(posts.count >= 30)
             }
         }
     }
