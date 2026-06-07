@@ -33,13 +33,15 @@ struct SearchController: RouteCollection {
 
         var results: [SearchResult] = []
 
-        // Brain-powered HYBRID search (FTS5 keyword + sqlite-vec semantic, RRF fused)
-        // Phase 1: Living AI App megaplan — site instantly feels intelligent.
+        // Brain-powered search (FTS5 BM25 ranking across 4,061 public content vectors)
         if brain.isAvailable {
-            let brainResults = (try? await brain.hybridContentSearch(query: query, limit: 15)) ?? []
+            let brainResults = try await brain.contentSearch(query: query, limit: 20)
+            var seenURLs: Set<String> = []
             for r in brainResults {
-                let result = mapBrainResult(r)
-                if let result { results.append(result) }
+                if let result = mapBrainResult(r), !seenURLs.contains(result.url) {
+                    seenURLs.insert(result.url)
+                    results.append(result)
+                }
             }
         }
 
@@ -67,31 +69,44 @@ struct SearchController: RouteCollection {
         return try await req.view.render("partials/search-results", context)
     }
 
+    /// Clean raw brain snippet — strip "path (chunk N): " prefixes and titles
+    private func cleanSnippet(_ raw: String) -> String {
+        var text = raw
+        // Strip "course/lesson (chunk N): " prefix
+        if let colonRange = text.range(of: "): ") {
+            text = String(text[colonRange.upperBound...])
+        } else if let colonRange = text.range(of: ": ", range: text.startIndex..<text.index(text.startIndex, offsetBy: min(150, text.count))) {
+            // Strip "Title: " prefix from blog content (only if within first 150 chars)
+            let prefix = text[..<colonRange.lowerBound]
+            if prefix.count > 20 { // likely a title, strip it
+                text = String(text[colonRange.upperBound...])
+            }
+        }
+        return String(text.prefix(140)).trimmingCharacters(in: .whitespaces)
+    }
+
     /// Map brain content search result to display-friendly SearchResult
     private func mapBrainResult(_ r: ContentSearchResult) -> SearchResult? {
         let docID = r.docID
         switch r.collection {
         case "blog_content":
-            // Format: blog_{slug}_{chunk} — slug uses hyphens
             var slug = String(docID.dropFirst(5))
             if let i = slug.lastIndex(of: "_"), let _ = Int(slug[slug.index(after: i)...]) {
                 slug = String(slug[..<i])
             }
             if let post = blog.allPosts().first(where: { $0.slug == slug }) {
-                return SearchResult(type: "blog", title: post.title, description: String(r.snippet.prefix(120)),
+                return SearchResult(type: "blog", title: post.title, description: cleanSnippet(r.snippet),
                                    url: "/blog/\(post.slug)/", emoji: "\u{1F4DD}", meta: "Blog Post")
             }
             return nil
         case "blog_posts":
-            // Format: blog_{underscored_title} — fuzzy match against posts
             let norm = docID.dropFirst(5).lowercased()
             if let post = blog.allPosts().first(where: { norm.contains($0.slug.replacingOccurrences(of: "-", with: "_")) }) {
-                return SearchResult(type: "blog", title: post.title, description: String(r.snippet.prefix(120)),
+                return SearchResult(type: "blog", title: post.title, description: post.description,
                                    url: "/blog/\(post.slug)/", emoji: "\u{1F4DD}", meta: "Blog Post")
             }
             return nil
         case "lessons":
-            // Format: lesson_{course}_{lesson}_{chunk}
             let body = String(docID.dropFirst(7))
             for course in courses.allCourses() {
                 let prefix = course.slug + "_"
@@ -100,26 +115,32 @@ struct SearchController: RouteCollection {
                 if let i = lessonPart.lastIndex(of: "_"), let _ = Int(lessonPart[lessonPart.index(after: i)...]) {
                     lessonPart = String(lessonPart[..<i])
                 }
-                let title = lessons.lessons(forCourse: course.slug)
-                    .first(where: { $0.slug == lessonPart })?.title ?? String(r.snippet.prefix(60))
-                return SearchResult(type: "lesson", title: title, description: course.title,
+                let lesson = lessons.lessons(forCourse: course.slug).first(where: { $0.slug == lessonPart })
+                let title = lesson?.title ?? lessonPart.replacingOccurrences(of: "-", with: " ").capitalized
+                return SearchResult(type: "lesson", title: title, description: cleanSnippet(r.snippet),
                                    url: "/academy/\(course.slug)/\(lessonPart)/", emoji: course.emoji,
                                    meta: "Lesson \u{00B7} \(course.title)")
             }
             return nil
         case "faqs":
-            // Format: faq_{blog-slug}_{number}
             var slug = String(docID.dropFirst(4))
             if let i = slug.lastIndex(of: "_"), let _ = Int(slug[slug.index(after: i)...]) {
                 slug = String(slug[..<i])
             }
+            // Extract the Q from "Q: ... A: ..."
+            let faqText = r.snippet
+            let displayText: String
+            if faqText.hasPrefix("Q: ") {
+                displayText = String(faqText.prefix(140))
+            } else {
+                displayText = cleanSnippet(faqText)
+            }
             if let post = blog.allPosts().first(where: { $0.slug == slug }) {
-                return SearchResult(type: "faq", title: String(r.snippet.prefix(120)), description: post.title,
-                                   url: "/blog/\(post.slug)/", emoji: "\u{2753}", meta: "FAQ")
+                return SearchResult(type: "faq", title: displayText, description: "",
+                                   url: "/blog/\(post.slug)/", emoji: "\u{2753}", meta: "FAQ \u{00B7} \(post.title)")
             }
             return nil
         case "academy":
-            // Format: course_{slug}
             let slug = String(docID.dropFirst(7))
             if let course = courses.allCourses().first(where: { $0.slug == slug }) {
                 return SearchResult(type: "course", title: course.title, description: course.description,
