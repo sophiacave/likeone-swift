@@ -1,0 +1,192 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>When to use multi-agent vs single-agent (the decision framework)</li>
+    <li>Four multi-agent topologies (supervisor, pipeline, debate, swarm)</li>
+    <li>Inter-agent communication patterns</li>
+    <li>How the CCA exam evaluates multi-agent design decisions</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>When to Use Multiple Agents</h2>
+
+<p>The exam's most common trap: candidates choose multi-agent when single-agent is sufficient. Multi-agent adds complexity. You need to justify that complexity.</p>
+
+<h3>Decision Framework</h3>
+<pre><code>USE SINGLE AGENT when:
+  ✓ Task is sequential (step 1 → step 2 → step 3)
+  ✓ One domain of expertise needed
+  ✓ Shared context is critical (all steps need same information)
+  ✓ Simple error recovery (retry the failed step)
+
+USE MULTI-AGENT when:
+  ✓ Tasks are parallelizable (independent work items)
+  ✓ Different domains of expertise needed (legal + technical + creative)
+  ✓ Adversarial review required (one agent checks another's work)
+  ✓ Scale demands it (100 items to process simultaneously)
+  ✓ Isolation required (one agent's failure shouldn't crash others)</code></pre>
+
+<div class="callout">
+<strong>Exam rule of thumb:</strong> If you can solve it with one agent and a good tool set, do that. Multi-agent is for when single-agent genuinely can't handle the workload, expertise breadth, or safety requirements.
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>Four Multi-Agent Topologies</h2>
+
+<h3>1. Supervisor Pattern</h3>
+<pre><code>         ┌──────────┐
+         │SUPERVISOR│ ← orchestrates, delegates, reviews
+         └────┬─────┘
+        ┌─────┼─────┐
+        ▼     ▼     ▼
+    ┌──────┐┌──────┐┌──────┐
+    │Worker││Worker││Worker│ ← specialized agents
+    │  A   ││  B   ││  C   │
+    └──────┘└──────┘└──────┘
+
+USE WHEN: Clear hierarchy. Workers have different specializations.
+          Supervisor maintains global context and quality.
+
+EXAM EXAMPLE: Code review system
+  - Supervisor: assigns files to reviewers, aggregates feedback
+  - Worker A: security review
+  - Worker B: performance review
+  - Worker C: style/consistency review</code></pre>
+
+<h3>2. Pipeline Pattern</h3>
+<pre><code>┌──────┐    ┌──────┐    ┌──────┐    ┌──────┐
+│Agent │───▶│Agent │───▶│Agent │───▶│Agent │
+│  1   │    │  2   │    │  3   │    │  4   │
+└──────┘    └──────┘    └──────┘    └──────┘
+Research → Draft → Review → Publish
+
+USE WHEN: Sequential processing where each stage transforms output.
+          Each agent adds value to the previous agent's output.
+
+EXAM EXAMPLE: Content pipeline
+  - Agent 1: Research topic (web search, data gathering)
+  - Agent 2: Write draft (content generation)
+  - Agent 3: Review and edit (quality check)
+  - Agent 4: Format and publish (deployment)</code></pre>
+
+<h3>3. Debate Pattern</h3>
+<pre><code>┌──────┐         ┌──────┐
+│Agent │◀───────▶│Agent │
+│  A   │ debate  │  B   │
+└──┬───┘         └──┬───┘
+   │                 │
+   └────────┬────────┘
+            ▼
+      ┌──────────┐
+      │  JUDGE   │ ← picks best argument
+      └──────────┘
+
+USE WHEN: High-stakes decisions where you want adversarial thinking.
+          Reduces bias by forcing opposing viewpoints.
+
+EXAM EXAMPLE: Investment analysis
+  - Agent A: argues FOR the investment (bull case)
+  - Agent B: argues AGAINST (bear case)
+  - Judge: weighs both arguments, makes decision</code></pre>
+
+<h3>4. Swarm Pattern</h3>
+<pre><code>┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐
+│Agent │ │Agent │ │Agent │ │Agent │
+│  1   │ │  2   │ │  3   │ │  N   │
+└──┬───┘ └──┬───┘ └──┬───┘ └──┬───┘
+   │        │        │        │
+   └────────┴────────┴────────┘
+                 │
+           ┌─────────┐
+           │ SHARED  │ ← shared state/message bus
+           │  STATE  │
+           └─────────┘
+
+USE WHEN: Many identical tasks, homogeneous agents, scale-out.
+          Each agent works independently on its portion.
+
+EXAM EXAMPLE: Processing 1000 support tickets
+  - N identical agents each handle a subset
+  - Shared state tracks which tickets are claimed
+  - No coordination needed beyond "claim" mechanism</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Inter-Agent Communication</h2>
+
+<p>How agents talk to each other matters. The exam tests three communication patterns:</p>
+
+<h3>Direct Message Passing</h3>
+<pre><code># Agent A sends result directly to Agent B
+result_a = await agent_a.run(task)
+result_b = await agent_b.run(result_a.output)  # pipeline</code></pre>
+<p><strong>Pros:</strong> Simple, clear data flow. <strong>Cons:</strong> Tight coupling.</p>
+
+<h3>Shared Memory (Blackboard)</h3>
+<pre><code># Agents read/write to shared state
+brain.write("research_findings", agent_research.output)
+# Later...
+findings = brain.read("research_findings")
+draft = await agent_writer.run(findings)</code></pre>
+<p><strong>Pros:</strong> Loose coupling, agents don't know about each other. <strong>Cons:</strong> Coordination complexity.</p>
+
+<h3>Event Bus</h3>
+<pre><code># Agents publish/subscribe to events
+@on_event("research_complete")
+async def handle_research(event):
+    await agent_writer.run(event.data)</code></pre>
+<p><strong>Pros:</strong> Fully decoupled, scalable. <strong>Cons:</strong> Harder to debug, eventual consistency.</p>
+
+<div class="tip-box">
+<strong>Our production choice:</strong> Shared memory via brain (SQLite). All agents read/write brain keys. Loose coupling. Any agent can pick up where another left off. This is the pattern the CCA exam favors for persistent multi-agent systems.
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>Exam Scenario Practice</h2>
+
+<div class="demo-container">
+<h4>Scenario</h4>
+<p><em>You're building a system to process incoming legal documents. The system must: (1) classify the document type, (2) extract key entities, (3) check for compliance issues, (4) generate a summary. Documents arrive at ~100/hour. Processing each takes 30 seconds. Which multi-agent topology is most appropriate?</em></p>
+
+<p><strong>A)</strong> Single agent processing sequentially<br>
+<strong>B)</strong> Supervisor with 4 specialized workers<br>
+<strong>C)</strong> Pipeline: classify → extract → compliance → summarize<br>
+<strong>D)</strong> Swarm of identical agents with shared queue</p>
+
+<p><strong>Answer: C (Pipeline).</strong></p>
+<p>Why: The steps are sequential (each depends on the previous), each step is a different specialization, and the throughput requirement (100/hr at 30s each = 1-2 concurrent needed) doesn't require massive parallelism. Pipeline gives clear data flow with stage-specific error handling.</p>
+<p>Why not D: Swarm is for identical parallel work. These steps are sequential and specialized. Why not B: Supervisor adds coordination overhead for what is fundamentally a pipeline. Why not A: At 100/hr, a single agent processing at 30s/doc is borderline — pipeline allows stage-level parallelism if needed.</p>
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways</h2>
+
+<ol>
+<li><strong>Don't over-architect.</strong> Single agent with tools beats multi-agent for most problems.</li>
+<li><strong>Match topology to problem.</strong> Supervisor for hierarchy, pipeline for stages, debate for decisions, swarm for scale.</li>
+<li><strong>Communication pattern matters.</strong> Shared memory (brain) for persistence. Direct passing for pipelines. Events for loose coupling.</li>
+<li><strong>The exam tests judgment.</strong> "Why this pattern?" is more important than "what does this pattern do?"</li>
+</ol>
+</div>
+
+<div class="quiz-block">
+<h3 class="quiz-title">Quick Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>A startup needs to process 10 customer emails per day. Each email needs: read → classify → respond. Which architecture?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Single agent with email tools (read, classify, send)</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Multi-agent supervisor with 3 specialized workers</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Swarm of email processing agents</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Debate pattern between classification agents</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>A.</strong> 10 emails/day is trivial volume. Single agent with tools is the right level of complexity. Multi-agent is over-engineering for this scale.</div>
+</div>
+</div>
+
+</div>
