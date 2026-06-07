@@ -4,11 +4,11 @@ import LOCore
 
 @Suite("LOContent")
 struct ContentTests {
-    @Test("CourseProvider loads 52 courses from embedded JSON")
+    @Test("CourseProvider loads 53 courses from embedded JSON")
     func courseCount() {
         let provider = CourseProvider()
         let courses = provider.allCourses()
-        #expect(courses.count == 52, "Expected 52 courses, got \(courses.count)")
+        #expect(courses.count == 53, "Expected 53 courses, got \(courses.count)")
     }
 
     @Test("First course is Claude for Beginners")
@@ -108,7 +108,7 @@ struct ContentTests {
 
     // MARK: - Lesson Provider
 
-    @Test("LessonProvider loads 518 lessons across 52 courses")
+    @Test("LessonProvider loads 542 lessons across 53 courses")
     func lessonCount() {
         let provider = LessonProvider()
         let courses = CourseProvider()
@@ -116,7 +116,7 @@ struct ContentTests {
         for course in courses.allCourses() {
             total += provider.lessonCount(forCourse: course.slug)
         }
-        #expect(total == 518, "Expected 518 lessons, got \(total)")
+        #expect(total == 542, "Expected 542 lessons, got \(total)")
     }
 
     @Test("AI Foundations has 9 lessons")

@@ -40,13 +40,13 @@ struct ServerTests {
         }
     }
 
-    @Test("API courses returns 52 courses")
+    @Test("API courses returns 53 courses")
     func apiCourses() async throws {
         try await withApp { app in
             try await app.test(.GET, "api/v1/courses") { res async throws in
                 #expect(res.status == .ok)
                 let courses = try res.content.decode([CodableCourse].self)
-                #expect(courses.count == 52)
+                #expect(courses.count == 53)
             }
         }
     }
