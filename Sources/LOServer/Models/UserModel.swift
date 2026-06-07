@@ -12,6 +12,8 @@ final class UserModel: Model, Content, @unchecked Sendable {
     @Field(key: "provider") var provider: String
     @OptionalField(key: "stripe_customer_id") var stripeCustomerID: String?
     @Field(key: "subscription") var subscription: String
+    @OptionalField(key: "last_active_at") var lastActiveAt: Date?
+    @OptionalField(key: "interests") var interests: String?
     @Timestamp(key: "created_at", on: .create) var createdAt: Date?
 
     init() {}

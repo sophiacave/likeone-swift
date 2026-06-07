@@ -14,7 +14,8 @@ struct AuthMiddleware: AsyncMiddleware {
     }
 }
 
-/// Optional auth — sets user if logged in, but doesn't redirect
+/// Optional auth — sets user if logged in, but doesn't redirect.
+/// Also updates lastActiveAt for brain memory (Phase 3).
 struct OptionalAuthMiddleware: AsyncMiddleware {
     func respond(to request: Request, chainingTo next: AsyncResponder) async throws -> Response {
         if let token = request.cookies["lo_session"]?.string,
@@ -22,6 +23,11 @@ struct OptionalAuthMiddleware: AsyncMiddleware {
            !session.isExpired,
            let user = try await UserModel.find(session.userID, on: request.db) {
             request.storage[AuthenticatedUserKey.self] = user
+            // Update last active (fire-and-forget, don't block response)
+            Task {
+                user.lastActiveAt = Date()
+                try? await user.update(on: request.db)
+            }
         }
         return try await next.respond(to: request)
     }

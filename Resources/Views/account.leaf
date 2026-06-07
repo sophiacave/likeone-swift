@@ -73,6 +73,23 @@
                     #endif
                 </div>
 
+                <!-- Brain Suggestions -->
+                #if(count(suggestions) > 0):
+                <div style="margin-top: 2.5rem;">
+                    <h2 class="account-section-title">Suggested for You</h2>
+                    <p style="font-size:.8rem;color:var(--text-muted);margin-bottom:12px;">Based on your learning path</p>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+                    #for(s in suggestions):
+                        <a href="/academy/#(s.slug)/" style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px;text-decoration:none;color:inherit;transition:border-color .3s;">
+                            <div style="font-size:1.5rem;margin-bottom:8px;">#(s.emoji)</div>
+                            <div style="font-size:.9rem;font-weight:600;color:var(--text-primary);margin-bottom:4px;">#(s.title)</div>
+                            <div style="font-size:.75rem;color:var(--text-muted);">#(s.reason)</div>
+                        </a>
+                    #endfor
+                    </div>
+                </div>
+                #endif
+
                 <!-- Certificates -->
                 <div style="margin-top: 2.5rem;">
                     <h2 class="account-section-title">Certificates</h2>

@@ -69,6 +69,23 @@ struct AccountController: RouteCollection {
         let totalLessonsCompleted = allProgress.count
         let totalCoursesCompleted = courseProgress.filter(\.isComplete).count
 
+        // Brain-powered suggestions: find related courses the user hasn't started
+        var suggestions: [AccountSuggestion] = []
+        if brain.isAvailable, let topCourse = courseProgress.first {
+            let brainResults = try await brain.contentSearch(query: topCourse.title, limit: 5)
+            let startedSlugs = Set(courseProgress.map(\.slug))
+            for r in brainResults where r.collection == "academy" {
+                let slug = String(r.docID.dropFirst(7)) // strip "course_"
+                guard !startedSlugs.contains(slug),
+                      let course = courses.course(slug: slug) else { continue }
+                suggestions.append(AccountSuggestion(
+                    slug: course.slug, title: course.title, emoji: course.emoji,
+                    reason: "Related to \(topCourse.title)"
+                ))
+                if suggestions.count >= 3 { break }
+            }
+        }
+
         let context = AccountContext(
             title: "Account | Like One",
             email: user.email,
@@ -81,7 +98,8 @@ struct AccountController: RouteCollection {
                 lessonsCompleted: totalLessonsCompleted,
                 coursesCompleted: totalCoursesCompleted,
                 certificatesEarned: certs.count
-            )
+            ),
+            suggestions: suggestions
         )
         return try await req.view.render("account", context)
     }
@@ -96,6 +114,14 @@ struct AccountContext: Content {
     let courses: [AccountCourseProgress]
     let certificates: [AccountCert]
     let stats: AccountStats
+    let suggestions: [AccountSuggestion]
+}
+
+struct AccountSuggestion: Content {
+    let slug: String
+    let title: String
+    let emoji: String
+    let reason: String
 }
 
 struct AccountCourseProgress: Content {

@@ -19,10 +19,14 @@ func configure(_ app: Application) async throws {
     app.migrations.add(CreateProgress())
     app.migrations.add(CreateCertificates())
     app.migrations.add(CreateSubscribers())
+    app.migrations.add(AddUserMemoryFields())
     try await app.autoMigrate()
 
     // Leaf templates
     app.views.use(.leaf)
+
+    // Trailing slash normalization (301 redirect for SEO canonicalization)
+    app.middleware.use(TrailingSlashMiddleware())
 
     // Cache headers (registered before FileMiddleware so it wraps static file responses)
     app.middleware.use(CacheMiddleware())
