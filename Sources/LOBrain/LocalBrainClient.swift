@@ -65,6 +65,51 @@ public final class LocalBrainClient: BrainClient, @unchecked Sendable {
         return try query(sql: sql, params: [])
     }
 
+    // MARK: - Public Content Search (site-facing, safe — S264)
+
+    /// Search public content via FTS5 (blog, courses, lessons, FAQs, academy).
+    /// NEVER returns private brain data. Uses content_fts table.
+    public func contentSearch(query: String, limit: Int = 10) async throws -> [ContentSearchResult] {
+        guard isAvailable, !query.isEmpty else { return [] }
+        // Escape FTS5 special characters
+        let safeQuery = query
+            .replacingOccurrences(of: "\"", with: "")
+            .replacingOccurrences(of: "'", with: "")
+            .split(separator: " ")
+            .map { String($0) + "*" } // prefix matching
+            .joined(separator: " ")
+        guard !safeQuery.isEmpty else { return [] }
+
+        let sql = """
+            SELECT doc_id, collection, substr(document, 1, 300), rank
+            FROM content_fts
+            WHERE content_fts MATCH ?
+            ORDER BY rank
+            LIMIT ?
+            """
+        return try withDB { db in
+            var stmt: OpaquePointer?
+            guard sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK else {
+                return [] // content_fts may not exist yet
+            }
+            defer { sqlite3_finalize(stmt) }
+
+            sqlite3_bind_text(stmt, 1, safeQuery, -1, SQLITE_TRANSIENT)
+            sqlite3_bind_int(stmt, 2, Int32(limit))
+
+            var results: [ContentSearchResult] = []
+            while sqlite3_step(stmt) == SQLITE_ROW {
+                results.append(ContentSearchResult(
+                    docID: col(stmt, 0),
+                    collection: col(stmt, 1),
+                    snippet: col(stmt, 2),
+                    score: sqlite3_column_double(stmt, 3)
+                ))
+            }
+            return results
+        }
+    }
+
     // MARK: - SQLite Operations
 
     private func withDB<T>(_ body: (OpaquePointer) throws -> T) throws -> T {
