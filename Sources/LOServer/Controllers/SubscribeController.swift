@@ -26,11 +26,12 @@ struct SubscribeController: RouteCollection {
             return htmlResponse("<p class=\"subscribe-success\">You're in! Check your inbox.</p>")
         }
 
-        // Create new subscriber
+        // Create new subscriber with interests
         let subscriber = SubscriberModel(
             email: input.email.lowercased(),
             name: input.name,
-            sourcePage: input.sourcePage ?? "/"
+            sourcePage: input.sourcePage ?? "/",
+            interests: input.interests
         )
         try await subscriber.save(on: req.db)
 
@@ -81,4 +82,5 @@ struct SubscribeInput: Content {
     let email: String
     let name: String?
     let sourcePage: String?
+    let interests: String?
 }

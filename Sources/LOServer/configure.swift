@@ -20,6 +20,7 @@ func configure(_ app: Application) async throws {
     app.migrations.add(CreateCertificates())
     app.migrations.add(CreateSubscribers())
     app.migrations.add(AddUserMemoryFields())
+    app.migrations.add(AddSubscriberPreferences())
     try await app.autoMigrate()
 
     // Leaf templates

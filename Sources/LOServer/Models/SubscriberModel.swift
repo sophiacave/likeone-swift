@@ -10,16 +10,20 @@ final class SubscriberModel: Model, Content, @unchecked Sendable {
     @Field(key: "source_page") var sourcePage: String
     @Field(key: "unsubscribe_token") var unsubscribeToken: String
     @Field(key: "active") var active: Bool
+    @OptionalField(key: "interests") var interests: String?
+    @OptionalField(key: "frequency") var frequency: String?
     @Timestamp(key: "created_at", on: .create) var createdAt: Date?
 
     init() {}
 
-    init(email: String, name: String? = nil, sourcePage: String = "/") {
+    init(email: String, name: String? = nil, sourcePage: String = "/", interests: String? = nil) {
         self.id = UUID()
         self.email = email
         self.name = name
         self.sourcePage = sourcePage
         self.unsubscribeToken = UUID().uuidString
         self.active = true
+        self.interests = interests
+        self.frequency = "weekly"
     }
 }

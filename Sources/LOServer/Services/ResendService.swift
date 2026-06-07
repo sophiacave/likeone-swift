@@ -54,4 +54,24 @@ struct ResendService {
             req.body = ByteBuffer(data: jsonData)
         }
     }
+
+    /// Generic email sender (used by DigestService and others)
+    func sendEmail(to email: String, subject: String, html: String) async {
+        let payload: [String: Any] = [
+            "from": "Like One <hello@likeone.ai>",
+            "to": [email],
+            "subject": subject,
+            "html": html
+        ]
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: payload) else { return }
+
+        var headers = HTTPHeaders()
+        headers.add(name: .authorization, value: "Bearer \(apiKey)")
+        headers.add(name: .contentType, value: "application/json")
+
+        let uri = URI(string: "https://api.resend.com/emails")
+        _ = try? await client.post(uri, headers: headers) { req in
+            req.body = ByteBuffer(data: jsonData)
+        }
+    }
 }
