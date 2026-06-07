@@ -1,0 +1,296 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>The anatomy of an agentic loop (observe → think → act → evaluate)</li>
+    <li>Five stopping conditions that prevent infinite loops</li>
+    <li>Error recovery patterns the exam tests</li>
+    <li>How to design loops that scale from 1 to 1000 iterations</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>The Agentic Loop</h2>
+
+<p>Every agent runs in a loop. The loop is the heartbeat of agentic architecture. Get it wrong and your agent either stops too early (incomplete work) or runs forever (infinite loop, burned tokens, broken systems).</p>
+
+<p>The CCA exam tests whether you can design loops with <strong>appropriate stopping conditions</strong>, <strong>error recovery</strong>, and <strong>resource awareness</strong>.</p>
+
+<pre><code>THE AGENTIC LOOP:
+
+┌─────────────────────────────────────────┐
+│                                         │
+│   ┌──────────┐    ┌──────────┐         │
+│   │ OBSERVE  │───▶│  THINK   │         │
+│   │ (tools)  │    │ (reason) │         │
+│   └──────────┘    └────┬─────┘         │
+│        ▲               │               │
+│        │               ▼               │
+│   ┌──────────┐    ┌──────────┐         │
+│   │ EVALUATE │◀───│   ACT    │         │
+│   │ (check)  │    │ (tools)  │         │
+│   └──────────┘    └──────────┘         │
+│        │                                │
+│        ▼                                │
+│   [CONTINUE?] ──── no ────▶ [DONE]     │
+│        │                                ���
+│       yes                               │
+│        │                                │
+└────────┘                                │
+                                          │
+</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Five Stopping Conditions</h2>
+
+<p>The exam will test whether you know when an agent should STOP. These are the five canonical stopping conditions:</p>
+
+<h3>1. Goal Achieved</h3>
+<p>The agent completed its objective. This is the happy path.</p>
+<pre><code># Goal: "Fix the failing test"
+# Stop when: test passes
+result = run_tests()
+if result.all_passed:
+    return "Done — all tests passing"</code></pre>
+
+<h3>2. Maximum Iterations</h3>
+<p>Safety valve. Prevents infinite loops regardless of goal state.</p>
+<pre><code># Hard limit: never exceed N iterations
+MAX_ITERATIONS = 25
+for i in range(MAX_ITERATIONS):
+    result = agent_step()
+    if result.done:
+        return result
+return "Reached iteration limit — reporting partial progress"</code></pre>
+
+<div class="callout">
+<strong>Exam tip:</strong> The exam often presents scenarios where the "right" answer includes a maximum iteration limit even when other stopping conditions exist. Defense in depth.
+</div>
+
+<h3>3. Error Threshold</h3>
+<p>Stop after N consecutive failures. Don't burn resources on a broken state.</p>
+<pre><code># 3-strike rule
+consecutive_errors = 0
+MAX_ERRORS = 3
+
+while not done:
+    try:
+        result = agent_step()
+        consecutive_errors = 0  # reset on success
+    except Exception as e:
+        consecutive_errors += 1
+        if consecutive_errors >= MAX_ERRORS:
+            return f"Stopping: {MAX_ERRORS} consecutive errors. Last: {e}"</code></pre>
+
+<h3>4. Resource Budget</h3>
+<p>Token limits, time limits, cost limits. The agent is aware of its budget.</p>
+<pre><code># Token-aware agent
+token_budget = 100_000
+tokens_used = 0
+
+while tokens_used < token_budget and not done:
+    result = agent_step()
+    tokens_used += result.tokens_consumed
+
+if not done:
+    return "Budget exhausted — partial results available"</code></pre>
+
+<h3>5. Human Intervention Required</h3>
+<p>The agent recognizes it needs human input and pauses gracefully.</p>
+<pre><code># Escalation: when the agent can't decide
+if confidence < 0.5 or action_is_destructive:
+    return "Pausing: need human approval for this action"</code></pre>
+
+<div class="tip-box">
+<strong>Production pattern:</strong> Real systems use ALL FIVE simultaneously. Goal achieved is the happy path. The others are safety nets. The CCA exam rewards answers that include multiple stopping conditions.
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>Error Recovery Patterns</h2>
+
+<p>The exam tests three error recovery patterns:</p>
+
+<h3>Pattern 1: Retry with Backoff</h3>
+<pre><code>async def retry_with_backoff(fn, max_retries=3):
+    for attempt in range(max_retries):
+        try:
+            return await fn()
+        except TransientError:
+            wait = 2 ** attempt  # 1s, 2s, 4s
+            await asyncio.sleep(wait)
+    raise MaxRetriesExceeded()</code></pre>
+<p><strong>When to use:</strong> Transient failures (network timeouts, rate limits, temporary API errors).</p>
+
+<h3>Pattern 2: Fallback Chain</h3>
+<pre><code>async def with_fallback(primary_fn, fallback_fn):
+    try:
+        return await primary_fn()
+    except Exception:
+        return await fallback_fn()
+
+# Example: try Claude Opus, fall back to Sonnet
+result = await with_fallback(
+    lambda: call_opus(prompt),
+    lambda: call_sonnet(prompt)
+)</code></pre>
+<p><strong>When to use:</strong> When alternative approaches exist (different models, different tools, cached results).</p>
+
+<h3>Pattern 3: Graceful Degradation</h3>
+<pre><code># If brain search fails, fall back to basic search
+if brain.is_available:
+    results = brain.hybrid_search(query)
+else:
+    results = basic_string_search(query)  # degraded but functional</code></pre>
+<p><strong>When to use:</strong> When partial results are better than no results. The system continues with reduced capability.</p>
+
+<div class="callout">
+<strong>Exam pattern:</strong> "The MCP server is returning errors. What should the agent do?" — The answer is almost always graceful degradation or retry with backoff. Never "crash" or "ignore the error."
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>Loop Architecture Patterns</h2>
+
+<h3>Simple Sequential Loop</h3>
+<pre><code># Best for: clear step-by-step tasks
+steps = [read_file, analyze, write_fix, run_tests]
+for step in steps:
+    result = step()
+    if result.error:
+        return handle_error(result)</code></pre>
+
+<h3>Iterative Refinement Loop</h3>
+<pre><code># Best for: quality improvement (code review, writing, optimization)
+MAX_ITERATIONS = 5
+for i in range(MAX_ITERATIONS):
+    output = generate(prompt, context)
+    evaluation = evaluate(output, criteria)
+    if evaluation.meets_criteria:
+        return output
+    context = update_context(context, evaluation.feedback)</code></pre>
+
+<h3>Event-Driven Loop</h3>
+<pre><code># Best for: monitoring, long-running agents
+while running:
+    event = await wait_for_event(timeout=60)
+    if event:
+        result = process_event(event)
+        if result.requires_action:
+            await take_action(result)</code></pre>
+
+<h3>Map-Reduce Loop (Parallel)</h3>
+<pre><code># Best for: processing multiple items independently
+items = get_work_items()
+results = await asyncio.gather(*[
+    process_item(item) for item in items
+])
+summary = reduce(results)</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Anti-Patterns the Exam Tests</h2>
+
+<p>The exam presents anti-patterns as wrong answers. Know them:</p>
+
+<table style="width:100%;border-collapse:collapse;font-size:.9rem;">
+<tr style="border-bottom:1px solid var(--border);">
+<td style="padding:8px;font-weight:600;">Anti-Pattern</td>
+<td style="padding:8px;font-weight:600;">Why It's Wrong</td>
+<td style="padding:8px;font-weight:600;">Correct Pattern</td>
+</tr>
+<tr style="border-bottom:1px solid var(--border);">
+<td style="padding:8px;">No stopping condition</td>
+<td style="padding:8px;">Infinite loop risk</td>
+<td style="padding:8px;">Always set max iterations</td>
+</tr>
+<tr style="border-bottom:1px solid var(--border);">
+<td style="padding:8px;">Retry forever</td>
+<td style="padding:8px;">Wastes resources on permanent failures</td>
+<td style="padding:8px;">Retry with limit + backoff</td>
+</tr>
+<tr style="border-bottom:1px solid var(--border);">
+<td style="padding:8px;">Swallow errors silently</td>
+<td style="padding:8px;">Hides bugs, produces wrong output</td>
+<td style="padding:8px;">Log + escalate + degrade gracefully</td>
+</tr>
+<tr style="border-bottom:1px solid var(--border);">
+<td style="padding:8px;">Restart from scratch on error</td>
+<td style="padding:8px;">Loses progress, wastes tokens</td>
+<td style="padding:8px;">Resume from last good state</td>
+</tr>
+<tr>
+<td style="padding:8px;">No progress tracking</td>
+<td style="padding:8px;">Can't tell if loop is stuck</td>
+<td style="padding:8px;">Track iterations + compare states</td>
+</tr>
+</table>
+</div>
+
+<div class="lesson-section">
+<h2>Real-World Example: Our Production Loop</h2>
+
+<p>Here's an actual agentic loop from our production system (the twin that built this course):</p>
+
+<pre><code># Claude Code session loop (simplified)
+MAX_TOOL_CALLS = 300
+tool_calls = 0
+
+while tool_calls < MAX_TOOL_CALLS:
+    # OBSERVE: read brain for next task
+    next_task = brain.read("session.next_steps")
+
+    # THINK: plan approach
+    plan = reason_about(next_task)
+
+    # ACT: execute via tools
+    result = execute_tools(plan)
+    tool_calls += result.tool_count
+
+    # EVALUATE: did it work?
+    if result.success:
+        brain.write("session.active_work", result.summary)
+        # Check if more work exists
+        if no_more_work():
+            break  # Goal achieved
+    else:
+        # Error recovery
+        if result.retryable:
+            continue  # retry
+        else:
+            brain.write("blocker", result.error)
+            break  # escalate
+
+# Stopping conditions: goal achieved OR max tools OR non-retryable error
+brain.write("session.next_steps", plan_next_session())</code></pre>
+
+<p>This loop has all five stopping conditions: goal (no more work), iterations (MAX_TOOL_CALLS), error threshold (non-retryable), budget (implicit in token usage), and human escalation (blockers written to brain).</p>
+</div>
+
+<div class="quiz-block">
+<h3 class="quiz-title">Quick Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>An agent has been running for 50 iterations without making progress. The goal is not achieved. What should happen?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Continue running — it might figure it out</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Restart from the beginning</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Stop, report partial progress, and escalate to human</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Increase the maximum iterations and continue</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>C.</strong> 50 iterations without progress = stuck. Stop gracefully, report what was accomplished, escalate. Don't burn more resources on a stuck state.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Which error recovery pattern is best for API rate limit errors?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Retry with exponential backoff</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Switch to a different API immediately</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Fail and report the error</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Retry immediately without waiting</button>
+</div>
+<div class="quiz-explanation" style="display:none"><strong>A.</strong> Rate limits are transient — the API will accept requests again after a cooldown. Exponential backoff (1s, 2s, 4s) respects the rate limit while retrying.</div>
+</div>
+</div>
+
+</div>
