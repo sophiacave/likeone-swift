@@ -159,10 +159,10 @@ struct BlogController: RouteCollection {
             relatedPosts: related,
             faqs: faqContexts
         )
-        let view = try await req.view.render("blog-post", context)
+        let buffer = try await req.view.render("blog-post", context).get().data
         var headers = HTTPHeaders()
         headers.contentType = .html
-        return Response(status: .ok, headers: headers, body: .init(buffer: view.data))
+        return Response(status: .ok, headers: headers, body: .init(buffer: buffer))
     }
 
     private func formatDate(_ date: Date) -> String {
