@@ -33,9 +33,10 @@ struct SearchController: RouteCollection {
 
         var results: [SearchResult] = []
 
-        // Brain-powered FTS5 search (semantic ranking across all public content)
+        // Brain-powered HYBRID search (FTS5 keyword + sqlite-vec semantic, RRF fused)
+        // Phase 1: Living AI App megaplan — site instantly feels intelligent.
         if brain.isAvailable {
-            let brainResults = try await brain.contentSearch(query: query, limit: 15)
+            let brainResults = (try? await brain.hybridContentSearch(query: query, limit: 15)) ?? []
             for r in brainResults {
                 let result = mapBrainResult(r)
                 if let result { results.append(result) }
@@ -70,43 +71,62 @@ struct SearchController: RouteCollection {
     private func mapBrainResult(_ r: ContentSearchResult) -> SearchResult? {
         let docID = r.docID
         switch r.collection {
-        case "blog_posts", "blog_content":
-            let slug = docID
-                .replacingOccurrences(of: "blog_", with: "")
-                .components(separatedBy: "_").dropLast().joined(separator: "_")
-                .replacingOccurrences(of: "_", with: "-")
-            // Try to find the blog post
-            if let post = blog.allPosts().first(where: { docID.contains($0.slug.replacingOccurrences(of: "-", with: "_")) || docID.contains($0.slug) }) {
+        case "blog_content":
+            // Format: blog_{slug}_{chunk} — slug uses hyphens
+            var slug = String(docID.dropFirst(5))
+            if let i = slug.lastIndex(of: "_"), let _ = Int(slug[slug.index(after: i)...]) {
+                slug = String(slug[..<i])
+            }
+            if let post = blog.allPosts().first(where: { $0.slug == slug }) {
                 return SearchResult(type: "blog", title: post.title, description: String(r.snippet.prefix(120)),
-                                   url: "/blog/\(post.slug)", emoji: "\u{1F4DD}", meta: "Blog Post")
+                                   url: "/blog/\(post.slug)/", emoji: "\u{1F4DD}", meta: "Blog Post")
             }
-            return SearchResult(type: "blog", title: String(r.snippet.prefix(80)), description: "",
-                               url: "/blog", emoji: "\u{1F4DD}", meta: "Blog")
+            return nil
+        case "blog_posts":
+            // Format: blog_{underscored_title} — fuzzy match against posts
+            let norm = docID.dropFirst(5).lowercased()
+            if let post = blog.allPosts().first(where: { norm.contains($0.slug.replacingOccurrences(of: "-", with: "_")) }) {
+                return SearchResult(type: "blog", title: post.title, description: String(r.snippet.prefix(120)),
+                                   url: "/blog/\(post.slug)/", emoji: "\u{1F4DD}", meta: "Blog Post")
+            }
+            return nil
         case "lessons":
-            // Format: course_slug/lesson_slug (chunk N)
-            let parts = docID.replacingOccurrences(of: "lesson_", with: "").components(separatedBy: "_")
-            if parts.count >= 2 {
-                let coursePart = parts[0]
-                let lessonPart = parts.dropFirst().joined(separator: "_").components(separatedBy: "_").first ?? ""
-                // Find matching course
-                if let course = courses.allCourses().first(where: { $0.slug.contains(coursePart) || coursePart.contains($0.slug.replacingOccurrences(of: "-", with: "_")) }) {
-                    return SearchResult(type: "lesson", title: String(r.snippet.prefix(80)), description: course.title,
-                                       url: "/academy/\(course.slug)", emoji: course.emoji, meta: "Lesson \u{00B7} \(course.title)")
+            // Format: lesson_{course}_{lesson}_{chunk}
+            let body = String(docID.dropFirst(7))
+            for course in courses.allCourses() {
+                let prefix = course.slug + "_"
+                guard body.hasPrefix(prefix) else { continue }
+                var lessonPart = String(body.dropFirst(prefix.count))
+                if let i = lessonPart.lastIndex(of: "_"), let _ = Int(lessonPart[lessonPart.index(after: i)...]) {
+                    lessonPart = String(lessonPart[..<i])
                 }
+                let title = lessons.lessons(forCourse: course.slug)
+                    .first(where: { $0.slug == lessonPart })?.title ?? String(r.snippet.prefix(60))
+                return SearchResult(type: "lesson", title: title, description: course.title,
+                                   url: "/academy/\(course.slug)/\(lessonPart)/", emoji: course.emoji,
+                                   meta: "Lesson \u{00B7} \(course.title)")
             }
-            return SearchResult(type: "lesson", title: String(r.snippet.prefix(80)), description: "",
-                               url: "/academy", emoji: "\u{1F393}", meta: "Academy Lesson")
+            return nil
         case "faqs":
-            return SearchResult(type: "faq", title: String(r.snippet.prefix(120)), description: "",
-                               url: "/blog", emoji: "\u{2753}", meta: "FAQ")
+            // Format: faq_{blog-slug}_{number}
+            var slug = String(docID.dropFirst(4))
+            if let i = slug.lastIndex(of: "_"), let _ = Int(slug[slug.index(after: i)...]) {
+                slug = String(slug[..<i])
+            }
+            if let post = blog.allPosts().first(where: { $0.slug == slug }) {
+                return SearchResult(type: "faq", title: String(r.snippet.prefix(120)), description: post.title,
+                                   url: "/blog/\(post.slug)/", emoji: "\u{2753}", meta: "FAQ")
+            }
+            return nil
         case "academy":
-            if let course = courses.allCourses().first(where: { docID.contains($0.slug.replacingOccurrences(of: "-", with: "_")) || docID.contains($0.slug) }) {
+            // Format: course_{slug}
+            let slug = String(docID.dropFirst(7))
+            if let course = courses.allCourses().first(where: { $0.slug == slug }) {
                 return SearchResult(type: "course", title: course.title, description: course.description,
-                                   url: "/academy/\(course.slug)", emoji: course.emoji,
+                                   url: "/academy/\(course.slug)/", emoji: course.emoji,
                                    meta: "\(course.level.tierName) \u{00B7} \(lessons.lessonCount(forCourse: course.slug)) lessons")
             }
-            return SearchResult(type: "course", title: String(r.snippet.prefix(80)), description: "",
-                               url: "/academy", emoji: "\u{1F393}", meta: "Course")
+            return nil
         default:
             return nil
         }
