@@ -29,4 +29,5 @@ func routes(_ app: Application) throws {
     try app.register(collection: RSSController(blog: blog))
     try app.register(collection: StripeController(catalog: catalog))
     try app.register(collection: SubscribeController())
+    try app.register(collection: RecommendController(courses: courses, blog: blog, brain: brain))
 }
