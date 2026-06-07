@@ -46,9 +46,9 @@ struct CustomErrorMiddleware: AsyncMiddleware {
             message: message
         )
 
-        let view = try await request.view.render("error", context)
+        let buffer = try await request.view.render("error", context).get().data
         var headers = HTTPHeaders()
         headers.contentType = .html
-        return Response(status: status, headers: headers, body: .init(buffer: view.data))
+        return Response(status: status, headers: headers, body: .init(buffer: buffer))
     }
 }
