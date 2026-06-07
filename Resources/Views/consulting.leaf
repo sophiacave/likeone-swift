@@ -1,5 +1,59 @@
 #extend("layout"):
     #export("content"):
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "Like One AI Consulting",
+            "description": "AI systems that run your operations autonomously. Custom agents, MCP servers, and full-stack AI applications.",
+            "url": "https://likeone.ai/consulting/",
+            "provider": {
+                "@type": "Organization",
+                "name": "Like One Foundation",
+                "url": "https://likeone.ai"
+            },
+            "areaServed": "US",
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "AI Consulting Services",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Strategy Call",
+                            "description": "One-time AI architecture assessment, Claude Code and MCP setup guidance, written action plan"
+                        },
+                        "price": "150",
+                        "priceCurrency": "USD",
+                        "unitCode": "HUR"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Starter Retainer",
+                            "description": "Async access with 24-hour turnaround, monthly strategy calls, MCP server builds"
+                        },
+                        "price": "500",
+                        "priceCurrency": "USD",
+                        "unitCode": "MON"
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Full Retainer",
+                            "description": "4 hrs/week synchronous collaboration, unlimited async, custom AI agent development, 14-day deployment guarantee"
+                        },
+                        "price": "5000",
+                        "priceCurrency": "USD",
+                        "unitCode": "MON"
+                    }
+                ]
+            }
+        }
+        </script>
         <section class="page-hero">
             <div class="site-container text-center">
                 <span class="site-section-tag">CONSULTING</span>

@@ -25,7 +25,8 @@ struct BlogController: RouteCollection {
                 author: $0.author,
                 date: formatDate($0.publishedAt),
                 tags: $0.tags
-            )}
+            )},
+            canonicalUrl: "https://likeone.ai/blog/"
         )
         return try await req.view.render("blog", context)
     }
@@ -41,7 +42,7 @@ struct BlogController: RouteCollection {
         "make-com-claude-stack-complete-guide": "/blog/the-ai-stack-that-runs-our-company-2026/",
         "how-to-build-ai-agent-no-code-2026": "/blog/how-to-build-ai-agent-that-works-2026/",
         "best-free-ai-courses-2026": "/academy/",
-        "how-to-train-ai-to-write-like-you": "/blog/how-to-give-ai-agent-persistent-memory-2026/",
+        "how-to-train-ai-to-write-like-you": "/blog/train-ai-on-your-writing-style/",
         "why-your-ai-has-amnesia-how-to-fix-it": "/blog/how-to-give-ai-agent-persistent-memory-2026/",
         "how-to-use-claude-ai-complete-guide": "/academy/claude-for-beginners/what-claude-can-do/",
         "how-to-use-claude-code-complete-guide": "/academy/claude-for-beginners/what-claude-can-do/",
@@ -175,6 +176,7 @@ struct BlogListContext: Content {
     let title: String
     let description: String
     let posts: [BlogCardContext]
+    let canonicalUrl: String
 }
 
 struct BlogCardContext: Content {

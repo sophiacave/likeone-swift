@@ -39,7 +39,8 @@ struct AcademyController: RouteCollection {
             totalLessons: totalLessons,
             tiers: tiers.map { TierInfo(name: $0.name, emoji: $0.emoji, count: $0.count) },
             courses: filtered.map { courseCard($0) },
-            activeTier: tierFilter ?? "all"
+            activeTier: tierFilter ?? "all",
+            canonicalUrl: "https://likeone.ai/academy/"
         )
         return try await req.view.render("academy", context)
     }
@@ -163,6 +164,7 @@ struct AcademyContext: Content {
     let tiers: [TierInfo]
     let courses: [CourseCard]
     let activeTier: String
+    let canonicalUrl: String
 }
 
 struct TierInfo: Content {
