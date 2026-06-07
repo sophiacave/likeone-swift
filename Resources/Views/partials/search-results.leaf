@@ -15,7 +15,7 @@
     #if(total > 20):
         <div style="font-size:.85rem;color:var(--text-muted);margin-top:12px;text-align:center;">Showing 20 of #(total) results</div>
     #endif
-#elseif(count(query) > 0):
+#elseif(query != ""):
     <div style="text-align:center;padding:40px 0;color:var(--text-muted);">
         <div style="font-size:1.5rem;margin-bottom:8px;">No results</div>
         <div style="font-size:.9rem;">Try a different search term</div>
