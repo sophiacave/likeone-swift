@@ -6,9 +6,15 @@
 
                 <!-- Profile Card -->
                 <div class="account-card" style="margin-top: 2rem;">
-                    <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">Signed in as</p>
-                    <h2 style="color: var(--text-primary); margin-bottom: 0.25rem;">#(name)</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">#(email)</p>
+                    <div style="display:flex;align-items:center;gap:16px;margin-bottom:1.5rem;">
+                        #if(avatarURL):
+                            <img src="#(avatarURL)" alt="" style="width:48px;height:48px;border-radius:50%;object-fit:cover;">
+                        #endif
+                        <div>
+                            <h2 style="color: var(--text-primary); margin: 0;">#(name)</h2>
+                            <p style="color: var(--text-muted); margin: 0; font-size:.9rem;">#(email)</p>
+                        </div>
+                    </div>
                     <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;">
                         <span class="account-badge">#(subscription)</span>
                     </div>
@@ -22,104 +28,71 @@
                     </div>
                 </div>
 
+                <!-- Stats -->
+                #if(stats.lessonsCompleted > 0):
+                <div style="margin-top:2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+                    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.5rem;font-weight:700;color:var(--purple-400);">#(stats.lessonsCompleted)</div>
+                        <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px;">Lessons</div>
+                    </div>
+                    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.5rem;font-weight:700;color:var(--green,#34d399);">#(stats.coursesCompleted)</div>
+                        <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px;">Courses</div>
+                    </div>
+                    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                        <div style="font-size:1.5rem;font-weight:700;color:gold;">#(stats.certificatesEarned)</div>
+                        <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px;">Certificates</div>
+                    </div>
+                </div>
+                #endif
+
+                <!-- Learning Progress (server-rendered) -->
+                <div style="margin-top: 2.5rem;">
+                    <h2 class="account-section-title">Learning Progress</h2>
+                    #if(count(courses) > 0):
+                        <div style="display:flex;flex-direction:column;gap:12px;margin-top:12px;">
+                        #for(course in courses):
+                            <div class="account-progress-card">
+                                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                                    <a href="/academy/#(course.slug)/" style="font-weight:600;color:var(--text-primary);text-decoration:none;font-size:.95rem;">#(course.emoji) #(course.title)</a>
+                                    <span style="font-size:.75rem;color:var(--text-muted);">#(course.completed) / #(course.total)</span>
+                                </div>
+                                <div style="height:4px;background:rgba(255,255,255,.05);border-radius:2px;margin-bottom:10px;">
+                                    <div style="height:100%;width:#(course.percent)%;background:#if(course.isComplete):var(--green,#34d399)#else:var(--purple-400)#endif;border-radius:2px;transition:width .5s;"></div>
+                                </div>
+                                #if(course.nextLessonSlug):
+                                    <a href="/academy/#(course.slug)/#(course.nextLessonSlug)/" class="site-btn-primary" style="display:inline-block;font-size:.8rem;padding:6px 16px;text-decoration:none;">Continue &rarr;</a>
+                                #elseif(course.isComplete):
+                                    <span style="font-size:.8rem;color:var(--green,#34d399);">Complete</span>
+                                #endif
+                            </div>
+                        #endfor
+                        </div>
+                    #else:
+                        <div class="account-empty">Start a course to track your progress! <a href="/academy" style="color:var(--purple-400);">Browse courses &rarr;</a></div>
+                    #endif
+                </div>
+
                 <!-- Certificates -->
                 <div style="margin-top: 2.5rem;">
                     <h2 class="account-section-title">Certificates</h2>
-                    <div id="account-certs" class="account-certs-list">
-                        <div class="account-empty">Loading...</div>
-                    </div>
-                </div>
-
-                <!-- Learning Progress -->
-                <div style="margin-top: 2.5rem;">
-                    <h2 class="account-section-title">Learning Progress</h2>
-                    <div id="account-progress" class="account-progress-list">
-                        <div class="account-empty">Loading...</div>
-                    </div>
+                    #if(count(certificates) > 0):
+                        <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
+                        #for(cert in certificates):
+                            <a href="/cert/#(cert.id)" class="account-cert-row">
+                                <div class="account-cert-info">
+                                    <div class="account-cert-type">#(cert.type)</div>
+                                    <div class="account-cert-title">#(cert.title)</div>
+                                </div>
+                                <div class="account-cert-view">View &rarr;</div>
+                            </a>
+                        #endfor
+                        </div>
+                    #else:
+                        <div class="account-empty">Complete a course to earn your first certificate!</div>
+                    #endif
                 </div>
             </div>
         </section>
-
-        <script>
-        // Load certificates
-        fetch('/api/v1/progress/certificates', { credentials: 'same-origin' })
-        .then(function(r) { return r.ok ? r.json() : []; })
-        .then(function(certs) {
-            var el = document.getElementById('account-certs');
-            if (!certs.length) {
-                el.innerHTML = '<div class="account-empty">No certificates yet. Complete a course or track to earn one!</div>';
-                return;
-            }
-            el.innerHTML = certs.map(function(c) {
-                var date = new Date(c.earnedAt || c.earned_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-                return '<a href="/cert/' + c.id + '" class="account-cert-row">' +
-                    '<div class="account-cert-info">' +
-                        '<div class="account-cert-type">' + (c.type === 'track' ? 'Track' : 'Course') + '</div>' +
-                        '<div class="account-cert-title">' + c.title + '</div>' +
-                        '<div class="account-cert-date">' + date + '</div>' +
-                    '</div>' +
-                    '<div class="account-cert-view">View &rarr;</div>' +
-                '</a>';
-            }).join('');
-        }).catch(function() {
-            document.getElementById('account-certs').innerHTML = '<div class="account-empty">No certificates yet.</div>';
-        });
-
-        // Load progress with course details + continue links
-        (function() {
-            var progress = JSON.parse(localStorage.getItem('lo_progress') || '{}');
-            var el = document.getElementById('account-progress');
-            var slugs = Object.keys(progress).filter(function(k) { return progress[k].length > 0; });
-            if (!slugs.length) {
-                el.innerHTML = '<div class="account-empty">Start a course to track your progress! <a href="/academy" style="color:var(--purple-400);">Browse courses &rarr;</a></div>';
-                return;
-            }
-            // Fetch course list for names and lesson counts
-            fetch('/api/v1/courses', { credentials: 'same-origin' })
-            .then(function(r) { return r.json(); })
-            .then(function(courses) {
-                var courseMap = {};
-                courses.forEach(function(c) { courseMap[c.slug] = c; });
-
-                // For each in-progress course, find next lesson
-                var promises = slugs.map(function(slug) {
-                    return fetch('/api/v1/courses/' + slug + '/lessons', { credentials: 'same-origin' })
-                        .then(function(r) { return r.json(); })
-                        .then(function(lessons) {
-                            var done = progress[slug] || [];
-                            var next = lessons.find(function(l) { return done.indexOf(l.slug) === -1; });
-                            return { slug: slug, course: courseMap[slug], done: done.length, total: lessons.length, next: next };
-                        });
-                });
-
-                Promise.all(promises).then(function(results) {
-                    results.sort(function(a, b) { return b.done - a.done; });
-                    el.innerHTML = results.map(function(r) {
-                        var name = r.course ? r.course.title : r.slug.replace(/-/g, ' ');
-                        var emoji = r.course ? r.course.emoji : '';
-                        var pct = r.total > 0 ? Math.round((r.done / r.total) * 100) : 0;
-                        var isComplete = r.done >= r.total && r.total > 0;
-                        var continueUrl = r.next ? '/academy/' + r.slug + '/' + r.next.slug : '/academy/' + r.slug;
-                        var btnText = isComplete ? 'Review' : 'Continue';
-
-                        return '<div class="account-progress-card">' +
-                            '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">' +
-                                '<a href="/academy/' + r.slug + '" style="font-weight:600;color:var(--text-primary);text-decoration:none;font-size:.95rem;">' + emoji + ' ' + name + '</a>' +
-                                '<span style="font-size:.75rem;color:var(--text-muted);">' + r.done + ' / ' + r.total + '</span>' +
-                            '</div>' +
-                            '<div style="height:4px;background:rgba(255,255,255,.05);border-radius:2px;margin-bottom:10px;">' +
-                                '<div style="height:100%;width:' + pct + '%;background:' + (isComplete ? 'var(--green,#34d399)' : 'var(--purple-400)') + ';border-radius:2px;transition:width .5s;"></div>' +
-                            '</div>' +
-                            '<a href="' + continueUrl + '" class="site-btn-primary" style="display:inline-block;font-size:.8rem;padding:6px 16px;text-decoration:none;">' + btnText + ' &rarr;</a>' +
-                        '</div>';
-                    }).join('');
-                });
-            }).catch(function() {
-                el.innerHTML = slugs.map(function(slug) {
-                    return '<div class="account-progress-row"><a href="/academy/' + slug + '">' + slug.replace(/-/g, ' ') + '</a></div>';
-                }).join('');
-            });
-        })();
-        </script>
     #endexport
 #endextend
