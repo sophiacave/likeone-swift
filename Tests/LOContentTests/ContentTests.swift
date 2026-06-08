@@ -43,7 +43,7 @@ struct ContentTests {
         let provider = CourseProvider()
         let summary = provider.tierSummary
         let total = summary.reduce(0) { $0 + $1.count }
-        #expect(total == 52)
+        #expect(total == 53)
     }
 
     // MARK: - Blog Provider
