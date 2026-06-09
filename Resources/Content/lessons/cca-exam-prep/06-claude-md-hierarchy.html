@@ -1,0 +1,338 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>The CLAUDE.md file hierarchy and how configuration cascades</li>
+    <li>What belongs in CLAUDE.md vs system prompts vs memory files</li>
+    <li>How to structure project instructions for teams</li>
+    <li>How the CCA exam tests configuration architecture</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>The Configuration Hierarchy</h2>
+
+<p>Claude Code loads instructions from multiple sources in a specific order. Understanding this hierarchy is essential for the CCA exam and for production use.</p>
+
+<pre><code>LOADING ORDER (highest to lowest priority):
+
+  1. SYSTEM PROMPT (Anthropic's built-in instructions)
+     → You cannot modify this. It defines Claude's core behavior.
+     → Sets safety guidelines, tool usage rules, output format.
+
+  2. ENTERPRISE POLICY (org-level, if configured)
+     → Set by organization administrators
+     → Applies to all projects in the org
+     → Cannot be overridden by project-level files
+
+  3. ~/.claude/rules/*.md (USER-LEVEL)
+     → Your personal global instructions
+     → Apply to ALL projects on your machine
+     → Good for: personal preferences, workflow habits
+     → Example: "Always use TypeScript" or "Never auto-commit"
+
+  4. CLAUDE.md (PROJECT ROOT)
+     → Checked into git. Shared with team.
+     → The primary configuration file for any project.
+     → Good for: coding standards, architecture decisions,
+                  build commands, test instructions
+
+  5. CLAUDE.md (SUBDIRECTORY)
+     → Scoped to that directory and its children
+     → Overrides or extends parent CLAUDE.md
+     → Good for: package-specific rules in a monorepo
+
+  6. .claude/rules/*.md (PROJECT-LEVEL)
+     → Additional rules files for the project
+     → Same scope as project root CLAUDE.md
+     → Good for: separating concerns (deploy.md, testing.md)
+
+  7. SESSION CONTEXT (loaded at runtime)
+     → Memory files, RAG results, tool output
+     → Most dynamic, least persistent</code></pre>
+
+<div class="callout">
+<strong>Exam key point:</strong> Higher-priority sources override lower ones. Enterprise policy beats CLAUDE.md. CLAUDE.md beats session context. But they COMBINE — a subdirectory CLAUDE.md doesn't replace the root one, it adds to it.
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>What Belongs Where</h2>
+
+<h3>In CLAUDE.md (project root)</h3>
+<pre><code>INCLUDE:
+  ✓ Build and test commands
+  ✓ Architecture decisions ("we use PostgreSQL, not MySQL")
+  ✓ Coding conventions ("use snake_case for Python files")
+  ✓ File structure explanation
+  ✓ Common workflows ("to deploy: run X then Y")
+  ✓ Important constraints ("never modify the auth module directly")
+  ✓ Team-specific patterns ("all API routes go in src/routes/")
+
+DO NOT INCLUDE:
+  ✗ Secrets or API keys (use environment variables)
+  ✗ Personal preferences (use ~/.claude/rules/)
+  ✗ Temporary tasks (use session context)
+  ✗ Verbose documentation (link to docs instead)
+  ✗ Auto-generated content that changes frequently</code></pre>
+
+<h3>In ~/.claude/rules/ (user-level)</h3>
+<pre><code>INCLUDE:
+  ✓ Your editor preferences ("always use 2-space indent")
+  ✓ Communication style ("be concise, no emojis")
+  ✓ Tool preferences ("use bun instead of npm")
+  ✓ Safety rules ("never push without asking")
+  ✓ Workflow patterns ("always run tests before committing")
+
+DO NOT INCLUDE:
+  ✗ Project-specific rules (those go in CLAUDE.md)
+  ✗ Team conventions (those should be shared via CLAUDE.md)
+  ✗ Sensitive personal data</code></pre>
+
+<h3>In subdirectory CLAUDE.md</h3>
+<pre><code>USE FOR MONOREPOS:
+  /
+  ├── CLAUDE.md              ← shared rules (linting, git flow)
+  ├── packages/
+  │   ├── frontend/
+  │   │   └── CLAUDE.md      ← "use React, Tailwind, Vitest"
+  │   ├── backend/
+  │   │   └── CLAUDE.md      ← "use Express, PostgreSQL, Jest"
+  │   └── mobile/
+  │       └── CLAUDE.md      ← "use React Native, Expo"
+
+Each subdirectory CLAUDE.md adds context specific to that package
+without cluttering the root file with irrelevant details.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Writing Effective CLAUDE.md</h2>
+
+<h3>Structure Template</h3>
+<pre><code># Project Name
+
+## Quick Start
+- Build: `npm run build`
+- Test: `npm test`
+- Deploy: `npm run deploy:staging`
+
+## Architecture
+- Framework: Next.js 14 with App Router
+- Database: PostgreSQL via Prisma
+- Auth: NextAuth.js with Google OAuth
+- Hosting: Vercel
+
+## Conventions
+- Use server components by default
+- Client components only when needed (useState, useEffect)
+- API routes in app/api/ follow RESTful naming
+- All database queries go through Prisma client in lib/db.ts
+
+## Important Constraints
+- NEVER modify prisma/schema.prisma without creating a migration
+- NEVER commit .env files
+- Always run `npx prisma generate` after schema changes
+- The /auth routes are security-critical — extra review required</code></pre>
+
+<h3>Anti-Patterns</h3>
+<pre><code>BAD: Too vague
+  "Follow best practices and write clean code"
+  → Claude already does this. This adds no information.
+
+BAD: Too verbose
+  (500 lines of documentation pasted into CLAUDE.md)
+  → Burns context window tokens. Link to docs instead.
+
+BAD: Contradictory rules
+  Root: "Always use Jest for testing"
+  Subdir: "Always use Vitest for testing"
+  → Claude will be confused. Subdirectory should explicitly
+     say "Override: use Vitest instead of Jest for this package"
+
+BAD: Stale instructions
+  "Deploy to Heroku using git push heroku main"
+  (but you migrated to Vercel 6 months ago)
+  → Stale CLAUDE.md causes wrong actions. Review quarterly.
+
+GOOD: Specific, current, actionable
+  "Run `npm test -- --coverage` before any PR.
+   Coverage must stay above 80%. Check with `npm run coverage:check`."</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Configuration for Teams</h2>
+
+<p>When multiple developers share a project, CLAUDE.md becomes the single source of truth for how Claude should behave in that codebase.</p>
+
+<h3>Team Configuration Strategy</h3>
+<pre><code>LAYER 1 — Organization (enterprise policy)
+  "All code must pass security scan before commit"
+  "Never use eval() or exec()"
+  "All API endpoints require authentication"
+  → Enforced by admins. Developers cannot override.
+
+LAYER 2 — Project (CLAUDE.md in repo)
+  "This project uses TypeScript strict mode"
+  "Database: PostgreSQL 15"
+  "CI: GitHub Actions, must pass before merge"
+  → Shared via git. All team members see same rules.
+
+LAYER 3 — Personal (~/. claude/rules/)
+  "I prefer verbose git commit messages"
+  "Always explain your reasoning"
+  → Individual preferences. Not shared with team.</code></pre>
+
+<h3>Conflict Resolution</h3>
+<pre><code>QUESTION: What happens when rules conflict?
+
+  User rule:     "Use tabs for indentation"
+  Project rule:  "Use 2-space indentation"
+
+ANSWER: Project rule wins for project files.
+  Project CLAUDE.md is more specific to the context.
+  User rules are defaults that project rules can override.
+
+EXCEPTION: Enterprise policy always wins over everything.
+  If org policy says "no tabs", nothing can override that.
+
+EXAM TIP: The hierarchy is:
+  Enterprise > Project CLAUDE.md > User rules > Defaults
+  More specific context wins over more general context.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Advanced: Dynamic Configuration</h2>
+
+<h3>Conditional Instructions</h3>
+<pre><code>PATTERN: Different rules for different situations
+
+  # CLAUDE.md
+
+  ## For bug fixes
+  - Always write a regression test BEFORE fixing the bug
+  - Reference the issue number in the commit message
+
+  ## For new features
+  - Create a design doc before implementation
+  - Add feature flag for gradual rollout
+
+  ## For refactoring
+  - No behavior changes — tests must pass unchanged
+  - Commit in small, reviewable chunks
+
+Claude reads all sections but applies the relevant one
+based on the task context.</code></pre>
+
+<h3>Environment-Aware Configuration</h3>
+<pre><code>PATTERN: Rules that reference environment
+
+  # CLAUDE.md
+
+  ## Environment Setup
+  - Dev database: localhost:5432/myapp_dev
+  - Test database: localhost:5432/myapp_test
+  - NEVER connect to production database directly
+
+  ## Deploy
+  - Staging: `npm run deploy:staging` (safe to run anytime)
+  - Production: `npm run deploy:prod` (REQUIRES explicit approval)
+
+  ## Secrets
+  - All secrets in .env (gitignored)
+  - Required vars: DATABASE_URL, STRIPE_KEY, JWT_SECRET
+  - For local dev: copy .env.example to .env</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Exam Scenario Practice</h2>
+
+<h3>Scenario: Monorepo Configuration</h3>
+<pre><code>QUESTION:
+  You manage a monorepo with 3 packages:
+    - web (Next.js frontend)
+    - api (Express backend)
+    - shared (common types and utilities)
+
+  Each package has different testing frameworks, build tools,
+  and deployment targets. How do you configure CLAUDE.md?
+
+STRONG ANSWER:
+  Root CLAUDE.md:
+    - Shared conventions (TypeScript, ESLint config, git flow)
+    - Monorepo tooling (pnpm workspaces, turborepo)
+    - "Run `pnpm install` from root, not individual packages"
+    - "All packages must export types from shared/"
+
+  packages/web/CLAUDE.md:
+    - "Framework: Next.js 14 with App Router"
+    - "Test: Vitest + React Testing Library"
+    - "Deploy: Vercel (auto-deploys from main)"
+
+  packages/api/CLAUDE.md:
+    - "Framework: Express with TypeScript"
+    - "Test: Jest + Supertest"
+    - "Deploy: Docker → AWS ECS"
+    - "Database migrations: `pnpm run migrate`"
+
+  packages/shared/CLAUDE.md:
+    - "This package is imported by web and api"
+    - "Changes here affect both consumers — run all tests"
+    - "No runtime dependencies allowed (types and utils only)"
+
+WHY THIS WORKS:
+  - Root handles shared concerns once
+  - Each package adds only its specific context
+  - No duplication, no contradiction
+  - New team members get oriented by reading 2 files</code></pre>
+
+<h3>Scenario: Security-Sensitive Project</h3>
+<pre><code>QUESTION:
+  Your project handles payment processing. What configuration
+  ensures Claude never accidentally exposes credentials or
+  makes unsafe changes to payment code?
+
+STRONG ANSWER:
+  CLAUDE.md:
+    ## Security Constraints
+    - NEVER commit files matching: .env, *.pem, *.key, credentials.*
+    - NEVER log or print: API keys, tokens, passwords, card numbers
+    - Payment module (src/payments/) is SECURITY-CRITICAL:
+      → Always run full test suite after changes
+      → Never modify without explicit approval
+      → All payment amounts must use Decimal type, never float
+
+    ## Code Review Rules
+    - Changes to src/payments/ require 2 reviewers
+    - Changes to auth middleware require security team review
+    - New dependencies require license check
+
+  .claude/rules/security.md:
+    - Run `npm audit` before any dependency changes
+    - Check for secrets: `git secrets --scan` before commit
+    - All user input must be sanitized before database queries
+
+EXAM SCORING:
+  Mention specific file patterns (not just "be careful")
+  Reference concrete security practices (Decimal vs float)
+  Layer defenses (CLAUDE.md + rules + tooling)</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+  <li><strong>Know the hierarchy.</strong> Enterprise &gt; Project &gt; User &gt; Defaults. More specific wins.</li>
+  <li><strong>CLAUDE.md is shared via git.</strong> Personal preferences go in ~/.claude/rules/.</li>
+  <li><strong>Be specific and actionable.</strong> "Run <code>npm test</code>" beats "make sure tests pass."</li>
+  <li><strong>Monorepos use subdirectory CLAUDE.md</strong> to scope rules per package.</li>
+  <li><strong>Never put secrets in CLAUDE.md.</strong> It's checked into version control.</li>
+  <li><strong>Review CLAUDE.md quarterly.</strong> Stale instructions cause wrong behavior.</li>
+</ol>
+
+<div class="callout">
+<strong>CCA exam weight:</strong> CLAUDE.md configuration appears in Domain 3 (Configuration & Customization). Expect 3-4 questions on file hierarchy, team setup, and security constraints. This is high-value content — memorize the hierarchy.
+</div>
+</div>
+
+</div>

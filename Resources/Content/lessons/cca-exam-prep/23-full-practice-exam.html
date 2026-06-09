@@ -1,0 +1,526 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>What this lesson covers</h3>
+  <ul>
+    <li>30 practice questions across all 5 CCA domains</li>
+    <li>Detailed answer explanations with scoring rationale</li>
+    <li>Common wrong answers and why they fail</li>
+    <li>Self-assessment scoring guide</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>Practice Exam Instructions</h2>
+
+<pre><code>FORMAT: 30 questions (real exam has 60)
+TIME: 45 minutes recommended (real exam: 90 minutes)
+PASSING: 72% (22/30 questions)
+
+SCORING:
+  Multiple choice: 1 point per correct answer
+  Scenario: 2 points (partial credit for incomplete answers)
+
+DOMAIN DISTRIBUTION:
+  Domain 1 — Tool Use & MCP:           7 questions
+  Domain 2 — Agentic Architecture:      7 questions
+  Domain 3 — Configuration:             6 questions
+  Domain 4 — Deployment & Operations:   5 questions
+  Domain 5 — Security & Safety:         5 questions
+
+TIP: Read each question fully before answering.
+     Eliminate obviously wrong answers first.
+     Budget ~1.5 minutes per question.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Domain 1: Tool Use & MCP (Questions 1-7)</h2>
+
+<pre><code>Q1. Which MCP primitive should be used to expose a database
+    schema for Claude to browse on demand?
+
+    A) Tool
+    B) Resource
+    C) Prompt
+    D) System instruction
+
+    ANSWER: B — Resource
+    Resources are for data that the application/user loads.
+    Database schema is read-only reference data.
+    A tool would be for executing queries (actions).
+    A prompt would be for template workflows.
+
+───────────────────────────────────────────────────
+
+Q2. A tool description says: "Process data."
+    What is the primary problem with this description?
+
+    A) It's too short
+    B) It doesn't specify the return value
+    C) Claude cannot determine WHEN to use this tool
+    D) It should include implementation details
+
+    ANSWER: C
+    Claude uses descriptions to decide when to call tools.
+    "Process data" is too vague for Claude to match against
+    any specific user request. B is also true but C is the
+    primary impact — tool won't be called when it should be.
+
+───────────────────────────────────────────────────
+
+Q3. You have a tool that deletes database records. What is
+    the MOST important schema design decision?
+
+    A) Add a description explaining what it deletes
+    B) Require a confirmation parameter
+    C) Return the deleted record count
+    D) Use an enum for table names
+
+    ANSWER: B — Confirmation parameter
+    Destructive operations must have a confirmation barrier.
+    All options are good practices, but B directly prevents
+    accidental deletions. A, C, and D are secondary.
+
+───────────────────────────────────────────────────
+
+Q4. What transport should a shared team MCP server use?
+
+    A) stdio
+    B) HTTP/SSE
+    C) WebSocket
+    D) gRPC
+
+    ANSWER: B — HTTP/SSE
+    stdio is for local single-user tools.
+    HTTP/SSE supports remote access and multiple clients.
+    WebSocket and gRPC are not standard MCP transports.
+
+───────────────────────────────────────────────────
+
+Q5. An MCP server has tools for both reading and writing
+    customer data. What's the best security improvement?
+
+    A) Add rate limiting
+    B) Split into two servers (read-only and read-write)
+    C) Require authentication for all tools
+    D) Log all tool calls
+
+    ANSWER: B — Split into two servers
+    Separation allows different permission profiles.
+    Read-only server can be always-allowed.
+    Write server can require human approval.
+    A, C, D are all good but B is the structural fix.
+
+───────────────────────────────────────────────────
+
+Q6. Your search tool returns 500 results. Claude often
+    calls get_details() for each result, consuming tokens.
+    What's the best fix?
+
+    A) Remove the get_details tool
+    B) Limit search to 10 results and improve the description
+    C) Add a cache to get_details
+    D) Increase the context window
+
+    ANSWER: B
+    Limit results to prevent excessive follow-up calls.
+    Update the description: "Returns top 10 results.
+    Use get_details(id) only for specific items of interest."
+    This shapes Claude's calling pattern.
+
+───────────────────────────────────────────────────
+
+Q7. A tool takes 45 seconds to respond. What impact does
+    this have and how do you mitigate it?
+
+    A) No impact — Claude waits patiently
+    B) User thinks system is stuck. Add progress updates.
+    C) Context window overflow. Use streaming.
+    D) Rate limiting. Add retry logic.
+
+    ANSWER: B
+    Long tool calls create poor UX. Users expect responses
+    in seconds. Mitigate with progress indicators or
+    break into smaller, faster steps.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Domain 2: Agentic Architecture (Questions 8-14)</h2>
+
+<pre><code>Q8. When should you use a multi-agent architecture instead
+    of a single agent with tools?
+
+    A) When the task involves multiple API calls
+    B) When different domains of expertise are needed in parallel
+    C) When the task is complex
+    D) When you need better output quality
+
+    ANSWER: B
+    Multi-agent is justified by parallel expertise needs.
+    Multiple API calls can be handled by a single agent.
+    Complexity alone doesn't warrant multi-agent overhead.
+    Quality is about prompt design, not architecture.
+
+───────────────────────────────────────────────────
+
+Q9. An agent needs to remember context across sessions.
+    Which is the WRONG approach?
+
+    A) Write state to CLAUDE.md
+    B) Save state to a database
+    C) Store state in conversation history
+    D) Write state to memory files
+
+    ANSWER: C
+    Conversation history is ephemeral — it gets compressed
+    and doesn't persist across sessions. A, B, and D all
+    persist state externally to the conversation.
+
+───────────────────────────────────────────────────
+
+Q10. What's the correct order of persistence tiers
+     from simplest to most capable?
+
+    A) Database → File-backed → Ephemeral
+    B) Ephemeral → Database → File-backed
+    C) Ephemeral → File-backed → Database
+    D) File-backed → Ephemeral → Database
+
+    ANSWER: C
+    Ephemeral (in-session only) → File-backed (cross-session)
+    → Database (structured, searchable, scalable).
+
+───────────────────────────────────────────────────
+
+Q11. In a supervisor multi-agent pattern, what happens if
+     a worker agent fails?
+
+    A) The entire system fails
+    B) The supervisor retries or reassigns the task
+    C) Other workers compensate automatically
+    D) The user must restart the process
+
+    ANSWER: B
+    Supervisor handles worker failures by retrying or
+    reassigning. This is a key advantage of the pattern.
+    A would be a fatal design flaw. C describes a swarm.
+    D indicates missing error handling.
+
+───────────────────────────────────────────────────
+
+Q12. Which reasoning pattern BEST prevents premature
+     actions by an agent?
+
+    A) Chain of thought
+    B) Pre-action verification
+    C) Hypothesis testing
+    D) Extended thinking
+
+    ANSWER: B — Pre-action verification
+    "Read before edit. Verify before act." directly prevents
+    premature actions. Chain of thought improves reasoning
+    quality. Hypothesis testing is for debugging.
+    Extended thinking improves reasoning depth but doesn't
+    specifically prevent premature action.
+
+───────────────────────────────────────────────────
+
+Q13. An agent processes 500 files but the context window
+     only fits 30. What's the best approach?
+
+    A) Use a model with a larger context window
+    B) Process files in batches, combine results
+    C) Summarize all files into one document first
+    D) Only process the most important files
+
+    ANSWER: B — Batch processing
+    Process in manageable chunks, combine results.
+    A doesn't scale. C requires reading all files first.
+    D loses coverage. Batching is the systematic solution.
+
+───────────────────────────────────────────────────
+
+Q14. What's wrong with this state handoff design:
+     "Agent writes session summary before closing"?
+
+    A) Nothing — this is best practice
+    B) If the session crashes, no summary is written
+    C) Summaries are too large for storage
+    D) Agent shouldn't write its own summary
+
+    ANSWER: B
+    If session crashes or connection drops, the end-of-session
+    write never happens. State should be written DURING the
+    session (after each significant action), not just at the end.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Domain 3: Configuration (Questions 15-20)</h2>
+
+<pre><code>Q15. Where should personal code style preferences go?
+
+    A) Project CLAUDE.md
+    B) ~/.claude/rules/
+    C) .claude/commands/
+    D) System prompt
+
+    ANSWER: B — ~/.claude/rules/
+    Personal preferences are user-level, not project-level.
+    Project CLAUDE.md is shared with the team.
+    Commands are for workflows. System prompt is for identity.
+
+───────────────────────────────────────────────────
+
+Q16. A subdirectory CLAUDE.md says "use Vitest" but the root
+     CLAUDE.md says "use Jest." What happens?
+
+    A) Error — configuration conflict
+    B) Root wins — Jest for all files
+    C) Both apply — Vitest for that directory, Jest elsewhere
+    D) Last loaded wins
+
+    ANSWER: C
+    Subdirectory CLAUDE.md adds to (doesn't replace) root.
+    In the subdirectory context, Vitest applies.
+    In other directories, Jest applies.
+    No conflict — they're scoped to different directories.
+
+───────────────────────────────────────────────────
+
+Q17. What should a pre-tool hook do if it detects a
+     potential secret in a git commit?
+
+    A) Log a warning and allow the commit
+    B) Exit with non-zero code to block the commit
+    C) Remove the secret and allow the commit
+    D) Notify the security team and allow the commit
+
+    ANSWER: B — Block the commit
+    Pre-hooks block by exiting non-zero. Claude receives
+    feedback and removes the secret before retrying.
+    A and D allow the secret to be committed.
+    C modifies code without human awareness (risky).
+
+───────────────────────────────────────────────────
+
+Q18. Which permission mode is appropriate for CI/CD?
+
+    A) Trust mode (all tools allowed)
+    B) Prompt mode (ask before each tool)
+    C) Allowlist mode (only specified tools)
+    D) Deny mode (no tools allowed)
+
+    ANSWER: C — Allowlist
+    CI has no human to approve prompts (B is impossible).
+    Trust mode (A) is too permissive for automated pipelines.
+    Deny mode (D) prevents Claude from doing useful work.
+    Allowlist gives exactly the tools needed, nothing more.
+
+───────────────────────────────────────────────────
+
+Q19. A custom slash command /deploy fails because it tries
+     to run a bash command that the user hasn't approved.
+     What's the fix?
+
+    A) Switch to trust mode
+    B) Document the required permissions in the command
+    C) Remove the bash command from the workflow
+    D) Use a dedicated deploy tool instead of bash
+
+    ANSWER: D
+    A dedicated MCP deploy tool can be pre-approved in
+    permission settings. Bash is a generic tool that
+    requires per-command approval. D is the structural fix.
+    B is helpful but doesn't solve the UX problem.
+
+───────────────────────────────────────────────────
+
+Q20. How often should CLAUDE.md be reviewed for staleness?
+
+    A) Never — it should be automatically generated
+    B) Every commit
+    C) Quarterly
+    D) Only when problems arise
+
+    ANSWER: C — Quarterly
+    CLAUDE.md content goes stale as projects evolve.
+    Quarterly review catches outdated build commands,
+    deprecated tools, and changed architecture.
+    B is too frequent. D is too reactive.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Domain 4: Deployment & Operations (Questions 21-25)</h2>
+
+<pre><code>Q21. What's the correct flag for running Claude Code in CI?
+
+    A) claude --ci
+    B) claude -p "prompt" --allowedTools "Read,Grep"
+    C) claude --headless
+    D) claude --non-interactive
+
+    ANSWER: B
+    The -p flag runs a prompt non-interactively.
+    --allowedTools restricts which tools can be used.
+    This is the standard CI invocation pattern.
+
+───────────────────────────────────────────────────
+
+Q22. An agent's responses are getting slower over a long
+     session. What's the most likely cause?
+
+    A) Server overload
+    B) Growing conversation context consuming more tokens
+    C) Network latency
+    D) Model degradation
+
+    ANSWER: B
+    As conversation grows, each turn processes more tokens.
+    This increases latency linearly. The fix is context
+    management: summarize old turns, use tools for recall.
+
+───────────────────────────────────────────────────
+
+Q23. What should you monitor FIRST when deploying an agent?
+
+    A) User satisfaction scores
+    B) Error rate and latency
+    C) Token costs
+    D) Feature usage metrics
+
+    ANSWER: B — Error rate and latency
+    These are the fundamental health metrics. If errors are
+    high or latency is bad, everything else is irrelevant.
+    Satisfaction, cost, and usage are important but secondary
+    to basic reliability.
+
+───────────────────────────────────────────────────
+
+Q24. A circuit breaker pattern is most useful when:
+
+    A) Claude makes incorrect tool calls
+    B) An external API has intermittent outages
+    C) The context window is full
+    D) Users send malicious prompts
+
+    ANSWER: B
+    Circuit breakers prevent wasting time on failed external
+    services. After N failures, skip the call and use fallback.
+    Auto-test periodically for recovery.
+
+───────────────────────────────────────────────────
+
+Q25. What's the best retry strategy for a 429 (rate limit)?
+
+    A) Immediate retry
+    B) Retry with exponential backoff
+    C) Wait for the Retry-After header duration, then retry
+    D) Don't retry — report error to user
+
+    ANSWER: C
+    429 responses include a Retry-After header telling you
+    exactly when to retry. Honor it. Exponential backoff (B)
+    might retry too soon. Immediate retry (A) will hit the
+    limit again. Not retrying (D) gives up unnecessarily.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Domain 5: Security & Safety (Questions 26-30)</h2>
+
+<pre><code>Q26. What's the primary defense against prompt injection
+     in tool inputs?
+
+    A) System prompt that says "ignore injections"
+    B) Server-side input validation and sanitization
+    C) Using a smarter model
+    D) Rate limiting tool calls
+
+    ANSWER: B — Server-side validation
+    The MCP server validates inputs. Not the model.
+    Claude is a language model, not a security boundary.
+    System prompts (A) help but can be bypassed.
+    Smarter models (C) still follow injected instructions.
+
+───────────────────────────────────────────────────
+
+Q27. An MCP tool returns full user records including SSN.
+     What's the correct fix?
+
+    A) Tell Claude to never display SSNs
+    B) Filter SSN at the MCP server level before returning
+    C) Add a disclaimer about data sensitivity
+    D) Encrypt the response
+
+    ANSWER: B — Filter at server level
+    Don't send sensitive data to the model in the first place.
+    Claude (A) might still leak it. Disclaimers (C) don't
+    prevent exposure. Encryption (D) — Claude needs to read it.
+    Filter at source. Return only needed fields.
+
+───────────────────────────────────────────────────
+
+Q28. Which action should ALWAYS require human approval?
+
+    A) Reading a configuration file
+    B) Running a test suite
+    C) Modifying database schema in production
+    D) Generating code suggestions
+
+    ANSWER: C
+    Production database schema changes are irreversible and
+    high-impact. A, B, D are safe for automated execution.
+    Schema changes can cause data loss and downtime.
+
+───────────────────────────────────────────────────
+
+Q29. What's the purpose of an audit trail in MCP operations?
+
+    A) Improve model performance
+    B) Reduce API costs
+    C) Enable incident investigation and compliance
+    D) Speed up tool calls
+
+    ANSWER: C
+    Audit trails exist for: compliance (SOX, HIPAA, SOC 2),
+    incident investigation (what happened and why),
+    and behavior analysis (is the agent acting correctly).
+
+───────────────────────────────────────────────────
+
+Q30. An agent needs to send emails on behalf of users.
+     What's the MOST important safety measure?
+
+    A) Rate limit to 5 emails per hour
+    B) Require template-based emails (no free-form body)
+    C) Log all sent emails
+    D) Add an unsubscribe link
+
+    ANSWER: B — Template-based emails
+    Removing free-form capability prevents prompt injection
+    from composing arbitrary email content. The agent can
+    fill template fields but cannot write custom messages.
+    This is a structural fix. A, C, D are supplementary.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scoring Guide</h2>
+
+<pre><code>COUNT YOUR CORRECT ANSWERS:
+
+  28-30: EXCELLENT — You're ready for the exam
+  22-27: GOOD — Review missed topics, retake in a week
+  16-21: NEEDS WORK — Re-study Modules 3-5, retake in 2 weeks
+  Below 16: STUDY MORE — Go through all lessons again
+
+DOMAIN BREAKDOWN (identify weak areas):
+  Domain 1 (Q1-7):   ___/7
+  Domain 2 (Q8-14):  ___/7
+  Domain 3 (Q15-20): ___/6
+  Domain 4 (Q21-25): ___/5
+  Domain 5 (Q26-30): ___/5
+
+  If any domain is below 60%, focus your study there.
+  The real exam requires balanced knowledge across all domains.</code></pre>
+</div>
+
+</div>

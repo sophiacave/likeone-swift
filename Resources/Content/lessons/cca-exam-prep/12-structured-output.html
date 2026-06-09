@@ -1,0 +1,370 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>How to enforce structured output from Claude (JSON, XML, schemas)</li>
+    <li>Schema validation strategies and error recovery</li>
+    <li>When to use structured vs free-form output</li>
+    <li>How the CCA exam tests output reliability patterns</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>Why Structured Output Matters</h2>
+
+<p>When Claude's output feeds into downstream systems (APIs, databases, UIs), it must be machine-parseable. Free-form text breaks pipelines. The CCA exam tests your ability to design reliable output schemas.</p>
+
+<pre><code>FREE-FORM (fragile):
+  "I found 3 bugs in the code. The first one is in auth.py
+   on line 45 where the password isn't hashed..."
+  → Hard to parse. Format varies. No guaranteed structure.
+
+STRUCTURED (reliable):
+  {
+    "findings": [
+      {
+        "file": "auth.py",
+        "line": 45,
+        "severity": "critical",
+        "category": "security",
+        "description": "Password stored in plaintext",
+        "suggestion": "Use bcrypt.hashpw() before storing"
+      }
+    ],
+    "summary": { "critical": 1, "high": 1, "medium": 1 }
+  }
+  → Parseable. Consistent. Feeds directly into dashboards.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Enforcing Structured Output</h2>
+
+<h3>Method 1: Prompt-Based (simplest)</h3>
+<pre><code>SYSTEM PROMPT:
+  "Always respond in valid JSON matching this schema:
+   {
+     'status': 'success' | 'error',
+     'data': { ... },
+     'message': 'human-readable summary'
+   }
+   Do not include any text outside the JSON block."
+
+RELIABILITY: ~90-95%
+  Claude usually follows, but may add text around JSON.
+  May deviate on complex or ambiguous requests.
+
+MITIGATION:
+  Parse response. If JSON extraction fails, retry with:
+  "Your previous response was not valid JSON. Please respond
+   with ONLY the JSON object, no surrounding text."</code></pre>
+
+<h3>Method 2: Output Format Flag (Claude Code)</h3>
+<pre><code>claude -p "Analyze this code" --output-format json
+
+RELIABILITY: ~99%
+  Claude Code's JSON mode enforces structured output.
+  Response is always parseable JSON.
+
+LIMITATION:
+  Only available in Claude Code CLI mode.
+  Not available in all API contexts.</code></pre>
+
+<h3>Method 3: Schema + Validation (production-grade)</h3>
+<pre><code>FLOW:
+  1. Define schema (JSON Schema, Zod, Pydantic)
+  2. Include schema in system prompt
+  3. Claude generates response
+  4. Validate response against schema
+  5. If invalid: retry with validation errors as feedback
+
+EXAMPLE WITH JSON SCHEMA:
+  Schema:
+    {
+      "type": "object",
+      "required": ["findings", "summary"],
+      "properties": {
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["file", "line", "severity"],
+            "properties": {
+              "file": { "type": "string" },
+              "line": { "type": "integer", "minimum": 1 },
+              "severity": {
+                "type": "string",
+                "enum": ["critical", "high", "medium", "low"]
+              }
+            }
+          }
+        },
+        "summary": {
+          "type": "object",
+          "properties": {
+            "total": { "type": "integer" }
+          }
+        }
+      }
+    }
+
+  System prompt:
+    "Respond with JSON matching the provided schema.
+     [schema included above]
+     Validate your output mentally before responding."
+
+RELIABILITY: ~99.5% with retry
+  Schema in prompt + post-validation + retry = near-perfect.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Schema Design Principles</h2>
+
+<pre><code>1. USE ENUMS FOR CATEGORICAL DATA
+   BAD:  "severity": { "type": "string" }
+         → Claude might return "Critical", "CRITICAL", "crit", "3"
+   GOOD: "severity": { "enum": ["critical", "high", "medium", "low"] }
+         → Exactly one of four valid values.
+
+2. SET REQUIRED FIELDS
+   BAD:  All fields optional
+         → Claude may omit critical data.
+   GOOD: Required fields are explicitly listed.
+         Optional fields have defaults.
+
+3. USE APPROPRIATE TYPES
+   BAD:  "line_number": { "type": "string" }
+         → "45" vs 45 vs "line 45" — ambiguous.
+   GOOD: "line_number": { "type": "integer", "minimum": 1 }
+         → Always a positive integer.
+
+4. ADD DESCRIPTIONS
+   BAD:  "score": { "type": "number" }
+         → Score of what? What range?
+   GOOD: "score": {
+           "type": "number",
+           "minimum": 0, "maximum": 100,
+           "description": "Confidence score as percentage"
+         }
+
+5. LIMIT ARRAY SIZES
+   BAD:  "items": { "type": "array" }
+         → Could return 0 or 10,000 items.
+   GOOD: "items": {
+           "type": "array",
+           "minItems": 1, "maxItems": 20
+         }</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Error Recovery Patterns</h2>
+
+<pre><code>PATTERN 1: PARSE-RETRY
+  attempt = 0
+  while attempt < 3:
+    response = claude.generate(prompt)
+    try:
+      data = json.parse(response)
+      validate(data, schema)
+      return data
+    except ParseError:
+      prompt = f"Previous response was invalid JSON: {error}.
+                Fix and respond with valid JSON only."
+      attempt += 1
+  raise StructuredOutputFailed
+
+PATTERN 2: EXTRACT-FROM-TEXT
+  If Claude wraps JSON in markdown or explanation:
+    response = "Here's the analysis:\n```json\n{...}\n```"
+    → Extract JSON between ```json and ```
+    → Parse extracted block
+  Regex: /```json\s*([\s\S]*?)```/
+
+PATTERN 3: FALLBACK TO SIMPLE
+  If complex schema fails repeatedly:
+    → Fall back to simpler schema
+    → Or fall back to key-value pairs
+    → Or extract specific fields with targeted prompts
+
+  Complex (fails): { nested: { deeply: { structured: data } } }
+  Fallback: { "result": "string summary", "count": 5 }
+
+PATTERN 4: STREAMING WITH VALIDATION
+  For long outputs, validate incrementally:
+    → Parse each JSON object as it arrives
+    → Validate against schema
+    → If invalid mid-stream, interrupt and retry
+    → Don't wait until end to discover failure</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>When NOT to Use Structured Output</h2>
+
+<pre><code>USE FREE-FORM WHEN:
+  ✓ Output is for humans (explanations, documentation)
+  ✓ Content is inherently unstructured (creative writing)
+  ✓ Flexibility matters more than parseability
+  ✓ Interactive conversation (not a pipeline)
+
+USE STRUCTURED WHEN:
+  ✓ Output feeds into code (APIs, databases, UIs)
+  ✓ Downstream processing depends on specific fields
+  ✓ Multiple outputs must be comparable (benchmarks, audits)
+  ✓ Automated pipelines (no human reading the raw output)
+
+HYBRID APPROACH:
+  {
+    "structured_data": {
+      "findings": [...],
+      "metrics": {...}
+    },
+    "human_summary": "Found 3 critical issues in the auth module..."
+  }
+  → Machine reads structured_data. Human reads summary.
+  → Best of both worlds.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Exam Scenario Practice</h2>
+
+<h3>Scenario: Multi-Step Pipeline</h3>
+<pre><code>QUESTION:
+  You're building a pipeline:
+    Claude extracts data → transforms it → loads into database.
+  Each step's output is the next step's input.
+  Design the output schemas.
+
+STRONG ANSWER:
+  STEP 1 — EXTRACT (Claude reads document):
+    {
+      "extracted": {
+        "entities": [
+          { "name": "string", "type": "person|org|location",
+            "confidence": 0.0-1.0 }
+        ],
+        "dates": [
+          { "raw": "string", "normalized": "YYYY-MM-DD" }
+        ],
+        "amounts": [
+          { "raw": "string", "value": 0.00, "currency": "USD" }
+        ]
+      },
+      "metadata": {
+        "source_length": 1234,
+        "extraction_notes": "string"
+      }
+    }
+
+  STEP 2 — TRANSFORM (Claude cleans and deduplicates):
+    {
+      "transformed": {
+        "entities": [same schema, deduplicated],
+        "relationships": [
+          { "from": "entity_name", "to": "entity_name",
+            "type": "works_at|located_in|owns" }
+        ]
+      },
+      "changes": {
+        "duplicates_removed": 3,
+        "entities_merged": 1
+      }
+    }
+
+  STEP 3 — LOAD (generate SQL):
+    {
+      "sql_statements": [
+        "INSERT INTO entities (name, type) VALUES (...)",
+        "INSERT INTO relationships (...)"
+      ],
+      "dry_run": true,
+      "affected_rows": 15
+    }
+
+  KEY DESIGN CHOICES:
+  - Each schema is self-contained (no external references)
+  - Metadata at each step for debugging
+  - dry_run flag prevents accidental writes
+  - Confidence scores allow downstream filtering
+
+WEAK ANSWER: "Have Claude output JSON at each step"
+  → No schema definition
+  → No validation strategy
+  → No metadata for debugging</code></pre>
+
+<h3>Scenario: Error Reporting Schema</h3>
+<pre><code>QUESTION:
+  Design a structured output schema for Claude Code
+  that reports errors encountered during a task.
+  It should work for any type of error.
+
+STRONG ANSWER:
+  {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": ["status", "errors"],
+    "properties": {
+      "status": {
+        "enum": ["success", "partial", "failed"]
+      },
+      "errors": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["code", "message", "recoverable"],
+          "properties": {
+            "code": {
+              "type": "string",
+              "pattern": "^[A-Z_]+$",
+              "description": "Error code like FILE_NOT_FOUND"
+            },
+            "message": {
+              "type": "string",
+              "maxLength": 500
+            },
+            "recoverable": { "type": "boolean" },
+            "attempted_fix": {
+              "type": "string",
+              "description": "What the agent tried to fix it"
+            },
+            "context": {
+              "type": "object",
+              "properties": {
+                "file": { "type": "string" },
+                "line": { "type": "integer" },
+                "tool": { "type": "string" }
+              }
+            }
+          }
+        }
+      },
+      "completed_steps": { "type": "integer", "minimum": 0 },
+      "total_steps": { "type": "integer", "minimum": 1 }
+    }
+  }
+
+  WHY THIS WORKS:
+  - Status enum gives quick pass/fail signal
+  - Error codes are machine-parseable (regex enforced)
+  - recoverable flag tells orchestrator whether to retry
+  - context links errors to specific files/tools
+  - Progress tracking (completed_steps/total_steps)</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+  <li><strong>Use schemas with enums and required fields.</strong> Don't leave output format to chance.</li>
+  <li><strong>Validate after generation.</strong> Trust but verify — always parse and check.</li>
+  <li><strong>Retry with error feedback.</strong> Include the validation error in the retry prompt.</li>
+  <li><strong>Simple schemas succeed more often.</strong> Deeply nested = higher failure rate.</li>
+  <li><strong>Include metadata.</strong> Source, confidence, and notes enable debugging.</li>
+  <li><strong>Hybrid for human + machine consumers.</strong> Structured data + human summary.</li>
+</ol>
+
+<div class="callout">
+<strong>CCA exam weight:</strong> Structured output appears in Domain 1 (Tool Use) and Domain 4 (Deployment). Expect 2-3 questions on schema design, validation strategies, and pipeline output chaining.
+</div>
+</div>
+
+</div>

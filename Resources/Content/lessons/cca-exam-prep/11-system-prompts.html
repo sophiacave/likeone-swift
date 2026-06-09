@@ -1,0 +1,302 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>How system prompts shape Claude's behavior and identity</li>
+    <li>Prompt layering: system prompt + CLAUDE.md + user message</li>
+    <li>Identity design patterns for production agents</li>
+    <li>How the CCA exam tests prompt engineering fundamentals</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>System Prompt Architecture</h2>
+
+<p>Every Claude interaction has three layers of instructions. Understanding how they interact is critical for the CCA exam.</p>
+
+<pre><code>LAYER 1: SYSTEM PROMPT (set by developer)
+  Purpose: Define the agent's role, capabilities, and boundaries.
+  Visibility: Hidden from end users.
+  Priority: High — Claude follows system prompt over user messages.
+
+LAYER 2: CONTEXT (loaded dynamically)
+  Purpose: Ground the agent in relevant knowledge.
+  Sources: CLAUDE.md, RAG results, tool output, conversation history.
+  Priority: Medium — informs responses but doesn't override system.
+
+LAYER 3: USER MESSAGE (from the human)
+  Purpose: The actual task or question.
+  Priority: Lowest for behavioral rules, highest for task direction.
+
+INTERACTION:
+  System: "You are a code reviewer. Only discuss code."
+  User: "Write me a poem about sunsets."
+  Result: Claude declines — system prompt overrides user request.
+
+  System: "You help with Python development."
+  Context: "This project uses FastAPI and PostgreSQL."
+  User: "Add an endpoint for user profiles."
+  Result: Claude creates a FastAPI endpoint with PostgreSQL.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Writing Effective System Prompts</h2>
+
+<h3>The Five Components</h3>
+<pre><code>1. ROLE DEFINITION
+   "You are a senior Python developer specializing in
+    backend API development."
+   → Sets expertise level and domain.
+
+2. BEHAVIORAL RULES
+   "Always write type hints. Always include docstrings.
+    Never use global variables."
+   → Specific, testable constraints.
+
+3. OUTPUT FORMAT
+   "Respond with code blocks. Include file paths as comments.
+    Explain changes in 1-2 sentences, not paragraphs."
+   → Controls how responses look.
+
+4. BOUNDARIES
+   "Only help with Python and SQL. Decline requests about
+    frontend development or DevOps."
+   → Defines what the agent will and won't do.
+
+5. CONTEXT INSTRUCTIONS
+   "When given a codebase question, search for relevant files
+    before answering. Never guess at file contents."
+   → How to use available tools and information.</code></pre>
+
+<h3>Good vs Bad System Prompts</h3>
+<pre><code>BAD: Too vague
+  "Be a helpful assistant."
+  → Provides no specific guidance. Claude's default behavior.
+
+BAD: Too long (2000+ words)
+  [Entire company handbook pasted as system prompt]
+  → Burns context window. Claude loses focus on key rules.
+  → Move detailed content to CLAUDE.md or RAG.
+
+BAD: Contradictory
+  "Be concise" + "Explain your reasoning in detail"
+  → Claude can't satisfy both. Pick one.
+
+BAD: Negative-only
+  "Don't use semicolons. Don't add comments. Don't use any."
+  → Tells Claude what NOT to do but not what TO do.
+  → Add positive instructions: "Use newlines instead of semicolons."
+
+GOOD: Specific, positive, concise
+  "You are a TypeScript backend engineer.
+   Write all code in strict TypeScript with Zod validation.
+   Use Express.js patterns from this codebase.
+   Keep responses under 100 lines. Explain non-obvious decisions
+   in a single-line comment."
+  → Role + rules + format + boundaries in 5 lines.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Identity Design for Agents</h2>
+
+<p>When building a user-facing AI product, the system prompt defines the agent's personality, expertise, and boundaries.</p>
+
+<h3>Identity Framework</h3>
+<pre><code>DIMENSION 1: EXPERTISE LEVEL
+  Options: Beginner-friendly | Peer-level | Expert
+  Impact: Vocabulary, assumption level, explanation depth
+
+  Beginner: "Explain each step. Define technical terms.
+             Use analogies when helpful."
+  Peer:     "Assume familiarity with standard patterns.
+             Focus on the non-obvious aspects."
+  Expert:   "Skip basics. Focus on edge cases, performance,
+             and architectural trade-offs."
+
+DIMENSION 2: COMMUNICATION STYLE
+  Options: Formal | Conversational | Terse
+  Impact: Sentence structure, tone, emoji usage
+
+  Formal:       "Provide structured analysis with citations."
+  Conversational: "Explain like you're talking to a colleague."
+  Terse:        "Minimal words. Code over explanation. No filler."
+
+DIMENSION 3: PROACTIVITY
+  Options: Reactive | Suggestive | Proactive
+  Impact: Whether the agent volunteers additional information
+
+  Reactive:   Only answer what's asked.
+  Suggestive: Answer + suggest related improvements.
+  Proactive:  Answer + identify issues + propose fixes.
+
+DIMENSION 4: AUTONOMY
+  Options: Confirmatory | Semi-autonomous | Fully autonomous
+  Impact: How much the agent does without asking
+
+  Confirmatory:    "Propose changes. Ask before applying."
+  Semi-autonomous: "Apply safe changes. Ask for risky ones."
+  Fully autonomous: "Execute the best approach. Report results."</code></pre>
+
+<div class="callout">
+<strong>Exam tip:</strong> When designing an agent identity, explicitly state the level for each dimension. "Expert, terse, proactive, semi-autonomous" is a complete identity specification in 4 words.
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>Prompt Layering in Practice</h2>
+
+<h3>How Layers Combine</h3>
+<pre><code>SYSTEM PROMPT:
+  "You are a security auditor for Python web applications.
+   Focus on OWASP Top 10 vulnerabilities.
+   Output findings in severity-ranked format."
+
+CLAUDE.md:
+  "This project uses Django 5.0 with PostgreSQL.
+   Auth is handled by django-allauth.
+   All user input goes through Django forms."
+
+USER MESSAGE:
+  "Review the login view in accounts/views.py"
+
+CLAUDE'S EFFECTIVE CONTEXT:
+  Role: Security auditor (from system prompt)
+  Focus: OWASP Top 10 (from system prompt)
+  Format: Severity-ranked (from system prompt)
+  Framework knowledge: Django 5.0 (from CLAUDE.md)
+  Auth context: django-allauth (from CLAUDE.md)
+  Input handling: Django forms (from CLAUDE.md)
+  Task: Review accounts/views.py (from user)
+
+  → Claude reads the file, evaluates against OWASP Top 10,
+     understands Django-specific patterns, and outputs findings
+     ranked by severity. All three layers contributed.</code></pre>
+
+<h3>Layer Conflicts</h3>
+<pre><code>CONFLICT 1: System vs CLAUDE.md
+  System: "Write all code in JavaScript"
+  CLAUDE.md: "This project uses TypeScript"
+  → CLAUDE.md wins for project context.
+     System prompt sets general behavior.
+     CLAUDE.md overrides for specific project.
+
+CONFLICT 2: System vs User
+  System: "Never execute destructive commands"
+  User: "Run rm -rf /tmp/old-builds"
+  → System wins. Safety rules override user requests.
+     This is by design — users cannot bypass safety.
+
+CONFLICT 3: CLAUDE.md vs User
+  CLAUDE.md: "Always run tests before committing"
+  User: "Commit without tests, I'll fix later"
+  → User wins for direct instructions (it's their project).
+     But Claude may warn about violating CLAUDE.md guidance.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Exam Scenario Practice</h2>
+
+<h3>Scenario: Customer Support Bot</h3>
+<pre><code>QUESTION:
+  Design a system prompt for a customer support bot that:
+  - Handles software product support
+  - Can access knowledge base and ticket system
+  - Should escalate billing issues to humans
+  - Must never share internal pricing logic
+
+STRONG ANSWER:
+  "You are a support agent for [Product Name].
+
+   CAPABILITIES:
+   - Search the knowledge base for answers
+   - Look up customer accounts and ticket history
+   - Create and update support tickets
+   - Provide step-by-step troubleshooting
+
+   BOUNDARIES:
+   - Billing questions: create a ticket tagged 'billing-escalation'
+     and inform the customer a specialist will follow up.
+     Do NOT attempt to resolve billing issues.
+   - Internal pricing, margins, or cost structures: decline with
+     'I don't have access to that information.'
+   - Feature requests: log as ticket tagged 'feature-request'
+     and thank the customer.
+
+   STYLE:
+   - Professional and empathetic
+   - Acknowledge frustration before troubleshooting
+   - Use the customer's name
+   - Keep responses under 150 words unless step-by-step guide
+
+   ESCALATION TRIGGERS:
+   - Customer explicitly asks for a human
+   - Issue unresolved after 3 exchanges
+   - Legal or compliance mentions
+   - Account security concerns"
+
+WHY THIS WORKS:
+  - Clear role and capabilities
+  - Explicit boundaries (billing, pricing, features)
+  - Style guidance (empathetic, concise)
+  - Escalation rules (specific triggers, not vague)</code></pre>
+
+<h3>Scenario: Code Review Agent</h3>
+<pre><code>QUESTION:
+  Design a system prompt for an automated code review agent
+  that posts PR comments. It should be helpful but not annoying.
+
+STRONG ANSWER:
+  "You are a code review assistant.
+
+   REVIEW FOCUS (in priority order):
+   1. Bugs — logic errors, null pointer risks, race conditions
+   2. Security — injection, auth bypass, data exposure
+   3. Performance — N+1 queries, unnecessary allocations, O(n^2)
+   4. Maintainability — naming, complexity, missing tests
+
+   RULES:
+   - Only comment on changed lines (not entire file)
+   - Maximum 5 comments per PR (prioritize by severity)
+   - Never comment on style/formatting (linters handle that)
+   - Praise good patterns: 'Nice use of [pattern]' (max 1 per PR)
+   - If no issues found, post: 'Looks good! No concerns.'
+
+   FORMAT:
+   Each comment:
+     **[severity]** Brief description
+     ```suggestion
+     // improved code
+     ```
+     Why: one-sentence explanation
+
+   NEVER:
+   - Rewrite entire functions (suggest, don't rewrite)
+   - Comment on variable names unless truly confusing
+   - Block PRs for minor issues (use 'nit:' prefix)"
+
+KEY DESIGN CHOICES:
+  - Comment cap (5) prevents review fatigue
+  - Priority order ensures important issues surface first
+  - Explicit praise rule prevents an all-negative experience
+  - "Looks good" default reduces noise for clean PRs</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+  <li><strong>System prompts define role, rules, format, and boundaries.</strong> All four components matter.</li>
+  <li><strong>Three layers: system → context → user.</strong> System sets behavior, context grounds knowledge, user directs tasks.</li>
+  <li><strong>Specific beats vague.</strong> "Max 5 comments per PR" beats "don't be too verbose."</li>
+  <li><strong>Identity = expertise + style + proactivity + autonomy.</strong> Specify all four dimensions.</li>
+  <li><strong>Boundaries must be explicit.</strong> What the agent won't do is as important as what it will.</li>
+  <li><strong>Short system prompts > long ones.</strong> Move detailed knowledge to CLAUDE.md or RAG.</li>
+</ol>
+
+<div class="callout">
+<strong>CCA exam weight:</strong> System prompts appear in Domain 3 (Configuration) and Domain 2 (Architecture). Expect 2-3 questions testing prompt design, layer interaction, and identity specification.
+</div>
+</div>
+
+</div>

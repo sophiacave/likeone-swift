@@ -1,0 +1,352 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>Claude Code's permission model: allow, deny, and approval flows</li>
+    <li>Hook system: pre/post execution hooks for safety and automation</li>
+    <li>How to design permission policies for teams and CI</li>
+    <li>How the CCA exam tests safety and governance configurations</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>The Permission Model</h2>
+
+<p>Claude Code operates in a permission sandbox. Every tool call can be allowed, denied, or prompted for approval. Understanding this model is fundamental to both production use and the CCA exam.</p>
+
+<h3>Three Permission Modes</h3>
+<pre><code>1. ALLOWLIST MODE (recommended for CI/CD)
+   Only specified tools can run. Everything else is blocked.
+
+   claude -p "Review this code" --allowedTools "Read,Grep,Glob"
+   → Claude can read files and search. Cannot write, edit, or run bash.
+
+2. PROMPT MODE (default for interactive use)
+   Claude proposes a tool call. Human approves or denies.
+
+   Claude: "I'd like to run `npm test`"
+   Human:  [Allow] or [Deny]
+
+   User can set "always allow" for specific tools in a session.
+
+3. TRUST MODE (power users, full autonomy)
+   All tools run without prompting.
+   Use only when: you trust the agent's judgment AND
+   consequences are reversible AND you're monitoring.
+
+EXAM KEY: Match the permission mode to the risk level.
+  CI/CD → Allowlist (no human present)
+  Development → Prompt (human reviews risky actions)
+  Trusted workflows → Trust (experienced user, safe environment)</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Tool Permission Categories</h2>
+
+<pre><code>READ-ONLY TOOLS (low risk):
+  Read    — read file contents
+  Grep    — search file contents
+  Glob    — find files by pattern
+  → Safe to always-allow. Cannot modify state.
+
+WRITE TOOLS (medium risk):
+  Write   — create/overwrite files
+  Edit    — modify existing files
+  → Can change code. Review changes before committing.
+  → Safe in development. Restrict in CI.
+
+EXECUTION TOOLS (high risk):
+  Bash    — run arbitrary shell commands
+  → Can do anything: delete files, send network requests,
+     install packages, modify system config.
+  → NEVER allow unrestricted in CI.
+  → In interactive mode: review each command.
+
+EXTERNAL TOOLS (variable risk):
+  MCP servers — custom tool integrations
+  → Risk depends on what the tools do.
+  → Database write tools: high risk.
+  → API read tools: low-medium risk.
+  → Evaluate each tool individually.
+
+PERMISSION MATRIX:
+  ┌──────────────┬──────────┬──────────┬──────────┐
+  │ Tool         │ Dev      │ CI       │ Prod     │
+  ├──────────────┼──────────┼──────────┼──────────┤
+  │ Read/Grep    │ allow    │ allow    │ allow    │
+  │ Write/Edit   │ prompt   │ restrict │ deny     │
+  │ Bash         │ prompt   │ restrict │ deny     │
+  │ MCP (read)   │ allow    │ allow    │ allow    │
+  │ MCP (write)  │ prompt   │ deny     │ deny     │
+  └──────────────┴──────────┴──────────┴──────────┘</code></pre>
+
+<div class="callout">
+<strong>Exam rule:</strong> If the question asks "what's the safest configuration for X?" — start with read-only and add permissions only as justified by the use case.
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>Hooks: Pre and Post Execution</h2>
+
+<p>Hooks are shell commands that run before or after Claude's tool calls. They add safety layers without changing Claude's behavior.</p>
+
+<h3>Hook Types</h3>
+<pre><code>PRE-TOOL HOOKS:
+  Run BEFORE a tool executes. Can block the tool call.
+
+  Use cases:
+  - Validate file paths before write operations
+  - Check for secrets before committing
+  - Enforce naming conventions
+  - Block dangerous commands (rm -rf, DROP TABLE)
+
+POST-TOOL HOOKS:
+  Run AFTER a tool completes. Can alert or log.
+
+  Use cases:
+  - Run linter after file edits
+  - Notify Slack after deployments
+  - Log all bash commands for audit
+  - Update metrics after API calls
+
+PROMPT SUBMIT HOOKS:
+  Run when user submits a prompt. Can modify or block.
+
+  Use cases:
+  - Inject additional context
+  - Filter sensitive information from prompts
+  - Log all user requests</code></pre>
+
+<h3>Hook Configuration</h3>
+<pre><code>HOOKS FILE: .claude/hooks.json or ~/.claude/hooks.json
+
+{
+  "hooks": {
+    "pre_tool_use": [
+      {
+        "tool": "Bash",
+        "command": "~/scripts/validate-bash-command.sh \"$COMMAND\"",
+        "description": "Block dangerous bash commands"
+      }
+    ],
+    "post_tool_use": [
+      {
+        "tool": "Edit",
+        "command": "npx eslint --fix \"$FILE_PATH\"",
+        "description": "Auto-lint after edits"
+      }
+    ]
+  }
+}
+
+HOW HOOKS INTERACT WITH CLAUDE:
+  1. Claude decides to call a tool
+  2. Pre-hook runs → if it exits non-zero, tool is BLOCKED
+  3. Claude receives "hook blocked this action" message
+  4. Claude adjusts approach based on hook feedback
+  5. If tool runs, post-hook runs after completion</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Safety Hook Patterns</h2>
+
+<h3>Pattern 1: Secret Detection</h3>
+<pre><code>HOOK: Pre-commit secret scanner
+
+PURPOSE: Prevent accidental credential commits.
+
+validate-no-secrets.sh:
+  #!/bin/bash
+  # Block if staged files contain potential secrets
+  patterns="API_KEY|SECRET|PASSWORD|TOKEN|PRIVATE_KEY"
+  if git diff --cached | grep -iE "$patterns" > /dev/null; then
+    echo "BLOCKED: Potential secret detected in staged files"
+    exit 1
+  fi
+  exit 0
+
+CONFIGURATION:
+  Pre-tool hook on Bash when command contains "git commit"
+  → Scans staged files for secret patterns
+  → Blocks commit if detected
+  → Claude gets feedback and removes the secret</code></pre>
+
+<h3>Pattern 2: Destructive Command Guard</h3>
+<pre><code>HOOK: Block dangerous bash commands
+
+validate-bash.sh:
+  #!/bin/bash
+  COMMAND="$1"
+
+  # Block destructive patterns
+  DANGEROUS="rm -rf|DROP TABLE|DROP DATABASE|truncate|--force|--hard"
+  if echo "$COMMAND" | grep -iE "$DANGEROUS" > /dev/null; then
+    echo "BLOCKED: Destructive command detected: $COMMAND"
+    exit 1
+  fi
+  exit 0
+
+RESULT: Claude cannot accidentally run destructive commands.
+        It receives the block message and finds a safer approach.</code></pre>
+
+<h3>Pattern 3: Auto-Lint on Edit</h3>
+<pre><code>HOOK: Post-edit linter
+
+PURPOSE: Maintain code quality without manual intervention.
+
+CONFIGURATION:
+  Post-tool hook on Edit and Write:
+    Run ESLint/Prettier/Black on the modified file.
+    If linter fixes issues, the fixes are applied automatically.
+    Claude sees the linted output.
+
+BENEFIT: Claude's code always meets style standards.
+         No separate "format code" step needed.</code></pre>
+
+<h3>Pattern 4: Audit Logger</h3>
+<pre><code>HOOK: Log all tool calls
+
+PURPOSE: Complete audit trail for compliance.
+
+audit-logger.sh:
+  #!/bin/bash
+  TOOL="$1"
+  TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+  echo "$TIMESTAMP | $TOOL | $2" >> ~/.claude/audit.log
+
+CONFIGURATION:
+  Post-tool hook on ALL tools.
+  Logs: timestamp, tool name, parameters.
+
+USE CASE: SOC 2 compliance, incident investigation,
+          understanding agent behavior patterns.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Permission Policies for Teams</h2>
+
+<pre><code>SCENARIO: Engineering team of 15 using Claude Code.
+
+TIERED POLICY:
+
+  JUNIOR DEVELOPERS:
+    - Read, Grep, Glob: allow
+    - Write, Edit: prompt (review each change)
+    - Bash: prompt (review each command)
+    - Deploy tools: deny
+    - Database tools: deny
+
+  SENIOR DEVELOPERS:
+    - Read, Grep, Glob: allow
+    - Write, Edit: allow
+    - Bash: prompt
+    - Deploy tools: prompt
+    - Database tools: prompt (read-only)
+
+  TECH LEADS:
+    - All tools: allow (trust mode)
+    - Hooks: audit logger active
+    - Deploy tools: allow with post-hook notification
+
+  CI/CD:
+    - Read, Grep, Glob: allow
+    - Write: deny (or restricted to test files)
+    - Bash: restricted allowlist
+    - Deploy: only via approved pipeline commands
+
+ENFORCEMENT:
+  Enterprise policy sets the ceiling.
+  Individual users cannot exceed their tier.
+  Project CLAUDE.md can restrict further but never expand.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Exam Scenario Practice</h2>
+
+<h3>Scenario: Healthcare Compliance</h3>
+<pre><code>QUESTION:
+  A healthcare startup uses Claude Code for development.
+  Their app handles Protected Health Information (PHI).
+  HIPAA requires audit trails and access controls.
+  Design the permission and hook configuration.
+
+STRONG ANSWER:
+  PERMISSIONS:
+    - All database tools: prompt mode (every query reviewed)
+    - Bash: restricted allowlist (build/test commands only)
+    - Write: prompt mode for all src/ files
+    - Read: allow (reading code is safe)
+
+  HOOKS:
+    Pre-tool (Bash):
+      Block any command accessing production database
+      Block any command with patient data table names
+
+    Pre-tool (Read):
+      Block reading files matching *.env, *credentials*, *keys*
+
+    Post-tool (ALL):
+      Audit logger → append to HIPAA-compliant audit log
+      Include: timestamp, user, tool, file paths, session ID
+
+    Pre-tool (Write/Edit):
+      Scan for PHI patterns (SSN, MRN, DOB formats)
+      Block if PHI detected in code files
+
+  ENTERPRISE POLICY:
+    "Never access production databases from development"
+    "Never include real patient data in tests — use synthetic data"
+    "All code changes to auth/ require security review"
+
+WEAK ANSWER: "Use prompt mode for everything"
+  → No audit trail (HIPAA requirement)
+  → No PHI detection
+  → No production isolation</code></pre>
+
+<h3>Scenario: Financial Trading Platform</h3>
+<pre><code>QUESTION:
+  Trading platform where code changes can affect live trades.
+  A bug could cause financial loss. Design guardrails.
+
+STRONG ANSWER:
+  HOOKS:
+    Pre-tool (Edit/Write) on src/trading/**:
+      1. Block during market hours (9:30 AM - 4 PM ET)
+      2. Require --override flag for after-hours changes
+      3. Auto-create backup of original file
+
+    Pre-tool (Bash) containing "deploy":
+      1. Verify all tests pass
+      2. Check no open P0 incidents
+      3. Require change ticket number
+      4. Block if deploying during market hours
+
+    Post-tool (Edit/Write) on src/trading/**:
+      1. Run trading simulation tests
+      2. Compare output against known-good baseline
+      3. Alert team Slack channel
+
+  KEY INSIGHT: Time-based permissions.
+    Market hours = read-only mode on trading code.
+    After hours = normal development with extra review.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+  <li><strong>Three modes: allowlist, prompt, trust.</strong> Match to risk level.</li>
+  <li><strong>Least privilege by default.</strong> Start with read-only, add as needed.</li>
+  <li><strong>Hooks add safety without limiting capability.</strong> Claude adapts to hook feedback.</li>
+  <li><strong>Audit trails are required for compliance.</strong> Post-hooks on all tools for regulated industries.</li>
+  <li><strong>Team policies should be tiered.</strong> Junior vs senior vs CI have different needs.</li>
+  <li><strong>Enterprise policy is the ceiling.</strong> Project and user configs cannot exceed it.</li>
+</ol>
+
+<div class="callout">
+<strong>CCA exam weight:</strong> Permissions and hooks appear in Domain 3 (Configuration) and Domain 5 (Security). Expect 3-4 questions. The exam specifically tests whether you can design permission policies that balance productivity with safety. "Allow everything" and "deny everything" are both wrong answers.
+</div>
+</div>
+
+</div>

@@ -1,0 +1,362 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>How to apply configuration knowledge to exam-style scenarios</li>
+    <li>Common configuration traps and how to avoid them</li>
+    <li>How to structure answers for maximum exam scoring</li>
+    <li>Practice scenarios covering all Domain 3 topics</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>Configuration Domain Overview</h2>
+
+<p>Domain 3 (Configuration & Customization) covers CLAUDE.md, commands, hooks, permissions, and how they work together. This lesson is pure exam practice — 6 scenarios with model answers.</p>
+
+<pre><code>DOMAIN 3 BREAKDOWN:
+  - CLAUDE.md hierarchy and cascading rules     ~25%
+  - Custom commands and skills                   ~20%
+  - Permission models and tool restrictions      ~25%
+  - Hooks and automation                         ~15%
+  - Team configuration and governance            ~15%
+
+ANSWER FRAMEWORK (use for every config question):
+  1. IDENTIFY the requirement (what must be configured)
+  2. SELECT the mechanism (CLAUDE.md, command, hook, permission)
+  3. SPECIFY the location (project, user, enterprise, subdirectory)
+  4. JUSTIFY the choice (why this mechanism, why this location)
+  5. ADDRESS edge cases (what could go wrong)</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 1: Migrating Configuration</h2>
+
+<pre><code>QUESTION:
+  A team currently maintains a 200-line CLAUDE.md that covers:
+  - Build commands (10 lines)
+  - Coding standards (40 lines)
+  - Security rules (30 lines)
+  - Deploy procedures (50 lines)
+  - Testing requirements (30 lines)
+  - Personal preferences from the tech lead (40 lines)
+
+  It's become hard to maintain. Restructure it.
+
+STRONG ANSWER:
+  SPLIT INTO:
+
+  CLAUDE.md (root, ~50 lines):
+    - Build commands
+    - Architecture overview
+    - Key constraints (database choice, framework version)
+    - Links to detailed docs
+
+  .claude/rules/coding-standards.md (~40 lines):
+    - Naming conventions, file structure
+    - Import ordering, code organization
+
+  .claude/rules/security.md (~30 lines):
+    - Secret handling, input validation
+    - Auth module restrictions
+
+  .claude/rules/deploy.md (~50 lines):
+    - Deploy pipeline steps
+    - Environment-specific instructions
+
+  .claude/rules/testing.md (~30 lines):
+    - Test frameworks, coverage requirements
+    - Integration test patterns
+
+  ~/.claude/rules/personal.md (~40 lines, TECH LEAD ONLY):
+    - Personal preferences (NOT shared with team)
+    - Moved OUT of project config into user config
+
+  WHY:
+  - Separation of concerns (each file has one topic)
+  - Personal preferences don't belong in project config
+  - Easier to review: git blame on specific topic files
+  - Team members can find relevant rules quickly
+  - Total context loaded is the same, but organized
+
+WEAK ANSWER: "Make the CLAUDE.md shorter"
+  → How? By removing content? By splitting? No specifics.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 2: Conflicting Team Rules</h2>
+
+<pre><code>QUESTION:
+  Two teams share a monorepo:
+  - Team A (frontend): "Use Prettier with single quotes"
+  - Team B (backend): "Use Prettier with double quotes"
+
+  Both teams modify shared utility files. How do you
+  configure Claude to follow the right convention?
+
+STRONG ANSWER:
+  ROOT CLAUDE.md:
+    "Shared utilities in lib/ use double quotes (backend standard).
+     When editing a file, match the existing quote style in that file."
+
+  packages/frontend/CLAUDE.md:
+    "Use Prettier with single quotes for all frontend code.
+     Config: packages/frontend/.prettierrc"
+
+  packages/backend/CLAUDE.md:
+    "Use Prettier with double quotes for all backend code.
+     Config: packages/backend/.prettierrc"
+
+  HOOK (post-edit):
+    Auto-run Prettier on saved files using the nearest .prettierrc.
+    Prettier resolves the correct config based on file location.
+
+  CONFLICT RESOLUTION FOR lib/:
+    Explicit rule in root CLAUDE.md picks a winner.
+    Post-edit hook enforces it automatically.
+    No ambiguity — Claude knows exactly what to do.
+
+  KEY INSIGHT: Don't rely on Claude to "figure it out."
+  Explicit rules in the right location prevent conflicts.
+  Hooks enforce automatically — no human needed.
+
+WEAK ANSWER: "Tell Claude to use single quotes"
+  → Ignores that backend needs double quotes
+  → Doesn't address shared files
+  → No enforcement mechanism</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 3: Gradual AI Adoption</h2>
+
+<pre><code>QUESTION:
+  A company is adopting Claude Code. They want to start
+  conservatively and expand permissions over time.
+  Design a 3-phase rollout plan.
+
+STRONG ANSWER:
+  PHASE 1 — READ ONLY (Weeks 1-4):
+    Permissions: Read, Grep, Glob only
+    Use cases: Code exploration, documentation, Q&A
+    Hooks: Audit logger on all tool calls
+    Goal: Team gets comfortable, builds trust
+    Metric: % of developers using Claude daily
+
+  PHASE 2 — ASSISTED EDITING (Weeks 5-8):
+    Permissions: Add Write, Edit in prompt mode
+    Use cases: Bug fixes, small features, test generation
+    Hooks: Pre-edit validation (no changes to protected files)
+           Post-edit linting
+    New commands: /review, /test-gen
+    Goal: Claude assists with code changes, human reviews all
+    Metric: Time saved per PR, error rate
+
+  PHASE 3 — TRUSTED WORKFLOWS (Weeks 9-12):
+    Permissions: Add Bash (prompt mode for new commands)
+    Use cases: Full development workflows, CI integration
+    Hooks: Secret detection, destructive command guard
+    New commands: /deploy, /migrate, /audit
+    Enterprise policy: Formal tool restrictions documented
+    Goal: Claude handles routine tasks autonomously
+    Metric: PRs created by Claude, deploy success rate
+
+  ROLLBACK PLAN:
+    If error rate exceeds 5% at any phase → revert to previous.
+    If security incident occurs → immediate Phase 1 lockdown.
+
+  KEY INSIGHT: Permission expansion is earned, not assumed.
+  Each phase builds evidence that more autonomy is safe.
+
+WEAK ANSWER: "Give everyone full access and see what happens"
+  → No safety progression
+  → No metrics
+  → No rollback plan</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 4: Regulatory Compliance</h2>
+
+<pre><code>QUESTION:
+  A bank must comply with SOX (Sarbanes-Oxley) which requires:
+  - Separation of duties (developer cannot deploy their own code)
+  - Complete audit trails
+  - Change management approval
+
+  Design the Claude Code configuration.
+
+STRONG ANSWER:
+  PERMISSIONS (by role):
+    Developer:
+      Read, Grep, Glob: allow
+      Write, Edit: allow (own branch only)
+      Bash: prompt mode, restricted commands
+      Deploy: DENY (separation of duties)
+
+    Reviewer:
+      Read, Grep, Glob: allow
+      Write, Edit: deny (reviewers don't write code)
+      Bash: allow (for running tests)
+      Approve: allow (new tool for PR approval)
+
+    Release Manager:
+      Deploy: prompt mode (requires change ticket)
+      All development tools: deny
+
+  HOOKS:
+    Pre-tool (ALL):
+      Log to immutable audit database:
+        - User identity
+        - Tool called
+        - Parameters
+        - Timestamp
+        - Session ID
+
+    Pre-tool (Bash containing "deploy"):
+      1. Verify deployer is not the PR author (separation of duties)
+      2. Verify change ticket exists and is approved
+      3. Verify all CI checks passed
+      4. Block if any check fails
+
+    Post-tool (Edit/Write):
+      1. Log change to SOX audit trail
+      2. Associate with change ticket number
+
+  ENTERPRISE POLICY:
+    "All code changes must reference a JIRA ticket number.
+     Deployments require approved change ticket.
+     Developer who wrote the code cannot approve or deploy it."
+
+  COMMAND:
+    .claude/commands/sox-deploy.md:
+      "Deploy change ticket $ARGUMENTS:
+       1. Verify you are not the code author
+       2. Verify ticket is approved in JIRA
+       3. Verify all tests pass
+       4. Execute deployment
+       5. Log deployment to SOX audit trail
+       6. Create post-deployment verification ticket"
+
+WEAK ANSWER: "Use prompt mode for deployments"
+  → No separation of duties
+  → No audit trail
+  → No change management integration</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 5: Open Source Project</h2>
+
+<pre><code>QUESTION:
+  You maintain a popular open source project with 50 contributors.
+  Many use Claude Code. You want consistent behavior across
+  all contributors without imposing personal preferences.
+  Design the configuration strategy.
+
+STRONG ANSWER:
+  CLAUDE.md (checked into repo):
+    ## Contributing
+    - Follow existing code style (run `npm run lint` to check)
+    - All PRs need tests. Run `npm test` before submitting.
+    - Commit messages follow Conventional Commits format.
+
+    ## Architecture
+    - Plugin system in src/plugins/ — each plugin is self-contained
+    - Core API in src/core/ — changes require maintainer review
+    - Tests in tests/ mirror src/ structure
+
+    ## Constraints
+    - No new dependencies without issue discussion first
+    - Core API is frozen until v3.0 — extend via plugins only
+    - Minimum Node.js version: 18
+
+  .claude/commands/contribute.md:
+    "Prepare a contribution:
+     1. Create a branch from main
+     2. Make changes following CLAUDE.md conventions
+     3. Add/update tests
+     4. Run `npm test` and `npm run lint`
+     5. Generate commit message in Conventional Commits format
+     6. Report any lint or test failures"
+
+  WHAT'S NOT IN CLAUDE.md:
+    - No personal preferences (tab vs space — let .editorconfig decide)
+    - No tool restrictions (contributors control their own setup)
+    - No deployment instructions (contributors don't deploy)
+
+  KEY INSIGHT: Open source CLAUDE.md should be minimal and objective.
+  It describes HOW the project works, not HOW you should work.
+  Contributors bring their own ~/.claude/rules/ preferences.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 6: Incident Response Configuration</h2>
+
+<pre><code>QUESTION:
+  During a production incident, Claude Code should switch from
+  normal development mode to incident response mode with
+  different permissions and workflows. Design this.
+
+STRONG ANSWER:
+  INCIDENT MODE COMMAND:
+    .claude/commands/incident.md:
+      "INCIDENT RESPONSE MODE — $ARGUMENTS
+
+       Priority: diagnose and fix. Speed over polish.
+
+       1. Read recent error logs (last 30 minutes)
+       2. Identify the failing component
+       3. Search git log for recent deploys
+       4. Propose a fix or rollback
+       5. If rollback: prepare the command (DO NOT execute)
+       6. If fix: implement minimal fix, run critical tests only
+
+       Rules during incident:
+       - Skip lint and format checks
+       - Skip non-critical tests
+       - Commit messages: 'fix(incident): [description]'
+       - No refactoring — minimal change only"
+
+  HOOKS ADJUSTMENT:
+    During incident, disable:
+      - Post-edit linting hook (speed over style)
+      - Pre-commit full test suite (run critical tests only)
+
+    Keep active:
+      - Audit logger (compliance still required)
+      - Secret detection (security always on)
+
+  PERMISSIONS:
+    Normal mode: Edit in prompt mode, Bash in prompt mode
+    Incident mode: Edit allow, Bash allow (speed is critical)
+    → Switched via environment variable or command flag
+
+  POST-INCIDENT:
+    - Revert to normal permissions
+    - Run full test suite
+    - Run linter on all changed files
+    - Create post-mortem document
+
+WEAK ANSWER: "Just give full access during incidents"
+  → No structured workflow
+  → No audit trail
+  → No return to normal mode</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+  <li><strong>Use the answer framework:</strong> Identify → Select → Specify → Justify → Edge cases.</li>
+  <li><strong>Configuration is about trade-offs.</strong> More safety = more friction. Balance them.</li>
+  <li><strong>Personal preferences go in user config.</strong> Project CLAUDE.md is for shared, objective rules.</li>
+  <li><strong>Hooks enforce rules automatically.</strong> Better than hoping Claude remembers.</li>
+  <li><strong>Gradual rollout beats big-bang adoption.</strong> Earn trust with evidence at each phase.</li>
+  <li><strong>Compliance questions need: audit trail + separation of duties + access control.</strong></li>
+</ol>
+
+<div class="callout">
+<strong>Exam tip:</strong> When you see a configuration scenario, mentally map it to the hierarchy (enterprise → project → user). Then decide: is this a CLAUDE.md rule, a command, a hook, or a permission? The exam rewards precise mechanism selection, not vague answers.
+</div>
+</div>
+
+</div>

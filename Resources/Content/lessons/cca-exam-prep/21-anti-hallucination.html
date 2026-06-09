@@ -1,0 +1,246 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>Why agents hallucinate and the 5 hallucination categories</li>
+    <li>Grounding strategies that prevent fabricated information</li>
+    <li>Verification patterns for production-critical agents</li>
+    <li>How the CCA exam tests anti-hallucination design</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>The Five Hallucination Categories</h2>
+
+<pre><code>1. FACTUAL HALLUCINATION
+   Agent states something false as fact.
+   "Python 3.12 removed list comprehensions" (it didn't)
+   CAUSE: Model generating plausible-sounding but wrong info.
+
+2. FABRICATED REFERENCES
+   Agent cites non-existent sources.
+   "According to RFC 9847..." (doesn't exist)
+   CAUSE: Model pattern-matches citation format without verifying.
+
+3. INVENTED DATA
+   Agent creates fake statistics or numbers.
+   "Our uptime was 99.97% last month" (never measured)
+   CAUSE: Model fills in numbers when none are available.
+
+4. CAPABILITY HALLUCINATION
+   Agent claims to have done something it didn't.
+   "I've deployed the fix to production" (no deploy tool exists)
+   CAUSE: Model generates expected success narrative.
+
+5. CONTEXT HALLUCINATION
+   Agent attributes information to the wrong source.
+   "As mentioned in the PR description..." (PR says no such thing)
+   CAUSE: Model confuses or fabricates context linkages.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Grounding Strategies</h2>
+
+<h3>Strategy 1: Source Grounding</h3>
+<pre><code>RULE: Every claim must have a source.
+
+SYSTEM PROMPT INSTRUCTION:
+  "When stating facts, cite the source.
+   If you don't have a source, say 'I don't have data on this.'
+   Never invent statistics, dates, or measurements.
+   Acceptable sources: tool results, file contents, user-provided data.
+   Unacceptable: your training data for specific numbers."
+
+EXAMPLE:
+  BAD:  "The API handles 10,000 requests per second."
+  GOOD: "According to the load test results in tests/bench.json,
+         the API handled 8,432 requests per second at p95."
+  BEST: "I don't have load test data. Run the benchmark
+         with 'npm run bench' to get current numbers."</code></pre>
+
+<h3>Strategy 2: Tool-First Architecture</h3>
+<pre><code>PRINCIPLE: Use tools to verify instead of generating from memory.
+
+BAD FLOW:
+  User: "What's our current user count?"
+  Agent: "Based on our growth trends, approximately 15,000 users."
+  → Hallucinated number. No tool call made.
+
+GOOD FLOW:
+  User: "What's our current user count?"
+  Agent: calls count_users() → returns 12,847
+  Agent: "There are 12,847 registered users as of right now."
+  → Real number from actual database query.
+
+SYSTEM PROMPT FOR THIS:
+  "For any question about current state (counts, status, metrics),
+   ALWAYS use a tool to get the real data.
+   Never estimate, predict, or guess from context.
+   If no tool exists for the data, say so."</code></pre>
+
+<h3>Strategy 3: Uncertainty Expression</h3>
+<pre><code>CALIBRATED CONFIDENCE:
+  Instead of stating everything as fact:
+
+  HIGH CONFIDENCE (from tool results):
+    "The build failed with exit code 1."
+    → Directly observed. No uncertainty needed.
+
+  MEDIUM CONFIDENCE (from context):
+    "This is likely caused by the recent dependency update,
+     based on the timing of the error and the changelog."
+    → Inference, not certainty. Qualified with "likely."
+
+  LOW CONFIDENCE (from training data):
+    "I believe this pattern is called the saga pattern,
+     but I'd recommend verifying in the documentation."
+    → Model knowledge, explicitly flagged as uncertain.
+
+  NO CONFIDENCE (no data available):
+    "I don't have information about the production error rate.
+     Check the monitoring dashboard or run the health check."
+    → Honest about gaps. Points to where data exists.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Verification Patterns</h2>
+
+<pre><code>PATTERN 1: READ-BEFORE-CLAIM
+  Before stating anything about code:
+    1. Read the actual file
+    2. Find the specific line
+    3. Then make the claim with a reference
+
+  "The validateEmail function at auth.ts:42 uses a regex
+   that doesn't handle plus-addressing (user+tag@domain.com)."
+  → File:line reference. Verifiable. Not hallucinated.
+
+PATTERN 2: CROSS-REFERENCE
+  Before stating a fact, check two sources:
+    1. Primary source (e.g., database query)
+    2. Secondary source (e.g., config file)
+
+  If they disagree → flag the discrepancy.
+  If they agree → higher confidence.
+
+PATTERN 3: OUTPUT REVIEW
+  After generating a response, review it:
+    "Does my response contain any numbers I didn't
+     get from a tool call or file read?
+     If yes, either verify them or remove them."
+
+  This self-check catches fabricated stats.
+
+PATTERN 4: CLAIM TAGGING
+  Tag each claim with its source:
+    "Build time: 3.2 seconds [from build output]"
+    "Coverage: 87% [from coverage report]"
+    "Users affected: unknown [no monitoring data available]"
+
+  Makes it easy to audit which claims are grounded.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Production Anti-Hallucination Architecture</h2>
+
+<pre><code>FIVE-LAYER DEFENSE:
+
+  LAYER 1: PROMPT DESIGN
+    System prompt with explicit anti-hallucination rules.
+    "Never invent data. Always verify. Say 'I don't know.'"
+
+  LAYER 2: TOOL-FIRST WORKFLOW
+    Agent reaches for tools before generating answers.
+    Tools return real data. Agent reports real data.
+
+  LAYER 3: OUTPUT VALIDATION
+    Post-generation check:
+    - Does the output contain numbers not from tools?
+    - Does it cite sources that don't exist?
+    - Does it claim actions that weren't taken?
+    If any flag: retry with correction or human review.
+
+  LAYER 4: HUMAN REVIEW
+    For high-stakes outputs (legal, financial, medical):
+    Human reviews before publication/action.
+    Agent flags low-confidence claims for attention.
+
+  LAYER 5: MONITORING
+    Track hallucination rate over time.
+    Log claims and their sources.
+    Automated spot-checks: verify random claims weekly.
+    Alert if hallucination rate increases.
+
+EXAM APPLICATION:
+  When asked "how do you prevent hallucination?"
+  → Don't just say "tell it not to hallucinate."
+  → Describe the layered defense. Each layer catches
+     what the previous one misses.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Exam Scenario Practice</h2>
+
+<h3>Scenario: Financial Reporting Agent</h3>
+<pre><code>QUESTION:
+  An agent generates quarterly financial reports.
+  It must pull data from multiple sources and present
+  accurate numbers. A wrong number could violate SEC
+  reporting requirements. Design anti-hallucination.
+
+STRONG ANSWER:
+  DATA SOURCING:
+    Every number comes from a verified tool call.
+    revenue = call stripe_api.get_revenue(q2_2026)
+    expenses = call quickbooks_api.get_expenses(q2_2026)
+    users = call database.count_users(as_of="2026-06-30")
+
+    NO number is generated from model knowledge.
+    If a tool call fails → report "data unavailable" (not a guess).
+
+  CROSS-VERIFICATION:
+    Revenue from Stripe must match revenue in QuickBooks.
+    If discrepancy > 1%: flag for human review.
+    Do NOT average or reconcile automatically.
+
+  OUTPUT FORMAT:
+    Each number includes source and timestamp:
+    "Revenue: $1,234,567 (source: Stripe API, as of 2026-07-01 10:00 UTC)"
+    "Users: 12,847 (source: production database, as of 2026-07-01 10:05 UTC)"
+
+  HUMAN GATE:
+    Report is generated as DRAFT.
+    CFO reviews and approves before filing.
+    Agent cannot submit to SEC directly.
+
+  AUDIT TRAIL:
+    Every data point logged: source, timestamp, raw value.
+    Report version history maintained.
+    Any manual adjustment flagged and explained.
+
+WEAK ANSWER: "Tell the agent to be accurate"
+  → No tool-first architecture
+  → No cross-verification
+  → No human review gate
+  → No audit trail</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+  <li><strong>Five hallucination types.</strong> Know them: factual, references, data, capability, context.</li>
+  <li><strong>Tool-first architecture.</strong> Real data from tools beats model-generated guesses.</li>
+  <li><strong>Say "I don't know."</strong> Honest uncertainty is better than confident hallucination.</li>
+  <li><strong>Layered defense.</strong> Prompt + tools + validation + human review + monitoring.</li>
+  <li><strong>Source every claim.</strong> If you can't cite where a number came from, don't use it.</li>
+  <li><strong>High-stakes = human gate.</strong> Never let agents auto-publish financial, legal, or medical content.</li>
+</ol>
+
+<div class="callout">
+<strong>CCA exam weight:</strong> Anti-hallucination appears in Domain 5 (Security & Safety). Expect 2-3 questions. The exam distinguishes between "tell it to be accurate" (weak) and "design systems that prevent inaccuracy" (strong).
+</div>
+</div>
+
+</div>

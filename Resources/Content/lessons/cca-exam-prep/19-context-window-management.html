@@ -1,0 +1,241 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>Context window mechanics: tokens, limits, and compression</li>
+    <li>Optimization strategies for large-context applications</li>
+    <li>Token budgeting for production agents</li>
+    <li>How the CCA exam tests context management</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>Context Window Fundamentals</h2>
+
+<p>Every Claude interaction has a finite context window. Everything — system prompt, conversation history, tool results, and output — must fit. Production agents that ignore this fail at scale.</p>
+
+<pre><code>CONTEXT WINDOW BUDGET:
+  ┌────────────────────────────────────────┐
+  │ Total capacity: ~200K tokens (Claude)  │
+  │                                        │
+  │ ┌──────────────────────────────────┐   │
+  │ │ System prompt:    1-5K tokens    │   │
+  │ │ Configuration:    2-8K tokens    │   │
+  │ │ Retrieved context: 2-10K tokens  │   │
+  │ │ Conversation:     grows over time│   │
+  │ │ Tool results:     grows rapidly  │   │
+  │ │ ─────────────────────────────────│   │
+  │ │ Output tokens:    1-8K per turn  │   │
+  │ └──────────────────────────────────┘   │
+  └────────────────────────────────────────┘
+
+KEY INSIGHT: Tool results are the biggest consumer.
+  A single file read = 2-10K tokens.
+  A directory listing = 1-5K tokens.
+  A database query result = 0.5-20K tokens.
+  10 tool calls = 10-100K tokens consumed.
+
+WHAT HAPPENS AT THE LIMIT:
+  Claude Code automatically compresses earlier messages.
+  Older conversation turns are summarized.
+  Critical information in early messages may be lost.
+  → Design so important state lives OUTSIDE the conversation.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Token Budgeting</h2>
+
+<pre><code>STRATEGY: Allocate token budget per component.
+
+EXAMPLE — Code Review Agent (200K window):
+  System prompt:          3K tokens  (fixed)
+  CLAUDE.md:              4K tokens  (fixed)
+  PR diff:               20K tokens  (variable — large PRs)
+  File reads for context: 30K tokens  (5-6 files × 5K)
+  Conversation history:  40K tokens  (10 turns × 4K)
+  Search results:        10K tokens  (3 searches × 3K)
+  ────────────────────────────────────
+  Used:                 107K tokens
+  Remaining for output:  93K tokens  (plenty)
+
+WHAT IF PR IS 50K TOKENS?
+  Budget overflows. Options:
+  1. Split PR into chunks (review files separately)
+  2. Summarize the diff first, then review per-file
+  3. Focus on changed functions, not full files
+
+EXAMPLE — Customer Support Bot (small window needed):
+  System prompt:          2K tokens  (minimal)
+  Customer history:       3K tokens  (last 5 interactions)
+  Knowledge base results: 5K tokens  (3 articles × 1.5K)
+  Current conversation:  10K tokens  (5 turns × 2K)
+  ────────────────────────────────────
+  Used:                  20K tokens  (small, efficient)
+
+  WHY SMALL: Support conversations are short.
+  Loading the entire knowledge base wastes tokens.
+  Retrieve on demand. Keep it lean.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Optimization Strategies</h2>
+
+<h3>Strategy 1: Lazy Loading</h3>
+<pre><code>PRINCIPLE: Don't load information until you need it.
+
+BAD:  On boot, read all 50 project files into context.
+GOOD: On boot, read CLAUDE.md (summary). Read specific
+      files only when the task requires them.
+
+IMPLEMENTATION:
+  boot() → load CLAUDE.md + session context (7K tokens)
+  task("fix auth bug") → search for auth files → read relevant ones
+  → Only 3 files loaded (15K) instead of all 50 (250K)
+
+SAVINGS: 235K tokens saved. Session lasts 10x longer.</code></pre>
+
+<h3>Strategy 2: Summarize Don't Stuff</h3>
+<pre><code>PRINCIPLE: Summaries over full content.
+
+BAD:  Load entire 500-line file to find one function.
+GOOD: Search for the function, load only that section.
+
+BAD:  Include full API response (500 rows of data).
+GOOD: Tool returns summary: "42 users match. Top 5: [...]"
+      Agent requests details for specific records only.
+
+TOOL DESIGN FOR THIS:
+  search_users: returns { id, name } for each match
+  get_user(id): returns full profile
+  → Summary first, details on demand.</code></pre>
+
+<h3>Strategy 3: Context Rotation</h3>
+<pre><code>PRINCIPLE: Rotate context for long sessions.
+
+PROBLEM: Session runs for 20+ tool calls.
+  Earlier context gets compressed. Important decisions lost.
+
+SOLUTION: Write critical decisions to persistent storage.
+  After every major decision:
+    write_to_memory("Decided to use PostgreSQL because...")
+
+  If context gets compressed:
+    read_from_memory("architecture decisions")
+  → Decisions survive context compression.
+
+IMPLEMENTATION IN CLAUDE CODE:
+  CLAUDE.md is always loaded (never compressed).
+  Session context can be refreshed mid-session.
+  Memory files persist across sessions.
+  → Important state in CLAUDE.md or memory, not just chat.</code></pre>
+
+<h3>Strategy 4: Chunked Processing</h3>
+<pre><code>PRINCIPLE: Process large inputs in chunks.
+
+PROBLEM: 100-file codebase scan won't fit in context.
+
+SOLUTION:
+  Phase 1: List all files. Categorize by type.
+  Phase 2: Process each category separately.
+  Phase 3: Combine per-category results.
+
+  Category A (auth, 10 files): scan → 5 findings
+  Category B (api, 20 files): scan → 8 findings
+  Category C (data, 15 files): scan → 3 findings
+  → Combine: 16 total findings across 45 files.
+
+  Each category fits in context. Combined results are small.
+  Full 100 files never loaded simultaneously.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Common Context Mistakes</h2>
+
+<pre><code>MISTAKE 1: TOOL RESULT HOARDING
+  Agent reads 20 files "just in case."
+  Only uses 3 of them.
+  Wasted 85% of loaded context.
+  FIX: Read files only when needed for the current step.
+
+MISTAKE 2: UNBOUNDED SEARCH RESULTS
+  Tool returns 500 search results.
+  Only top 5 are relevant.
+  FIX: Limit results in the tool (k=5, not k=500).
+
+MISTAKE 3: VERBOSE SYSTEM PROMPTS
+  2000-word system prompt that could be 200 words.
+  1800 wasted tokens every single turn.
+  FIX: Move details to CLAUDE.md. Keep prompt to essentials.
+
+MISTAKE 4: NO CONTEXT FRESHNESS
+  Loading stale cached data that's no longer relevant.
+  Agent acts on outdated information.
+  FIX: Timestamps on all cached data. Refresh if stale.
+
+MISTAKE 5: FULL FILE FOR SMALL EDIT
+  Reading a 1000-line file to edit line 42.
+  FIX: Read with offset and limit (lines 35-50 only).</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Exam Scenario Practice</h2>
+
+<h3>Scenario: Large Codebase Agent</h3>
+<pre><code>QUESTION:
+  An agent manages a 10,000-file monorepo. Users ask questions
+  like "how does the auth system work?" that require reading
+  multiple files. Design the context management strategy.
+
+STRONG ANSWER:
+  LAYER 1 — PRE-INDEXED KNOWLEDGE:
+    Build a codebase index (file→summary map).
+    Store in CLAUDE.md or searchable database.
+    Index: "auth/middleware.ts: JWT validation, 45 lines"
+    Agent reads index first (2K tokens), not all files.
+
+  LAYER 2 — TARGETED RETRIEVAL:
+    Agent searches index for relevant files.
+    Reads only the 3-5 most relevant files.
+    Uses offset/limit to read specific sections.
+
+  LAYER 3 — PROGRESSIVE DETAIL:
+    First: file-level summary (what each file does)
+    Then: function-level detail (for the specific question)
+    Only: line-level reading (for specific code review)
+    → Start broad, go deep only where needed.
+
+  TOKEN BUDGET:
+    Index: 2K (always loaded)
+    Targeted reads: 5 files × 3K = 15K
+    Conversation: 10K
+    Total: ~27K tokens. Well within limits.
+
+  COMPARED TO NAIVE:
+    Load all auth files: 50 files × 5K = 250K tokens
+    → Exceeds context window. Agent fails.
+
+WEAK ANSWER: "Read the files the user asks about"
+  → No strategy for discovery
+  → No indexing for efficient search
+  → May exceed context window on complex questions</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+  <li><strong>Budget tokens explicitly.</strong> Know how much each component consumes.</li>
+  <li><strong>Lazy load everything.</strong> Don't read files until the task demands them.</li>
+  <li><strong>Tool results are the biggest cost.</strong> Design tools to return minimal data.</li>
+  <li><strong>Summaries first, details on demand.</strong> Progressive depth saves tokens.</li>
+  <li><strong>Critical state lives outside conversation.</strong> CLAUDE.md and memory files survive compression.</li>
+  <li><strong>Chunk large inputs.</strong> Process categories separately, combine results.</li>
+</ol>
+
+<div class="callout">
+<strong>CCA exam weight:</strong> Context management appears in Domain 4 (Deployment) and Domain 2 (Architecture). Expect 2-3 questions. The exam tests whether you can design systems that work within token limits, not just systems that work in theory.
+</div>
+</div>
+
+</div>

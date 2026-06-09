@@ -1,0 +1,319 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>How to break down complex exam scenarios into orchestration patterns</li>
+    <li>When to use tools vs sub-agents vs human-in-the-loop</li>
+    <li>Error handling and recovery strategies for production agents</li>
+    <li>How to score maximum points on CCA design questions</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>The CCA Design Question Format</h2>
+
+<p>Domain 2 (Agentic Architecture) includes scenario-based design questions. You'll get a business problem and must choose the right orchestration pattern. There is no single correct answer, but strong answers demonstrate systematic reasoning.</p>
+
+<pre><code>SCORING RUBRIC (what graders look for):
+  1. Problem decomposition — did you break it into clear steps?
+  2. Pattern selection — did you justify your architecture choice?
+  3. Error handling — what happens when things go wrong?
+  4. Scalability — does this work at 10x the stated volume?
+  5. Trade-offs — did you acknowledge what you're giving up?
+
+WEAK ANSWERS:
+  "Use Claude with tools" (too vague)
+  "Multi-agent system with supervisor" (no justification)
+
+STRONG ANSWERS:
+  "Single agent with 3 tools because [reasons].
+   Falls back to human escalation when [condition].
+   At 10x volume, I'd add [specific change]."</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 1: Automated Invoice Processing</h2>
+
+<pre><code>BUSINESS PROBLEM:
+  A company receives 200 invoices/day via email.
+  Each invoice must be:
+    1. Extracted (vendor, amount, date, line items)
+    2. Validated against purchase orders
+    3. Routed to the correct approver
+    4. Flagged if amount exceeds $10,000
+
+  Current process: 3 humans, 6 hours/day, 4% error rate.</code></pre>
+
+<h3>Analysis Framework</h3>
+<pre><code>STEP 1: Is this sequential or parallel?
+  → Sequential. Each invoice goes through the same pipeline.
+  → But invoices are INDEPENDENT of each other (parallel across invoices).
+
+STEP 2: How many domains of expertise?
+  → One. It's all invoice processing. No need for separate specialists.
+
+STEP 3: What's the error tolerance?
+  → Financial data. Errors are expensive. Need validation + human review.
+
+STEP 4: What's the scale?
+  → 200/day = ~25/hour. Not extreme. Single agent can handle per-invoice.</code></pre>
+
+<h3>Strong Answer</h3>
+<pre><code>ARCHITECTURE: Single agent per invoice, parallel execution
+
+  ┌────────────┐     ┌────────────┐     ┌────────────┐
+  │  Email     │────▶│  Extract   │────▶│  Validate  │
+  │  Intake    │     │  (tool)    │     │  (tool)    │
+  └────────────┘     └────────────┘     └─────┬──────┘
+                                              │
+                                    ┌─────────┴──────────┐
+                                    ▼                    ▼
+                              ┌──────────┐        ┌──────────┐
+                              │  Route   │        │  Flag    │
+                              │  (tool)  │        │  >$10K   │
+                              └──────────┘        └──────────┘
+
+TOOLS:
+  1. extract_invoice(email) → structured data
+  2. validate_against_po(invoice, po_database) → match/mismatch
+  3. route_to_approver(invoice, org_chart) → assignment
+  4. flag_high_value(invoice) → alert if >$10K
+
+ERROR HANDLING:
+  - Extraction fails → queue for human review
+  - No PO match → flag as "unmatched" + notify procurement
+  - Approver not found → escalate to department head
+
+WHY NOT MULTI-AGENT:
+  Single domain. Sequential steps. No adversarial review needed.
+  Multi-agent adds latency and complexity without benefit here.
+
+SCALABILITY NOTE:
+  At 2000/day (10x), add a batch orchestrator that fans out
+  to multiple agent instances processing invoices in parallel.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 2: Security Incident Response</h2>
+
+<pre><code>BUSINESS PROBLEM:
+  Security team receives alerts from multiple sources:
+    - SIEM (intrusion detection)
+    - Cloud provider (AWS GuardDuty)
+    - Endpoint protection (CrowdStrike)
+
+  For each alert:
+    1. Triage: is this a real threat or false positive?
+    2. Investigate: gather context from affected systems
+    3. Respond: block, isolate, or escalate
+    4. Document: create incident report
+
+  Current: 15-minute average response time. Goal: under 3 minutes.</code></pre>
+
+<h3>Strong Answer</h3>
+<pre><code>ARCHITECTURE: Supervisor + specialist workers
+
+  ┌─────────────────────────────────┐
+  │         SUPERVISOR              │
+  │  (triage + orchestrate + doc)   │
+  └──────┬──────────┬──────────┬───┘
+         │          │          │
+         ▼          ▼          ▼
+   ┌──────────┐┌──────────┐┌──────────┐
+   │ Network  ││ Endpoint ││  Cloud   │
+   │ Analyst  ││ Analyst  ││ Analyst  │
+   └──────────┘└──────────┘└──────────┘
+
+WHY MULTI-AGENT HERE:
+  1. Three different domains (network, endpoint, cloud)
+  2. Investigation is parallelizable (each source independent)
+  3. Time-critical (3 min SLA demands parallel execution)
+  4. Adversarial review: supervisor cross-checks worker findings
+
+SUPERVISOR RESPONSIBILITIES:
+  - Receives alert → classifies source type
+  - Dispatches to correct specialist(s)
+  - Aggregates findings into threat assessment
+  - Decides response action (block/isolate/escalate)
+  - Generates incident report
+
+HUMAN-IN-THE-LOOP:
+  - Auto-block for known-bad indicators (no human needed)
+  - Auto-isolate for high-confidence threats (notify human)
+  - Escalate to human for: data exfiltration, insider threat,
+    or when confidence < 80%
+
+ERROR HANDLING:
+  - Worker timeout (30s) → supervisor proceeds with available data
+  - Conflicting findings → supervisor flags for human review
+  - All workers fail → immediate human escalation with raw alert data
+
+CRITICAL DESIGN CHOICE:
+  Response actions are tiered by reversibility:
+    Block IP (reversible)     → agent can do autonomously
+    Isolate host (reversible) → agent does, notifies human
+    Wipe endpoint (irreversible) → human approval required</code></pre>
+
+<div class="callout">
+<strong>Exam scoring note:</strong> The reversibility tier is what separates a good answer from a great one. The exam rewards candidates who think about blast radius and reversibility of automated actions.
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 3: Content Moderation Pipeline</h2>
+
+<pre><code>BUSINESS PROBLEM:
+  Social platform with 50,000 posts/day.
+  Must flag: hate speech, spam, misinformation, CSAM.
+  Current: 20 human moderators. Goal: reduce to 5.
+
+  Constraints:
+    - False negatives on CSAM: zero tolerance
+    - False positives on speech: minimize (censorship concerns)
+    - Latency: flag within 60 seconds of posting</code></pre>
+
+<h3>Strong Answer</h3>
+<pre><code>ARCHITECTURE: Pipeline with escalation
+
+  Post → [Fast Filter] → [Deep Analysis] → [Human Review Queue]
+              │                  │                    │
+         auto-approve       auto-flag            human decides
+         (90% of posts)    (8% of posts)        (2% of posts)
+
+STAGE 1 — FAST FILTER (single agent, <5 seconds):
+  Tools: keyword match, image hash check (CSAM database)
+  Action: pass/flag/block
+  CSAM hash match → immediate block + report (no human delay)
+  Clean post → approved, skip Stage 2
+
+STAGE 2 — DEEP ANALYSIS (single agent, <30 seconds):
+  Full content analysis with context
+  Tools: user history lookup, thread context, claim verification
+  Action: approve / flag for human / auto-remove (high confidence)
+
+STAGE 3 — HUMAN REVIEW (5 moderators):
+  Agent pre-summarizes: "Flagged for [reason]. Confidence: 73%.
+  Relevant policy: Section 4.2. Similar past decisions: [links]."
+  Human makes final call.
+
+WHY NOT MULTI-AGENT:
+  Pipeline is sequential per post. Each stage is a single domain.
+  Parallelism comes from processing many posts simultaneously,
+  not from splitting analysis of one post.
+
+ERROR BUDGET:
+  CSAM: 0% false negative tolerance → hash + AI + human triple-check
+  Hate speech: 2% false positive acceptable → balance free expression
+  Spam: 5% false positive acceptable → err toward removal
+
+KEY TRADE-OFF:
+  Speed vs accuracy. Fast filter catches 90% but is shallow.
+  Deep analysis is thorough but slower. Pipeline balances both.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 4: Autonomous Code Deployment</h2>
+
+<pre><code>BUSINESS PROBLEM:
+  Deploy code changes to production with AI verification.
+  Pipeline: PR review → test → staging → canary → production.
+  Human currently approves at each stage. Goal: full automation
+  for low-risk changes, human approval for high-risk only.</code></pre>
+
+<h3>Strong Answer</h3>
+<pre><code>ARCHITECTURE: Debate pattern (two agents check each other)
+
+  ┌───────────────┐     ┌───────────────┐
+  │   DEPLOYER    │────▶│   GUARDIAN    │
+  │ (wants to     │     │ (wants to     │
+  │  ship fast)   │◀────│  prevent bugs)│
+  └───────┬───────┘     └───────┬───────┘
+          │                     │
+          ▼                     ▼
+    "Ready to deploy"    "Found 2 concerns"
+          │                     │
+          └─────────┬───────────┘
+                    ▼
+            ┌──────────────┐
+            │  ARBITER     │
+            │  (decides)   │
+            └──────────────┘
+
+WHY DEBATE PATTERN:
+  Adversarial review catches what single-agent misses.
+  Deployer is biased toward shipping. Guardian is biased
+  toward caution. Arbiter weighs both perspectives.
+
+RISK CLASSIFICATION:
+  LOW RISK (auto-deploy):
+    - Documentation changes
+    - Dependency bumps (patch versions)
+    - Test-only changes
+    - Config changes with feature flags
+
+  MEDIUM RISK (deploy with monitoring):
+    - New features behind flags
+    - Refactors with full test coverage
+    - Non-breaking API additions
+
+  HIGH RISK (human approval):
+    - Database migrations
+    - Breaking API changes
+    - Authentication/authorization changes
+    - Payment processing changes
+
+CANARY STRATEGY:
+  1. Deploy to 5% of traffic
+  2. Monitor error rate, latency, CPU for 10 minutes
+  3. If metrics within bounds → roll to 25% → 100%
+  4. If any metric degrades → auto-rollback + alert human
+
+CRITICAL SAFETY: Rollback is always automatic and fast.
+  The system can ship aggressively because rollback is cheap.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>The Answer Template</h2>
+
+<p>Use this structure for any CCA design question:</p>
+
+<pre><code>1. DECOMPOSE the problem
+   "This breaks down into [N] steps: ..."
+
+2. SELECT the pattern
+   "I'd use [pattern] because [2-3 reasons]"
+   "I would NOT use [alternative] because [reason]"
+
+3. DEFINE the tools/agents
+   "The agent needs these tools: ..."
+   OR "These specialists handle: ..."
+
+4. HANDLE errors
+   "When [failure mode] occurs, the system [recovery action]"
+
+5. ADDRESS scale
+   "At 10x volume, I'd change [specific thing]"
+
+6. STATE the trade-off
+   "This prioritizes [X] over [Y] because [business reason]"</code></pre>
+
+<div class="callout">
+<strong>Pro tip:</strong> The exam has time pressure. Practice this template until it's automatic. You should be able to structure a design answer in under 3 minutes. The template gives you a framework so you spend time thinking about the problem, not the format.
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+  <li><strong>Always justify your pattern choice.</strong> "Multi-agent because..." not just "Multi-agent."</li>
+  <li><strong>Error handling separates pass from fail.</strong> Every design must address what happens when things break.</li>
+  <li><strong>Think about reversibility.</strong> Auto-execute reversible actions. Human-gate irreversible ones.</li>
+  <li><strong>Scale is always tested.</strong> If your design works at 100 items, does it work at 10,000?</li>
+  <li><strong>Name the trade-off.</strong> Speed vs accuracy. Autonomy vs safety. Cost vs reliability.</li>
+  <li><strong>Simple beats clever.</strong> Single-agent with good tools beats multi-agent without justification.</li>
+</ol>
+</div>
+
+</div>

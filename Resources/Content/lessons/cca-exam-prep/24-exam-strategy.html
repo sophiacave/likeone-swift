@@ -1,0 +1,261 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>CCA exam format, timing, and scoring in detail</li>
+    <li>Time management strategies for 60 questions in 90 minutes</li>
+    <li>How to eliminate wrong answers and maximize partial credit</li>
+    <li>Final review checklist of must-know concepts</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>Exam Format</h2>
+
+<pre><code>CCA FOUNDATIONS EXAM:
+  Questions:    60
+  Time:         90 minutes
+  Passing:      720/1000 (approximately 72%)
+  Format:       Multiple choice + scenario-based
+  Cost:         $99
+  Retake:       14-day wait, $99 per attempt
+  Delivery:     Online, proctored
+
+DOMAIN WEIGHTS:
+  Domain 1 — Tool Use:              25%  (~15 questions)
+  Domain 2 — Agentic Architecture:  25%  (~15 questions)
+  Domain 3 — Configuration:         20%  (~12 questions)
+  Domain 4 — Deployment:            15%  (~9 questions)
+  Domain 5 — Security:              15%  (~9 questions)
+
+QUESTION TYPES:
+  Type A — Single best answer (most common):
+    "Which is the MOST appropriate approach?"
+    → One clearly best answer. Others are partially correct.
+
+  Type B — Scenario analysis:
+    "Given this requirement, design the solution."
+    → Longer question. Tests applied knowledge.
+    → Usually worth more points.
+
+  Type C — Anti-pattern identification:
+    "What is WRONG with this design?"
+    → Tests negative knowledge (what NOT to do).</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Time Management</h2>
+
+<pre><code>BUDGET: 90 seconds per question average.
+
+STRATEGY:
+  FIRST PASS (50 minutes):
+    - Answer all questions you're confident about
+    - Skip hard questions (mark for review)
+    - Target: answer 40-45 questions
+    - Average: 75 seconds per answered question
+
+  SECOND PASS (30 minutes):
+    - Return to marked questions
+    - Eliminate wrong answers, then choose
+    - Target: answer remaining 15-20 questions
+    - Average: 100 seconds per remaining question
+
+  REVIEW (10 minutes):
+    - Review any answers you're uncertain about
+    - Check for misread questions
+    - Don't change answers unless you're sure
+
+TIME TRAPS:
+  ✗ Spending 5 minutes on one question
+    → Mark it, move on. Come back later.
+  ✗ Second-guessing every answer
+    → First instinct is usually correct.
+  ✗ Reading every option before reading the question
+    → Read question first. Form your answer. Then check options.
+
+PACING CHECK:
+  At 30 minutes: should have 20 questions answered
+  At 60 minutes: should have 40 questions answered
+  At 80 minutes: all questions answered, reviewing</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Answer Elimination Strategy</h2>
+
+<pre><code>STEP 1: READ THE QUESTION STEM
+  Identify what's being asked: BEST, WRONG, FIRST, MOST.
+  "What should you do FIRST" ≠ "What should you do"
+  "Which is WRONG" = find the bad answer.
+
+STEP 2: FORM YOUR ANSWER BEFORE READING OPTIONS
+  If you know the answer, you'll recognize it in the options.
+  This prevents being tricked by plausible wrong answers.
+
+STEP 3: ELIMINATE OBVIOUSLY WRONG OPTIONS
+  Usually 1-2 options are clearly wrong.
+  Eliminating narrows your odds from 25% to 50%.
+
+COMMON WRONG ANSWER PATTERNS:
+
+  ABSOLUTE ANSWERS:
+    "Always use multi-agent" → Wrong (depends on use case)
+    "Never use bash in CI" → Wrong (restricted bash is fine)
+    Absolute words (always, never, all, none) are usually wrong.
+
+  TOO VAGUE:
+    "Use best practices" → Not specific enough to be correct.
+    "Ensure security" → How? This says nothing actionable.
+
+  WRONG SCOPE:
+    Question asks about CI, answer talks about local development.
+    Question asks about security, answer talks about performance.
+
+  PARTIALLY CORRECT:
+    Answer is good advice but doesn't address the MAIN issue.
+    "Add logging" is always good but may not be the BEST answer.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Domain-Specific Tips</h2>
+
+<h3>Domain 1 — Tool Use (25%)</h3>
+<pre><code>MUST KNOW:
+  - Three MCP primitives: tools, resources, prompts
+  - Tool descriptions determine when Claude calls them
+  - stdio vs HTTP/SSE transport selection
+  - Input validation belongs on the server, not the model
+  - One server per domain (don't build god-servers)
+  - Confirmation barriers for destructive operations
+
+COMMON TRAPS:
+  - Confusing tools (model-controlled) with resources (app-controlled)
+  - Designing tools with too many required parameters
+  - Forgetting error response design</code></pre>
+
+<h3>Domain 2 — Architecture (25%)</h3>
+<pre><code>MUST KNOW:
+  - Single agent vs multi-agent decision framework
+  - Four topologies: supervisor, pipeline, debate, swarm
+  - Three persistence tiers: ephemeral, file-backed, database
+  - State handoff: write during session, not just at end
+  - Context window is finite — design for it
+  - Extended thinking for complex reasoning tasks
+
+COMMON TRAPS:
+  - Choosing multi-agent when single-agent suffices
+  - Relying on conversation history for cross-session state
+  - Ignoring context window limits in design</code></pre>
+
+<h3>Domain 3 — Configuration (20%)</h3>
+<pre><code>MUST KNOW:
+  - Hierarchy: enterprise > project > user > defaults
+  - CLAUDE.md for shared project rules, ~/.claude/rules for personal
+  - Subdirectory CLAUDE.md adds to (doesn't replace) root
+  - Custom commands: .md files in .claude/commands/
+  - Hooks: pre-tool (block), post-tool (log/lint)
+  - Permission modes: allowlist, prompt, trust
+
+COMMON TRAPS:
+  - Putting personal preferences in project CLAUDE.md
+  - Not understanding how subdirectory configs cascade
+  - Choosing wrong permission mode for the context</code></pre>
+
+<h3>Domain 4 — Deployment (15%)</h3>
+<pre><code>MUST KNOW:
+  - Headless mode: claude -p with --allowedTools
+  - Retry: exponential backoff, honor Retry-After
+  - Fallback: degraded functionality > complete failure
+  - Circuit breaker: stop calling dead services
+  - Guardrails: max tool calls, output validation, scope limits
+  - Monitoring: error rate, latency, cost, quality
+
+COMMON TRAPS:
+  - Retrying 400 errors (fix the request instead)
+  - No fallback for external dependencies
+  - Forgetting cost management in scaling scenarios</code></pre>
+
+<h3>Domain 5 — Security (15%)</h3>
+<pre><code>MUST KNOW:
+  - Server validates, not the model
+  - Parameterized queries always (prevent SQL injection)
+  - Filter sensitive fields before returning to model
+  - Least privilege for database access
+  - Rate limit destructive operations
+  - Audit trail for compliance
+  - Template-based output for sensitive operations
+
+COMMON TRAPS:
+  - Relying on system prompt for security ("tell Claude not to...")
+  - Returning full database records with PII
+  - No audit trail in compliance scenarios</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Final Preparation Checklist</h2>
+
+<pre><code>ONE WEEK BEFORE:
+  [ ] Complete all 24 lessons in this course
+  [ ] Score 72%+ on practice exam (Lesson 23)
+  [ ] Re-study any domain below 60%
+  [ ] Review anti-patterns for each domain
+  [ ] Practice the answer template until automatic
+
+THREE DAYS BEFORE:
+  [ ] Take the practice exam again (aim for 80%+)
+  [ ] Review Domain 1 and 2 (50% of exam weight)
+  [ ] Read through all "Key Takeaways" sections
+  [ ] Practice timed scenario answers (3 min each)
+
+DAY BEFORE:
+  [ ] Light review — skim Key Takeaways only
+  [ ] Verify exam logistics (account, proctoring software)
+  [ ] Get good sleep
+
+EXAM DAY:
+  [ ] Log in 15 minutes early
+  [ ] Read each question carefully (especially BEST/WORST/FIRST)
+  [ ] Budget time: 90 seconds per question
+  [ ] First pass → skip hard ones → second pass
+  [ ] Don't change answers unless certain
+  [ ] Submit with confidence</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Quick Reference Card</h2>
+
+<pre><code>MCP PRIMITIVES:
+  Tools = model calls | Resources = app provides | Prompts = user selects
+
+PERSISTENCE TIERS:
+  Ephemeral → File-backed → Database
+
+MULTI-AGENT TRIGGERS:
+  Parallel expertise | Adversarial review | Scale demands | Isolation
+
+PERMISSION MODES:
+  Allowlist (CI) | Prompt (dev) | Trust (power user)
+
+CONFIG HIERARCHY:
+  Enterprise > Project CLAUDE.md > User rules > Defaults
+
+RETRY RULES:
+  500/503: retry | 429: wait Retry-After | 400: don't retry, fix it
+
+SECURITY MANTRA:
+  Server validates. Filter output. Least privilege. Audit everything.
+
+ANTI-HALLUCINATION:
+  Tool-first. Source every claim. Say "I don't know." Human gate.
+
+ANSWER TEMPLATE:
+  1. Decompose → 2. Select pattern → 3. Define tools →
+  4. Handle errors → 5. Address scale → 6. State trade-off</code></pre>
+
+<div class="callout">
+<strong>You've completed all 24 lessons.</strong> You now have the knowledge to pass the CCA Foundations exam. The exam tests applied knowledge — not memorization. Think in systems. Design for failure. Justify your choices. You've got this.
+</div>
+</div>
+
+</div>

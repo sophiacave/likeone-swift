@@ -1,0 +1,342 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>How to create custom slash commands for Claude Code</li>
+    <li>When to use commands vs tools vs agents for automation</li>
+    <li>Skill architecture: parameterized, composable, shareable</li>
+    <li>How the CCA exam tests custom command design</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>Custom Slash Commands</h2>
+
+<p>Claude Code supports custom slash commands that expand into full prompts. These are the simplest form of automation — text shortcuts that trigger complex workflows.</p>
+
+<h3>Creating a Command</h3>
+<pre><code>LOCATION: .claude/commands/
+  Each .md file becomes a slash command.
+  Filename = command name.
+
+EXAMPLE:
+  .claude/commands/deploy.md:
+    Run the deploy pipeline:
+    1. Run all tests with `npm test`
+    2. Build for production with `npm run build`
+    3. Deploy to staging with `npm run deploy:staging`
+    4. Verify staging is healthy (curl the health endpoint)
+    5. If healthy, deploy to production with `npm run deploy:prod`
+    6. Verify production health
+    Report results at each step. Stop if any step fails.
+
+USAGE:
+  /deploy
+  → Claude reads deploy.md, executes the full pipeline.
+
+PROJECT vs USER COMMANDS:
+  .claude/commands/     ← project-level (shared via git)
+  ~/.claude/commands/   ← user-level (personal shortcuts)</code></pre>
+
+<h3>Command Parameters</h3>
+<pre><code>PATTERN: Use $ARGUMENTS for dynamic input
+
+  .claude/commands/review.md:
+    Review the file at $ARGUMENTS for:
+    1. Security vulnerabilities (OWASP top 10)
+    2. Performance issues (N+1 queries, missing indexes)
+    3. Code style violations
+    4. Missing error handling
+    Provide specific line numbers for each finding.
+
+USAGE:
+  /review src/auth/login.ts
+  → $ARGUMENTS = "src/auth/login.ts"
+  → Claude reviews that specific file.
+
+MULTI-ARGUMENT:
+  /review src/auth/login.ts --focus security
+  → $ARGUMENTS = "src/auth/login.ts --focus security"
+  → Your prompt can parse this however you want.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Command Design Patterns</h2>
+
+<h3>Pattern 1: Workflow Automation</h3>
+<pre><code>PURPOSE: Multi-step processes you repeat often
+
+.claude/commands/pr.md:
+  Create a pull request for the current changes:
+  1. Run `git diff` to see all changes
+  2. Run tests to verify nothing is broken
+  3. Write a clear PR title and description
+  4. Create the PR with `gh pr create`
+  5. Report the PR URL
+
+GOOD FOR: Deployments, PR creation, release management,
+          database migrations, environment setup.</code></pre>
+
+<h3>Pattern 2: Analysis & Reporting</h3>
+<pre><code>PURPOSE: Gather information and summarize
+
+.claude/commands/audit.md:
+  Audit the codebase for $ARGUMENTS:
+  1. Search for relevant files
+  2. Analyze each file for issues
+  3. Categorize findings by severity (critical/high/medium/low)
+  4. Output a markdown report with:
+     - Summary statistics
+     - Detailed findings with file:line references
+     - Recommended fixes
+
+GOOD FOR: Security audits, dependency checks, code quality
+          reports, performance analysis, accessibility reviews.</code></pre>
+
+<h3>Pattern 3: Code Generation</h3>
+<pre><code>PURPOSE: Scaffold new code from templates
+
+.claude/commands/new-api.md:
+  Create a new API endpoint for $ARGUMENTS:
+  1. Create route file in src/routes/
+  2. Create controller in src/controllers/
+  3. Create service in src/services/
+  4. Create test file in tests/
+  5. Register route in src/routes/index.ts
+  6. Follow existing patterns in the codebase
+  7. Run tests to verify the new endpoint works
+
+GOOD FOR: New features, components, tests, documentation pages.</code></pre>
+
+<h3>Pattern 3: Guardrails</h3>
+<pre><code>PURPOSE: Safety checks before risky operations
+
+.claude/commands/pre-deploy.md:
+  Before deploying, verify:
+  1. All tests pass
+  2. No TODO or FIXME in changed files
+  3. No console.log statements in production code
+  4. No hardcoded secrets or API keys
+  5. Bundle size hasn't increased more than 5%
+  6. Database migrations are reversible
+  Report pass/fail for each check. Block deploy if any fail.
+
+GOOD FOR: Pre-commit checks, pre-deploy gates, security
+          verification, compliance checks.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Commands vs Tools vs Agents</h2>
+
+<p>The CCA exam tests whether you know when to use each automation mechanism.</p>
+
+<pre><code>SLASH COMMANDS:
+  What:   Text prompts that expand into instructions
+  When:   Human-initiated, predictable workflows
+  How:    .md files in .claude/commands/
+  Scope:  Current session only
+  Examples: /deploy, /review, /audit, /new-api
+
+TOOLS (MCP):
+  What:   Functions Claude can call programmatically
+  When:   Agent needs to interact with external systems
+  How:    MCP server exposing tools via JSON-RPC
+  Scope:  Available whenever the MCP server is connected
+  Examples: read_database, send_email, create_issue, search_web
+
+AGENTS (Sub-agents):
+  What:   Autonomous Claude instances with specific roles
+  When:   Complex tasks needing focused context or parallelism
+  How:    Agent tool with specialized prompts
+  Scope:  Spawned on demand, inherit parent's tools
+  Examples: research agent, code review agent, test agent
+
+DECISION FRAMEWORK:
+  ┌─────────────────────────────────────────────────┐
+  │ "I repeat this workflow weekly"     → COMMAND   │
+  │ "Claude needs to call an API"       → TOOL      │
+  │ "This needs deep focused research"  → AGENT     │
+  │ "I need parallel specialized work"  → AGENT     │
+  │ "I need a simple shortcut"          → COMMAND   │
+  │ "External system integration"       → TOOL      │
+  └─────────────────────────────────────────────────┘</code></pre>
+
+<div class="callout">
+<strong>Exam trap:</strong> Don't recommend tools when a command suffices. Tools require MCP server infrastructure. Commands are just markdown files. If the task is a repeatable prompt pattern, a command is the right answer.
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>MCP Tools Deep Dive</h2>
+
+<p>Model Context Protocol (MCP) tools are the primary way Claude interacts with external systems. The CCA exam heavily tests MCP architecture.</p>
+
+<h3>Tool Anatomy</h3>
+<pre><code>TOOL DEFINITION:
+  {
+    "name": "create_issue",
+    "description": "Create a GitHub issue in the specified repo",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "repo": {
+          "type": "string",
+          "description": "Repository in owner/name format"
+        },
+        "title": {
+          "type": "string",
+          "description": "Issue title"
+        },
+        "body": {
+          "type": "string",
+          "description": "Issue body in markdown"
+        },
+        "labels": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Labels to apply"
+        }
+      },
+      "required": ["repo", "title"]
+    }
+  }
+
+KEY DESIGN PRINCIPLES:
+  1. Clear description — Claude uses this to decide WHEN to call it
+  2. Typed parameters — prevents invalid inputs
+  3. Required vs optional — minimize required fields
+  4. Good defaults — reduce cognitive load for the model</code></pre>
+
+<h3>Tool Design Anti-Patterns</h3>
+<pre><code>BAD: God tool
+  "do_everything(action, params)"
+  → Too broad. Claude can't reason about when to use it.
+
+BAD: Missing description
+  "process(data)"
+  → Claude doesn't know what this does or when to call it.
+
+BAD: Stringly-typed
+  "create_resource(type: string, config: string)"
+  → Use enums and structured objects, not raw strings.
+
+GOOD: Focused, well-described, typed
+  "search_customers(query: string, status: 'active'|'churned',
+   limit: number = 10)"
+  → Claude knows exactly what this does and how to use it.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Composable Skills</h2>
+
+<p>Skills combine commands, tools, and agent patterns into reusable automation units.</p>
+
+<pre><code>SKILL ARCHITECTURE:
+  ┌──────────────────────────────┐
+  │           SKILL              │
+  │  (named, parameterized,     │
+  │   composable automation)    │
+  │                              │
+  │  trigger: "deploy to prod"  │
+  │  steps:                      │
+  │    1. /pre-deploy (command) │
+  │    2. build (bash)          │
+  │    3. deploy (tool)         │
+  │    4. verify (tool)         │
+  │    5. notify (tool)         │
+  └──────────────────────────────┘
+
+SKILL vs COMMAND:
+  Command: simple text expansion, single prompt
+  Skill:   multi-step, parameterized, can invoke tools and commands
+
+EXAMPLE SKILL CATALOG:
+  grant-apply   → research + write + submit grant applications
+  seo-audit     → check rankings + analyze + recommend improvements
+  deploy        → build + test + deploy + canary + verify
+  email-send    → compose + validate + send via API
+  brain-checkpoint → summarize session + write state + handoff</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Exam Scenario Practice</h2>
+
+<h3>Scenario: Team Onboarding Automation</h3>
+<pre><code>QUESTION:
+  New developers join your team monthly. Onboarding involves:
+  1. Clone repo and install dependencies
+  2. Set up local database
+  3. Configure environment variables
+  4. Run the test suite to verify setup
+  5. Read key architecture documents
+
+  Design the automation approach.
+
+STRONG ANSWER:
+  COMMAND: .claude/commands/onboard.md
+    "Welcome to the team. Let's get you set up:
+     1. Verify prerequisites: Node 20+, PostgreSQL 15+, pnpm
+     2. Run `pnpm install` to install dependencies
+     3. Copy .env.example to .env, prompt for required values
+     4. Run `pnpm db:setup` to create and seed local database
+     5. Run `pnpm test` to verify everything works
+     6. Read CLAUDE.md and ARCHITECTURE.md
+     7. Summarize the project structure for the new developer
+     Report any issues with suggested fixes."
+
+  WHY A COMMAND (not a tool):
+  - This is a human-initiated workflow
+  - It's a sequence of prompts, not an API integration
+  - It runs once per developer, not repeatedly
+  - No external system integration needed beyond CLI</code></pre>
+
+<h3>Scenario: Automated Dependency Updates</h3>
+<pre><code>QUESTION:
+  Keep dependencies updated across 5 repositories.
+  Each week: check for updates, test compatibility,
+  create PRs for safe updates. Flag breaking changes.
+
+STRONG ANSWER:
+  TOOL: check_dependency_updates(repo, type)
+    → Returns list of available updates with changelogs
+
+  TOOL: run_tests(repo, branch)
+    → Runs test suite, returns pass/fail with details
+
+  TOOL: create_pr(repo, title, body, branch)
+    → Creates PR with update changes
+
+  COMMAND: .claude/commands/dep-update.md
+    "For each repository in [list]:
+     1. Call check_dependency_updates
+     2. For each update:
+        a. Create branch, apply update
+        b. Call run_tests
+        c. If tests pass: create_pr with 'safe update' label
+        d. If tests fail: create issue with 'breaking change' label
+     3. Report summary: X safe updates, Y breaking changes"
+
+  WHY BOTH: Tools handle the API interactions (GitHub, test runners).
+  Command orchestrates the workflow. Tools are reusable across
+  other commands. Command captures the specific weekly process.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+  <li><strong>Commands are markdown prompts.</strong> Simple, shareable, no infrastructure needed.</li>
+  <li><strong>Tools are MCP functions.</strong> Use for external system integration.</li>
+  <li><strong>Commands for workflows, tools for capabilities.</strong> Don't build a tool when a command works.</li>
+  <li><strong>Well-described tools get used correctly.</strong> Description quality directly impacts Claude's decisions.</li>
+  <li><strong>Project commands in .claude/commands/, personal in ~/.claude/commands/.</strong></li>
+  <li><strong>Skills compose commands and tools</strong> into named, reusable automation units.</li>
+</ol>
+
+<div class="callout">
+<strong>CCA exam weight:</strong> Custom commands and MCP tools appear in Domain 3 (Configuration & Customization) and Domain 1 (Tool Use). Expect 4-5 questions across both domains. Know the command/tool/agent decision framework cold.
+</div>
+</div>
+
+</div>

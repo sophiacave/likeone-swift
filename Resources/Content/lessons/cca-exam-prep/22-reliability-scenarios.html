@@ -1,0 +1,285 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>How to solve context and reliability exam scenarios</li>
+    <li>End-to-end system design with safety and monitoring</li>
+    <li>Trade-off analysis for production deployments</li>
+    <li>Practice for Domain 4 and Domain 5 questions</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 1: Autonomous DevOps Agent</h2>
+
+<pre><code>REQUIREMENTS:
+  - Monitors infrastructure 24/7
+  - Auto-scales based on traffic patterns
+  - Auto-remediates common issues (restart services, clear logs)
+  - Escalates unknown issues to on-call engineer
+  - Must never take actions that could cause downtime
+
+DESIGN:
+
+  CONTEXT MANAGEMENT:
+    Persistent state: last 24 hours of metrics (DB, not context)
+    On-demand: fetch current metrics when investigating
+    Static: runbooks loaded as resources (not in system prompt)
+    → Context window stays lean. History is searchable.
+
+  RELIABILITY:
+    Tier 1 — Auto-remediate (reversible, proven safe):
+      - Restart service (if health check fails 3x)
+      - Clear log partition (if >90% full)
+      - Scale up (if CPU >80% for 10 min)
+      - Rotate credentials (scheduled, tested)
+      → Execute immediately. Notify after.
+
+    Tier 2 — Auto-remediate with monitoring:
+      - Scale down (if traffic drops to baseline)
+      - Update configuration (pre-validated changes only)
+      → Execute, monitor for 5 min, rollback if metrics degrade.
+
+    Tier 3 — Human approval required:
+      - Database failover
+      - Network configuration changes
+      - Security group modifications
+      - Anything not in runbook
+      → Create PagerDuty incident with diagnosis + recommendation.
+
+  ANTI-HALLUCINATION:
+    Every decision based on metrics from monitoring tool.
+    "CPU at 87% (source: Datadog, 10:42 UTC)"
+    Never: "CPU seems high" without a measurement.
+
+  GUARDRAILS:
+    - Max 3 auto-remediations per hour per service
+    - Max 1 scale operation per 15 minutes
+    - Cannot modify production database
+    - Cannot change DNS or load balancer rules
+    - All actions logged to audit trail
+
+  MONITORING:
+    Dashboard: actions taken, success rate, escalation rate
+    Alert: if auto-remediation fails 2x in a row
+    Weekly: review all automated actions for appropriateness</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 2: Legal Document Review Agent</h2>
+
+<pre><code>REQUIREMENTS:
+  - Reviews contracts for risk clauses
+  - Compares against company standard terms
+  - Flags deviations for legal team review
+  - Must never modify contract text
+  - Must track confidence in each finding
+
+DESIGN:
+
+  TOOL SET:
+    read_contract(file_path) → Returns contract sections
+    search_standard_terms(clause_type) → Company standard for comparison
+    flag_deviation(section, standard, deviation, confidence)
+    generate_summary(flags[]) → Executive summary of findings
+
+  CONTEXT STRATEGY:
+    Contract: chunked processing (5 pages at a time)
+    Standard terms: loaded as resources per clause type
+    History: previous reviews searchable but not preloaded
+    → Contract chunking prevents context overflow on 100-page docs.
+
+  ANTI-HALLUCINATION (CRITICAL FOR LEGAL):
+    Every finding quotes the exact contract text:
+      "Section 4.2 states: '[exact quote]'
+       This deviates from standard term: '[standard quote]'
+       Deviation: indemnification cap is $500K vs standard $1M"
+
+    NEVER paraphrase contract language. Always quote.
+    NEVER invent clause numbers. Verify against document structure.
+
+    Confidence levels:
+      HIGH (>90%): Clear deviation from standard text
+      MEDIUM (60-90%): Ambiguous language, possible deviation
+      LOW (<60%): Unusual clause, may or may not be concerning
+
+    All LOW confidence findings flagged for human review.
+
+  RELIABILITY:
+    Read-only tools only. Agent CANNOT modify contracts.
+    If OCR quality is poor: flag section as "unreadable"
+    rather than guessing at text.
+    If contract format is unusual: escalate to human.
+
+  OUTPUT:
+    {
+      "findings": [...],
+      "summary": "12 deviations found. 3 high-risk (indemnification,
+                  liability cap, termination). 5 medium. 4 low.",
+      "human_review_required": ["Section 4.2", "Section 7.1"],
+      "confidence": 0.78,
+      "caveats": ["Pages 45-47 had poor OCR quality"]
+    }</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 3: Multi-Tenant SaaS Agent</h2>
+
+<pre><code>REQUIREMENTS:
+  - AI agent embedded in a SaaS product
+  - Each customer (tenant) has their own data
+  - Agent must NEVER access Tenant A's data when serving Tenant B
+  - Must handle 1000 concurrent sessions
+  - Cost per session must be under $0.10
+
+DESIGN:
+
+  TENANT ISOLATION:
+    Every tool call includes tenant_id parameter.
+    MCP server validates: requested data belongs to tenant.
+    Database queries always include WHERE tenant_id = ?
+    No cross-tenant joins. No cross-tenant search results.
+
+    If agent attempts cross-tenant access:
+      Tool returns: { "error": "FORBIDDEN",
+        "message": "Requested resource belongs to a different tenant" }
+      → Agent cannot see why it was forbidden (no data leak).
+
+  CONTEXT MANAGEMENT:
+    System prompt: shared (same for all tenants) — 2K tokens
+    Tenant config: loaded per session — 1K tokens
+    Conversation: 5 turns max before summarization — 10K tokens
+    Tool results: limited to 20 results per call — 5K tokens
+    Total per session: ~18K tokens
+    → Cost at $3/million tokens: $0.054 per session (under budget)
+
+  RELIABILITY:
+    Rate limit per tenant: 100 sessions/hour
+    If exceeded: "Please try again in a few minutes"
+    Circuit breaker per external API (shared across tenants)
+    Fallback to cached data if real-time data unavailable
+
+  SCALING:
+    1000 concurrent = horizontal scaling of MCP servers
+    Stateless MCP servers (tenant state in database)
+    Connection pooling for database access
+    CDN for static resources
+
+  SECURITY:
+    Tenant data encrypted at rest (AES-256)
+    MCP server runs in isolated containers per region
+    No PII in logs (mask before logging)
+    SOC 2 audit trail on all data access</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 4: Content Publishing Pipeline</h2>
+
+<pre><code>REQUIREMENTS:
+  - Agent writes blog posts from research briefs
+  - Must verify all claims before publishing
+  - Must check for plagiarism
+  - Must meet SEO requirements
+  - Human approves final draft
+
+DESIGN:
+
+  PIPELINE:
+    Step 1: RESEARCH
+      Tools: search_web, read_sources, extract_quotes
+      Output: research brief with sourced facts
+      Guardrail: every fact must have a URL source
+
+    Step 2: DRAFT
+      Input: research brief (not raw web content)
+      Output: blog post draft
+      Context: SEO guidelines loaded as resource
+      Guardrail: all statistics from research brief (no invention)
+
+    Step 3: VERIFY
+      Tools: check_claims(claim, source_url) → verified/unverified
+             check_plagiarism(text) → similarity score
+             check_seo(text, keyword) → score + suggestions
+      Guardrail: unverified claims removed or marked "[unverified]"
+      Threshold: plagiarism < 15%, SEO score > 70
+
+    Step 4: REVIEW
+      Output: draft + verification report + SEO score
+      Human: approves, requests changes, or rejects
+      Agent CANNOT publish without human approval
+
+  ANTI-HALLUCINATION:
+    Step 1 creates grounded research brief.
+    Step 2 drafts from the brief (not from model knowledge).
+    Step 3 verifies each claim against its source.
+    Three-layer verification: source → draft → check.
+
+  RELIABILITY:
+    If web search fails: use cached research from previous posts
+    If plagiarism check fails: defer to human review
+    If SEO tool is down: publish without SEO optimization
+    (content accuracy > SEO optimization in priority)
+
+  CONTEXT:
+    Research brief: 3-5K tokens (summarized, not raw pages)
+    SEO guidelines: 1K tokens (resource, not system prompt)
+    Previous posts: searched on demand (avoid similar topics)
+    Total: ~15K tokens per post (lean and focused)</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Trade-Off Analysis Framework</h2>
+
+<pre><code>For every design decision, the exam expects trade-off awareness.
+
+TEMPLATE:
+  "I chose [option A] over [option B] because:
+   - Benefit: [what A gives us]
+   - Cost: [what we give up]
+   - Mitigation: [how we reduce the cost]"
+
+COMMON TRADE-OFFS:
+
+  Speed vs Accuracy:
+    Faster = less verification = more hallucination risk
+    Slower = more checks = higher confidence
+    → For legal/financial: accuracy wins
+    → For casual support: speed wins
+
+  Cost vs Quality:
+    Cheaper models/fewer tokens = lower quality
+    Expensive models/more tokens = higher quality
+    → For internal tools: optimize cost
+    → For customer-facing: optimize quality
+
+  Autonomy vs Safety:
+    More autonomous = faster but riskier
+    More human-gated = safer but slower
+    → For reversible actions: more autonomy
+    → For irreversible actions: more human oversight
+
+  Simplicity vs Capability:
+    Simple system = easier to maintain, less can go wrong
+    Complex system = more features, harder to debug
+    → Start simple. Add complexity when proven needed.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+  <li><strong>Tier actions by reversibility.</strong> Auto-execute reversible. Human-gate irreversible.</li>
+  <li><strong>Tenant isolation is non-negotiable.</strong> Every query scoped to tenant. No exceptions.</li>
+  <li><strong>Quote, don't paraphrase</strong> for legal and compliance content.</li>
+  <li><strong>Budget tokens per session.</strong> Calculate cost before deploying at scale.</li>
+  <li><strong>Three-layer verification:</strong> source → draft → check for content pipelines.</li>
+  <li><strong>Every design decision has a trade-off.</strong> State it explicitly in your answer.</li>
+</ol>
+
+<div class="callout">
+<strong>CCA exam tip:</strong> Scenario questions reward completeness. Use the template: Tools → Context → Reliability → Security → Monitoring → Trade-offs. Cover all six and you'll score well even if individual answers aren't perfect.
+</div>
+</div>
+
+</div>

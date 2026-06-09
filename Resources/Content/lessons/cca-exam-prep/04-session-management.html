@@ -1,0 +1,328 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>How Claude manages context within and across sessions</li>
+    <li>State persistence patterns: ephemeral, file-backed, database-driven</li>
+    <li>Context window strategies (summarization, retrieval, tiered memory)</li>
+    <li>How the CCA exam tests session management design decisions</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>The Session Problem</h2>
+
+<p>Every AI agent session starts from zero. Claude has no memory of previous conversations unless you build persistence into your architecture. The CCA exam tests whether you understand this fundamental constraint and can design around it.</p>
+
+<pre><code>SESSION LIFECYCLE:
+  Start → Load context → Execute tasks → Save state → End
+     ↑                                        │
+     └────────── persistence layer ───────────┘
+
+WITHOUT PERSISTENCE:
+  Session 1: "Deploy the app" → done
+  Session 2: "What did I deploy?" → "I don't have that information"
+
+WITH PERSISTENCE:
+  Session 1: "Deploy the app" → done → saves deployment record
+  Session 2: "What did I deploy?" → reads record → "You deployed v2.3 to prod"</code></pre>
+
+<div class="callout">
+<strong>Exam trap:</strong> Candidates often design systems that work within a single session but fail across sessions. The exam specifically tests cross-session continuity.
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>Three Persistence Tiers</h2>
+
+<h3>Tier 1: Ephemeral (In-Session Only)</h3>
+<pre><code>MECHANISM: System prompt + conversation history
+LIFETIME:  Single session (lost on close)
+CAPACITY:  Limited by context window
+USE WHEN:  Task completes in one session
+           No future reference needed
+           Privacy-sensitive (nothing persisted)
+
+EXAMPLE:
+  System: "You are a code reviewer. Review this PR."
+  → Agent reviews, session ends, nothing saved.</code></pre>
+
+<h3>Tier 2: File-Backed (Cross-Session)</h3>
+<pre><code>MECHANISM: CLAUDE.md, memory files, markdown notes
+LIFETIME:  Persistent across sessions
+CAPACITY:  Unlimited (but must fit in context when loaded)
+USE WHEN:  Project-level context (conventions, architecture)
+           User preferences and workflow patterns
+           Moderate state (dozens of entries, not thousands)
+
+EXAMPLE:
+  CLAUDE.md:
+    "Always use TypeScript strict mode"
+    "Deploy target: us-east-1"
+    "Test command: npm run test:ci"
+  → Every session loads this automatically.</code></pre>
+
+<h3>Tier 3: Database-Driven (Structured + Searchable)</h3>
+<pre><code>MECHANISM: SQLite, vector DB, or external database
+LIFETIME:  Permanent (with explicit deletion)
+CAPACITY:  Millions of entries
+USE WHEN:  Large-scale state (thousands of records)
+           Semantic search needed ("find similar past decisions")
+           Multi-agent shared state
+           Audit trail / history required
+
+EXAMPLE:
+  Brain DB with 1000+ entries:
+    → vec_search("deployment issues") finds relevant history
+    → Agent uses past context to avoid repeating mistakes.</code></pre>
+
+<div class="callout">
+<strong>Exam framework:</strong> When asked to design persistence, pick the simplest tier that meets requirements. Tier 1 for one-shot tasks. Tier 2 for project work. Tier 3 for production systems with history.
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>Context Window Management</h2>
+
+<p>Claude's context window is large but finite. Session management means deciding what enters the window, what stays, and what gets evicted.</p>
+
+<h3>The Loading Problem</h3>
+<pre><code>CONTEXT BUDGET (simplified):
+  ┌─────────────────────────────────────┐
+  │ System prompt         ~2K tokens    │ ← always loaded
+  │ CLAUDE.md / rules     ~4K tokens    │ ← always loaded
+  │ Session context       ~3K tokens    │ ← loaded on boot
+  │ Retrieved knowledge   ~5K tokens    │ ← loaded per query
+  │ Conversation history  ~20K tokens   │ ← grows over time
+  │ Tool results          ~30K tokens   │ ← grows fast
+  │ ─────────────────────────────────── │
+  │ REMAINING for output  ~remainder    │
+  └─────────────────────────────────────┘
+
+PROBLEM: Tool results and conversation history grow.
+         Eventually, early context gets compressed or dropped.</code></pre>
+
+<h3>Four Strategies</h3>
+
+<p><strong>1. Selective Loading</strong> — Only load what's relevant to the current task.</p>
+<pre><code>BAD:  Load entire project history (50K tokens) on every session
+GOOD: Load project summary (2K) + search for task-specific context
+
+IMPLEMENTATION:
+  boot() {
+    load("CLAUDE.md")           // always — project rules
+    load("session-context.md")  // always — current priorities
+    // Do NOT preload everything. Search when needed.
+  }</code></pre>
+
+<p><strong>2. Summarization</strong> — Compress old context to keep the essential signal.</p>
+<pre><code>WHEN: Conversation exceeds ~60% of context window
+HOW:  System automatically compresses earlier messages
+      Preserves key decisions, drops verbose tool output
+
+EXAM NOTE: You don't control Claude's built-in compression.
+           Design your architecture so critical state lives
+           OUTSIDE the conversation (files, DB) — not just
+           in chat history that will get compressed.</code></pre>
+
+<p><strong>3. Retrieval-Augmented Generation (RAG)</strong> — Search for context on demand.</p>
+<pre><code>FLOW:
+  User asks question
+    → Embed the question
+    → Search vector DB for relevant entries
+    → Inject top-K results into context
+    → Generate response with grounded knowledge
+
+SIZING:
+  Embed model: 1024 dimensions typical
+  Search latency: 30-100ms for local, 200-500ms for cloud
+  Top-K: 3-5 results usually sufficient
+  Token cost: ~500-2000 tokens per retrieval</code></pre>
+
+<p><strong>4. Tiered Memory</strong> — Different storage for different lifetimes.</p>
+<pre><code>HOT   (in context):  Current task, active decisions    ~5K tokens
+WARM  (file-backed): Project rules, recent sessions    ~20K on disk
+COLD  (database):    Full history, all past decisions   unlimited
+
+LOADING PATTERN:
+  Hot  → always in context window
+  Warm → loaded on session boot
+  Cold → retrieved on demand via search</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>State Handoff Patterns</h2>
+
+<p>When a session ends, state must survive. When a new session starts, state must be recovered. The CCA exam tests your understanding of these handoff mechanisms.</p>
+
+<h3>Pattern 1: Checkpoint on Exit</h3>
+<pre><code>SESSION END:
+  1. Summarize what was accomplished
+  2. Write active_work to persistence layer
+  3. Write next_steps for the next session
+  4. Save any discovered state (new configs, decisions)
+
+SESSION START:
+  1. Load project config (CLAUDE.md)
+  2. Load last active_work
+  3. Load next_steps → begin working immediately
+
+KEY PRINCIPLE: The agent should resume without human re-explanation.</code></pre>
+
+<h3>Pattern 2: Shared State for Multi-Agent</h3>
+<pre><code>PROBLEM: Agent A discovers something. Agent B needs it.
+
+SOLUTIONS (ranked by complexity):
+  1. Shared file    — both agents read/write same file
+  2. Message queue  — Agent A publishes, Agent B subscribes
+  3. Shared DB      — both query same database
+  4. Orchestrator   — supervisor passes state between workers
+
+EXAM TRAP: Candidates use shared mutable state without
+           conflict resolution. Always address: what happens
+           when two agents write simultaneously?
+
+ANSWER: Use append-only logs, timestamps, or a single
+        writer per resource. Avoid concurrent writes to
+        the same key.</code></pre>
+
+<h3>Pattern 3: Progressive Context Building</h3>
+<pre><code>Session 1: Explore codebase → save architecture notes
+Session 2: Load notes → implement feature → save progress
+Session 3: Load progress → test + fix → save results
+Session 4: Load results → deploy → save deployment record
+
+EACH SESSION BUILDS ON THE LAST.
+State accumulates. Knowledge compounds.
+The agent gets smarter about YOUR project over time.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Anti-Patterns the Exam Tests</h2>
+
+<pre><code>1. GOLDFISH MEMORY
+   Symptom:  Agent forgets everything between sessions
+   Cause:    No persistence layer
+   Fix:      Add file-backed or DB-driven state
+
+2. CONTEXT STUFFING
+   Symptom:  Loading everything into context on boot
+   Cause:    No selective loading strategy
+   Fix:      Load summary + search on demand
+
+3. ORPHANED STATE
+   Symptom:  Agent writes state but never reads it back
+   Cause:    Write path exists but read path missing
+   Fix:      Every write must have a corresponding read on boot
+
+4. STALE CONTEXT
+   Symptom:  Agent acts on outdated information
+   Cause:    No freshness mechanism
+   Fix:      Timestamps on all state + staleness checks
+
+5. SINGLE-SESSION DESIGN
+   Symptom:  System works perfectly in one session, fails across two
+   Cause:    All state lives in conversation history
+   Fix:      Extract critical state to external persistence</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Exam Scenario Practice</h2>
+
+<h3>Scenario 1: Customer Support Agent</h3>
+<pre><code>REQUIREMENTS:
+  - Handle customer tickets across multiple sessions
+  - Remember customer history and preferences
+  - Escalate unresolved issues
+
+QUESTION: Design the state management architecture.
+
+STRONG ANSWER:
+  Tier 1 (ephemeral): Current ticket conversation
+  Tier 2 (file-backed): Agent instructions, escalation rules
+  Tier 3 (database): Customer history, ticket records, resolution log
+
+  Session flow:
+    1. Customer opens ticket → load customer record from DB
+    2. Agent resolves or escalates → write outcome to DB
+    3. Session ends → ticket state persisted
+    4. Customer returns → agent loads full history, continues
+
+WEAK ANSWER: "Store everything in the system prompt"
+  → Fails at scale. 1000 customers = impossible to fit in context.</code></pre>
+
+<h3>Scenario 2: Code Migration Agent</h3>
+<pre><code>REQUIREMENTS:
+  - Migrate 500-file codebase from JavaScript to TypeScript
+  - Track which files are done, which have errors
+  - Resume after interruption
+
+QUESTION: How do you manage state across sessions?
+
+STRONG ANSWER:
+  migration-state.json:
+    {
+      "total_files": 500,
+      "completed": ["src/auth.ts", "src/db.ts", ...],
+      "failed": [{"file": "src/legacy.js", "error": "circular dep"}],
+      "current_batch": ["src/api.js", "src/routes.js"],
+      "started_at": "2026-06-01T10:00:00Z"
+    }
+
+  On boot: read migration-state.json → resume from current_batch
+  On complete: update completed list → save
+  On error: log to failed list → continue next file
+
+WEAK ANSWER: "The agent remembers which files it converted"
+  → Conversation history gets compressed. Progress lost.</code></pre>
+
+<h3>Scenario 3: Research Agent with Growing Knowledge</h3>
+<pre><code>REQUIREMENTS:
+  - Research assistant that builds knowledge over weeks
+  - Finds papers, summarizes, connects insights
+  - Answers questions using accumulated research
+
+QUESTION: Design the memory architecture.
+
+STRONG ANSWER:
+  Vector database for semantic search:
+    - Each paper summary embedded (1024d vectors)
+    - Connections stored as graph edges
+    - Metadata: date, source, topic, confidence
+
+  Session boot:
+    1. Load research focus from config
+    2. Search vector DB for relevant prior research
+    3. Present summary of current knowledge state
+
+  During session:
+    1. New findings → embed and store immediately
+    2. Cross-reference with existing entries
+    3. Update knowledge graph connections
+
+  Key design choice: Write to DB DURING session,
+  not just at the end. Prevents data loss on crash.
+
+WEAK ANSWER: "Keep a big markdown file with all research"
+  → Works for 20 papers. Fails at 200. No semantic search.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+  <li><strong>Pick the simplest persistence tier</strong> that meets requirements. Don't over-engineer.</li>
+  <li><strong>Critical state must live outside the conversation.</strong> Chat history gets compressed.</li>
+  <li><strong>Every write needs a read.</strong> Persistence without recovery is useless.</li>
+  <li><strong>Design for session boundaries.</strong> Your system must survive restarts.</li>
+  <li><strong>Address freshness.</strong> Stale state is worse than no state.</li>
+  <li><strong>Multi-agent state needs conflict resolution.</strong> Don't handwave concurrent access.</li>
+</ol>
+
+<div class="callout">
+<strong>CCA exam weight:</strong> Session management appears in Domain 2 (Agentic Architecture) and Domain 4 (Deployment & Operations). Expect 2-3 questions testing persistence tier selection and cross-session continuity design.
+</div>
+</div>
+
+</div>

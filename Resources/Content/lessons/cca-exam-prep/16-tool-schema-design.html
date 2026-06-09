@@ -1,0 +1,334 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>How to design tool schemas that Claude uses correctly</li>
+    <li>Parameter design: types, defaults, enums, and nesting</li>
+    <li>Error schema patterns for reliable error recovery</li>
+    <li>How the CCA exam tests tool design decisions</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>Why Schema Design Matters</h2>
+
+<p>Claude reads your tool's schema to decide: should I call this tool? What parameters should I pass? A well-designed schema gets correct tool calls. A bad schema gets wrong parameters, unnecessary calls, or missed opportunities.</p>
+
+<pre><code>BAD SCHEMA:
+  {
+    "name": "process",
+    "description": "Process data",
+    "parameters": {
+      "data": { "type": "string" }
+    }
+  }
+  → Claude: "What kind of data? What processing? When do I use this?"
+
+GOOD SCHEMA:
+  {
+    "name": "analyze_sentiment",
+    "description": "Analyze the sentiment of customer feedback text.
+                    Returns positive, negative, or neutral with
+                    a confidence score. Use for support tickets
+                    and product reviews.",
+    "parameters": {
+      "text": {
+        "type": "string",
+        "description": "Customer feedback text to analyze",
+        "minLength": 10,
+        "maxLength": 5000
+      },
+      "language": {
+        "type": "string",
+        "enum": ["en", "es", "fr", "de", "ja"],
+        "default": "en"
+      }
+    }
+  }
+  → Claude knows exactly when, why, and how to call this.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Description Writing Rules</h2>
+
+<pre><code>RULE 1: DESCRIBE THE PURPOSE, NOT THE IMPLEMENTATION
+  BAD:  "Sends a POST request to the sentiment API endpoint"
+  GOOD: "Analyze sentiment of customer feedback text"
+  → Claude doesn't care about HTTP methods. It cares about what it does.
+
+RULE 2: INCLUDE WHEN TO USE IT
+  BAD:  "Search the database"
+  GOOD: "Search for users by email, name, or ID. Use when you need
+        to look up customer information for support requests."
+  → Claude now knows the trigger condition.
+
+RULE 3: MENTION WHAT IT RETURNS
+  BAD:  "Get order status"
+  GOOD: "Get the current status of an order. Returns: status
+        (pending/shipped/delivered/cancelled), tracking number,
+        estimated delivery date."
+  → Claude knows what data will be available after the call.
+
+RULE 4: NOTE LIMITATIONS
+  BAD:  "Search products"
+  GOOD: "Search products by keyword. Returns max 20 results.
+        For browsing all products, use list_products instead."
+  → Prevents misuse. Directs to the right tool for the right job.
+
+RULE 5: DIFFERENTIATE SIMILAR TOOLS
+  When you have search_users and find_user:
+  search_users: "Search users by partial name or email.
+                 Returns multiple matches. Use for discovery."
+  find_user:    "Find a specific user by exact ID.
+                 Returns one result or error. Use when you
+                 already know the user ID."</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Parameter Design</h2>
+
+<h3>Types and Constraints</h3>
+<pre><code>STRINGS:
+  BASIC:  { "type": "string" }
+  BETTER: {
+    "type": "string",
+    "minLength": 1,
+    "maxLength": 500,
+    "description": "Customer email address",
+    "format": "email"
+  }
+  → Constraints prevent invalid inputs.
+
+NUMBERS:
+  BASIC:  { "type": "number" }
+  BETTER: {
+    "type": "number",
+    "minimum": 0,
+    "maximum": 10000,
+    "description": "Refund amount in USD cents"
+  }
+  → Units in description prevent ambiguity (dollars vs cents).
+
+ENUMS:
+  BASIC:  { "type": "string" }
+  BETTER: {
+    "type": "string",
+    "enum": ["pending", "approved", "rejected"],
+    "description": "Filter orders by approval status"
+  }
+  → Claude can only send valid values.
+
+ARRAYS:
+  BASIC:  { "type": "array" }
+  BETTER: {
+    "type": "array",
+    "items": { "type": "string" },
+    "minItems": 1,
+    "maxItems": 10,
+    "description": "Product IDs to check inventory for"
+  }
+  → Bounded arrays prevent excessive data transfer.</code></pre>
+
+<h3>Required vs Optional</h3>
+<pre><code>PRINCIPLE: Minimize required parameters.
+
+EXAMPLE — search_orders:
+  REQUIRED:
+    - query (string) — what to search for
+
+  OPTIONAL (with defaults):
+    - status: default "all"
+    - limit: default 10
+    - sort: default "newest"
+    - date_from: default null (no lower bound)
+    - date_to: default null (no upper bound)
+
+WHY:
+  Required params = Claude MUST provide them.
+  If Claude doesn't have the info → tool call fails.
+  Optional with defaults → tool works with minimal input.
+
+EXAM RULE: If a parameter has a sensible default, make it optional.
+  Only require params that are truly essential for the tool to work.</code></pre>
+
+<h3>Nested Objects</h3>
+<pre><code>SHALLOW (preferred):
+  create_user(name, email, role)
+  → 3 simple params. Easy for Claude.
+
+NESTED (when necessary):
+  create_order({
+    customer: { id, email },
+    items: [{ product_id, quantity }],
+    shipping: { method, address }
+  })
+  → Grouped logically. But harder for Claude to construct correctly.
+
+RULE: Use nesting only when:
+  1. Parameters are logically grouped (address fields)
+  2. You need arrays of objects (order items)
+  3. The flat version would have 10+ parameters
+
+NEVER nest more than 2 levels deep.
+  { a: { b: { c: { d: value } } } } → Claude will struggle.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Error Response Design</h2>
+
+<pre><code>ERRORS SHOULD HELP CLAUDE RECOVER.
+
+BAD ERROR:
+  { "error": "Failed" }
+  → Claude: "I don't know what went wrong or how to fix it."
+
+GOOD ERROR:
+  {
+    "error": {
+      "code": "USER_NOT_FOUND",
+      "message": "No user found with email 'test@test.com'",
+      "suggestion": "Try searching by name with search_users tool"
+    }
+  }
+  → Claude: "User not found by email. I'll try search_users."
+
+ERROR CATEGORIES:
+
+  VALIDATION ERRORS (client's fault):
+    Code: INVALID_INPUT
+    Include: which parameter, what's wrong, what's valid
+    "email field must be a valid email address"
+
+  NOT FOUND (expected scenario):
+    Code: NOT_FOUND
+    Include: what was searched, suggestion for alternative
+    "Order #12345 not found. Try search_orders for partial matches"
+
+  RATE LIMIT (temporary):
+    Code: RATE_LIMITED
+    Include: retry_after (seconds)
+    "Rate limit exceeded. Retry after 30 seconds"
+
+  PERMISSION DENIED (access issue):
+    Code: FORBIDDEN
+    Include: what permission is needed
+    "Refunds over $500 require manager_role permission"
+
+  SERVER ERROR (unexpected):
+    Code: INTERNAL_ERROR
+    Include: minimal safe info (no stack traces)
+    "Internal error processing request. Try again."</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Tool Composition Patterns</h2>
+
+<pre><code>PATTERN 1: CRUD SET
+  Tools for one resource follow a consistent pattern:
+
+  list_users(filter?, limit?, offset?)    → paginated list
+  get_user(user_id)                       → single record
+  create_user(name, email, role)          → new record
+  update_user(user_id, name?, email?)     → partial update
+  delete_user(user_id, confirm)           → removal with confirm
+
+  NAMING: verb_noun. Consistent across all resources.
+  Claude learns the pattern and applies it to new resources.
+
+PATTERN 2: ACTION + STATUS
+  For long-running operations:
+
+  start_migration(source, target)  → { "job_id": "abc" }
+  check_migration(job_id)          → { "status": "running", "progress": 45 }
+  cancel_migration(job_id)         → { "cancelled": true }
+
+  Claude: start → poll status → report completion.
+
+PATTERN 3: SEARCH + DETAIL
+  For discovery workflows:
+
+  search_products(query, filters)  → [{ id, name, price }]
+  get_product(product_id)          → { full product details }
+
+  Claude: search first → get details for specific items.
+  Search returns summaries. Detail returns everything.
+
+PATTERN 4: VALIDATE + EXECUTE
+  For dangerous operations:
+
+  preview_deployment(config)       → { "changes": [...], "risks": [...] }
+  execute_deployment(config, confirmed: true)  → { "deployed": true }
+
+  Claude: preview first → show user → execute if approved.
+  Prevents accidental irreversible actions.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Exam Scenario Practice</h2>
+
+<h3>Scenario: Design a GitHub MCP Server</h3>
+<pre><code>QUESTION:
+  Design tool schemas for a GitHub integration MCP server.
+  It should support issue management and PR reviews.
+
+STRONG ANSWER:
+  TOOLS:
+
+  search_issues:
+    description: "Search GitHub issues by keyword, label, or
+                  assignee. Returns max 20 results sorted by
+                  relevance. Use to find existing issues before
+                  creating duplicates."
+    params:
+      repo (required, string): "owner/repo format"
+      query (required, string): "Search keywords"
+      labels (optional, array[string]): "Filter by labels"
+      state (optional, enum: open|closed|all): default "open"
+
+  create_issue:
+    description: "Create a new GitHub issue. Check for duplicates
+                  with search_issues first."
+    params:
+      repo (required): "owner/repo"
+      title (required, maxLength: 200): "Issue title"
+      body (required): "Markdown body"
+      labels (optional, array): "Labels to apply"
+      assignees (optional, array): "GitHub usernames"
+
+  review_pr:
+    description: "Submit a review on a pull request. Use after
+                  reading the PR diff. Cannot review your own PRs."
+    params:
+      repo (required): "owner/repo"
+      pr_number (required, integer, min: 1): "PR number"
+      body (required): "Review summary"
+      event (required, enum: APPROVE|REQUEST_CHANGES|COMMENT)
+      comments (optional, array of {path, line, body}):
+        "Inline comments on specific files and lines"
+
+  DESIGN CHOICES:
+  - search_issues before create_issue: prevents duplicates
+  - review_pr has enum for event: prevents invalid review types
+  - pr_number is integer (not string): prevents "PR #42" mistakes
+  - All repos in owner/repo format: consistent across tools</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+  <li><strong>Descriptions determine tool selection.</strong> Include purpose, trigger condition, and return value.</li>
+  <li><strong>Minimize required parameters.</strong> Use defaults for everything non-essential.</li>
+  <li><strong>Use enums for categorical data.</strong> Prevents invalid values.</li>
+  <li><strong>Errors should guide recovery.</strong> Include code, message, and suggestion.</li>
+  <li><strong>Consistent naming (verb_noun).</strong> Claude learns patterns across tools.</li>
+  <li><strong>Validate + execute for dangerous ops.</strong> Preview before commit.</li>
+</ol>
+
+<div class="callout">
+<strong>CCA exam weight:</strong> Tool schema design is Domain 1 core content. Expect 4-5 questions specifically on schema quality, parameter design, and error handling. Practice designing schemas from business requirements.
+</div>
+</div>
+
+</div>

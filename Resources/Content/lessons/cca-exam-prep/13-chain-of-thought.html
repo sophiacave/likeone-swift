@@ -1,0 +1,273 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>How chain-of-thought reasoning improves agent reliability</li>
+    <li>Extended thinking: when to use it and how to configure it</li>
+    <li>Reasoning patterns: decomposition, verification, planning</li>
+    <li>How the CCA exam tests reasoning architecture decisions</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>Why Reasoning Matters for Agents</h2>
+
+<p>Agents make decisions autonomously. Bad reasoning leads to wrong tool calls, wasted resources, and broken systems. The CCA exam tests whether you can design agents that reason well before acting.</p>
+
+<pre><code>WITHOUT REASONING:
+  Task: "Update the user count on the homepage"
+  Agent: Immediately edits index.html with a hardcoded number.
+  Result: Wrong number. No source of truth consulted.
+
+WITH REASONING:
+  Task: "Update the user count on the homepage"
+  Agent thinks:
+    1. Where is the user count displayed? → search codebase
+    2. Where does it come from? → database query
+    3. Is it hardcoded or dynamic? → check the template
+    4. If hardcoded: query DB, update value
+    5. If dynamic: the count updates itself, no action needed
+  Agent: Finds it's already dynamic. Reports "no change needed."
+  Result: Correct. Agent avoided an unnecessary (and wrong) edit.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Extended Thinking</h2>
+
+<p>Claude supports extended thinking — a mode where the model reasons through a problem step-by-step before responding. This is distinct from chain-of-thought prompting.</p>
+
+<h3>When to Use Extended Thinking</h3>
+<pre><code>USE EXTENDED THINKING FOR:
+  ✓ Complex multi-step planning
+  ✓ Architectural decisions with trade-offs
+  ✓ Debugging intricate issues
+  ✓ Security analysis requiring systematic review
+  ✓ Any task where "think first, act second" matters
+
+DO NOT USE FOR:
+  ✗ Simple lookups ("what's in this file?")
+  ✗ Straightforward edits ("rename this variable")
+  ✗ High-volume pipeline steps (cost + latency)
+  ✗ Tasks where speed matters more than accuracy
+
+COST-BENEFIT:
+  Extended thinking uses more tokens (thinking tokens).
+  Trade-off: higher cost and latency for better accuracy.
+  Rule: Use it when the cost of a wrong answer exceeds
+        the cost of thinking tokens.</code></pre>
+
+<h3>Configuring Thinking</h3>
+<pre><code>API LEVEL:
+  {
+    "model": "claude-opus-4-6",
+    "max_tokens": 16000,
+    "thinking": {
+      "type": "enabled",
+      "budget_tokens": 10000
+    }
+  }
+
+  budget_tokens: Max tokens for internal reasoning.
+    Higher = more thorough reasoning.
+    Lower = faster, cheaper, may miss nuance.
+
+  SIZING GUIDE:
+    Simple decisions:   1,000-2,000 tokens
+    Moderate analysis:  5,000-10,000 tokens
+    Complex planning:   10,000-20,000 tokens
+    Deep research:      20,000+ tokens
+
+CLAUDE CODE LEVEL:
+  Extended thinking is automatic in Claude Code.
+  The model decides when to think deeply vs quickly.
+  You influence it through prompt complexity:
+    Simple prompt → brief reasoning
+    Complex prompt → extended reasoning</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Reasoning Patterns</h2>
+
+<h3>Pattern 1: Task Decomposition</h3>
+<pre><code>PURPOSE: Break complex tasks into manageable steps.
+
+PROMPT TECHNIQUE:
+  "Before acting, break this task into numbered steps.
+   Execute each step one at a time.
+   After each step, verify the result before continuing."
+
+EXAMPLE:
+  Task: "Migrate the auth system from JWT to session-based"
+
+  Agent's decomposition:
+    1. Audit current JWT implementation (which files, which routes)
+    2. Design session-based replacement (middleware, storage)
+    3. Implement session middleware
+    4. Update each protected route
+    5. Update tests
+    6. Verify all tests pass
+    7. Update documentation
+
+  WHY IT WORKS: Each step is small enough to get right.
+  The agent checks progress before moving to the next step.
+  Errors are caught early, not compounded.</code></pre>
+
+<h3>Pattern 2: Pre-Action Verification</h3>
+<pre><code>PURPOSE: Verify assumptions before making changes.
+
+PROMPT TECHNIQUE:
+  "Before editing any file:
+   1. Read the file first
+   2. Verify your understanding matches reality
+   3. Only then make changes"
+
+ANTI-PATTERN: Edit-without-reading
+  Agent assumes file content based on filename.
+  Writes code that conflicts with existing implementation.
+  → Always read before editing.
+
+EXAM INSIGHT: The CCA exam often presents scenarios where
+  an agent acts on assumptions. The correct answer always
+  involves verification before action.</code></pre>
+
+<h3>Pattern 3: Hypothesis Testing</h3>
+<pre><code>PURPOSE: Debug by forming and testing hypotheses.
+
+FLOW:
+  1. OBSERVE: "Tests fail with 'connection refused'"
+  2. HYPOTHESIZE: Three possible causes:
+     a. Database server is down
+     b. Connection string is wrong
+     c. Port conflict with another service
+  3. TEST: Check each hypothesis:
+     a. `pg_isready` → database is running ✓
+     b. Check .env → connection string looks correct ✓
+     c. `lsof -i :5432` → another process on the port! ✗
+  4. CONCLUDE: Port conflict. Kill the conflicting process.
+
+  WHY 3 HYPOTHESES: Multiple hypotheses prevent
+  tunnel vision. If the agent only considers one cause,
+  it may waste time on the wrong fix.</code></pre>
+
+<h3>Pattern 4: Planning Before Execution</h3>
+<pre><code>PURPOSE: Create an execution plan before running tools.
+
+PROMPT TECHNIQUE:
+  "Think about what you need to do.
+   Output your plan as a numbered list.
+   Then execute the plan step by step."
+
+BENEFIT:
+  - Human can review plan before execution starts
+  - Agent has a roadmap (doesn't lose track mid-task)
+  - Progress is trackable (step 3 of 7)
+  - Errors in planning are cheaper than errors in execution
+
+EXAM APPLICATION:
+  Question: "How should an agent approach a large refactor?"
+  Answer: "Plan first. Enumerate all files to change.
+           Identify dependencies between changes.
+           Order changes to avoid breaking intermediate states.
+           Execute in order. Verify after each change."</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Reasoning in Multi-Agent Systems</h2>
+
+<pre><code>CHALLENGE: How do agents share reasoning?
+
+PATTERN: Reasoning Artifacts
+  Agent A thinks → writes reasoning to shared state
+  Agent B reads Agent A's reasoning → makes better decisions
+
+  EXAMPLE:
+    Code Agent: "I chose to use a queue here because
+                 the system processes 10K events/second.
+                 Direct processing would create backpressure."
+    Review Agent: Reads this reasoning → evaluates whether
+                  the queue choice was appropriate for the load.
+
+  WITHOUT SHARED REASONING:
+    Review Agent: "Why is there a queue here? This adds
+                   complexity. Consider removing it."
+    → Conflict. Review agent doesn't understand the design choice.
+
+  WITH SHARED REASONING:
+    Review Agent: "Queue is appropriate for 10K events/sec.
+                   Consider adding dead-letter queue for failures."
+    → Constructive. Both agents aligned.
+
+EXAM TIP: When designing multi-agent systems, always address
+  how agents communicate not just WHAT they did but WHY.
+  Reasoning transparency prevents agent conflicts.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Exam Scenario Practice</h2>
+
+<h3>Scenario: Production Debugging Agent</h3>
+<pre><code>QUESTION:
+  Design a reasoning strategy for an agent that debugs
+  production issues. It has access to logs, metrics, and code.
+  Mistakes are costly (wrong fix could cause outage).
+
+STRONG ANSWER:
+  REASONING PROTOCOL:
+    1. GATHER (no changes yet):
+       - Read last 100 error logs
+       - Check metrics dashboard (error rate, latency, CPU)
+       - Identify when the issue started (timestamp)
+
+    2. HYPOTHESIZE (still no changes):
+       - Form 3 hypotheses for root cause
+       - Rank by likelihood based on evidence
+       - Identify what evidence would confirm/deny each
+
+    3. TEST (read-only verification):
+       - For top hypothesis: find confirming evidence
+       - Check git log for recent deploys near issue start
+       - Verify hypothesis against error pattern
+
+    4. PLAN (still no changes):
+       - If confident (>80%): propose specific fix
+       - If uncertain: request human review of hypotheses
+       - Include rollback plan with every fix
+
+    5. EXECUTE (finally, make changes):
+       - Apply minimal fix
+       - Monitor for 5 minutes
+       - Verify error rate decreasing
+
+    6. DOCUMENT:
+       - Write incident report
+       - Link root cause to fix
+       - Update runbook if new failure mode
+
+  SAFETY RULE: Steps 1-4 are read-only.
+  Only step 5 makes changes. This prevents premature fixes.
+
+WEAK ANSWER: "Agent reads logs and fixes the issue"
+  → No structured reasoning
+  → No hypothesis testing
+  → No safety buffer before changes</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+  <li><strong>Think before acting.</strong> The best agents reason first, execute second.</li>
+  <li><strong>Extended thinking for complex tasks.</strong> Budget tokens based on task complexity.</li>
+  <li><strong>Decompose tasks into steps.</strong> Small steps = fewer compounding errors.</li>
+  <li><strong>Verify assumptions before editing.</strong> Always read before write.</li>
+  <li><strong>Multiple hypotheses for debugging.</strong> Prevents tunnel vision.</li>
+  <li><strong>Share reasoning in multi-agent systems.</strong> WHY matters as much as WHAT.</li>
+</ol>
+
+<div class="callout">
+<strong>CCA exam weight:</strong> Reasoning patterns appear throughout the exam, especially in Domain 2 (Architecture) scenario questions. Candidates who show structured reasoning in their design answers score higher than those who jump to solutions.
+</div>
+</div>
+
+</div>

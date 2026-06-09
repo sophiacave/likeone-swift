@@ -1,0 +1,322 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>MCP architecture: servers, clients, transports, and lifecycle</li>
+    <li>The three MCP primitives: tools, resources, and prompts</li>
+    <li>How to design MCP servers for production use</li>
+    <li>How the CCA exam tests MCP knowledge</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>Model Context Protocol Overview</h2>
+
+<p>MCP is the standard protocol for connecting AI models to external systems. It replaces ad-hoc tool integrations with a structured, discoverable, secure interface. The CCA exam heavily tests MCP architecture.</p>
+
+<pre><code>MCP ARCHITECTURE:
+
+  ┌──────────────┐     JSON-RPC     ┌──────────────┐
+  │  MCP CLIENT  │ ◄──────────────► │  MCP SERVER  │
+  │  (Claude)    │     (stdio or    │  (your code) │
+  │              │      HTTP/SSE)   │              │
+  │  Discovers   │                  │  Exposes     │
+  │  tools,      │                  │  tools,      │
+  │  calls them  │                  │  resources,  │
+  │              │                  │  prompts     │
+  └──────────────┘                  └──────┬───────┘
+                                           │
+                                    ┌──────┴───────┐
+                                    │  EXTERNAL    │
+                                    │  SYSTEMS     │
+                                    │  (DB, API,   │
+                                    │   filesystem)│
+                                    └──────────────┘
+
+KEY CONCEPTS:
+  Client:    The AI model (Claude). Discovers and calls tools.
+  Server:    Your code. Exposes capabilities to the client.
+  Transport: How client and server communicate.
+  Protocol:  JSON-RPC 2.0 over the transport.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Transport Layer</h2>
+
+<pre><code>STDIO TRANSPORT (default for Claude Code):
+  Server runs as a subprocess.
+  Communication via stdin/stdout.
+  Simple, fast, no network required.
+
+  USE WHEN:
+  - Local development
+  - Claude Code extensions
+  - Single-user tools
+
+  CONFIGURATION (.mcp.json):
+    {
+      "mcpServers": {
+        "my-tool": {
+          "command": "python3",
+          "args": ["server.py"],
+          "env": { "API_KEY": "..." }
+        }
+      }
+    }
+
+HTTP/SSE TRANSPORT (for remote servers):
+  Server runs as HTTP endpoint.
+  Uses Server-Sent Events for streaming.
+
+  USE WHEN:
+  - Shared team servers
+  - Cloud-hosted tools
+  - Multi-client access
+  - Tools that need to persist state across connections
+
+  CONFIGURATION:
+    {
+      "mcpServers": {
+        "remote-tool": {
+          "url": "https://mcp.example.com/sse"
+        }
+      }
+    }
+
+EXAM TIP: stdio for local, HTTP/SSE for shared/remote.
+  Know both. The exam may ask you to choose.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>The Three Primitives</h2>
+
+<h3>1. Tools (Model-Controlled)</h3>
+<pre><code>WHAT: Functions the model can call.
+WHO DECIDES: The model decides when to call them.
+DIRECTION: Client → Server (request) → Client (response)
+
+EXAMPLE:
+  Tool: search_database
+  Input: { "query": "users with expired subscriptions" }
+  Output: { "results": [...], "count": 42 }
+
+  Claude decides: "I need to find expired subscriptions.
+  I'll call search_database."
+
+KEY PROPERTIES:
+  - Name: unique identifier (search_database)
+  - Description: what it does (Claude reads this to decide)
+  - Input schema: JSON Schema for parameters
+  - Output: any JSON (no schema enforced on output)
+
+DESIGN RULE: One tool = one capability.
+  BAD: do_database_operation(action, params)
+  GOOD: search_users(query), create_user(data), delete_user(id)</code></pre>
+
+<h3>2. Resources (Application-Controlled)</h3>
+<pre><code>WHAT: Data the server exposes for reading.
+WHO DECIDES: The application/user chooses which to load.
+DIRECTION: Client requests → Server provides content.
+
+EXAMPLE:
+  Resource: file:///project/README.md
+  Content: The README file contents.
+
+  Resource: db://users/schema
+  Content: The database schema definition.
+
+KEY PROPERTIES:
+  - URI: unique identifier (file://, db://, custom://)
+  - Name: human-readable label
+  - MIME type: content format (text/plain, application/json)
+  - Content: the actual data
+
+DIFFERENCE FROM TOOLS:
+  Tools = actions (DO something)
+  Resources = data (READ something)
+
+  Tool: run_query("SELECT * FROM users")  → executes action
+  Resource: db://users/schema              → provides data</code></pre>
+
+<h3>3. Prompts (User-Controlled)</h3>
+<pre><code>WHAT: Pre-written prompt templates the server offers.
+WHO DECIDES: The user selects which prompt to use.
+DIRECTION: User selects → Server provides prompt → Client uses it.
+
+EXAMPLE:
+  Prompt: "code-review"
+  Arguments: { "file": "auth.py", "focus": "security" }
+  Expands to: "Review auth.py with focus on security
+               vulnerabilities. Check for OWASP Top 10..."
+
+KEY PROPERTIES:
+  - Name: identifier (code-review)
+  - Description: what it does
+  - Arguments: optional parameters
+
+DIFFERENCE FROM COMMANDS:
+  Commands (.claude/commands/): files on disk, project-specific
+  MCP Prompts: served by MCP server, can be dynamic</code></pre>
+
+<h3>Primitive Selection Guide</h3>
+<pre><code>┌─────────────────────────────────────────────────┐
+│ "Claude needs to call an API"       → TOOL      │
+│ "User needs to browse available data"→ RESOURCE │
+│ "Pre-built workflow templates"       → PROMPT   │
+│ "Agent decides when to act"          → TOOL     │
+│ "Human decides what to load"         → RESOURCE │
+│ "Reusable prompt patterns"           → PROMPT   │
+└─────────────────────────────────────────────────┘
+
+EXAM TRAP: Using tools when resources are appropriate.
+  If it's read-only data → Resource.
+  If it requires action/computation → Tool.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>MCP Server Lifecycle</h2>
+
+<pre><code>1. INITIALIZATION
+   Client sends: { "method": "initialize", "params": {
+     "clientInfo": { "name": "claude-code", "version": "1.0" },
+     "capabilities": { ... }
+   }}
+   Server responds with its capabilities: tools, resources, prompts.
+
+2. CAPABILITY DISCOVERY
+   Client calls: tools/list → gets available tools
+   Client calls: resources/list → gets available resources
+   Client calls: prompts/list → gets available prompts
+
+3. OPERATION
+   Client calls tools: tools/call → server executes, returns result
+   Client reads resources: resources/read → server returns content
+   User selects prompts: prompts/get → server returns prompt template
+
+4. NOTIFICATIONS (server → client)
+   Server can notify client of changes:
+   - tools/list_changed → new tool available
+   - resources/list_changed → resource updated
+   - Used for dynamic tool sets that change at runtime.
+
+5. SHUTDOWN
+   Client sends shutdown notification.
+   Server cleans up resources and exits.
+
+EXAM NOTE: You don't need to memorize JSON-RPC method names.
+  You need to understand the flow: discover → operate → notify.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Production MCP Server Design</h2>
+
+<pre><code>ARCHITECTURE CHECKLIST:
+
+  ✓ SINGLE RESPONSIBILITY
+    One server per domain (database, email, deployment).
+    Don't build a god-server with 50 tools.
+
+  ✓ CLEAR DESCRIPTIONS
+    Claude reads tool descriptions to decide when to call them.
+    Vague descriptions = wrong tool selection.
+
+  ✓ INPUT VALIDATION
+    Validate all inputs from the client.
+    Don't trust that Claude sends valid parameters.
+    Return clear errors for invalid input.
+
+  ✓ ERROR HANDLING
+    Return structured errors, not stack traces.
+    { "error": "User not found", "code": "NOT_FOUND" }
+    Claude uses error messages to recover gracefully.
+
+  ✓ TIMEOUTS
+    Set reasonable timeouts for external API calls.
+    Return timeout errors rather than hanging forever.
+
+  ✓ RATE LIMITING
+    Prevent Claude from hammering external APIs.
+    Track call counts. Return "rate limited" when exceeded.
+
+  ✓ LOGGING
+    Log all tool calls for debugging and audit.
+    Include: timestamp, tool name, input, output, duration.
+
+ANTI-PATTERNS:
+  ✗ Tool that returns entire database table
+    → Use pagination. Return max 100 rows.
+  ✗ Tool that takes 60 seconds
+    → User thinks it's stuck. Add progress or break into steps.
+  ✗ Tool with 20 required parameters
+    → Claude struggles with many params. Simplify or use defaults.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Exam Scenario Practice</h2>
+
+<h3>Scenario: E-Commerce MCP Server</h3>
+<pre><code>QUESTION:
+  Design an MCP server for an e-commerce platform.
+  Claude should be able to help customer support agents
+  look up orders, check inventory, and process refunds.
+
+STRONG ANSWER:
+  SERVER: ecommerce-support
+
+  TOOLS:
+    search_orders(customer_email, status?, date_range?)
+      → Returns list of orders matching criteria
+
+    get_order_details(order_id)
+      → Returns full order with items, payment, shipping
+
+    check_inventory(product_id)
+      → Returns current stock level and restock ETA
+
+    process_refund(order_id, reason, amount?)
+      → Initiates refund. amount defaults to full order.
+      → Returns confirmation with refund ID.
+
+  RESOURCES:
+    policy://refund-policy
+      → Current refund policy document
+    policy://shipping-times
+      → Shipping time estimates by region
+
+  PROMPTS:
+    "order-lookup"
+      → "Help me find an order for a customer who..."
+    "refund-request"
+      → "Process a refund for order... Verify eligibility..."
+
+  SAFETY:
+    process_refund requires confirmation parameter:
+    { "confirmed": true } — prevents accidental refunds.
+    Refunds over $500 return "requires_manager_approval".
+
+  TRANSPORT: HTTP/SSE (shared by support team, not local)
+
+WEAK ANSWER: "Create tools for everything the platform does"
+  → Too broad. Support agents don't need product management.
+  → No safety constraints on financial operations.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+  <li><strong>Three primitives:</strong> Tools (model calls), Resources (app provides), Prompts (user selects).</li>
+  <li><strong>stdio for local, HTTP/SSE for shared.</strong> Match transport to deployment.</li>
+  <li><strong>One server per domain.</strong> Don't build god-servers.</li>
+  <li><strong>Descriptions are critical.</strong> Claude uses them to decide when to call tools.</li>
+  <li><strong>Validate inputs, structure errors.</strong> Don't trust the client blindly.</li>
+  <li><strong>Safety on dangerous operations.</strong> Confirmation flags, amount limits, approval workflows.</li>
+</ol>
+
+<div class="callout">
+<strong>CCA exam weight:</strong> MCP is Domain 1 (Tool Use) — the highest-weighted domain. Expect 8-10 questions covering protocol architecture, primitive selection, server design, and security. This is must-know content.
+</div>
+</div>
+
+</div>

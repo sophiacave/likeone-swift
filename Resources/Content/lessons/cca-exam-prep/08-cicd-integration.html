@@ -1,0 +1,314 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>How to integrate Claude Code into CI/CD pipelines</li>
+    <li>Headless mode, API usage, and automated code review</li>
+    <li>Safety guardrails for CI/CD automation</li>
+    <li>How the CCA exam tests deployment integration</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>Claude in CI/CD Pipelines</h2>
+
+<p>Claude Code can run in headless mode inside CI/CD systems — no human interaction, fully automated. The CCA exam tests your understanding of when this is appropriate and how to do it safely.</p>
+
+<h3>Headless Mode</h3>
+<pre><code>WHAT: Claude Code runs without interactive terminal input.
+HOW:  claude -p "prompt" --allowedTools "list" --output-format json
+WHERE: GitHub Actions, GitLab CI, Jenkins, any CI runner.
+
+EXAMPLE — Automated PR Review:
+  claude -p "Review this PR diff for bugs, security issues,
+             and style violations. Output findings as JSON." \
+         --allowedTools "Read,Grep,Glob" \
+         --output-format json
+
+KEY FLAGS:
+  -p "prompt"           Run this prompt (non-interactive)
+  --allowedTools "X,Y"  Only these tools can be used
+  --output-format json  Structured output for parsing
+  --max-turns N         Limit execution steps</code></pre>
+
+<div class="callout">
+<strong>Exam critical:</strong> In CI/CD, Claude runs with NO human in the loop. This means tool permissions must be explicitly restricted. Never give CI Claude access to tools it doesn't need.
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>Common CI/CD Integration Patterns</h2>
+
+<h3>Pattern 1: Automated Code Review</h3>
+<pre><code>TRIGGER: Pull request opened or updated
+ACTION:  Review changes, post comments
+
+GitHub Action:
+  name: Claude Code Review
+  on:
+    pull_request:
+      types: [opened, synchronize]
+  jobs:
+    review:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+        - name: Review PR
+          run: |
+            claude -p "Review the diff between $BASE and $HEAD.
+                       Focus on: bugs, security, performance.
+                       Post a summary comment on the PR." \
+                   --allowedTools "Read,Grep,Glob,Bash" \
+                   --output-format json > review.json
+
+SAFETY:
+  - Read-only tools only (Read, Grep, Glob)
+  - Bash restricted to read commands (git diff, npm test)
+  - No Write, no Edit — CI should not modify code
+  - Output parsed and posted via gh CLI, not by Claude directly</code></pre>
+
+<h3>Pattern 2: Test Generation</h3>
+<pre><code>TRIGGER: New files added without corresponding tests
+ACTION:  Generate test file, add to PR
+
+WORKFLOW:
+  1. Detect untested files (compare src/ to tests/)
+  2. Claude generates test file matching project conventions
+  3. Run generated tests to verify they pass
+  4. If pass: commit and push to PR branch
+  5. If fail: log warning, skip auto-commit
+
+SAFETY:
+  - Generated tests run in isolated environment
+  - Claude can write to tests/ directory ONLY
+  - Cannot modify source code
+  - Human reviews generated tests before merge
+
+ALLOWED TOOLS: Read, Grep, Glob, Write (tests/ only), Bash (npm test)</code></pre>
+
+<h3>Pattern 3: Release Notes Generation</h3>
+<pre><code>TRIGGER: Tag pushed (v*.*.*)
+ACTION:  Generate changelog from commits since last tag
+
+WORKFLOW:
+  1. Read commits since previous tag
+  2. Categorize: features, fixes, breaking changes
+  3. Generate human-readable release notes
+  4. Create GitHub release with notes
+
+ALLOWED TOOLS: Read, Bash (git log only)
+OUTPUT: Markdown release notes
+
+EXAMPLE OUTPUT:
+  ## v2.4.0
+
+  ### Features
+  - Add user preference API (#234)
+  - Support dark mode in dashboard (#241)
+
+  ### Fixes
+  - Fix memory leak in WebSocket handler (#238)
+  - Correct timezone handling for EU users (#240)
+
+  ### Breaking Changes
+  - Remove deprecated /v1/users endpoint (#237)
+    Migration: Use /v2/users instead</code></pre>
+
+<h3>Pattern 4: Dependency Audit</h3>
+<pre><code>TRIGGER: Weekly schedule or dependency file changes
+ACTION:  Audit dependencies for vulnerabilities and licenses
+
+WORKFLOW:
+  1. Run npm audit / pip audit / cargo audit
+  2. Claude analyzes findings
+  3. For each vulnerability:
+     - Assess actual exploitability in this project
+     - Recommend: update, ignore (with reason), or replace
+  4. Generate report, create issue if critical
+
+SAFETY: Read-only. No modifications. Report only.
+VALUE:  Reduces noise from audit tools (many false positives)
+        by having Claude assess actual impact in context.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Safety Guardrails for CI/CD</h2>
+
+<p>The CCA exam heavily tests safety awareness in automated contexts. These guardrails are mandatory knowledge.</p>
+
+<h3>Principle of Least Privilege</h3>
+<pre><code>RULE: Claude in CI gets ONLY the tools it needs. Nothing more.
+
+CODE REVIEW:     Read, Grep, Glob (read-only)
+TEST GENERATION: Read, Grep, Write (tests/ only), Bash (test runner)
+DEPLOYMENT:      Bash (deploy commands only), Read
+RELEASE NOTES:   Read, Bash (git log only)
+
+NEVER IN CI:
+  ✗ Unrestricted Bash (could run anything)
+  ✗ Write access to source code (only tests or docs)
+  ✗ Network access to external services (unless required)
+  ✗ Access to secrets beyond what the task needs</code></pre>
+
+<h3>Output Validation</h3>
+<pre><code>RULE: Never trust CI Claude output without validation.
+
+BAD:  Claude generates code → auto-merge to main
+GOOD: Claude generates code → run tests → human reviews → merge
+
+BAD:  Claude says "no vulnerabilities" → ship to production
+GOOD: Claude says "no vulnerabilities" → verify with second tool → ship
+
+DEFENSE IN DEPTH:
+  1. Restrict tools (prevention)
+  2. Validate output (detection)
+  3. Require human approval for risky actions (control)
+  4. Log everything for audit (visibility)</code></pre>
+
+<h3>Secret Management</h3>
+<pre><code>RULE: CI Claude should NEVER see raw secrets.
+
+BAD:  Pass API key as environment variable Claude can read
+GOOD: Use service account tokens with minimal permissions
+      Rotate tokens regularly
+      Audit token usage
+
+PATTERN:
+  - Claude generates the deploy command
+  - CI runner executes it with injected secrets
+  - Claude never sees the secret values
+
+  # Good: Claude generates command, CI fills secrets
+  claude -p "Generate the deploy command" > cmd.sh
+  DEPLOY_TOKEN=${{ secrets.DEPLOY_TOKEN }} bash cmd.sh
+
+  # Bad: Claude has access to secrets
+  DEPLOY_TOKEN=${{ secrets.DEPLOY_TOKEN }} claude -p "Deploy using $DEPLOY_TOKEN"</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scaling Claude in CI</h2>
+
+<pre><code>COST MANAGEMENT:
+  Each CI Claude invocation uses API tokens.
+  Strategies to manage cost:
+
+  1. FILTER BEFORE CALLING
+     - Only review PRs with >10 lines changed
+     - Skip draft PRs, bot PRs, documentation-only changes
+     - Use conventional commits to identify scope
+
+  2. SCOPE THE WORK
+     - Review only changed files, not entire codebase
+     - Use --max-turns to limit execution depth
+     - Pass focused prompts, not open-ended ones
+
+  3. CACHE RESULTS
+     - Store review results for unchanged files
+     - Skip re-review if only commit message changed
+     - Use hash-based caching for dependency audits
+
+LATENCY:
+  Claude API calls take 5-30 seconds.
+  For blocking CI (must pass before merge):
+    - Keep prompts focused (faster response)
+    - Set timeout (60 seconds max per invocation)
+    - Parallelize independent checks
+
+  For non-blocking CI (advisory):
+    - Post results as PR comment asynchronously
+    - No timeout concern
+    - Can do deeper analysis</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Exam Scenario Practice</h2>
+
+<h3>Scenario: E-commerce Platform CI</h3>
+<pre><code>QUESTION:
+  An e-commerce platform wants to add Claude to their CI pipeline.
+  They have: 50 PRs/day, payment processing code, PCI compliance
+  requirements. Design the integration.
+
+STRONG ANSWER:
+  TWO CI JOBS (parallel):
+
+  JOB 1 — Code Review (all PRs):
+    Trigger: PR opened/updated
+    Tools: Read, Grep, Glob (read-only)
+    Prompt: "Review changed files for bugs, security issues,
+             performance problems. Extra scrutiny for files in
+             src/payments/ — flag any changes to payment logic."
+    Output: PR comment with findings
+    Blocking: No (advisory only)
+
+  JOB 2 — Security Gate (payment PRs only):
+    Trigger: PR touches src/payments/**
+    Tools: Read, Grep (read-only)
+    Prompt: "Audit changes to payment code against PCI DSS
+             requirements. Check for: raw card numbers in logs,
+             unencrypted data at rest, missing input validation,
+             SQL injection vectors."
+    Output: Pass/fail status check
+    Blocking: YES — must pass before merge
+    Escalation: If fail → auto-assign security team for review
+
+  WHY TWO JOBS:
+    - General review is advisory (non-blocking, low friction)
+    - Payment review is mandatory (PCI compliance, blocking)
+    - Separation of concerns: different tool permissions
+
+  COST: ~50 reviews/day × $0.05/review = ~$2.50/day
+        + ~5 security audits/day × $0.10/audit = ~$0.50/day
+        Total: ~$3/day, ~$90/month
+
+WEAK ANSWER: "Use Claude to review all PRs"
+  → No security distinction for payment code
+  → No cost analysis
+  → No blocking/non-blocking decision</code></pre>
+
+<h3>Scenario: Monorepo with Multiple Teams</h3>
+<pre><code>QUESTION:
+  Monorepo with 5 teams, each owning a package.
+  How do you configure Claude CI to respect team boundaries?
+
+STRONG ANSWER:
+  CODEOWNERS file:
+    packages/auth/**    @security-team
+    packages/payments/** @payments-team
+    packages/frontend/** @frontend-team
+
+  CI Configuration:
+    Each package has its own CLAUDE.md with team-specific rules.
+    CI job detects which packages changed, loads corresponding
+    CLAUDE.md, and runs review with package-specific context.
+
+  TEAM ISOLATION:
+    - Auth changes: extra security scrutiny, blocking review
+    - Payment changes: PCI compliance check, blocking review
+    - Frontend changes: accessibility audit, advisory review
+
+  SHARED: Root CLAUDE.md has org-wide standards that apply to all.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+  <li><strong>Headless mode: <code>claude -p</code> with restricted <code>--allowedTools</code>.</strong> This is the CI entry point.</li>
+  <li><strong>Least privilege is non-negotiable.</strong> CI Claude gets only the tools it needs.</li>
+  <li><strong>Blocking vs advisory.</strong> Know when to gate merges vs when to advise.</li>
+  <li><strong>Never expose secrets to Claude in CI.</strong> Inject them at execution time.</li>
+  <li><strong>Cost-conscious design.</strong> Filter, scope, cache. Don't review every line on every PR.</li>
+  <li><strong>Validate Claude's output.</strong> Trust but verify — run tests on generated code.</li>
+</ol>
+
+<div class="callout">
+<strong>CCA exam weight:</strong> CI/CD integration appears in Domain 4 (Deployment & Operations) and Domain 5 (Security & Safety). Expect 3-4 questions. The exam rewards candidates who demonstrate both capability (what Claude can do in CI) and restraint (what it should NOT do).
+</div>
+</div>
+
+</div>

@@ -1,0 +1,307 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>How to solve MCP and tool design exam scenarios</li>
+    <li>Common tool integration anti-patterns and fixes</li>
+    <li>End-to-end MCP server design from requirements</li>
+    <li>Practice scenarios for all Domain 1 and Domain 5 topics</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>Tool & MCP Exam Strategy</h2>
+
+<pre><code>DOMAIN 1 (Tool Use) and DOMAIN 5 (Security) combined
+account for ~40% of the exam. This lesson is intensive
+practice for both.
+
+ANSWER TEMPLATE FOR MCP QUESTIONS:
+  1. TOOLS: List each tool with name, description, key params
+  2. RESOURCES: Static data the server exposes (if applicable)
+  3. SECURITY: Input validation, output filtering, access control
+  4. ERRORS: How tools report and recover from failures
+  5. TRANSPORT: stdio vs HTTP/SSE and why</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 1: Project Management Integration</h2>
+
+<pre><code>REQUIREMENTS:
+  - Claude should manage tasks in a project tracker
+  - Teams of 5-20 people use the same project
+  - Task operations: create, update, assign, search, close
+  - Integration with Slack for notifications
+
+DESIGN:
+
+TOOLS:
+  search_tasks(project_id, query?, assignee?, status?, label?)
+    "Search tasks by keyword, assignee, status, or label.
+     Returns max 25 tasks sorted by priority then due date."
+
+  get_task(task_id)
+    "Get full task details including comments and history.
+     Use after search_tasks to get specifics."
+
+  create_task(project_id, title, description, assignee?,
+              priority?, due_date?, labels?)
+    "Create a new task. Checks for duplicates via title similarity.
+     Returns created task with ID."
+
+  update_task(task_id, title?, description?, status?,
+              assignee?, priority?, due_date?)
+    "Update task fields. Only changed fields required.
+     Logs change in task history automatically."
+
+  close_task(task_id, resolution)
+    "Close a task with resolution: completed|wont_fix|duplicate.
+     Cannot close tasks assigned to others without reassigning first."
+
+  notify_channel(channel_id, message, task_id?)
+    "Send notification to Slack channel. Links to task if provided.
+     Rate limited: 10 notifications per minute."
+
+RESOURCES:
+  project://{id}/members → team member list with roles
+  project://{id}/labels → available label definitions
+
+SECURITY:
+  - Authentication: project member token (scoped to project)
+  - Authorization: members can create/update. Only assignee or
+    admin can close. Admins can reassign.
+  - Slack: notifications go to pre-configured channels only.
+    Cannot send to arbitrary channels or DMs.
+
+TRANSPORT: HTTP/SSE (shared team server)
+
+ERROR EXAMPLES:
+  close_task when assigned to someone else:
+    { "error": "FORBIDDEN",
+      "message": "Cannot close task assigned to @jane.
+                  Reassign first or ask @jane to close.",
+      "suggestion": "Use update_task to reassign, then close" }</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 2: Database Migration Assistant</h2>
+
+<pre><code>REQUIREMENTS:
+  - Claude helps write and review database migrations
+  - Must preview changes before execution
+  - Must support rollback
+  - PostgreSQL database
+
+DESIGN:
+
+TOOLS:
+  get_current_schema(table?)
+    "Get the current database schema. If table specified,
+     returns that table's columns, types, indexes, and constraints.
+     If no table, returns all table names with row counts."
+
+  preview_migration(sql)
+    "Parse and validate migration SQL WITHOUT executing.
+     Returns: affected tables, added/removed columns,
+     index changes, estimated execution time, and risk level
+     (low/medium/high based on table size and lock type)."
+
+  execute_migration(sql, preview_token)
+    "Execute a migration that was previously previewed.
+     Requires preview_token from preview_migration (ensures
+     the exact SQL was reviewed). Creates automatic rollback
+     point. Returns execution result."
+
+  rollback_migration(migration_id)
+    "Rollback a specific migration to its pre-execution state.
+     Only works for migrations executed in the last 24 hours.
+     After 24 hours, manual rollback required."
+
+  list_migrations(limit?)
+    "List recent migrations with status, date, and duration.
+     Shows which have rollback points available."
+
+SECURITY:
+  - preview_migration: safe (read-only, no execution)
+  - execute_migration: requires preview_token (prevents
+    executing SQL that wasn't reviewed)
+  - Rollback window: 24 hours (prevents data loss from
+    rolling back weeks-old migrations)
+  - All DDL operations logged to audit table
+  - NEVER allow DROP DATABASE or TRUNCATE through this tool
+
+DESIGN CHOICE: preview_token pattern
+  preview_migration returns a one-time token.
+  execute_migration requires that token.
+  This guarantees the executed SQL was previewed first.
+  Token expires after 10 minutes.
+
+ERROR HANDLING:
+  Migration fails mid-execution:
+    { "error": "MIGRATION_FAILED",
+      "message": "Failed at ALTER TABLE: column 'email' already exists",
+      "rolled_back": true,
+      "migration_id": "mig_123",
+      "suggestion": "Check if this migration was already applied" }</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 3: Multi-MCP Server Architecture</h2>
+
+<pre><code>REQUIREMENTS:
+  A DevOps platform needs Claude to manage:
+  - Infrastructure (AWS resources)
+  - Monitoring (Datadog)
+  - Incidents (PagerDuty)
+  - Documentation (Confluence)
+
+  How do you split this into MCP servers?
+
+STRONG ANSWER:
+
+  SERVER 1: infra-mcp (AWS)
+    Tools: list_instances, get_instance, scale_service,
+           check_health, get_cost_estimate
+    Security: Read-only by default. scale_service requires
+              confirmation and is restricted to non-production.
+    Transport: stdio (each engineer runs locally with their AWS creds)
+
+  SERVER 2: monitoring-mcp (Datadog)
+    Tools: search_metrics, get_dashboard, create_alert,
+           acknowledge_alert, get_traces
+    Security: Read-only for metrics/traces. Alert creation
+              limited to pre-approved alert templates.
+    Transport: HTTP/SSE (shared team server, one Datadog API key)
+
+  SERVER 3: incident-mcp (PagerDuty)
+    Tools: list_incidents, get_incident, acknowledge_incident,
+           escalate_incident, add_note
+    Security: Engineers can acknowledge and add notes.
+              Only on-call can escalate.
+              Cannot create incidents (auto-triggered by alerts).
+    Transport: HTTP/SSE (shared, role-based access)
+
+  SERVER 4: docs-mcp (Confluence)
+    Tools: search_docs, get_page, create_page, update_page
+    Resources: template://runbook, template://postmortem
+    Security: Anyone can read. Only team members can create/update.
+              Cannot delete pages (use archive instead).
+    Transport: HTTP/SSE (shared)
+
+WHY FOUR SERVERS (not one):
+  - Separate credentials (AWS creds ≠ Datadog key ≠ PagerDuty token)
+  - Different security profiles (infra is higher risk than docs)
+  - Independent scaling (monitoring gets more traffic than docs)
+  - Fault isolation (docs outage doesn't block incident response)
+  - Different transports match different use cases
+
+WEAK ANSWER: "One server with all tools"
+  → Single point of failure
+  → One compromised credential exposes everything
+  → Can't apply different security profiles</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 4: Debugging a Tool Integration</h2>
+
+<pre><code>QUESTION:
+  Your MCP search tool returns correct results sometimes but
+  wrong results other times. Claude calls it with the right
+  parameters. What could be wrong and how do you fix it?
+
+DIAGNOSTIC FRAMEWORK:
+
+  CHECK 1: Is the tool description ambiguous?
+    If Claude sometimes calls the wrong tool:
+    → Improve descriptions to differentiate similar tools.
+
+  CHECK 2: Is the response format inconsistent?
+    If the tool returns different JSON shapes:
+    → Standardize the response format. Always return same structure.
+
+  CHECK 3: Are there race conditions?
+    If results vary based on timing:
+    → Check if data changes between search and action.
+    → Add timestamps to results. Verify freshness.
+
+  CHECK 4: Is pagination handled correctly?
+    If results seem incomplete:
+    → Check if tool returns partial results without indicating more.
+    → Always include: total_count, has_more, next_offset.
+
+  CHECK 5: Is caching stale?
+    If results don't match current data:
+    → Check cache TTL. Add cache-bust parameter.
+    → Return cache_age in response for transparency.
+
+SYSTEMATIC FIX:
+  1. Add logging to every tool call (input + output)
+  2. Compare failing calls against successful calls
+  3. Identify the pattern (timing? input? data state?)
+  4. Fix the root cause
+  5. Add a test case for the failure scenario
+  6. Monitor for recurrence</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Scenario 5: Cost Optimization</h2>
+
+<pre><code>QUESTION:
+  Your MCP tools call external APIs that charge per request.
+  Claude is making too many API calls, driving up costs.
+  How do you reduce costs without limiting functionality?
+
+STRONG ANSWER:
+  STRATEGY 1: BATCHING
+    Instead of: get_user(id) called 10 times
+    Provide:    get_users(ids[]) called once with 10 IDs
+    → 10 API calls → 1 API call. 90% cost reduction.
+
+  STRATEGY 2: CACHING
+    Cache results with appropriate TTL:
+    - User profiles: cache 5 minutes
+    - Product catalog: cache 1 hour
+    - Static config: cache 24 hours
+    Tool returns cached data when available.
+    Claude doesn't know or care about caching.
+
+  STRATEGY 3: RESPONSE SHAPING
+    Instead of returning full objects, return summaries.
+    search_users returns { id, name, email }
+    get_user returns { full profile }
+    → Claude calls search first (cheap), then get_user only
+       for the specific record it needs (targeted).
+
+  STRATEGY 4: SMART TOOL DESCRIPTIONS
+    "search_users: Search for users. Returns max 20 results.
+     Call get_user(id) for full details of a specific user.
+     Do NOT call get_user for every search result."
+    → Description guides Claude's calling pattern.
+
+  STRATEGY 5: RATE LIMITING WITH FEEDBACK
+    When approaching limits:
+    { "warning": "approaching_rate_limit",
+      "remaining": 5,
+      "reset_in": 120 }
+    → Claude adjusts behavior (batches remaining queries).</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+  <li><strong>One MCP server per domain.</strong> Separate credentials, security profiles, and failure domains.</li>
+  <li><strong>Preview + confirm for dangerous operations.</strong> Token-based confirmation prevents bypasses.</li>
+  <li><strong>Batch tools reduce API costs.</strong> Provide bulk alternatives to per-item tools.</li>
+  <li><strong>Debug with logging first.</strong> Input + output logs reveal patterns in failures.</li>
+  <li><strong>Tool descriptions shape calling patterns.</strong> Guide Claude to efficient usage in the description.</li>
+  <li><strong>Error responses should include suggestions.</strong> Help Claude recover, not just fail.</li>
+</ol>
+
+<div class="callout">
+<strong>CCA exam tip:</strong> For any MCP design question, use the 5-point template: Tools → Resources → Security → Errors → Transport. This ensures you cover everything the graders are looking for. Practice until the template is automatic.
+</div>
+</div>
+
+</div>

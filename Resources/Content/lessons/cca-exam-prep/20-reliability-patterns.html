@@ -1,0 +1,293 @@
+<div class="wrap">
+
+<div class="learn-card">
+  <h3>After this lesson you'll know</h3>
+  <ul>
+    <li>Reliability patterns: retries, fallbacks, circuit breakers, guardrails</li>
+    <li>How to design agents that recover gracefully from failures</li>
+    <li>Monitoring and observability for production agents</li>
+    <li>How the CCA exam tests operational reliability</li>
+  </ul>
+</div>
+
+<div class="lesson-section">
+<h2>Why Reliability Matters</h2>
+
+<p>APIs fail. Networks drop. Models hallucinate. Production agents encounter failures constantly. The CCA exam tests whether you can design agents that handle failures gracefully instead of crashing.</p>
+
+<pre><code>FAILURE MODES:
+  Tool failure:  API returns 500, timeout, rate limit
+  Model failure: Hallucination, wrong tool call, infinite loop
+  Data failure:  Stale data, missing records, corrupted input
+  System failure: Out of memory, disk full, service down
+
+UNRELIABLE AGENT:
+  Task → tool call → failure → crash → user sees error
+
+RELIABLE AGENT:
+  Task → tool call → failure → retry → fallback → recover → complete</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Retry Patterns</h2>
+
+<pre><code>PATTERN 1: SIMPLE RETRY
+  try tool_call()
+  if fails: wait 1 second, retry
+  if fails again: wait 2 seconds, retry
+  if fails again: give up, report error
+
+  MAX RETRIES: 3 (sufficient for transient errors)
+  BACKOFF: exponential (1s, 2s, 4s) or linear (1s, 2s, 3s)
+
+PATTERN 2: RETRY WITH JITTER
+  Same as above but add random delay:
+  wait = base_delay * 2^attempt + random(0, 1s)
+
+  WHY JITTER: If 100 agents retry at the same time,
+  they all hit the API simultaneously (thundering herd).
+  Jitter spreads retries out. Reduces server load.
+
+PATTERN 3: CONDITIONAL RETRY
+  Retry ONLY for transient errors:
+    500, 502, 503: retry (server issue, likely temporary)
+    429 (rate limit): retry after Retry-After header
+    400 (bad request): DO NOT retry (fix the request)
+    404 (not found): DO NOT retry (resource doesn't exist)
+    401 (unauthorized): DO NOT retry (fix credentials)
+
+  EXAM KEY: Not all errors should be retried.
+  Retrying a 400 wastes time. Retrying a 503 makes sense.
+
+WHEN TO GIVE UP:
+  After 3 retries OR total elapsed > 30 seconds.
+  Report the error with context (what failed, why, what was tried).
+  Suggest manual intervention if critical.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Fallback Patterns</h2>
+
+<pre><code>PATTERN 1: DEGRADED FUNCTIONALITY
+  Primary: Call external API for real-time data
+  Fallback: Use cached data (may be stale)
+  Degrade: "Using cached data from 2 hours ago.
+            Real-time data unavailable."
+
+  EXAMPLE:
+    get_stock_price() → API timeout
+    fallback: last_cached_price("AAPL")
+    response: "$192.50 (cached 2 hours ago, live data unavailable)"
+
+PATTERN 2: ALTERNATIVE TOOL
+  Primary: search_with_semantic(query)
+  Fallback: search_with_keyword(query)
+
+  If semantic search is down (embedding service offline):
+  → Fall back to keyword search (less precise, but works).
+
+PATTERN 3: HUMAN ESCALATION
+  If all automated approaches fail:
+  → Create ticket for human review
+  → Include: what was attempted, what failed, context
+
+  "I was unable to process this refund due to a payment
+   gateway error. I've created ticket #1234 for the
+   finance team. They'll process it manually within 4 hours."
+
+PATTERN 4: GRACEFUL DEGRADATION CHAIN
+  Try: Full analysis (semantic search + RAG + graph)
+  If fail: Partial analysis (keyword search + graph)
+  If fail: Basic analysis (keyword search only)
+  If fail: "Unable to analyze. Here's what I know: [cached data]"
+  If fail: "Service unavailable. Please try again later."
+
+  Each level provides less capability but still works.
+  The agent never shows an empty error screen.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Circuit Breaker Pattern</h2>
+
+<pre><code>PROBLEM: External service is down. Agent keeps calling it.
+  100 calls × 30 second timeout = 50 minutes wasted.
+
+SOLUTION: Circuit breaker stops calling after N failures.
+
+  STATES:
+    CLOSED (normal): Calls go through.
+    OPEN (tripped): Calls blocked immediately. Return fallback.
+    HALF-OPEN (testing): Allow one call to test if service recovered.
+
+  FLOW:
+    Normal operation → 3 consecutive failures →
+    Circuit OPENS → all calls return instant fallback →
+    After 60 seconds → circuit goes HALF-OPEN →
+    One test call → if succeeds → circuit CLOSES (back to normal)
+                   → if fails → circuit stays OPEN (wait another 60s)
+
+  BENEFITS:
+    - No wasted time on a dead service
+    - Instant fallback responses
+    - Automatic recovery when service comes back
+    - Reduces load on struggling services
+
+IMPLEMENTATION FOR MCP:
+  Track failure count per tool.
+  If 3+ consecutive failures: skip tool, return fallback.
+  Every 60 seconds: attempt one call to check recovery.
+
+EXAM NOTE: You won't implement a circuit breaker on the exam.
+  But you need to know WHEN to recommend it:
+  → When tools call external APIs that may go down.
+  → When agent availability matters more than perfect data.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Guardrails</h2>
+
+<pre><code>GUARDRAILS PREVENT AGENTS FROM GOING OFF THE RAILS.
+
+GUARDRAIL 1: MAX TOOL CALLS
+  Limit: 25 tool calls per task.
+  If exceeded: "I've made 25 tool calls and haven't completed
+  the task. This may require a different approach."
+  → Prevents infinite loops and runaway costs.
+
+GUARDRAIL 2: OUTPUT VALIDATION
+  After every response, check:
+  - Does it answer the original question?
+  - Does it contain hallucinated data?
+  - Does it follow the required format?
+  If invalid: retry with specific correction instruction.
+
+GUARDRAIL 3: SCOPE ENFORCEMENT
+  Agent is told to review auth module.
+  Guardrail: only allow file reads in src/auth/.
+  If agent tries to read src/payments/: block with
+  "Out of scope. Focus on auth module only."
+
+GUARDRAIL 4: SAFETY CHECKS
+  Before any write operation:
+  - Is this file in a protected directory?
+  - Does this command affect production?
+  - Is this change reversible?
+  If any check fails: require confirmation.
+
+GUARDRAIL 5: COST CEILING
+  Track API token usage.
+  At 80%: warn "approaching budget limit"
+  At 100%: stop processing, summarize what's done so far.
+  → Prevents runaway costs on unexpectedly complex tasks.
+
+IMPLEMENTATION:
+  Guardrails live in the orchestration layer, not in Claude.
+  Claude doesn't enforce its own guardrails — the system does.
+  This is defense in depth: Claude tries to behave.
+  Guardrails catch it when it doesn't.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Monitoring & Observability</h2>
+
+<pre><code>WHAT TO MONITOR:
+
+  PERFORMANCE:
+    - Response latency (p50, p95, p99)
+    - Tool call duration per tool
+    - Token usage per session
+    - Task completion rate
+
+  RELIABILITY:
+    - Error rate (% of failed tool calls)
+    - Retry rate (how often retries are needed)
+    - Fallback rate (how often fallbacks are triggered)
+    - Circuit breaker trips per hour
+
+  QUALITY:
+    - User satisfaction (thumbs up/down)
+    - Hallucination rate (automated checks)
+    - Task success rate
+    - Escalation rate (how often humans take over)
+
+  COST:
+    - API tokens consumed per task type
+    - External API costs per hour
+    - Cost per successful task completion
+
+ALERTING:
+  CRITICAL: Error rate > 10% → page on-call
+  HIGH:     Latency p95 > 30s → Slack alert
+  MEDIUM:   Cost spike > 2x normal → email alert
+  LOW:      Hallucination detected → log for review
+
+DASHBOARDS:
+  Real-time: error rate, latency, active sessions
+  Daily: task completion, cost, quality scores
+  Weekly: trends, top errors, improvement opportunities</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Exam Scenario Practice</h2>
+
+<h3>Scenario: E-Commerce Checkout Agent</h3>
+<pre><code>QUESTION:
+  An AI agent assists with checkout. It calls payment API,
+  inventory API, and shipping API. Any failure means the
+  customer can't complete their purchase. Design reliability.
+
+STRONG ANSWER:
+  PAYMENT API:
+    Retry: Yes (3 attempts with exponential backoff)
+    Fallback: None (payment must succeed)
+    Guardrail: Max 1 charge attempt per order (prevent double-charge)
+    If fails after 3 retries: "Payment could not be processed.
+    Please try another payment method."
+
+  INVENTORY API:
+    Retry: Yes (2 attempts)
+    Fallback: Use cached inventory (checked 5 min ago)
+    Circuit breaker: After 5 failures, use cache for 2 minutes
+    If cache says in-stock but API later says out-of-stock:
+    → Email customer, offer alternatives or refund
+
+  SHIPPING API:
+    Retry: Yes (2 attempts)
+    Fallback: Default shipping estimate ("3-5 business days")
+    Circuit breaker: After 3 failures, use defaults
+    Non-blocking: Exact shipping calculated after order placed
+
+  ORDER FLOW:
+    1. Check inventory (can fallback to cache)
+    2. Process payment (must succeed, no fallback)
+    3. Confirm order (even if shipping estimate is default)
+    4. Calculate shipping async (update customer later)
+
+  KEY DESIGN: Payment has no fallback (critical).
+  Inventory and shipping degrade gracefully.
+  Customer always gets a response, even if degraded.
+
+WEAK ANSWER: "Retry all API calls 3 times"
+  → No fallback for inventory or shipping
+  → No circuit breaker for sustained outages
+  → No protection against double-charging</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Key Takeaways for the Exam</h2>
+
+<ol>
+  <li><strong>Retry only transient errors.</strong> 500/503: retry. 400/401: don't retry, fix the request.</li>
+  <li><strong>Fallbacks prevent total failure.</strong> Cached data > no data. Keyword search > no search.</li>
+  <li><strong>Circuit breakers save time.</strong> Stop calling dead services. Auto-recover when they're back.</li>
+  <li><strong>Guardrails are external to Claude.</strong> The system enforces limits, not the model.</li>
+  <li><strong>Monitor: latency, error rate, cost, quality.</strong> Alert before users notice.</li>
+  <li><strong>Design for degradation.</strong> The agent should always respond, even if with less capability.</li>
+</ol>
+
+<div class="callout">
+<strong>CCA exam weight:</strong> Reliability appears in Domain 4 (Deployment & Operations). Expect 3-4 questions on retry strategies, fallback design, and monitoring. The exam rewards candidates who design for failure, not just for success.
+</div>
+</div>
+
+</div>
