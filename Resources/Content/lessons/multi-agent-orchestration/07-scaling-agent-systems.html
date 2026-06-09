@@ -215,12 +215,6 @@
   <div data-learn="QuizMC" data-props='{"title":"Scaling Agent Systems","questions":[{"q":"How does tiered model strategy achieve 78% cost reduction without sacrificing quality?","options":["By using cheaper hardware","By matching model capability to task complexity — premium models only for tasks that actually need deep reasoning","By reducing the number of agents in the system","By caching all outputs and never regenerating"],"correct":1,"explanation":"Routing, formatting, and classification tasks do not need premium reasoning models. Only the research and analysis agents genuinely benefit from the expensive model. Everyone else gets the right-sized, cheaper option."},{"q":"How can parallelization cut total pipeline latency by 50-70%?","options":["By using faster API endpoints","By running agents that share the same input and produce independent outputs simultaneously instead of sequentially","By reducing the size of messages between agents","By eliminating quality gates from the pipeline"],"correct":1,"explanation":"Map your agent dependencies. Any agents that can start from the same input and produce independent outputs are candidates for parallel execution. Running them simultaneously rather than in sequence slashes total time."},{"q":"What is a circuit breaker in the context of agent system reliability?","options":["A safety mechanism that shuts down all agents when an error occurs","If an agent fails three times in a row, stop calling it and fall back to an alternative — preventing cascading failures","A timeout that limits how long an agent can run","An alert that notifies humans when an agent produces low-confidence output"],"correct":1,"explanation":"Circuit breakers prevent a single failing agent from burning tokens and time on repeated failed calls. Stop after three failures, switch to a fallback, and surface an alert for human investigation."}]}'>
   </div>
 </div>
-
-<nav class="lesson-nav">
-  <a href="/academy/multi-agent-orchestration/06-conflict-resolution/" class="prev">&larr; Previous: Conflict Resolution</a>
-  <a href="/academy/multi-agent-orchestration/08-human-oversight-patterns/" class="next">Next: Human Oversight Patterns &rarr;</a>
-</nav>
-
 </div>
 
 <div class="quiz-block">

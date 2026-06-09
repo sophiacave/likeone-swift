@@ -234,12 +234,6 @@ report = asyncio.run(research_swarm(<span style="color:#fbbf24">"AI agents in he
   <div data-learn="QuizMC" data-props='{"title":"Orchestration Architectures","questions":[{"q":"Which architecture is best suited for a truly linear workflow like: research, then write, then edit, then publish?","options":["Hub-Spoke","Pipeline","Swarm","Hybrid"],"correct":1,"explanation":"Pipeline architecture is designed for linear sequential flows. Each agent processes its input and passes the result to the next — no branching, no loops, predictable and easy to test."},{"q":"When should you choose a swarm architecture over hub-spoke?","options":["When you want tight central control","When the problem space is dynamic, you need maximum resilience, and you can tolerate some unpredictability","When you have fewer than five agents","When you need the system to be easy to debug"],"correct":1,"explanation":"Swarms excel at dynamic, unpredictable workloads where resilience matters more than control. No single point of failure — if one agent fails, others adapt and continue."},{"q":"What is the most common mistake developers make when choosing an orchestration architecture?","options":["Building pipelines when they need hub-spoke","Defaulting to hub-spoke for everything without considering whether the workflow is actually linear or dynamic","Starting with swarm architecture","Mixing architectures unnecessarily"],"correct":1,"explanation":"Hub-spoke feels natural because it mirrors how we think about management hierarchies. But the right choice depends on your workflow shape — and linear pipelines and dynamic swarms are often better fits."}]}'>
   </div>
 </div>
-
-<nav class="lesson-nav">
-  <a href="/academy/multi-agent-orchestration/03-communication-patterns/" class="prev">&larr; Previous: Communication Patterns</a>
-  <a href="/academy/multi-agent-orchestration/05-shared-memory-and-state/" class="next">Next: Shared Memory &amp; State &rarr;</a>
-</nav>
-
 </div>
 
 <div class="quiz-block">
