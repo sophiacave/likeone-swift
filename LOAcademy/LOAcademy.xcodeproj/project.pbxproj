@@ -8,21 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		00817A435A6F868E2E793A49 /* LODesign in Frameworks */ = {isa = PBXBuildFile; productRef = 94F33EF916021B069980F9CD /* LODesign */; };
+		0A1B197F6F72B2603F3149A4 /* 02-learn-tab.png in Resources */ = {isa = PBXBuildFile; fileRef = 81D985526543E65C16B470A1 /* 02-learn-tab.png */; };
+		19F9FF8DDB6C0FE243543A76 /* 03-tracks-tab.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A5E66C6D70435867BA41319 /* 03-tracks-tab.png */; };
+		22E0D1D59EEDB05E33E98A0F /* 01-academy-home-clean.png in Resources */ = {isa = PBXBuildFile; fileRef = 573093516247B8D6B10C62E3 /* 01-academy-home-clean.png */; };
 		46194822B2A710A75DED443B /* CourseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45C17E89DDCEF3FE5D16363 /* CourseListView.swift */; };
 		4AAF22CCF677A73B3FD6480D /* LOAcademyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7389ADD962701E9C34FD9DB0 /* LOAcademyApp.swift */; };
+		4EAA9B7ABB7DC3A8787A07F5 /* CourseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61BF151EA808D5BF4BEC4BA /* CourseEntity.swift */; };
 		61FA2538C5C0575AC4FE0CF5 /* LessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376BA40455EE285C68AA4549 /* LessonView.swift */; };
 		6EE01001E3585D3BB143C173 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9FD11DFFA335E5DBCC79AE /* AccountView.swift */; };
 		715EA749C42154E178EF6D08 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC63DA3DE79E8846CC0C155F /* AuthService.swift */; };
 		850B422BDE024D8026D0CC15 /* CourseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184E4830943F38BC71C5CDBF /* CourseDetailView.swift */; };
+		97165C56BA0EEA7B1B99C20F /* 05-lesson-view.png in Resources */ = {isa = PBXBuildFile; fileRef = 3442A1B5C901CE4522F9E1E8 /* 05-lesson-view.png */; };
 		A42F66E08F24EA4BC43FA177 /* TrackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064E2E6B8790406F0736D197 /* TrackDetailView.swift */; };
+		A4F92F6FC57D656321476C26 /* SearchCoursesIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9011DBC3ED96201439E03C89 /* SearchCoursesIntent.swift */; };
 		AAFD80A6308B75844E7ACEE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADF57DC6D46B89B9B46096AD /* Assets.xcassets */; };
 		B320A48A7F21EEE2B8D2075D /* TrackListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B4929CCCDBD49B9F178830 /* TrackListView.swift */; };
+		B386DFFE81162085C2217840 /* 04-course-detail.png in Resources */ = {isa = PBXBuildFile; fileRef = E0268779CD4DFBC0B564AAAB /* 04-course-detail.png */; };
+		C277E9A4C6FB1330719A50AA /* 01-academy-home.png in Resources */ = {isa = PBXBuildFile; fileRef = FC803CD8295968151B63DEE9 /* 01-academy-home.png */; };
 		CB99C199AF273BE568CE3F6E /* AppStoreMetadata.md in Resources */ = {isa = PBXBuildFile; fileRef = 6275C9E95709597405C21A56 /* AppStoreMetadata.md */; };
 		CE815F5E8F1415C9029EB081 /* LOContent in Frameworks */ = {isa = PBXBuildFile; productRef = F6331D1EB45F70EF7C987A36 /* LOContent */; };
 		D724D9CF81AF65B5D389CADD /* ExportOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27764B4B19BA0A9D4F49FDCA /* ExportOptions.plist */; };
 		E2AB1A0A91517586E7E45BB4 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B135A7236A79784AB7C1228D /* PaywallView.swift */; };
 		EC66E329857008383406DC43 /* ProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1FDA65C68B26090440DFB6 /* ProgressViewModel.swift */; };
+		EF71B9C5DF01531A2B5F73D7 /* LOShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F153D4F935B0756C28238DA /* LOShortcuts.swift */; };
 		F559216C280805FA62E6F3EE /* LOCore in Frameworks */ = {isa = PBXBuildFile; productRef = ADCF163A5459850F09FA0AB3 /* LOCore */; };
+		F5955D8F0AC88E8B77BF5FF8 /* OpenCourseIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF178643E74DEAD5CD0D11E /* OpenCourseIntent.swift */; };
 		F958BE9DEB1536930E5A2027 /* AcademyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EAE89E69E10F12080840AA /* AcademyViewModel.swift */; };
 		FAD9E7A6C031F31E34EECC69 /* LessonWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E512EF028671DF078CEE24 /* LessonWebView.swift */; };
 /* End PBXBuildFile section */
@@ -32,12 +42,19 @@
 		184E4830943F38BC71C5CDBF /* CourseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetailView.swift; sourceTree = "<group>"; };
 		27764B4B19BA0A9D4F49FDCA /* ExportOptions.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = ExportOptions.plist; sourceTree = "<group>"; };
 		2CA9196E9AF7EACC76BC3587 /* LOAcademy.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LOAcademy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3442A1B5C901CE4522F9E1E8 /* 05-lesson-view.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "05-lesson-view.png"; sourceTree = "<group>"; };
 		376BA40455EE285C68AA4549 /* LessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonView.swift; sourceTree = "<group>"; };
 		45C38F76BACAEB776A21210E /* likeone-swift */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "likeone-swift"; path = ..; sourceTree = SOURCE_ROOT; };
+		573093516247B8D6B10C62E3 /* 01-academy-home-clean.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-academy-home-clean.png"; sourceTree = "<group>"; };
 		5B1FDA65C68B26090440DFB6 /* ProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewModel.swift; sourceTree = "<group>"; };
 		6275C9E95709597405C21A56 /* AppStoreMetadata.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AppStoreMetadata.md; sourceTree = "<group>"; };
+		6A5E66C6D70435867BA41319 /* 03-tracks-tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "03-tracks-tab.png"; sourceTree = "<group>"; };
+		6F153D4F935B0756C28238DA /* LOShortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LOShortcuts.swift; sourceTree = "<group>"; };
 		7389ADD962701E9C34FD9DB0 /* LOAcademyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LOAcademyApp.swift; sourceTree = "<group>"; };
 		73E512EF028671DF078CEE24 /* LessonWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonWebView.swift; sourceTree = "<group>"; };
+		7FF178643E74DEAD5CD0D11E /* OpenCourseIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCourseIntent.swift; sourceTree = "<group>"; };
+		81D985526543E65C16B470A1 /* 02-learn-tab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "02-learn-tab.png"; sourceTree = "<group>"; };
+		9011DBC3ED96201439E03C89 /* SearchCoursesIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoursesIntent.swift; sourceTree = "<group>"; };
 		994D7E1CF3D64D527CF7F43B /* LOAcademy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LOAcademy.entitlements; sourceTree = "<group>"; };
 		ADF57DC6D46B89B9B46096AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B135A7236A79784AB7C1228D /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
@@ -46,7 +63,10 @@
 		BC9FD11DFFA335E5DBCC79AE /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		C5B4929CCCDBD49B9F178830 /* TrackListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListView.swift; sourceTree = "<group>"; };
 		CC63DA3DE79E8846CC0C155F /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		E0268779CD4DFBC0B564AAAB /* 04-course-detail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "04-course-detail.png"; sourceTree = "<group>"; };
 		E45C17E89DDCEF3FE5D16363 /* CourseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseListView.swift; sourceTree = "<group>"; };
+		F61BF151EA808D5BF4BEC4BA /* CourseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseEntity.swift; sourceTree = "<group>"; };
+		FC803CD8295968151B63DEE9 /* 01-academy-home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-academy-home.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +109,8 @@
 				994D7E1CF3D64D527CF7F43B /* LOAcademy.entitlements */,
 				7389ADD962701E9C34FD9DB0 /* LOAcademyApp.swift */,
 				A60B1C7E142A3FFAB20FE654 /* Helpers */,
+				5BED03370A68825400F81EF7 /* Intents */,
+				7BBB38C81B46516DC1CE3489 /* Screenshots */,
 				419A0AC8D4AF0B24F1C8916F /* Services */,
 				BA97CCCCE06453B3F75AE160 /* ViewModels */,
 				E302C01D8CB9AA3146731033 /* Views */,
@@ -103,6 +125,30 @@
 				CC63DA3DE79E8846CC0C155F /* AuthService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		5BED03370A68825400F81EF7 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				F61BF151EA808D5BF4BEC4BA /* CourseEntity.swift */,
+				6F153D4F935B0756C28238DA /* LOShortcuts.swift */,
+				7FF178643E74DEAD5CD0D11E /* OpenCourseIntent.swift */,
+				9011DBC3ED96201439E03C89 /* SearchCoursesIntent.swift */,
+			);
+			path = Intents;
+			sourceTree = "<group>";
+		};
+		7BBB38C81B46516DC1CE3489 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				573093516247B8D6B10C62E3 /* 01-academy-home-clean.png */,
+				FC803CD8295968151B63DEE9 /* 01-academy-home.png */,
+				81D985526543E65C16B470A1 /* 02-learn-tab.png */,
+				6A5E66C6D70435867BA41319 /* 03-tracks-tab.png */,
+				E0268779CD4DFBC0B564AAAB /* 04-course-detail.png */,
+				3442A1B5C901CE4522F9E1E8 /* 05-lesson-view.png */,
+			);
+			path = Screenshots;
 			sourceTree = "<group>";
 		};
 		A60B1C7E142A3FFAB20FE654 /* Helpers */ = {
@@ -140,8 +186,10 @@
 			isa = PBXGroup;
 			children = (
 				A60B1C7E142A3FFAB20FE654 /* Helpers */,
+				5BED03370A68825400F81EF7 /* Intents */,
 				04A4A4DDF1F9B0B45555DDE6 /* LOAcademy */,
 				02830DAE114AEC1EA2A2E61F /* Packages */,
+				7BBB38C81B46516DC1CE3489 /* Screenshots */,
 				419A0AC8D4AF0B24F1C8916F /* Services */,
 				BA97CCCCE06453B3F75AE160 /* ViewModels */,
 				E302C01D8CB9AA3146731033 /* Views */,
@@ -216,6 +264,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22E0D1D59EEDB05E33E98A0F /* 01-academy-home-clean.png in Resources */,
+				C277E9A4C6FB1330719A50AA /* 01-academy-home.png in Resources */,
+				0A1B197F6F72B2603F3149A4 /* 02-learn-tab.png in Resources */,
+				19F9FF8DDB6C0FE243543A76 /* 03-tracks-tab.png in Resources */,
+				B386DFFE81162085C2217840 /* 04-course-detail.png in Resources */,
+				97165C56BA0EEA7B1B99C20F /* 05-lesson-view.png in Resources */,
 				CB99C199AF273BE568CE3F6E /* AppStoreMetadata.md in Resources */,
 				AAFD80A6308B75844E7ACEE1 /* Assets.xcassets in Resources */,
 				D724D9CF81AF65B5D389CADD /* ExportOptions.plist in Resources */,
@@ -233,12 +287,16 @@
 				6EE01001E3585D3BB143C173 /* AccountView.swift in Sources */,
 				715EA749C42154E178EF6D08 /* AuthService.swift in Sources */,
 				850B422BDE024D8026D0CC15 /* CourseDetailView.swift in Sources */,
+				4EAA9B7ABB7DC3A8787A07F5 /* CourseEntity.swift in Sources */,
 				46194822B2A710A75DED443B /* CourseListView.swift in Sources */,
 				4AAF22CCF677A73B3FD6480D /* LOAcademyApp.swift in Sources */,
+				EF71B9C5DF01531A2B5F73D7 /* LOShortcuts.swift in Sources */,
 				61FA2538C5C0575AC4FE0CF5 /* LessonView.swift in Sources */,
 				FAD9E7A6C031F31E34EECC69 /* LessonWebView.swift in Sources */,
+				F5955D8F0AC88E8B77BF5FF8 /* OpenCourseIntent.swift in Sources */,
 				E2AB1A0A91517586E7E45BB4 /* PaywallView.swift in Sources */,
 				EC66E329857008383406DC43 /* ProgressViewModel.swift in Sources */,
+				A4F92F6FC57D656321476C26 /* SearchCoursesIntent.swift in Sources */,
 				A42F66E08F24EA4BC43FA177 /* TrackDetailView.swift in Sources */,
 				B320A48A7F21EEE2B8D2075D /* TrackListView.swift in Sources */,
 			);
