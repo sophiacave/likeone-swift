@@ -40,7 +40,7 @@ ACCESSIBILITY FIRST:
 Built by a disability-led nonprofit, Like One Academy prioritizes accessible design. Our courses use clear language, structured layouts, and visual aids based on Mayer's multimedia learning principles.
 
 FREE FOREVER:
-Our first 3 lessons per course are always free. No credit card required. No ads. No data selling. Pro subscribers ($19/month or $39/year) unlock all lessons and earn certificates. Revenue funds HIV cure research through the Like One Foundation.
+Our first 3 lessons per course are always free. No credit card required. No ads. No data selling. Pro subscribers ($19/month or $149/year) unlock all lessons and earn certificates. Revenue funds HIV cure research through the Like One Foundation.
 
 ## Keywords (100 chars max)
 AI,courses,Claude,prompt,engineering,agents,MCP,free,nonprofit,certificates,learn,automation,CCA
