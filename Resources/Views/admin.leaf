@@ -55,9 +55,23 @@
                 </div>
                 #endif
 
-                <!-- Brain -->
-                <div style="margin-top:2.5rem;padding:16px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;">
-                    <div style="font-size:.85rem;color:var(--text-muted);">Brain: #(brainVectors) content vectors indexed</div>
+                <!-- Content & Brain -->
+                <div style="margin-top:2.5rem;">
+                    <h2 class="account-section-title">Content & Brain</h2>
+                    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;">
+                        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                            <div style="font-size:1.8rem;font-weight:700;color:var(--purple-400);">#(blogPosts)</div>
+                            <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px;">Blog Posts</div>
+                        </div>
+                        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                            <div style="font-size:1.8rem;font-weight:700;color:var(--purple-400);">#(courses)</div>
+                            <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px;">Courses</div>
+                        </div>
+                        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;">
+                            <div style="font-size:1.8rem;font-weight:700;color:var(--purple-400);">#(brainVectors)</div>
+                            <div style="font-size:.75rem;color:var(--text-muted);margin-top:4px;">Brain Vectors</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

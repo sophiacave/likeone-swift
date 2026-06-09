@@ -12,7 +12,7 @@
             <div class="site-container" style="max-width: 800px;">
                 <div class="blog-list">
                     #for(post in posts):
-                        <a href="/blog/#(post.slug)" class="blog-card">
+                        <a href="/blog/#(post.slug)/" class="blog-card">
                             <div class="blog-card-meta">
                                 <span class="blog-card-date">#(post.date)</span>
                                 <span class="blog-card-author">#(post.author)</span>

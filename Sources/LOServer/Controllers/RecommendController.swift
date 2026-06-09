@@ -7,6 +7,7 @@ import LOBrain
 /// Returns HTMX-ready HTML partial. Only searches public content.
 struct RecommendController: RouteCollection {
     let courses: CourseProvider
+    let lessons: LessonProvider
     let blog: BlogProvider
     let brain: LocalBrainClient
 
@@ -55,6 +56,39 @@ struct RecommendController: RouteCollection {
                     url = "/blog/\(post.slug)/"
                     meta = "Blog Post"
                     emoji = "\u{1F4DD}"
+                } else { continue }
+            case "lessons":
+                let body = String(r.docID.dropFirst(7))
+                var matched = false
+                for course in courses.allCourses() {
+                    let prefix = course.slug + "_"
+                    guard body.hasPrefix(prefix) else { continue }
+                    var lessonPart = String(body.dropFirst(prefix.count))
+                    if let i = lessonPart.lastIndex(of: "_"), let _ = Int(lessonPart[lessonPart.index(after: i)...]) {
+                        lessonPart = String(lessonPart[..<i])
+                    }
+                    if lessonPart == excludeSlug || course.slug == excludeSlug { continue }
+                    let lessonTitle = lessons.lessons(forCourse: course.slug).first(where: { $0.slug == lessonPart })?.title
+                        ?? lessonPart.replacingOccurrences(of: "-", with: " ").capitalized
+                    title = lessonTitle
+                    url = "/academy/\(course.slug)/\(lessonPart)/"
+                    meta = "Lesson · \(course.title)"
+                    emoji = course.emoji
+                    matched = true
+                    break
+                }
+                if !matched { continue }
+            case "faqs":
+                var slug = String(r.docID.dropFirst(4))
+                if let i = slug.lastIndex(of: "_"), let _ = Int(slug[slug.index(after: i)...]) {
+                    slug = String(slug[..<i])
+                }
+                if slug == excludeSlug { continue }
+                if let post = blog.allPosts().first(where: { $0.slug == slug }) {
+                    title = post.title
+                    url = "/blog/\(post.slug)/"
+                    meta = "FAQ · Blog Post"
+                    emoji = "\u{2753}"
                 } else { continue }
             case "academy":
                 let courseSlug = String(r.docID.dropFirst(7))

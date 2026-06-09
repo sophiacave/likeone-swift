@@ -55,6 +55,7 @@ struct ProgressController: RouteCollection {
         let courseComplete = try await checkCourseCompletion(
             userID: user.id!,
             courseSlug: input.courseSlug,
+            recipientName: user.name ?? user.email,
             isPro: isPro,
             db: req.db
         )
@@ -115,6 +116,7 @@ struct ProgressController: RouteCollection {
             let _ = try await checkCourseCompletion(
                 userID: user.id!,
                 courseSlug: courseSlug,
+                recipientName: user.name ?? user.email,
                 isPro: isPro,
                 db: req.db
             )
@@ -240,7 +242,7 @@ struct ProgressController: RouteCollection {
 
     // MARK: - Completion logic
 
-    private func checkCourseCompletion(userID: UUID, courseSlug: String, isPro: Bool, db: Database) async throws -> Bool {
+    private func checkCourseCompletion(userID: UUID, courseSlug: String, recipientName: String, isPro: Bool, db: Database) async throws -> Bool {
         let totalLessons = lessons.lessonCount(forCourse: courseSlug)
         guard totalLessons > 0 else { return false }
 
@@ -264,7 +266,7 @@ struct ProgressController: RouteCollection {
                         type: "course",
                         courseSlug: courseSlug,
                         title: course?.title ?? courseSlug,
-                        recipientName: ""
+                        recipientName: recipientName
                     )
                     try await cert.save(on: db)
                 }

@@ -33,9 +33,10 @@ struct SearchController: RouteCollection {
 
         var results: [SearchResult] = []
 
-        // Brain-powered search (FTS5 BM25 ranking across 4,061 public content vectors)
+        // Brain-powered search (hybrid: FTS5 + semantic vec, typo-tolerant)
         if brain.isAvailable {
-            let brainResults = try await brain.contentSearch(query: query, limit: 20)
+            let brainResults = try await brain.hybridContentSearch(query: query, limit: 20)
+                .filter { $0.score >= 0.016 } // Filter low-ranked vec-only noise while preserving typo tolerance
             var seenURLs: Set<String> = []
             for r in brainResults {
                 if let result = mapBrainResult(r), !seenURLs.contains(result.url) {
@@ -51,7 +52,7 @@ struct SearchController: RouteCollection {
             for course in courses.allCourses() {
                 if course.title.lowercased().contains(queryLower) || course.description.lowercased().contains(queryLower) {
                     let sr = SearchResult(type: "course", title: course.title, description: course.description,
-                                         url: "/academy/\(course.slug)", emoji: course.emoji,
+                                         url: "/academy/\(course.slug)/", emoji: course.emoji,
                                          meta: "\(course.level.tierName) \u{00B7} \(lessons.lessonCount(forCourse: course.slug)) lessons")
                     if !results.contains(where: { $0.url == sr.url }) { results.append(sr) }
                 }
@@ -59,7 +60,7 @@ struct SearchController: RouteCollection {
             for post in blog.allPosts() {
                 if post.title.lowercased().contains(queryLower) || post.description.lowercased().contains(queryLower) {
                     let sr = SearchResult(type: "blog", title: post.title, description: post.description,
-                                         url: "/blog/\(post.slug)", emoji: "\u{1F4DD}", meta: "Blog Post")
+                                         url: "/blog/\(post.slug)/", emoji: "\u{1F4DD}", meta: "Blog Post")
                     if !results.contains(where: { $0.url == sr.url }) { results.append(sr) }
                 }
             }
@@ -127,11 +128,16 @@ struct SearchController: RouteCollection {
             if let i = slug.lastIndex(of: "_"), let _ = Int(slug[slug.index(after: i)...]) {
                 slug = String(slug[..<i])
             }
-            // Extract the Q from "Q: ... A: ..."
+            // Extract just the question from "Q: ... A: ..."
             let faqText = r.snippet
             let displayText: String
             if faqText.hasPrefix("Q: ") {
-                displayText = String(faqText.prefix(140))
+                let afterQ = faqText.dropFirst(3)
+                if let aRange = afterQ.range(of: "\nA: ") ?? afterQ.range(of: " A: ") {
+                    displayText = String(afterQ[..<aRange.lowerBound])
+                } else {
+                    displayText = String(afterQ.prefix(120))
+                }
             } else {
                 displayText = cleanSnippet(faqText)
             }

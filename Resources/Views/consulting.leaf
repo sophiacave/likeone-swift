@@ -137,6 +137,10 @@
                         <h3 class="pricing-faq-q">AI-native web applications</h3>
                         <p class="pricing-faq-a">Full-stack applications with AI built into the architecture, not bolted on. Swift, Next.js, or whatever your stack needs. From prototype to production.</p>
                     </div>
+                    <div class="pricing-faq-item">
+                        <h3 class="pricing-faq-q">Apple Intelligence integration</h3>
+                        <p class="pricing-faq-a">Foundation Models, App Intents, and on-device AI for iOS and Mac apps. We run Apple's 3B model in production alongside Claude &mdash; the only team with proven hybrid Apple + Claude architecture. App Intents migration, Siri integration, custom adapter training.</p>
+                    </div>
                 </div>
             </div>
         </section>

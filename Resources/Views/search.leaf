@@ -10,7 +10,7 @@
                            placeholder="Search courses, lessons, blog posts..."
                            autofocus
                            style="width:100%;padding:14px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);color:var(--text-primary);font-size:1rem;font-family:inherit;outline:none;transition:border-color .3s;"
-                           hx-get="/search/results"
+                           hx-get="/search/results/"
                            hx-trigger="keyup changed delay:300ms"
                            hx-target="#search-results"
                            hx-swap="innerHTML"

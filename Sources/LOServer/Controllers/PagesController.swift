@@ -27,7 +27,7 @@ struct PagesController: RouteCollection {
         let context = PageContext(
             title: "Pricing | Like One",
             heading: "Pricing",
-            description: "52 courses, 520+ lessons. First 3 free on every course. Pro unlocks full access and certificates.",
+            description: "50+ courses, 590+ lessons. First 3 free on every course. Pro unlocks full access and certificates.",
             path: "/pricing"
         )
         return try await req.view.render("pricing", context)

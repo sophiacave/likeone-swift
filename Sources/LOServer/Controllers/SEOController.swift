@@ -33,6 +33,8 @@ struct SEOController: RouteCollection {
             ("/terms/", "monthly", "0.3"),
             ("/signin/", "monthly", "0.3"),
             ("/search/", "monthly", "0.5"),
+            ("/feed.xml", "daily", "0.6"),
+            ("/rss.xml", "daily", "0.6"),
         ]
 
         for (path, freq, priority) in staticPages {
