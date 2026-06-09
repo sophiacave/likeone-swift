@@ -1529,18 +1529,17 @@ a:focus-visible, button:focus-visible {
     margin: 0 0 var(--space-12);
 }
 
-/* Nested ghost classes — strip frames, flatten */
-.lesson-content .demo-container .demo-container,
-.lesson-content .demo-container .card,
+/* Nested ghost classes — inherit parent's flat treatment */
 .lesson-content .card .card,
-.lesson-content .demo-block .demo-block,
-.lesson-content [class*="card"] [class*="card"],
-.lesson-content [class*="container"] [class*="container"],
-.lesson-content [class*="box"] [class*="box"] {
-    background: rgba(255, 255, 255, 0.02);
-    border: none;
-    padding: var(--space-12) var(--space-16);
-    margin: var(--space-8) 0;
+.lesson-content .card .demo-container,
+.lesson-content .card .demo-block,
+.lesson-content .card .tip-box,
+.lesson-content .card .callout,
+.lesson-content .card .prompt-box {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: var(--space-16) 0 !important;
 }
 
 /* ═══════════════════════════════════════════════
@@ -1571,34 +1570,81 @@ a:focus-visible, button:focus-visible {
     color: var(--text-secondary) !important;
 }
 
-/* Neutralize inline background colors — flat, no frames-within-frames.
-   Top-level: subtle bg tint only, no border.
-   Nested: transparent, content flows freely. */
-.lesson-content > div[style*="background"],
-.lesson-content .section-text + div[style*="background"],
-.lesson-content .lesson-section > div[style*="background"] {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: var(--radius-card) !important;
-    padding: var(--space-20) !important;
-    margin: var(--space-24) 0 !important;
-}
+/* ═══════════════════════════════════════════════
+   P3: FLATTEN LESSON CARDS — APPLE DOCS STYLE
+   Cards as section wrappers → invisible. Content
+   flows on page bg. Only code blocks + notes get
+   visual containment. Max 1 level of framing.
+   ═══════════════════════════════════════════════ */
 
-/* Nested containers — strip the frame, just content */
-.lesson-content div[style*="background"] div[style*="background"] {
-    background: rgba(255, 255, 255, 0.02) !important;
-    border: none !important;
-    border-radius: var(--radius-sm) !important;
-    padding: var(--space-12) var(--space-16) !important;
-    margin: var(--space-8) 0 !important;
-}
-
-/* Triple-nested — completely flat */
-.lesson-content div[style*="background"] div[style*="background"] div[style*="background"] {
+/* 3A: Kill section-level .card wrappers —
+   .card becomes invisible. Headings provide structure, not boxes. */
+.lesson-content .card {
     background: transparent !important;
     border: none !important;
-    padding: var(--space-8) var(--space-12) !important;
-    margin: var(--space-4) 0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: var(--space-48) 0 var(--space-24) !important;
+}
+
+/* 3B: NUCLEAR — ALL divs inside .card are frameless.
+   Only code blocks (pre) get subtle bg. Everything else = flat. */
+.lesson-content .card div[style] {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+/* 3C: Restore code blocks — subtle bg, no border */
+.lesson-content .card pre,
+.lesson-content .card div[style*="font-family"] {
+    background: #111118 !important;
+    border: none !important;
+    border-radius: var(--radius-sm) !important;
+    padding: var(--space-16) !important;
+    margin: var(--space-16) 0 !important;
+}
+.lesson-content .card div[style*="font-family"] pre {
+    background: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* 3D: Step headings → uniform white */
+.lesson-content .card h4[style*="color"] {
+    color: var(--text-primary) !important;
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+}
+
+/* 3E: Step sections get subtle bottom separator */
+.lesson-content .card > div[style*="background"] {
+    padding: 0 0 var(--space-24) !important;
+    margin: var(--space-24) 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+}
+.lesson-content .card > div[style*="background"]:last-of-type {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+}
+
+/* 3F: Service/item rows — clean spacing */
+.lesson-content .card div[style*="display:flex"] {
+    padding: var(--space-12) 0 !important;
+}
+
+/* 3G: Icon circles — keep shape but mute colors */
+.lesson-content .card div[style*="border-radius:50%"] {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 50% !important;
+}
+
+/* 3H: All nested bg divs outside .card → also flat */
+.lesson-content div[style*="background"] div[style*="background"] {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
 }
 
 /* Preserve code block styling — don't override pre/code */
