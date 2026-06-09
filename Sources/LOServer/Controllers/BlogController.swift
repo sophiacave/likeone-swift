@@ -122,7 +122,7 @@ struct BlogController: RouteCollection {
         let canonicalUrl = "https://likeone.ai/blog/\(post.slug)/"
         let ogImage: String? = post.image.flatMap { img in
             let path = "Public\(img)"
-            return FileManager.default.fileExists(atPath: path) ? "https://likeone.ai\(img)" : nil
+            return FileManager.default.fileExists(atPath: path) ? "https://likeone.ai\(img)?v=268" : nil
         }
         let isoFormatter = DateFormatter()
         isoFormatter.dateFormat = "yyyy-MM-dd"
