@@ -69,9 +69,9 @@ struct PagesController: RouteCollection {
     @Sendable
     func consulting(req: Request) async throws -> View {
         let context = PageContext(
-            title: "AI Consulting | Like One",
+            title: "AI Consulting: MCP Servers & Claude Agents | Like One",
             heading: "Consulting",
-            description: "AI systems that run your operations autonomously. Custom agents, MCP servers, full-stack AI applications. From $500/month.",
+            description: "Custom MCP servers, persistent memory systems, and autonomous AI agents that ship work. 7 open source tools in production. From $150/hr.",
             path: "/consulting"
         )
         return try await req.view.render("consulting", context)
