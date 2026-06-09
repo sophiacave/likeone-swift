@@ -20,12 +20,12 @@
 <div class="lo-vis__caption">Plug in an MCP server &mdash; agent <strong>immediately</strong> knows how to use it.</div>
 </div>
 
-<p>The built-in tools (Bash, Read, Write) let your agent interact with the local file system. But real-world agents need to talk to <em>everything</em> — databases, APIs, cloud services, Slack, GitHub, Google Calendar, and more. That is what <strong style="color:#e5e5e5">MCP (Model Context Protocol)</strong> is for.</p>
+<p>The built-in tools (Bash, Read, Write) let your agent interact with the local file system. But real-world agents need to talk to <em>everything</em> — databases, APIs, cloud services, Slack, GitHub, Google Calendar, and more. That is what <strong>MCP (Model Context Protocol)</strong> is for.</p>
 
 <p>MCP is an open standard that defines how AI agents connect to external tools and data sources. Instead of writing custom integration code for every service, you plug in an MCP server and your agent immediately knows how to use it. One protocol, infinite connections.</p>
 
-<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">Real-world analogy:</strong> MCP is USB for AI. Before USB, every device needed its own proprietary cable and driver. USB created one standard that works for keyboards, cameras, phones, and everything else. MCP does the same for AI tool connections — one protocol that works for databases, APIs, email, calendars, and everything else.
+<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.88rem;line-height:1.7">
+<strong>Real-world analogy:</strong> MCP is USB for AI. Before USB, every device needed its own proprietary cable and driver. USB created one standard that works for keyboards, cameras, phones, and everything else. MCP does the same for AI tool connections — one protocol that works for databases, APIs, email, calendars, and everything else.
 </div>
 </div>
 
@@ -33,8 +33,8 @@
 <h2>How MCP Works in the Agent SDK</h2>
 <p>The SDK makes MCP integration straightforward. You define MCP servers in your agent configuration, and the agent can use their tools alongside the built-in ones:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — agent with MCP servers</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — agent with MCP servers</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { Claude } <span style="color:#c084fc">from</span> <span style="color:#fbbf24">"@anthropic-ai/claude-agent"</span>;
 
 <span style="color:#c084fc">const</span> agent = <span style="color:#c084fc">new</span> Claude({
@@ -75,17 +75,17 @@
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
 <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-<strong style="color:#8b5cf6;font-size:.85rem">stdio servers (local)</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Run as a child process on your machine. Communicate via stdin/stdout. Fast, private, no network required. Best for local databases, file systems, and development tools.</p>
+<strong style="font-size:.85rem">stdio servers (local)</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Run as a child process on your machine. Communicate via stdin/stdout. Fast, private, no network required. Best for local databases, file systems, and development tools.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-<strong style="color:#fb923c;font-size:.85rem">SSE servers (remote)</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Run on a remote server. Communicate via HTTP and Server-Sent Events. Best for cloud services, shared team tools, and production deployments where the MCP server runs separately.</p>
+<strong style="font-size:.85rem">SSE servers (remote)</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Run on a remote server. Communicate via HTTP and Server-Sent Events. Best for cloud services, shared team tools, and production deployments where the MCP server runs separately.</p>
 </div>
 </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — remote MCP server via SSE</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — remote MCP server via SSE</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">const</span> agent = <span style="color:#c084fc">new</span> Claude({
   model: <span style="color:#fbbf24">"claude-sonnet-4-6"</span>,
   mcpServers: {
@@ -107,24 +107,24 @@
 
 <div style="display:grid;gap:.5rem;margin-top:.75rem">
 <div style="display:flex;gap:.75rem;align-items:center;padding:.5rem 1rem;background:rgba(139,92,246,.04);border-radius:8px;border:1px solid rgba(139,92,246,.08)">
-<div style="font-size:.8rem;font-weight:700;color:#8b5cf6;min-width:8rem">SQLite / Postgres</div>
-<div style="font-size:.82rem;color:#a1a1aa">Query databases, inspect schemas, run analytics</div>
+<div style="font-size:.8rem;font-weight:700;min-width:8rem">SQLite / Postgres</div>
+<div style="font-size:.82rem">Query databases, inspect schemas, run analytics</div>
 </div>
 <div style="display:flex;gap:.75rem;align-items:center;padding:.5rem 1rem;background:rgba(56,189,248,.04);border-radius:8px;border:1px solid rgba(56,189,248,.08)">
-<div style="font-size:.8rem;font-weight:700;color:#38bdf8;min-width:8rem">GitHub</div>
-<div style="font-size:.82rem;color:#a1a1aa">Create issues, read PRs, manage repos</div>
+<div style="font-size:.8rem;font-weight:700;min-width:8rem">GitHub</div>
+<div style="font-size:.82rem">Create issues, read PRs, manage repos</div>
 </div>
 <div style="display:flex;gap:.75rem;align-items:center;padding:.5rem 1rem;background:rgba(251,146,60,.04);border-radius:8px;border:1px solid rgba(251,146,60,.08)">
-<div style="font-size:.8rem;font-weight:700;color:#fb923c;min-width:8rem">Slack</div>
-<div style="font-size:.82rem;color:#a1a1aa">Send messages, read channels, search conversations</div>
+<div style="font-size:.8rem;font-weight:700;min-width:8rem">Slack</div>
+<div style="font-size:.82rem">Send messages, read channels, search conversations</div>
 </div>
 <div style="display:flex;gap:.75rem;align-items:center;padding:.5rem 1rem;background:rgba(52,211,153,.04);border-radius:8px;border:1px solid rgba(52,211,153,.08)">
-<div style="font-size:.8rem;font-weight:700;color:#34d399;min-width:8rem">Filesystem</div>
-<div style="font-size:.82rem;color:#a1a1aa">Sandboxed file access with configurable boundaries</div>
+<div style="font-size:.8rem;font-weight:700;min-width:8rem">Filesystem</div>
+<div style="font-size:.82rem">Sandboxed file access with configurable boundaries</div>
 </div>
 <div style="display:flex;gap:.75rem;align-items:center;padding:.5rem 1rem;background:rgba(244,114,182,.04);border-radius:8px;border:1px solid rgba(244,114,182,.08)">
-<div style="font-size:.8rem;font-weight:700;color:#f472b6;min-width:8rem">Memory</div>
-<div style="font-size:.82rem;color:#a1a1aa">Persistent knowledge graph for agent memory</div>
+<div style="font-size:.8rem;font-weight:700;min-width:8rem">Memory</div>
+<div style="font-size:.82rem">Persistent knowledge graph for agent memory</div>
 </div>
 </div>
 </div>
@@ -133,16 +133,16 @@
 <h2>Common Pitfalls</h2>
 <div style="display:grid;gap:.75rem;margin-top:.75rem">
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">Missing environment variables</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">MCP servers often need API tokens or credentials passed via the <code>env</code> option. If the server starts but tools fail silently, check that all required environment variables are set.</p>
+<strong style="font-size:.88rem">Missing environment variables</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">MCP servers often need API tokens or credentials passed via the <code>env</code> option. If the server starts but tools fail silently, check that all required environment variables are set.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">Server startup failures</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">If the MCP server binary is not installed, the agent will fail to start. Always ensure the server package is installed (<code>npx</code> handles this for npm packages) and that the command path is correct.</p>
+<strong style="font-size:.88rem">Server startup failures</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">If the MCP server binary is not installed, the agent will fail to start. Always ensure the server package is installed (<code>npx</code> handles this for npm packages) and that the command path is correct.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">Too many MCP servers</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Each MCP server adds tools to Claude's context. Too many tools can confuse the model about which one to use. Start with 1-2 servers and add more as needed.</p>
+<strong style="font-size:.88rem">Too many MCP servers</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Each MCP server adds tools to Claude's context. Too many tools can confuse the model about which one to use. Start with 1-2 servers and add more as needed.</p>
 </div>
 </div>
 </div>

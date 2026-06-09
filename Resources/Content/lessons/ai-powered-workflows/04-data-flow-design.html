@@ -80,10 +80,10 @@
   <span class="section-label">Data Validation</span>
   <h2 class="section-title">Validate Early, Validate Often</h2>
   <p class="section-text">The single best practice that separates amateur workflows from production-grade ones: validate your data at every boundary. A boundary is any point where data enters your workflow from an external source — a webhook payload, an API response, a user form submission.</p>
-  <p class="section-text"><strong style="color: var(--green);">Required field checks:</strong> Before processing, verify every required field exists and isn't empty. A missing email address in step 1 shouldn't crash step 5 — it should be caught immediately.</p>
-  <p class="section-text"><strong style="color: var(--green);">Type validation:</strong> Is that "amount" field actually a number, or did someone submit the string "fifty dollars"? Check types before you calculate with them.</p>
-  <p class="section-text"><strong style="color: var(--green);">Range validation:</strong> A negative order quantity, a date from 1970, an email without an @ symbol — these are signs of bad data. Catch them at the door, not three steps later when they corrupt your database.</p>
-  <p class="section-text"><strong style="color: var(--green);">Sanitization:</strong> Strip leading/trailing whitespace, normalize case for categorical fields, and remove any unexpected characters. The difference between "BILLING" and " billing " and "Billing" shouldn't break your routing logic.</p>
+  <p class="section-text"><strong>Required field checks:</strong> Before processing, verify every required field exists and isn't empty. A missing email address in step 1 shouldn't crash step 5 — it should be caught immediately.</p>
+  <p class="section-text"><strong>Type validation:</strong> Is that "amount" field actually a number, or did someone submit the string "fifty dollars"? Check types before you calculate with them.</p>
+  <p class="section-text"><strong>Range validation:</strong> A negative order quantity, a date from 1970, an email without an @ symbol — these are signs of bad data. Catch them at the door, not three steps later when they corrupt your database.</p>
+  <p class="section-text"><strong>Sanitization:</strong> Strip leading/trailing whitespace, normalize case for categorical fields, and remove any unexpected characters. The difference between "BILLING" and " billing " and "Billing" shouldn't break your routing logic.</p>
 </div>
 
 <div class="lesson-section">
@@ -106,10 +106,10 @@
   <p class="section-text">When every step has a clear contract, debugging becomes straightforward. If step 3 fails, check whether step 2's output matches step 3's expected input. The contract tells you exactly where to look.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Now</h3>
   <p>Map the data flow for your workflow from the previous lessons.</p>
-  <div class="prompt-box">
+  <div class="demo-container">
     <code>For each step in your workflow, write: INPUT DATA [list fields] → ACTION → OUTPUT DATA [list fields, including any new ones added]. Circle any field that needs format transformation.</code>
   </div>
 </div>
@@ -117,11 +117,11 @@
 <div class="lesson-section">
   <span class="section-label">Common Pitfalls</span>
   <h2 class="section-title">Five Data Flow Mistakes That Break Production Workflows</h2>
-  <p class="section-text"><strong style="color: var(--red);">1. Overwriting instead of accumulating.</strong> A step that replaces the context with its own output instead of merging into it. Suddenly the customer email from step 1 is gone because step 3 returned only its own fields. Always merge: <code>{...existing_context, ...new_data}</code>.</p>
-  <p class="section-text"><strong style="color: var(--red);">2. Trusting external data formats.</strong> An API returns dates as "MM/DD/YYYY" today and "YYYY-MM-DD" next week after an update. If you didn't validate and normalize at the boundary, your downstream steps break silently.</p>
-  <p class="section-text"><strong style="color: var(--red);">3. Ignoring null values.</strong> A field that's sometimes present and sometimes missing. Your code works when it's there and crashes when it's not. Always define defaults: <code>context.get("industry", "unknown")</code>.</p>
-  <p class="section-text"><strong style="color: var(--red);">4. Circular dependencies.</strong> Step A needs output from Step C, but Step C needs output from Step A. This is a design problem, not a code problem. Restructure so data flows in one direction.</p>
-  <p class="section-text"><strong style="color: var(--red);">5. Massive payloads.</strong> Accumulating every piece of data into one ever-growing context object until it's 50MB and your API calls start timing out. Only carry forward what downstream steps actually need.</p>
+  <p class="section-text"><strong>1. Overwriting instead of accumulating.</strong> A step that replaces the context with its own output instead of merging into it. Suddenly the customer email from step 1 is gone because step 3 returned only its own fields. Always merge: <code>{...existing_context, ...new_data}</code>.</p>
+  <p class="section-text"><strong>2. Trusting external data formats.</strong> An API returns dates as "MM/DD/YYYY" today and "YYYY-MM-DD" next week after an update. If you didn't validate and normalize at the boundary, your downstream steps break silently.</p>
+  <p class="section-text"><strong>3. Ignoring null values.</strong> A field that's sometimes present and sometimes missing. Your code works when it's there and crashes when it's not. Always define defaults: <code>context.get("industry", "unknown")</code>.</p>
+  <p class="section-text"><strong>4. Circular dependencies.</strong> Step A needs output from Step C, but Step C needs output from Step A. This is a design problem, not a code problem. Restructure so data flows in one direction.</p>
+  <p class="section-text"><strong>5. Massive payloads.</strong> Accumulating every piece of data into one ever-growing context object until it's 50MB and your API calls start timing out. Only carry forward what downstream steps actually need.</p>
 </div>
 
 <div class="lesson-section">
@@ -136,9 +136,9 @@
   <span class="section-label">Performance</span>
   <h2 class="section-title">Optimizing Data Flow for Speed</h2>
   <p class="section-text">When your workflow processes high volumes, data flow design directly impacts performance. Two key techniques:</p>
-  <p class="section-text"><strong style="color: var(--green);">Lazy loading:</strong> Don't fetch data you might not need. If Branch A only applies to 10% of items, don't run the expensive enrichment step for all items — check the branch condition first, then fetch.</p>
-  <p class="section-text"><strong style="color: var(--green);">Parallel data fetching:</strong> If step 3 needs data from two independent APIs, call both simultaneously instead of sequentially. Two 500ms API calls in parallel take 500ms total. Sequentially, they take 1000ms. At scale, this difference is massive.</p>
-  <p class="section-text"><strong style="color: var(--green);">Caching:</strong> If multiple workflow runs need the same external data (company info for the same domain, exchange rates for the same currency), cache it. A 5-minute cache for exchange rates saves hundreds of redundant API calls per hour.</p>
+  <p class="section-text"><strong>Lazy loading:</strong> Don't fetch data you might not need. If Branch A only applies to 10% of items, don't run the expensive enrichment step for all items — check the branch condition first, then fetch.</p>
+  <p class="section-text"><strong>Parallel data fetching:</strong> If step 3 needs data from two independent APIs, call both simultaneously instead of sequentially. Two 500ms API calls in parallel take 500ms total. Sequentially, they take 1000ms. At scale, this difference is massive.</p>
+  <p class="section-text"><strong>Caching:</strong> If multiple workflow runs need the same external data (company info for the same domain, exchange rates for the same currency), cache it. A 5-minute cache for exchange rates saves hundreds of redundant API calls per hour.</p>
   <p class="section-text">A well-optimized data flow can handle 10x the volume of a naive one — without any infrastructure changes. The optimization is pure design: fetch less, fetch smarter, and never fetch twice what you can fetch once.</p>
 </div>
 
@@ -172,8 +172,8 @@
   <span class="section-label">The Code</span>
   <h2 class="section-title">Data flow patterns in Python.</h2>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — pass-through + accumulator patterns</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — pass-through + accumulator patterns</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">onboarding_workflow</span>(signup_data: dict):
     <span style="color:#71717a">"""Data accumulates as it flows through each step."""</span>
 
@@ -203,7 +203,7 @@
     )
     <span style="color:#c084fc">return</span> context</code></pre>
 </div>
-<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">Notice: the <code>context</code> dictionary grows at each step. By step 4, it has the original signup data PLUS CRM ID, company size, and industry. That's the accumulator pattern. The email address passes through unchanged — that's the pass-through pattern.</p>
+<p style="font-size:.85rem;margin-top:.5rem">Notice: the <code>context</code> dictionary grows at each step. By step 4, it has the original signup data PLUS CRM ID, company size, and industry. That's the accumulator pattern. The email address passes through unchanged — that's the pass-through pattern.</p>
 </div>
 
 <div class="lesson-section">

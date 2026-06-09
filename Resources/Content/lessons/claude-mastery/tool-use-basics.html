@@ -29,8 +29,8 @@
 
 <p>Think of tools as giving Claude hands to go with its brain. Without tools, Claude can only tell you what it <em>would</em> do. With tools, it can actually do it.</p>
 
-<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">Key insight:</strong> Claude does not execute tools itself. It outputs a <em>structured request</em> saying "I want to call this tool with these parameters." YOUR code executes the actual function and returns the result to Claude. This separation is a security feature — you always control what actions are taken.
+<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;line-height:1.7">
+<strong>Key insight:</strong> Claude does not execute tools itself. It outputs a <em>structured request</em> saying "I want to call this tool with these parameters." YOUR code executes the actual function and returns the result to Claude. This separation is a security feature — you always control what actions are taken.
 </div>
 </div>
 
@@ -42,27 +42,27 @@
 <div class="flow-step" id="step0">
 <div class="flow-icon" style="background:rgba(139,92,246,.15)">1</div>
 <div class="flow-text"><strong>User sends a message</strong><span>"What's the weather in Tokyo?"</span></div>
-<div class="flow-status" style="background:rgba(139,92,246,.15);color:#8b5cf6">Waiting</div>
+<div class="flow-status" style="background:rgba(139,92,246,.15)">Waiting</div>
 </div>
 <div class="flow-step" id="step1">
 <div class="flow-icon" style="background:rgba(56,189,248,.15)">2</div>
 <div class="flow-text"><strong>Claude decides to use a tool</strong><span>Recognizes it needs real-time weather data</span></div>
-<div class="flow-status" style="background:rgba(56,189,248,.15);color:#38bdf8">Waiting</div>
+<div class="flow-status" style="background:rgba(56,189,248,.15)">Waiting</div>
 </div>
 <div class="flow-step" id="step2">
 <div class="flow-icon" style="background:rgba(251,146,60,.15)">3</div>
 <div class="flow-text"><strong>Claude outputs a structured tool call</strong><span>get_weather(location: "Tokyo", units: "celsius")</span></div>
-<div class="flow-status" style="background:rgba(251,146,60,.15);color:#fb923c">Waiting</div>
+<div class="flow-status" style="background:rgba(251,146,60,.15)">Waiting</div>
 </div>
 <div class="flow-step" id="step3">
 <div class="flow-icon" style="background:rgba(52,211,153,.15)">4</div>
 <div class="flow-text"><strong>Your app executes the tool and returns the result</strong><span>{"temp": 22, "condition": "Partly Cloudy", "humidity": 65}</span></div>
-<div class="flow-status" style="background:rgba(52,211,153,.15);color:#34d399">Waiting</div>
+<div class="flow-status" style="background:rgba(52,211,153,.15)">Waiting</div>
 </div>
 <div class="flow-step" id="step4">
 <div class="flow-icon" style="background:rgba(244,114,182,.15)">5</div>
 <div class="flow-text"><strong>Claude responds with natural language</strong><span>"It's currently 22C and partly cloudy in Tokyo with 65% humidity."</span></div>
-<div class="flow-status" style="background:rgba(244,114,182,.15);color:#f472b6">Waiting</div>
+<div class="flow-status" style="background:rgba(244,114,182,.15)">Waiting</div>
 </div>
 </div>
 
@@ -72,8 +72,8 @@
 <h2>Complete Working Example</h2>
 <p>Here is a fully functional tool use implementation. This code actually works — you can run it with your API key:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — complete tool use implementation</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — complete tool use implementation</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic, json
 
 client = anthropic.Anthropic()
@@ -158,8 +158,8 @@ response = client.messages.create(
 <h2>Multi-Step Tool Use</h2>
 <p>The real power of tool use emerges when Claude chains multiple tools in sequence — using the result of one tool to decide what to do next. Here is a production pattern using a tool loop:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — agentic tool loop (multi-step)</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — agentic tool loop (multi-step)</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">run_agent</span>(user_message: str, tools: list, max_steps: int = <span style="color:#fb923c">10</span>):
     <span style="color:#fb923c">"""Run an agentic tool loop until Claude is done."""</span>
     messages = [{<span style="color:#fbbf24">"role"</span>: <span style="color:#fbbf24">"user"</span>, <span style="color:#fbbf24">"content"</span>: user_message}]
@@ -198,15 +198,15 @@ answer = run_agent(
 )
 <span style="color:#34d399">print</span>(answer)</code></pre>
 </div>
-<p style="font-size:.82rem;color:#71717a;margin-top:.5rem">This loop pattern is the foundation of AI agents (Lesson 10). Claude keeps calling tools until it has enough information to answer, then stops. The <code>max_steps</code> guard prevents infinite loops.</p>
+<p style="font-size:.82rem;margin-top:.5rem">This loop pattern is the foundation of AI agents (Lesson 10). Claude keeps calling tools until it has enough information to answer, then stops. The <code>max_steps</code> guard prevents infinite loops.</p>
 </div>
 
 <div class="card">
 <h2>Anatomy of a Tool Definition</h2>
 <p>Every tool definition has three parts: a name, a description, and an input schema. Here is what the weather tool definition looks like as the JSON Claude receives:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JSON — tool definition schema</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JSON — tool definition schema</div>
 <pre style="margin:0;color:#e5e5e5"><code>{
   <span style="color:#fbbf24">"name"</span>: <span style="color:#fbbf24">"get_weather"</span>,
   <span style="color:#fbbf24">"description"</span>: <span style="color:#fbbf24">"Get the current weather for a given location. Returns temperature, conditions, and humidity."</span>,
@@ -226,15 +226,15 @@ answer = run_agent(
   }
 }</code></pre>
 </div>
-<p style="font-size:.85rem;color:#a1a1aa">The <strong>name</strong> should be descriptive and use snake_case. The <strong>description</strong> tells Claude when to use the tool and what it returns. The <strong>input_schema</strong> uses JSON Schema to define parameters — including types, descriptions, enums, and which fields are required. Good descriptions are critical: Claude chooses tools based on their name and description, so "get_current_weather" with a clear description outperforms "do_thing" with none.</p>
+<p style="font-size:.85rem">The <strong>name</strong> should be descriptive and use snake_case. The <strong>description</strong> tells Claude when to use the tool and what it returns. The <strong>input_schema</strong> uses JSON Schema to define parameters — including types, descriptions, enums, and which fields are required. Good descriptions are critical: Claude chooses tools based on their name and description, so "get_current_weather" with a clear description outperforms "do_thing" with none.</p>
 </div>
 
 <div class="card">
 <h2>Error Handling</h2>
 <p>In production, tools fail. APIs go down, databases timeout, rate limits kick in. Always handle tool errors gracefully:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — error handling for tool results</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — error handling for tool results</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># When a tool fails, send an error result back to Claude</span>
 <span style="color:#71717a"># Claude will adapt — it might try a different approach</span>
 <span style="color:#71717a"># or explain to the user that the tool is unavailable</span>
@@ -263,20 +263,20 @@ answer = run_agent(
 <h2>Key Concepts</h2>
 <div style="display:grid;gap:1rem">
 <div style="padding:1rem;background:rgba(139,92,246,.05);border-radius:10px;border:1px solid rgba(139,92,246,.1)">
-<strong style="color:#8b5cf6">Claude decides when to use tools</strong>
-<p style="font-size:.85rem;color:#a1a1aa;margin:.25rem 0 0">You provide the tools, but Claude autonomously decides if and when to call them based on the user's request. You do not need to say "use the weather tool" — Claude figures it out.</p>
+<strong>Claude decides when to use tools</strong>
+<p style="font-size:.85rem;margin:.25rem 0 0">You provide the tools, but Claude autonomously decides if and when to call them based on the user's request. You do not need to say "use the weather tool" — Claude figures it out.</p>
 </div>
 <div style="padding:1rem;background:rgba(251,146,60,.05);border-radius:10px;border:1px solid rgba(251,146,60,.1)">
-<strong style="color:#fb923c">You execute the tools</strong>
-<p style="font-size:.85rem;color:#a1a1aa;margin:.25rem 0 0">Claude outputs a structured tool call. YOUR application runs the actual function and returns the result. This is a security boundary — Claude cannot access anything you don't explicitly enable.</p>
+<strong>You execute the tools</strong>
+<p style="font-size:.85rem;margin:.25rem 0 0">Claude outputs a structured tool call. YOUR application runs the actual function and returns the result. This is a security boundary — Claude cannot access anything you don't explicitly enable.</p>
 </div>
 <div style="padding:1rem;background:rgba(52,211,153,.05);border-radius:10px;border:1px solid rgba(52,211,153,.1)">
-<strong style="color:#34d399">Multi-step chaining</strong>
-<p style="font-size:.85rem;color:#a1a1aa;margin:.25rem 0 0">Claude can call multiple tools in sequence, using results from one to inform the next. This is the tool loop pattern — and it is the foundation of AI agents.</p>
+<strong>Multi-step chaining</strong>
+<p style="font-size:.85rem;margin:.25rem 0 0">Claude can call multiple tools in sequence, using results from one to inform the next. This is the tool loop pattern — and it is the foundation of AI agents.</p>
 </div>
 <div style="padding:1rem;background:rgba(244,114,182,.05);border-radius:10px;border:1px solid rgba(244,114,182,.1)">
-<strong style="color:#f472b6">Good descriptions matter</strong>
-<p style="font-size:.85rem;color:#a1a1aa;margin:.25rem 0 0">Claude chooses tools based on their name and description. A tool named "do_thing" with no description will be used less effectively than "get_current_weather" with a clear description of what it returns.</p>
+<strong>Good descriptions matter</strong>
+<p style="font-size:.85rem;margin:.25rem 0 0">Claude chooses tools based on their name and description. A tool named "do_thing" with no description will be used less effectively than "get_current_weather" with a clear description of what it returns.</p>
 </div>
 </div>
 </div>

@@ -12,16 +12,16 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">Focus</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">LLMs perform better with fewer tools and a clear role. A "content writer" agent with 5 writing tools will produce better output than a "do-everything" agent with 30 tools that happens to also write content.</p>
+        <strong>Focus</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">LLMs perform better with fewer tools and a clear role. A "content writer" agent with 5 writing tools will produce better output than a "do-everything" agent with 30 tools that happens to also write content.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">Separation of concerns</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The agent that writes content should not also be the one that publishes it. If the writer crashes, the publisher keeps working on queued content. Each agent can fail independently without bringing down the whole system.</p>
+        <strong>Separation of concerns</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The agent that writes content should not also be the one that publishes it. If the writer crashes, the publisher keeps working on queued content. Each agent can fail independently without bringing down the whole system.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">Checks and balances</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">An editor agent reviewing a writer agent's output catches errors the writer would never catch on its own. An agent checking its own work is like a student grading their own exam — a separate reviewer is always better.</p>
+        <strong>Checks and balances</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">An editor agent reviewing a writer agent's output catches errors the writer would never catch on its own. An agent checking its own work is like a student grading their own exam — a separate reviewer is always better.</p>
       </div>
     </div>
   </div>
@@ -32,36 +32,36 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6;font-size:.85rem">&#9997;&#65039; Writer</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Creates content — blog posts, emails, reports, social copy. The producer.</p>
+        <strong style="font-size:.85rem">&#9997;&#65039; Writer</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Creates content — blog posts, emails, reports, social copy. The producer.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">&#128270; Editor</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Reviews, fact-checks, and improves. Quality gate that prevents errors from reaching production.</p>
+        <strong style="font-size:.85rem">&#128270; Editor</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Reviews, fact-checks, and improves. Quality gate that prevents errors from reaching production.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c;font-size:.85rem">&#128640; Publisher</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Deploys content to websites and platforms. Without it, content sits in drafts forever.</p>
+        <strong style="font-size:.85rem">&#128640; Publisher</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Deploys content to websites and platforms. Without it, content sits in drafts forever.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">&#128200; Monitor</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Watches systems for errors. The first to know when something breaks. Essential for reliability.</p>
+        <strong style="font-size:.85rem">&#128200; Monitor</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Watches systems for errors. The first to know when something breaks. Essential for reliability.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(168,85,247,.04);border:1px solid rgba(168,85,247,.1)">
-        <strong style="color:#a855f7;font-size:.85rem">&#128721; Guardian</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Enforces rules, checks compliance, validates actions. The safety net for the whole system.</p>
+        <strong style="font-size:.85rem">&#128721; Guardian</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Enforces rules, checks compliance, validates actions. The safety net for the whole system.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-        <strong style="color:#38bdf8;font-size:.85rem">&#128276; Notifier</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Sends alerts via email, Slack, or SMS. Keeps humans in the loop when agents act.</p>
+        <strong style="font-size:.85rem">&#128276; Notifier</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Sends alerts via email, Slack, or SMS. Keeps humans in the loop when agents act.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(250,204,21,.04);border:1px solid rgba(250,204,21,.1)">
-        <strong style="color:#facc15;font-size:.85rem">&#9200; Scheduler</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Manages timing, cron jobs, and queues. Ensures tasks run at the right time in the right order.</p>
+        <strong style="font-size:.85rem">&#9200; Scheduler</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Manages timing, cron jobs, and queues. Ensures tasks run at the right time in the right order.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
-        <strong style="color:#f472b6;font-size:.85rem">&#128202; Analyst</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Analyzes metrics and generates insights. Turns raw data into actionable intelligence.</p>
+        <strong style="font-size:.85rem">&#128202; Analyst</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Analyzes metrics and generates insights. Turns raw data into actionable intelligence.</p>
       </div>
     </div>
   </div>
@@ -70,18 +70,18 @@
     <h2>Team Recipes</h2>
     <p>Three proven team compositions for common use cases:</p>
 
-    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
+    <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0;font-size:.85rem;line-height:1.7">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">Content Pipeline:</strong> Writer &rarr; Editor &rarr; Publisher + Notifier<br>
-        <span style="color:#71717a">Writer creates, Editor quality-gates, Publisher deploys, Notifier confirms. Pipeline orchestration (Lesson 5).</span>
+        <strong>Content Pipeline:</strong> Writer &rarr; Editor &rarr; Publisher + Notifier<br>
+        <span>Writer creates, Editor quality-gates, Publisher deploys, Notifier confirms. Pipeline orchestration (Lesson 5).</span>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">Self-Healing Infra:</strong> Monitor + Guardian + Notifier + Scheduler<br>
-        <span style="color:#71717a">Monitor detects problems. Guardian validates fix actions. Scheduler handles timing. Notifier alerts humans. Supervisor orchestration.</span>
+        <strong>Self-Healing Infra:</strong> Monitor + Guardian + Notifier + Scheduler<br>
+        <span>Monitor detects problems. Guardian validates fix actions. Scheduler handles timing. Notifier alerts humans. Supervisor orchestration.</span>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">Data Pipeline:</strong> Analyst + Monitor + Notifier + Scheduler<br>
-        <span style="color:#71717a">Scheduler triggers on cron. Analyst processes data. Monitor watches health. Notifier reports results. Pipeline + supervisor hybrid.</span>
+        <strong>Data Pipeline:</strong> Analyst + Monitor + Notifier + Scheduler<br>
+        <span>Scheduler triggers on cron. Analyst processes data. Monitor watches health. Notifier reports results. Pipeline + supervisor hybrid.</span>
       </div>
     </div>
   </div>
@@ -92,12 +92,12 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">Add an agent when...</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">An existing agent has too many tools (15+). A new responsibility has different failure modes. You need independent scaling for a specific task. Two roles should never share state or permissions.</p>
+        <strong style="font-size:.85rem">Add an agent when...</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">An existing agent has too many tools (15+). A new responsibility has different failure modes. You need independent scaling for a specific task. Two roles should never share state or permissions.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Do NOT add an agent when...</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">A simple function call would suffice. The "agent" would only have one tool. Adding it creates unnecessary coordination overhead. The existing agent handles the task fine — you are just over-engineering.</p>
+        <strong style="font-size:.85rem">Do NOT add an agent when...</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">A simple function call would suffice. The "agent" would only have one tool. Adding it creates unnecessary coordination overhead. The existing agent handles the task fine — you are just over-engineering.</p>
       </div>
     </div>
   </div>
@@ -108,16 +108,16 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">Task Queue</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">One agent creates tasks; others claim and execute them. Tasks sit in a shared queue (<code>task_queue</code> table) with fields for status, assignee, and priority. Any available agent can claim the next unassigned task. This prevents work from piling up on a single agent.</p>
+        <strong>Task Queue</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">One agent creates tasks; others claim and execute them. Tasks sit in a shared queue (<code>task_queue</code> table) with fields for status, assignee, and priority. Any available agent can claim the next unassigned task. This prevents work from piling up on a single agent.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">Status Board</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Each agent writes its current status to a shared key: <code>agent.writer.status = "drafting blog post"</code>, <code>agent.editor.status = "idle"</code>. Other agents can check who is busy and who is available before assigning work. Like a team standup, but automated.</p>
+        <strong>Status Board</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Each agent writes its current status to a shared key: <code>agent.writer.status = "drafting blog post"</code>, <code>agent.editor.status = "idle"</code>. Other agents can check who is busy and who is available before assigning work. Like a team standup, but automated.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">Event Stream</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Agents emit events: <code>"draft_complete"</code>, <code>"review_passed"</code>, <code>"deploy_failed"</code>. Other agents subscribe to events they care about. This is the most decoupled pattern — agents do not need to know about each other, only about events.</p>
+        <strong>Event Stream</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Agents emit events: <code>"draft_complete"</code>, <code>"review_passed"</code>, <code>"deploy_failed"</code>. Other agents subscribe to events they care about. This is the most decoupled pattern — agents do not need to know about each other, only about events.</p>
       </div>
     </div>
   </div>
@@ -126,10 +126,10 @@
     <h2>Failure Modes in Agent Teams</h2>
     <p>Teams fail differently from solo agents. Three failure modes unique to multi-agent systems:</p>
 
-    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#ef4444">Cascade failure:</strong> Agent A crashes, which means Agent B never gets its input, so Agent B sits idle, and Agent C (which depends on B) also stalls. One failure cascades through the entire team. Fix: timeouts and fallback paths at every handoff point.<br><br>
-      <strong style="color:#ef4444">Silent duplication:</strong> Two agents both claim the same task from the queue because the claim operation is not atomic. Both do the work. The user gets two emails, two reports, two deploys. Fix: use database-level locking on task claims (<code>SELECT ... FOR UPDATE SKIP LOCKED</code>).<br><br>
-      <strong style="color:#ef4444">Role confusion:</strong> An agent's identity is too similar to another agent's. Both try to handle the same type of request, producing conflicting outputs. Fix: make each agent's scope explicit and non-overlapping. If in doubt, add a router agent that directs requests to the right specialist.
+    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;line-height:1.7">
+      <strong>Cascade failure:</strong> Agent A crashes, which means Agent B never gets its input, so Agent B sits idle, and Agent C (which depends on B) also stalls. One failure cascades through the entire team. Fix: timeouts and fallback paths at every handoff point.<br><br>
+      <strong>Silent duplication:</strong> Two agents both claim the same task from the queue because the claim operation is not atomic. Both do the work. The user gets two emails, two reports, two deploys. Fix: use database-level locking on task claims (<code>SELECT ... FOR UPDATE SKIP LOCKED</code>).<br><br>
+      <strong>Role confusion:</strong> An agent's identity is too similar to another agent's. Both try to handle the same type of request, producing conflicting outputs. Fix: make each agent's scope explicit and non-overlapping. If in doubt, add a router agent that directs requests to the right specialist.
     </div>
   </div>
 
@@ -137,11 +137,11 @@
     <h2>The Minimum Viable Team</h2>
     <p>For any project, start with the smallest team that covers your critical path. The minimum viable team for most autonomous systems is three agents:</p>
 
-    <div style="background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#34d399">1. Worker</strong> — Does the actual task (writing, processing, scraping, deploying).<br>
-      <strong style="color:#34d399">2. Reviewer</strong> — Checks the worker's output before it goes live. Quality gate.<br>
-      <strong style="color:#34d399">3. Monitor</strong> — Watches both the worker and reviewer for health. Restarts failures.<br><br>
-      <span style="color:#71717a">This three-agent team covers production, quality, and reliability. Add more agents only when you have a specific need that these three cannot handle.</span>
+    <div style="background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;line-height:1.7">
+      <strong>1. Worker</strong> — Does the actual task (writing, processing, scraping, deploying).<br>
+      <strong>2. Reviewer</strong> — Checks the worker's output before it goes live. Quality gate.<br>
+      <strong>3. Monitor</strong> — Watches both the worker and reviewer for health. Restarts failures.<br><br>
+      <span>This three-agent team covers production, quality, and reliability. Add more agents only when you have a specific need that these three cannot handle.</span>
     </div>
   </div>
 
@@ -245,16 +245,16 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-        <strong style="color:#38bdf8">Unit Test Each Agent</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Test each agent in isolation with mock inputs. Does the Writer produce well-formatted content? Does the Editor catch errors? Does the Publisher deploy correctly? Each agent must work alone before it works in a team.</p>
+        <strong>Unit Test Each Agent</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Test each agent in isolation with mock inputs. Does the Writer produce well-formatted content? Does the Editor catch errors? Does the Publisher deploy correctly? Each agent must work alone before it works in a team.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">Integration Test the Handoffs</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Test the connections between agents. When the Writer writes to <code>task.draft</code>, does the Editor pick it up? When the Editor approves, does the Publisher receive the approved version? Handoff failures are the most common team bugs.</p>
+        <strong>Integration Test the Handoffs</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Test the connections between agents. When the Writer writes to <code>task.draft</code>, does the Editor pick it up? When the Editor approves, does the Publisher receive the approved version? Handoff failures are the most common team bugs.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444">Chaos Test the Failures</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Deliberately crash one agent and verify the team recovers. Kill the Editor mid-review. Does the system retry? Does the Monitor detect it? Does the Notifier alert? If any of these fail, your team is not production-ready.</p>
+        <strong>Chaos Test the Failures</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Deliberately crash one agent and verify the team recovers. Kill the Editor mid-review. Does the system retry? Does the Monitor detect it? Does the Notifier alert? If any of these fail, your team is not production-ready.</p>
       </div>
     </div>
   </div>
@@ -265,20 +265,20 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">Phase 1: Solo Agent</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Start with one agent that does everything. This is fine for learning and prototyping. You will quickly discover which tasks it handles well and which ones suffer from being bundled together.</p>
+        <strong>Phase 1: Solo Agent</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Start with one agent that does everything. This is fine for learning and prototyping. You will quickly discover which tasks it handles well and which ones suffer from being bundled together.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">Phase 2: Split by Failure Mode</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The first split should happen when you realize one part of the agent is failing while the rest works fine. If the writing is great but publishing keeps breaking, split into Writer and Publisher. Separate what fails independently.</p>
+        <strong>Phase 2: Split by Failure Mode</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The first split should happen when you realize one part of the agent is failing while the rest works fine. If the writing is great but publishing keeps breaking, split into Writer and Publisher. Separate what fails independently.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">Phase 3: Add Quality Control</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Once you have producers and deployers, add a quality gate — an Editor or Guardian agent that reviews output before it reaches production. This is the phase where output quality jumps dramatically.</p>
+        <strong>Phase 3: Add Quality Control</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Once you have producers and deployers, add a quality gate — an Editor or Guardian agent that reviews output before it reaches production. This is the phase where output quality jumps dramatically.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444">Phase 4: Add Observability</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Finally, add a Monitor agent that watches the whole team. This is when the system becomes self-healing — failures are detected and corrected without human intervention.</p>
+        <strong>Phase 4: Add Observability</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Finally, add a Monitor agent that watches the whole team. This is when the system becomes self-healing — failures are detected and corrected without human intervention.</p>
       </div>
     </div>
   </div>

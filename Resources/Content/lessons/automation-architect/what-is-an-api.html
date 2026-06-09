@@ -42,25 +42,25 @@
     <p class="section-text">Here is an actual API request to get a list of users. Every part is labeled:</p>
 
     <div style="background:#0a0a0f;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1rem;margin:1rem 0;font-family:monospace;font-size:.8rem;line-height:1.7;overflow-x:auto">
-      <span style="color:#71717a"># The request: GET method, URL, headers</span><br>
-      <span style="color:#34d399">GET</span> <span style="color:#a1a1aa">https://api.example.com/users?limit=10</span><br>
-      <span style="color:#8b5cf6">Authorization</span><span style="color:#52525b">:</span> <span style="color:#fb923c">Bearer sk_live_abc123...</span><br>
-      <span style="color:#8b5cf6">Content-Type</span><span style="color:#52525b">:</span> <span style="color:#a1a1aa">application/json</span><br>
-      <span style="color:#8b5cf6">Accept</span><span style="color:#52525b">:</span> <span style="color:#a1a1aa">application/json</span>
+      <span># The request: GET method, URL, headers</span><br>
+      <span>GET</span> <span>https://api.example.com/users?limit=10</span><br>
+      <span>Authorization</span><span>:</span> <span>Bearer sk_live_abc123...</span><br>
+      <span>Content-Type</span><span>:</span> <span>application/json</span><br>
+      <span>Accept</span><span>:</span> <span>application/json</span>
     </div>
 
     <div style="display:flex;flex-direction:column;gap:.4rem;margin:1rem 0">
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.5rem .75rem;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.08)">
-        <span style="color:#34d399;font-weight:700;font-size:.8rem;min-width:90px">Method</span>
-        <span style="font-size:.8rem;color:#a1a1aa"><code>GET</code> — what you want to do (read, create, update, delete)</span>
+        <span style="font-weight:700;font-size:.8rem;min-width:90px">Method</span>
+        <span style="font-size:.8rem"><code>GET</code> — what you want to do (read, create, update, delete)</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.5rem .75rem;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.08)">
-        <span style="color:#8b5cf6;font-weight:700;font-size:.8rem;min-width:90px">URL</span>
-        <span style="font-size:.8rem;color:#a1a1aa">Where to send it. <code>?limit=10</code> is a query parameter — filters the results.</span>
+        <span style="font-weight:700;font-size:.8rem;min-width:90px">URL</span>
+        <span style="font-size:.8rem">Where to send it. <code>?limit=10</code> is a query parameter — filters the results.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.5rem .75rem;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.08)">
-        <span style="color:#fb923c;font-weight:700;font-size:.8rem;min-width:90px">Headers</span>
-        <span style="font-size:.8rem;color:#a1a1aa">Metadata about your request. <code>Authorization</code> proves who you are. <code>Content-Type</code> says what format you are using.</span>
+        <span style="font-weight:700;font-size:.8rem;min-width:90px">Headers</span>
+        <span style="font-size:.8rem">Metadata about your request. <code>Authorization</code> proves who you are. <code>Content-Type</code> says what format you are using.</span>
       </div>
     </div>
   </div>
@@ -70,20 +70,20 @@
 
   <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
     <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-      <strong style="color:#34d399;font-size:.85rem">GET</strong>
-      <span style="font-size:.8rem;color:#a1a1aa"> — Read data without modifying it. Example: <code>GET /users</code> returns a list of users. Safe and idempotent.</span>
+      <strong style="font-size:.85rem">GET</strong>
+      <span style="font-size:.8rem"> — Read data without modifying it. Example: <code>GET /users</code> returns a list of users. Safe and idempotent.</span>
     </div>
     <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(96,165,250,.04);border:1px solid rgba(96,165,250,.1)">
-      <strong style="color:#60a5fa;font-size:.85rem">POST</strong>
-      <span style="font-size:.8rem;color:#a1a1aa"> — Create a new resource. Sends a JSON body with the data. Example: <code>POST /orders</code> with <code>{"product": "Pro Plan"}</code> creates a new order. Returns 201 Created.</span>
+      <strong style="font-size:.85rem">POST</strong>
+      <span style="font-size:.8rem"> — Create a new resource. Sends a JSON body with the data. Example: <code>POST /orders</code> with <code>{"product": "Pro Plan"}</code> creates a new order. Returns 201 Created.</span>
     </div>
     <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-      <strong style="color:#fb923c;font-size:.85rem">PUT</strong>
-      <span style="font-size:.8rem;color:#a1a1aa"> — Update or replace an existing resource. Example: <code>PUT /users/42</code> with updated fields replaces that user's data. Idempotent — same result if called multiple times.</span>
+      <strong style="font-size:.85rem">PUT</strong>
+      <span style="font-size:.8rem"> — Update or replace an existing resource. Example: <code>PUT /users/42</code> with updated fields replaces that user's data. Idempotent — same result if called multiple times.</span>
     </div>
     <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-      <strong style="color:#ef4444;font-size:.85rem">DELETE</strong>
-      <span style="font-size:.8rem;color:#a1a1aa"> — Remove a resource. Example: <code>DELETE /users/42</code> removes the user with id 42. Usually returns 200 OK or 204 No Content.</span>
+      <strong style="font-size:.85rem">DELETE</strong>
+      <span style="font-size:.8rem"> — Remove a resource. Example: <code>DELETE /users/42</code> removes the user with id 42. Usually returns 200 OK or 204 No Content.</span>
     </div>
   </div>
 
@@ -92,17 +92,17 @@
     <p class="section-text">cURL is the universal command-line tool for making API requests. These are real commands you can run in your terminal:</p>
 
     <div style="background:#0a0a0f;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1rem;margin:1rem 0;font-family:monospace;font-size:.78rem;line-height:1.7;overflow-x:auto">
-      <span style="color:#71717a"># GET — Read a list of users</span><br>
-      <span style="color:#34d399">curl</span> <span style="color:#a1a1aa">https://jsonplaceholder.typicode.com/users</span><br><br>
-      <span style="color:#71717a"># POST — Create a new post (with JSON body)</span><br>
-      <span style="color:#34d399">curl</span> <span style="color:#fb923c">-X POST</span> <span style="color:#a1a1aa">https://jsonplaceholder.typicode.com/posts</span> \<br>
-      &nbsp;&nbsp;<span style="color:#8b5cf6">-H</span> <span style="color:#a1a1aa">"Content-Type: application/json"</span> \<br>
-      &nbsp;&nbsp;<span style="color:#8b5cf6">-d</span> <span style="color:#a1a1aa">'{"title": "My Post", "body": "Hello world"}'</span><br><br>
-      <span style="color:#71717a"># DELETE — Remove a post</span><br>
-      <span style="color:#34d399">curl</span> <span style="color:#fb923c">-X DELETE</span> <span style="color:#a1a1aa">https://jsonplaceholder.typicode.com/posts/1</span>
+      <span># GET — Read a list of users</span><br>
+      <span>curl</span> <span>https://jsonplaceholder.typicode.com/users</span><br><br>
+      <span># POST — Create a new post (with JSON body)</span><br>
+      <span>curl</span> <span>-X POST</span> <span>https://jsonplaceholder.typicode.com/posts</span> \<br>
+      &nbsp;&nbsp;<span>-H</span> <span>"Content-Type: application/json"</span> \<br>
+      &nbsp;&nbsp;<span>-d</span> <span>'{"title": "My Post", "body": "Hello world"}'</span><br><br>
+      <span># DELETE — Remove a post</span><br>
+      <span>curl</span> <span>-X DELETE</span> <span>https://jsonplaceholder.typicode.com/posts/1</span>
     </div>
 
-    <p style="font-size:.85rem;color:#71717a;margin-top:.5rem">jsonplaceholder.typicode.com is a free fake API for learning. The data is not real, but the requests and responses work exactly like a production API. Try these in your terminal right now.</p>
+    <p style="font-size:.85rem;margin-top:.5rem">jsonplaceholder.typicode.com is a free fake API for learning. The data is not real, but the requests and responses work exactly like a production API. Try these in your terminal right now.</p>
   </div>
 
   <h2>Status Codes</h2>
@@ -124,19 +124,19 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">API Key</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">A secret string you include in every request, usually as a header (<code>Authorization: Bearer sk_live_...</code>) or query parameter (<code>?api_key=...</code>). Simple, widely used. The key identifies your account and controls your access level.</p>
-        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem">Used by: Stripe, OpenAI, SendGrid, most SaaS APIs</div>
+        <strong>API Key</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">A secret string you include in every request, usually as a header (<code>Authorization: Bearer sk_live_...</code>) or query parameter (<code>?api_key=...</code>). Simple, widely used. The key identifies your account and controls your access level.</p>
+        <div style="font-size:.78rem;margin-top:.4rem">Used by: Stripe, OpenAI, SendGrid, most SaaS APIs</div>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">OAuth 2.0</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The user grants your app permission through a login flow. You receive a <strong>token</strong> that expires and can be refreshed. More complex but more secure — the user can revoke access at any time.</p>
-        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem">Used by: Google, GitHub, Slack, Microsoft — any "Sign in with..." flow</div>
+        <strong>OAuth 2.0</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The user grants your app permission through a login flow. You receive a <strong>token</strong> that expires and can be refreshed. More complex but more secure — the user can revoke access at any time.</p>
+        <div style="font-size:.78rem;margin-top:.4rem">Used by: Google, GitHub, Slack, Microsoft — any "Sign in with..." flow</div>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">JWT (JSON Web Token)</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">A self-contained token that carries user identity and permissions. The server can verify it without checking a database. Commonly used for session management in modern web apps.</p>
-        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem">Used by: Supabase, Firebase, Auth0, custom APIs</div>
+        <strong>JWT (JSON Web Token)</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">A self-contained token that carries user identity and permissions. The server can verify it without checking a database. Commonly used for session management in modern web apps.</p>
+        <div style="font-size:.78rem;margin-top:.4rem">Used by: Supabase, Firebase, Auth0, custom APIs</div>
       </div>
     </div>
   </div>
@@ -146,11 +146,11 @@
     <p class="section-text">APIs limit how many requests you can make per minute or hour. If you exceed the limit, you get a <code style="background:rgba(255,255,255,.05);padding:.15rem .4rem;border-radius:4px">429 Too Many Requests</code> response. This matters for automations because:</p>
 
     <div style="display:flex;flex-direction:column;gap:.4rem;margin:1rem 0">
-      <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);font-size:.85rem;color:#a1a1aa">
-        <strong style="color:#e2e8f0">A loop calling an API 1000 times</strong> will get rate-limited after ~100 calls. Your automation needs to respect the limit and add delays between batches.
+      <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);font-size:.85rem">
+        <strong>A loop calling an API 1000 times</strong> will get rate-limited after ~100 calls. Your automation needs to respect the limit and add delays between batches.
       </div>
-      <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);font-size:.85rem;color:#a1a1aa">
-        <strong style="color:#e2e8f0">The response header tells you your limit:</strong> Look for <code>X-RateLimit-Remaining</code> and <code>Retry-After</code> to know how many calls you have left and when to try again.
+      <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);font-size:.85rem">
+        <strong>The response header tells you your limit:</strong> Look for <code>X-RateLimit-Remaining</code> and <code>Retry-After</code> to know how many calls you have left and when to try again.
       </div>
     </div>
   </div>
@@ -161,36 +161,36 @@
 
     <div style="display:flex;flex-direction:column;gap:.4rem;margin:1rem 0">
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.5rem .75rem;border-radius:8px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.08)">
-        <span style="color:#ef4444;font-weight:700;font-size:.8rem;min-width:30px">401</span>
-        <span style="font-size:.8rem;color:#a1a1aa"><strong>Check your API key.</strong> Is it in the right header? Is it the live key, not the test key? Has it been rotated or revoked?</span>
+        <span style="font-weight:700;font-size:.8rem;min-width:30px">401</span>
+        <span style="font-size:.8rem"><strong>Check your API key.</strong> Is it in the right header? Is it the live key, not the test key? Has it been rotated or revoked?</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.5rem .75rem;border-radius:8px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.08)">
-        <span style="color:#ef4444;font-weight:700;font-size:.8rem;min-width:30px">403</span>
-        <span style="font-size:.8rem;color:#a1a1aa"><strong>Permission issue.</strong> Your key is valid but does not have access to this resource. Check your account's permission scope.</span>
+        <span style="font-weight:700;font-size:.8rem;min-width:30px">403</span>
+        <span style="font-size:.8rem"><strong>Permission issue.</strong> Your key is valid but does not have access to this resource. Check your account's permission scope.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.5rem .75rem;border-radius:8px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.08)">
-        <span style="color:#ef4444;font-weight:700;font-size:.8rem;min-width:30px">404</span>
-        <span style="font-size:.8rem;color:#a1a1aa"><strong>Wrong URL or resource does not exist.</strong> Double-check the endpoint path and any IDs in the URL.</span>
+        <span style="font-weight:700;font-size:.8rem;min-width:30px">404</span>
+        <span style="font-size:.8rem"><strong>Wrong URL or resource does not exist.</strong> Double-check the endpoint path and any IDs in the URL.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.5rem .75rem;border-radius:8px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.08)">
-        <span style="color:#ef4444;font-weight:700;font-size:.8rem;min-width:30px">429</span>
-        <span style="font-size:.8rem;color:#a1a1aa"><strong>Rate limited.</strong> Wait for the <code>Retry-After</code> duration, then try again. Add delays between requests in your automation.</span>
+        <span style="font-weight:700;font-size:.8rem;min-width:30px">429</span>
+        <span style="font-size:.8rem"><strong>Rate limited.</strong> Wait for the <code>Retry-After</code> duration, then try again. Add delays between requests in your automation.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.5rem .75rem;border-radius:8px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.08)">
-        <span style="color:#ef4444;font-weight:700;font-size:.8rem;min-width:30px">500</span>
-        <span style="font-size:.8rem;color:#a1a1aa"><strong>Server-side error.</strong> Not your fault. Wait and retry. If persistent, check the API's status page.</span>
+        <span style="font-weight:700;font-size:.8rem;min-width:30px">500</span>
+        <span style="font-size:.8rem"><strong>Server-side error.</strong> Not your fault. Wait and retry. If persistent, check the API's status page.</span>
       </div>
     </div>
   </div>
 
   <div style="padding:0 .5rem">
     <div style="background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);border-radius:10px;padding:1rem 1.25rem;margin:1.5rem 0">
-      <h3 style="color:#34d399;font-size:.9rem;margin:0 0 .75rem">API Best Practices</h3>
+      <h3 style="font-size:.9rem;margin:0 0 .75rem">API Best Practices</h3>
       <div style="display:flex;flex-direction:column;gap:.5rem">
-        <div style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Version your APIs.</strong> Use URL versioning (<code>/v1/users</code>, <code>/v2/users</code>) so you can update the API without breaking existing integrations. Never make breaking changes to a live endpoint — create a new version instead.</div>
-        <div style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Respect rate limits proactively.</strong> Read the <code>X-RateLimit-Remaining</code> header on every response. Slow down before you hit the limit, not after you get a 429. Build in delays when processing batches.</div>
-        <div style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Handle errors at every level.</strong> Network errors (DNS failure, timeout), HTTP errors (4xx, 5xx), and application errors (valid HTTP response but with an error in the body) are three different failure modes. Your code must handle all three.</div>
-        <div style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Never expose secrets in URLs.</strong> Send API keys in headers, not query parameters. Query parameters appear in server logs, browser history, and proxy logs. The <code>Authorization</code> header is the secure standard.</div>
+        <div style="font-size:.82rem"><strong>Version your APIs.</strong> Use URL versioning (<code>/v1/users</code>, <code>/v2/users</code>) so you can update the API without breaking existing integrations. Never make breaking changes to a live endpoint — create a new version instead.</div>
+        <div style="font-size:.82rem"><strong>Respect rate limits proactively.</strong> Read the <code>X-RateLimit-Remaining</code> header on every response. Slow down before you hit the limit, not after you get a 429. Build in delays when processing batches.</div>
+        <div style="font-size:.82rem"><strong>Handle errors at every level.</strong> Network errors (DNS failure, timeout), HTTP errors (4xx, 5xx), and application errors (valid HTTP response but with an error in the body) are three different failure modes. Your code must handle all three.</div>
+        <div style="font-size:.82rem"><strong>Never expose secrets in URLs.</strong> Send API keys in headers, not query parameters. Query parameters appear in server logs, browser history, and proxy logs. The <code>Authorization</code> header is the secure standard.</div>
       </div>
     </div>
   </div>

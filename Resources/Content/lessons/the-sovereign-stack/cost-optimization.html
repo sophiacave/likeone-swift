@@ -30,15 +30,15 @@
 </div>
 
   <p class="section-text">Every AI request has a complexity level. Simple tasks (classification, summarization, template filling) run perfectly on local models. Complex tasks (long-form analysis, nuanced writing, multi-step reasoning) benefit from cloud frontier models. The key is routing correctly:</p>
-  <p class="section-text"><strong style="color: var(--green);">Local (free):</strong> Email triage, content classification, data extraction, template filling, simple Q&A, code formatting, JSON generation, sentiment analysis. These are pattern-matching tasks that 7B models handle excellently.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Cloud (paid):</strong> Long-form blog posts, complex code generation, multi-step reasoning chains, nuanced client communication, strategic planning, creative writing. These need frontier model capabilities.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Hybrid:</strong> Draft locally, polish on cloud. Local model generates a rough draft (free), cloud model refines it into final quality (one API call instead of iterating). This cuts cloud usage by 60-80% for content tasks.</p>
+  <p class="section-text"><strong>Local (free):</strong> Email triage, content classification, data extraction, template filling, simple Q&A, code formatting, JSON generation, sentiment analysis. These are pattern-matching tasks that 7B models handle excellently.</p>
+  <p class="section-text"><strong>Cloud (paid):</strong> Long-form blog posts, complex code generation, multi-step reasoning chains, nuanced client communication, strategic planning, creative writing. These need frontier model capabilities.</p>
+  <p class="section-text"><strong>Hybrid:</strong> Draft locally, polish on cloud. Local model generates a rough draft (free), cloud model refines it into final quality (one API call instead of iterating). This cuts cloud usage by 60-80% for content tasks.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Implementation</span>
   <h2 class="section-title">The Smart Router</h2>
-  <div class="prompt-box"><code>// Smart model router -- chooses local vs. cloud per request
+  <div class="demo-container"><code>// Smart model router -- chooses local vs. cloud per request
 function routeRequest(task) {
   // Tasks that always go local (free)
   const localTasks = [
@@ -86,17 +86,17 @@ function estimateCost(task) {
   <span class="section-label">Strategy</span>
   <h2 class="section-title">Token Reduction Techniques</h2>
   <p class="section-text">Even when you must use cloud APIs, you can reduce how many tokens each request consumes:</p>
-  <p class="section-text"><strong style="color: var(--blue);">Prompt compression.</strong> Rewrite system prompts to be concise. A 2000-token system prompt that could be 500 tokens wastes 1500 tokens on every request. Over 100 requests/day, that is 150,000 wasted tokens.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Context windowing.</strong> Do not send the entire conversation history with every request. Send the last 5-10 messages plus a summary of earlier context. This keeps input tokens manageable as conversations grow.</p>
-  <p class="section-text"><strong style="color: var(--green);">Output capping.</strong> Set max_tokens to the minimum needed. A classification task needs 50 tokens, not 4000. A summary needs 200, not 2000. Over-allocating output tokens does not cost more (you pay for actual output), but constraining encourages concise responses.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Caching responses.</strong> If the same question is asked repeatedly (FAQ, standard classification), cache the response. Subsequent requests return the cached answer at zero cost. Invalidate the cache when the underlying data changes.</p>
+  <p class="section-text"><strong>Prompt compression.</strong> Rewrite system prompts to be concise. A 2000-token system prompt that could be 500 tokens wastes 1500 tokens on every request. Over 100 requests/day, that is 150,000 wasted tokens.</p>
+  <p class="section-text"><strong>Context windowing.</strong> Do not send the entire conversation history with every request. Send the last 5-10 messages plus a summary of earlier context. This keeps input tokens manageable as conversations grow.</p>
+  <p class="section-text"><strong>Output capping.</strong> Set max_tokens to the minimum needed. A classification task needs 50 tokens, not 4000. A summary needs 200, not 2000. Over-allocating output tokens does not cost more (you pay for actual output), but constraining encourages concise responses.</p>
+  <p class="section-text"><strong>Caching responses.</strong> If the same question is asked repeatedly (FAQ, standard classification), cache the response. Subsequent requests return the cached answer at zero cost. Invalidate the cache when the underlying data changes.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Advanced</span>
   <h2 class="section-title">Cost Dashboard</h2>
   <p class="section-text">You cannot optimize what you do not measure. Build a cost dashboard that tracks every AI request:</p>
-  <div class="prompt-box"><code>// Log every AI request with cost data
+  <div class="demo-container"><code>// Log every AI request with cost data
 async function logRequest(model, inputTokens, outputTokens, taskType) {
   const cost = calculateCost(model, inputTokens, outputTokens);
   const entry = {
@@ -144,7 +144,7 @@ function dailyCostSummary() {
   <span class="section-label">Comparison</span>
   <h2 class="section-title">Real Cost Comparison</h2>
   <p class="section-text">Here is a real-world comparison for a business running 500 AI requests per day:</p>
-  <div class="prompt-box"><code>Scenario A: All Cloud (no sovereignty)
+  <div class="demo-container"><code>Scenario A: All Cloud (no sovereignty)
   500 requests x $0.01 avg = $5.00/day = $150/month
 
 Scenario B: 80/20 Split (sovereign + cloud)
@@ -170,15 +170,15 @@ Annual savings:
 <div class="lesson-section">
   <span class="section-label">Anti-Patterns</span>
   <h2 class="section-title">Cost Optimization Mistakes</h2>
-  <p class="section-text"><strong style="color: var(--red);">Optimizing too early.</strong> Spending a week building a cost optimization system before you even know your usage patterns. Run on cloud for a week first. Measure. See where the money goes. Then optimize the expensive categories.</p>
-  <p class="section-text"><strong style="color: var(--red);">Sacrificing quality for cost.</strong> Routing everything to local models even when quality suffers visibly. A terrible client email saves $0.02 but costs you the client. Route quality-critical tasks to cloud without guilt.</p>
-  <p class="section-text"><strong style="color: var(--red);">No spending alerts.</strong> Running without a daily cost cap. A bug that generates 10,000 cloud requests in an hour can cost hundreds of dollars. Set a daily maximum and halt cloud requests when the limit is reached.</p>
+  <p class="section-text"><strong>Optimizing too early.</strong> Spending a week building a cost optimization system before you even know your usage patterns. Run on cloud for a week first. Measure. See where the money goes. Then optimize the expensive categories.</p>
+  <p class="section-text"><strong>Sacrificing quality for cost.</strong> Routing everything to local models even when quality suffers visibly. A terrible client email saves $0.02 but costs you the client. Route quality-critical tasks to cloud without guilt.</p>
+  <p class="section-text"><strong>No spending alerts.</strong> Running without a daily cost cap. A bug that generates 10,000 cloud requests in an hour can cost hundreds of dollars. Set a daily maximum and halt cloud requests when the limit is reached.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Build your cost optimization system:</p>
-  <div class="prompt-box"><code>1. Log your current AI usage for one week (which tasks, how many)
+  <div class="demo-container"><code>1. Log your current AI usage for one week (which tasks, how many)
 2. Classify each task: local-capable or cloud-required?
 3. Build a smart router that routes local vs. cloud
 4. Implement cost logging for every request

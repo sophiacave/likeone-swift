@@ -79,7 +79,7 @@ async def route_and_respond(query):
 - Each domain gets a specialist model without multiplying GPU costs
 - New domains are added by training new adapters, not new models
 
-<div class="tip-box">
+<div class="callout">
 The router itself can be a fine-tuned model. Train a tiny classifier (BERT-tiny, 15M parameters) on 1,000 labeled queries. It will achieve 95%+ routing accuracy and add essentially zero latency to the pipeline.
 </div>
 </div>

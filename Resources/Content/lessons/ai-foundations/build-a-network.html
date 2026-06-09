@@ -59,16 +59,16 @@
 
   <div style="display:grid;gap:.75rem;margin-top:1rem">
     <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-      <strong style="color:#34d399;font-size:.88rem">Input Layer — the eyes and ears</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The input layer receives raw data and passes it forward. For an image, each input neuron holds one pixel value. For text, each input holds a token embedding. The input layer does no computation — it is purely a data entry point. Its size is fixed by the data: a 28x28 pixel image needs 784 input neurons. A sentence with 50 tokens needs 50 input positions.</p>
+      <strong style="font-size:.88rem">Input Layer — the eyes and ears</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">The input layer receives raw data and passes it forward. For an image, each input neuron holds one pixel value. For text, each input holds a token embedding. The input layer does no computation — it is purely a data entry point. Its size is fixed by the data: a 28x28 pixel image needs 784 input neurons. A sentence with 50 tokens needs 50 input positions.</p>
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-      <strong style="color:#8b5cf6;font-size:.88rem">Hidden Layers — the pattern detectors</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Hidden layers are where the magic happens. Each layer builds on the previous one, detecting increasingly abstract patterns. In an image classifier: layer 1 finds edges, layer 2 combines edges into shapes, layer 3 combines shapes into object parts, layer 4 recognizes whole objects. Think of it as a detective building a case — first individual clues, then connections, then the full picture.</p>
+      <strong style="font-size:.88rem">Hidden Layers — the pattern detectors</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">Hidden layers are where the magic happens. Each layer builds on the previous one, detecting increasingly abstract patterns. In an image classifier: layer 1 finds edges, layer 2 combines edges into shapes, layer 3 combines shapes into object parts, layer 4 recognizes whole objects. Think of it as a detective building a case — first individual clues, then connections, then the full picture.</p>
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-      <strong style="color:#fb923c;font-size:.88rem">Output Layer — the decision maker</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The output layer produces the final answer. For classification, you get one neuron per category — a cat/dog classifier has 2 output neurons. For regression (predicting a number), you get one output neuron. The output values are often converted to probabilities using <strong style="color:#e5e5e5">softmax</strong>, which ensures all outputs sum to 1.0 — so you can read them as confidence percentages.</p>
+      <strong style="font-size:.88rem">Output Layer — the decision maker</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">The output layer produces the final answer. For classification, you get one neuron per category — a cat/dog classifier has 2 output neurons. For regression (predicting a number), you get one output neuron. The output values are often converted to probabilities using <strong>softmax</strong>, which ensures all outputs sum to 1.0 — so you can read them as confidence percentages.</p>
     </div>
   </div>
 
@@ -106,14 +106,14 @@
         <td>Language understanding</td>
       </tr>
       <tr>
-        <td><span style="color:#ef4444">100+</span></td>
+        <td><span>100+</span></td>
         <td>Deep abstraction</td>
         <td>GPT, Claude, DALL-E</td>
       </tr>
     </tbody>
   </table>
 </div>
-<p style="font-size:.82rem;color:#71717a;margin-top:.5rem">More layers = more abstraction = more data needed. GPT-4 has ~120 layers. Your brain has ~6 cortical layers.</p>
+<p style="font-size:.82rem;margin-top:.5rem">More layers = more abstraction = more data needed. GPT-4 has ~120 layers. Your brain has ~6 cortical layers.</p>
 
   <div class="narration" style="margin-top:1rem">
     <strong>Architecture is everything.</strong> A shallow network with 2 layers can separate cats from dogs. A deep network with 100+ layers can understand language, generate images, and reason about abstract concepts. The same building blocks — neurons, weights, activations — but radically different capabilities depending on how you stack them.
@@ -124,8 +124,8 @@
 <div class="lesson-section">
   <span class="section-label">The Code</span>
   <h2 class="section-title">A neural network in 15 lines of Python.</h2>
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — a complete neural network forward pass</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — a complete neural network forward pass</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> numpy <span style="color:#c084fc">as</span> np
 
 <span style="color:#71717a"># Input: 3 features (e.g., pixel brightness values)</span>
@@ -145,10 +145,10 @@ logits = hidden @ W2 + b2            <span style="color:#71717a"># raw scores</s
 probs = np.exp(logits) / np.sum(np.exp(logits))
 <span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"Cat: </span>{probs[<span style="color:#fb923c">0</span>]:.1%}<span style="color:#fbbf24">, Dog: </span>{probs[<span style="color:#fb923c">1</span>]:.1%}<span style="color:#fbbf24">"</span>)</code></pre>
 </div>
-<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">The <code>@</code> operator is matrix multiplication — it computes every neuron's weighted sum in one shot. <code>np.maximum(0, ...)</code> is ReLU applied to the whole layer at once. That's the entire forward pass.</p>
+<p style="font-size:.85rem;margin-top:.5rem">The <code>@</code> operator is matrix multiplication — it computes every neuron's weighted sum in one shot. <code>np.maximum(0, ...)</code> is ReLU applied to the whole layer at once. That's the entire forward pass.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">PyTorch — the same network using a real ML framework</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">PyTorch — the same network using a real ML framework</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> torch
 <span style="color:#c084fc">import</span> torch.nn <span style="color:#c084fc">as</span> nn
 
@@ -165,7 +165,7 @@ X = torch.tensor([<span style="color:#fb923c">0.5</span>, <span style="color:#fb
 probs = model(X)
 <span style="color:#34d399">print</span>(<span style="color:#fbbf24">f"Cat: </span>{probs[<span style="color:#fb923c">0</span>]:.1%}<span style="color:#fbbf24">, Dog: </span>{probs[<span style="color:#fb923c">1</span>]:.1%}<span style="color:#fbbf24">"</span>)</code></pre>
 </div>
-<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">PyTorch's <code>nn.Sequential</code> builds the exact same architecture — but handles backpropagation and training automatically. The numpy version shows you what happens inside; PyTorch is what you use in production.</p>
+<p style="font-size:.85rem;margin-top:.5rem">PyTorch's <code>nn.Sequential</code> builds the exact same architecture — but handles backpropagation and training automatically. The numpy version shows you what happens inside; PyTorch is what you use in production.</p>
 </div>
 
 <!-- SECTION 1C: COMMON LAYER TYPES -->
@@ -195,20 +195,20 @@ probs = model(X)
     </div>
   </div>
 
-  <p class="section-text">The simple network above uses <strong style="color:#e5e5e5">dense layers</strong> (also called fully connected) where every neuron connects to every neuron in the next layer. But real networks use specialized layer types designed for different kinds of data:</p>
+  <p class="section-text">The simple network above uses <strong>dense layers</strong> (also called fully connected) where every neuron connects to every neuron in the next layer. But real networks use specialized layer types designed for different kinds of data:</p>
 
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
     <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-      <strong style="color:#34d399;font-size:.88rem">Dense (Fully Connected) — the general workhorse</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Every neuron connects to every neuron in the next layer. Good for tabular data (spreadsheets, databases). Simple and effective, but scales poorly for images because an image with 1000x1000 pixels would need 1 million connections per neuron. Used as the final layers in most networks.</p>
+      <strong style="font-size:.88rem">Dense (Fully Connected) — the general workhorse</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">Every neuron connects to every neuron in the next layer. Good for tabular data (spreadsheets, databases). Simple and effective, but scales poorly for images because an image with 1000x1000 pixels would need 1 million connections per neuron. Used as the final layers in most networks.</p>
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-      <strong style="color:#8b5cf6;font-size:.88rem">Convolutional (CNN) — the image specialist</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Instead of connecting to every input, each neuron looks at a small patch (like a 3x3 window) and slides across the image. This makes CNNs excellent at finding visual patterns — edges, textures, shapes — regardless of where they appear. Used in image classification, object detection, and medical imaging.</p>
+      <strong style="font-size:.88rem">Convolutional (CNN) — the image specialist</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">Instead of connecting to every input, each neuron looks at a small patch (like a 3x3 window) and slides across the image. This makes CNNs excellent at finding visual patterns — edges, textures, shapes — regardless of where they appear. Used in image classification, object detection, and medical imaging.</p>
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-      <strong style="color:#fb923c;font-size:.88rem">Transformer (Attention) — the language genius</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Each token "pays attention" to every other token in the sequence, learning which words matter most for understanding each word. This is the architecture behind GPT, Claude, and every modern language model. The key innovation: unlike older approaches, transformers can process all words in parallel instead of one at a time.</p>
+      <strong style="font-size:.88rem">Transformer (Attention) — the language genius</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">Each token "pays attention" to every other token in the sequence, learning which words matter most for understanding each word. This is the architecture behind GPT, Claude, and every modern language model. The key innovation: unlike older approaches, transformers can process all words in parallel instead of one at a time.</p>
     </div>
   </div>
 </div>

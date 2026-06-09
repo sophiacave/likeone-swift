@@ -112,8 +112,8 @@
     </div>
   </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Bug report prompt — copy this format</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Bug report prompt — copy this format</div>
 <pre style="margin:0;color:#e5e5e5"><code>Something is broken.
 
 Expected: When I click "Save," my entry should save
@@ -169,8 +169,8 @@ What does this mean in plain English?</summary>
 </details>
 </div>
 
-  <div class="tip-box">
-    <div class="tip-label">You do not need to understand errors</div>
+  <div class="callout">
+    <div class="section-label">You do not need to understand errors</div>
     <p>Seriously. Just <strong>copy the entire error message and paste it to AI.</strong> Say "I got this error. Fix it." AI reads the error, understands it, and fixes the code. You do not need to become a decoder — that is AI's job.</p>
   </div>
 </div>
@@ -181,23 +181,23 @@ What does this mean in plain English?</summary>
   <h2 class="section-title">The 60-second debugging workflow.</h2>
   <p class="section-text">Here is the process that fixes 90% of bugs. It takes about 60 seconds.</p>
 
-  <div class="tip-box">
-    <div class="tip-label">Step 1: Find the error</div>
+  <div class="callout">
+    <div class="section-label">Step 1: Find the error</div>
     <p>Right-click your page, click "Inspect," then click the "Console" tab. Red text = errors. If you are using Claude Code or Cursor, the error often shows up directly in the terminal.</p>
   </div>
 
-  <div class="tip-box">
-    <div class="tip-label">Step 2: Copy the error</div>
+  <div class="callout">
+    <div class="section-label">Step 2: Copy the error</div>
     <p>Select the entire red error message and copy it. Do not try to interpret it. Just copy the whole thing.</p>
   </div>
 
-  <div class="tip-box">
-    <div class="tip-label">Step 3: Paste it to AI with context</div>
+  <div class="callout">
+    <div class="section-label">Step 3: Paste it to AI with context</div>
     <p>Paste the error into your AI tool. Add what you were doing when it happened. Say "fix this." AI will identify the problem and update the code.</p>
   </div>
 
-  <div class="tip-box">
-    <div class="tip-label">Step 4: Refresh and check</div>
+  <div class="callout">
+    <div class="section-label">Step 4: Refresh and check</div>
     <p>After AI makes the fix, refresh your app and try the same action again. Fixed? Great, move on. Still broken? Repeat from Step 1 with the new error.</p>
   </div>
 </div>

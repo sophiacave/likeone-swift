@@ -12,8 +12,8 @@
 
     <p>An <strong>agent</strong> is a system that runs a continuous loop: <em>perceive → decide → act → learn</em>. It observes its environment, reasons about what it sees, takes real actions, and updates its understanding based on the outcome. If the input changes, the agent changes its behavior. This is the fundamental difference.</p>
 
-    <div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#e5e5e5">Definition:</strong> An AI agent is a software system that can (1) observe its environment through sensors or data inputs, (2) make autonomous decisions based on goals and observations, (3) take real actions that affect the world, and (4) learn from outcomes to improve over time. It operates in a <strong>continuous loop</strong>, not a one-shot pipeline.
+    <div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;line-height:1.7">
+      <strong>Definition:</strong> An AI agent is a software system that can (1) observe its environment through sensors or data inputs, (2) make autonomous decisions based on goals and observations, (3) take real actions that affect the world, and (4) learn from outcomes to improve over time. It operates in a <strong>continuous loop</strong>, not a one-shot pipeline.
     </div>
   </div>
 
@@ -45,20 +45,20 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">1. Perceive</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The agent reads its environment. This could be an inbox, a database table, a set of API responses, sensor data, or a user message. Perception is the input — without it, the agent is blind.</p>
+        <strong>1. Perceive</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The agent reads its environment. This could be an inbox, a database table, a set of API responses, sensor data, or a user message. Perception is the input — without it, the agent is blind.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">2. Decide</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Based on what it perceived, the agent reasons about what to do next. This is where goals, context, and memory matter. A support agent might decide "this ticket is urgent — escalate" vs. "this is a FAQ — send the standard reply." The decision phase is what separates agents from scripts.</p>
+        <strong>2. Decide</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Based on what it perceived, the agent reasons about what to do next. This is where goals, context, and memory matter. A support agent might decide "this ticket is urgent — escalate" vs. "this is a FAQ — send the standard reply." The decision phase is what separates agents from scripts.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">3. Act</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The agent takes a real action in the world — sends an email, updates a database, calls an API, creates a file, restarts a service. Actions have consequences, which is why guardrails (covered in Lesson 2) are critical.</p>
+        <strong>3. Act</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The agent takes a real action in the world — sends an email, updates a database, calls an API, creates a file, restarts a service. Actions have consequences, which is why guardrails (covered in Lesson 2) are critical.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444">4. Learn</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The agent observes the outcome of its action and updates its understanding. Did the email bounce? Did the user approve the draft? Did the API return an error? Learning closes the loop — the agent adjusts its behavior for next time.</p>
+        <strong>4. Learn</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The agent observes the outcome of its action and updates its understanding. Did the email bounce? Did the user approve the draft? Did the API return an error? Learning closes the loop — the agent adjusts its behavior for next time.</p>
       </div>
     </div>
   </div>
@@ -67,7 +67,7 @@
     <h2>What This Looks Like in Code</h2>
     <p>Here is a simplified agent loop in Python. Even the most complex agent systems — LangChain, CrewAI, Anthropic's Claude Agent SDK — are built on this pattern:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">class</span> <span style="color:#34d399">SimpleAgent</span>:
     <span style="color:#c084fc">def</span> <span style="color:#38bdf8">__init__</span>(self, name, goal, tools):
         self.name = name
@@ -102,7 +102,7 @@
             self.learn(action, result)</code></pre>
     </div>
 
-    <p style="font-size:.85rem;color:#71717a;margin-top:.5rem">Notice the <code>while not self.goal_met()</code> loop — this is the heartbeat. An automation would run once and exit. The agent keeps going until its goal is satisfied.</p>
+    <p style="font-size:.85rem;margin-top:.5rem">Notice the <code>while not self.goal_met()</code> loop — this is the heartbeat. An automation would run once and exit. The agent keeps going until its goal is satisfied.</p>
   </div>
 
   <div class="section">
@@ -111,20 +111,20 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">GitHub Copilot Agent Mode</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Reads your codebase, plans multi-file changes, runs tests, fixes failures, and iterates until the code passes. Full perceive-decide-act-learn loop.</p>
+        <strong style="font-size:.85rem">GitHub Copilot Agent Mode</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Reads your codebase, plans multi-file changes, runs tests, fixes failures, and iterates until the code passes. Full perceive-decide-act-learn loop.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6;font-size:.85rem">Claude Code</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Reads files, writes code, runs commands, checks results, and self-corrects. It is an agent — every tool call is an action in the loop.</p>
+        <strong style="font-size:.85rem">Claude Code</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Reads files, writes code, runs commands, checks results, and self-corrects. It is an agent — every tool call is an action in the loop.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c;font-size:.85rem">Self-Driving Cars</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Cameras perceive the road. The model decides to brake or steer. The car acts. Sensors measure the outcome. The loop runs 30+ times per second.</p>
+        <strong style="font-size:.85rem">Self-Driving Cars</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Cameras perceive the road. The model decides to brake or steer. The car acts. Sensors measure the outcome. The loop runs 30+ times per second.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Trading Bots</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Monitor market data (perceive), run strategies (decide), place orders (act), and adjust parameters based on P&L (learn). 24/7 continuous loop.</p>
+        <strong style="font-size:.85rem">Trading Bots</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Monitor market data (perceive), run strategies (decide), place orders (act), and adjust parameters based on P&L (learn). 24/7 continuous loop.</p>
       </div>
     </div>
   </div>
@@ -133,10 +133,10 @@
     <h2>When Agents Go Wrong</h2>
     <p>Agents are powerful, but they fail in predictable ways. Understanding failure modes now prevents disasters later:</p>
 
-    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#ef4444">Infinite loops:</strong> An agent that never reaches its goal will run forever, burning resources. Always define exit conditions.<br><br>
-      <strong style="color:#ef4444">Hallucinated actions:</strong> An LLM-based agent might "decide" to call a tool that does not exist, or pass invalid parameters. Tool validation is essential.<br><br>
-      <strong style="color:#ef4444">Runaway side effects:</strong> An agent that sends emails in its act phase could spam thousands of people if the loop runs without rate limiting. Every action needs guardrails.
+    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;line-height:1.7">
+      <strong>Infinite loops:</strong> An agent that never reaches its goal will run forever, burning resources. Always define exit conditions.<br><br>
+      <strong>Hallucinated actions:</strong> An LLM-based agent might "decide" to call a tool that does not exist, or pass invalid parameters. Tool validation is essential.<br><br>
+      <strong>Runaway side effects:</strong> An agent that sends emails in its act phase could spam thousands of people if the loop runs without rate limiting. Every action needs guardrails.
     </div>
   </div>
 
@@ -144,13 +144,13 @@
     <h2>Frameworks You Should Know</h2>
     <p>You do not need a framework to build agents — the loop above is enough to start. But these tools make production agents easier:</p>
 
-    <div style="font-size:.85rem;color:#a1a1aa;line-height:1.8;margin:1rem 0">
-      <strong style="color:#e5e5e5">Claude Agent SDK</strong> — Anthropic's official framework for building agents with Claude. Handles tool use, guardrails, and the agent loop natively.<br>
-      <strong style="color:#e5e5e5">LangGraph</strong> — From the LangChain team. Models agents as state machines with explicit graph-based control flow.<br>
-      <strong style="color:#e5e5e5">CrewAI</strong> — Multi-agent framework where you define agent roles and they collaborate to complete tasks.<br>
-      <strong style="color:#e5e5e5">AutoGen</strong> — Microsoft's framework for multi-agent conversations, especially good for code generation agents.
+    <div style="font-size:.85rem;line-height:1.8;margin:1rem 0">
+      <strong>Claude Agent SDK</strong> — Anthropic's official framework for building agents with Claude. Handles tool use, guardrails, and the agent loop natively.<br>
+      <strong>LangGraph</strong> — From the LangChain team. Models agents as state machines with explicit graph-based control flow.<br>
+      <strong>CrewAI</strong> — Multi-agent framework where you define agent roles and they collaborate to complete tasks.<br>
+      <strong>AutoGen</strong> — Microsoft's framework for multi-agent conversations, especially good for code generation agents.
     </div>
-    <p style="font-size:.82rem;color:#71717a">This course teaches the concepts behind all of these. Once you understand the agent loop, memory, communication, and orchestration — you can use any framework.</p>
+    <p style="font-size:.82rem">This course teaches the concepts behind all of these. Once you understand the agent loop, memory, communication, and orchestration — you can use any framework.</p>
   </div>
 
   <div class="section">
@@ -159,16 +159,16 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-        <strong style="color:#38bdf8">Initialization</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The agent loads its configuration — identity, tools, goals, guardrails, and memory. It reads any persisted state from previous runs. If this phase is incomplete, the agent starts without context and makes poor decisions. Always boot from the brain.</p>
+        <strong>Initialization</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The agent loads its configuration — identity, tools, goals, guardrails, and memory. It reads any persisted state from previous runs. If this phase is incomplete, the agent starts without context and makes poor decisions. Always boot from the brain.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(192,132,252,.04);border:1px solid rgba(192,132,252,.1)">
-        <strong style="color:#c084fc">Active Loop</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The perceive-decide-act-learn cycle runs continuously. The agent processes inputs, takes actions, and updates its understanding. This is the productive phase — where goals are pursued and work gets done.</p>
+        <strong>Active Loop</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The perceive-decide-act-learn cycle runs continuously. The agent processes inputs, takes actions, and updates its understanding. This is the productive phase — where goals are pursued and work gets done.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
-        <strong style="color:#f472b6">Graceful Shutdown</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Before terminating, the agent writes its current state to persistent memory — what it was doing, what it learned, and what comes next. This checkpoint enables the next instance to resume seamlessly. An agent that crashes without checkpointing loses all session progress.</p>
+        <strong>Graceful Shutdown</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Before terminating, the agent writes its current state to persistent memory — what it was doing, what it learned, and what comes next. This checkpoint enables the next instance to resume seamlessly. An agent that crashes without checkpointing loses all session progress.</p>
       </div>
     </div>
   </div>
@@ -177,12 +177,12 @@
     <h2>Agents vs. Pipelines vs. Workflows</h2>
     <p>These three terms are often confused. Here is the precise distinction:</p>
 
-    <div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#8b5cf6">Pipeline:</strong> A fixed sequence of steps — A then B then C. No branching, no decisions. Each step transforms the input for the next. Used for data processing, ETL, and build systems.<br><br>
-      <strong style="color:#34d399">Workflow:</strong> A sequence with conditional branching — if X then do A, else do B. More flexible than a pipeline but still pre-defined. Used in CI/CD, approval flows, and business process automation.<br><br>
-      <strong style="color:#fb923c">Agent:</strong> A continuous loop that decides its own actions based on observations. Not pre-defined — the agent chooses what to do at each step. Can incorporate pipelines and workflows as tools, but the decision-making is dynamic.
+    <div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;line-height:1.7">
+      <strong>Pipeline:</strong> A fixed sequence of steps — A then B then C. No branching, no decisions. Each step transforms the input for the next. Used for data processing, ETL, and build systems.<br><br>
+      <strong>Workflow:</strong> A sequence with conditional branching — if X then do A, else do B. More flexible than a pipeline but still pre-defined. Used in CI/CD, approval flows, and business process automation.<br><br>
+      <strong>Agent:</strong> A continuous loop that decides its own actions based on observations. Not pre-defined — the agent chooses what to do at each step. Can incorporate pipelines and workflows as tools, but the decision-making is dynamic.
     </div>
-    <p style="font-size:.82rem;color:#71717a">The key test: if you can draw the entire execution path before the system runs, it is a pipeline or workflow. If the execution path depends on what the system discovers at runtime, it is an agent.</p>
+    <p style="font-size:.82rem">The key test: if you can draw the entire execution path before the system runs, it is a pipeline or workflow. If the execution path depends on what the system discovers at runtime, it is an agent.</p>
   </div>
 
   <div class="divider"><span>Test Your Understanding</span></div>

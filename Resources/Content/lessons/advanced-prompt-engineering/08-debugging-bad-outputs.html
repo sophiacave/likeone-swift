@@ -37,11 +37,11 @@
 <div class="lesson-section">
   <span class="section-label">The Five Failure Modes</span>
   <h2 class="section-title">What Went Wrong and Why</h2>
-  <p class="section-text"><strong style="color: var(--red);">1. Too vague:</strong> The output is generic, surface-level, could apply to anything. <em>Fix: Add specifics. Name the audience, the context, the constraints. Show an example of what "good" looks like.</em></p>
-  <p class="section-text"><strong style="color: var(--red);">2. Wrong format:</strong> You wanted bullet points, you got paragraphs. You wanted JSON, you got prose with a JSON block buried in it. <em>Fix: Be explicit about format. Use the "output first" technique from Lesson 5. Say what you DON'T want.</em></p>
-  <p class="section-text"><strong style="color: var(--red);">3. Wrong tone:</strong> Too formal, too casual, too verbose, too terse. <em>Fix: Describe tone with specific comparisons ("write like a Slack message to a colleague, not a formal email"). Provide a style example.</em></p>
-  <p class="section-text"><strong style="color: var(--red);">4. Hallucination:</strong> The AI stated something confidently that's factually wrong. <em>Fix: Ask it to cite sources. Add "if you're not sure, say so." For critical facts, ask it to flag confidence levels.</em></p>
-  <p class="section-text"><strong style="color: var(--red);">5. Ignored instructions:</strong> You gave clear rules and the AI broke them. <em>Fix: Move critical instructions to the top. Repeat key constraints. Use emphasis: "IMPORTANT:" or "NEVER:" for non-negotiable rules.</em></p>
+  <p class="section-text"><strong>1. Too vague:</strong> The output is generic, surface-level, could apply to anything. <em>Fix: Add specifics. Name the audience, the context, the constraints. Show an example of what "good" looks like.</em></p>
+  <p class="section-text"><strong>2. Wrong format:</strong> You wanted bullet points, you got paragraphs. You wanted JSON, you got prose with a JSON block buried in it. <em>Fix: Be explicit about format. Use the "output first" technique from Lesson 5. Say what you DON'T want.</em></p>
+  <p class="section-text"><strong>3. Wrong tone:</strong> Too formal, too casual, too verbose, too terse. <em>Fix: Describe tone with specific comparisons ("write like a Slack message to a colleague, not a formal email"). Provide a style example.</em></p>
+  <p class="section-text"><strong>4. Hallucination:</strong> The AI stated something confidently that's factually wrong. <em>Fix: Ask it to cite sources. Add "if you're not sure, say so." For critical facts, ask it to flag confidence levels.</em></p>
+  <p class="section-text"><strong>5. Ignored instructions:</strong> You gave clear rules and the AI broke them. <em>Fix: Move critical instructions to the top. Repeat key constraints. Use emphasis: "IMPORTANT:" or "NEVER:" for non-negotiable rules.</em></p>
 </div>
 
 <div class="lesson-section">
@@ -49,7 +49,7 @@
   <h2 class="section-title">The Debug Loop</h2>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--blue);">
+    <div class="demo-container" style="border-left: 3px solid var(--blue);">
       <h4 style="color: var(--blue);">4-Step Debug Process</h4>
       <code>1. IDENTIFY: What specifically is wrong? Name the gap between expected and actual output.
 2. DIAGNOSE: Which failure mode is it? (vague, format, tone, hallucination, ignored instruction)
@@ -96,7 +96,7 @@
   <p class="section-text">This is a powerful meta-technique. When output is wrong, ask the AI to explain its reasoning.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--green);">
+    <div class="demo-container" style="border-left: 3px solid var(--green);">
       <h4 style="color: var(--green);">Self-Debug Prompt</h4>
       <code>"Your previous response didn't match what I needed. Here's what was wrong: [specific issue]. Before trying again, explain: what did you interpret my instructions to mean? Where did you make assumptions? Then give me a revised response addressing those gaps."</code>
     </div>
@@ -117,17 +117,17 @@
   <p class="section-text">Let's walk through a complete debugging session. The task: generate product comparison content for a website.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--red);">
+    <div class="demo-container" style="border-left: 3px solid var(--red);">
       <h4 style="color: var(--red);">Round 1 — The Failing Prompt</h4>
       <code>"Compare our product to competitors. Make it sound good."</code>
       <p style="color: var(--dim); margin-top: 0.5rem;">Problem: Output was a generic, biased puff piece with made-up competitor features. Three failure modes at once: vague (no specifics), hallucination (invented features), wrong tone (too salesy).</p>
     </div>
-    <div class="demo-block" style="border-left: 3px solid var(--orange);">
+    <div class="demo-container" style="border-left: 3px solid var(--orange);">
       <h4 style="color: var(--orange);">Round 2 — Fix: Add Context</h4>
       <code>"Compare our project management tool (features: Kanban boards, time tracking, Slack integration, $15/user/mo) to Asana and Monday.com. Be factually accurate about competitor features."</code>
       <p style="color: var(--dim); margin-top: 0.5rem;">Better: eliminated hallucination by specifying features. But output was still a wall of text with no clear structure. Diagnosis: wrong format.</p>
     </div>
-    <div class="demo-block" style="border-left: 3px solid var(--green);">
+    <div class="demo-container" style="border-left: 3px solid var(--green);">
       <h4 style="color: var(--green);">Round 3 — Fix: Add Format + Constraints</h4>
       <code>"...Present as a comparison table with these columns: Feature, Our Tool, Asana, Monday.com. Include rows for: task management, time tracking, integrations, pricing, best for. Keep cells under 8 words. Tone: honest and confident — acknowledge where competitors are stronger. Do NOT make up features you're unsure about — write 'unverified' instead."</code>
       <p style="color: var(--dim); margin-top: 0.5rem;">Result: clean, honest, usable comparison table. Three rounds, one fix per round, clear improvement each time.</p>
@@ -141,7 +141,7 @@
   <p class="section-text">When you can't figure out why a prompt fails, try the contrastive method: run the same task with two different prompts and compare the outputs to isolate what's working.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--blue);">
+    <div class="demo-container" style="border-left: 3px solid var(--blue);">
       <h4 style="color: var(--blue);">Contrastive Debugging</h4>
       <code>Prompt A (your failing prompt): "Write a professional bio for my LinkedIn."
 
@@ -158,9 +158,9 @@ Compare outputs A and B. The gap between them shows you exactly which levers Pro
   <span class="section-label">Systematic Testing</span>
   <h2 class="section-title">Building a Prompt Test Suite</h2>
   <p class="section-text">For prompts you use repeatedly, build a test suite — a set of inputs with known expected outputs. Run your prompt against these test cases whenever you modify it.</p>
-  <p class="section-text"><strong style="color: var(--green);">Standard case:</strong> A typical input that should produce a typical output. This confirms your prompt still works for the common scenario.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Edge case:</strong> An unusual input that tests your prompt's boundaries. Empty input, very long input, ambiguous input, input in a different language.</p>
-  <p class="section-text"><strong style="color: var(--red);">Adversarial case:</strong> An input designed to break the prompt. Contradictory information, instructions to ignore the system prompt, deliberately misleading context.</p>
+  <p class="section-text"><strong>Standard case:</strong> A typical input that should produce a typical output. This confirms your prompt still works for the common scenario.</p>
+  <p class="section-text"><strong>Edge case:</strong> An unusual input that tests your prompt's boundaries. Empty input, very long input, ambiguous input, input in a different language.</p>
+  <p class="section-text"><strong>Adversarial case:</strong> An input designed to break the prompt. Contradictory information, instructions to ignore the system prompt, deliberately misleading context.</p>
   <p class="section-text">Three test cases — one of each type — give you confidence that a prompt change is an improvement, not a trade-off. This is how professionals iterate on prompts without regressions.</p>
 </div>
 
@@ -177,33 +177,33 @@ Compare outputs A and B. The gap between them shows you exactly which levers Pro
   <span class="section-label">Quick Reference</span>
   <h2 class="section-title">The Debugging Cheat Sheet</h2>
   <p class="section-text">Bookmark this. When output goes wrong, scan this list for the fastest fix.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Output too generic?</strong> Add specific context: audience, numbers, names, constraints.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Wrong format?</strong> Show the exact format you want. Use the "output first" technique.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Wrong tone?</strong> Describe tone with comparisons: "like a Slack message" not "professional."</p>
-  <p class="section-text"><strong style="color: var(--orange);">Hallucinating facts?</strong> Add: "If unsure, say so. Cite sources. Flag confidence levels."</p>
-  <p class="section-text"><strong style="color: var(--orange);">Ignoring instructions?</strong> Move critical rules to the top. Use "IMPORTANT:" prefix. Repeat key constraints.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Too long?</strong> Add explicit word/sentence limits. "Under 150 words. Maximum 3 paragraphs."</p>
-  <p class="section-text"><strong style="color: var(--orange);">Too short?</strong> Ask for depth: "Explain in detail. Include examples. Cover edge cases."</p>
-  <p class="section-text"><strong style="color: var(--orange);">Off-topic?</strong> Restate the core task explicitly. Add: "Focus ONLY on [X]. Do not discuss [Y]."</p>
-  <p class="section-text"><strong style="color: var(--orange);">Repetitive?</strong> Add: "Each point must be distinct. No overlapping ideas. If you can't find enough unique points, say so."</p>
+  <p class="section-text"><strong>Output too generic?</strong> Add specific context: audience, numbers, names, constraints.</p>
+  <p class="section-text"><strong>Wrong format?</strong> Show the exact format you want. Use the "output first" technique.</p>
+  <p class="section-text"><strong>Wrong tone?</strong> Describe tone with comparisons: "like a Slack message" not "professional."</p>
+  <p class="section-text"><strong>Hallucinating facts?</strong> Add: "If unsure, say so. Cite sources. Flag confidence levels."</p>
+  <p class="section-text"><strong>Ignoring instructions?</strong> Move critical rules to the top. Use "IMPORTANT:" prefix. Repeat key constraints.</p>
+  <p class="section-text"><strong>Too long?</strong> Add explicit word/sentence limits. "Under 150 words. Maximum 3 paragraphs."</p>
+  <p class="section-text"><strong>Too short?</strong> Ask for depth: "Explain in detail. Include examples. Cover edge cases."</p>
+  <p class="section-text"><strong>Off-topic?</strong> Restate the core task explicitly. Add: "Focus ONLY on [X]. Do not discuss [Y]."</p>
+  <p class="section-text"><strong>Repetitive?</strong> Add: "Each point must be distinct. No overlapping ideas. If you can't find enough unique points, say so."</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Prevention</span>
   <h2 class="section-title">Writing Debug-Resistant Prompts</h2>
   <p class="section-text">The best debugging strategy is not needing to debug. These habits prevent the most common failures before they happen.</p>
-  <p class="section-text"><strong style="color: var(--green);">Always specify format explicitly.</strong> Don't assume the AI will choose the right format. If you want bullets, say bullets. If you want paragraphs, say paragraphs. If you want a table, define the columns.</p>
-  <p class="section-text"><strong style="color: var(--green);">Always include at least one constraint.</strong> A prompt with no constraints is a prompt where anything goes. Even a simple "keep it under 300 words" dramatically improves focus.</p>
-  <p class="section-text"><strong style="color: var(--green);">Always define "done."</strong> What does the finished output look like? How will you know it's right? If you can't articulate this, the AI certainly can't either.</p>
-  <p class="section-text"><strong style="color: var(--green);">Read your prompt as if you knew nothing.</strong> Before sending, pretend you have no context about the task. Does the prompt make sense on its own? Every gap you can identify is a gap the AI will fill with assumptions.</p>
+  <p class="section-text"><strong>Always specify format explicitly.</strong> Don't assume the AI will choose the right format. If you want bullets, say bullets. If you want paragraphs, say paragraphs. If you want a table, define the columns.</p>
+  <p class="section-text"><strong>Always include at least one constraint.</strong> A prompt with no constraints is a prompt where anything goes. Even a simple "keep it under 300 words" dramatically improves focus.</p>
+  <p class="section-text"><strong>Always define "done."</strong> What does the finished output look like? How will you know it's right? If you can't articulate this, the AI certainly can't either.</p>
+  <p class="section-text"><strong>Read your prompt as if you knew nothing.</strong> Before sending, pretend you have no context about the task. Does the prompt make sense on its own? Every gap you can identify is a gap the AI will fill with assumptions.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Try It Yourself</span>
   <h2 class="section-title">Debug a Bad Prompt</h2>
-  <div class="try-it-box">
+  <div class="callout">
     <p>Write an intentionally vague prompt and run it. Then apply the debug loop: identify the gap, diagnose the failure mode, and fix the prompt one change at a time until the output is exactly right.</p>
-    <div class="prompt-box">
+    <div class="demo-container">
       <code>Round 1 (vague): "Write something about marketing."
 Round 2 (add task): "Write 5 social media post ideas for a SaaS product."
 Round 3 (add context): "...for a project management tool targeting remote teams."

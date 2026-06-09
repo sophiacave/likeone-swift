@@ -242,9 +242,9 @@ the expensive LLM providers.</code></pre>
   <p class="section-text">Each layer absorbs traffic before it reaches the next. By Layer 3, only genuinely novel, complex queries hit the expensive AI APIs.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try it yourself</h3>
-  <div class="prompt-box"><code>Implement a simple load balancer for AI API calls. Create a function that accepts a prompt and routes it to one of two providers based on current rate limit usage. Track requests per minute for each provider and switch to the other when one approaches its limit. Add a circuit breaker that stops routing to a provider after 3 consecutive errors.</code></div>
+  <div class="demo-container"><code>Implement a simple load balancer for AI API calls. Create a function that accepts a prompt and routes it to one of two providers based on current rate limit usage. Track requests per minute for each provider and switch to the other when one approaches its limit. Add a circuit breaker that stops routing to a provider after 3 consecutive errors.</code></div>
 </div>
 
 <div class="lesson-section">

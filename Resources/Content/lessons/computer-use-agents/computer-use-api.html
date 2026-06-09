@@ -30,19 +30,19 @@
 </div>
 
   <p class="section-text">Claude's computer use is a special tool -- like web search or code execution, but for interacting with a graphical interface. When you enable it, Claude gains four capabilities:</p>
-  <p class="section-text"><strong style="color: var(--orange);">Screenshot.</strong> Capture the current state of the screen as an image. This is the AI's vision -- it sees exactly what is displayed, pixel by pixel.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Click.</strong> Move the cursor to specific x,y coordinates and click (left, right, double, or middle click). This is how the AI presses buttons, selects options, and interacts with elements.</p>
-  <p class="section-text"><strong style="color: var(--green);">Type.</strong> Send keystrokes to the active element. This is how the AI fills in forms, enters search queries, and writes text into any input field.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Scroll.</strong> Scroll up or down on the page. This is how the AI reaches content below the fold, navigates long pages, and reveals hidden elements.</p>
+  <p class="section-text"><strong>Screenshot.</strong> Capture the current state of the screen as an image. This is the AI's vision -- it sees exactly what is displayed, pixel by pixel.</p>
+  <p class="section-text"><strong>Click.</strong> Move the cursor to specific x,y coordinates and click (left, right, double, or middle click). This is how the AI presses buttons, selects options, and interacts with elements.</p>
+  <p class="section-text"><strong>Type.</strong> Send keystrokes to the active element. This is how the AI fills in forms, enters search queries, and writes text into any input field.</p>
+  <p class="section-text"><strong>Scroll.</strong> Scroll up or down on the page. This is how the AI reaches content below the fold, navigates long pages, and reveals hidden elements.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Architecture</span>
   <h2 class="section-title">The Coordinate System</h2>
   <p class="section-text">When the AI sees a screenshot, it needs to know where things are so it can click accurately. The coordinate system is straightforward:</p>
-  <p class="section-text"><strong style="color: var(--blue);">Origin (0,0)</strong> is the top-left corner of the screen. X increases going right. Y increases going down. If your screen is 1920x1080 pixels, the bottom-right corner is (1920, 1080).</p>
-  <p class="section-text"><strong style="color: var(--purple);">Screen resolution matters.</strong> A button might be at (500, 300) on a 1920x1080 display but at (250, 150) on a 960x540 display. Always know your resolution and communicate it to the AI so coordinates are accurate.</p>
-  <p class="section-text"><strong style="color: var(--green);">Center of the element.</strong> When clicking a button, aim for the center, not the edge. A 200x50 pixel button at position (400, 300) should be clicked at approximately (500, 325) -- the center point. This gives the most reliable hits.</p>
+  <p class="section-text"><strong>Origin (0,0)</strong> is the top-left corner of the screen. X increases going right. Y increases going down. If your screen is 1920x1080 pixels, the bottom-right corner is (1920, 1080).</p>
+  <p class="section-text"><strong>Screen resolution matters.</strong> A button might be at (500, 300) on a 1920x1080 display but at (250, 150) on a 960x540 display. Always know your resolution and communicate it to the AI so coordinates are accurate.</p>
+  <p class="section-text"><strong>Center of the element.</strong> When clicking a button, aim for the center, not the edge. A 200x50 pixel button at position (400, 300) should be clicked at approximately (500, 325) -- the center point. This gives the most reliable hits.</p>
 </div>
 
 <div class="demo-container">
@@ -54,7 +54,7 @@
   <span class="section-label">Code</span>
   <h2 class="section-title">Setting Up the API Call</h2>
   <p class="section-text">The computer use tool is passed as part of the tools array in your API request. Here is the structure:</p>
-  <div class="prompt-box"><code>// Import the Anthropic SDK
+  <div class="demo-container"><code>// Import the Anthropic SDK
 import Anthropic from '@anthropic-ai/sdk';
 
 // Create the client with your API key
@@ -83,11 +83,11 @@ const response = await client.messages.create({
   <span class="section-label">Implementation</span>
   <h2 class="section-title">The Execution Loop</h2>
   <p class="section-text">Computer use is a conversation, not a single call. The pattern looks like this:</p>
-  <p class="section-text"><strong style="color: var(--orange);">Step 1:</strong> You send a task to Claude with the computer use tool enabled. Claude responds with a tool_use block requesting a screenshot.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Step 2:</strong> You capture a screenshot of the actual screen, encode it as base64, and send it back as a tool_result.</p>
-  <p class="section-text"><strong style="color: var(--green);">Step 3:</strong> Claude analyzes the screenshot and responds with the next action -- click at (x, y), type "hello", or scroll down. You execute that action on the real screen.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Step 4:</strong> You take another screenshot showing the result of the action and send it back. Claude decides the next step. The loop continues until the task is complete.</p>
-  <div class="prompt-box"><code>// The execution loop (simplified pseudocode)
+  <p class="section-text"><strong>Step 1:</strong> You send a task to Claude with the computer use tool enabled. Claude responds with a tool_use block requesting a screenshot.</p>
+  <p class="section-text"><strong>Step 2:</strong> You capture a screenshot of the actual screen, encode it as base64, and send it back as a tool_result.</p>
+  <p class="section-text"><strong>Step 3:</strong> Claude analyzes the screenshot and responds with the next action -- click at (x, y), type "hello", or scroll down. You execute that action on the real screen.</p>
+  <p class="section-text"><strong>Step 4:</strong> You take another screenshot showing the result of the action and send it back. Claude decides the next step. The loop continues until the task is complete.</p>
+  <div class="demo-container"><code>// The execution loop (simplified pseudocode)
 while (task_not_complete) {
   // 1. Get Claude's next action
   const response = await client.messages.create({
@@ -136,24 +136,24 @@ while (task_not_complete) {
   <span class="section-label">Environment</span>
   <h2 class="section-title">Running Computer Use Safely</h2>
   <p class="section-text">Computer use gives AI control of your mouse and keyboard. Safety is not optional. Here are the rules:</p>
-  <p class="section-text"><strong style="color: var(--red);">Use a sandboxed environment.</strong> Never run computer use on your primary desktop. Use a virtual machine (VM), a Docker container with a virtual display, or a cloud instance. If the AI clicks something wrong, it affects the sandbox, not your real machine.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Start with observation only.</strong> Before letting the agent click or type, have it take screenshots and describe what it sees. Verify that its understanding matches reality. Then enable actions one at a time.</p>
-  <p class="section-text"><strong style="color: var(--green);">Set action limits.</strong> Cap the number of actions per session -- start with 20. An agent in a confused loop can click thousands of times. Action limits prevent runaway behavior.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Log everything.</strong> Record every screenshot and every action. This creates an audit trail for debugging and a training dataset for improvement. You will learn how to build GIF-based audit trails in Lesson 9.</p>
+  <p class="section-text"><strong>Use a sandboxed environment.</strong> Never run computer use on your primary desktop. Use a virtual machine (VM), a Docker container with a virtual display, or a cloud instance. If the AI clicks something wrong, it affects the sandbox, not your real machine.</p>
+  <p class="section-text"><strong>Start with observation only.</strong> Before letting the agent click or type, have it take screenshots and describe what it sees. Verify that its understanding matches reality. Then enable actions one at a time.</p>
+  <p class="section-text"><strong>Set action limits.</strong> Cap the number of actions per session -- start with 20. An agent in a confused loop can click thousands of times. Action limits prevent runaway behavior.</p>
+  <p class="section-text"><strong>Log everything.</strong> Record every screenshot and every action. This creates an audit trail for debugging and a training dataset for improvement. You will learn how to build GIF-based audit trails in Lesson 9.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Anti-Patterns</span>
   <h2 class="section-title">Common Setup Mistakes</h2>
-  <p class="section-text"><strong style="color: var(--red);">Wrong resolution.</strong> Telling the API your screen is 1920x1080 when it is actually 2560x1440. Every click will miss its target by a wide margin. Always measure and report the actual resolution of your virtual display.</p>
-  <p class="section-text"><strong style="color: var(--red);">No screenshot after action.</strong> Clicking a button but not sending a screenshot of the result. The AI has no idea what happened. Always capture and send a screenshot after every action so the AI can verify the result and plan the next step.</p>
-  <p class="section-text"><strong style="color: var(--red);">Running on the main desktop.</strong> Giving the AI control of your actual computer. One wrong click could open your email, send a message, or delete files. Always use a sandbox. This is non-negotiable.</p>
+  <p class="section-text"><strong>Wrong resolution.</strong> Telling the API your screen is 1920x1080 when it is actually 2560x1440. Every click will miss its target by a wide margin. Always measure and report the actual resolution of your virtual display.</p>
+  <p class="section-text"><strong>No screenshot after action.</strong> Clicking a button but not sending a screenshot of the result. The AI has no idea what happened. Always capture and send a screenshot after every action so the AI can verify the result and plan the next step.</p>
+  <p class="section-text"><strong>Running on the main desktop.</strong> Giving the AI control of your actual computer. One wrong click could open your email, send a message, or delete files. Always use a sandbox. This is non-negotiable.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Set up your first computer use environment:</p>
-  <div class="prompt-box"><code>Option 1 (Docker): Use Anthropic's reference container
+  <div class="demo-container"><code>Option 1 (Docker): Use Anthropic's reference container
   docker run -p 5900:5900 ghcr.io/anthropics/anthropic-quickstarts:computer-use
 
 Option 2 (Local VM): Use VirtualBox or UTM with a Linux desktop

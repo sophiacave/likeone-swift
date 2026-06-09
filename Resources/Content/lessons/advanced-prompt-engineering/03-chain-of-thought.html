@@ -43,17 +43,17 @@
   <h2 class="section-title">Three Ways to Trigger Reasoning</h2>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--orange);">
+    <div class="demo-container" style="border-left: 3px solid var(--orange);">
       <h4 style="color: var(--orange);">1. The Simple Trigger</h4>
       <code>"Think step by step before answering."</code>
       <p style="color: var(--dim); margin-top: 0.5rem;">Surprisingly effective. Just adding this phrase improves results on reasoning tasks.</p>
     </div>
-    <div class="demo-block" style="border-left: 3px solid var(--purple);">
+    <div class="demo-container" style="border-left: 3px solid var(--purple);">
       <h4 style="color: var(--purple);">2. The Structured Trigger</h4>
       <code>"First, identify the key variables. Then, analyze how they interact. Then, draw your conclusion. Show each step."</code>
       <p style="color: var(--dim); margin-top: 0.5rem;">More control. You define the reasoning structure.</p>
     </div>
-    <div class="demo-block" style="border-left: 3px solid var(--green);">
+    <div class="demo-container" style="border-left: 3px solid var(--green);">
       <h4 style="color: var(--green);">3. The Expert Trigger</h4>
       <code>"Approach this like a detective solving a case. Examine each piece of evidence, note what's relevant, eliminate what's not, then present your theory with supporting reasoning."</code>
       <p style="color: var(--dim); margin-top: 0.5rem;">Combines persona with reasoning. The metaphor shapes how the AI thinks.</p>
@@ -93,8 +93,8 @@
 <div class="lesson-section">
   <span class="section-label">When to Use It</span>
   <h2 class="section-title">Not Everything Needs a Chain</h2>
-  <p class="section-text"><strong style="color: var(--green);">Use CoT for:</strong> Math problems, logic puzzles, code debugging, strategic analysis, comparing options, anything where the reasoning matters as much as the answer.</p>
-  <p class="section-text"><strong style="color: var(--red);">Skip CoT for:</strong> Simple factual questions, creative writing, translation, formatting tasks. Forcing reasoning here just adds noise.</p>
+  <p class="section-text"><strong>Use CoT for:</strong> Math problems, logic puzzles, code debugging, strategic analysis, comparing options, anything where the reasoning matters as much as the answer.</p>
+  <p class="section-text"><strong>Skip CoT for:</strong> Simple factual questions, creative writing, translation, formatting tasks. Forcing reasoning here just adds noise.</p>
 </div>
 
 <div class="lesson-section">
@@ -103,7 +103,7 @@
   <p class="section-text">Some AI systems (including Claude) support extended thinking — where the model reasons internally before responding. You can guide this by specifying how much thinking you want.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--blue);">
+    <div class="demo-container" style="border-left: 3px solid var(--blue);">
       <h4 style="color: var(--blue);">Thinking Budget Prompt</h4>
       <code>"This is a complex architectural decision. Take your time. Consider at least 3 approaches, evaluate trade-offs for each, then recommend the best path with clear justification."</code>
     </div>
@@ -118,12 +118,12 @@
   <p class="section-text">Chain-of-thought shines when debugging. Instead of asking "why doesn't this work?", structure the AI's reasoning process.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--red);">
+    <div class="demo-container" style="border-left: 3px solid var(--red);">
       <h4 style="color: var(--red);">Without CoT</h4>
       <code>"My React component re-renders infinitely. Here's the code: [code]. Fix it."</code>
       <p style="color: var(--dim); margin-top: 0.5rem;">The AI might give you a fix that works — or it might guess wrong because it skipped the diagnosis.</p>
     </div>
-    <div class="demo-block" style="border-left: 3px solid var(--green);">
+    <div class="demo-container" style="border-left: 3px solid var(--green);">
       <h4 style="color: var(--green);">With CoT</h4>
       <code>"My React component re-renders infinitely. Here's the code: [code].
 
@@ -144,7 +144,7 @@ Debug this step by step:
   <p class="section-text">One of the most powerful extensions of CoT is self-consistency — asking the AI to solve the same problem multiple ways and compare results.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--purple);">
+    <div class="demo-container" style="border-left: 3px solid var(--purple);">
       <h4 style="color: var(--purple);">Self-Consistency Prompt</h4>
       <code>"Solve this problem using three different approaches:
 
@@ -162,10 +162,10 @@ After all three, compare your answers. If they agree, you can be confident. If t
 <div class="lesson-section">
   <span class="section-label">Common Mistakes</span>
   <h2 class="section-title">CoT Anti-Patterns to Avoid</h2>
-  <p class="section-text"><strong style="color: var(--red);">Over-specifying steps:</strong> If you dictate 15 micro-steps, you're doing the thinking for the AI. Give it 3-5 high-level steps and let it fill in the details. The sweet spot is structured enough to guide but flexible enough to reason.</p>
-  <p class="section-text"><strong style="color: var(--red);">Using CoT on trivial tasks:</strong> "Think step by step about what the capital of France is" adds latency and tokens without improving accuracy. Reserve CoT for tasks where reasoning genuinely matters. A good rule of thumb: if a human could answer the question in under 5 seconds, CoT probably won't help.</p>
-  <p class="section-text"><strong style="color: var(--red);">Ignoring the reasoning:</strong> If you ask for step-by-step reasoning but only read the final answer, you're missing the point. The reasoning is where you catch errors, learn the AI's assumptions, and refine your prompt.</p>
-  <p class="section-text"><strong style="color: var(--red);">Forgetting to ask for a conclusion:</strong> Some prompts trigger great reasoning but never ask for a clear final answer. Always end with "Based on this analysis, your recommendation is:" or "Therefore, the answer is:" to ensure a clear deliverable.</p>
+  <p class="section-text"><strong>Over-specifying steps:</strong> If you dictate 15 micro-steps, you're doing the thinking for the AI. Give it 3-5 high-level steps and let it fill in the details. The sweet spot is structured enough to guide but flexible enough to reason.</p>
+  <p class="section-text"><strong>Using CoT on trivial tasks:</strong> "Think step by step about what the capital of France is" adds latency and tokens without improving accuracy. Reserve CoT for tasks where reasoning genuinely matters. A good rule of thumb: if a human could answer the question in under 5 seconds, CoT probably won't help.</p>
+  <p class="section-text"><strong>Ignoring the reasoning:</strong> If you ask for step-by-step reasoning but only read the final answer, you're missing the point. The reasoning is where you catch errors, learn the AI's assumptions, and refine your prompt.</p>
+  <p class="section-text"><strong>Forgetting to ask for a conclusion:</strong> Some prompts trigger great reasoning but never ask for a clear final answer. Always end with "Based on this analysis, your recommendation is:" or "Therefore, the answer is:" to ensure a clear deliverable.</p>
 </div>
 
 <div class="lesson-section">
@@ -184,7 +184,7 @@ After all three, compare your answers. If they agree, you can be confident. If t
   <p class="section-text">Chain-of-thought is uniquely powerful for decisions with multiple factors. Here's a decision-making template that produces consistently thoughtful analysis.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--blue);">
+    <div class="demo-container" style="border-left: 3px solid var(--blue);">
       <h4 style="color: var(--blue);">Decision Analysis Prompt</h4>
       <code>"I need to decide between [Option A] and [Option B]. Context: [situation].
 
@@ -204,9 +204,9 @@ Analyze this decision step by step:
 <div class="lesson-section">
   <span class="section-label">Try It Yourself</span>
   <h2 class="section-title">Compare Direct vs. Chain-of-Thought</h2>
-  <div class="try-it-box">
+  <div class="callout">
     <p>Pick a problem that requires reasoning. Ask it twice — once directly, once with chain-of-thought. Compare the quality and accuracy of both answers.</p>
-    <div class="prompt-box">
+    <div class="demo-container">
       <code>Direct: "What's the best database for my project?"
 CoT: "I'm building [description]. Help me choose a database. First, identify my key requirements from the description. Then, list 3 database options that could work. For each, analyze pros and cons given my specific needs. Finally, recommend one with clear reasoning."</code>
     </div>

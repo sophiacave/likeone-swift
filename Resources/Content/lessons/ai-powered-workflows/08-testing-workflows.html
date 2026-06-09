@@ -62,9 +62,9 @@
   <span class="section-label">Mock Services</span>
   <h2 class="section-title">Testing Without Hitting Real APIs</h2>
   <p class="section-text">You don't want to send 500 test emails through SendGrid or create 200 test contacts in your production CRM. Mock services solve this by simulating API responses locally, so your workflow thinks it's talking to the real service.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Why mock?</strong> Speed (local mocks respond in milliseconds vs. hundreds of milliseconds for real APIs), cost (no API charges for test runs), isolation (your tests don't depend on external service availability), and safety (you won't accidentally modify production data).</p>
-  <p class="section-text"><strong style="color: var(--blue);">What to mock:</strong> External API calls, email sending, database writes during destructive tests, payment processing, and notification services. Basically, anything that has side effects in the real world.</p>
-  <p class="section-text"><strong style="color: var(--blue);">What NOT to mock:</strong> Your own business logic, data transformations, routing decisions, and validation code. These are the things you're actually testing — mocking them defeats the purpose.</p>
+  <p class="section-text"><strong>Why mock?</strong> Speed (local mocks respond in milliseconds vs. hundreds of milliseconds for real APIs), cost (no API charges for test runs), isolation (your tests don't depend on external service availability), and safety (you won't accidentally modify production data).</p>
+  <p class="section-text"><strong>What to mock:</strong> External API calls, email sending, database writes during destructive tests, payment processing, and notification services. Basically, anything that has side effects in the real world.</p>
+  <p class="section-text"><strong>What NOT to mock:</strong> Your own business logic, data transformations, routing decisions, and validation code. These are the things you're actually testing — mocking them defeats the purpose.</p>
 
   <div class="demo-container">
     <p><strong style="color: var(--green);">Mock example with Python's unittest.mock:</strong></p>
@@ -81,8 +81,8 @@
   <span class="section-label">Regression Testing</span>
   <h2 class="section-title">Making Sure Fixes Don't Break Other Things</h2>
   <p class="section-text">You fix a bug in your workflow's routing logic. The routing works now — but did the fix accidentally break the data transformation in step 2? Regression testing catches this by re-running all existing tests every time you make a change.</p>
-  <p class="section-text"><strong style="color: var(--orange);">The golden rule:</strong> Every bug you fix should come with a new test case that would have caught the bug. Found that your classifier fails on emails with Unicode characters? Write a test with Unicode input. Now that specific bug can never return without being caught.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Automate your test suite:</strong> Run all tests automatically before every deployment. If any test fails, the deployment is blocked. This is called a CI/CD pipeline, and it's the single most important quality gate for production workflows. Tools like GitHub Actions, GitLab CI, or even a simple pre-deploy script make this easy.</p>
+  <p class="section-text"><strong>The golden rule:</strong> Every bug you fix should come with a new test case that would have caught the bug. Found that your classifier fails on emails with Unicode characters? Write a test with Unicode input. Now that specific bug can never return without being caught.</p>
+  <p class="section-text"><strong>Automate your test suite:</strong> Run all tests automatically before every deployment. If any test fails, the deployment is blocked. This is called a CI/CD pipeline, and it's the single most important quality gate for production workflows. Tools like GitHub Actions, GitLab CI, or even a simple pre-deploy script make this easy.</p>
 </div>
 
 <div class="lesson-section">
@@ -102,10 +102,10 @@
   </div>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Now</h3>
   <p>Build a test plan for your workflow.</p>
-  <div class="prompt-box">
+  <div class="demo-container">
     <code>For your workflow, create: (1) Three normal test cases with expected outputs. (2) Three edge cases — weird, empty, or extreme data. (3) A list of every external service the workflow touches and whether you can test it in sandbox mode.</code>
   </div>
 </div>
@@ -114,28 +114,28 @@
   <span class="section-label">Load Testing</span>
   <h2 class="section-title">Will Your Workflow Survive a Traffic Spike?</h2>
   <p class="section-text">Your workflow handles 10 items per hour beautifully. But what happens when a marketing campaign drives 500 signups in 30 minutes? Or a product launch creates 1,000 orders in an hour? Load testing answers these questions before your customers do.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Baseline first:</strong> Measure how long your workflow takes to process one item. This is your baseline. If one item takes 3 seconds, you can theoretically handle 20 per minute — but external API rate limits might cap you at 10.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Ramp up gradually:</strong> Test with 2x your normal volume, then 5x, then 10x. At each level, check: do all items process successfully? Does latency increase? Do you hit any rate limits? At what volume does the workflow start failing?</p>
-  <p class="section-text"><strong style="color: var(--blue);">Plan for the spike:</strong> If your workflow can't handle peak load, you have three options: queue items and process them at a sustainable rate, provision more resources (if self-hosted), or design the workflow to gracefully shed load (process the most important items first, delay the rest).</p>
+  <p class="section-text"><strong>Baseline first:</strong> Measure how long your workflow takes to process one item. This is your baseline. If one item takes 3 seconds, you can theoretically handle 20 per minute — but external API rate limits might cap you at 10.</p>
+  <p class="section-text"><strong>Ramp up gradually:</strong> Test with 2x your normal volume, then 5x, then 10x. At each level, check: do all items process successfully? Does latency increase? Do you hit any rate limits? At what volume does the workflow start failing?</p>
+  <p class="section-text"><strong>Plan for the spike:</strong> If your workflow can't handle peak load, you have three options: queue items and process them at a sustainable rate, provision more resources (if self-hosted), or design the workflow to gracefully shed load (process the most important items first, delay the rest).</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">AI-Specific Testing</span>
   <h2 class="section-title">Testing Non-Deterministic AI Steps</h2>
   <p class="section-text">Traditional code gives the same output for the same input every time. AI doesn't — the same prompt can produce slightly different responses across runs. This makes testing AI steps trickier, but not impossible:</p>
-  <p class="section-text"><strong style="color: var(--purple);">Test for format, not exact content.</strong> If your AI step should return a JSON object with a "category" field, test that the response is valid JSON and contains the "category" key. Don't test for the exact string.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Test boundary behavior.</strong> Does the AI respond correctly to obviously urgent input? Obviously non-urgent input? These extremes should produce consistent categorization even across non-deterministic runs.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Use temperature=0 for tests.</strong> Most AI APIs have a temperature parameter. Setting it to 0 makes responses more deterministic. Use this in your test suite for reproducibility, even if production uses higher temperature.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Statistical testing for accuracy.</strong> Run the same classification task 100 times with the same input. If the AI returns "BILLING" 98 times out of 100, that's reliable enough. If it's 60/40 between two categories, the prompt needs improvement.</p>
+  <p class="section-text"><strong>Test for format, not exact content.</strong> If your AI step should return a JSON object with a "category" field, test that the response is valid JSON and contains the "category" key. Don't test for the exact string.</p>
+  <p class="section-text"><strong>Test boundary behavior.</strong> Does the AI respond correctly to obviously urgent input? Obviously non-urgent input? These extremes should produce consistent categorization even across non-deterministic runs.</p>
+  <p class="section-text"><strong>Use temperature=0 for tests.</strong> Most AI APIs have a temperature parameter. Setting it to 0 makes responses more deterministic. Use this in your test suite for reproducibility, even if production uses higher temperature.</p>
+  <p class="section-text"><strong>Statistical testing for accuracy.</strong> Run the same classification task 100 times with the same input. If the AI returns "BILLING" 98 times out of 100, that's reliable enough. If it's 60/40 between two categories, the prompt needs improvement.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Staging Environments</span>
   <h2 class="section-title">Creating a Safe Copy of Your Production Workflow</h2>
   <p class="section-text">A staging environment is a complete copy of your workflow that uses test credentials, test databases, and test API endpoints. It behaves identically to production but can't affect real data. Every change gets tested here before reaching production.</p>
-  <p class="section-text"><strong style="color: var(--green);">Minimum staging setup:</strong> Separate API keys for test environments (Stripe test mode, SendGrid sandbox), a test database that mirrors your production schema, and a way to trigger the workflow manually with sample data. This takes 30 minutes to set up and saves hours of production debugging.</p>
-  <p class="section-text"><strong style="color: var(--green);">Data mirroring:</strong> Periodically copy a sanitized snapshot of production data into your staging environment. Real data structure with fake values — real customer counts, real order volumes, fake names and emails. This catches issues that only appear with production-scale data patterns.</p>
-  <p class="section-text"><strong style="color: var(--green);">Promotion process:</strong> Test in staging, verify results, then promote the exact same configuration to production. Don't rebuild in production — copy what already works. This eliminates "works on my machine" problems.</p>
+  <p class="section-text"><strong>Minimum staging setup:</strong> Separate API keys for test environments (Stripe test mode, SendGrid sandbox), a test database that mirrors your production schema, and a way to trigger the workflow manually with sample data. This takes 30 minutes to set up and saves hours of production debugging.</p>
+  <p class="section-text"><strong>Data mirroring:</strong> Periodically copy a sanitized snapshot of production data into your staging environment. Real data structure with fake values — real customer counts, real order volumes, fake names and emails. This catches issues that only appear with production-scale data patterns.</p>
+  <p class="section-text"><strong>Promotion process:</strong> Test in staging, verify results, then promote the exact same configuration to production. Don't rebuild in production — copy what already works. This eliminates "works on my machine" problems.</p>
   <p class="section-text">The investment in a proper staging environment pays for itself after a single prevented production incident. One wrong email to 10,000 customers costs more — in time, reputation, and stress — than a month of staging infrastructure ever will.</p>
 </div>
 
@@ -175,8 +175,8 @@
   <span class="section-label">The Code</span>
   <h2 class="section-title">Testing workflows with pytest.</h2>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — unit, integration, and chaos tests</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — unit, integration, and chaos tests</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> pytest
 
 <span style="color:#71717a"># UNIT TEST: test one step in isolation</span>
@@ -204,7 +204,7 @@
     result = classify_urgency(input_text)
     <span style="color:#c084fc">assert</span> result <span style="color:#c084fc">in</span> [<span style="color:#fbbf24">"LOW"</span>, <span style="color:#fbbf24">"MEDIUM"</span>, <span style="color:#fbbf24">"HIGH"</span>]</code></pre>
 </div>
-<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">The chaos gremlin test is the most important. If your workflow survives emoji-only input, SQL injection attempts, and 10,000-character strings, it is ready for production. Run <code>pytest -v</code> to see all tests pass.</p>
+<p style="font-size:.85rem;margin-top:.5rem">The chaos gremlin test is the most important. If your workflow survives emoji-only input, SQL injection attempts, and 10,000-character strings, it is ready for production. Run <code>pytest -v</code> to see all tests pass.</p>
 </div>
 
 <div class="lesson-section">

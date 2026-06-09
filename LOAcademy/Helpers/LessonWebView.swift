@@ -82,8 +82,16 @@ struct LessonWebView: UIViewRepresentable {
         .lo-step--green { background: rgba(52,211,153,0.08); border-left: 3px solid #34d399; }
         .lo-step--purple { background: rgba(168,85,247,0.08); border-left: 3px solid #a855f7; }
         .lo-step--orange { background: rgba(251,146,60,0.08); border-left: 3px solid #fb923c; }
-        .learn-card, .demo-container, .demo-block, .try-it-box, .prompt-box, .prompt-card, .callout, .tip-box, .card { background: #1a1a24; border: 1px solid #27272a; border-radius: 14px; padding: 20px; margin: 1.25rem 0; }
-        .learn-card h3, .demo-container h3, .demo-block h3, .try-it-box h3, .prompt-box h3, .prompt-card h3, .callout h3, .tip-box h3, .card h3 { font-size: 1rem; font-weight: 600; color: #f5f5f7; margin: 0 0 12px; }
+        .learn-card, .demo-container, .callout, .card { background: #1a1a24; border: 1px solid #27272a; border-radius: 14px; padding: 20px; margin: 1.25rem 0; }
+        .learn-card h3, .demo-container h3, .callout h3, .card h3 { font-size: 1rem; font-weight: 600; color: #f5f5f7; margin: 0 0 12px; }
+        .section-label { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #71717a; margin-bottom: 8px; }
+        .code-block { background: #111118; border: 1px solid #27272a; border-radius: 10px; margin: 1.25rem 0; overflow: hidden; }
+        .code-header { display: flex; justify-content: space-between; align-items: center; padding: 8px 16px; border-bottom: 1px solid #27272a; font-family: ui-monospace, 'SF Mono', monospace; font-size: 0.72rem; color: #71717a; }
+        .code-header .lang { text-transform: uppercase; letter-spacing: 0.05em; }
+        .code-body { padding: 16px; font-family: ui-monospace, 'SF Mono', monospace; font-size: 0.85rem; line-height: 1.7; color: #a1a1aa; white-space: pre; overflow-x: auto; }
+        .code-body .kw { color: #c084fc; }
+        .code-body .str { color: #fb923c; }
+        .code-body .cm { color: #71717a; }
         /* Apple-native overrides — typography-driven, no inline color */
         strong { color: #f5f5f7 !important; font-weight: 600; }
         [style*="border-left"] { border-left-color: #27272a !important; }

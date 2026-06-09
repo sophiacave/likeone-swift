@@ -71,7 +71,7 @@ class ProviderPool:
 
 Provider pooling gives you three benefits: higher aggregate throughput, fault tolerance (one provider's outage doesn't take you down), and negotiating leverage (you're not locked into a single vendor).
 
-<div class="tip-box">
+<div class="callout">
 <strong>Consistency warning:</strong> Different providers produce different outputs for the same prompt. If output consistency matters (e.g., brand voice), restrict pooling to same-family models or add a normalization layer that standardizes outputs across providers.
 </div>
 </div>
@@ -159,7 +159,7 @@ class AIAutoScaler:
 
 The critical insight: **scaling is pointless when the bottleneck is the API provider.** If you're rate-limited at 1,000 RPM, adding more consumers just means more workers sitting idle. Scale consumers to match provider capacity, not demand. Handle excess demand through queuing and caching.
 
-<div class="tip-box">
+<div class="callout">
 <strong>Cost-aware scaling:</strong> More consumers processing AI requests means higher API costs, not just higher infra costs. Factor token spend into your scaling decisions. An auto-scaler that doubles throughput also doubles your API bill.
 </div>
 </div>

@@ -22,22 +22,22 @@
 
     <p>Basic RAG works beautifully for direct questions with clear answers in your knowledge base: "What is the refund policy?" retrieves the policy chunk and generates a grounded answer. But consider these harder cases:</p>
 
-    <div style="font-size:.85rem;color:#a1a1aa;line-height:1.8;margin:1rem 0">
-      <strong style="color:#e5e5e5">"What causes that disease where you forget things?"</strong> → The query is too vague for precise retrieval. Basic RAG might return general cognitive decline articles instead of targeted Alzheimer's content.<br><br>
-      <strong style="color:#e5e5e5">"What is 2 + 2?"</strong> → This does not need retrieval at all. Fetching documents wastes time and money.<br><br>
-      <strong style="color:#e5e5e5">"How much did we spend on marketing last quarter?"</strong> → The answer requires a calculation on retrieved data, not just a summary.<br><br>
-      <strong style="color:#e5e5e5">"Compare our 2023 and 2024 product roadmaps"</strong> → The answer spans multiple document collections and requires synthesis.
+    <div style="font-size:.85rem;line-height:1.8;margin:1rem 0">
+      <strong>"What causes that disease where you forget things?"</strong> → The query is too vague for precise retrieval. Basic RAG might return general cognitive decline articles instead of targeted Alzheimer's content.<br><br>
+      <strong>"What is 2 + 2?"</strong> → This does not need retrieval at all. Fetching documents wastes time and money.<br><br>
+      <strong>"How much did we spend on marketing last quarter?"</strong> → The answer requires a calculation on retrieved data, not just a summary.<br><br>
+      <strong>"Compare our 2023 and 2024 product roadmaps"</strong> → The answer spans multiple document collections and requires synthesis.
     </div>
 
     <p>Each of these scenarios needs a different pattern. Here is when to use each:</p>
 
-    <div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#e5e5e5">Decision Guide:</strong><br>
-      Is the query vague or uses informal language? → <strong style="color:#34d399">Multi-Step RAG</strong><br>
-      Does the query even need retrieval? → <strong style="color:#8b5cf6">Self-RAG</strong><br>
-      Does the answer need math, API calls, or live data? → <strong style="color:#fb923c">RAG + Tools</strong><br>
-      Does the question span multiple databases or need planning? → <strong style="color:#ef4444">Agentic RAG</strong><br>
-      None of the above? → <strong style="color:#71717a">Basic RAG is fine.</strong>
+    <div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;line-height:1.7">
+      <strong>Decision Guide:</strong><br>
+      Is the query vague or uses informal language? → <strong>Multi-Step RAG</strong><br>
+      Does the query even need retrieval? → <strong>Self-RAG</strong><br>
+      Does the answer need math, API calls, or live data? → <strong>RAG + Tools</strong><br>
+      Does the question span multiple databases or need planning? → <strong>Agentic RAG</strong><br>
+      None of the above? → <strong>Basic RAG is fine.</strong>
     </div>
   </div>
 
@@ -47,7 +47,7 @@
 
     <p><strong>Best for:</strong> Vague, colloquial queries that need technical vocabulary. Multi-hop questions requiring information from different sections.</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">multi_step_rag</span>(question, rag_search, generate):
     <span style="color:#fb923c">"""Refine the query using first-round retrieval, then search again."""</span>
 
@@ -82,7 +82,7 @@
 
     <p><strong>Best for:</strong> High-volume systems where many queries are simple and do not need retrieval.</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">self_rag</span>(question, rag_search, generate):
     <span style="color:#fb923c">"""Let the LLM decide if retrieval is needed, then self-evaluate."""</span>
 
@@ -120,7 +120,7 @@
 
     <p><strong>Best for:</strong> Financial queries requiring math, questions needing live data, data transformation tasks.</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 claude = anthropic.Anthropic()
@@ -170,7 +170,7 @@ response = claude.messages.create(
 
     <p><strong>Best for:</strong> Enterprise knowledge bases spanning multiple collections. Research-style queries requiring synthesis from diverse sources. Questions that require a multi-step investigation.</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">class</span> <span style="color:#34d399">AgenticRAG</span>:
     <span style="color:#c084fc">def</span> <span style="color:#38bdf8">__init__</span>(self, knowledge_bases):
         self.kbs = knowledge_bases  <span style="color:#71717a"># {"hr": hr_search, "finance": finance_search, ...}</span>
@@ -209,8 +209,8 @@ response = claude.messages.create(
         <span style="color:#c084fc">return</span> generate_grounded_answer(question, self.context)</code></pre>
     </div>
 
-    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#ef4444">When NOT to use Agentic RAG:</strong> Simple questions with a single knowledge source. Agentic RAG is the most powerful but also the slowest and most expensive pattern — multiple LLM calls, multiple searches, planning overhead. For straightforward queries, basic RAG is faster, cheaper, and easier to debug.
+    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;line-height:1.7">
+      <strong>When NOT to use Agentic RAG:</strong> Simple questions with a single knowledge source. Agentic RAG is the most powerful but also the slowest and most expensive pattern — multiple LLM calls, multiple searches, planning overhead. For straightforward queries, basic RAG is faster, cheaper, and easier to debug.
     </div>
   </div>
 
@@ -218,11 +218,11 @@ response = claude.messages.create(
     <h2>Choosing the Right Pattern</h2>
     <p>Start simple and upgrade only when needed:</p>
 
-    <div style="font-size:.85rem;color:#a1a1aa;line-height:1.8;margin:1rem 0">
-      <strong style="color:#e5e5e5">80% of queries:</strong> Basic RAG handles them perfectly. Do not over-engineer.<br>
-      <strong style="color:#e5e5e5">10% of queries:</strong> Multi-Step or Self-RAG improves quality for vague or simple queries.<br>
-      <strong style="color:#e5e5e5">8% of queries:</strong> RAG+Tools handles queries needing calculation or live data.<br>
-      <strong style="color:#e5e5e5">2% of queries:</strong> Agentic RAG handles complex, multi-source research queries.<br><br>
+    <div style="font-size:.85rem;line-height:1.8;margin:1rem 0">
+      <strong>80% of queries:</strong> Basic RAG handles them perfectly. Do not over-engineer.<br>
+      <strong>10% of queries:</strong> Multi-Step or Self-RAG improves quality for vague or simple queries.<br>
+      <strong>8% of queries:</strong> RAG+Tools handles queries needing calculation or live data.<br>
+      <strong>2% of queries:</strong> Agentic RAG handles complex, multi-source research queries.<br><br>
       Build basic RAG first. Measure where it fails. Add advanced patterns only for the failure cases.
     </div>
   </div>

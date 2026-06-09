@@ -36,9 +36,9 @@
 <div class="lesson-section">
   <span class="section-label">The Spectrum</span>
   <h2 class="section-title">Zero, One, Few</h2>
-  <p class="section-text"><strong style="color: var(--orange);">Zero-shot:</strong> No examples. Just instructions. Works for simple, well-understood tasks.</p>
-  <p class="section-text"><strong style="color: var(--purple);">One-shot:</strong> One example. Sets the pattern. Good for style matching and format demonstration.</p>
-  <p class="section-text"><strong style="color: var(--green);">Few-shot:</strong> 2-5 examples. Establishes a strong pattern. Best for complex or nuanced tasks where one example isn't enough to capture all the rules.</p>
+  <p class="section-text"><strong>Zero-shot:</strong> No examples. Just instructions. Works for simple, well-understood tasks.</p>
+  <p class="section-text"><strong>One-shot:</strong> One example. Sets the pattern. Good for style matching and format demonstration.</p>
+  <p class="section-text"><strong>Few-shot:</strong> 2-5 examples. Establishes a strong pattern. Best for complex or nuanced tasks where one example isn't enough to capture all the rules.</p>
 </div>
 
 <div class="lesson-section">
@@ -46,12 +46,12 @@
   <h2 class="section-title">Product Descriptions, Two Ways</h2>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--red);">
+    <div class="demo-container" style="border-left: 3px solid var(--red);">
       <h4 style="color: var(--red);">Zero-Shot (Vague)</h4>
       <code>"Write a product description for wireless earbuds. Make it punchy."</code>
       <p style="color: var(--dim); margin-top: 0.5rem;">You'll get something generic. "Punchy" means different things to different people.</p>
     </div>
-    <div class="demo-block" style="border-left: 3px solid var(--green);">
+    <div class="demo-container" style="border-left: 3px solid var(--green);">
       <h4 style="color: var(--green);">Few-Shot (Clear Pattern)</h4>
       <code>"Write product descriptions in this style:
 
@@ -73,9 +73,9 @@ Product: Wireless earbuds"</code>
 <div class="lesson-section">
   <span class="section-label">Technique</span>
   <h2 class="section-title">Choosing Good Examples</h2>
-  <p class="section-text"><strong style="color: var(--blue);">Diverse:</strong> Pick examples that cover different scenarios. If all your examples are similar, the AI might over-fit to that one pattern.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Representative:</strong> Your examples should look like what you want the output to look like. If you show sloppy examples, you get sloppy output.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Edge cases:</strong> Include at least one tricky example that shows how to handle unusual inputs. This teaches the AI your judgment calls.</p>
+  <p class="section-text"><strong>Diverse:</strong> Pick examples that cover different scenarios. If all your examples are similar, the AI might over-fit to that one pattern.</p>
+  <p class="section-text"><strong>Representative:</strong> Your examples should look like what you want the output to look like. If you show sloppy examples, you get sloppy output.</p>
+  <p class="section-text"><strong>Edge cases:</strong> Include at least one tricky example that shows how to handle unusual inputs. This teaches the AI your judgment calls.</p>
 </div>
 
 <div class="lesson-section">
@@ -110,7 +110,7 @@ Product: Wireless earbuds"</code>
   <p class="section-text">Show the AI what NOT to do. A "bad example" with an explanation of why it's bad teaches boundaries just as effectively as good examples teach patterns.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--orange);">
+    <div class="demo-container" style="border-left: 3px solid var(--orange);">
       <h4 style="color: var(--orange);">Negative Example</h4>
       <code>"BAD (too generic): 'These earbuds deliver amazing sound quality and long battery life.'
 WHY: No personality, no specific details, reads like every other product page."</code>
@@ -124,7 +124,7 @@ WHY: No personality, no specific details, reads like every other product page."<
   <p class="section-text">Few-shot prompting is devastatingly effective for classification — sorting items into categories. The examples teach the AI your exact criteria.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--blue);">
+    <div class="demo-container" style="border-left: 3px solid var(--blue);">
       <h4 style="color: var(--blue);">Sentiment Classification</h4>
       <code>"Classify customer feedback as POSITIVE, NEGATIVE, or MIXED. Here are examples:
 
@@ -152,10 +152,10 @@ NOW CLASSIFY:
   <span class="section-label">Technique</span>
   <h2 class="section-title">How Many Examples Do You Need?</h2>
   <p class="section-text">There's no universal answer, but here's a practical framework based on task complexity.</p>
-  <p class="section-text"><strong style="color: var(--green);">1 example:</strong> Enough for simple format matching — "write in this style" or "follow this structure." The AI picks up formatting patterns from a single demonstration.</p>
-  <p class="section-text"><strong style="color: var(--green);">2-3 examples:</strong> The sweet spot for most tasks. Two examples establish a pattern; three confirm it. This covers standard classification, writing style, and data extraction.</p>
-  <p class="section-text"><strong style="color: var(--green);">4-5 examples:</strong> Use when your task has subtle edge cases or the boundary between categories is blurry. The extra examples disambiguate tricky scenarios.</p>
-  <p class="section-text"><strong style="color: var(--red);">6+ examples:</strong> Diminishing returns. If 5 examples aren't enough, the task may be too complex for few-shot prompting alone. Consider combining with explicit rules or chain-of-thought reasoning.</p>
+  <p class="section-text"><strong>1 example:</strong> Enough for simple format matching — "write in this style" or "follow this structure." The AI picks up formatting patterns from a single demonstration.</p>
+  <p class="section-text"><strong>2-3 examples:</strong> The sweet spot for most tasks. Two examples establish a pattern; three confirm it. This covers standard classification, writing style, and data extraction.</p>
+  <p class="section-text"><strong>4-5 examples:</strong> Use when your task has subtle edge cases or the boundary between categories is blurry. The extra examples disambiguate tricky scenarios.</p>
+  <p class="section-text"><strong>6+ examples:</strong> Diminishing returns. If 5 examples aren't enough, the task may be too complex for few-shot prompting alone. Consider combining with explicit rules or chain-of-thought reasoning.</p>
   <p class="section-text">A key insight: the diversity of your examples matters more than the quantity. Three examples that cover different scenarios beat ten examples that are all similar.</p>
 </div>
 
@@ -165,7 +165,7 @@ NOW CLASSIFY:
   <p class="section-text">You can supercharge few-shot prompting by including the reasoning in your examples — not just the input and output, but the thinking process.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--purple);">
+    <div class="demo-container" style="border-left: 3px solid var(--purple);">
       <h4 style="color: var(--purple);">Few-Shot + CoT</h4>
       <code>"Evaluate whether a startup idea is viable. Here's how I think through it:
 
@@ -188,18 +188,18 @@ IDEA: 'AI tutor for K-12 math'"</code>
 <div class="lesson-section">
   <span class="section-label">Common Mistakes</span>
   <h2 class="section-title">Few-Shot Anti-Patterns</h2>
-  <p class="section-text"><strong style="color: var(--red);">All similar examples:</strong> If every example is a variation of the same scenario, the AI over-fits to that pattern and struggles with anything different. Vary your examples across categories, tones, or complexity levels.</p>
-  <p class="section-text"><strong style="color: var(--red);">Sloppy formatting in examples:</strong> The AI mimics everything — including inconsistencies. If your first example uses dashes and your second uses bullets, the AI might mix formats randomly. Be meticulous about consistency across your examples.</p>
-  <p class="section-text"><strong style="color: var(--red);">Too much explanation between examples:</strong> Keep the space between examples clean. Long paragraphs of instructions between examples break the pattern the AI is trying to learn. Put instructions before or after the example block, not inside it.</p>
-  <p class="section-text"><strong style="color: var(--red);">Using poor-quality examples:</strong> Your examples set the quality ceiling. If your examples are mediocre, the AI matches mediocre. Always use your best work as examples — the AI will match that quality level.</p>
+  <p class="section-text"><strong>All similar examples:</strong> If every example is a variation of the same scenario, the AI over-fits to that pattern and struggles with anything different. Vary your examples across categories, tones, or complexity levels.</p>
+  <p class="section-text"><strong>Sloppy formatting in examples:</strong> The AI mimics everything — including inconsistencies. If your first example uses dashes and your second uses bullets, the AI might mix formats randomly. Be meticulous about consistency across your examples.</p>
+  <p class="section-text"><strong>Too much explanation between examples:</strong> Keep the space between examples clean. Long paragraphs of instructions between examples break the pattern the AI is trying to learn. Put instructions before or after the example block, not inside it.</p>
+  <p class="section-text"><strong>Using poor-quality examples:</strong> Your examples set the quality ceiling. If your examples are mediocre, the AI matches mediocre. Always use your best work as examples — the AI will match that quality level.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Try It Yourself</span>
   <h2 class="section-title">Build a Few-Shot Prompt</h2>
-  <div class="try-it-box">
+  <div class="callout">
     <p>Pick a writing task you do regularly (emails, social posts, documentation). Write 2-3 examples that capture your style. Then ask AI to generate a new one following the pattern.</p>
-    <div class="prompt-box">
+    <div class="demo-container">
       <code>Here are examples of how I write [type]:
 
 EXAMPLE 1: [your real example]

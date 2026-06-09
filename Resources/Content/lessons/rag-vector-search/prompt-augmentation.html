@@ -30,16 +30,16 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0">
       <div style="padding:1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <h4 style="color:#ef4444;margin-bottom:.75rem">Without RAG Context</h4>
-        <p style="font-size:.82rem;color:#71717a;margin-bottom:.5rem"><em>"What is the refund policy for the Pro plan?"</em></p>
-        <p style="font-size:.85rem;color:#a1a1aa;line-height:1.6">Based on industry standards, most SaaS companies offer a <span style="color:#ef4444;text-decoration:line-through">30-day money-back guarantee</span> for their Pro plans. You can typically <span style="color:#ef4444;text-decoration:line-through">request a refund through the settings page</span> or by <span style="color:#ef4444;text-decoration:line-through">emailing support@company.com</span>.</p>
-        <p style="font-size:.75rem;color:#ef4444;font-weight:600;margin-top:.75rem">3 hallucinations. Sounds confident but completely fabricated.</p>
+        <h4 style="margin-bottom:.75rem">Without RAG Context</h4>
+        <p style="font-size:.82rem;margin-bottom:.5rem"><em>"What is the refund policy for the Pro plan?"</em></p>
+        <p style="font-size:.85rem;line-height:1.6">Based on industry standards, most SaaS companies offer a <span style="text-decoration:line-through">30-day money-back guarantee</span> for their Pro plans. You can typically <span style="text-decoration:line-through">request a refund through the settings page</span> or by <span style="text-decoration:line-through">emailing support@company.com</span>.</p>
+        <p style="font-size:.75rem;font-weight:600;margin-top:.75rem">3 hallucinations. Sounds confident but completely fabricated.</p>
       </div>
       <div style="padding:1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <h4 style="color:#34d399;margin-bottom:.75rem">With RAG Context</h4>
-        <p style="font-size:.82rem;color:#71717a;margin-bottom:.5rem"><em>"What is the refund policy for the Pro plan?"</em></p>
-        <p style="font-size:.85rem;color:#a1a1aa;line-height:1.6">According to the billing documentation, the Pro plan has a <span style="color:#34d399">14-day refund window</span> from the date of purchase. To request a refund, <span style="color:#34d399">contact billing@acme.io</span> with your order number. After 14 days, refunds are handled <span style="color:#34d399">on a case-by-case basis</span>.</p>
-        <p style="font-size:.75rem;color:#34d399;font-weight:600;margin-top:.75rem">0 hallucinations. Every claim traced to retrieved context.</p>
+        <h4 style="margin-bottom:.75rem">With RAG Context</h4>
+        <p style="font-size:.82rem;margin-bottom:.5rem"><em>"What is the refund policy for the Pro plan?"</em></p>
+        <p style="font-size:.85rem;line-height:1.6">According to the billing documentation, the Pro plan has a <span>14-day refund window</span> from the date of purchase. To request a refund, <span>contact billing@acme.io</span> with your order number. After 14 days, refunds are handled <span>on a case-by-case basis</span>.</p>
+        <p style="font-size:.75rem;font-weight:600;margin-top:.75rem">0 hallucinations. Every claim traced to retrieved context.</p>
       </div>
     </div>
 
@@ -50,7 +50,7 @@
     <h2>The RAG Prompt Template</h2>
     <p>Here is the production-grade template that prevents hallucination:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 claude = anthropic.Anthropic()
@@ -113,28 +113,28 @@ Question: {question}"""</span>
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">Rule 1: Be Explicit About Grounding</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">"Answer ONLY based on the provided context" is the most important instruction in any RAG prompt. Without it, the LLM blends context with training data — introducing potential hallucinations even with perfect retrieval.</p>
+        <strong>Rule 1: Be Explicit About Grounding</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">"Answer ONLY based on the provided context" is the most important instruction in any RAG prompt. Without it, the LLM blends context with training data — introducing potential hallucinations even with perfect retrieval.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">Rule 2: Handle Missing Information</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">"If the context doesn't contain the answer, say 'I don't have that information.'" This prevents the model from filling gaps with plausible-sounding inventions. A truthful "I don't know" is infinitely more valuable than a confident hallucination.</p>
+        <strong>Rule 2: Handle Missing Information</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">"If the context doesn't contain the answer, say 'I don't have that information.'" This prevents the model from filling gaps with plausible-sounding inventions. A truthful "I don't know" is infinitely more valuable than a confident hallucination.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">Rule 3: Request Citations</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">"Cite the source for each claim" makes answers verifiable. Users can check the original document. It also catches hallucinations — if the model cites a source that does not exist or does not support the claim, you know something went wrong.</p>
+        <strong>Rule 3: Request Citations</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">"Cite the source for each claim" makes answers verifiable. Users can check the original document. It also catches hallucinations — if the model cites a source that does not exist or does not support the claim, you know something went wrong.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444">Rule 4: Use Clear Delimiters</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Separate context blocks with <code>---</code> or triple backticks. Label each chunk with its source. This helps the LLM distinguish context from instructions and different documents from each other.</p>
+        <strong>Rule 4: Use Clear Delimiters</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Separate context blocks with <code>---</code> or triple backticks. Label each chunk with its source. This helps the LLM distinguish context from instructions and different documents from each other.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-        <strong style="color:#38bdf8">Rule 5: System vs. User Role</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Put grounding instructions in the <strong>system message</strong> and context + question in the <strong>user message</strong>. The system message sets persistent behavior that the model follows more reliably than instructions mixed into the user message.</p>
+        <strong>Rule 5: System vs. User Role</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Put grounding instructions in the <strong>system message</strong> and context + question in the <strong>user message</strong>. The system message sets persistent behavior that the model follows more reliably than instructions mixed into the user message.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(250,204,21,.04);border:1px solid rgba(250,204,21,.1)">
-        <strong style="color:#facc15">Rule 6: Control Output Format</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">"Answer in 2-3 sentences" or "Use bullet points" keeps responses focused. Long, rambling answers are harder to verify and more likely to contain unsupported claims buried in the text.</p>
+        <strong>Rule 6: Control Output Format</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">"Answer in 2-3 sentences" or "Use bullet points" keeps responses focused. Long, rambling answers are harder to verify and more likely to contain unsupported claims buried in the text.</p>
       </div>
     </div>
   </div>
@@ -142,11 +142,11 @@ Question: {question}"""</span>
   <div class="section">
     <h2>Advanced Prompt Patterns</h2>
 
-    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem;color:#e5e5e5">Multi-Document Synthesis</h3>
+    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem">Multi-Document Synthesis</h3>
     <p>When chunks come from different sources, add this instruction: "If multiple sources provide different information on the same topic, present all perspectives and note which source supports each claim." This is critical for knowledge bases where documents may have been written at different times or by different authors.</p>
 
-    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem;color:#e5e5e5">Structured Output</h3>
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem">Structured Output</h3>
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># For structured answers (e.g., comparison queries)</span>
 STRUCTURED_SYSTEM = <span style="color:#fbbf24">"""Answer based ONLY on the provided context.
 Format your response as:
@@ -156,10 +156,10 @@ Format your response as:
 - **Gaps**: Note any aspects the context does not cover"""</span></code></pre>
     </div>
 
-    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem;color:#e5e5e5">Conversational RAG</h3>
+    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem">Conversational RAG</h3>
     <p>For chatbots that maintain conversation history, include previous turns in the prompt but always put fresh context first:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">conversational_rag</span>(question, chunks, history):
     <span style="color:#fb923c">"""RAG with conversation memory."""</span>
     context = format_chunks(chunks)
@@ -188,11 +188,11 @@ Format your response as:
 
   <div class="section">
     <h2>Common Mistakes</h2>
-    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#ef4444">Mistake 1: No grounding instruction.</strong> Without "Answer based ONLY on the context," the model freely mixes retrieved facts with training data. This is the #1 cause of RAG hallucination.<br><br>
-      <strong style="color:#ef4444">Mistake 2: Context and instructions mixed together.</strong> When context and system instructions are in the same message, the model sometimes treats context as instructions or instructions as context. Separate them clearly.<br><br>
-      <strong style="color:#ef4444">Mistake 3: No fallback for unanswerable questions.</strong> Without "say I don't know," the model will fabricate an answer rather than admit the context does not cover the question.<br><br>
-      <strong style="color:#ef4444">Mistake 4: High temperature.</strong> Temperature above 0.3 for factual RAG increases creativity — which means more hallucination. Keep it at 0.0-0.2.
+    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;line-height:1.7">
+      <strong>Mistake 1: No grounding instruction.</strong> Without "Answer based ONLY on the context," the model freely mixes retrieved facts with training data. This is the #1 cause of RAG hallucination.<br><br>
+      <strong>Mistake 2: Context and instructions mixed together.</strong> When context and system instructions are in the same message, the model sometimes treats context as instructions or instructions as context. Separate them clearly.<br><br>
+      <strong>Mistake 3: No fallback for unanswerable questions.</strong> Without "say I don't know," the model will fabricate an answer rather than admit the context does not cover the question.<br><br>
+      <strong>Mistake 4: High temperature.</strong> Temperature above 0.3 for factual RAG increases creativity — which means more hallucination. Keep it at 0.0-0.2.
     </div>
   </div>
 

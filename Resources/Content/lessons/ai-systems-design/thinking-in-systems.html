@@ -25,7 +25,7 @@ Within weeks, reality sets in. Latency spikes during peak hours. One malformed i
 
 This is the demo trap. The gap between "it works on my laptop" and "it serves 10,000 users reliably" is not a gap of intelligence -- it's a gap of architecture.
 
-<div class="tip-box">
+<div class="callout">
 <strong>Key insight:</strong> The model is the engine, not the car. You still need steering, brakes, suspension, fuel management, and a dashboard. Systems thinking is how you build the car.
 </div>
 </div>
@@ -74,7 +74,7 @@ Request -> Intent Classifier (fast, cheap model)
 
 Each component is independently testable, scalable, and replaceable. When billing docs change, you update one retrieval index, not the entire system. When a cheaper model emerges, you swap it into the FAQ handler without touching the complaint handler.
 
-<div class="tip-box">
+<div class="callout">
 <strong>Design heuristic:</strong> If you can't explain what a component does in one sentence, it's doing too much. Split it.
 </div>
 </div>

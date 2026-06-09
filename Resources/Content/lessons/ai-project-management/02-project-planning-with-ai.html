@@ -14,7 +14,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">The Problem</span>
+  <span class="section-label">The Problem</span>
   <h2 class="section-title">Why Most Project Plans Fall Apart</h2>
 <div class="lo-vis" role="figure" aria-label="Why Most Project Plans Fall Apart">
 <div class="lo-vis__title">Why Most Project Plans Fall Apart</div>
@@ -33,7 +33,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">The Method</span>
+  <span class="section-label">The Method</span>
   <h2 class="section-title">AI-Assisted Work Breakdown</h2>
   <p class="section-text">Start with your project goal — one sentence. Feed it to AI with context about your team, timeline, and constraints. Ask for a work breakdown structure. Then interrogate it: "What am I missing? What dependencies exist between these tasks? What usually goes wrong with projects like this?"</p>
   <p class="section-text">AI excels at generating comprehensive task lists because it's seen thousands of similar projects in its training data. Your job is to filter, prioritize, and apply your specific context.</p>
@@ -47,25 +47,25 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">Estimation</span>
+  <span class="section-label">Estimation</span>
   <h2 class="section-title">Getting Better Time Estimates</h2>
   <p class="section-text">AI can give you three-point estimates (optimistic, likely, pessimistic) for each task. This is powerful because it forces you to think about risk ranges, not single numbers. When you tell a stakeholder "two to four weeks" instead of "three weeks," you're being honest — and that builds trust.</p>
   <p class="section-text">Feed AI your team's velocity data if you have it. The more context you give, the better the estimates get. "Our team typically completes 20 story points per sprint" changes the output dramatically.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Pick a real project you're about to start. Use this prompt:</p>
-  <div class="prompt-box"><code>I need to plan a project: [describe project in 2-3 sentences]. My team has [N] people with skills in [list skills]. Timeline target is [X weeks]. Please create: (1) a work breakdown structure with task dependencies, (2) three-point time estimates for each task, (3) the critical path, and (4) the top 5 risks to this timeline.</code></div>
+  <div class="demo-container"><code>I need to plan a project: [describe project in 2-3 sentences]. My team has [N] people with skills in [list skills]. Timeline target is [X weeks]. Please create: (1) a work breakdown structure with task dependencies, (2) three-point time estimates for each task, (3) the critical path, and (4) the top 5 risks to this timeline.</code></div>
   <p>Review the output against your own instincts. Where does AI's plan differ from what you would have built? Those gaps are where the value lives.</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--red);">Deep Dive</span>
+  <span class="section-label">Deep Dive</span>
   <h2 class="section-title">The Critical Path Method with AI</h2>
   <p class="section-text">The critical path is the longest sequence of dependent tasks in your project. If any task on that path slips, the entire project slips. Identifying it manually requires mapping every dependency and calculating durations — tedious work that AI handles effortlessly.</p>
   <p class="section-text">Here is a prompt specifically for critical path analysis:</p>
-  <div class="prompt-box"><code>Here is my project task list with dependencies and estimated durations:
+  <div class="demo-container"><code>Here is my project task list with dependencies and estimated durations:
 
 [Paste your WBS with task names, durations, and dependencies]
 
@@ -79,7 +79,7 @@ Please:
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">Framework</span>
+  <span class="section-label">Framework</span>
   <h2 class="section-title">The Planning Hierarchy: Vision to Tasks</h2>
   <p class="section-text">Effective AI-assisted planning follows a top-down hierarchy. Each level feeds the next, and AI helps you decompose at every stage:</p>
   <p class="section-text"><strong>Level 1 — Project Vision.</strong> One sentence. "Launch a customer feedback portal that increases NPS response rates by 40%." This gives AI the success criteria to plan against.</p>
@@ -91,7 +91,7 @@ Please:
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">Real-World Example</span>
+  <span class="section-label">Real-World Example</span>
   <h2 class="section-title">Planning a Product Launch in 30 Minutes</h2>
   <p class="section-text">Here is how a real PM used AI to plan a product launch that would normally take a full day of planning sessions:</p>
   <p class="section-text"><strong>Step 1 (5 min):</strong> Fed AI the product brief — a two-paragraph description of the feature, the target audience, and the launch date. Asked for a complete WBS with phases, tasks, dependencies, and duration estimates.</p>
@@ -103,10 +103,10 @@ Please:
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">Advanced Technique</span>
+  <span class="section-label">Advanced Technique</span>
   <h2 class="section-title">Assumption Mapping</h2>
   <p class="section-text">Every project plan is built on assumptions — and unexamined assumptions are where plans collapse. AI is remarkably good at surfacing the assumptions buried in your planning.</p>
-  <div class="prompt-box"><code>Review this project plan and list every assumption it relies on. For each assumption, rate how confident we should be (high/medium/low) and suggest how to validate it before it becomes a problem.
+  <div class="demo-container"><code>Review this project plan and list every assumption it relies on. For each assumption, rate how confident we should be (high/medium/low) and suggest how to validate it before it becomes a problem.
 
 [Paste your project plan]</code></div>
   <p class="section-text">AI might surface assumptions like: "This plan assumes the API vendor will deliver on time (medium confidence — validate by requesting their development timeline)." Or: "This plan assumes the team can maintain current velocity during the holiday season (low confidence — check historical December velocity)."</p>
@@ -114,10 +114,10 @@ Please:
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">Prompt Template</span>
+  <span class="section-label">Prompt Template</span>
   <h2 class="section-title">The Dependency Mapping Prompt</h2>
   <p class="section-text">Dependencies are where project plans silently fail. Two tasks that seem independent turn out to share a resource, a system, or a decision. AI is excellent at identifying hidden dependencies:</p>
-  <div class="prompt-box"><code>Here is my project task list:
+  <div class="demo-container"><code>Here is my project task list:
 
 [Paste task list with descriptions]
 
@@ -133,7 +133,7 @@ Then draw the dependency chain and identify: which tasks can run in parallel? Wh
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">Checklist</span>
+  <span class="section-label">Checklist</span>
   <h2 class="section-title">The AI Planning Completeness Checklist</h2>
   <p class="section-text">Before you finalize any AI-assisted project plan, run through this checklist to ensure nothing critical is missing:</p>
   <p class="section-text"><strong>Scope:</strong> Is the scope clearly defined? Are exclusions explicitly listed? Does the team agree on what "done" looks like?</p>
@@ -146,10 +146,10 @@ Then draw the dependency chain and identify: which tasks can run in parallel? Wh
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--red);">Contingency Planning</span>
+  <span class="section-label">Contingency Planning</span>
   <h2 class="section-title">Building Plan B (and Plan C)</h2>
   <p class="section-text">No project plan survives first contact with reality unchanged. The best PMs plan for the changes before they happen. AI makes contingency planning fast enough that you can actually do it — instead of the usual approach of winging it when things go sideways.</p>
-  <div class="prompt-box"><code>Here is my project plan:
+  <div class="demo-container"><code>Here is my project plan:
 
 [Paste plan]
 
@@ -163,7 +163,7 @@ For each scenario: describe the trigger, the immediate response, the adjusted pl
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">Common Pitfalls</span>
+  <span class="section-label">Common Pitfalls</span>
   <h2 class="section-title">Planning Mistakes AI Helps You Avoid</h2>
   <p class="section-text"><strong>The Optimism Trap:</strong> PMs consistently underestimate how long things take. AI counters this by providing three-point estimates and asking "what usually goes wrong with projects like this?" — forcing you to confront the realistic scenario instead of the best case.</p>
   <p class="section-text"><strong>The Missing Phase:</strong> Every project has phases that PMs forget to plan for — data migration, user training, documentation, post-launch support. AI has seen thousands of project plans and will include these unglamorous-but-essential phases automatically.</p>
@@ -171,13 +171,13 @@ For each scenario: describe the trigger, the immediate response, the adjusted pl
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--blue);">Pro Tip</span>
+  <span class="section-label">Pro Tip</span>
   <h2 class="section-title">Iterate, Don't Accept</h2>
   <p class="section-text">Never take the first output as final. Push back. Ask "what about [specific constraint]?" Challenge assumptions. The best AI-assisted plans come from 3-4 rounds of conversation, not one prompt. You're collaborating, not delegating.</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">Technique</span>
+  <span class="section-label">Technique</span>
   <h2 class="section-title">Stakeholder-Aligned Planning</h2>
   <p class="section-text">A project plan serves multiple audiences. AI helps you create different views of the same plan for different stakeholders without maintaining separate documents:</p>
   <p class="section-text"><strong>Executive view:</strong> Phases, key milestones, budget checkpoints. No task-level detail. "Phase 2 delivers the API integration by March 15 at a cost of $45K."</p>

@@ -25,12 +25,12 @@
 <div class="lo-vis__caption">Sessions give agents <strong>continuity</strong>.</div>
 </div>
 
-<p>By default, each <code>query()</code> call starts fresh — Claude has no memory of previous interactions. That works for one-off tasks, but real-world agents need <strong style="color:#e5e5e5">continuity</strong>. A coding assistant should remember what file it was working on. A research agent should build on previous findings. A customer service bot should know the conversation history.</p>
+<p>By default, each <code>query()</code> call starts fresh — Claude has no memory of previous interactions. That works for one-off tasks, but real-world agents need <strong>continuity</strong>. A coding assistant should remember what file it was working on. A research agent should build on previous findings. A customer service bot should know the conversation history.</p>
 
 <p>Sessions are how you give agents memory. A session stores the conversation history so Claude can pick up where it left off — even after your application restarts.</p>
 
-<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">Real-world analogy:</strong> Sessions are like saving your game. Without them, you start from level 1 every time you open the app. With sessions, you load your save file and continue from where you stopped.
+<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.88rem;line-height:1.7">
+<strong>Real-world analogy:</strong> Sessions are like saving your game. Without them, you start from level 1 every time you open the app. With sessions, you load your save file and continue from where you stopped.
 </div>
 </div>
 
@@ -38,8 +38,8 @@
 <h2>Multi-Turn Conversations</h2>
 <p>The simplest form of session management is multi-turn conversations within a single run. The SDK handles this automatically when you make multiple queries on the same agent instance:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — multi-turn conversation</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — multi-turn conversation</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { Claude } <span style="color:#c084fc">from</span> <span style="color:#fbbf24">"@anthropic-ai/claude-agent"</span>;
 
 <span style="color:#c084fc">const</span> agent = <span style="color:#c084fc">new</span> Claude({
@@ -69,10 +69,10 @@
 
 <div class="card">
 <h2>Persisting Sessions Across Restarts</h2>
-<p>For sessions to survive application restarts, you need a <strong style="color:#e5e5e5">session store</strong>. The SDK supports custom session stores that save conversation history to disk, a database, or any storage backend:</p>
+<p>For sessions to survive application restarts, you need a <strong>session store</strong>. The SDK supports custom session stores that save conversation history to disk, a database, or any storage backend:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — persistent session store</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — persistent session store</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { Claude, FileSessionStore } <span style="color:#c084fc">from</span> <span style="color:#fbbf24">"@anthropic-ai/claude-agent"</span>;
 
 <span style="color:#71717a">// Store sessions as files on disk</span>
@@ -99,10 +99,10 @@
 
 <div class="card">
 <h2>Forking Sessions</h2>
-<p>Sometimes you want to explore multiple directions from the same starting point. <strong style="color:#e5e5e5">Forking</strong> creates a copy of a session at a specific point, letting you branch the conversation:</p>
+<p>Sometimes you want to explore multiple directions from the same starting point. <strong>Forking</strong> creates a copy of a session at a specific point, letting you branch the conversation:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — forking a session</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — forking a session</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">// After analyzing the code, explore two different approaches</span>
 <span style="color:#c084fc">const</span> analysis = <span style="color:#c084fc">await</span> agent.query(<span style="color:#fbbf24">"Analyze the performance issues in src/api.ts"</span>);
 
@@ -127,16 +127,16 @@
 <h2>Common Pitfalls</h2>
 <div style="display:grid;gap:.75rem;margin-top:.75rem">
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">Context window limits</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Sessions accumulate token usage. A very long session can hit the model's context limit. Monitor session length and consider starting fresh for unrelated tasks.</p>
+<strong style="font-size:.88rem">Context window limits</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Sessions accumulate token usage. A very long session can hit the model's context limit. Monitor session length and consider starting fresh for unrelated tasks.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">Stale session data</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">If you resume a session days later, files may have changed since Claude last read them. The agent remembers old file contents. Instruct it to re-read files when resuming after long gaps.</p>
+<strong style="font-size:.88rem">Stale session data</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">If you resume a session days later, files may have changed since Claude last read them. The agent remembers old file contents. Instruct it to re-read files when resuming after long gaps.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">Not cleaning up old sessions</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Persistent sessions consume storage. Implement cleanup for sessions older than a threshold, or set expiration policies on your session store.</p>
+<strong style="font-size:.88rem">Not cleaning up old sessions</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Persistent sessions consume storage. Implement cleanup for sessions older than a threshold, or set expiration policies on your session store.</p>
 </div>
 </div>
 </div>

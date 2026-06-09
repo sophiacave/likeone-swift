@@ -36,10 +36,10 @@
 <div class="lesson-section">
   <span class="section-label">Architecture</span>
   <h2 class="section-title">The Four Domains</h2>
-  <p class="section-text"><strong style="color: var(--orange);">Work.</strong> Project management, deployments, email triage, meeting prep. The AI reads your calendar, knows your deadlines, and handles the operational load. You make creative decisions. It handles everything else.</p>
-  <p class="section-text"><strong style="color: var(--green);">Finances.</strong> Bill tracking, subscription management, tax preparation, spending patterns. The AI monitors accounts, flags anomalies, and handles the paperwork you'll never get to on your own.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Health.</strong> Medication reminders, appointment scheduling, habit tracking. Not as a replacement for medical care, but as a support system that remembers what you forget and nudges gently.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Communication.</strong> Email drafting, social media management, relationship maintenance. The AI drafts in your voice, suggests when you haven't reached out to someone in a while, and handles the communication overhead that drains energy.</p>
+  <p class="section-text"><strong>Work.</strong> Project management, deployments, email triage, meeting prep. The AI reads your calendar, knows your deadlines, and handles the operational load. You make creative decisions. It handles everything else.</p>
+  <p class="section-text"><strong>Finances.</strong> Bill tracking, subscription management, tax preparation, spending patterns. The AI monitors accounts, flags anomalies, and handles the paperwork you'll never get to on your own.</p>
+  <p class="section-text"><strong>Health.</strong> Medication reminders, appointment scheduling, habit tracking. Not as a replacement for medical care, but as a support system that remembers what you forget and nudges gently.</p>
+  <p class="section-text"><strong>Communication.</strong> Email drafting, social media management, relationship maintenance. The AI drafts in your voice, suggests when you haven't reached out to someone in a while, and handles the communication overhead that drains energy.</p>
 </div>
 
 <div class="demo-container">
@@ -60,19 +60,19 @@
   <span class="section-label">Architecture</span>
   <h2 class="section-title">The Integration Layer</h2>
   <p class="section-text">A life OS is only as powerful as its integrations. Each domain requires connections to external systems that the AI can read from and write to:</p>
-  <p class="section-text"><strong style="color: var(--orange);">Work integrations:</strong> Calendar APIs (Google Calendar, Outlook) for scheduling awareness. Git providers (GitHub, GitLab) for code management. Project tools (Linear, Notion, Jira) for task tracking. Email APIs (Gmail, SendGrid) for communication. Each integration gives the AI eyes and hands in a new domain.</p>
-  <p class="section-text"><strong style="color: var(--green);">Finance integrations:</strong> Bank APIs (Plaid) for transaction monitoring. Payment processors (Stripe) for revenue tracking. Spreadsheet tools (Google Sheets) for custom tracking. The AI monitors spending patterns, flags anomalies, and prepares financial summaries without the human touching a spreadsheet.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Health integrations:</strong> Wearable APIs (Apple Health, Fitbit) for biometric data. Calendar for appointment scheduling. Pharmacy reminder systems. These are sensitive — all health data must be tagged as sacred in the trust hierarchy (Lesson 8).</p>
-  <p class="section-text"><strong style="color: var(--purple);">Communication integrations:</strong> Social media APIs for posting. Messaging platforms (Slack, Discord) for team communication. CRM tools for relationship tracking. The AI drafts in your voice across all platforms while maintaining consistent identity.</p>
+  <p class="section-text"><strong>Work integrations:</strong> Calendar APIs (Google Calendar, Outlook) for scheduling awareness. Git providers (GitHub, GitLab) for code management. Project tools (Linear, Notion, Jira) for task tracking. Email APIs (Gmail, SendGrid) for communication. Each integration gives the AI eyes and hands in a new domain.</p>
+  <p class="section-text"><strong>Finance integrations:</strong> Bank APIs (Plaid) for transaction monitoring. Payment processors (Stripe) for revenue tracking. Spreadsheet tools (Google Sheets) for custom tracking. The AI monitors spending patterns, flags anomalies, and prepares financial summaries without the human touching a spreadsheet.</p>
+  <p class="section-text"><strong>Health integrations:</strong> Wearable APIs (Apple Health, Fitbit) for biometric data. Calendar for appointment scheduling. Pharmacy reminder systems. These are sensitive — all health data must be tagged as sacred in the trust hierarchy (Lesson 8).</p>
+  <p class="section-text"><strong>Communication integrations:</strong> Social media APIs for posting. Messaging platforms (Slack, Discord) for team communication. CRM tools for relationship tracking. The AI drafts in your voice across all platforms while maintaining consistent identity.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Design</span>
   <h2 class="section-title">Progressive Autonomy Across Domains</h2>
   <p class="section-text">Not all life OS domains should start at the same autonomy level. Some carry higher risk than others:</p>
-  <p class="section-text"><strong style="color: var(--green);">Low risk, high autonomy:</strong> Scheduling meetings, organizing files, generating reports, summarizing emails. These are reversible, routine, and low-stakes. Start here. Let the AI run at L4-L5 from day one.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Medium risk, earned autonomy:</strong> Sending emails, posting to social media, paying bills. These have external consequences but are generally reversible (you can delete a post, issue a refund). Start at L3 (inform) and promote to L4 after the AI demonstrates reliability.</p>
-  <p class="section-text"><strong style="color: var(--red);">High risk, always supervised:</strong> Financial transfers above a threshold, legal communications, medical decisions. These are irreversible or have serious consequences. Keep at L2 (confirm) permanently. Some domains should never be fully autonomous — the human's judgment is the guardrail.</p>
+  <p class="section-text"><strong>Low risk, high autonomy:</strong> Scheduling meetings, organizing files, generating reports, summarizing emails. These are reversible, routine, and low-stakes. Start here. Let the AI run at L4-L5 from day one.</p>
+  <p class="section-text"><strong>Medium risk, earned autonomy:</strong> Sending emails, posting to social media, paying bills. These have external consequences but are generally reversible (you can delete a post, issue a refund). Start at L3 (inform) and promote to L4 after the AI demonstrates reliability.</p>
+  <p class="section-text"><strong>High risk, always supervised:</strong> Financial transfers above a threshold, legal communications, medical decisions. These are irreversible or have serious consequences. Keep at L2 (confirm) permanently. Some domains should never be fully autonomous — the human's judgment is the guardrail.</p>
 </div>
 
 <div class="lesson-section">
@@ -95,8 +95,8 @@
   <span class="section-label">Warning</span>
   <h2 class="section-title">The Over-Automation Trap</h2>
   <p class="section-text">Not everything should be automated. A life OS that automates joy is a life OS that has failed.</p>
-  <p class="section-text"><strong style="color: var(--red);">Do not automate:</strong> Personal creative expression, relationship maintenance that requires genuine human presence, experiences that bring joy specifically because they involve effort (cooking for someone, writing a love letter, choosing a gift with thought).</p>
-  <p class="section-text"><strong style="color: var(--green);">Do automate:</strong> The operational overhead that prevents you from having time for the things above. Bill payments, appointment scheduling, email triage, status reports, meeting prep, subscription management, tax paperwork.</p>
+  <p class="section-text"><strong>Do not automate:</strong> Personal creative expression, relationship maintenance that requires genuine human presence, experiences that bring joy specifically because they involve effort (cooking for someone, writing a love letter, choosing a gift with thought).</p>
+  <p class="section-text"><strong>Do automate:</strong> The operational overhead that prevents you from having time for the things above. Bill payments, appointment scheduling, email triage, status reports, meeting prep, subscription management, tax paperwork.</p>
   <p class="section-text">The distinction is simple: automate the things that drain you so you have energy for the things that fulfill you. The life OS should give you your life back, not live it for you.</p>
 </div>
 
@@ -104,17 +104,17 @@
   <span class="section-label">Architecture</span>
   <h2 class="section-title">Building the Weekly Review</h2>
   <p class="section-text">Beyond the daily loop, a life OS runs a weekly review — a deeper analysis that catches what daily cycles miss:</p>
-  <p class="section-text"><strong style="color: var(--blue);">Spending analysis:</strong> Total spend vs. budget. Categories that exceeded targets. Subscriptions that were unused. Recurring charges that should be questioned.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Progress review:</strong> What was accomplished this week across all domains. What is behind schedule. What blockers emerged and how they were resolved.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Relationship check:</strong> Who have you not contacted in a while? Any birthdays or important dates coming up? Any relationships that need attention?</p>
-  <p class="section-text"><strong style="color: var(--green);">Health summary:</strong> Sleep patterns, exercise frequency, medication adherence, appointment follow-ups. Not to judge — to inform. The AI presents the data. The human decides what to do with it.</p>
+  <p class="section-text"><strong>Spending analysis:</strong> Total spend vs. budget. Categories that exceeded targets. Subscriptions that were unused. Recurring charges that should be questioned.</p>
+  <p class="section-text"><strong>Progress review:</strong> What was accomplished this week across all domains. What is behind schedule. What blockers emerged and how they were resolved.</p>
+  <p class="section-text"><strong>Relationship check:</strong> Who have you not contacted in a while? Any birthdays or important dates coming up? Any relationships that need attention?</p>
+  <p class="section-text"><strong>Health summary:</strong> Sleep patterns, exercise frequency, medication adherence, appointment follow-ups. Not to judge — to inform. The AI presents the data. The human decides what to do with it.</p>
   <p class="section-text">This weekly review is generated automatically every Sunday evening and delivered to you Monday morning. You start each week with full visibility into your life's operational state.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Map out your life's operational load. Identify what the AI could handle:</p>
-  <div class="prompt-box"><code>List every recurring task that drains your energy:
+  <div class="demo-container"><code>List every recurring task that drains your energy:
 - Daily: email, scheduling, cooking decisions, chores
 - Weekly: budgeting, meal planning, social obligations
 - Monthly: bills, subscriptions, health appointments
@@ -165,9 +165,9 @@ That's your life OS roadmap.</code></div>
   <span class="section-label">Technical</span>
   <h2 class="section-title">Error Handling in a Life OS</h2>
   <p class="section-text">When your life OS encounters an error — a failed bill payment, a missed appointment reminder, a rejected email — it must handle it gracefully. Three principles:</p>
-  <p class="section-text"><strong style="color: var(--red);">Never fail silently.</strong> A life OS that fails silently is worse than no system at all. If a bill payment fails, the human must know. If an email was not sent, the human must be informed. Silent failures erode trust faster than any other failure mode.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Retry before escalating.</strong> Most errors are transient — network timeouts, temporary API limits, brief service outages. Retry automatically with exponential backoff. Only escalate to the human after retries are exhausted.</p>
-  <p class="section-text"><strong style="color: var(--green);">Provide context with escalation.</strong> When the life OS does escalate, include: what failed, what was tried, why it failed, and what the human needs to do. "Your credit card payment to Spotify failed. I retried twice. The card was declined. Please check your bank balance or update the card on file." That is useful. "Payment failed" is not.</p>
+  <p class="section-text"><strong>Never fail silently.</strong> A life OS that fails silently is worse than no system at all. If a bill payment fails, the human must know. If an email was not sent, the human must be informed. Silent failures erode trust faster than any other failure mode.</p>
+  <p class="section-text"><strong>Retry before escalating.</strong> Most errors are transient — network timeouts, temporary API limits, brief service outages. Retry automatically with exponential backoff. Only escalate to the human after retries are exhausted.</p>
+  <p class="section-text"><strong>Provide context with escalation.</strong> When the life OS does escalate, include: what failed, what was tried, why it failed, and what the human needs to do. "Your credit card payment to Spotify failed. I retried twice. The card was declined. Please check your bank balance or update the card on file." That is useful. "Payment failed" is not.</p>
 </div>
 
 <div class="lesson-section">
@@ -178,28 +178,28 @@ That's your life OS roadmap.</code></div>
     Here is what day one looks like:
   </p>
   <p class="section-text">
-    <strong style="color: var(--green);">Step 1:</strong>
+    <strong>Step 1:</strong>
     Create a brain entry: <code>life.daily_routine</code>.
     Describe your typical day — when you wake up, your energy patterns,
     your recurring obligations.
     This gives the AI context for timing its actions.
   </p>
   <p class="section-text">
-    <strong style="color: var(--blue);">Step 2:</strong>
+    <strong>Step 2:</strong>
     Create a brain entry: <code>life.recurring_tasks</code>.
     List everything you do weekly that drains energy.
     Bills, emails, scheduling, meal planning, errands.
     Mark which ones the AI could handle today vs. later.
   </p>
   <p class="section-text">
-    <strong style="color: var(--purple);">Step 3:</strong>
+    <strong>Step 3:</strong>
     Pick ONE task from the list and automate it.
     Email triage is a great first choice — the AI reads your inbox,
     categorizes messages, drafts responses for review.
     Get this working reliably before adding anything else.
   </p>
   <p class="section-text">
-    <strong style="color: var(--orange);">Step 4:</strong>
+    <strong>Step 4:</strong>
     After one week of reliable operation, add a second task.
     Then a third. Each addition is validated before the next.
     In a month, your life OS handles a dozen recurring tasks

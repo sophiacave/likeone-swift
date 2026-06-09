@@ -37,7 +37,7 @@
 </ul>
 <p>Ollama detects your GPU automatically and uses it. You can verify with <code>ollama ps</code> which shows how much of the model is loaded into GPU vs. CPU memory.</p>
 
-<div class="tip-box">
+<div class="callout">
 <strong>The VRAM bottleneck:</strong> On NVIDIA GPUs, the model must fit in VRAM (GPU memory). An RTX 4090 has 24GB VRAM -- enough for a 32B Q4 model. On Apple Silicon, there is no separate VRAM -- the unified memory pool is shared. A 32GB M3 MacBook can run models that would require a 24GB GPU on other platforms.
 </tip>
 </div>

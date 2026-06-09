@@ -51,11 +51,11 @@
   <span class="section-label">Architecture</span>
   <h2 class="section-title">Chrome DevTools Protocol</h2>
   <p class="section-text">Chrome DevTools Protocol (CDP) is the API that Chrome exposes for programmatic control. Tools like Puppeteer, Playwright, and Chrome extensions all use CDP under the hood. Understanding it gives you direct access to the browser's capabilities:</p>
-  <p class="section-text"><strong style="color: var(--blue);">Page navigation.</strong> Load URLs, go back/forward, handle redirects. Faster than typing URLs via computer use.</p>
-  <p class="section-text"><strong style="color: var(--purple);">DOM access.</strong> Query elements with CSS selectors or XPath. Read text content, attributes, computed styles. Modify the DOM directly if needed.</p>
-  <p class="section-text"><strong style="color: var(--green);">JavaScript execution.</strong> Run arbitrary JavaScript in the page context. Fill forms, trigger events, extract data, or manipulate page state.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Network interception.</strong> Monitor HTTP requests and responses. Block ads and trackers. Modify request headers. Intercept API calls for data extraction.</p>
-  <div class="prompt-box"><code>// Playwright example: DOM-based interaction
+  <p class="section-text"><strong>Page navigation.</strong> Load URLs, go back/forward, handle redirects. Faster than typing URLs via computer use.</p>
+  <p class="section-text"><strong>DOM access.</strong> Query elements with CSS selectors or XPath. Read text content, attributes, computed styles. Modify the DOM directly if needed.</p>
+  <p class="section-text"><strong>JavaScript execution.</strong> Run arbitrary JavaScript in the page context. Fill forms, trigger events, extract data, or manipulate page state.</p>
+  <p class="section-text"><strong>Network interception.</strong> Monitor HTTP requests and responses. Block ads and trackers. Modify request headers. Intercept API calls for data extraction.</p>
+  <div class="demo-container"><code>// Playwright example: DOM-based interaction
 import { chromium } from 'playwright';
 
 // Launch a browser
@@ -82,9 +82,9 @@ console.log(`Logged in as: ${userName}`);</code></div>
   <span class="section-label">Strategy</span>
   <h2 class="section-title">When to Use Vision vs. DOM</h2>
   <p class="section-text">The decision tree is straightforward:</p>
-  <p class="section-text"><strong style="color: var(--green);">Use DOM when:</strong> You know the page structure. You have CSS selectors that reliably target elements. The page is a standard web application. Speed matters. You need pixel-perfect precision.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Use Vision when:</strong> You do not know the page structure in advance. The page uses heavy JavaScript frameworks that make DOM querying unreliable. The interface is not web-based (desktop app, terminal). You need to verify what the user actually sees. The page changes frequently and selectors break.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Use both when:</strong> You want speed AND visual verification. Navigate via DOM (fast), then take a screenshot to verify the page looks correct (reliable). Fill forms via DOM, then screenshot to confirm the values display properly. This hybrid approach gives you the best of both worlds.</p>
+  <p class="section-text"><strong>Use DOM when:</strong> You know the page structure. You have CSS selectors that reliably target elements. The page is a standard web application. Speed matters. You need pixel-perfect precision.</p>
+  <p class="section-text"><strong>Use Vision when:</strong> You do not know the page structure in advance. The page uses heavy JavaScript frameworks that make DOM querying unreliable. The interface is not web-based (desktop app, terminal). You need to verify what the user actually sees. The page changes frequently and selectors break.</p>
+  <p class="section-text"><strong>Use both when:</strong> You want speed AND visual verification. Navigate via DOM (fast), then take a screenshot to verify the page looks correct (reliable). Fill forms via DOM, then screenshot to confirm the values display properly. This hybrid approach gives you the best of both worlds.</p>
 </div>
 
 <div class="demo-container">
@@ -99,7 +99,7 @@ console.log(`Logged in as: ${userName}`);</code></div>
   <span class="section-label">Implementation</span>
   <h2 class="section-title">Building the Agent Controller</h2>
   <p class="section-text">A browser agent controller orchestrates DOM and vision capabilities. Here is the architecture:</p>
-  <div class="prompt-box"><code>class BrowserAgent {
+  <div class="demo-container"><code>class BrowserAgent {
   constructor(page, claude) {
     this.page = page;       // Playwright page instance
     this.claude = claude;   // Claude API client
@@ -151,23 +151,23 @@ console.log(`Logged in as: ${userName}`);</code></div>
   <span class="section-label">Advanced</span>
   <h2 class="section-title">Page Context Extraction</h2>
   <p class="section-text">Sometimes a screenshot is not enough and DOM selectors are not reliable enough. Extracting the page context -- a simplified version of the HTML -- gives Claude the richest understanding:</p>
-  <p class="section-text"><strong style="color: var(--blue);">Accessibility tree.</strong> Browsers build an accessibility tree that describes every interactive element with its role, name, and state. This is more useful to the AI than raw HTML because it filters out visual noise and focuses on actionable elements.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Simplified HTML.</strong> Strip the page HTML down to just interactive elements: buttons, inputs, links, forms. Remove styling, scripts, and non-interactive elements. This gives Claude a manageable, focused view of what is on the page.</p>
-  <p class="section-text"><strong style="color: var(--green);">Combined context.</strong> Send both the screenshot AND the simplified HTML. The screenshot shows what the page looks like. The HTML shows what elements exist and their properties. Claude can cross-reference both for the most accurate understanding.</p>
+  <p class="section-text"><strong>Accessibility tree.</strong> Browsers build an accessibility tree that describes every interactive element with its role, name, and state. This is more useful to the AI than raw HTML because it filters out visual noise and focuses on actionable elements.</p>
+  <p class="section-text"><strong>Simplified HTML.</strong> Strip the page HTML down to just interactive elements: buttons, inputs, links, forms. Remove styling, scripts, and non-interactive elements. This gives Claude a manageable, focused view of what is on the page.</p>
+  <p class="section-text"><strong>Combined context.</strong> Send both the screenshot AND the simplified HTML. The screenshot shows what the page looks like. The HTML shows what elements exist and their properties. Claude can cross-reference both for the most accurate understanding.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Anti-Patterns</span>
   <h2 class="section-title">Architecture Mistakes</h2>
-  <p class="section-text"><strong style="color: var(--red);">Vision-only for everything.</strong> Using screenshots and coordinate clicking even when simple CSS selectors would work. This is 100x slower and less reliable for known page structures. Use DOM when you can, vision when you must.</p>
-  <p class="section-text"><strong style="color: var(--red);">Fragile selectors.</strong> Using selectors like <code>div:nth-child(3) > div:nth-child(2) > button</code> that break when any parent element changes. Prefer stable selectors: IDs, data-testid attributes, ARIA labels, or unique text content.</p>
-  <p class="section-text"><strong style="color: var(--red);">No fallback chain.</strong> Using DOM only with no vision fallback. When a selector breaks, the entire workflow fails. Always have a fallback: try DOM first, fall back to vision if DOM fails.</p>
+  <p class="section-text"><strong>Vision-only for everything.</strong> Using screenshots and coordinate clicking even when simple CSS selectors would work. This is 100x slower and less reliable for known page structures. Use DOM when you can, vision when you must.</p>
+  <p class="section-text"><strong>Fragile selectors.</strong> Using selectors like <code>div:nth-child(3) > div:nth-child(2) > button</code> that break when any parent element changes. Prefer stable selectors: IDs, data-testid attributes, ARIA labels, or unique text content.</p>
+  <p class="section-text"><strong>No fallback chain.</strong> Using DOM only with no vision fallback. When a selector breaks, the entire workflow fails. Always have a fallback: try DOM first, fall back to vision if DOM fails.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Build a hybrid browser agent:</p>
-  <div class="prompt-box"><code>1. Set up Playwright with a headed browser (so you can watch)
+  <div class="demo-container"><code>1. Set up Playwright with a headed browser (so you can watch)
 2. Navigate to a login page
 3. Try DOM-first interaction:
    - page.fill('#email', '...')

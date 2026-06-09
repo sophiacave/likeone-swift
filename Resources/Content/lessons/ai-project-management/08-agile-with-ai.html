@@ -14,7 +14,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">The Fit</span>
+  <span class="section-label">The Fit</span>
   <h2 class="section-title">Why AI and Agile Work So Well Together</h2>
 <div class="lo-vis" role="figure" aria-label="Why AI and Agile Work So Well Together">
 <div class="lo-vis__title">Why AI and Agile Work So Well Together</div>
@@ -33,7 +33,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">Sprint Planning</span>
+  <span class="section-label">Sprint Planning</span>
   <h2 class="section-title">From Backlog to Sprint in Minutes</h2>
   <p class="section-text">Feed AI your product backlog, team velocity, and upcoming sprint duration. Ask it to suggest a sprint plan based on priority, dependencies, and capacity. It'll flag if you're overcommitting based on historical velocity and suggest what to cut.</p>
   <p class="section-text">AI also writes excellent user stories. Give it a feature concept and it produces stories with acceptance criteria, edge cases, and testable conditions. Your planning meeting goes from writing stories to reviewing and refining them — a much better use of the team's time.</p>
@@ -52,38 +52,38 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">Retrospectives</span>
+  <span class="section-label">Retrospectives</span>
   <h2 class="section-title">Finding the Signal in Retro Noise</h2>
   <p class="section-text">Teams often have the same retro conversations in circles. "Communication could be better." "We need more testing time." AI breaks this cycle by analyzing retro notes over multiple sprints and identifying patterns.</p>
   <p class="section-text">Feed AI the last 5-6 retro outputs and ask: "What themes keep recurring? Which action items were actually completed? What's the one change that would address the most feedback?" This turns your retro from a venting session into a data-driven improvement engine.</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--red);">Backlog Health</span>
+  <span class="section-label">Backlog Health</span>
   <h2 class="section-title">Taming the Backlog Monster</h2>
   <p class="section-text">Most backlogs are graveyards. Hundreds of tickets, half of them stale, priorities unclear. AI can audit your backlog: identify duplicates, flag stories that haven't been touched in 90+ days, suggest groupings by theme, and recommend a prioritization based on effort-vs-impact.</p>
   <p class="section-text">A quarterly backlog cleanup with AI takes an afternoon instead of a week. Your backlog becomes a tool again instead of a guilt trip.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Take a feature from your backlog and let AI flesh it out:</p>
-  <div class="prompt-box"><code>I need to create user stories for this feature: [describe feature in 1-2 sentences]. The team works in 2-week sprints with average velocity of [N] points. Please: (1) Break this into 3-5 user stories with acceptance criteria, (2) Identify dependencies between stories, (3) Suggest story point estimates, (4) Flag any edge cases or technical risks, (5) Recommend a sprint sequence for implementation.</code></div>
+  <div class="demo-container"><code>I need to create user stories for this feature: [describe feature in 1-2 sentences]. The team works in 2-week sprints with average velocity of [N] points. Please: (1) Break this into 3-5 user stories with acceptance criteria, (2) Identify dependencies between stories, (3) Suggest story point estimates, (4) Flag any edge cases or technical risks, (5) Recommend a sprint sequence for implementation.</code></div>
   <p>Bring these pre-drafted stories to your next planning session. Watch how much faster the conversation moves when the team is reviewing instead of creating from scratch.</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--blue);">Pro Tip</span>
+  <span class="section-label">Pro Tip</span>
   <h2 class="section-title">Velocity Forecasting</h2>
   <p class="section-text">Give AI your last 8-10 sprints of velocity data. Ask for a forecast with confidence intervals. "Based on your velocity trend, you'll complete 85-110 points over the next 5 sprints." That's powerful information for roadmap conversations with product owners who want everything by yesterday.</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--red);">Prompt Templates</span>
+  <span class="section-label">Prompt Templates</span>
   <h2 class="section-title">Agile Ceremony Templates</h2>
   <p class="section-text">Each agile ceremony has a specific AI-assisted workflow. Here are templates for the three most time-consuming ones:</p>
   <p class="section-text"><strong>Sprint Planning Preparation:</strong></p>
-  <div class="prompt-box"><code>Prepare our sprint planning session. Here is the context:
+  <div class="demo-container"><code>Prepare our sprint planning session. Here is the context:
 
 Product backlog (top 20 items): [paste backlog items with priorities]
 Team capacity this sprint: [list each person and their available days]
@@ -99,7 +99,7 @@ Please:
 5. Suggest a sprint goal that ties the selected stories together
 6. Recommend which stories to cut if we need to reduce scope</code></div>
   <p class="section-text"><strong>Retrospective Analysis:</strong></p>
-  <div class="prompt-box"><code>Analyze our retrospective data across multiple sprints:
+  <div class="demo-container"><code>Analyze our retrospective data across multiple sprints:
 
 [Paste retro notes from the last 4-6 sprints — what went well, what didn't, action items]
 
@@ -111,7 +111,7 @@ Please:
 5. Identify any "learned helplessness" patterns — problems the team keeps raising but never fixes
 6. Suggest a specific, measurable experiment for next sprint to address the top issue</code></div>
   <p class="section-text"><strong>Backlog Grooming / Refinement:</strong></p>
-  <div class="prompt-box"><code>Help me groom this product backlog:
+  <div class="demo-container"><code>Help me groom this product backlog:
 
 [Paste backlog — item name, description, current priority, age in backlog]
 
@@ -125,7 +125,7 @@ Please:
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">Framework</span>
+  <span class="section-label">Framework</span>
   <h2 class="section-title">The Definition of Ready Checklist</h2>
   <p class="section-text">A story is only "ready" for sprint planning if it meets certain criteria. Most teams have an informal sense of readiness, but AI can enforce a formal "Definition of Ready" that prevents half-baked stories from entering the sprint:</p>
   <p class="section-text"><strong>Clarity:</strong> The user story clearly describes who wants what and why. "As a [user], I want [capability] so that [benefit]." No ambiguity about the intended outcome.</p>
@@ -137,7 +137,7 @@ Please:
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">Real-World Example</span>
+  <span class="section-label">Real-World Example</span>
   <h2 class="section-title">Breaking the Retro Groundhog Day</h2>
   <p class="section-text">A scrum team had been running retrospectives for two years. Every two weeks, they generated action items. But when the PM analyzed the retro history with AI, a pattern emerged: the same three themes appeared in 80% of their retros — "communication between frontend and backend," "testing happens too late in the sprint," and "requirements change mid-sprint."</p>
   <p class="section-text">Worse, the action item completion rate was 23%. The team was identifying problems but not solving them. The retro had become a ritual of collective venting with no teeth.</p>
@@ -147,10 +147,10 @@ Please:
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">Advanced Technique</span>
+  <span class="section-label">Advanced Technique</span>
   <h2 class="section-title">Sprint Health Diagnostics</h2>
   <p class="section-text">Beyond velocity, AI can diagnose the health of your sprint by analyzing patterns in how work moves through the process:</p>
-  <div class="prompt-box"><code>Here is data from our last sprint:
+  <div class="demo-container"><code>Here is data from our last sprint:
 
 Stories committed: [list with points]
 Stories completed: [list with points]
@@ -170,7 +170,7 @@ Please diagnose this sprint:
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--red);">Common Pitfalls</span>
+  <span class="section-label">Common Pitfalls</span>
   <h2 class="section-title">Agile AI Anti-Patterns</h2>
   <p class="section-text"><strong>Story Point Inflation:</strong> Using AI to estimate story points without team calibration. Story points are relative to YOUR team's capacity. AI can suggest estimates, but the team must validate them against their own reference stories. AI estimates are a starting point for discussion, not a final answer.</p>
   <p class="section-text"><strong>Ceremony Bypass:</strong> Using AI output to skip team discussions. AI-drafted stories still need team refinement. AI retro analysis still needs team conversation. The ceremonies exist for alignment and shared understanding — AI makes them shorter and better-prepared, not unnecessary.</p>
@@ -178,10 +178,10 @@ Please diagnose this sprint:
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">Technique</span>
+  <span class="section-label">Technique</span>
   <h2 class="section-title">Release Planning with AI</h2>
   <p class="section-text">Release planning operates at a higher level than sprint planning — it asks "what features will ship in the next quarter?" AI helps you answer this with data instead of wishful thinking:</p>
-  <div class="prompt-box"><code>Here is our product backlog with estimated story points, and our team's average velocity:
+  <div class="demo-container"><code>Here is our product backlog with estimated story points, and our team's average velocity:
 
 Backlog: [paste items with point estimates and priorities]
 Velocity: [average points per sprint, with range from last 6 sprints]

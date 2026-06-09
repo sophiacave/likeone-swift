@@ -10,22 +10,22 @@
 <h2>Why Authentication Matters</h2>
 <div class="lo-vis" role="figure" aria-label="JWT auth flow in 3 steps"><div class="lo-vis__title">How JWT Authentication Works</div><div class="lo-steps" data-count="3"><div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Login</span><span class="lo-step__desc">User sends credentials, Supabase returns a signed JWT</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Request</span><span class="lo-step__desc">JWT travels in every API call as Bearer token</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Enforce</span><span class="lo-step__desc">RLS extracts auth.uid() and scopes rows to that user</span></div></div><div class="lo-vis__caption">JWT + RLS = <strong>database-level security that even buggy code cannot bypass</strong>.</div></div>
 
-<p>Without authentication, every request to your app is anonymous. Anyone can read anyone's data. Anyone can modify anyone's records. <strong style="color:#e5e5e5">Authentication proves identity</strong> — it answers "who is making this request?" before your app does anything.</p>
+<p>Without authentication, every request to your app is anonymous. Anyone can read anyone's data. Anyone can modify anyone's records. <strong>Authentication proves identity</strong> — it answers "who is making this request?" before your app does anything.</p>
 
 <p>Supabase handles the hard parts (password hashing, session management, email verification) so you never write security-critical code yourself. You get a battle-tested auth system with one import.</p>
 
 <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.25rem">
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(52,211,153,.06);border-radius:10px;border:1px solid rgba(52,211,153,.12);flex:1;min-width:160px">
 <div style="font-size:1.25rem">&#x1f512;</div>
-<div><div style="font-size:.8rem;font-weight:700;color:#34d399;margin-bottom:.2rem">JWT Standard</div><div style="font-size:.78rem;color:#71717a;line-height:1.5">Industry standard for stateless authentication — no server-side sessions needed</div></div>
+<div><div style="font-size:.8rem;font-weight:700;margin-bottom:.2rem">JWT Standard</div><div style="font-size:.78rem;line-height:1.5">Industry standard for stateless authentication — no server-side sessions needed</div></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(139,92,246,.06);border-radius:10px;border:1px solid rgba(139,92,246,.12);flex:1;min-width:160px">
 <div style="font-size:1.25rem">&#x1f6e1;&#xfe0f;</div>
-<div><div style="font-size:.8rem;font-weight:700;color:#8b5cf6;margin-bottom:.2rem">RLS + JWT</div><div style="font-size:.78rem;color:#71717a;line-height:1.5">Database-level security using token claims — even buggy code cannot bypass it</div></div>
+<div><div style="font-size:.8rem;font-weight:700;margin-bottom:.2rem">RLS + JWT</div><div style="font-size:.78rem;line-height:1.5">Database-level security using token claims — even buggy code cannot bypass it</div></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(251,146,60,.06);border-radius:10px;border:1px solid rgba(251,146,60,.12);flex:1;min-width:160px">
 <div style="font-size:1.25rem">&#x26a1;</div>
-<div><div style="font-size:.8rem;font-weight:700;color:#fb923c;margin-bottom:.2rem">Zero Custom Code</div><div style="font-size:.78rem;color:#71717a;line-height:1.5">Supabase Auth handles signup, login, password reset, email verification</div></div>
+<div><div style="font-size:.8rem;font-weight:700;margin-bottom:.2rem">Zero Custom Code</div><div style="font-size:.78rem;line-height:1.5">Supabase Auth handles signup, login, password reset, email verification</div></div>
 </div>
 </div>
 </div>
@@ -36,46 +36,46 @@
 
 <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;overflow-x:auto">
 <div style="font-family:'JetBrains Mono',monospace;font-size:.75rem;line-height:1.5;word-break:break-all">
-<span style="color:#ef4444">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span><span style="color:#71717a">.</span><span style="color:#8b5cf6">eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJidWlsZGVyQGV4YW1wbGUuY29tIiwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJpYXQiOjE3MTExNTIwMDAsImV4cCI6MTcxMTE1NTYwMH0</span><span style="color:#71717a">.</span><span style="color:#34d399">SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</span>
+<span>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span><span>.</span><span>eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJidWlsZGVyQGV4YW1wbGUuY29tIiwicm9sZSI6ImF1dGhlbnRpY2F0ZWQiLCJpYXQiOjE3MTExNTIwMDAsImV4cCI6MTcxMTE1NTYwMH0</span><span>.</span><span>SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</span>
 </div>
 </div>
 
 <div style="display:grid;gap:.75rem;margin-top:1rem">
 <div style="padding:1rem 1.25rem;background:rgba(239,68,68,.04);border-radius:10px;border:1px solid rgba(239,68,68,.08)">
-<strong style="color:#ef4444;font-size:.88rem">Header (Red) — Algorithm + Type</strong>
-<div style="background:#0a0a0a;border-radius:8px;padding:.75rem;margin-top:.5rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7">
-{ <span style="color:#fb923c">"alg"</span>: <span style="color:#fb923c">"HS256"</span>, <span style="color:#71717a">// HMAC-SHA256 signing algorithm</span><br>
-&nbsp;&nbsp;<span style="color:#fb923c">"typ"</span>: <span style="color:#fb923c">"JWT"</span> }  <span style="color:#71717a">// token type</span>
+<strong style="font-size:.88rem">Header (Red) — Algorithm + Type</strong>
+<div style="background:#0a0a0a;border-radius:8px;padding:.75rem;margin-top:.5rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7">
+{ <span>"alg"</span>: <span>"HS256"</span>, <span>// HMAC-SHA256 signing algorithm</span><br>
+&nbsp;&nbsp;<span>"typ"</span>: <span>"JWT"</span> }  <span>// token type</span>
 </div>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.5rem 0 0;line-height:1.7">Tells the server which algorithm was used to create the signature. HS256 (HMAC with SHA-256) is the most common for Supabase.</p>
+<p style="font-size:.82rem;margin:.5rem 0 0;line-height:1.7">Tells the server which algorithm was used to create the signature. HS256 (HMAC with SHA-256) is the most common for Supabase.</p>
 </div>
 
 <div style="padding:1rem 1.25rem;background:rgba(139,92,246,.04);border-radius:10px;border:1px solid rgba(139,92,246,.08)">
-<strong style="color:#8b5cf6;font-size:.88rem">Payload (Purple) — Claims (Your Data)</strong>
-<div style="background:#0a0a0a;border-radius:8px;padding:.75rem;margin-top:.5rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7">
-{ <span style="color:#fb923c">"sub"</span>: <span style="color:#fb923c">"1234567890"</span>,          <span style="color:#71717a">// subject (user ID)</span><br>
-&nbsp;&nbsp;<span style="color:#fb923c">"email"</span>: <span style="color:#fb923c">"builder@example.com"</span>, <span style="color:#71717a">// custom claim</span><br>
-&nbsp;&nbsp;<span style="color:#fb923c">"role"</span>: <span style="color:#fb923c">"authenticated"</span>,       <span style="color:#71717a">// Supabase role</span><br>
-&nbsp;&nbsp;<span style="color:#fb923c">"iat"</span>: <span style="color:#34d399">1711152000</span>,             <span style="color:#71717a">// issued at (Unix timestamp)</span><br>
-&nbsp;&nbsp;<span style="color:#fb923c">"exp"</span>: <span style="color:#34d399">1711155600</span> }            <span style="color:#71717a">// expires in 1 hour</span>
+<strong style="font-size:.88rem">Payload (Purple) — Claims (Your Data)</strong>
+<div style="background:#0a0a0a;border-radius:8px;padding:.75rem;margin-top:.5rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7">
+{ <span>"sub"</span>: <span>"1234567890"</span>,          <span>// subject (user ID)</span><br>
+&nbsp;&nbsp;<span>"email"</span>: <span>"builder@example.com"</span>, <span>// custom claim</span><br>
+&nbsp;&nbsp;<span>"role"</span>: <span>"authenticated"</span>,       <span>// Supabase role</span><br>
+&nbsp;&nbsp;<span>"iat"</span>: <span>1711152000</span>,             <span>// issued at (Unix timestamp)</span><br>
+&nbsp;&nbsp;<span>"exp"</span>: <span>1711155600</span> }            <span>// expires in 1 hour</span>
 </div>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.5rem 0 0;line-height:1.7">The actual data. <code style="color:#f59e0b">sub</code> is the user ID — Supabase's <code style="color:#f59e0b">auth.uid()</code> extracts this for RLS. <code style="color:#f59e0b">exp</code> is when the token expires (default: 1 hour). <strong style="color:#e5e5e5">The payload is NOT encrypted</strong> — anyone can decode it. It is only signed.</p>
+<p style="font-size:.82rem;margin:.5rem 0 0;line-height:1.7">The actual data. <code>sub</code> is the user ID — Supabase's <code>auth.uid()</code> extracts this for RLS. <code>exp</code> is when the token expires (default: 1 hour). <strong>The payload is NOT encrypted</strong> — anyone can decode it. It is only signed.</p>
 </div>
 
 <div style="padding:1rem 1.25rem;background:rgba(52,211,153,.04);border-radius:10px;border:1px solid rgba(52,211,153,.08)">
-<strong style="color:#34d399;font-size:.88rem">Signature (Green) — Verification</strong>
-<div style="background:#0a0a0a;border-radius:8px;padding:.75rem;margin-top:.5rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7">
-<span style="color:#34d399">HMACSHA256</span>(<br>
-&nbsp;&nbsp;<span style="color:#34d399">base64UrlEncode</span>(header) + <span style="color:#fb923c">"."</span> + <span style="color:#34d399">base64UrlEncode</span>(payload),<br>
-&nbsp;&nbsp;secret <span style="color:#71717a">// your JWT secret (server-side only)</span><br>
+<strong style="font-size:.88rem">Signature (Green) — Verification</strong>
+<div style="background:#0a0a0a;border-radius:8px;padding:.75rem;margin-top:.5rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7">
+<span>HMACSHA256</span>(<br>
+&nbsp;&nbsp;<span>base64UrlEncode</span>(header) + <span>"."</span> + <span>base64UrlEncode</span>(payload),<br>
+&nbsp;&nbsp;secret <span>// your JWT secret (server-side only)</span><br>
 )
 </div>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.5rem 0 0;line-height:1.7">The server uses this to verify the token was not tampered with. If anyone changes the payload (e.g., swapping their user ID for another's), the signature will not match, and the server rejects the request.</p>
+<p style="font-size:.82rem;margin:.5rem 0 0;line-height:1.7">The server uses this to verify the token was not tampered with. If anyone changes the payload (e.g., swapping their user ID for another's), the signature will not match, and the server rejects the request.</p>
 </div>
 </div>
 
-<div style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#ef4444">Key insight:</strong> JWTs are <strong style="color:#e5e5e5">signed, not encrypted</strong>. Anyone can decode the payload (it is just base64). The signature only prevents tampering — it proves the data has not been modified since the server issued it. <strong style="color:#e5e5e5">Never put secrets in JWT payloads.</strong>
+<div style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;line-height:1.7">
+<strong>Key insight:</strong> JWTs are <strong>signed, not encrypted</strong>. Anyone can decode the payload (it is just base64). The signature only prevents tampering — it proves the data has not been modified since the server issued it. <strong>Never put secrets in JWT payloads.</strong>
 </div>
 </div>
 
@@ -83,12 +83,12 @@
 <h2>The Auth Flow: Signup to Database Query</h2>
 <p>Here is exactly what happens from the moment a user signs up to the moment they read their own data — and how JWT + RLS work together at each step.</p>
 
-<div style="display:grid;gap:.3rem;margin-top:1rem;font-size:.85rem;color:#a1a1aa;line-height:2">
-<div style="padding:.5rem .75rem;background:rgba(52,211,153,.04);border-radius:6px"><span style="color:#34d399;font-weight:700">1.</span> <strong style="color:#e5e5e5">User signs up</strong> — email + password sent to Supabase Auth via <code style="color:#f59e0b">supabase.auth.signUp()</code></div>
-<div style="padding:.5rem .75rem;background:rgba(139,92,246,.04);border-radius:6px"><span style="color:#8b5cf6;font-weight:700">2.</span> <strong style="color:#e5e5e5">Email verification</strong> — Supabase sends a magic link or OTP to confirm the address</div>
-<div style="padding:.5rem .75rem;background:rgba(251,146,60,.04);border-radius:6px"><span style="color:#fb923c;font-weight:700">3.</span> <strong style="color:#e5e5e5">JWT issued</strong> — after verification, Supabase returns an access token (1hr) + refresh token (long-lived)</div>
-<div style="padding:.5rem .75rem;background:rgba(244,114,182,.04);border-radius:6px"><span style="color:#f472b6;font-weight:700">4.</span> <strong style="color:#e5e5e5">Authenticated requests</strong> — the JWT travels in the <code style="color:#f59e0b">Authorization: Bearer</code> header with every API call</div>
-<div style="padding:.5rem .75rem;background:rgba(56,189,248,.04);border-radius:6px"><span style="color:#38bdf8;font-weight:700">5.</span> <strong style="color:#e5e5e5">RLS enforced</strong> — Postgres extracts <code style="color:#f59e0b">auth.uid()</code> from the JWT and scopes all queries to that user's rows</div>
+<div style="display:grid;gap:.3rem;margin-top:1rem;font-size:.85rem;line-height:2">
+<div style="padding:.5rem .75rem;background:rgba(52,211,153,.04);border-radius:6px"><span style="font-weight:700">1.</span> <strong>User signs up</strong> — email + password sent to Supabase Auth via <code>supabase.auth.signUp()</code></div>
+<div style="padding:.5rem .75rem;background:rgba(139,92,246,.04);border-radius:6px"><span style="font-weight:700">2.</span> <strong>Email verification</strong> — Supabase sends a magic link or OTP to confirm the address</div>
+<div style="padding:.5rem .75rem;background:rgba(251,146,60,.04);border-radius:6px"><span style="font-weight:700">3.</span> <strong>JWT issued</strong> — after verification, Supabase returns an access token (1hr) + refresh token (long-lived)</div>
+<div style="padding:.5rem .75rem;background:rgba(244,114,182,.04);border-radius:6px"><span style="font-weight:700">4.</span> <strong>Authenticated requests</strong> — the JWT travels in the <code>Authorization: Bearer</code> header with every API call</div>
+<div style="padding:.5rem .75rem;background:rgba(56,189,248,.04);border-radius:6px"><span style="font-weight:700">5.</span> <strong>RLS enforced</strong> — Postgres extracts <code>auth.uid()</code> from the JWT and scopes all queries to that user's rows</div>
 </div>
 </div>
 
@@ -96,8 +96,8 @@
 <h2>Supabase Auth in Code</h2>
 <p>The Supabase client handles token management automatically — storing tokens, refreshing expired ones, and attaching them to requests. You rarely need to touch JWTs directly.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JavaScript — Frontend auth with Supabase</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JavaScript — Frontend auth with Supabase</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { createClient } <span style="color:#c084fc">from</span> <span style="color:#fb923c">'@supabase/supabase-js'</span>
 
 <span style="color:#c084fc">const</span> supabase = <span style="color:#34d399">createClient</span>(
@@ -133,8 +133,8 @@ console.<span style="color:#34d399">log</span>(session.access_token) <span style
 <h2>Protecting Edge Functions with JWT</h2>
 <p>When your frontend calls an edge function, it sends the JWT in the Authorization header. The edge function verifies it before doing anything — this is the security gate for your backend.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — Edge function with JWT verification</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — Edge function with JWT verification</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { createClient } <span style="color:#c084fc">from</span> <span style="color:#fb923c">"https://esm.sh/@supabase/supabase-js@2"</span>
 
 Deno.<span style="color:#34d399">serve</span>(<span style="color:#c084fc">async</span> (req) => {
@@ -170,10 +170,10 @@ Deno.<span style="color:#34d399">serve</span>(<span style="color:#c084fc">async<
 
 <div class="card">
 <h2>RLS Policies: The Database Bouncer</h2>
-<p>Row Level Security is what makes JWT + Supabase truly powerful. Instead of checking permissions in your application code (where bugs can bypass them), <strong style="color:#e5e5e5">the database itself enforces who can see what</strong>.</p>
+<p>Row Level Security is what makes JWT + Supabase truly powerful. Instead of checking permissions in your application code (where bugs can bypass them), <strong>the database itself enforces who can see what</strong>.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — RLS policies that use JWT claims</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — RLS policies that use JWT claims</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">-- Enable RLS on a user-scoped table</span>
 <span style="color:#c084fc">ALTER TABLE</span> user_data <span style="color:#c084fc">ENABLE ROW LEVEL SECURITY</span>;
 
@@ -195,8 +195,8 @@ Deno.<span style="color:#34d399">serve</span>(<span style="color:#c084fc">async<
   <span style="color:#c084fc">WITH CHECK</span> ( <span style="color:#34d399">auth.uid</span>() = user_id );</code></pre>
 </div>
 
-<div style="background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">Why this is powerful:</strong> Even if your application code has a bug that forgets to filter by user_id, the database rejects unauthorized rows automatically. RLS is defense-in-depth — security at the lowest possible layer.
+<div style="background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;line-height:1.7">
+<strong>Why this is powerful:</strong> Even if your application code has a bug that forgets to filter by user_id, the database rejects unauthorized rows automatically. RLS is defense-in-depth — security at the lowest possible layer.
 </div>
 </div>
 
@@ -206,23 +206,23 @@ Deno.<span style="color:#34d399">serve</span>(<span style="color:#c084fc">async<
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem">
 <div style="padding:1rem 1.25rem;background:rgba(251,146,60,.04);border-radius:10px;border:1px solid rgba(251,146,60,.08)">
-<strong style="color:#fb923c;font-size:.88rem">Access Token (JWT)</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.5rem 0 0;line-height:1.7"><strong style="color:#e5e5e5">Lifespan:</strong> 1 hour (3600 seconds)</p>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.25rem 0 0;line-height:1.7"><strong style="color:#e5e5e5">Purpose:</strong> Sent with every API request to prove identity</p>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.25rem 0 0;line-height:1.7"><strong style="color:#e5e5e5">Storage:</strong> In memory (Supabase client manages this)</p>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.25rem 0 0;line-height:1.7"><strong style="color:#e5e5e5">If stolen:</strong> Attacker has access for up to 1 hour</p>
+<strong style="font-size:.88rem">Access Token (JWT)</strong>
+<p style="font-size:.82rem;margin:.5rem 0 0;line-height:1.7"><strong>Lifespan:</strong> 1 hour (3600 seconds)</p>
+<p style="font-size:.82rem;margin:.25rem 0 0;line-height:1.7"><strong>Purpose:</strong> Sent with every API request to prove identity</p>
+<p style="font-size:.82rem;margin:.25rem 0 0;line-height:1.7"><strong>Storage:</strong> In memory (Supabase client manages this)</p>
+<p style="font-size:.82rem;margin:.25rem 0 0;line-height:1.7"><strong>If stolen:</strong> Attacker has access for up to 1 hour</p>
 </div>
 <div style="padding:1rem 1.25rem;background:rgba(139,92,246,.04);border-radius:10px;border:1px solid rgba(139,92,246,.08)">
-<strong style="color:#8b5cf6;font-size:.88rem">Refresh Token</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.5rem 0 0;line-height:1.7"><strong style="color:#e5e5e5">Lifespan:</strong> Long-lived (configurable, typically days/weeks)</p>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.25rem 0 0;line-height:1.7"><strong style="color:#e5e5e5">Purpose:</strong> Used ONLY to silently get a new access token</p>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.25rem 0 0;line-height:1.7"><strong style="color:#e5e5e5">Storage:</strong> HTTP-only cookie (browser cannot read it via JS)</p>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.25rem 0 0;line-height:1.7"><strong style="color:#e5e5e5">If stolen:</strong> Revoke it immediately in Supabase dashboard</p>
+<strong style="font-size:.88rem">Refresh Token</strong>
+<p style="font-size:.82rem;margin:.5rem 0 0;line-height:1.7"><strong>Lifespan:</strong> Long-lived (configurable, typically days/weeks)</p>
+<p style="font-size:.82rem;margin:.25rem 0 0;line-height:1.7"><strong>Purpose:</strong> Used ONLY to silently get a new access token</p>
+<p style="font-size:.82rem;margin:.25rem 0 0;line-height:1.7"><strong>Storage:</strong> HTTP-only cookie (browser cannot read it via JS)</p>
+<p style="font-size:.82rem;margin:.25rem 0 0;line-height:1.7"><strong>If stolen:</strong> Revoke it immediately in Supabase dashboard</p>
 </div>
 </div>
 
-<div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">The Supabase client handles this automatically.</strong> When the access token expires, the client silently uses the refresh token to get a new one. Your users never see a login screen mid-session. You do not need to write any token refresh logic.
+<div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;line-height:1.7">
+<strong>The Supabase client handles this automatically.</strong> When the access token expires, the client silently uses the refresh token to get a new one. Your users never see a login screen mid-session. You do not need to write any token refresh logic.
 </div>
 </div>
 
@@ -234,12 +234,12 @@ Deno.<span style="color:#34d399">serve</span>(<span style="color:#c084fc">async<
 <table style="width:100%;border-collapse:collapse;font-size:.82rem">
 <thead>
 <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
-<th style="text-align:left;padding:.75rem;color:#e5e5e5;font-weight:600">Mistake</th>
-<th style="text-align:left;padding:.75rem;color:#e5e5e5;font-weight:600">Risk</th>
-<th style="text-align:left;padding:.75rem;color:#e5e5e5;font-weight:600">Fix</th>
+<th style="text-align:left;padding:.75rem;font-weight:600">Mistake</th>
+<th style="text-align:left;padding:.75rem;font-weight:600">Risk</th>
+<th style="text-align:left;padding:.75rem;font-weight:600">Fix</th>
 </tr>
 </thead>
-<tbody style="color:#a1a1aa">
+<tbody>
 <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
 <td style="padding:.75rem">Storing JWT in localStorage</td>
 <td style="padding:.75rem">XSS attack can steal the token</td>
@@ -263,7 +263,7 @@ Deno.<span style="color:#34d399">serve</span>(<span style="color:#c084fc">async<
 <tr>
 <td style="padding:.75rem">Not verifying JWT in edge functions</td>
 <td style="padding:.75rem">Anyone can call your API without authentication</td>
-<td style="padding:.75rem">Always call <code style="color:#f59e0b">supabase.auth.getUser()</code> before processing</td>
+<td style="padding:.75rem">Always call <code>supabase.auth.getUser()</code> before processing</td>
 </tr>
 </tbody>
 </table>

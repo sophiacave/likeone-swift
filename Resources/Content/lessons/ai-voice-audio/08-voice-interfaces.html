@@ -37,10 +37,10 @@
   <span class="section-label">Architecture</span>
   <h2 class="section-title">How Voice Apps Work</h2>
   <p class="section-text">A modern voice interface has three layers that chain together in real time:</p>
-  <p class="section-text"><strong style="color: var(--orange);">Ears (STT):</strong> Convert the user's speech to text. Whisper, Deepgram, or the Web Speech API. Latency matters here — users expect sub-second response. Deepgram's streaming API is the speed champion.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Brain (LLM):</strong> Process the text, understand intent, generate a response. Claude, GPT-4, or a local model. The brain decides what to say and can trigger actions — look up data, control devices, make API calls.</p>
-  <p class="section-text"><strong style="color: var(--green);">Mouth (TTS):</strong> Convert the response back to speech. ElevenLabs, OpenAI TTS, or Edge TTS. Voice quality and latency both matter. Users will tolerate a smart response that takes a second. They won't tolerate a robotic voice.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Speech-to-Speech (S2S):</strong> The newest paradigm skips the text layer entirely. OpenAI's Realtime API and similar models process audio in, audio out. Lower latency, more natural conversation flow, and the AI can use tone and inflection as input signals.</p>
+  <p class="section-text"><strong>Ears (STT):</strong> Convert the user's speech to text. Whisper, Deepgram, or the Web Speech API. Latency matters here — users expect sub-second response. Deepgram's streaming API is the speed champion.</p>
+  <p class="section-text"><strong>Brain (LLM):</strong> Process the text, understand intent, generate a response. Claude, GPT-4, or a local model. The brain decides what to say and can trigger actions — look up data, control devices, make API calls.</p>
+  <p class="section-text"><strong>Mouth (TTS):</strong> Convert the response back to speech. ElevenLabs, OpenAI TTS, or Edge TTS. Voice quality and latency both matter. Users will tolerate a smart response that takes a second. They won't tolerate a robotic voice.</p>
+  <p class="section-text"><strong>Speech-to-Speech (S2S):</strong> The newest paradigm skips the text layer entirely. OpenAI's Realtime API and similar models process audio in, audio out. Lower latency, more natural conversation flow, and the AI can use tone and inflection as input signals.</p>
 </div>
 
 <div class="lesson-section">
@@ -56,7 +56,7 @@
   <span class="section-label">Code Example</span>
   <h2 class="section-title">Building a Voice Assistant in Python</h2>
   <p class="section-text">Here is a complete voice loop in Python that listens, thinks, and speaks — the same architecture powering commercial voice assistants:</p>
-  <div class="prompt-box"><code>import speech_recognition as sr
+  <div class="demo-container"><code>import speech_recognition as sr
 from openai import OpenAI
 import edge_tts
 import asyncio
@@ -167,10 +167,10 @@ while True:
   <p class="section-text"><strong>The no-error-recovery problem:</strong> When the system mishears the user and has no graceful way to correct course. Always offer correction mechanisms — "I heard you say 'blue shirt.' Is that right?" Never commit to irreversible actions based on a single voice input without confirmation.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It: Build a Voice Loop</h3>
   <p>Create a simple voice interface using browser APIs. Open your browser console and run this concept:</p>
-  <div class="prompt-box"><code>The simplest voice loop:
+  <div class="demo-container"><code>The simplest voice loop:
 1. Web Speech API listens → captures user speech as text
 2. Send text to Claude API → get response
 3. Feed response to ElevenLabs TTS → play audio

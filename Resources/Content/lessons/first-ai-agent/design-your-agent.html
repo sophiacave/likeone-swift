@@ -10,7 +10,7 @@
 
 <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#34d399">goal</span> <span style="color:#71717a">&rarr;</span> <span style="color:#fb923c">tools</span> <span style="color:#71717a">&rarr;</span> <span style="color:#38bdf8">memory</span> <span style="color:#71717a">&rarr;</span> <span style="color:#f87171">guardrails</span> <span style="color:#71717a">&rarr;</span> <span style="color:#8b5cf6">agent loop</span></div></div>
 
-<h2 style="color:#e5e5e5;margin:2.5rem 0 .5rem">The Five Pillars of Agent Design</h2>
+<h2 style="margin:2.5rem 0 .5rem">The Five Pillars of Agent Design</h2>
 <div class="lo-vis" role="figure" aria-label="Five design decisions for every agent">
 <div class="lo-vis__title">Agent Design Pillars</div>
 <div class="lo-steps" data-count="5">
@@ -27,57 +27,57 @@
 <div class="lo-vis__caption">Five <strong>decisions</strong> before you write a single line of code.</div>
 </div>
 
-<p style="color:#a1a1aa;margin-bottom:1.5rem">Every effective agent rests on five design decisions. Get these right and everything else — prompts, code, deployment — falls into place. Get them wrong and no amount of engineering fixes a confused agent.</p>
+<p style="margin-bottom:1.5rem">Every effective agent rests on five design decisions. Get these right and everything else — prompts, code, deployment — falls into place. Get them wrong and no amount of engineering fixes a confused agent.</p>
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-bottom:2.5rem">
 
   <!-- Pillar 1: Name -->
   <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem">
-    <div style="font-size:1.1rem;font-weight:700;color:#34d399;margin-bottom:.4rem">1. Name</div>
-    <p style="color:#e5e5e5;margin:0 0 .6rem;line-height:1.6">A name gives your agent <strong>identity</strong>. It makes the agent memorable to users and distinguishes it from generic assistants. A clear name also anchors your own thinking — you stop saying "the bot" and start saying "Scout found an issue."</p>
+    <div style="font-size:1.1rem;font-weight:700;margin-bottom:.4rem">1. Name</div>
+    <p style="margin:0 0 .6rem;line-height:1.6">A name gives your agent <strong>identity</strong>. It makes the agent memorable to users and distinguishes it from generic assistants. A clear name also anchors your own thinking — you stop saying "the bot" and start saying "Scout found an issue."</p>
     <div style="background:rgba(52,211,153,.08);border-left:3px solid #34d399;padding:.6rem .8rem;border-radius:0 6px 6px 0">
-      <div style="font-size:.75rem;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
-      <div style="color:#a1a1aa;font-family:'JetBrains Mono',monospace;font-size:.82rem"><span style="color:#34d399">Scout</span> — a website monitoring agent. Short, active, implies watchfulness.</div>
+      <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.82rem"><span>Scout</span> — a website monitoring agent. Short, active, implies watchfulness.</div>
     </div>
   </div>
 
   <!-- Pillar 2: Goal -->
   <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem">
-    <div style="font-size:1.1rem;font-weight:700;color:#8b5cf6;margin-bottom:.4rem">2. Goal</div>
-    <p style="color:#e5e5e5;margin:0 0 .6rem;line-height:1.6">One clear sentence that answers three questions: <strong>what</strong> does it do, <strong>for whom</strong>, and <strong>to what standard</strong>? A vague goal like "help with stuff" produces an agent that spins in circles. A precise goal gives the agent a finish line.</p>
+    <div style="font-size:1.1rem;font-weight:700;margin-bottom:.4rem">2. Goal</div>
+    <p style="margin:0 0 .6rem;line-height:1.6">One clear sentence that answers three questions: <strong>what</strong> does it do, <strong>for whom</strong>, and <strong>to what standard</strong>? A vague goal like "help with stuff" produces an agent that spins in circles. A precise goal gives the agent a finish line.</p>
     <div style="background:rgba(139,92,246,.08);border-left:3px solid #8b5cf6;padding:.6rem .8rem;border-radius:0 6px 6px 0">
-      <div style="font-size:.75rem;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
-      <div style="color:#a1a1aa;font-family:'JetBrains Mono',monospace;font-size:.82rem"><span style="color:#8b5cf6">"Monitor my portfolio site and fix downtime within 60 seconds, alerting me only if a restart fails."</span></div>
+      <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.82rem"><span>"Monitor my portfolio site and fix downtime within 60 seconds, alerting me only if a restart fails."</span></div>
     </div>
   </div>
 
   <!-- Pillar 3: Tools -->
   <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem">
-    <div style="font-size:1.1rem;font-weight:700;color:#fb923c;margin-bottom:.4rem">3. Tools</div>
-    <p style="color:#e5e5e5;margin:0 0 .6rem;line-height:1.6">Tools are the agent's <strong>hands</strong>. Pick a focused set of 2-4 that directly serve the goal. Every extra tool is a decision the agent must make — and decisions cost tokens, time, and accuracy. Start lean; add tools only when the agent demonstrably needs them.</p>
+    <div style="font-size:1.1rem;font-weight:700;margin-bottom:.4rem">3. Tools</div>
+    <p style="margin:0 0 .6rem;line-height:1.6">Tools are the agent's <strong>hands</strong>. Pick a focused set of 2-4 that directly serve the goal. Every extra tool is a decision the agent must make — and decisions cost tokens, time, and accuracy. Start lean; add tools only when the agent demonstrably needs them.</p>
     <div style="background:rgba(251,146,60,.08);border-left:3px solid #fb923c;padding:.6rem .8rem;border-radius:0 6px 6px 0">
-      <div style="font-size:.75rem;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
-      <div style="color:#a1a1aa;font-family:'JetBrains Mono',monospace;font-size:.82rem"><span style="color:#fb923c">health_check</span>, <span style="color:#fb923c">restart_service</span>, <span style="color:#fb923c">send_alert</span> — three tools, one per capability Scout needs.</div>
+      <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.82rem"><span>health_check</span>, <span>restart_service</span>, <span>send_alert</span> — three tools, one per capability Scout needs.</div>
     </div>
   </div>
 
   <!-- Pillar 4: Memory -->
   <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem">
-    <div style="font-size:1.1rem;font-weight:700;color:#38bdf8;margin-bottom:.4rem">4. Memory</div>
-    <p style="color:#e5e5e5;margin:0 0 .6rem;line-height:1.6">Memory is what the agent carries <strong>between sessions</strong>. Without it, every conversation starts from zero. Good memory stores three things: <em>preferences</em> (how the user likes things), <em>outcomes</em> (what worked and what failed), and <em>patterns</em> (recurring situations the agent should recognize).</p>
+    <div style="font-size:1.1rem;font-weight:700;margin-bottom:.4rem">4. Memory</div>
+    <p style="margin:0 0 .6rem;line-height:1.6">Memory is what the agent carries <strong>between sessions</strong>. Without it, every conversation starts from zero. Good memory stores three things: <em>preferences</em> (how the user likes things), <em>outcomes</em> (what worked and what failed), and <em>patterns</em> (recurring situations the agent should recognize).</p>
     <div style="background:rgba(56,189,248,.08);border-left:3px solid #38bdf8;padding:.6rem .8rem;border-radius:0 6px 6px 0">
-      <div style="font-size:.75rem;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
-      <div style="color:#a1a1aa;font-family:'JetBrains Mono',monospace;font-size:.82rem"><span style="color:#38bdf8">Past incidents</span>, <span style="color:#38bdf8">normal response times</span>, <span style="color:#38bdf8">which restarts fixed which errors</span> — Scout gets smarter every run.</div>
+      <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.82rem"><span>Past incidents</span>, <span>normal response times</span>, <span>which restarts fixed which errors</span> — Scout gets smarter every run.</div>
     </div>
   </div>
 
   <!-- Pillar 5: Guardrails -->
   <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem">
-    <div style="font-size:1.1rem;font-weight:700;color:#ef4444;margin-bottom:.4rem">5. Guardrails</div>
-    <p style="color:#e5e5e5;margin:0 0 .6rem;line-height:1.6">Guardrails are <strong>hard safety constraints</strong> — lines the agent must never cross, even if explicitly asked. They protect against catastrophic mistakes like deleting data, leaking secrets, or spending money without approval. Think of them as the agent's conscience.</p>
+    <div style="font-size:1.1rem;font-weight:700;margin-bottom:.4rem">5. Guardrails</div>
+    <p style="margin:0 0 .6rem;line-height:1.6">Guardrails are <strong>hard safety constraints</strong> — lines the agent must never cross, even if explicitly asked. They protect against catastrophic mistakes like deleting data, leaking secrets, or spending money without approval. Think of them as the agent's conscience.</p>
     <div style="background:rgba(239,68,68,.08);border-left:3px solid #ef4444;padding:.6rem .8rem;border-radius:0 6px 6px 0">
-      <div style="font-size:.75rem;color:#71717a;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
-      <div style="color:#a1a1aa;font-family:'JetBrains Mono',monospace;font-size:.82rem"><span style="color:#ef4444">"Never delete production data"</span> and <span style="color:#ef4444">"Never restart more than 2 times without human approval"</span></div>
+      <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.25rem">Example</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.82rem"><span>"Never delete production data"</span> and <span>"Never restart more than 2 times without human approval"</span></div>
     </div>
   </div>
 
@@ -85,7 +85,7 @@
 
 <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#34d399">name</span> <span style="color:#71717a">+</span> <span style="color:#8b5cf6">goal</span> <span style="color:#71717a">+</span> <span style="color:#fb923c">3 tools</span> <span style="color:#71717a">+</span> <span style="color:#38bdf8">memory</span> <span style="color:#71717a">+</span> <span style="color:#f87171">guardrail</span> <span style="color:#71717a">=</span> <span style="color:#c084fc">complete spec</span></div></div>
 
-<p style="color:#a1a1aa;margin-bottom:2rem">Now that you understand the five pillars, use the interactive form below to design your own agent. Fill in each section and watch your agent's identity card build in real time.</p>
+<p style="margin-bottom:2rem">Now that you understand the five pillars, use the interactive form below to design your own agent. Fill in each section and watch your agent's identity card build in real time.</p>
 
   <div class="design-grid">
     <div class="form-section">
@@ -153,8 +153,8 @@
     <p>You just created a complete agent specification. In the next lesson, you'll turn this into a system prompt. Here's what your design looks like as code — this is the format you'll use to configure a real agent:</p>
   </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Agent design spec as code</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Agent design spec as code</div>
 <pre style="margin:0;color:#e5e5e5"><code>AGENT_CONFIG = {
     <span style="color:#fb923c">"name"</span>: <span style="color:#fb923c">"Scout"</span>,
     <span style="color:#fb923c">"goal"</span>: <span style="color:#fb923c">"Monitor my website and fix issues before I notice them"</span>,
@@ -183,40 +183,40 @@
 
 <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="color:#34d399">design pillars</span> <span style="color:#71717a">&rarr;</span> <span style="color:#8b5cf6">system prompt blocks</span> <span style="color:#71717a">&rarr;</span> <span style="color:#fb923c">deployed agent</span></div></div>
 
-<h2 style="color:#e5e5e5;margin:2.5rem 0 .5rem">From Design to System Prompt</h2>
-<p style="color:#a1a1aa;margin-bottom:1rem">Your five design decisions map directly to blocks inside a <strong>system prompt</strong> — the instruction document that tells your AI model how to behave. A well-structured system prompt has six blocks (the five pillars plus an output format block). Here is how they connect:</p>
+<h2 style="margin:2.5rem 0 .5rem">From Design to System Prompt</h2>
+<p style="margin-bottom:1rem">Your five design decisions map directly to blocks inside a <strong>system prompt</strong> — the instruction document that tells your AI model how to behave. A well-structured system prompt has six blocks (the five pillars plus an output format block). Here is how they connect:</p>
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:.75rem;margin-bottom:1.5rem">
   <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.8rem 1rem">
-    <span style="color:#34d399;font-weight:700">Name</span> <span style="color:#71717a">&rarr;</span> <span style="color:#e5e5e5">Identity block</span>
-    <div style="color:#a1a1aa;font-size:.82rem;margin-top:.25rem">Tells the model who it is, what personality to adopt, and how to introduce itself.</div>
+    <span style="font-weight:700">Name</span> <span>&rarr;</span> <span>Identity block</span>
+    <div style="font-size:.82rem;margin-top:.25rem">Tells the model who it is, what personality to adopt, and how to introduce itself.</div>
   </div>
   <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.8rem 1rem">
-    <span style="color:#8b5cf6;font-weight:700">Goal</span> <span style="color:#71717a">&rarr;</span> <span style="color:#e5e5e5">Goal block</span>
-    <div style="color:#a1a1aa;font-size:.82rem;margin-top:.25rem">Defines the mission. The model evaluates every action against this sentence.</div>
+    <span style="font-weight:700">Goal</span> <span>&rarr;</span> <span>Goal block</span>
+    <div style="font-size:.82rem;margin-top:.25rem">Defines the mission. The model evaluates every action against this sentence.</div>
   </div>
   <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.8rem 1rem">
-    <span style="color:#fb923c;font-weight:700">Tools</span> <span style="color:#71717a">&rarr;</span> <span style="color:#e5e5e5">Tools block</span>
-    <div style="color:#a1a1aa;font-size:.82rem;margin-top:.25rem">Lists available functions with descriptions so the model knows when to call each one.</div>
+    <span style="font-weight:700">Tools</span> <span>&rarr;</span> <span>Tools block</span>
+    <div style="font-size:.82rem;margin-top:.25rem">Lists available functions with descriptions so the model knows when to call each one.</div>
   </div>
   <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.8rem 1rem">
-    <span style="color:#38bdf8;font-weight:700">Memory</span> <span style="color:#71717a">&rarr;</span> <span style="color:#e5e5e5">Memory block</span>
-    <div style="color:#a1a1aa;font-size:.82rem;margin-top:.25rem">Tells the model what context to load, store, and reference across sessions.</div>
+    <span style="font-weight:700">Memory</span> <span>&rarr;</span> <span>Memory block</span>
+    <div style="font-size:.82rem;margin-top:.25rem">Tells the model what context to load, store, and reference across sessions.</div>
   </div>
   <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.8rem 1rem">
-    <span style="color:#ef4444;font-weight:700">Guardrails</span> <span style="color:#71717a">&rarr;</span> <span style="color:#e5e5e5">Guardrails block</span>
-    <div style="color:#a1a1aa;font-size:.82rem;margin-top:.25rem">Hard constraints the model must never violate, regardless of user instructions.</div>
+    <span style="font-weight:700">Guardrails</span> <span>&rarr;</span> <span>Guardrails block</span>
+    <div style="font-size:.82rem;margin-top:.25rem">Hard constraints the model must never violate, regardless of user instructions.</div>
   </div>
   <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:.8rem 1rem">
-    <span style="color:#c084fc;font-weight:700">+ Output Format</span> <span style="color:#71717a">&rarr;</span> <span style="color:#e5e5e5">Output block</span>
-    <div style="color:#a1a1aa;font-size:.82rem;margin-top:.25rem">Specifies how responses should be structured — JSON, markdown, plain text, etc.</div>
+    <span style="font-weight:700">+ Output Format</span> <span>&rarr;</span> <span>Output block</span>
+    <div style="font-size:.82rem;margin-top:.25rem">Specifies how responses should be structured — JSON, markdown, plain text, etc.</div>
   </div>
 </div>
 
-<p style="color:#a1a1aa;margin-bottom:1rem">Here is a complete system prompt built from Scout's design. Notice how every block maps back to a pillar:</p>
+<p style="margin-bottom:1rem">Here is a complete system prompt built from Scout's design. Notice how every block maps back to a pillar:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">System Prompt — Scout agent (all 6 blocks)</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">System Prompt — Scout agent (all 6 blocks)</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#34d399"># IDENTITY</span>
 You are <span style="color:#34d399">Scout</span>, a website monitoring agent.
 You are professional, concise, and action-oriented.
@@ -253,14 +253,14 @@ Respond in this structure:
   <span style="color:#c084fc">next_check</span>: seconds until next health check</code></pre>
 </div>
 
-<p style="color:#a1a1aa;margin-bottom:.5rem"><strong style="color:#e5e5e5">Why each block matters:</strong></p>
-<ul style="color:#a1a1aa;line-height:1.8;margin-bottom:2rem;padding-left:1.25rem">
-  <li><span style="color:#34d399">Identity</span> sets the tone. Without it, the model defaults to a generic assistant voice.</li>
-  <li><span style="color:#8b5cf6">Goal</span> is the decision filter. Every action the agent considers gets measured against this sentence.</li>
-  <li><span style="color:#fb923c">Tools</span> define the boundary of what the agent <em>can</em> do. Listing them explicitly prevents hallucinated tool calls.</li>
-  <li><span style="color:#38bdf8">Memory</span> turns a stateless model into a persistent agent that improves over time.</li>
-  <li><span style="color:#ef4444">Guardrails</span> are your safety net. They override everything else — including direct user requests.</li>
-  <li><span style="color:#c084fc">Output format</span> makes responses predictable, which matters when other code parses the agent's output.</li>
+<p style="margin-bottom:.5rem"><strong>Why each block matters:</strong></p>
+<ul style="line-height:1.8;margin-bottom:2rem;padding-left:1.25rem">
+  <li><span>Identity</span> sets the tone. Without it, the model defaults to a generic assistant voice.</li>
+  <li><span>Goal</span> is the decision filter. Every action the agent considers gets measured against this sentence.</li>
+  <li><span>Tools</span> define the boundary of what the agent <em>can</em> do. Listing them explicitly prevents hallucinated tool calls.</li>
+  <li><span>Memory</span> turns a stateless model into a persistent agent that improves over time.</li>
+  <li><span>Guardrails</span> are your safety net. They override everything else — including direct user requests.</li>
+  <li><span>Output format</span> makes responses predictable, which matters when other code parses the agent's output.</li>
 </ul>
 
   <div class="quiz-block">

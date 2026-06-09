@@ -72,20 +72,20 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">Small Chunks (50-200 words)</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">High precision — each chunk covers one idea. Great for specific factual questions ("What is the max upload size?"). Faster to embed. But may lose context needed to understand the passage ("This causes X" — what is "This"?).</p>
+        <strong style="font-size:.85rem">Small Chunks (50-200 words)</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">High precision — each chunk covers one idea. Great for specific factual questions ("What is the max upload size?"). Faster to embed. But may lose context needed to understand the passage ("This causes X" — what is "This"?).</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6;font-size:.85rem">Medium Chunks (200-500 words)</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The sweet spot for most RAG systems. Enough context to stand alone, focused enough to be relevant. Start here and adjust based on evaluation. This is what most production systems use.</p>
+        <strong style="font-size:.85rem">Medium Chunks (200-500 words)</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">The sweet spot for most RAG systems. Enough context to stand alone, focused enough to be relevant. Start here and adjust based on evaluation. This is what most production systems use.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c;font-size:.85rem">Large Chunks (500-1000 words)</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Good for complex questions requiring reasoning across multiple paragraphs. Better context preservation. But may include irrelevant material that confuses the LLM and wastes context window tokens.</p>
+        <strong style="font-size:.85rem">Large Chunks (500-1000 words)</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Good for complex questions requiring reasoning across multiple paragraphs. Better context preservation. But may include irrelevant material that confuses the LLM and wastes context window tokens.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Danger Zones</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Below 50 words: meaningless fragments. "The cat sat on" tells the LLM nothing. Above 1000 words: a chunk about 10 topics matches everything poorly. Both extremes degrade retrieval quality.</p>
+        <strong style="font-size:.85rem">Danger Zones</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Below 50 words: meaningless fragments. "The cat sat on" tells the LLM nothing. Above 1000 words: a chunk about 10 topics matches everything poorly. Both extremes degrade retrieval quality.</p>
       </div>
     </div>
   </div>
@@ -103,10 +103,10 @@
     <h2>Chunking Strategies in Code</h2>
     <p>There are four main approaches to chunking, each with different tradeoffs. Here is how to implement each one:</p>
 
-    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem;color:#e5e5e5">1. Fixed-Size Chunking</h3>
+    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem">1. Fixed-Size Chunking</h3>
     <p>The simplest approach — split every N words regardless of sentence boundaries. Fast and predictable but can cut sentences mid-thought.</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">fixed_size_chunk</span>(text, chunk_size=<span style="color:#fbbf24">200</span>, overlap=<span style="color:#fbbf24">30</span>):
     <span style="color:#fb923c">"""Split text into fixed-size word chunks with overlap."""</span>
     words = text.split()
@@ -126,10 +126,10 @@ chunks = fixed_size_chunk(document_text)
 <span style="color:#34d399">print</span>(<span style="color:#c084fc">f</span><span style="color:#fbbf24">"{len(chunks)} chunks created"</span>)</code></pre>
     </div>
 
-    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem;color:#e5e5e5">2. Sentence-Based Chunking</h3>
+    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem">2. Sentence-Based Chunking</h3>
     <p>Groups complete sentences until the chunk reaches the target size. Respects natural language boundaries — never cuts a sentence in half.</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> re
 
 <span style="color:#c084fc">def</span> <span style="color:#38bdf8">sentence_chunk</span>(text, max_words=<span style="color:#fbbf24">200</span>, overlap_sentences=<span style="color:#fbbf24">1</span>):
@@ -154,10 +154,10 @@ chunks = fixed_size_chunk(document_text)
     <span style="color:#c084fc">return</span> chunks</code></pre>
     </div>
 
-    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem;color:#e5e5e5">3. Paragraph-Based Chunking</h3>
+    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem">3. Paragraph-Based Chunking</h3>
     <p>Uses double newlines as natural split points. Respects document structure — each paragraph becomes one or more chunks. Best for well-structured documents like technical docs, articles, and manuals.</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">paragraph_chunk</span>(text, max_words=<span style="color:#fbbf24">300</span>):
     <span style="color:#fb923c">"""Split text by paragraphs, merging short ones."""</span>
     paragraphs = [p.strip() <span style="color:#c084fc">for</span> p <span style="color:#c084fc">in</span> text.split(<span style="color:#fbbf24">"\n\n"</span>) <span style="color:#c084fc">if</span> p.strip()]
@@ -179,10 +179,10 @@ chunks = fixed_size_chunk(document_text)
     <span style="color:#c084fc">return</span> chunks</code></pre>
     </div>
 
-    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem;color:#e5e5e5">4. Semantic Chunking</h3>
+    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem">4. Semantic Chunking</h3>
     <p>The most sophisticated approach — split at natural topic shifts detected by the embedding model. Embed each sentence, then split where the cosine similarity between consecutive sentences drops below a threshold. Most accurate but most computationally expensive.</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> numpy <span style="color:#c084fc">as</span> np
 <span style="color:#c084fc">from</span> openai <span style="color:#c084fc">import</span> OpenAI
 
@@ -212,14 +212,14 @@ client = OpenAI()
         chunks.append(<span style="color:#fbbf24">" "</span>.join(current))
     <span style="color:#c084fc">return</span> chunks</code></pre>
     </div>
-    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Semantic chunking costs extra API calls (one embedding per sentence), so it is best reserved for high-value documents where retrieval quality is critical.</p>
+    <p style="font-size:.82rem;margin-top:.5rem">Semantic chunking costs extra API calls (one embedding per sentence), so it is best reserved for high-value documents where retrieval quality is critical.</p>
   </div>
 
   <div class="section">
     <h2>Which Strategy Should You Use?</h2>
 
-    <div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#e5e5e5">Decision Guide:</strong><br>
+    <div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;line-height:1.7">
+      <strong>Decision Guide:</strong><br>
       <strong>FAQ / support docs:</strong> Sentence-based, 100-200 words. Each chunk should contain one complete answer.<br>
       <strong>Technical documentation:</strong> Paragraph-based, 200-400 words. Respects the document's own structure.<br>
       <strong>Legal contracts:</strong> Paragraph-based, 300-500 words. Larger chunks preserve clause context.<br>
@@ -232,11 +232,11 @@ client = OpenAI()
   <div class="section">
     <h2>Common Mistakes</h2>
 
-    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#ef4444">Mistake 1: Zero overlap.</strong> Sentences at chunk boundaries are lost. Always use at least 10% overlap.<br><br>
-      <strong style="color:#ef4444">Mistake 2: One chunk size for all document types.</strong> A 500-word chunk works for manuals but is too large for FAQs. Adapt chunk size to your content.<br><br>
-      <strong style="color:#ef4444">Mistake 3: Not testing with real queries.</strong> The "best" chunk size depends on your specific documents and the questions users actually ask. Run evaluation (Lesson 8) with different sizes before committing.<br><br>
-      <strong style="color:#ef4444">Mistake 4: Chunking without preserving metadata.</strong> Each chunk should carry the source document ID, section title, and page number. Without this, retrieved chunks are context-less fragments.
+    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;line-height:1.7">
+      <strong>Mistake 1: Zero overlap.</strong> Sentences at chunk boundaries are lost. Always use at least 10% overlap.<br><br>
+      <strong>Mistake 2: One chunk size for all document types.</strong> A 500-word chunk works for manuals but is too large for FAQs. Adapt chunk size to your content.<br><br>
+      <strong>Mistake 3: Not testing with real queries.</strong> The "best" chunk size depends on your specific documents and the questions users actually ask. Run evaluation (Lesson 8) with different sizes before committing.<br><br>
+      <strong>Mistake 4: Chunking without preserving metadata.</strong> Each chunk should carry the source document ID, section title, and page number. Without this, retrieved chunks are context-less fragments.
     </div>
   </div>
 

@@ -54,26 +54,26 @@
 
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
     <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-      <strong style="color:#34d399;font-size:.88rem">Be specific, not vague</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Vague: "Tell me about dogs." Specific: "List the top 5 dog breeds for apartment living, with pros and cons for each." The more specific your instruction, the more useful the output. Think of the AI as an eager intern — incredibly capable, but needs clear direction.</p>
+      <strong style="font-size:.88rem">Be specific, not vague</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">Vague: "Tell me about dogs." Specific: "List the top 5 dog breeds for apartment living, with pros and cons for each." The more specific your instruction, the more useful the output. Think of the AI as an eager intern — incredibly capable, but needs clear direction.</p>
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-      <strong style="color:#8b5cf6;font-size:.88rem">Structure your prompt</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Break your prompt into clear sections. Use labels like "Context:", "Task:", "Format:", "Constraints:". Just like a well-organized email is easier to act on than a rambling paragraph, a structured prompt produces more focused output. The AI can distinguish what is background from what is the actual request.</p>
+      <strong style="font-size:.88rem">Structure your prompt</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">Break your prompt into clear sections. Use labels like "Context:", "Task:", "Format:", "Constraints:". Just like a well-organized email is easier to act on than a rambling paragraph, a structured prompt produces more focused output. The AI can distinguish what is background from what is the actual request.</p>
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-      <strong style="color:#fb923c;font-size:.88rem">Iterate and refine</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Your first prompt is rarely your best. Start with a simple version, see what comes back, then refine. Add constraints to fix problems: if the output is too long, add "Keep it under 100 words." If it is too formal, add "Use a casual, friendly tone." Each iteration teaches you what the AI needs to hear.</p>
+      <strong style="font-size:.88rem">Iterate and refine</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">Your first prompt is rarely your best. Start with a simple version, see what comes back, then refine. Add constraints to fix problems: if the output is too long, add "Keep it under 100 words." If it is too formal, add "Use a casual, friendly tone." Each iteration teaches you what the AI needs to hear.</p>
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-      <strong style="color:#38bdf8;font-size:.88rem">Know when to use which technique</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The four techniques below are your core toolkit. Each is best for a different type of task. Learning when to use each one — and when to combine them — is what separates a casual user from a prompt engineer. The good news: the decision tree is simple, and practice makes it second nature.</p>
+      <strong style="font-size:.88rem">Know when to use which technique</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">The four techniques below are your core toolkit. Each is best for a different type of task. Learning when to use each one — and when to combine them — is what separates a casual user from a prompt engineer. The good news: the decision tree is simple, and practice makes it second nature.</p>
     </div>
   </div>
 
   <p class="section-text" style="margin-top:1.25rem">Here are the common anti-patterns — mistakes that make AI outputs worse:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.5;overflow-x:auto">
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.5;overflow-x:auto">
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">  PROMPT ANTI-PATTERNS (avoid these)</span>
 
   <span style="color:#ef4444">BAD</span>: "Write something about marketing"
@@ -183,8 +183,8 @@ TIP: Include expertise level, style, focus areas, and what to avoid.</div>
   <h2 class="section-title">Each technique in real Python.</h2>
   <p class="section-text">Here is how each technique looks when you call the Claude API. These are production-ready patterns you can copy directly:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — zero-shot classification</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — zero-shot classification</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 client = anthropic.Anthropic()
@@ -202,8 +202,8 @@ response = client.messages.create(
 )</code></pre>
 </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — few-shot (teach by example)</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — few-shot (teach by example)</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Few-shot: give 2 examples, then the real task</span>
 prompt = <span style="color:#fbbf24">"""Extract the product and sentiment:
 
@@ -224,8 +224,8 @@ response = client.messages.create(
 <span style="color:#71717a"># → Product: standing desk | Sentiment: positive</span></code></pre>
 </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — chain-of-thought (step-by-step reasoning)</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — chain-of-thought (step-by-step reasoning)</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Chain-of-thought: "think step by step" = 2x accuracy</span>
 response = client.messages.create(
     model=<span style="color:#fbbf24">"claude-sonnet-4-6"</span>,
@@ -239,8 +239,8 @@ response = client.messages.create(
 )</code></pre>
 </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — role-play (expert persona via system prompt)</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — role-play (expert persona via system prompt)</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Role-play: system prompt sets the expert persona</span>
 response = client.messages.create(
     model=<span style="color:#fbbf24">"claude-sonnet-4-6"</span>,
@@ -259,7 +259,7 @@ app.get("/user", (req, res) => {
     }]
 )</code></pre>
 </div>
-<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">Notice the pattern: zero-shot and chain-of-thought modify the <em>user message</em>. Role-play uses the <em>system prompt</em>. Few-shot embeds examples <em>inside</em> the user message. Same API call — different strategy.</p>
+<p style="font-size:.85rem;margin-top:.5rem">Notice the pattern: zero-shot and chain-of-thought modify the <em>user message</em>. Role-play uses the <em>system prompt</em>. Few-shot embeds examples <em>inside</em> the user message. Same API call — different strategy.</p>
 
 </div>
 
@@ -288,16 +288,16 @@ app.get("/user", (req, res) => {
 
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
     <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-      <strong style="color:#34d399;font-size:.88rem">The Guardrail Pattern — safe AI products</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">System prompt sets strict boundaries: "You are a customer service agent for AcmeCorp. Only answer questions about our products. Never discuss competitors. Never share pricing not listed on our website. If asked about something outside your scope, politely redirect." This pattern prevents the AI from going off-script in customer-facing applications.</p>
+      <strong style="font-size:.88rem">The Guardrail Pattern — safe AI products</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">System prompt sets strict boundaries: "You are a customer service agent for AcmeCorp. Only answer questions about our products. Never discuss competitors. Never share pricing not listed on our website. If asked about something outside your scope, politely redirect." This pattern prevents the AI from going off-script in customer-facing applications.</p>
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-      <strong style="color:#8b5cf6;font-size:.88rem">The Extraction Pattern — structured data from chaos</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Combine few-shot with format constraints: show 2-3 examples of messy input transformed into clean JSON, then provide the new messy input. This pattern powers data extraction pipelines that process thousands of unstructured documents (emails, PDFs, forms) into clean database records automatically.</p>
+      <strong style="font-size:.88rem">The Extraction Pattern — structured data from chaos</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">Combine few-shot with format constraints: show 2-3 examples of messy input transformed into clean JSON, then provide the new messy input. This pattern powers data extraction pipelines that process thousands of unstructured documents (emails, PDFs, forms) into clean database records automatically.</p>
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-      <strong style="color:#fb923c;font-size:.88rem">The Evaluation Pattern — AI grading AI</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Use one AI call to generate content, then a second AI call (with chain-of-thought) to evaluate the quality. "Rate this summary from 1-10 on accuracy, completeness, and clarity. Think step by step about each dimension before giving scores." This self-evaluation loop is how teams build reliable AI systems without manual review of every output.</p>
+      <strong style="font-size:.88rem">The Evaluation Pattern — AI grading AI</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">Use one AI call to generate content, then a second AI call (with chain-of-thought) to evaluate the quality. "Rate this summary from 1-10 on accuracy, completeness, and clarity. Think step by step about each dimension before giving scores." This self-evaluation loop is how teams build reliable AI systems without manual review of every output.</p>
     </div>
   </div>
 </div>
@@ -368,7 +368,7 @@ app.get("/user", (req, res) => {
 
 <!-- NEXT LESSON -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
-  <a href="/academy/ai-foundations/prompt-battle" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Prompt Battle →</a>
+  <a href="/academy/ai-foundations/prompt-battle" style="display:inline-block;background:var(--orange);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Prompt Battle →</a>
 </div>
 
 </div>

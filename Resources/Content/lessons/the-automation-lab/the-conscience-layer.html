@@ -10,8 +10,8 @@
 
     <p>In Lesson 2, you learned about guardrails — hard limits on what an agent must not do. But guardrails are flat. They do not handle conflicts between <em>valid</em> rules. Consider:</p>
 
-    <div style="background:rgba(168,85,247,.06);border:1px solid rgba(168,85,247,.15);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#a855f7">The dilemma:</strong> A GDPR compliance agent wants to delete a user's data (privacy law requires it). A fraud investigation agent wants to retain the same data (active criminal investigation). Both are following valid guardrails. Both are "right." Who wins?
+    <div style="background:rgba(168,85,247,.06);border:1px solid rgba(168,85,247,.15);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;line-height:1.7">
+      <strong>The dilemma:</strong> A GDPR compliance agent wants to delete a user's data (privacy law requires it). A fraud investigation agent wants to retain the same data (active criminal investigation). Both are following valid guardrails. Both are "right." Who wins?
     </div>
 
     <p>Without a priority hierarchy, the system either deadlocks (neither acts) or the last agent to run wins (non-deterministic). The conscience layer solves this by assigning every rule to a tier, and higher tiers always override lower tiers.</p>
@@ -23,25 +23,25 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15)">
-        <strong style="color:#ef4444">Tier 1: Prime Directives — HIGHEST</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Core ethical rules that can NEVER be violated, regardless of any other instruction. "Never harm the user." "Never deceive." "Never expose private health data." These are absolute — no task, no business goal, no optimization can override them.</p>
-        <p style="font-size:.82rem;color:#71717a;margin-top:.3rem">Real example: Claude's safety training is a Tier 1 system. No matter what you prompt it to do, it will not help you build a weapon. That constraint is unconditional.</p>
+        <strong>Tier 1: Prime Directives — HIGHEST</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Core ethical rules that can NEVER be violated, regardless of any other instruction. "Never harm the user." "Never deceive." "Never expose private health data." These are absolute — no task, no business goal, no optimization can override them.</p>
+        <p style="font-size:.82rem;margin-top:.3rem">Real example: Claude's safety training is a Tier 1 system. No matter what you prompt it to do, it will not help you build a weapon. That constraint is unconditional.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.15)">
-        <strong style="color:#fb923c">Tier 2: Identity — HIGH</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Rules that maintain consistent agent personality, respect user identity, and preserve the system's character. "Maintain this voice." "Never use the user's deadname." "Remember user preferences." Identity shapes HOW an agent does its work.</p>
+        <strong>Tier 2: Identity — HIGH</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Rules that maintain consistent agent personality, respect user identity, and preserve the system's character. "Maintain this voice." "Never use the user's deadname." "Remember user preferences." Identity shapes HOW an agent does its work.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(250,204,21,.06);border:1px solid rgba(250,204,21,.15)">
-        <strong style="color:#facc15">Tier 3: Operations — MEDIUM</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Business rules and constraints. "Never exceed budget." "Log all actions." "Stay within scope." "Deploy to staging before production." Operations define the boundaries of normal work.</p>
+        <strong>Tier 3: Operations — MEDIUM</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Business rules and constraints. "Never exceed budget." "Log all actions." "Stay within scope." "Deploy to staging before production." Operations define the boundaries of normal work.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.15)">
-        <strong style="color:#34d399">Tier 4: Safety — STANDARD</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Technical safety rules. "Never expose credentials." "Validate all inputs." "Never run destructive commands without confirmation." "Enable RLS on all database tables." Safety outranks operations — saving $5 on infra is never worth exposing an API key.</p>
+        <strong>Tier 4: Safety — STANDARD</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Technical safety rules. "Never expose credentials." "Validate all inputs." "Never run destructive commands without confirmation." "Enable RLS on all database tables." Safety outranks operations — saving $5 on infra is never worth exposing an API key.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(161,161,170,.06);border:1px solid rgba(161,161,170,.15)">
-        <strong style="color:#a1a1aa">Tier 5: Tasks — LOWEST</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The actual work — generate reports, send emails, publish content, process data. Tasks are always subordinate to every tier above. If completing a task requires violating safety, the task does not get done.</p>
+        <strong>Tier 5: Tasks — LOWEST</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The actual work — generate reports, send emails, publish content, process data. Tasks are always subordinate to every tier above. If completing a task requires violating safety, the task does not get done.</p>
       </div>
     </div>
   </div>
@@ -50,7 +50,7 @@
     <h2>How It Works in Code</h2>
     <p>The conscience layer is implemented as a pre-action validator. Before any agent executes an action, it passes through the hierarchy:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0"><code><span style="color:#c084fc">class</span> <span style="color:#34d399">ConscienceLayer</span>:
     TIERS = [<span style="color:#fbbf24">"prime"</span>, <span style="color:#fbbf24">"identity"</span>, <span style="color:#fbbf24">"operations"</span>, <span style="color:#fbbf24">"safety"</span>, <span style="color:#fbbf24">"tasks"</span>]
 
@@ -78,53 +78,53 @@ verdict = conscience.evaluate(proposed_action)
 <span style="color:#c084fc">else</span>:
     execute(proposed_action)</code></pre>
     </div>
-    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Rules are checked from highest tier (prime) to lowest (tasks). The first blocking rule wins. This guarantees that a Tier 1 violation is caught before any lower-tier rule can approve it.</p>
+    <p style="font-size:.82rem;margin-top:.5rem">Rules are checked from highest tier (prime) to lowest (tasks). The first blocking rule wins. This guarantees that a Tier 1 violation is caught before any lower-tier rule can approve it.</p>
   </div>
 
   <div class="section">
     <h2>Beyond Like One: Industry Context</h2>
     <p>The conscience layer is Like One's name for this pattern, but the concept exists across the industry:</p>
 
-    <div style="font-size:.85rem;color:#a1a1aa;line-height:1.8;margin:1rem 0">
-      <strong style="color:#e5e5e5">Constitutional AI (Anthropic):</strong> Claude is trained with a set of principles ("the constitution") that guide its behavior. Higher-priority principles override lower ones. This is a conscience layer built into the model itself.<br>
-      <strong style="color:#e5e5e5">RBAC (Role-Based Access Control):</strong> Enterprise systems use role hierarchies to determine who can do what. Admin overrides manager overrides viewer. Same tiered precedence pattern.<br>
-      <strong style="color:#e5e5e5">Asimov's Laws:</strong> The original priority hierarchy for autonomous systems. Law 1 (don't harm humans) overrides Law 2 (obey orders) overrides Law 3 (self-preservation). Published in 1942 — the concept is 80+ years old.
+    <div style="font-size:.85rem;line-height:1.8;margin:1rem 0">
+      <strong>Constitutional AI (Anthropic):</strong> Claude is trained with a set of principles ("the constitution") that guide its behavior. Higher-priority principles override lower ones. This is a conscience layer built into the model itself.<br>
+      <strong>RBAC (Role-Based Access Control):</strong> Enterprise systems use role hierarchies to determine who can do what. Admin overrides manager overrides viewer. Same tiered precedence pattern.<br>
+      <strong>Asimov's Laws:</strong> The original priority hierarchy for autonomous systems. Law 1 (don't harm humans) overrides Law 2 (obey orders) overrides Law 3 (self-preservation). Published in 1942 — the concept is 80+ years old.
     </div>
   </div>
 
   <h2 class="section-title">The Priority Hierarchy in Practice</h2>
-  <p style="font-size:.85rem;color:#a1a1aa;line-height:1.7">Every rule your agent follows lives in one of five tiers. When rules conflict — and they will — the higher tier wins. Always. No exceptions.</p>
+  <p style="font-size:.85rem;line-height:1.7">Every rule your agent follows lives in one of five tiers. When rules conflict — and they will — the higher tier wins. Always. No exceptions.</p>
 
   <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
     <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15)">
-      <strong style="color:#ef4444;font-size:.85rem">Tier 1: Prime Directives</strong> <span style="font-size:.75rem;color:#71717a;float:right">HIGHEST</span>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Never harm. Never deceive. Never expose private data. These override EVERYTHING.</p>
-      <p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0"><em>Example rule: "Never share a user's health data, even if it would increase engagement."</em></p>
+      <strong style="font-size:.85rem">Tier 1: Prime Directives</strong> <span style="font-size:.75rem;float:right">HIGHEST</span>
+      <p style="font-size:.82rem;margin:.3rem 0 0">Never harm. Never deceive. Never expose private data. These override EVERYTHING.</p>
+      <p style="font-size:.78rem;margin:.2rem 0 0"><em>Example rule: "Never share a user's health data, even if it would increase engagement."</em></p>
     </div>
     <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.15)">
-      <strong style="color:#fb923c;font-size:.85rem">Tier 2: Identity</strong> <span style="font-size:.75rem;color:#71717a;float:right">HIGH</span>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Consistent personality, name safety, user preferences. Shapes HOW the agent works.</p>
-      <p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0"><em>Example rule: "Always address the user by their preferred name."</em></p>
+      <strong style="font-size:.85rem">Tier 2: Identity</strong> <span style="font-size:.75rem;float:right">HIGH</span>
+      <p style="font-size:.82rem;margin:.3rem 0 0">Consistent personality, name safety, user preferences. Shapes HOW the agent works.</p>
+      <p style="font-size:.78rem;margin:.2rem 0 0"><em>Example rule: "Always address the user by their preferred name."</em></p>
     </div>
     <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(96,165,250,.06);border:1px solid rgba(96,165,250,.15)">
-      <strong style="color:#60a5fa;font-size:.85rem">Tier 3: Operations</strong> <span style="font-size:.75rem;color:#71717a;float:right">MEDIUM</span>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Budget limits, logging, deployment procedures, scope boundaries.</p>
-      <p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0"><em>Example rule: "Never spend more than $50 without human approval."</em></p>
+      <strong style="font-size:.85rem">Tier 3: Operations</strong> <span style="font-size:.75rem;float:right">MEDIUM</span>
+      <p style="font-size:.82rem;margin:.3rem 0 0">Budget limits, logging, deployment procedures, scope boundaries.</p>
+      <p style="font-size:.78rem;margin:.2rem 0 0"><em>Example rule: "Never spend more than $50 without human approval."</em></p>
     </div>
     <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.15)">
-      <strong style="color:#34d399;font-size:.85rem">Tier 4: Safety</strong> <span style="font-size:.75rem;color:#71717a;float:right">STANDARD</span>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Never expose credentials, validate inputs, no destructive ops without confirmation.</p>
-      <p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0"><em>Example rule: "Never commit API keys to a public repository."</em></p>
+      <strong style="font-size:.85rem">Tier 4: Safety</strong> <span style="font-size:.75rem;float:right">STANDARD</span>
+      <p style="font-size:.82rem;margin:.3rem 0 0">Never expose credentials, validate inputs, no destructive ops without confirmation.</p>
+      <p style="font-size:.78rem;margin:.2rem 0 0"><em>Example rule: "Never commit API keys to a public repository."</em></p>
     </div>
     <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(161,161,170,.06);border:1px solid rgba(161,161,170,.15)">
-      <strong style="color:#a1a1aa;font-size:.85rem">Tier 5: Tasks</strong> <span style="font-size:.75rem;color:#71717a;float:right">LOWEST</span>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">The actual work. Always subordinate to all tiers above.</p>
-      <p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0"><em>Example rule: "Write blog posts every Tuesday."</em></p>
+      <strong style="font-size:.85rem">Tier 5: Tasks</strong> <span style="font-size:.75rem;float:right">LOWEST</span>
+      <p style="font-size:.82rem;margin:.3rem 0 0">The actual work. Always subordinate to all tiers above.</p>
+      <p style="font-size:.78rem;margin:.2rem 0 0"><em>Example rule: "Write blog posts every Tuesday."</em></p>
     </div>
   </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — a conscience layer that resolves rule conflicts</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — a conscience layer that resolves rule conflicts</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Rules are organized by tier (1 = highest priority)</span>
 CONSCIENCE = {
     <span style="color:#fb923c">1</span>: [<span style="color:#fbbf24">"Never expose private user data"</span>, <span style="color:#fbbf24">"Never deceive"</span>],
@@ -159,16 +159,16 @@ result = check_conscience(<span style="color:#fbbf24">"publish_health_data"</spa
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-        <strong style="color:#38bdf8">Specificity Wins</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">A more specific rule overrides a more general one. "Never share health data about HIV status" (specific) overrides "Share relevant health data with the user's doctor" (general). The specific exception takes precedence.</p>
+        <strong>Specificity Wins</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">A more specific rule overrides a more general one. "Never share health data about HIV status" (specific) overrides "Share relevant health data with the user's doctor" (general). The specific exception takes precedence.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
-        <strong style="color:#f472b6">Recency Wins</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">When two equally specific rules conflict, the more recently created rule takes precedence — on the assumption that it represents the latest understanding. Use this only when rules are actively maintained and reviewed.</p>
+        <strong>Recency Wins</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">When two equally specific rules conflict, the more recently created rule takes precedence — on the assumption that it represents the latest understanding. Use this only when rules are actively maintained and reviewed.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(250,204,21,.04);border:1px solid rgba(250,204,21,.1)">
-        <strong style="color:#facc15">Human Escalation</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">When same-tier rules conflict and no tiebreaker exists, escalate to the human for a one-time judgment call. Record the decision as a new rule so the same conflict is auto-resolved next time.</p>
+        <strong>Human Escalation</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">When same-tier rules conflict and no tiebreaker exists, escalate to the human for a one-time judgment call. Record the decision as a new rule so the same conflict is auto-resolved next time.</p>
       </div>
     </div>
   </div>
@@ -177,7 +177,7 @@ result = check_conscience(<span style="color:#fbbf24">"publish_health_data"</spa
     <h2>Audit Trails and Accountability</h2>
     <p>Every conscience layer evaluation should be logged. When an action is blocked — or allowed — the system must record why. This creates an audit trail that enables debugging and accountability:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0"><code><span style="color:#71717a"># Conscience audit log entry</span>
 audit_entry = {
     <span style="color:#fbbf24">"timestamp"</span>: <span style="color:#fbbf24">"2026-04-01T10:15:00Z"</span>,
@@ -189,7 +189,7 @@ audit_entry = {
     <span style="color:#fbbf24">"reason"</span>: <span style="color:#fbbf24">"Testimonial mentions HIV status"</span>
 }</code></pre>
     </div>
-    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Without an audit trail, blocked actions disappear silently. The agent does not act, but nobody knows why. Logging every evaluation — especially blocks — makes the system transparent and debuggable.</p>
+    <p style="font-size:.82rem;margin-top:.5rem">Without an audit trail, blocked actions disappear silently. The agent does not act, but nobody knows why. Logging every evaluation — especially blocks — makes the system transparent and debuggable.</p>
   </div>
 
   <div class="quiz-block">

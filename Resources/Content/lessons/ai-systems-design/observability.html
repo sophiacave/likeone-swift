@@ -87,7 +87,7 @@ async with trace.span("generation") as span:
 
 Every trace should capture: model used, token counts, latency per stage, cost per call, and enough of the prompt/response to debug issues without logging sensitive user data.
 
-<div class="tip-box">
+<div class="callout">
 <strong>Privacy guardrail:</strong> Never log raw user inputs to your observability system without PII scrubbing. Log prompt templates and metadata, not the actual user content. If you must log content for debugging, use a separate, access-controlled, auto-expiring store.
 </div>
 </div>
@@ -161,7 +161,7 @@ format_judge = HeuristicJudge(checks=["has_citations", "under_token_limit"])
 
 Maintain a golden dataset of at least 50-100 test cases covering your core use cases, edge cases, and known failure modes. Run evals before every prompt change, model upgrade, or system modification. If the eval score drops, the change does not ship.
 
-<div class="tip-box">
+<div class="callout">
 <strong>Eval-driven development:</strong> Write your eval cases before you write your prompts, the same way TDD works for code. Define what good looks like first, then engineer the system to pass.
 </div>
 </div>

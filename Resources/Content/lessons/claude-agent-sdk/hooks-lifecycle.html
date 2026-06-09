@@ -20,10 +20,10 @@
 <div class="lo-vis__caption">Hooks give you <strong>control over every step</strong>.</div>
 </div>
 
-<p>Hooks are callback functions that fire at specific points in the agent's lifecycle. They let you <strong style="color:#e5e5e5">observe, modify, or block</strong> agent behavior without changing the agent's core logic. Think of them as checkpoints where you can inspect what the agent is doing and decide whether to let it continue.</p>
+<p>Hooks are callback functions that fire at specific points in the agent's lifecycle. They let you <strong>observe, modify, or block</strong> agent behavior without changing the agent's core logic. Think of them as checkpoints where you can inspect what the agent is doing and decide whether to let it continue.</p>
 
-<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">Real-world analogy:</strong> Hooks are like security checkpoints at an airport. You pass through multiple checks — ID verification, baggage scan, boarding pass check. At each checkpoint, your journey can be approved, flagged for inspection, or stopped entirely. The traveler (agent) does not control the checkpoints. You do.
+<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.88rem;line-height:1.7">
+<strong>Real-world analogy:</strong> Hooks are like security checkpoints at an airport. You pass through multiple checks — ID verification, baggage scan, boarding pass check. At each checkpoint, your journey can be approved, flagged for inspection, or stopped entirely. The traveler (agent) does not control the checkpoints. You do.
 </div>
 </div>
 
@@ -33,20 +33,20 @@
 
 <div style="display:grid;gap:.75rem;margin-top:.75rem">
 <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-<strong style="color:#8b5cf6;font-size:.88rem">PreToolUse</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Fires <em>before</em> a tool is executed. Inspect or modify the tool call parameters. Return <code>deny</code> to block the call entirely. Use this for input validation and permission enforcement.</p>
+<strong style="font-size:.88rem">PreToolUse</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Fires <em>before</em> a tool is executed. Inspect or modify the tool call parameters. Return <code>deny</code> to block the call entirely. Use this for input validation and permission enforcement.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-<strong style="color:#fb923c;font-size:.88rem">PostToolUse</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Fires <em>after</em> a tool returns its result. Inspect or modify the result before Claude sees it. Use this for output sanitization, logging, and audit trails.</p>
+<strong style="font-size:.88rem">PostToolUse</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Fires <em>after</em> a tool returns its result. Inspect or modify the result before Claude sees it. Use this for output sanitization, logging, and audit trails.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-<strong style="color:#38bdf8;font-size:.88rem">PermissionRequest</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Fires when the agent wants to do something that requires explicit permission. Return <code>allow</code> or <code>deny</code>. Use this for human-in-the-loop approval workflows.</p>
+<strong style="font-size:.88rem">PermissionRequest</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Fires when the agent wants to do something that requires explicit permission. Return <code>allow</code> or <code>deny</code>. Use this for human-in-the-loop approval workflows.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-<strong style="color:#34d399;font-size:.88rem">Stop</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Fires when the agent is about to finish. You can inspect the final result or force the agent to continue working. Use this for quality validation.</p>
+<strong style="font-size:.88rem">Stop</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Fires when the agent is about to finish. You can inspect the final result or force the agent to continue working. Use this for quality validation.</p>
 </div>
 </div>
 </div>
@@ -55,8 +55,8 @@
 <h2>Implementing Hooks</h2>
 <p>Here is a complete example that uses hooks to build guardrails around an agent:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — agent with lifecycle hooks</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — agent with lifecycle hooks</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { Claude } <span style="color:#c084fc">from</span> <span style="color:#fbbf24">"@anthropic-ai/claude-agent"</span>;
 
 <span style="color:#c084fc">const</span> agent = <span style="color:#c084fc">new</span> Claude({
@@ -102,8 +102,8 @@
 <h2>Building an Audit Trail</h2>
 <p>Hooks are perfect for creating detailed logs of everything your agent does — critical for debugging and compliance:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — audit trail with hooks</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — audit trail with hooks</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">const</span> auditLog: Array<{time: string, action: string}> = [];
 
 <span style="color:#c084fc">const</span> agent = <span style="color:#c084fc">new</span> Claude({
@@ -138,16 +138,16 @@
 <h2>Key Takeaways</h2>
 <div style="display:grid;gap:1rem">
 <div style="padding:1rem;background:rgba(139,92,246,.05);border-radius:10px;border:1px solid rgba(139,92,246,.1)">
-<strong style="color:#8b5cf6">Hooks are your control plane</strong>
-<p style="font-size:.85rem;color:#a1a1aa;margin:.25rem 0 0">They let you enforce policies without modifying agent logic. Block dangerous operations, log everything, sanitize outputs, and implement approval workflows — all from hooks.</p>
+<strong>Hooks are your control plane</strong>
+<p style="font-size:.85rem;margin:.25rem 0 0">They let you enforce policies without modifying agent logic. Block dangerous operations, log everything, sanitize outputs, and implement approval workflows — all from hooks.</p>
 </div>
 <div style="padding:1rem;background:rgba(251,146,60,.05);border-radius:10px;border:1px solid rgba(251,146,60,.1)">
-<strong style="color:#fb923c">PreToolUse is your primary security layer</strong>
-<p style="font-size:.85rem;color:#a1a1aa;margin:.25rem 0 0">It fires before every tool call, giving you the chance to inspect parameters, block dangerous operations, and enforce path restrictions. This is where security policies live.</p>
+<strong>PreToolUse is your primary security layer</strong>
+<p style="font-size:.85rem;margin:.25rem 0 0">It fires before every tool call, giving you the chance to inspect parameters, block dangerous operations, and enforce path restrictions. This is where security policies live.</p>
 </div>
 <div style="padding:1rem;background:rgba(52,211,153,.05);border-radius:10px;border:1px solid rgba(52,211,153,.1)">
-<strong style="color:#34d399">PostToolUse enables sanitization and logging</strong>
-<p style="font-size:.85rem;color:#a1a1aa;margin:.25rem 0 0">Inspect results before Claude sees them. Redact sensitive data, truncate large outputs, or log tool activity for debugging and compliance.</p>
+<strong>PostToolUse enables sanitization and logging</strong>
+<p style="font-size:.85rem;margin:.25rem 0 0">Inspect results before Claude sees them. Redact sensitive data, truncate large outputs, or log tool activity for debugging and compliance.</p>
 </div>
 </div>
 </div>

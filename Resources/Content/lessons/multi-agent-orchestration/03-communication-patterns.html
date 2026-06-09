@@ -31,22 +31,22 @@
 
   <p class="section-text">Think about the worst group project you've ever been in. One person does the research and writes a 10-page essay. The next person expected bullet points. The third person doesn't know what happened and starts over. Nobody agrees on the format, the deadlines, or who's responsible for what.</p>
   <p class="section-text">That's what happens when AI agents pass information without a communication protocol. Agent A outputs a free-form paragraph. Agent B expects structured JSON. The result? Garbled data, lost context, and cascading failures downstream.</p>
-  <p class="section-text">Communication patterns solve this by establishing <strong style="color:#e5e5e5">contracts</strong> between agents — agreed-upon formats, protocols, and expectations for how information flows through the system. Get this right and your agents coordinate like a surgery team. Get it wrong and you have an expensive game of telephone.</p>
+  <p class="section-text">Communication patterns solve this by establishing <strong>contracts</strong> between agents — agreed-upon formats, protocols, and expectations for how information flows through the system. Get this right and your agents coordinate like a surgery team. Get it wrong and you have an expensive game of telephone.</p>
 </div>
 
-<div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);border-radius:12px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">Real-world analogy:</strong> Communication patterns are like the protocols hospitals use during shift changes. Nurses don't just say "the patient seems fine." They follow SBAR — Situation, Background, Assessment, Recommendation — a structured handoff that ensures nothing gets lost. Agent communication contracts are SBAR for AI.
+<div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);border-radius:12px;padding:1.25rem;margin:1rem 0;font-size:.85rem;line-height:1.7">
+<strong>Real-world analogy:</strong> Communication patterns are like the protocols hospitals use during shift changes. Nurses don't just say "the patient seems fine." They follow SBAR — Situation, Background, Assessment, Recommendation — a structured handoff that ensures nothing gets lost. Agent communication contracts are SBAR for AI.
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Pattern 1</span>
   <h2 class="section-title">Direct Messaging</h2>
   <p class="section-text">The simplest pattern: Agent A sends output directly to Agent B. Like a relay race — the baton passes from hand to hand. This works well for linear pipelines where each agent's output is the next agent's input.</p>
-  <p class="section-text"><strong style="color: var(--green);">Best for:</strong> Sequential workflows, simple handoffs, two-agent systems.</p>
-  <p class="section-text"><strong style="color: var(--red);">Watch out for:</strong> Format mismatches. Always define the exact structure of what gets passed.</p>
+  <p class="section-text"><strong>Best for:</strong> Sequential workflows, simple handoffs, two-agent systems.</p>
+  <p class="section-text"><strong>Watch out for:</strong> Format mismatches. Always define the exact structure of what gets passed.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Direct messaging between two agents</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Direct messaging between two agents</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 client = anthropic.Anthropic()  <span style="color:#71717a"># reads ANTHROPIC_API_KEY from env</span>
@@ -81,8 +81,8 @@ analysis_result = run_agent(
 </div>
 
 <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1);margin:1rem 0">
-  <strong style="color:#34d399;font-size:.85rem">Key insight:</strong>
-  <span style="font-size:.82rem;color:#a1a1aa"> Each "agent" is just a Claude API call with a specialized system prompt. The magic is in how you connect them — the output of one becomes the input of the next. Simple but powerful.</span>
+  <strong style="font-size:.85rem">Key insight:</strong>
+  <span style="font-size:.82rem"> Each "agent" is just a Claude API call with a specialized system prompt. The magic is in how you connect them — the output of one becomes the input of the next. Simple but powerful.</span>
 </div>
 </div>
 
@@ -90,11 +90,11 @@ analysis_result = run_agent(
   <span class="section-label">Pattern 2</span>
   <h2 class="section-title">Broadcast (Pub/Sub)</h2>
   <p class="section-text">One agent publishes a message. Multiple agents receive it and decide independently whether to act. Like a team Slack channel — everyone sees the message, but only relevant agents respond.</p>
-  <p class="section-text"><strong style="color: var(--green);">Best for:</strong> Parallel processing, event-driven systems, agents that need to react to the same trigger differently.</p>
-  <p class="section-text"><strong style="color: var(--red);">Watch out for:</strong> Race conditions and duplicate work. Two agents might both try to handle the same task.</p>
+  <p class="section-text"><strong>Best for:</strong> Parallel processing, event-driven systems, agents that need to react to the same trigger differently.</p>
+  <p class="section-text"><strong>Watch out for:</strong> Race conditions and duplicate work. Two agents might both try to handle the same task.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Broadcast: one event triggers multiple agents in parallel</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Broadcast: one event triggers multiple agents in parallel</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> asyncio
 
 <span style="color:#71717a"># Define specialist agents that all react to the same event</span>
@@ -125,11 +125,11 @@ results = asyncio.run(broadcast(ticket))
   <span class="section-label">Pattern 3</span>
   <h2 class="section-title">Blackboard (Shared Space)</h2>
   <p class="section-text">All agents read from and write to a shared workspace. No direct messages — agents check the blackboard, see what's new, contribute their piece, and move on. Like a collaborative document where everyone adds their section.</p>
-  <p class="section-text"><strong style="color: var(--green);">Best for:</strong> Complex problems where agents need full context, iterative refinement, consensus building.</p>
-  <p class="section-text"><strong style="color: var(--red);">Watch out for:</strong> Stale reads and write conflicts. Two agents editing the same section simultaneously creates chaos.</p>
+  <p class="section-text"><strong>Best for:</strong> Complex problems where agents need full context, iterative refinement, consensus building.</p>
+  <p class="section-text"><strong>Watch out for:</strong> Stale reads and write conflicts. Two agents editing the same section simultaneously creates chaos.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Blackboard: agents read/write to shared state</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Blackboard: agents read/write to shared state</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># The blackboard is shared state that all agents can read and write</span>
 <span style="color:#71717a"># In production, this would be a database (Supabase, Redis, etc.)</span>
 blackboard = {
@@ -169,8 +169,8 @@ blackboard = editor_agent(blackboard)     <span style="color:#71717a"># reads bo
 </div>
 
 <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1);margin:1rem 0">
-  <strong style="color:#fb923c;font-size:.85rem">Blackboard vs. Direct Messaging:</strong>
-  <span style="font-size:.82rem;color:#a1a1aa"> In direct messaging, the editor only sees the draft. With a blackboard, the editor sees the original research AND the draft — full context for a better review. The tradeoff is that the blackboard grows with every contribution, using more tokens.</span>
+  <strong style="font-size:.85rem">Blackboard vs. Direct Messaging:</strong>
+  <span style="font-size:.82rem"> In direct messaging, the editor only sees the draft. With a blackboard, the editor sees the original research AND the draft — full context for a better review. The tradeoff is that the blackboard grows with every contribution, using more tokens.</span>
 </div>
 </div>
 
@@ -178,8 +178,8 @@ blackboard = editor_agent(blackboard)     <span style="color:#71717a"># reads bo
   <span class="section-label">Real Example</span>
   <h2 class="section-title">Structured Message Contracts</h2>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Typed message contract with dataclass</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Typed message contract with dataclass</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> dataclasses <span style="color:#c084fc">import</span> dataclass, field
 <span style="color:#c084fc">from</span> datetime <span style="color:#c084fc">import</span> datetime
 <span style="color:#c084fc">from</span> typing <span style="color:#c084fc">import</span> Any
@@ -222,9 +222,9 @@ msg = AgentMessage(
 <div class="lesson-section">
   <span class="section-label">Try It Yourself</span>
   <h2 class="section-title">Design a Message Contract</h2>
-  <div class="try-it-box">
+  <div class="callout">
     <p>Take your agent team from Lesson 2. Define the message format for each handoff. What fields does the receiving agent need? What metadata helps with debugging?</p>
-    <div class="prompt-box">
+    <div class="demo-container">
       <code>Handoff: [Agent A] → [Agent B]<br>Message type: [name]<br>Required fields: [list them]<br>Optional fields: [list them]<br>Format: JSON / structured text / markdown</code>
     </div>
   </div>
@@ -241,16 +241,16 @@ msg = AgentMessage(
 
   <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
     <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-      <strong style="color:#ef4444">1. The Free-Form Trap</strong>
-      <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Agent A returns a paragraph. Agent B tries to parse it as JSON. The system crashes — or worse, silently produces garbage. <strong style="color:#e5e5e5">Fix:</strong> Always force structured output with explicit instructions in the system prompt: "Return ONLY valid JSON with these exact keys."</p>
+      <strong>1. The Free-Form Trap</strong>
+      <p style="font-size:.85rem;margin:.4rem 0 0">Agent A returns a paragraph. Agent B tries to parse it as JSON. The system crashes — or worse, silently produces garbage. <strong>Fix:</strong> Always force structured output with explicit instructions in the system prompt: "Return ONLY valid JSON with these exact keys."</p>
     </div>
     <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-      <strong style="color:#fb923c">2. Lost Context at Scale</strong>
-      <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">In direct messaging, each agent only sees the previous agent's output. By agent #5 in a chain, the original intent is lost — like a game of telephone. <strong style="color:#e5e5e5">Fix:</strong> Pass the original request alongside each handoff, or use a blackboard so every agent has full context.</p>
+      <strong>2. Lost Context at Scale</strong>
+      <p style="font-size:.85rem;margin:.4rem 0 0">In direct messaging, each agent only sees the previous agent's output. By agent #5 in a chain, the original intent is lost — like a game of telephone. <strong>Fix:</strong> Pass the original request alongside each handoff, or use a blackboard so every agent has full context.</p>
     </div>
     <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-      <strong style="color:#8b5cf6">3. No Error Propagation</strong>
-      <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Agent A fails silently and returns empty data. Agent B processes the empty data without checking. Agent C presents garbage to the user. <strong style="color:#e5e5e5">Fix:</strong> Include a <code style="color:#fb923c">status</code> field in every message — "success", "partial", or "failed" — and teach downstream agents to check it first.</p>
+      <strong>3. No Error Propagation</strong>
+      <p style="font-size:.85rem;margin:.4rem 0 0">Agent A fails silently and returns empty data. Agent B processes the empty data without checking. Agent C presents garbage to the user. <strong>Fix:</strong> Include a <code>status</code> field in every message — "success", "partial", or "failed" — and teach downstream agents to check it first.</p>
     </div>
   </div>
 </div>

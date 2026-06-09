@@ -38,7 +38,7 @@
   <span class="section-label">Implementation</span>
   <h2 class="section-title">Getting Started</h2>
   <p class="section-text">Setup takes less than 5 minutes:</p>
-  <div class="prompt-box"><code># Install Ollama (macOS)
+  <div class="demo-container"><code># Install Ollama (macOS)
 brew install ollama
 
 # Or download from ollama.com for any platform
@@ -61,11 +61,11 @@ ollama run qwen2.5:7b "Explain what sovereignty means for AI in 3 sentences."</c
   <span class="section-label">Strategy</span>
   <h2 class="section-title">Model Selection Guide</h2>
   <p class="section-text">Not all models are created equal. Here is how to choose the right model for each task:</p>
-  <p class="section-text"><strong style="color: var(--blue);">General assistant (Qwen 2.5 7B):</strong> The best all-around small model. Excellent at following instructions, summarizing, drafting, and Q&A. Runs well on 8GB RAM. Your default model for 80% of tasks.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Code generation (DeepSeek Coder V2):</strong> Specialized for writing and debugging code. Understands dozens of programming languages. Better at code than general models twice its size. Use this for development tasks.</p>
-  <p class="section-text"><strong style="color: var(--green);">Complex reasoning (Llama 3.1 70B):</strong> Meta's largest open model. Approaches cloud model quality for analysis, planning, and nuanced writing. Requires 40GB+ RAM. Use when you need frontier-quality reasoning without the cloud.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Embeddings (nomic-embed-text):</strong> Converts text into vector embeddings for search and retrieval. Fast, small, and purpose-built. Essential for building your local RAG pipeline.</p>
-  <div class="prompt-box"><code># Model sizes and RAM requirements
+  <p class="section-text"><strong>General assistant (Qwen 2.5 7B):</strong> The best all-around small model. Excellent at following instructions, summarizing, drafting, and Q&A. Runs well on 8GB RAM. Your default model for 80% of tasks.</p>
+  <p class="section-text"><strong>Code generation (DeepSeek Coder V2):</strong> Specialized for writing and debugging code. Understands dozens of programming languages. Better at code than general models twice its size. Use this for development tasks.</p>
+  <p class="section-text"><strong>Complex reasoning (Llama 3.1 70B):</strong> Meta's largest open model. Approaches cloud model quality for analysis, planning, and nuanced writing. Requires 40GB+ RAM. Use when you need frontier-quality reasoning without the cloud.</p>
+  <p class="section-text"><strong>Embeddings (nomic-embed-text):</strong> Converts text into vector embeddings for search and retrieval. Fast, small, and purpose-built. Essential for building your local RAG pipeline.</p>
+  <div class="demo-container"><code># Model sizes and RAM requirements
 # Model           Size    RAM     Best For
 # qwen2.5:3b      2 GB    4 GB    Quick tasks, low-end hardware
 # qwen2.5:7b      4 GB    8 GB    General assistant (recommended start)
@@ -81,26 +81,26 @@ ollama run qwen2.5:7b "Explain what sovereignty means for AI in 3 sentences."</c
   <h2 class="section-title">Quantization: The Quality-Speed Tradeoff</h2>
   <p class="section-text">AI models are stored as numbers (weights). Full-precision weights use 16 bits per number. Quantization reduces this to 8 bits, 4 bits, or even 2 bits -- making the model smaller, faster, and able to run on less RAM.</p>
   <p class="section-text">Think of it like image compression. A full-quality photo is 10MB. A compressed version is 2MB. You lose some detail, but for most purposes it looks the same. Quantization works the same way for AI models.</p>
-  <p class="section-text"><strong style="color: var(--green);">Q4_K_M (4-bit, recommended):</strong> The sweet spot. Models are roughly 4x smaller than full precision. Quality loss is minimal for most tasks. This is what Ollama uses by default.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Q8_0 (8-bit):</strong> Higher quality, but models are 2x larger. Use when you have enough RAM and quality matters (long-form writing, complex analysis).</p>
-  <p class="section-text"><strong style="color: var(--orange);">Q2_K (2-bit):</strong> Maximum compression. Models are tiny but quality degrades noticeably. Use only when RAM is severely constrained and you need something running.</p>
+  <p class="section-text"><strong>Q4_K_M (4-bit, recommended):</strong> The sweet spot. Models are roughly 4x smaller than full precision. Quality loss is minimal for most tasks. This is what Ollama uses by default.</p>
+  <p class="section-text"><strong>Q8_0 (8-bit):</strong> Higher quality, but models are 2x larger. Use when you have enough RAM and quality matters (long-form writing, complex analysis).</p>
+  <p class="section-text"><strong>Q2_K (2-bit):</strong> Maximum compression. Models are tiny but quality degrades noticeably. Use only when RAM is severely constrained and you need something running.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Advanced</span>
   <h2 class="section-title">Performance Tuning</h2>
   <p class="section-text">Getting the best performance from local models means understanding your hardware and configuring Ollama to match:</p>
-  <p class="section-text"><strong style="color: var(--blue);">GPU acceleration.</strong> If you have an Apple Silicon Mac (M1/M2/M3/M4), Ollama automatically uses the GPU. This is 5-10x faster than CPU-only. On Linux/Windows, NVIDIA GPUs with CUDA support provide similar acceleration. Check with <code>ollama ps</code> to verify GPU is active.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Context window.</strong> By default, Ollama uses a 2048-token context window. For longer documents, increase it: <code>ollama run qwen2.5:7b --num-ctx 8192</code>. Larger context uses more RAM but lets the model process longer inputs.</p>
-  <p class="section-text"><strong style="color: var(--green);">Concurrent requests.</strong> Ollama handles one request at a time by default. For multiple simultaneous users or agents, set <code>OLLAMA_NUM_PARALLEL=4</code> to allow parallel processing. Each parallel request uses additional RAM.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Keep alive.</strong> After a request, Ollama keeps the model in memory for 5 minutes by default. Adjust with <code>OLLAMA_KEEP_ALIVE=30m</code> to keep it loaded longer (faster subsequent requests) or <code>0</code> to unload immediately (save RAM).</p>
+  <p class="section-text"><strong>GPU acceleration.</strong> If you have an Apple Silicon Mac (M1/M2/M3/M4), Ollama automatically uses the GPU. This is 5-10x faster than CPU-only. On Linux/Windows, NVIDIA GPUs with CUDA support provide similar acceleration. Check with <code>ollama ps</code> to verify GPU is active.</p>
+  <p class="section-text"><strong>Context window.</strong> By default, Ollama uses a 2048-token context window. For longer documents, increase it: <code>ollama run qwen2.5:7b --num-ctx 8192</code>. Larger context uses more RAM but lets the model process longer inputs.</p>
+  <p class="section-text"><strong>Concurrent requests.</strong> Ollama handles one request at a time by default. For multiple simultaneous users or agents, set <code>OLLAMA_NUM_PARALLEL=4</code> to allow parallel processing. Each parallel request uses additional RAM.</p>
+  <p class="section-text"><strong>Keep alive.</strong> After a request, Ollama keeps the model in memory for 5 minutes by default. Adjust with <code>OLLAMA_KEEP_ALIVE=30m</code> to keep it loaded longer (faster subsequent requests) or <code>0</code> to unload immediately (save RAM).</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Integration</span>
   <h2 class="section-title">Calling Ollama from Code</h2>
   <p class="section-text">Ollama exposes an API on localhost:11434. You can call it from any language:</p>
-  <div class="prompt-box"><code>// JavaScript/Node.js -- direct API call
+  <div class="demo-container"><code>// JavaScript/Node.js -- direct API call
 const response = await fetch('http://localhost:11434/api/generate', {
   method: 'POST',
   body: JSON.stringify({
@@ -131,15 +131,15 @@ curl http://localhost:11434/api/generate -d '{
 <div class="lesson-section">
   <span class="section-label">Anti-Patterns</span>
   <h2 class="section-title">Local AI Mistakes</h2>
-  <p class="section-text"><strong style="color: var(--red);">Running models too large for your RAM.</strong> A 70B model on a 16GB machine will thrash to swap, taking minutes per response. Check RAM requirements before pulling a model. Use <code>ollama ps</code> to see memory usage.</p>
-  <p class="section-text"><strong style="color: var(--red);">Expecting cloud quality from small models.</strong> A 7B parameter model is not Claude or GPT-4. It is excellent for routine tasks but struggles with complex multi-step reasoning. Use local for routine, cloud for complex. That is the hybrid strategy.</p>
-  <p class="section-text"><strong style="color: var(--red);">Not monitoring resource usage.</strong> Local models consume significant CPU, GPU, and RAM. Running a model while doing other intensive work (video editing, compiling) can freeze your machine. Monitor with Activity Monitor or htop.</p>
+  <p class="section-text"><strong>Running models too large for your RAM.</strong> A 70B model on a 16GB machine will thrash to swap, taking minutes per response. Check RAM requirements before pulling a model. Use <code>ollama ps</code> to see memory usage.</p>
+  <p class="section-text"><strong>Expecting cloud quality from small models.</strong> A 7B parameter model is not Claude or GPT-4. It is excellent for routine tasks but struggles with complex multi-step reasoning. Use local for routine, cloud for complex. That is the hybrid strategy.</p>
+  <p class="section-text"><strong>Not monitoring resource usage.</strong> Local models consume significant CPU, GPU, and RAM. Running a model while doing other intensive work (video editing, compiling) can freeze your machine. Monitor with Activity Monitor or htop.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Set up your local AI stack:</p>
-  <div class="prompt-box"><code>1. Install Ollama (brew install ollama or ollama.com)
+  <div class="demo-container"><code>1. Install Ollama (brew install ollama or ollama.com)
 2. Pull qwen2.5:7b (your general assistant)
 3. Run a test: ollama run qwen2.5:7b "What can you help me with?"
 4. Pull nomic-embed-text (for embeddings -- needed later)

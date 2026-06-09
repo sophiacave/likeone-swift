@@ -5,8 +5,8 @@
 
 
 <div class="content">
-<div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.15);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.9rem;color:#a1a1aa;line-height:1.6">
-<strong style="color:#8b5cf6">How scoring works:</strong> Your prompt is checked for <strong>relevant keywords</strong> that indicate good prompt engineering (e.g., specifying format, audience, constraints). Each keyword found earns you points proportional to the challenge total (100 pts max). Longer prompts earn a small length bonus (+5 at 50 chars, +5 more at 100). Using a hint costs 10 points. Score 70+ on consecutive challenges to build a <strong>streak multiplier</strong> for bonus points.
+<div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.15);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.9rem;line-height:1.6">
+<strong>How scoring works:</strong> Your prompt is checked for <strong>relevant keywords</strong> that indicate good prompt engineering (e.g., specifying format, audience, constraints). Each keyword found earns you points proportional to the challenge total (100 pts max). Longer prompts earn a small length bonus (+5 at 50 chars, +5 more at 100). Using a hint costs 10 points. Score 70+ on consecutive challenges to build a <strong>streak multiplier</strong> for bonus points.
 </div>
 
 <div class="card">
@@ -33,20 +33,20 @@
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.75rem">
 <div style="padding:.75rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-<strong style="color:#8b5cf6;font-size:.82rem">System Prompts</strong>
-<p style="font-size:.78rem;color:#a1a1aa;margin:.3rem 0 0">Identity + Constraints + Format + Tone + Examples</p>
+<strong style="font-size:.82rem">System Prompts</strong>
+<p style="font-size:.78rem;margin:.3rem 0 0">Identity + Constraints + Format + Tone + Examples</p>
 </div>
 <div style="padding:.75rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-<strong style="color:#34d399;font-size:.82rem">Chain-of-Thought</strong>
-<p style="font-size:.78rem;color:#a1a1aa;margin:.3rem 0 0">"Think step by step" + structured reasoning + XML tags</p>
+<strong style="font-size:.82rem">Chain-of-Thought</strong>
+<p style="font-size:.78rem;margin:.3rem 0 0">"Think step by step" + structured reasoning + XML tags</p>
 </div>
 <div style="padding:.75rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-<strong style="color:#fb923c;font-size:.82rem">Few-Shot Examples</strong>
-<p style="font-size:.78rem;color:#a1a1aa;margin:.3rem 0 0">Input/output pairs that teach pattern and format</p>
+<strong style="font-size:.82rem">Few-Shot Examples</strong>
+<p style="font-size:.78rem;margin:.3rem 0 0">Input/output pairs that teach pattern and format</p>
 </div>
 <div style="padding:.75rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-<strong style="color:#38bdf8;font-size:.82rem">Format Control</strong>
-<p style="font-size:.78rem;color:#a1a1aa;margin:.3rem 0 0">JSON-only, markdown, structured output, field names</p>
+<strong style="font-size:.82rem">Format Control</strong>
+<p style="font-size:.78rem;margin:.3rem 0 0">JSON-only, markdown, structured output, field names</p>
 </div>
 </div>
 </div>
@@ -66,9 +66,9 @@
 <div style="text-align:center;padding:2rem 0">
 <div style="font-size:4rem;font-weight:800;background:linear-gradient(135deg,#8b5cf6,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent" id="totalScore">0</div>
 <div id="starDisplay" style="font-size:2rem;margin:.5rem 0"></div>
-<div style="color:#a1a1aa;margin-bottom:2rem" id="totalMsg">points</div>
+<div style="margin-bottom:2rem" id="totalMsg">points</div>
 </div>
-<div class="leaderboard" id="leaderboard"><h3 style="font-size:.9rem;color:#71717a;margin-bottom:.75rem">YOUR SCORES</h3></div>
+<div class="leaderboard" id="leaderboard"><h3 style="font-size:.9rem;margin-bottom:.75rem">YOUR SCORES</h3></div>
 </div>
 
 <div class="card">
@@ -77,29 +77,29 @@
 
 <div style="display:grid;gap:.75rem;margin-top:.75rem">
 <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-<strong style="color:#34d399;font-size:.85rem">Challenge 1: Haiku Format</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0;font-family:'JetBrains Mono',monospace">"Write a haiku about programming. The haiku MUST follow the 5-7-5 syllable structure exactly. Include the word 'code' in the poem."</p>
-<p style="font-size:.75rem;color:#71717a;margin:.4rem 0 0">Why it works: Specifies format (haiku), constraint (5-7-5), required content (code), and domain (programming). Every keyword adds precision.</p>
+<strong style="font-size:.85rem">Challenge 1: Haiku Format</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0;font-family:'JetBrains Mono',monospace">"Write a haiku about programming. The haiku MUST follow the 5-7-5 syllable structure exactly. Include the word 'code' in the poem."</p>
+<p style="font-size:.75rem;margin:.4rem 0 0">Why it works: Specifies format (haiku), constraint (5-7-5), required content (code), and domain (programming). Every keyword adds precision.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-<strong style="color:#34d399;font-size:.85rem">Challenge 2: JSON Output</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0;font-family:'JetBrains Mono',monospace">"Extract the person's information from this sentence and output ONLY valid JSON. No explanation. No markdown code blocks. Use exactly these fields: name, age, city, occupation."</p>
-<p style="font-size:.75rem;color:#71717a;margin:.4rem 0 0">Why it works: "ONLY" suppresses prose. "No explanation, no markdown" prevents wrapping. Exact field names ensure parseable output.</p>
+<strong style="font-size:.85rem">Challenge 2: JSON Output</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0;font-family:'JetBrains Mono',monospace">"Extract the person's information from this sentence and output ONLY valid JSON. No explanation. No markdown code blocks. Use exactly these fields: name, age, city, occupation."</p>
+<p style="font-size:.75rem;margin:.4rem 0 0">Why it works: "ONLY" suppresses prose. "No explanation, no markdown" prevents wrapping. Exact field names ensure parseable output.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-<strong style="color:#34d399;font-size:.85rem">Challenge 3: Tone Transformation</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0;font-family:'JetBrains Mono',monospace">"Rewrite this quarterly report summary in an optimistic, confident tone suitable for investors. Keep all factual data accurate — do not fabricate or exaggerate numbers. Focus on growth opportunities."</p>
-<p style="font-size:.75rem;color:#71717a;margin:.4rem 0 0">Why it works: Specifies tone (optimistic), audience (investors), AND honesty constraint (no fabrication). The honesty constraint is what separates good from great.</p>
+<strong style="font-size:.85rem">Challenge 3: Tone Transformation</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0;font-family:'JetBrains Mono',monospace">"Rewrite this quarterly report summary in an optimistic, confident tone suitable for investors. Keep all factual data accurate — do not fabricate or exaggerate numbers. Focus on growth opportunities."</p>
+<p style="font-size:.75rem;margin:.4rem 0 0">Why it works: Specifies tone (optimistic), audience (investors), AND honesty constraint (no fabrication). The honesty constraint is what separates good from great.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-<strong style="color:#34d399;font-size:.85rem">Challenge 4: Constrained Code Review</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0;font-family:'JetBrains Mono',monospace">"Review this code for bugs. Output ONLY bullet points listing issues found. Maximum one sentence per issue. Do NOT provide corrected code. Tag each issue as [CRITICAL], [WARNING], or [INFO]."</p>
-<p style="font-size:.75rem;color:#71717a;margin:.4rem 0 0">Why it works: Format (bullets), constraint (no corrected code, one sentence), severity tagging. Prevents the verbose "here's the fixed version" that wastes tokens.</p>
+<strong style="font-size:.85rem">Challenge 4: Constrained Code Review</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0;font-family:'JetBrains Mono',monospace">"Review this code for bugs. Output ONLY bullet points listing issues found. Maximum one sentence per issue. Do NOT provide corrected code. Tag each issue as [CRITICAL], [WARNING], or [INFO]."</p>
+<p style="font-size:.75rem;margin:.4rem 0 0">Why it works: Format (bullets), constraint (no corrected code, one sentence), severity tagging. Prevents the verbose "here's the fixed version" that wastes tokens.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-<strong style="color:#34d399;font-size:.85rem">Challenge 5: Persona Lock</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0;font-family:'JetBrains Mono',monospace">"You are Professor Oak, a world-renowned expert on AI and machine learning. Always stay in character. Answer questions about AI from Professor Oak's perspective. Maintain scientific accuracy while being warm and approachable."</p>
-<p style="font-size:.75rem;color:#71717a;margin:.4rem 0 0">Why it works: Clear identity, persistence instruction ("always stay in character"), domain lock (AI/ML), and dual tone directive (accurate + approachable).</p>
+<strong style="font-size:.85rem">Challenge 5: Persona Lock</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0;font-family:'JetBrains Mono',monospace">"You are Professor Oak, a world-renowned expert on AI and machine learning. Always stay in character. Answer questions about AI from Professor Oak's perspective. Maintain scientific accuracy while being warm and approachable."</p>
+<p style="font-size:.75rem;margin:.4rem 0 0">Why it works: Clear identity, persistence instruction ("always stay in character"), domain lock (AI/ML), and dual tone directive (accurate + approachable).</p>
 </div>
 </div>
 </div>
@@ -108,8 +108,8 @@
 <h2>Turning Game Prompts Into Production Code</h2>
 <p>Every challenge in this game maps directly to a production use case. Here is how Challenge 2 (JSON extraction) looks as real API code:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — the JSON challenge as production code</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — the JSON challenge as production code</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> json, anthropic
 
 client = anthropic.Anthropic()
@@ -145,29 +145,29 @@ result = extract_person(
 
 <div style="display:grid;gap:.75rem;margin-top:.75rem">
 <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-<strong style="color:#38bdf8;font-size:.85rem">Challenge 1 (Haiku) → Structured Generation</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">When you forced Claude into a 5-7-5 syllable grid, you practiced <strong style="color:#e5e5e5">structural constraints</strong> — the same technique used to generate SQL queries, regex patterns, or any output that must conform to a grammar. The production version: "Output ONLY a valid SQL SELECT statement. No explanation."</p>
+<strong style="font-size:.85rem">Challenge 1 (Haiku) → Structured Generation</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">When you forced Claude into a 5-7-5 syllable grid, you practiced <strong>structural constraints</strong> — the same technique used to generate SQL queries, regex patterns, or any output that must conform to a grammar. The production version: "Output ONLY a valid SQL SELECT statement. No explanation."</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-<strong style="color:#34d399;font-size:.85rem">Challenge 2 (JSON) → Data Extraction Pipelines</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Suppressing prose with "ONLY valid JSON" is the backbone of every extraction pipeline — parsing resumes, invoices, support tickets, or medical records into structured data that downstream code can consume without regex hacks.</p>
+<strong style="font-size:.85rem">Challenge 2 (JSON) → Data Extraction Pipelines</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Suppressing prose with "ONLY valid JSON" is the backbone of every extraction pipeline — parsing resumes, invoices, support tickets, or medical records into structured data that downstream code can consume without regex hacks.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-<strong style="color:#fb923c;font-size:.85rem">Challenge 3 (Tone) → Content Transformation at Scale</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Tone + audience + honesty constraints power every content pipeline that rewrites internal notes into customer-facing copy, translates technical docs for non-technical readers, or adapts marketing across regions — all while preserving factual accuracy.</p>
+<strong style="font-size:.85rem">Challenge 3 (Tone) → Content Transformation at Scale</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Tone + audience + honesty constraints power every content pipeline that rewrites internal notes into customer-facing copy, translates technical docs for non-technical readers, or adapts marketing across regions — all while preserving factual accuracy.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-<strong style="color:#8b5cf6;font-size:.85rem">Challenge 4 (Code Review) → Automated Quality Gates</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Constrained code review becomes a CI/CD quality gate. The severity tags (<code style="color:#e5e5e5">[CRITICAL]</code>, <code style="color:#e5e5e5">[WARNING]</code>, <code style="color:#e5e5e5">[INFO]</code>) let you programmatically block merges on critical issues while allowing info-level notes to pass through. See the production code below.</p>
+<strong style="font-size:.85rem">Challenge 4 (Code Review) → Automated Quality Gates</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Constrained code review becomes a CI/CD quality gate. The severity tags (<code>[CRITICAL]</code>, <code>[WARNING]</code>, <code>[INFO]</code>) let you programmatically block merges on critical issues while allowing info-level notes to pass through. See the production code below.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-<strong style="color:#ef4444;font-size:.85rem">Challenge 5 (Persona) → Domain-Expert Agents</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Persona lock is the foundation of every domain-specific agent — a legal assistant that stays in lawyer-mode, a medical triage bot that never breaks character, or a customer support agent with product expertise. The "always stay in character" instruction prevents Claude from reverting to generic assistant behavior.</p>
+<strong style="font-size:.85rem">Challenge 5 (Persona) → Domain-Expert Agents</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Persona lock is the foundation of every domain-specific agent — a legal assistant that stays in lawyer-mode, a medical triage bot that never breaks character, or a customer support agent with product expertise. The "always stay in character" instruction prevents Claude from reverting to generic assistant behavior.</p>
 </div>
 </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Challenge 4 as a production code review gate</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Challenge 4 as a production code review gate</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic, re
 
 client = anthropic.Anthropic()
@@ -229,36 +229,36 @@ has_critical = <span style="color:#34d399">any</span>(i[<span style="color:#fbbf
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1rem">
 <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-<div style="display:inline-block;padding:.15rem .5rem;border-radius:6px;background:rgba(52,211,153,.12);color:#34d399;font-size:.72rem;font-weight:700;letter-spacing:.03em;margin-bottom:.4rem">PRINCIPLE 1</div>
-<p style="font-size:.85rem;color:#e5e5e5;margin:.2rem 0 .3rem;font-weight:600">Specificity Beats Length</p>
-<p style="font-size:.8rem;color:#a1a1aa;margin:0;line-height:1.55">A 20-word prompt with exact constraints outperforms a 200-word essay every time. "Output ONLY valid JSON with fields: name, age" is more powerful than three paragraphs explaining what JSON is. Every word should add a constraint, not a clarification.</p>
+<div style="display:inline-block;padding:.15rem .5rem;border-radius:6px;background:rgba(52,211,153,.12);font-size:.72rem;font-weight:700;letter-spacing:.03em;margin-bottom:.4rem">PRINCIPLE 1</div>
+<p style="font-size:.85rem;margin:.2rem 0 .3rem;font-weight:600">Specificity Beats Length</p>
+<p style="font-size:.8rem;margin:0;line-height:1.55">A 20-word prompt with exact constraints outperforms a 200-word essay every time. "Output ONLY valid JSON with fields: name, age" is more powerful than three paragraphs explaining what JSON is. Every word should add a constraint, not a clarification.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-<div style="display:inline-block;padding:.15rem .5rem;border-radius:6px;background:rgba(139,92,246,.12);color:#8b5cf6;font-size:.72rem;font-weight:700;letter-spacing:.03em;margin-bottom:.4rem">PRINCIPLE 2</div>
-<p style="font-size:.85rem;color:#e5e5e5;margin:.2rem 0 .3rem;font-weight:600">Constraints Prevent Defaults</p>
-<p style="font-size:.8rem;color:#a1a1aa;margin:0;line-height:1.55">Claude has helpful defaults — it wants to explain, show examples, and provide corrected code. Without constraints, you get Claude's defaults, not your requirements. Every production prompt needs at least one "do NOT" to override a default you do not want.</p>
+<div style="display:inline-block;padding:.15rem .5rem;border-radius:6px;background:rgba(139,92,246,.12);font-size:.72rem;font-weight:700;letter-spacing:.03em;margin-bottom:.4rem">PRINCIPLE 2</div>
+<p style="font-size:.85rem;margin:.2rem 0 .3rem;font-weight:600">Constraints Prevent Defaults</p>
+<p style="font-size:.8rem;margin:0;line-height:1.55">Claude has helpful defaults — it wants to explain, show examples, and provide corrected code. Without constraints, you get Claude's defaults, not your requirements. Every production prompt needs at least one "do NOT" to override a default you do not want.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-<div style="display:inline-block;padding:.15rem .5rem;border-radius:6px;background:rgba(251,146,60,.12);color:#fb923c;font-size:.72rem;font-weight:700;letter-spacing:.03em;margin-bottom:.4rem">PRINCIPLE 3</div>
-<p style="font-size:.85rem;color:#e5e5e5;margin:.2rem 0 .3rem;font-weight:600">Format Instructions Are Non-Optional</p>
-<p style="font-size:.8rem;color:#a1a1aa;margin:0;line-height:1.55">If you do not specify the output format, Claude will choose one — and it will not be the one your code expects. JSON, bullet points, numbered lists, single-word answers: say it explicitly. Production code that parses AI output without a format instruction is gambling.</p>
+<div style="display:inline-block;padding:.15rem .5rem;border-radius:6px;background:rgba(251,146,60,.12);font-size:.72rem;font-weight:700;letter-spacing:.03em;margin-bottom:.4rem">PRINCIPLE 3</div>
+<p style="font-size:.85rem;margin:.2rem 0 .3rem;font-weight:600">Format Instructions Are Non-Optional</p>
+<p style="font-size:.8rem;margin:0;line-height:1.55">If you do not specify the output format, Claude will choose one — and it will not be the one your code expects. JSON, bullet points, numbered lists, single-word answers: say it explicitly. Production code that parses AI output without a format instruction is gambling.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-<div style="display:inline-block;padding:.15rem .5rem;border-radius:6px;background:rgba(239,68,68,.12);color:#ef4444;font-size:.72rem;font-weight:700;letter-spacing:.03em;margin-bottom:.4rem">PRINCIPLE 4</div>
-<p style="font-size:.85rem;color:#e5e5e5;margin:.2rem 0 .3rem;font-weight:600">Negative Instructions Override Helpful Defaults</p>
-<p style="font-size:.8rem;color:#a1a1aa;margin:0;line-height:1.55">"Do NOT provide corrected code" is more effective than "just list the bugs." Negative instructions directly override Claude's instinct to be maximally helpful. Use them when Claude keeps adding something you did not ask for — explanations, caveats, alternatives, or apologies.</p>
+<div style="display:inline-block;padding:.15rem .5rem;border-radius:6px;background:rgba(239,68,68,.12);font-size:.72rem;font-weight:700;letter-spacing:.03em;margin-bottom:.4rem">PRINCIPLE 4</div>
+<p style="font-size:.85rem;margin:.2rem 0 .3rem;font-weight:600">Negative Instructions Override Helpful Defaults</p>
+<p style="font-size:.8rem;margin:0;line-height:1.55">"Do NOT provide corrected code" is more effective than "just list the bugs." Negative instructions directly override Claude's instinct to be maximally helpful. Use them when Claude keeps adding something you did not ask for — explanations, caveats, alternatives, or apologies.</p>
 </div>
 </div>
 <div style="display:grid;grid-template-columns:1fr;gap:.75rem;margin-top:.75rem">
 <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-<div style="display:inline-block;padding:.15rem .5rem;border-radius:6px;background:rgba(56,189,248,.12);color:#38bdf8;font-size:.72rem;font-weight:700;letter-spacing:.03em;margin-bottom:.4rem">PRINCIPLE 5</div>
-<p style="font-size:.85rem;color:#e5e5e5;margin:.2rem 0 .3rem;font-weight:600">Temperature Controls Creativity vs Consistency</p>
-<p style="font-size:.8rem;color:#a1a1aa;margin:0;line-height:1.55">Temperature 0 means "give me the same answer every time" — use it for extraction, classification, and code review. Temperature 0.7+ means "surprise me" — use it for creative writing, brainstorming, and persona roleplay. Most beginners never touch temperature. Experts set it on every call because the default (1.0) is wrong for most production tasks.</p>
+<div style="display:inline-block;padding:.15rem .5rem;border-radius:6px;background:rgba(56,189,248,.12);font-size:.72rem;font-weight:700;letter-spacing:.03em;margin-bottom:.4rem">PRINCIPLE 5</div>
+<p style="font-size:.85rem;margin:.2rem 0 .3rem;font-weight:600">Temperature Controls Creativity vs Consistency</p>
+<p style="font-size:.8rem;margin:0;line-height:1.55">Temperature 0 means "give me the same answer every time" — use it for extraction, classification, and code review. Temperature 0.7+ means "surprise me" — use it for creative writing, brainstorming, and persona roleplay. Most beginners never touch temperature. Experts set it on every call because the default (1.0) is wrong for most production tasks.</p>
 </div>
 </div>
 
-<div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.15);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.85rem;color:#a1a1aa;line-height:1.6">
-<strong style="color:#8b5cf6">The meta-lesson:</strong> Prompt engineering is not about talking to AI — it is about <strong style="color:#e5e5e5">constraining a probability distribution</strong>. Every instruction you add narrows the space of possible outputs. The game taught you to add constraints one at a time and see the score go up. Production prompt engineering is the same loop: add a constraint, test the output, repeat until the distribution collapses to exactly what you need.
+<div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.15);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.85rem;line-height:1.6">
+<strong>The meta-lesson:</strong> Prompt engineering is not about talking to AI — it is about <strong>constraining a probability distribution</strong>. Every instruction you add narrows the space of possible outputs. The game taught you to add constraints one at a time and see the score go up. Production prompt engineering is the same loop: add a constraint, test the output, repeat until the distribution collapses to exactly what you need.
 </div>
 </div>
 

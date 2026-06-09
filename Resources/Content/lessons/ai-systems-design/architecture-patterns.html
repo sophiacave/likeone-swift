@@ -47,7 +47,7 @@ class AIGateway:
 
 The Gateway never makes AI decisions. It protects the system, normalizes inputs, and enforces contracts. Think of it as the bouncer -- it decides who gets in, not what happens inside.
 
-<div class="tip-box">
+<div class="callout">
 <strong>Production tip:</strong> Always validate token counts at the gateway, not at the model call. By the time you hit an API token limit, you've already consumed compute for preprocessing. Fail fast, fail cheap.
 </div>
 </div>
@@ -119,7 +119,7 @@ class TaskOrchestrator:
 
 The key differentiator is dynamic replanning. A pipeline always executes the same steps. An orchestrator adapts based on what it learns at each stage. This is the pattern behind AI agents, coding assistants, and research tools.
 
-<div class="tip-box">
+<div class="callout">
 <strong>Guard rail:</strong> Always set a maximum iteration count on orchestrators. Without it, a confused planner can loop indefinitely, burning tokens and time. Most production systems cap at 5-10 iterations.
 </div>
 </div>

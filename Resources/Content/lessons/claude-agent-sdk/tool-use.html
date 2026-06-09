@@ -27,10 +27,10 @@
 
 <p>An AI that can only talk is a chatbot. An AI that can <em>act</em> is an agent. Tools are the bridge. When you give Claude tools, you give it the ability to interact with the real world — read files, run commands, search code, write output, and more.</p>
 
-<p>The Agent SDK ships with a set of <strong style="color:#e5e5e5">built-in tools</strong> that cover the most common agent operations. You do not need to define these yourself — they come ready to use with the <code>tools</code> configuration option.</p>
+<p>The Agent SDK ships with a set of <strong>built-in tools</strong> that cover the most common agent operations. You do not need to define these yourself — they come ready to use with the <code>tools</code> configuration option.</p>
 
-<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">Real-world analogy:</strong> Think of tools as apps on a phone. The phone (Claude) is smart on its own, but it becomes transformative when it can open maps, send messages, check the weather, and take photos. Each tool is one capability. The more tools you provide, the more your agent can do.
+<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.88rem;line-height:1.7">
+<strong>Real-world analogy:</strong> Think of tools as apps on a phone. The phone (Claude) is smart on its own, but it becomes transformative when it can open maps, send messages, check the weather, and take photos. Each tool is one capability. The more tools you provide, the more your agent can do.
 </div>
 </div>
 
@@ -40,22 +40,22 @@
 
 <div style="display:grid;gap:.75rem;margin-top:.75rem">
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(139,92,246,.06);border-radius:10px;border:1px solid rgba(139,92,246,.12)">
-<div><div style="font-size:.85rem;font-weight:700;color:#8b5cf6;margin-bottom:.2rem">Bash</div><div style="font-size:.82rem;color:#a1a1aa;line-height:1.5">Run terminal commands. Install packages, run scripts, execute programs, check system status. The most powerful tool — and the one that requires the most caution.</div></div>
+<div><div style="font-size:.85rem;font-weight:700;margin-bottom:.2rem">Bash</div><div style="font-size:.82rem;line-height:1.5">Run terminal commands. Install packages, run scripts, execute programs, check system status. The most powerful tool — and the one that requires the most caution.</div></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(56,189,248,.06);border-radius:10px;border:1px solid rgba(56,189,248,.12)">
-<div><div style="font-size:.85rem;font-weight:700;color:#38bdf8;margin-bottom:.2rem">Read</div><div style="font-size:.82rem;color:#a1a1aa;line-height:1.5">Read file contents. Supports text files, images, PDFs, and Jupyter notebooks. Can read specific line ranges for large files.</div></div>
+<div><div style="font-size:.85rem;font-weight:700;margin-bottom:.2rem">Read</div><div style="font-size:.82rem;line-height:1.5">Read file contents. Supports text files, images, PDFs, and Jupyter notebooks. Can read specific line ranges for large files.</div></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(251,146,60,.06);border-radius:10px;border:1px solid rgba(251,146,60,.12)">
-<div><div style="font-size:.85rem;font-weight:700;color:#fb923c;margin-bottom:.2rem">Write</div><div style="font-size:.82rem;color:#a1a1aa;line-height:1.5">Create new files or overwrite existing ones. The agent uses this to generate code, write reports, or create configuration files.</div></div>
+<div><div style="font-size:.85rem;font-weight:700;margin-bottom:.2rem">Write</div><div style="font-size:.82rem;line-height:1.5">Create new files or overwrite existing ones. The agent uses this to generate code, write reports, or create configuration files.</div></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(52,211,153,.06);border-radius:10px;border:1px solid rgba(52,211,153,.12)">
-<div><div style="font-size:.85rem;font-weight:700;color:#34d399;margin-bottom:.2rem">Edit</div><div style="font-size:.82rem;color:#a1a1aa;line-height:1.5">Make surgical changes to existing files. Sends only the diff instead of rewriting the entire file. More efficient and safer than Write for modifications.</div></div>
+<div><div style="font-size:.85rem;font-weight:700;margin-bottom:.2rem">Edit</div><div style="font-size:.82rem;line-height:1.5">Make surgical changes to existing files. Sends only the diff instead of rewriting the entire file. More efficient and safer than Write for modifications.</div></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(244,114,182,.06);border-radius:10px;border:1px solid rgba(244,114,182,.12)">
-<div><div style="font-size:.85rem;font-weight:700;color:#f472b6;margin-bottom:.2rem">Grep</div><div style="font-size:.82rem;color:#a1a1aa;line-height:1.5">Search file contents for patterns. Find function definitions, error messages, configuration values — anything in your codebase.</div></div>
+<div><div style="font-size:.85rem;font-weight:700;margin-bottom:.2rem">Grep</div><div style="font-size:.82rem;line-height:1.5">Search file contents for patterns. Find function definitions, error messages, configuration values — anything in your codebase.</div></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(250,204,21,.06);border-radius:10px;border:1px solid rgba(250,204,21,.12)">
-<div><div style="font-size:.85rem;font-weight:700;color:#facc15;margin-bottom:.2rem">Glob</div><div style="font-size:.82rem;color:#a1a1aa;line-height:1.5">Find files by name pattern. <code>**/*.ts</code> finds all TypeScript files. <code>src/**/test.*</code> finds test files in src. Fast file discovery.</div></div>
+<div><div style="font-size:.85rem;font-weight:700;margin-bottom:.2rem">Glob</div><div style="font-size:.82rem;line-height:1.5">Find files by name pattern. <code>**/*.ts</code> finds all TypeScript files. <code>src/**/test.*</code> finds test files in src. Fast file discovery.</div></div>
 </div>
 </div>
 </div>
@@ -64,8 +64,8 @@
 <h2>Tools in Action</h2>
 <p>Here is an agent that uses multiple tools to accomplish a real task — analyzing a project structure:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — multi-tool agent</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — multi-tool agent</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { Claude } <span style="color:#c084fc">from</span> <span style="color:#fbbf24">"@anthropic-ai/claude-agent"</span>;
 
 <span style="color:#c084fc">const</span> agent = <span style="color:#c084fc">new</span> Claude({
@@ -93,8 +93,8 @@
 <h2>Controlling Tool Permissions</h2>
 <p>Not every agent should have access to every tool. The <code>canUseTool</code> callback lets you control exactly which tools your agent can use — and even approve or deny specific invocations based on their parameters:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — custom tool permissions</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — custom tool permissions</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">const</span> agent = <span style="color:#c084fc">new</span> Claude({
   model: <span style="color:#fbbf24">"claude-sonnet-4-6"</span>,
   tools: <span style="color:#fbbf24">"defaults"</span>,
@@ -118,15 +118,15 @@
 <span style="color:#71717a">// or write files outside /project/</span></code></pre>
 </div>
 
-<p style="font-size:.85rem;color:#a1a1aa;line-height:1.7">The <code>canUseTool</code> function is called every time Claude wants to use a tool. Return <code>true</code> to allow, <code>false</code> to deny. This is your security boundary — the place where you enforce what your agent can and cannot do.</p>
+<p style="font-size:.85rem;line-height:1.7">The <code>canUseTool</code> function is called every time Claude wants to use a tool. Return <code>true</code> to allow, <code>false</code> to deny. This is your security boundary — the place where you enforce what your agent can and cannot do.</p>
 </div>
 
 <div class="card">
 <h2>Selecting Specific Tools</h2>
 <p>Instead of the full defaults set, you can enable only the tools you need:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — selective tool loading</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — selective tool loading</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">// Read-only agent — can look but not touch</span>
 <span style="color:#c084fc">const</span> readOnlyAgent = <span style="color:#c084fc">new</span> Claude({
   model: <span style="color:#fbbf24">"claude-sonnet-4-6"</span>,
@@ -151,16 +151,16 @@
 <h2>Key Takeaways</h2>
 <div style="display:grid;gap:1rem">
 <div style="padding:1rem;background:rgba(139,92,246,.05);border-radius:10px;border:1px solid rgba(139,92,246,.1)">
-<strong style="color:#8b5cf6">Least privilege principle</strong>
-<p style="font-size:.85rem;color:#a1a1aa;margin:.25rem 0 0">Give your agent only the tools it needs for its job. A code reviewer does not need Bash. A file analyzer does not need Write. Fewer tools means fewer ways things can go wrong.</p>
+<strong>Least privilege principle</strong>
+<p style="font-size:.85rem;margin:.25rem 0 0">Give your agent only the tools it needs for its job. A code reviewer does not need Bash. A file analyzer does not need Write. Fewer tools means fewer ways things can go wrong.</p>
 </div>
 <div style="padding:1rem;background:rgba(251,146,60,.05);border-radius:10px;border:1px solid rgba(251,146,60,.1)">
-<strong style="color:#fb923c">canUseTool is your security boundary</strong>
-<p style="font-size:.85rem;color:#a1a1aa;margin:.25rem 0 0">Use it to enforce path restrictions, block dangerous commands, and implement business logic around tool access. This callback is called on every tool invocation.</p>
+<strong>canUseTool is your security boundary</strong>
+<p style="font-size:.85rem;margin:.25rem 0 0">Use it to enforce path restrictions, block dangerous commands, and implement business logic around tool access. This callback is called on every tool invocation.</p>
 </div>
 <div style="padding:1rem;background:rgba(52,211,153,.05);border-radius:10px;border:1px solid rgba(52,211,153,.1)">
-<strong style="color:#34d399">Claude chains tools automatically</strong>
-<p style="font-size:.85rem;color:#a1a1aa;margin:.25rem 0 0">You do not need to orchestrate tool calls. Claude decides which tools to use, in what order, based on the task. The SDK handles the execution loop.</p>
+<strong>Claude chains tools automatically</strong>
+<p style="font-size:.85rem;margin:.25rem 0 0">You do not need to orchestrate tool calls. Claude decides which tools to use, in what order, based on the task. The SDK handles the execution loop.</p>
 </div>
 </div>
 </div>

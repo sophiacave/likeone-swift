@@ -34,16 +34,16 @@
 
     <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
       <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(139,92,246,.05);border:1px solid rgba(139,92,246,.1)">
-        <span style="font-weight:700;color:#8b5cf6;font-size:.85rem;min-width:90px">name</span>
-        <span style="font-size:.85rem;color:#a1a1aa">Unique identifier Claude uses to invoke the tool. Convention: <code>snake_case</code>.</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:90px">name</span>
+        <span style="font-size:.85rem">Unique identifier Claude uses to invoke the tool. Convention: <code>snake_case</code>.</span>
       </div>
       <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(251,146,60,.05);border:1px solid rgba(251,146,60,.1)">
-        <span style="font-weight:700;color:#fb923c;font-size:.85rem;min-width:90px">description</span>
-        <span style="font-size:.85rem;color:#a1a1aa">Plain English explanation of WHEN to use this tool and WHAT it does. This is the most important field.</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:90px">description</span>
+        <span style="font-size:.85rem">Plain English explanation of WHEN to use this tool and WHAT it does. This is the most important field.</span>
       </div>
       <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.05);border:1px solid rgba(52,211,153,.1)">
-        <span style="font-weight:700;color:#34d399;font-size:.85rem;min-width:90px">inputSchema</span>
-        <span style="font-size:.85rem;color:#a1a1aa">JSON Schema defining parameter names, types, descriptions, and which are required.</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:90px">inputSchema</span>
+        <span style="font-size:.85rem">JSON Schema defining parameter names, types, descriptions, and which are required.</span>
       </div>
     </div>
   </div>
@@ -54,37 +54,37 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12)">
-        <strong style="color:#ef4444;font-size:.85rem">&#x274C; Bad Description</strong>
+        <strong style="font-size:.85rem">&#x274C; Bad Description</strong>
         <div class="code-block" style="margin-top:.75rem">
           <div class="code-body" style="font-size:.8rem"><span class="str">"Searches stuff"</span></div>
         </div>
-        <p style="font-size:.8rem;color:#71717a;margin:.5rem 0 0">Too vague. Claude does not know what "stuff" means, when to use it instead of other search tools, or what kind of results to expect.</p>
+        <p style="font-size:.8rem;margin:.5rem 0 0">Too vague. Claude does not know what "stuff" means, when to use it instead of other search tools, or what kind of results to expect.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12)">
-        <strong style="color:#34d399;font-size:.85rem">&#x2705; Good Description</strong>
+        <strong style="font-size:.85rem">&#x2705; Good Description</strong>
         <div class="code-block" style="margin-top:.75rem">
           <div class="code-body" style="font-size:.8rem"><span class="str">"Search through the project's documentation files by keyword. Returns matching file names and a preview of the matching paragraph. Use this when the user asks about how something works in the project."</span></div>
         </div>
-        <p style="font-size:.8rem;color:#71717a;margin:.5rem 0 0">Tells Claude exactly what it searches, what it returns, and when to use it.</p>
+        <p style="font-size:.8rem;margin:.5rem 0 0">Tells Claude exactly what it searches, what it returns, and when to use it.</p>
       </div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12)">
-        <strong style="color:#ef4444;font-size:.85rem">&#x274C; Bad Parameter Description</strong>
+        <strong style="font-size:.85rem">&#x274C; Bad Parameter Description</strong>
         <div class="code-block" style="margin-top:.75rem">
           <div class="code-body" style="font-size:.8rem">query: z.string()</div>
         </div>
-        <p style="font-size:.8rem;color:#71717a;margin:.5rem 0 0">No <code>.describe()</code>. Claude has to guess what format the query should be in.</p>
+        <p style="font-size:.8rem;margin:.5rem 0 0">No <code>.describe()</code>. Claude has to guess what format the query should be in.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12)">
-        <strong style="color:#34d399;font-size:.85rem">&#x2705; Good Parameter Description</strong>
+        <strong style="font-size:.85rem">&#x2705; Good Parameter Description</strong>
         <div class="code-block" style="margin-top:.75rem">
           <div class="code-body" style="font-size:.8rem">query: z.string().describe(
   <span class="str">"Search keyword or phrase. Case-insensitive. Partial matches work."</span>
 )</div>
         </div>
-        <p style="font-size:.8rem;color:#71717a;margin:.5rem 0 0">Claude knows the format, case behavior, and matching strategy.</p>
+        <p style="font-size:.8rem;margin:.5rem 0 0">Claude knows the format, case behavior, and matching strategy.</p>
       </div>
     </div>
   </div>
@@ -184,25 +184,25 @@ z.object({
 
     <div style="display:flex;flex-direction:column;gap:.5rem">
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <span style="font-weight:700;color:#8b5cf6;font-size:1rem">1</span>
-        <span style="font-size:.85rem;color:#a1a1aa"><strong style="color:#e2e8f0">Read all descriptions</strong> — Claude reads the description field of every available tool to understand what each one does and when it should be used.</span>
+        <span style="font-weight:700;font-size:1rem">1</span>
+        <span style="font-size:.85rem"><strong>Read all descriptions</strong> — Claude reads the description field of every available tool to understand what each one does and when it should be used.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <span style="font-weight:700;color:#fb923c;font-size:1rem">2</span>
-        <span style="font-size:.85rem;color:#a1a1aa"><strong style="color:#e2e8f0">Match intent to tool</strong> — Based on the user's request and the tool descriptions, Claude selects the best tool (or decides no tool is needed).</span>
+        <span style="font-weight:700;font-size:1rem">2</span>
+        <span style="font-size:.85rem"><strong>Match intent to tool</strong> — Based on the user's request and the tool descriptions, Claude selects the best tool (or decides no tool is needed).</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <span style="font-weight:700;color:#34d399;font-size:1rem">3</span>
-        <span style="font-size:.85rem;color:#a1a1aa"><strong style="color:#e2e8f0">Generate arguments</strong> — Claude reads each parameter's <code>.describe()</code> text, type, and constraints to generate correct values. Enums are particularly helpful — Claude picks from your list instead of guessing.</span>
+        <span style="font-weight:700;font-size:1rem">3</span>
+        <span style="font-size:.85rem"><strong>Generate arguments</strong> — Claude reads each parameter's <code>.describe()</code> text, type, and constraints to generate correct values. Enums are particularly helpful — Claude picks from your list instead of guessing.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-        <span style="font-weight:700;color:#38bdf8;font-size:1rem">4</span>
-        <span style="font-size:.85rem;color:#a1a1aa"><strong style="color:#e2e8f0">Call the tool</strong> — Claude sends a <code>tools/call</code> message with the generated arguments. The MCP SDK validates them against your Zod schema before your handler runs.</span>
+        <span style="font-weight:700;font-size:1rem">4</span>
+        <span style="font-size:.85rem"><strong>Call the tool</strong> — Claude sends a <code>tools/call</code> message with the generated arguments. The MCP SDK validates them against your Zod schema before your handler runs.</span>
       </div>
     </div>
 
-    <div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.15);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.85rem;color:#a1a1aa;line-height:1.6">
-      <strong style="color:#8b5cf6">Key insight:</strong> If Claude is not using your tool when it should, the problem is almost always the <strong>description</strong>. Make it more specific about WHEN to use the tool. If Claude is passing wrong values, improve the parameter <code>.describe()</code> strings.
+    <div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.15);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.85rem;line-height:1.6">
+      <strong>Key insight:</strong> If Claude is not using your tool when it should, the problem is almost always the <strong>description</strong>. Make it more specific about WHEN to use the tool. If Claude is passing wrong values, improve the parameter <code>.describe()</code> strings.
     </div>
   </div>
 
@@ -247,7 +247,7 @@ z.object({
 }</div>
     </div>
 
-    <p style="font-size:.85rem;color:#a1a1aa;margin-top:.75rem">Notice: <code>query</code> is in the <code>required</code> array because it has no <code>.default()</code> or <code>.optional()</code>. The other parameters are optional — Claude can omit them and the defaults kick in. This is the Zod-to-JSON-Schema translation happening automatically.</p>
+    <p style="font-size:.85rem;margin-top:.75rem">Notice: <code>query</code> is in the <code>required</code> array because it has no <code>.default()</code> or <code>.optional()</code>. The other parameters are optional — Claude can omit them and the defaults kick in. This is the Zod-to-JSON-Schema translation happening automatically.</p>
   </div>
 
   <div class="section">

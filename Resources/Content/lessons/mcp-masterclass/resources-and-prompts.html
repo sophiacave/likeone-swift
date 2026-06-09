@@ -35,18 +35,18 @@
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1);text-align:center">
         <div style="font-size:1.5rem">&#x2699;&#xFE0F;</div>
-        <strong style="color:#8b5cf6;font-size:.85rem">Tools</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Actions the AI can take</p>
+        <strong style="font-size:.85rem">Tools</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Actions the AI can take</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1);text-align:center">
         <div style="font-size:1.5rem">&#x1F4C4;</div>
-        <strong style="color:#34d399;font-size:.85rem">Resources</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Data the AI can read</p>
+        <strong style="font-size:.85rem">Resources</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Data the AI can read</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1);text-align:center">
         <div style="font-size:1.5rem">&#x1F4DD;</div>
-        <strong style="color:#fb923c;font-size:.85rem">Prompts</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Templates the user selects</p>
+        <strong style="font-size:.85rem">Prompts</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Templates the user selects</p>
       </div>
     </div>
   </div>
@@ -55,7 +55,7 @@
     <h2>Side-by-Side Comparison</h2>
     <table class="comparison-table">
       <thead>
-        <tr><th>Aspect</th><th style="color:#8b5cf6">Tools</th><th style="color:#34d399">Resources</th><th style="color:#fb923c">Prompts</th></tr>
+        <tr><th>Aspect</th><th>Tools</th><th>Resources</th><th>Prompts</th></tr>
       </thead>
       <tbody>
         <tr><td><strong>Direction</strong></td><td>AI &rarr; World</td><td>World &rarr; AI</td><td>User &rarr; AI</td></tr>
@@ -73,8 +73,8 @@
     <h2>Resources: Giving AI Read-Only Data</h2>
     <p>A Resource is read-only data your server exposes to the AI through a URI. Unlike tools, resources do not execute actions or cause side effects. They are for providing context — configuration files, documentation, database schemas, API specs.</p>
 
-    <div style="background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.15);border-radius:12px;padding:1.25rem;margin-bottom:1.25rem;font-size:.85rem;color:#a1a1aa;line-height:1.6">
-      <strong style="color:#34d399">When to use a Resource instead of a Tool:</strong> If the data is read-only and the AI does not need to decide <em>when</em> to fetch it — use a Resource. If the AI needs to take an action or make a decision about <em>when</em> to fetch data — use a Tool. Example: A project README is a Resource. A database query is a Tool.
+    <div style="background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.15);border-radius:12px;padding:1.25rem;margin-bottom:1.25rem;font-size:.85rem;line-height:1.6">
+      <strong>When to use a Resource instead of a Tool:</strong> If the data is read-only and the AI does not need to decide <em>when</em> to fetch it — use a Resource. If the AI needs to take an action or make a decision about <em>when</em> to fetch data — use a Tool. Example: A project README is a Resource. A database query is a Tool.
     </div>
 
     <div class="code-block">
@@ -120,16 +120,16 @@ server.resource(
 
     <div style="display:flex;flex-direction:column;gap:.5rem;margin-top:1.25rem">
       <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <span style="font-weight:700;color:#34d399;font-size:.85rem;min-width:70px">name</span>
-        <span style="font-size:.85rem;color:#a1a1aa">A human-readable identifier. Shows up in resource listings.</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:70px">name</span>
+        <span style="font-size:.85rem">A human-readable identifier. Shows up in resource listings.</span>
       </div>
       <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <span style="font-weight:700;color:#34d399;font-size:.85rem;min-width:70px">URI</span>
-        <span style="font-size:.85rem;color:#a1a1aa">The address the client uses to request this resource. You define the scheme (<code>file://</code>, <code>db://</code>, etc.).</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:70px">URI</span>
+        <span style="font-size:.85rem">The address the client uses to request this resource. You define the scheme (<code>file://</code>, <code>db://</code>, etc.).</span>
       </div>
       <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <span style="font-weight:700;color:#34d399;font-size:.85rem;min-width:70px">handler</span>
-        <span style="font-size:.85rem;color:#a1a1aa">Async function returning <code>{ contents: [{ uri, text, mimeType }] }</code>. Runs when the resource is read.</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:70px">handler</span>
+        <span style="font-size:.85rem">Async function returning <code>{ contents: [{ uri, text, mimeType }] }</code>. Runs when the resource is read.</span>
       </div>
     </div>
   </div>
@@ -138,8 +138,8 @@ server.resource(
     <h2>Prompts: Reusable Interaction Templates</h2>
     <p>A Prompt is a reusable template that structures how the user interacts with the AI. Think of prompts as pre-built workflows — the user selects one from a menu, optionally fills in parameters, and the AI receives a structured starting point.</p>
 
-    <div style="background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.15);border-radius:12px;padding:1.25rem;margin-bottom:1.25rem;font-size:.85rem;color:#a1a1aa;line-height:1.6">
-      <strong style="color:#fb923c">When to use a Prompt:</strong> When you want to give users a structured starting point for common tasks. Code reviews, bug reports, data analysis templates, content generation workflows — anything where the same interaction pattern repeats.
+    <div style="background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.15);border-radius:12px;padding:1.25rem;margin-bottom:1.25rem;font-size:.85rem;line-height:1.6">
+      <strong>When to use a Prompt:</strong> When you want to give users a structured starting point for common tasks. Code reviews, bug reports, data analysis templates, content generation workflows — anything where the same interaction pattern repeats.
     </div>
 
     <div class="code-block">
@@ -189,16 +189,16 @@ server.prompt(
 
     <div style="display:flex;flex-direction:column;gap:.5rem;margin-top:1.25rem">
       <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <span style="font-weight:700;color:#fb923c;font-size:.85rem;min-width:70px">name</span>
-        <span style="font-size:.85rem;color:#a1a1aa">Unique identifier. Shows in the prompt selection menu in Claude Desktop.</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:70px">name</span>
+        <span style="font-size:.85rem">Unique identifier. Shows in the prompt selection menu in Claude Desktop.</span>
       </div>
       <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <span style="font-weight:700;color:#fb923c;font-size:.85rem;min-width:70px">schema</span>
-        <span style="font-size:.85rem;color:#a1a1aa">Zod schema for parameters the user fills in. Same syntax as tool schemas.</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:70px">schema</span>
+        <span style="font-size:.85rem">Zod schema for parameters the user fills in. Same syntax as tool schemas.</span>
       </div>
       <div style="display:flex;align-items:center;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <span style="font-weight:700;color:#fb923c;font-size:.85rem;min-width:70px">handler</span>
-        <span style="font-size:.85rem;color:#a1a1aa">Returns <code>{ messages: [{ role, content }] }</code>. These messages are injected into the conversation as if the user typed them.</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:70px">handler</span>
+        <span style="font-size:.85rem">Returns <code>{ messages: [{ role, content }] }</code>. These messages are injected into the conversation as if the user typed them.</span>
       </div>
     </div>
   </div>
@@ -209,16 +209,16 @@ server.prompt(
 
     <div style="display:flex;flex-direction:column;gap:.75rem">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.12)">
-        <strong style="color:#8b5cf6">Does the AI need to take an action or modify state?</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Yes &rarr; <strong>Use a Tool.</strong> Tools execute code, write files, send messages, query databases. The AI decides when to call them.</p>
+        <strong>Does the AI need to take an action or modify state?</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Yes &rarr; <strong>Use a Tool.</strong> Tools execute code, write files, send messages, query databases. The AI decides when to call them.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12)">
-        <strong style="color:#34d399">Does the AI need read-only context that does not change based on user input?</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Yes &rarr; <strong>Use a Resource.</strong> Resources provide background context like documentation, schemas, or config. The client or user requests them.</p>
+        <strong>Does the AI need read-only context that does not change based on user input?</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Yes &rarr; <strong>Use a Resource.</strong> Resources provide background context like documentation, schemas, or config. The client or user requests them.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.12)">
-        <strong style="color:#fb923c">Do you want to give users a pre-built workflow they can select?</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Yes &rarr; <strong>Use a Prompt.</strong> Prompts structure the conversation from the start. Users pick them from a menu and fill in parameters.</p>
+        <strong>Do you want to give users a pre-built workflow they can select?</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Yes &rarr; <strong>Use a Prompt.</strong> Prompts structure the conversation from the start. Users pick them from a menu and fill in parameters.</p>
       </div>
     </div>
   </div>
@@ -229,16 +229,16 @@ server.prompt(
 
     <div style="display:flex;flex-direction:column;gap:.5rem">
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <span style="color:#34d399;font-weight:700;font-size:.85rem;min-width:80px">Resource</span>
-        <span style="font-size:.85rem;color:#a1a1aa"><code>docs://api/openapi.json</code> — The API spec. Loaded once when the server connects. Gives Claude full context about available endpoints.</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:80px">Resource</span>
+        <span style="font-size:.85rem"><code>docs://api/openapi.json</code> — The API spec. Loaded once when the server connects. Gives Claude full context about available endpoints.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <span style="color:#8b5cf6;font-weight:700;font-size:.85rem;min-width:80px">Tool</span>
-        <span style="font-size:.85rem;color:#a1a1aa"><code>search_docs</code> — Searches documentation by keyword. Claude calls this when the user asks "how do I authenticate?"</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:80px">Tool</span>
+        <span style="font-size:.85rem"><code>search_docs</code> — Searches documentation by keyword. Claude calls this when the user asks "how do I authenticate?"</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <span style="color:#fb923c;font-weight:700;font-size:.85rem;min-width:80px">Prompt</span>
-        <span style="font-size:.85rem;color:#a1a1aa"><code>api-integration</code> — Template: "Help me integrate the [endpoint] endpoint in [language]." User fills in the blanks, Claude gets structured instructions.</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:80px">Prompt</span>
+        <span style="font-size:.85rem"><code>api-integration</code> — Template: "Help me integrate the [endpoint] endpoint in [language]." User fills in the blanks, Claude gets structured instructions.</span>
       </div>
     </div>
   </div>

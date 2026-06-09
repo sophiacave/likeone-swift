@@ -14,7 +14,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">The Challenge</span>
+  <span class="section-label">The Challenge</span>
   <h2 class="section-title">People Aren't Interchangeable</h2>
 <div class="lo-vis" role="figure" aria-label="People Aren't Interchangeable">
 <div class="lo-vis__title">People Aren't Interchangeable</div>
@@ -33,7 +33,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">Skill Mapping</span>
+  <span class="section-label">Skill Mapping</span>
   <h2 class="section-title">Matching People to Work</h2>
   <p class="section-text">Start by describing your team to AI — roles, skills, availability, current commitments. Then describe the work that needs doing. Ask AI to suggest assignments based on skill fit, availability, and development opportunities.</p>
   <p class="section-text">This isn't about replacing your judgment. It's about getting a structured first draft that you can adjust. AI might suggest pairing the junior developer with the complex authentication work as a growth opportunity — something you might not have considered when you're just trying to get the plan done.</p>
@@ -51,31 +51,31 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">Conflict Resolution</span>
+  <span class="section-label">Conflict Resolution</span>
   <h2 class="section-title">When Two Projects Want the Same Person</h2>
   <p class="section-text">Multi-project resource conflicts are the PM's daily headache. AI can model different allocation scenarios and show you the tradeoffs. "If Maya splits 60/40 between Project A and B, Project A slips one week but Project B stays on track. If she goes 100% on A, B loses its critical path resource for two sprints."</p>
   <p class="section-text">Having those scenarios laid out clearly makes the conversation with your leadership team about priorities much more productive. You're bringing data, not opinions.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Map out your team's current workload with AI:</p>
-  <div class="prompt-box"><code>Here's my team and their current assignments: [list each person, their role, skills, and current project commitments with % allocation]. I need to staff a new project that requires: [list skills and estimated effort]. Please: (1) Identify who has capacity, (2) Flag anyone who's overallocated, (3) Suggest an allocation plan for the new project, (4) Highlight risks and tradeoffs of this plan, (5) Suggest one alternative staffing approach.</code></div>
+  <div class="demo-container"><code>Here's my team and their current assignments: [list each person, their role, skills, and current project commitments with % allocation]. I need to staff a new project that requires: [list skills and estimated effort]. Please: (1) Identify who has capacity, (2) Flag anyone who's overallocated, (3) Suggest an allocation plan for the new project, (4) Highlight risks and tradeoffs of this plan, (5) Suggest one alternative staffing approach.</code></div>
   <p>Use this as a starting point for your resource conversation. The AI-generated options make it much easier to have an honest discussion about tradeoffs.</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--blue);">Pro Tip</span>
+  <span class="section-label">Pro Tip</span>
   <h2 class="section-title">Track Actuals vs. Plan</h2>
   <p class="section-text">Each week, update AI with how time was actually spent. "Alex was supposed to be 80% on Project A but spent 50% on production support." Over time, AI helps you see patterns — like production support always eating 20% more than planned — so you can build more realistic allocations going forward.</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--red);">Prompt Templates</span>
+  <span class="section-label">Prompt Templates</span>
   <h2 class="section-title">Resource Planning Templates</h2>
   <p class="section-text">These templates cover the most common resource allocation challenges PMs face:</p>
   <p class="section-text"><strong>New Project Staffing Template:</strong></p>
-  <div class="prompt-box"><code>I need to staff a new project. Here are the requirements:
+  <div class="demo-container"><code>I need to staff a new project. Here are the requirements:
 
 Project scope: [describe the work]
 Duration: [timeline]
@@ -90,7 +90,7 @@ Please:
 5. Suggest alternatives: hire, contract, train, or defer specific work items
 6. Identify the single biggest staffing risk in this plan</code></div>
   <p class="section-text"><strong>Capacity Rebalancing Template:</strong></p>
-  <div class="prompt-box"><code>My team is unbalanced — some people are overloaded and others have slack. Here is the current state:
+  <div class="demo-container"><code>My team is unbalanced — some people are overloaded and others have slack. Here is the current state:
 
 [For each team member: name, role, current projects and % allocation, known upcoming changes]
 
@@ -101,7 +101,7 @@ Please:
 4. Flag skill gaps that prevent rebalancing
 5. Recommend a 2-week transition plan to reach a healthier balance</code></div>
   <p class="section-text"><strong>What-If Scenario Template:</strong></p>
-  <div class="prompt-box"><code>I need to model resource scenarios for a decision. Here is the situation:
+  <div class="demo-container"><code>I need to model resource scenarios for a decision. Here is the situation:
 
 Current team allocation: [describe]
 Change being considered: [describe the change — new project, person leaving, timeline shift, etc.]
@@ -115,7 +115,7 @@ For each scenario, show: impact on each project's timeline, who becomes overload
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">Framework</span>
+  <span class="section-label">Framework</span>
   <h2 class="section-title">The Resource Allocation Triangle</h2>
   <p class="section-text">Every resource decision balances three competing forces. Understanding this triangle helps you make better tradeoffs — and helps AI give you better recommendations:</p>
   <p class="section-text"><strong>Utilization.</strong> How much of each person's time is productively allocated. Under 70% means you are paying for idle capacity. Over 90% means there is no room for unplanned work, learning, or recovery. The sweet spot is 75-85% for most knowledge workers.</p>
@@ -125,7 +125,7 @@ For each scenario, show: impact on each project's timeline, who becomes overload
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">Real-World Example</span>
+  <span class="section-label">Real-World Example</span>
   <h2 class="section-title">Solving the Bus Factor Problem</h2>
   <p class="section-text">A development team had a "bus factor" of one — a single senior engineer who was the only person who understood the payment processing system. The PM knew this was a risk but could never justify pulling that engineer off feature work to train others.</p>
   <p class="section-text">She used AI to model the scenario: "If this engineer is unavailable for two weeks (illness, vacation, resignation), what happens to each active project?" AI mapped the impact across four projects — three would stall completely, and the fourth would lose its most complex workstream.</p>
@@ -134,10 +134,10 @@ For each scenario, show: impact on each project's timeline, who becomes overload
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">Advanced Technique</span>
+  <span class="section-label">Advanced Technique</span>
   <h2 class="section-title">Capacity Forecasting Across Quarters</h2>
   <p class="section-text">Most resource planning is reactive — you scramble to staff projects as they appear. AI enables proactive capacity forecasting by modeling your team's availability across future quarters:</p>
-  <div class="prompt-box"><code>Here is my team's current and planned allocation for the next 3 months:
+  <div class="demo-container"><code>Here is my team's current and planned allocation for the next 3 months:
 
 [For each person: name, role, current project(s), end date of current work, known upcoming commitments, planned time off]
 
@@ -154,7 +154,7 @@ Please:
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--red);">Common Pitfalls</span>
+  <span class="section-label">Common Pitfalls</span>
   <h2 class="section-title">Resource Allocation Mistakes</h2>
   <p class="section-text"><strong>The 100% Trap:</strong> Allocating someone at 100% to a project assumes zero interruptions — no production issues, no meetings outside the project, no helping colleagues. In practice, 80% allocation means "this is your primary focus." AI can help you model realistic allocations by building in overhead buffers based on historical data.</p>
   <p class="section-text"><strong>The Skills Spreadsheet Fallacy:</strong> Treating people as interchangeable based on job titles. "We need a developer, and Casey is a developer, so Casey can do it." AI helps you go deeper — matching specific skills, experience levels, and growth goals to specific tasks rather than slotting warm bodies into boxes.</p>
@@ -162,10 +162,10 @@ Please:
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">Framework</span>
+  <span class="section-label">Framework</span>
   <h2 class="section-title">The RACI Matrix with AI</h2>
   <p class="section-text">RACI (Responsible, Accountable, Consulted, Informed) is a classic PM tool for clarifying roles. AI generates RACI matrices from your project plan instantly:</p>
-  <div class="prompt-box"><code>Here is my project plan with tasks, and here is my team:
+  <div class="demo-container"><code>Here is my project plan with tasks, and here is my team:
 
 Tasks: [list major tasks/deliverables]
 Team: [list each person with their role]

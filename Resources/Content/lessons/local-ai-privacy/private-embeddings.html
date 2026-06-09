@@ -59,7 +59,7 @@ def get_embedding(text):
 vector = get_embedding("Quarterly revenue increased 15% year over year.")
 print(f"Vector dimension: {len(vector)}")  # 768</code></pre>
 
-<div class="tip-box">
+<div class="callout">
 <strong>Chunking matters:</strong> Embedding models have a maximum input length (typically 512-8192 tokens). Split long documents into overlapping chunks of 200-500 words. Overlap by 50 words to preserve context at chunk boundaries. The quality of your chunks determines the quality of your search.
 </div>
 </div>

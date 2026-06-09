@@ -10,18 +10,18 @@
 <h2>Why a Checklist Matters</h2>
 <div class="lo-vis" role="figure" aria-label="4 launch checklist categories"><div class="lo-vis__title">The 20-Item Launch Gate</div><div class="lo-steps" data-count="4"><div class="lo-step lo-step--purple"><span class="lo-step__num">5</span><span class="lo-step__label">Security</span><span class="lo-step__desc">No leaked secrets, RLS on, CORS set</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--green"><span class="lo-step__num">5</span><span class="lo-step__label">Performance</span><span class="lo-step__desc">Bundle &lt;100KB, indexes, caching</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--orange"><span class="lo-step__num">5</span><span class="lo-step__label">UX</span><span class="lo-step__desc">Error states, mobile, loading</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--green"><span class="lo-step__num">5</span><span class="lo-step__label">Revenue</span><span class="lo-step__desc">Stripe live, webhooks, email capture</span></div></div><div class="lo-vis__caption">20 items across 4 categories. <strong>Skip none -- a missed env var can blank your entire site.</strong></div></div>
 
-<p>Pilots do not skip their pre-flight checklist, no matter how many times they have flown. The same principle applies to shipping software. A single missed environment variable can cause a blank page. A leaked secret key can compromise your database. <strong style="color:#e5e5e5">The checklist is not bureaucracy — it is insurance.</strong></p>
+<p>Pilots do not skip their pre-flight checklist, no matter how many times they have flown. The same principle applies to shipping software. A single missed environment variable can cause a blank page. A leaked secret key can compromise your database. <strong>The checklist is not bureaucracy — it is insurance.</strong></p>
 
 <div style="background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);border-radius:12px;padding:1.25rem;margin:1rem 0">
-<p style="color:#fb923c;font-weight:700;font-size:.9rem;margin:0 0 .75rem">Before you start</p>
-<p style="font-size:.85rem;color:#a1a1aa;margin:0 0 .75rem;line-height:1.7">This checklist assumes you have completed the previous 9 lessons. Each item connects back to skills you have already learned. If anything feels unfamiliar, revisit the lesson where it was covered.</p>
-<p style="font-size:.85rem;color:#e5e5e5;margin:0 0 .5rem"><strong>Jargon cheat sheet:</strong></p>
-<ul style="list-style:none;padding:0;margin:0;font-size:.82rem;color:#a1a1aa;line-height:2">
-<li><strong style="color:#f59e0b">RLS (Row Level Security)</strong> — database rules that control who can read/write each row. Like a bouncer for your data.</li>
-<li><strong style="color:#f59e0b">CORS (Cross-Origin Resource Sharing)</strong> — browser security that controls which websites can call your API.</li>
-<li><strong style="color:#f59e0b">Tree-shaking</strong> — automatically removing unused code from your final bundle, so users download less JavaScript.</li>
-<li><strong style="color:#f59e0b">Cache-Control</strong> — an HTTP header that tells browsers how long to keep a file before re-downloading it.</li>
-<li><strong style="color:#f59e0b">Indexes</strong> — a database optimization (like a book's index) that makes lookups fast instead of scanning every row.</li>
+<p style="font-weight:700;font-size:.9rem;margin:0 0 .75rem">Before you start</p>
+<p style="font-size:.85rem;margin:0 0 .75rem;line-height:1.7">This checklist assumes you have completed the previous 9 lessons. Each item connects back to skills you have already learned. If anything feels unfamiliar, revisit the lesson where it was covered.</p>
+<p style="font-size:.85rem;margin:0 0 .5rem"><strong>Jargon cheat sheet:</strong></p>
+<ul style="list-style:none;padding:0;margin:0;font-size:.82rem;line-height:2">
+<li><strong>RLS (Row Level Security)</strong> — database rules that control who can read/write each row. Like a bouncer for your data.</li>
+<li><strong>CORS (Cross-Origin Resource Sharing)</strong> — browser security that controls which websites can call your API.</li>
+<li><strong>Tree-shaking</strong> — automatically removing unused code from your final bundle, so users download less JavaScript.</li>
+<li><strong>Cache-Control</strong> — an HTTP header that tells browsers how long to keep a file before re-downloading it.</li>
+<li><strong>Indexes</strong> — a database optimization (like a book's index) that makes lookups fast instead of scanning every row.</li>
 </ul>
 </div>
 </div>
@@ -32,24 +32,24 @@
 
 <div style="display:grid;gap:.5rem;margin-top:1rem">
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(239,68,68,.04);border-radius:8px;border:1px solid rgba(239,68,68,.08)">
-<div style="min-width:1.5rem;color:#ef4444;font-weight:700;font-size:.85rem">1</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">No secrets in frontend code</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">Grep your <code style="color:#f59e0b">src/</code> directory for <code style="color:#ef4444">NEXT_PUBLIC_.*SERVICE_ROLE</code> and <code style="color:#ef4444">NEXT_PUBLIC_.*SECRET</code>. Zero matches = pass. Any match = stop everything and fix it.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">1</div>
+<div><strong style="font-size:.85rem">No secrets in frontend code</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">Grep your <code>src/</code> directory for <code>NEXT_PUBLIC_.*SERVICE_ROLE</code> and <code>NEXT_PUBLIC_.*SECRET</code>. Zero matches = pass. Any match = stop everything and fix it.</p></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(239,68,68,.04);border-radius:8px;border:1px solid rgba(239,68,68,.08)">
-<div style="min-width:1.5rem;color:#ef4444;font-weight:700;font-size:.85rem">2</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">RLS enabled on every table</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">Check the Supabase dashboard: Database &rarr; Tables. Every table should show a lock icon. Run <code style="color:#f59e0b">supabase db lint --level warning</code> to catch RLS gaps.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">2</div>
+<div><strong style="font-size:.85rem">RLS enabled on every table</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">Check the Supabase dashboard: Database &rarr; Tables. Every table should show a lock icon. Run <code>supabase db lint --level warning</code> to catch RLS gaps.</p></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(239,68,68,.04);border-radius:8px;border:1px solid rgba(239,68,68,.08)">
-<div style="min-width:1.5rem;color:#ef4444;font-weight:700;font-size:.85rem">3</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">Stripe webhook signatures verified</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">Your webhook handler must call <code style="color:#f59e0b">stripe.webhooks.constructEvent()</code> before processing. Without it, anyone can fake payment events.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">3</div>
+<div><strong style="font-size:.85rem">Stripe webhook signatures verified</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">Your webhook handler must call <code>stripe.webhooks.constructEvent()</code> before processing. Without it, anyone can fake payment events.</p></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(239,68,68,.04);border-radius:8px;border:1px solid rgba(239,68,68,.08)">
-<div style="min-width:1.5rem;color:#ef4444;font-weight:700;font-size:.85rem">4</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">CORS configured on edge functions</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">Only your domain should be allowed to call your API. Set <code style="color:#f59e0b">Access-Control-Allow-Origin</code> to your production domain, not <code style="color:#ef4444">*</code>.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">4</div>
+<div><strong style="font-size:.85rem">CORS configured on edge functions</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">Only your domain should be allowed to call your API. Set <code>Access-Control-Allow-Origin</code> to your production domain, not <code>*</code>.</p></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(239,68,68,.04);border-radius:8px;border:1px solid rgba(239,68,68,.08)">
-<div style="min-width:1.5rem;color:#ef4444;font-weight:700;font-size:.85rem">5</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">No secrets in git history</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">Search your git history: <code style="color:#f59e0b">git log -p | grep -i "sk_live\|whsec_\|service_role"</code>. If found: revoke the key immediately, generate a new one, force-push a cleaned history.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">5</div>
+<div><strong style="font-size:.85rem">No secrets in git history</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">Search your git history: <code>git log -p | grep -i "sk_live\|whsec_\|service_role"</code>. If found: revoke the key immediately, generate a new one, force-push a cleaned history.</p></div>
 </div>
 </div>
 </div>
@@ -60,24 +60,24 @@
 
 <div style="display:grid;gap:.5rem;margin-top:1rem">
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(139,92,246,.04);border-radius:8px;border:1px solid rgba(139,92,246,.08)">
-<div style="min-width:1.5rem;color:#8b5cf6;font-weight:700;font-size:.85rem">6</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">Bundle size under 100KB first load</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">Run <code style="color:#f59e0b">next build</code> and check "First Load JS." Over 100KB means unused libraries are bloating your bundle. Check imports — are you importing entire libraries when you only need one function?</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">6</div>
+<div><strong style="font-size:.85rem">Bundle size under 100KB first load</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">Run <code>next build</code> and check "First Load JS." Over 100KB means unused libraries are bloating your bundle. Check imports — are you importing entire libraries when you only need one function?</p></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(139,92,246,.04);border-radius:8px;border:1px solid rgba(139,92,246,.08)">
-<div style="min-width:1.5rem;color:#8b5cf6;font-weight:700;font-size:.85rem">7</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">Images optimized</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">Use Next.js <code style="color:#f59e0b">&lt;Image&gt;</code> component for automatic WebP conversion and lazy loading. No raw <code style="color:#ef4444">&lt;img&gt;</code> tags for large images.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">7</div>
+<div><strong style="font-size:.85rem">Images optimized</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">Use Next.js <code>&lt;Image&gt;</code> component for automatic WebP conversion and lazy loading. No raw <code>&lt;img&gt;</code> tags for large images.</p></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(139,92,246,.04);border-radius:8px;border:1px solid rgba(139,92,246,.08)">
-<div style="min-width:1.5rem;color:#8b5cf6;font-weight:700;font-size:.85rem">8</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">Database indexes on queried columns</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">Every column in a WHERE clause or ORDER BY should have an index. Without one, Postgres scans every row — fine for 100 rows, catastrophic for 100K.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">8</div>
+<div><strong style="font-size:.85rem">Database indexes on queried columns</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">Every column in a WHERE clause or ORDER BY should have an index. Without one, Postgres scans every row — fine for 100 rows, catastrophic for 100K.</p></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(139,92,246,.04);border-radius:8px;border:1px solid rgba(139,92,246,.08)">
-<div style="min-width:1.5rem;color:#8b5cf6;font-weight:700;font-size:.85rem">9</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">Cache-Control headers set</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">Static assets (CSS, JS, images) should have long cache times. API responses should not be cached unless intentional. Check with <code style="color:#f59e0b">curl -I your-url</code>.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">9</div>
+<div><strong style="font-size:.85rem">Cache-Control headers set</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">Static assets (CSS, JS, images) should have long cache times. API responses should not be cached unless intentional. Check with <code>curl -I your-url</code>.</p></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(139,92,246,.04);border-radius:8px;border:1px solid rgba(139,92,246,.08)">
-<div style="min-width:1.5rem;color:#8b5cf6;font-weight:700;font-size:.85rem">10</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">Edge function cold starts acceptable</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">First request after idle may take 1-3 seconds (cold start). Test your edge functions after a 5-minute idle. If cold starts are too slow, consider warming them with a scheduled ping.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">10</div>
+<div><strong style="font-size:.85rem">Edge function cold starts acceptable</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">First request after idle may take 1-3 seconds (cold start). Test your edge functions after a 5-minute idle. If cold starts are too slow, consider warming them with a scheduled ping.</p></div>
 </div>
 </div>
 </div>
@@ -88,24 +88,24 @@
 
 <div style="display:grid;gap:.5rem;margin-top:1rem">
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(52,211,153,.04);border-radius:8px;border:1px solid rgba(52,211,153,.08)">
-<div style="min-width:1.5rem;color:#34d399;font-weight:700;font-size:.85rem">11</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">Error states handled</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">What does the user see when the API is down? When payment fails? When they submit an empty form? Every error should show a helpful message, not a blank page or raw error.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">11</div>
+<div><strong style="font-size:.85rem">Error states handled</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">What does the user see when the API is down? When payment fails? When they submit an empty form? Every error should show a helpful message, not a blank page or raw error.</p></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(52,211,153,.04);border-radius:8px;border:1px solid rgba(52,211,153,.08)">
-<div style="min-width:1.5rem;color:#34d399;font-weight:700;font-size:.85rem">12</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">Mobile responsive</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">Test on a real phone or Chrome DevTools mobile mode. Check: text readable without zooming, buttons large enough to tap, forms usable on small screens.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">12</div>
+<div><strong style="font-size:.85rem">Mobile responsive</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">Test on a real phone or Chrome DevTools mobile mode. Check: text readable without zooming, buttons large enough to tap, forms usable on small screens.</p></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(52,211,153,.04);border-radius:8px;border:1px solid rgba(52,211,153,.08)">
-<div style="min-width:1.5rem;color:#34d399;font-weight:700;font-size:.85rem">13</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">Payment cancel URL configured</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">When a user cancels on Stripe, where do they land? Set <code style="color:#f59e0b">cancel_url</code> in your checkout session to a helpful page — not the homepage with no context.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">13</div>
+<div><strong style="font-size:.85rem">Payment cancel URL configured</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">When a user cancels on Stripe, where do they land? Set <code>cancel_url</code> in your checkout session to a helpful page — not the homepage with no context.</p></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(52,211,153,.04);border-radius:8px;border:1px solid rgba(52,211,153,.08)">
-<div style="min-width:1.5rem;color:#34d399;font-weight:700;font-size:.85rem">14</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">Loading states present</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">Every button that triggers an API call should show a spinner or "Loading..." state. Prevents double-clicks, double-payments, and confused users.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">14</div>
+<div><strong style="font-size:.85rem">Loading states present</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">Every button that triggers an API call should show a spinner or "Loading..." state. Prevents double-clicks, double-payments, and confused users.</p></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(52,211,153,.04);border-radius:8px;border:1px solid rgba(52,211,153,.08)">
-<div style="min-width:1.5rem;color:#34d399;font-weight:700;font-size:.85rem">15</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">Success confirmation clear</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">After subscribing: show a confirmation message. After paying: redirect to a success page with next steps. Users should never wonder "did that work?"</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">15</div>
+<div><strong style="font-size:.85rem">Success confirmation clear</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">After subscribing: show a confirmation message. After paying: redirect to a success page with next steps. Users should never wonder "did that work?"</p></div>
 </div>
 </div>
 </div>
@@ -116,24 +116,24 @@
 
 <div style="display:grid;gap:.5rem;margin-top:1rem">
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(251,146,60,.04);border-radius:8px;border:1px solid rgba(251,146,60,.08)">
-<div style="min-width:1.5rem;color:#fb923c;font-weight:700;font-size:.85rem">16</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">Stripe test payment completes</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">Use test card <code style="color:#f59e0b">4242 4242 4242 4242</code> with any future expiry. The full flow should work: click buy &rarr; checkout page &rarr; payment &rarr; success page &rarr; revenue row in database.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">16</div>
+<div><strong style="font-size:.85rem">Stripe test payment completes</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">Use test card <code>4242 4242 4242 4242</code> with any future expiry. The full flow should work: click buy &rarr; checkout page &rarr; payment &rarr; success page &rarr; revenue row in database.</p></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(251,146,60,.04);border-radius:8px;border:1px solid rgba(251,146,60,.08)">
-<div style="min-width:1.5rem;color:#fb923c;font-weight:700;font-size:.85rem">17</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">Webhook fires and logs revenue</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">After the test payment, check your revenue table in Supabase. A new row should appear with the correct amount and email. If not: check Stripe webhook dashboard for delivery failures.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">17</div>
+<div><strong style="font-size:.85rem">Webhook fires and logs revenue</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">After the test payment, check your revenue table in Supabase. A new row should appear with the correct amount and email. If not: check Stripe webhook dashboard for delivery failures.</p></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(251,146,60,.04);border-radius:8px;border:1px solid rgba(251,146,60,.08)">
-<div style="min-width:1.5rem;color:#fb923c;font-weight:700;font-size:.85rem">18</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">Email capture works end-to-end</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">Submit the subscribe form with a real email. Check: (1) row in subscribers table, (2) welcome email received, (3) duplicate submission handled gracefully.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">18</div>
+<div><strong style="font-size:.85rem">Email capture works end-to-end</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">Submit the subscribe form with a real email. Check: (1) row in subscribers table, (2) welcome email received, (3) duplicate submission handled gracefully.</p></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(251,146,60,.04);border-radius:8px;border:1px solid rgba(251,146,60,.08)">
-<div style="min-width:1.5rem;color:#fb923c;font-weight:700;font-size:.85rem">19</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">Switch to live Stripe keys</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">Replace <code style="color:#f59e0b">sk_test_</code> with <code style="color:#f59e0b">sk_live_</code> in your production environment variables. Update the webhook endpoint to use the live signing secret. Do NOT do this until all test payments pass.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">19</div>
+<div><strong style="font-size:.85rem">Switch to live Stripe keys</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">Replace <code>sk_test_</code> with <code>sk_live_</code> in your production environment variables. Update the webhook endpoint to use the live signing secret. Do NOT do this until all test payments pass.</p></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(251,146,60,.04);border-radius:8px;border:1px solid rgba(251,146,60,.08)">
-<div style="min-width:1.5rem;color:#fb923c;font-weight:700;font-size:.85rem">20</div>
-<div><strong style="color:#e5e5e5;font-size:.85rem">Make.com notifications firing</strong><p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0;line-height:1.7">Verify your Slack alerts work: new subscriber notification, revenue alert, and any other scenarios. Check Make.com's execution log for errors.</p></div>
+<div style="min-width:1.5rem;font-weight:700;font-size:.85rem">20</div>
+<div><strong style="font-size:.85rem">Make.com notifications firing</strong><p style="font-size:.82rem;margin:.2rem 0 0;line-height:1.7">Verify your Slack alerts work: new subscriber notification, revenue alert, and any other scenarios. Check Make.com's execution log for errors.</p></div>
 </div>
 </div>
 </div>
@@ -142,8 +142,8 @@
 <h2>Automated Pre-Launch Script</h2>
 <p>Automate as many checks as possible. Run this script before every deploy — it catches the most common issues in under 30 seconds.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Bash — pre-launch.sh</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Bash — pre-launch.sh</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">#!/bin/bash</span>
 <span style="color:#71717a"># pre-launch.sh — Run before every deploy</span>
 <span style="color:#c084fc">set</span> -e
@@ -189,8 +189,8 @@ STATUS=$(<span style="color:#34d399">curl</span> -s -o /dev/null -w <span style=
 <h2>Post-Deploy Smoke Test</h2>
 <p>After deploying, run this automated smoke test to verify everything works in production. It checks the critical paths your users will hit.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JavaScript — smoke-test.mjs</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JavaScript — smoke-test.mjs</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">// smoke-test.mjs — Run after every deploy</span>
 <span style="color:#c084fc">const</span> BASE = <span style="color:#fb923c">'https://your-app.vercel.app'</span>
 

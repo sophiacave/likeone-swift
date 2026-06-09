@@ -44,7 +44,7 @@
   <p class="section-text">The most reliable way to get JSON: show the exact schema you want, with descriptions for each field.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--green);">
+    <div class="demo-container" style="border-left: 3px solid var(--green);">
       <h4 style="color: var(--green);">Schema-Driven Prompt</h4>
       <code>Extract product information from the following review and return it as JSON matching this exact schema:
 
@@ -67,7 +67,7 @@ Return ONLY the JSON object. No explanation. No markdown code fences.</code>
   <h2 class="section-title">Tables and Comparison Formats</h2>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--purple);">
+    <div class="demo-container" style="border-left: 3px solid var(--purple);">
       <h4 style="color: var(--purple);">Markdown Table Prompt</h4>
       <code>Compare these three databases in a Markdown table with these exact columns:
 | Feature | PostgreSQL | MongoDB | Redis |
@@ -85,7 +85,7 @@ Keep each cell to 10 words or fewer.</code>
   <p class="section-text">Start the AI's response for it. This anchors the format immediately.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--orange);">
+    <div class="demo-container" style="border-left: 3px solid var(--orange);">
       <h4 style="color: var(--orange);">Anchored Output</h4>
       <code>List the top 5 risks in this business plan as a numbered list. Each item should have a risk name in bold, followed by a one-sentence explanation and a severity tag [HIGH/MEDIUM/LOW].
 
@@ -128,9 +128,9 @@ Start your response with:
 <div class="lesson-section">
   <span class="section-label">Common Pitfalls</span>
   <h2 class="section-title">When Structured Output Breaks</h2>
-  <p class="section-text"><strong style="color: var(--red);">The "helpful" preamble:</strong> AI loves to add "Here's the JSON:" before your data. Fix: "Return ONLY the JSON. No preamble. No explanation."</p>
-  <p class="section-text"><strong style="color: var(--red);">Inconsistent keys:</strong> Sometimes the AI renames fields. Fix: provide the exact schema and say "use these exact key names."</p>
-  <p class="section-text"><strong style="color: var(--red);">Mixed types:</strong> A field that should be a number comes back as a string. Fix: specify types in your schema description.</p>
+  <p class="section-text"><strong>The "helpful" preamble:</strong> AI loves to add "Here's the JSON:" before your data. Fix: "Return ONLY the JSON. No preamble. No explanation."</p>
+  <p class="section-text"><strong>Inconsistent keys:</strong> Sometimes the AI renames fields. Fix: provide the exact schema and say "use these exact key names."</p>
+  <p class="section-text"><strong>Mixed types:</strong> A field that should be a number comes back as a string. Fix: specify types in your schema description.</p>
 </div>
 
 <div class="lesson-section">
@@ -139,7 +139,7 @@ Start your response with:
   <p class="section-text">Sometimes you need data that goes straight into a spreadsheet. CSV output is cleaner than tables for this purpose.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--green);">
+    <div class="demo-container" style="border-left: 3px solid var(--green);">
       <h4 style="color: var(--green);">CSV Prompt</h4>
       <code>"Extract all mentions of companies from this article. Return as CSV with these exact columns:
 
@@ -159,7 +159,7 @@ Return ONLY the CSV data with the header row. No explanations. No markdown code 
   <p class="section-text">Real-world data is rarely flat. When you need nested structures, your schema must show the nesting explicitly.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--purple);">
+    <div class="demo-container" style="border-left: 3px solid var(--purple);">
       <h4 style="color: var(--purple);">Nested Schema Prompt</h4>
       <code>"Analyze this meeting transcript and extract structured data:
 
@@ -196,7 +196,7 @@ If a field has no data in the transcript, use an empty array [] or 'not mentione
   <p class="section-text">You can ask the AI to validate its own structured output before returning it. This catches common errors at the source.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--blue);">
+    <div class="demo-container" style="border-left: 3px solid var(--blue);">
       <h4 style="color: var(--blue);">Self-Validating Prompt</h4>
       <code>"After generating the JSON, validate it against these rules before returning:
 1. All date fields match YYYY-MM-DD format
@@ -215,9 +215,9 @@ If any rule is violated, fix it before returning. Return only the corrected JSON
 <div class="lesson-section">
   <span class="section-label">Try It Yourself</span>
   <h2 class="section-title">Extract Structured Data</h2>
-  <div class="try-it-box">
+  <div class="callout">
     <p>Find a product review, article, or email. Write a prompt that extracts the key information into a JSON object with at least 5 fields. Make sure you get clean, parseable output.</p>
-    <div class="prompt-box">
+    <div class="demo-container">
       <code>Extract the following from this text and return as JSON:
 {
   "field_1": "type — description",

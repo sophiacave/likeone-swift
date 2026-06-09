@@ -14,7 +14,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">The Gap</span>
+  <span class="section-label">The Gap</span>
   <h2 class="section-title">Everyone Wants Docs. Nobody Wants to Write Them.</h2>
 <div class="lo-vis" role="figure" aria-label="Everyone Wants Docs. Nobody Wants to Write Them.">
 <div class="lo-vis__title">Everyone Wants Docs. Nobody Wants to Write Them.</div>
@@ -33,7 +33,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">Project Docs</span>
+  <span class="section-label">Project Docs</span>
   <h2 class="section-title">From Chaos to Clarity</h2>
   <p class="section-text">Every project needs a few core documents: a charter or brief, a requirements doc, a technical architecture overview, and a runbook for operations. AI can draft any of these from your existing materials.</p>
   <p class="section-text">Got a series of emails where requirements were discussed? Feed them to AI and ask for a structured requirements document. Have a Slack thread where the team debated the technical approach? AI turns that into an architecture decision record. The information already exists — AI just organizes it.</p>
@@ -46,25 +46,25 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">Staying Current</span>
+  <span class="section-label">Staying Current</span>
   <h2 class="section-title">Docs That Don't Rot</h2>
   <p class="section-text">The hardest part of documentation isn't creating it — it's keeping it updated. Set a monthly cadence: feed AI your current SOP along with any process changes from the last month (new tools, changed steps, lessons learned). Ask it to produce an updated version with a changelog.</p>
   <p class="section-text">This turns documentation maintenance from a dreaded quarterly project into a 15-minute monthly habit. The docs stay accurate, the team trusts them, and onboarding new people stops being a three-week oral tradition.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Pick a process your team follows but has never documented. Describe it in plain language:</p>
-  <div class="prompt-box"><code>Here's a process my team follows but we've never documented: [describe in plain language — who does what, when, in what order, what tools are used]. Please create a Standard Operating Procedure with: (1) Purpose and scope, (2) Roles and responsibilities, (3) Step-by-step procedure with details, (4) Decision points and escalation criteria, (5) Tools and access needed, (6) Common issues and troubleshooting. Format it clearly with headers and numbered steps.</code></div>
+  <div class="demo-container"><code>Here's a process my team follows but we've never documented: [describe in plain language — who does what, when, in what order, what tools are used]. Please create a Standard Operating Procedure with: (1) Purpose and scope, (2) Roles and responsibilities, (3) Step-by-step procedure with details, (4) Decision points and escalation criteria, (5) Tools and access needed, (6) Common issues and troubleshooting. Format it clearly with headers and numbered steps.</code></div>
   <p>Share the draft with the team member who knows the process best. You'll be surprised how close AI gets from just your description — and the gaps they identify make the final doc bulletproof.</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--red);">Prompt Templates</span>
+  <span class="section-label">Prompt Templates</span>
   <h2 class="section-title">Documentation Templates for Common PM Needs</h2>
   <p class="section-text">These templates cover the documents every PM eventually needs but rarely has time to create from scratch:</p>
   <p class="section-text"><strong>Project Charter Template:</strong></p>
-  <div class="prompt-box"><code>Create a project charter from the following information:
+  <div class="demo-container"><code>Create a project charter from the following information:
 
 Project name: [name]
 Business problem: [what problem this solves]
@@ -77,7 +77,7 @@ Success criteria: [how we know it worked]
 
 Include sections for: Executive Summary, Business Case, Scope (in-scope and explicitly out-of-scope), Key Stakeholders, High-Level Timeline, Budget Summary, Assumptions, Constraints, Risks, and Approval Signatures. Keep it to 2-3 pages maximum.</code></div>
   <p class="section-text"><strong>Process Documentation Template:</strong></p>
-  <div class="prompt-box"><code>Document this process that my team follows:
+  <div class="demo-container"><code>Document this process that my team follows:
 
 [Describe the process in plain language — who does what, when, what tools are used, what triggers it, what the output is]
 
@@ -93,7 +93,7 @@ Create a process document with:
 9. Related processes (what feeds into this, what follows)
 10. Version history placeholder</code></div>
   <p class="section-text"><strong>Decision Log Template:</strong></p>
-  <div class="prompt-box"><code>I need a decision log entry for an important project decision. Here are the details:
+  <div class="demo-container"><code>I need a decision log entry for an important project decision. Here are the details:
 
 Decision: [what was decided]
 Date: [when]
@@ -108,7 +108,7 @@ Format this as a formal decision record that future team members can reference t
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">Framework</span>
+  <span class="section-label">Framework</span>
   <h2 class="section-title">The Documentation Pyramid</h2>
   <p class="section-text">Not all documentation is equal. Think of it as a pyramid with different levels of detail for different audiences:</p>
   <p class="section-text"><strong>Top: Strategic Documents (1-2 pages).</strong> Project charter, business case, executive summary. Updated rarely. Read by leadership. AI drafts these from your project brief and key decisions.</p>
@@ -118,7 +118,7 @@ Format this as a formal decision record that future team members can reference t
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">Real-World Example</span>
+  <span class="section-label">Real-World Example</span>
   <h2 class="section-title">Zero to Documented in Two Weeks</h2>
   <p class="section-text">An infrastructure team had been running for three years with zero documentation. Everything lived in the heads of five engineers. When two of them announced they were leaving, the PM had two weeks to capture everything.</p>
   <p class="section-text">She scheduled 30-minute "brain dump" sessions with each departing engineer. No structure — just "tell me how you handle X." She recorded the conversations and fed the transcripts to AI with this prompt: "Convert this conversation into a standard operating procedure with numbered steps, decision points, and troubleshooting notes."</p>
@@ -127,10 +127,10 @@ Format this as a formal decision record that future team members can reference t
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">Advanced Technique</span>
+  <span class="section-label">Advanced Technique</span>
   <h2 class="section-title">Documentation Quality Audits</h2>
   <p class="section-text">Existing documentation often has gaps, outdated information, or inconsistencies. AI can audit your documentation library systematically:</p>
-  <div class="prompt-box"><code>Here is a [SOP / runbook / process document] my team uses:
+  <div class="demo-container"><code>Here is a [SOP / runbook / process document] my team uses:
 
 [Paste the document]
 
@@ -145,7 +145,7 @@ Please audit it for:
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--red);">Common Pitfalls</span>
+  <span class="section-label">Common Pitfalls</span>
   <h2 class="section-title">Documentation Anti-Patterns</h2>
   <p class="section-text"><strong>The Write-Once-Read-Never:</strong> Spending hours creating perfect documentation that goes into a wiki and is never found again. AI can help here too — generate a documentation index, tag documents with searchable keywords, and create a "quick reference" summary that links to full documents when people need depth.</p>
   <p class="section-text"><strong>The Screenshot Graveyard:</strong> Documents filled with screenshots that break every time the UI changes. AI-generated text instructions are more resilient to change. Use screenshots for complex visual workflows only — not for showing where a button is.</p>
@@ -153,11 +153,11 @@ Please audit it for:
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">Technique</span>
+  <span class="section-label">Technique</span>
   <h2 class="section-title">Lessons Learned Documents</h2>
   <p class="section-text">The most neglected document in project management is the lessons learned report. Teams finish a project, exhale, and immediately start the next one. The institutional knowledge from what went right and wrong evaporates within weeks.</p>
   <p class="section-text">AI makes lessons learned capture painless:</p>
-  <div class="prompt-box"><code>This project just completed. Here is the context:
+  <div class="demo-container"><code>This project just completed. Here is the context:
 
 Original plan: [brief description of original scope, timeline, budget]
 Actual outcome: [what actually happened — scope changes, timeline shifts, budget variance]
@@ -176,10 +176,10 @@ Generate a Lessons Learned document with:
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">Technique</span>
+  <span class="section-label">Technique</span>
   <h2 class="section-title">FAQ Documents from Support Channels</h2>
   <p class="section-text">Your Slack channels, support tickets, and email threads contain a goldmine of frequently asked questions. AI can extract and organize them:</p>
-  <div class="prompt-box"><code>Here are questions my team has answered repeatedly over the past month (from Slack, email, or support tickets):
+  <div class="demo-container"><code>Here are questions my team has answered repeatedly over the past month (from Slack, email, or support tickets):
 
 [Paste the questions and answers]
 
@@ -188,7 +188,7 @@ Please create a FAQ document organized by topic. For each question: rewrite it c
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--blue);">Pro Tip</span>
+  <span class="section-label">Pro Tip</span>
   <h2 class="section-title">Onboarding Documents Write Themselves</h2>
   <p class="section-text">When a new person joins, they ask dozens of questions. Capture those questions and the answers. After a month, feed the whole Q&A to AI and ask for an onboarding guide. The new hire literally wrote the onboarding doc by asking the questions nobody thought to document.</p>
 </div>

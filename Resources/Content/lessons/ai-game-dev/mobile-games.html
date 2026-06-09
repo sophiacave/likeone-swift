@@ -27,7 +27,7 @@
   <div class="section-text">
     <p>If your game doesn't work on mobile, you're ignoring most of your potential audience. The good news: HTML5 Canvas games already run in mobile browsers. You just need to optimize the experience.</p>
     <p>Three things that break games on mobile: the canvas doesn't resize, touch controls feel wrong, and performance tanks on older phones.</p>
-    <div class="tip-box">
+    <div class="callout">
       <strong>Test on your phone early.</strong> Don't wait until the game is "done." Open your local dev server on your phone (same WiFi network) and play-test every feature as you build it.
     </div>
     <p>Ask AI to add responsive canvas sizing from the start. The canvas should fill the screen, maintain aspect ratio, and handle orientation changes.</p>
@@ -63,7 +63,7 @@
     <p><strong>Reduce draw calls:</strong> Draw fewer things. Cull objects that are off-screen. Use sprite sheets instead of individual images.</p>
     <p><strong>Object pooling:</strong> Don't create and destroy objects constantly. Reuse them. A bullet that goes off-screen gets repositioned and reused instead of deleted and recreated.</p>
     <p><strong>Simplify particles:</strong> Desktop can handle 500 particles. Mobile chokes at 100. Scale your particle count based on device capability.</p>
-    <div class="tip-box">
+    <div class="callout">
       <strong>Quick performance prompt:</strong> "Audit my game code for mobile performance. Add object pooling for bullets and particles, off-screen culling, and a performance mode that reduces particle count to 50% on devices below 45fps."
     </div>
   </div>

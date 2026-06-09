@@ -36,11 +36,11 @@
 <div class="lesson-section">
   <span class="section-label">Process</span>
   <h2 class="section-title">The Audiobook Production Pipeline</h2>
-  <p class="section-text"><strong style="color: var(--orange);">Text Preparation:</strong> Clean your manuscript. Remove visual elements — images, tables, footnotes that don't translate to audio. Add pronunciation guides for unusual names and terms. Mark chapter breaks clearly. This prep work determines your final quality.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Voice Selection:</strong> Choose a voice that fits your genre. Warm and intimate for memoir. Clear and steady for non-fiction. Expressive and dynamic for fiction. Test multiple voices with a sample chapter before committing.</p>
-  <p class="section-text"><strong style="color: var(--green);">Generation Strategy:</strong> Don't generate the entire book in one shot. Work chapter by chapter. This gives you natural break points for quality review and lets you adjust settings mid-production if something isn't working.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Quality Control:</strong> Listen to every chapter. AI sometimes mispronounces words, loses emotional tone in long passages, or creates awkward pauses. Fix these with regeneration or manual SSML adjustments. Your ears are the final editor.</p>
-  <p class="section-text"><strong style="color: var(--red);">Mastering:</strong> Normalize volume levels across chapters. Apply consistent EQ and compression. Add chapter markers. Export at the required specs — most platforms want MP3 at 192kbps with specific loudness targets.</p>
+  <p class="section-text"><strong>Text Preparation:</strong> Clean your manuscript. Remove visual elements — images, tables, footnotes that don't translate to audio. Add pronunciation guides for unusual names and terms. Mark chapter breaks clearly. This prep work determines your final quality.</p>
+  <p class="section-text"><strong>Voice Selection:</strong> Choose a voice that fits your genre. Warm and intimate for memoir. Clear and steady for non-fiction. Expressive and dynamic for fiction. Test multiple voices with a sample chapter before committing.</p>
+  <p class="section-text"><strong>Generation Strategy:</strong> Don't generate the entire book in one shot. Work chapter by chapter. This gives you natural break points for quality review and lets you adjust settings mid-production if something isn't working.</p>
+  <p class="section-text"><strong>Quality Control:</strong> Listen to every chapter. AI sometimes mispronounces words, loses emotional tone in long passages, or creates awkward pauses. Fix these with regeneration or manual SSML adjustments. Your ears are the final editor.</p>
+  <p class="section-text"><strong>Mastering:</strong> Normalize volume levels across chapters. Apply consistent EQ and compression. Add chapter markers. Export at the required specs — most platforms want MP3 at 192kbps with specific loudness targets.</p>
 </div>
 
 <div class="lesson-section">
@@ -54,7 +54,7 @@
   <span class="section-label">Code Example</span>
   <h2 class="section-title">Automated Audiobook Generation Script</h2>
   <p class="section-text">Here is a Python script that processes a manuscript chapter by chapter, generating consistent narration with quality controls built in:</p>
-  <div class="prompt-box"><code>import requests
+  <div class="demo-container"><code>import requests
 import json
 from pathlib import Path
 
@@ -169,10 +169,10 @@ for i, chapter in enumerate(chapters[1:], 1):  # Skip empty first split
   <p class="section-text"><strong>Direct sales advantage:</strong> Selling audiobooks directly through Gumroad, Payhip, or your own website lets you keep 90-95% of the sale price. A $14.99 audiobook sold directly generates $13.50-14.25 versus $3.75-6.00 through Audible. Build an email list and sell direct whenever possible.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It: Produce a Sample Chapter</h3>
   <p>Take the opening paragraph of any public domain book (Project Gutenberg is your friend). Prepare it for AI narration:</p>
-  <div class="prompt-box"><code>Take this text and prepare it for audiobook narration: add natural pauses with punctuation, spell out any abbreviations, add pronunciation notes for unusual words, and suggest where emphasis should fall for maximum listener engagement.</code></div>
+  <div class="demo-container"><code>Take this text and prepare it for audiobook narration: add natural pauses with punctuation, spell out any abbreviations, add pronunciation notes for unusual words, and suggest where emphasis should fall for maximum listener engagement.</code></div>
   <p>Feed the prepared text to ElevenLabs or PlayHT. Generate the audio. Listen critically — where does the AI nail it? Where does it fall flat? That critical ear is the skill this lesson builds.</p>
 </div>
 

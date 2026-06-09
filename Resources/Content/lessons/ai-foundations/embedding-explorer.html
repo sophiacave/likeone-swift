@@ -51,7 +51,7 @@
     </div>
   </div>
 
-  <p class="section-text">Imagine a massive warehouse where every word in the English language has its own shelf. Synonyms are on the same shelf. Related words are in the same aisle. Unrelated words are in different buildings. That warehouse is <strong style="color:#e5e5e5">embedding space</strong> — and the shelf number is the word's <strong style="color:#e5e5e5">vector</strong>.</p>
+  <p class="section-text">Imagine a massive warehouse where every word in the English language has its own shelf. Synonyms are on the same shelf. Related words are in the same aisle. Unrelated words are in different buildings. That warehouse is <strong>embedding space</strong> — and the shelf number is the word's <strong>vector</strong>.</p>
   <p class="section-text">When you search "affordable dining" and the system returns "budget-friendly restaurants" — that's embeddings at work. The two phrases have zero words in common, but they live on the same shelf.</p>
 </div>
 
@@ -79,20 +79,20 @@
     </div>
   </div>
 
-  <p class="section-text">Embeddings are not hand-crafted — they are <strong style="color:#e5e5e5">learned from data</strong>. An embedding model reads billions of sentences and discovers that words appearing in similar contexts tend to mean similar things. "The cat sat on the mat" and "the dog sat on the mat" teach the model that "cat" and "dog" are interchangeable in some contexts — so their vectors end up nearby.</p>
+  <p class="section-text">Embeddings are not hand-crafted — they are <strong>learned from data</strong>. An embedding model reads billions of sentences and discovers that words appearing in similar contexts tend to mean similar things. "The cat sat on the mat" and "the dog sat on the mat" teach the model that "cat" and "dog" are interchangeable in some contexts — so their vectors end up nearby.</p>
 
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
     <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-      <strong style="color:#34d399;font-size:.88rem">Step 1: Tokenize the text</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The input text gets split into tokens — subword chunks like "un" + "believ" + "able." Each token is initially assigned a random vector. These random starting points will be refined through training.</p>
+      <strong style="font-size:.88rem">Step 1: Tokenize the text</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">The input text gets split into tokens — subword chunks like "un" + "believ" + "able." Each token is initially assigned a random vector. These random starting points will be refined through training.</p>
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-      <strong style="color:#8b5cf6;font-size:.88rem">Step 2: Learn from context</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The model reads sentences and tries to predict which words appear near each other. If "bank" frequently appears near "money," "account," and "deposit," its vector moves toward that financial cluster. If it also appears near "river," "water," and "fishing," it develops a separate sense captured in different dimensions.</p>
+      <strong style="font-size:.88rem">Step 2: Learn from context</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">The model reads sentences and tries to predict which words appear near each other. If "bank" frequently appears near "money," "account," and "deposit," its vector moves toward that financial cluster. If it also appears near "river," "water," and "fishing," it develops a separate sense captured in different dimensions.</p>
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-      <strong style="color:#fb923c;font-size:.88rem">Step 3: Vectors stabilize</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">After training on billions of sentences, the vectors settle into stable positions. Words with similar meanings end up in similar regions. The resulting embedding model can convert any new text into a vector that captures its meaning — even text it has never seen before.</p>
+      <strong style="font-size:.88rem">Step 3: Vectors stabilize</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">After training on billions of sentences, the vectors settle into stable positions. Words with similar meanings end up in similar regions. The resulting embedding model can convert any new text into a vector that captures its meaning — even text it has never seen before.</p>
     </div>
   </div>
 
@@ -130,14 +130,14 @@
         <td>OpenAI API, best accuracy</td>
       </tr>
       <tr>
-        <td><span style="color:#ef4444">voyage-3</span></td>
+        <td><span>voyage-3</span></td>
         <td>1024</td>
         <td>Anthropic-recommended</td>
       </tr>
     </tbody>
   </table>
 </div>
-<p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Rule of thumb: 384 dims = good for most use cases. 1024+ dims = when you need maximum precision. All models: higher dims = more nuance, more compute.</p>
+<p style="font-size:.82rem;margin-top:.5rem">Rule of thumb: 384 dims = good for most use cases. 1024+ dims = when you need maximum precision. All models: higher dims = more nuance, more compute.</p>
 
   <div class="narration" style="margin-top:1rem">
     <strong>The key insight:</strong> nobody programs the meaning into the vectors. The model discovers meaning by observing patterns in how humans use language. Words that appear in similar contexts converge to similar vectors. Meaning emerges from usage.
@@ -150,8 +150,8 @@
   <h2 class="section-title">Embeddings in real applications.</h2>
   <p class="section-text">Real applications use 768+ dimensions and store vectors in databases for instant lookup. Here are the two patterns that power modern AI applications:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — semantic search (find similar documents)</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — semantic search (find similar documents)</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> sentence_transformers <span style="color:#c084fc">import</span> SentenceTransformer
 <span style="color:#c084fc">import</span> numpy <span style="color:#c084fc">as</span> np
 
@@ -182,10 +182,10 @@ sims = np.dot(doc_vectors, query_vec) / (
 <span style="color:#71717a"># 0.72 → Budget-friendly places to eat near me</span>
 <span style="color:#71717a"># 0.65 → Best Italian restaurants in downtown</span></code></pre>
 </div>
-<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">"Affordable dining options" matches "budget-friendly places to eat" with zero keyword overlap. This is the power of semantic search — it understands <em>meaning</em>, not just words.</p>
+<p style="font-size:.85rem;margin-top:.5rem">"Affordable dining options" matches "budget-friendly places to eat" with zero keyword overlap. This is the power of semantic search — it understands <em>meaning</em>, not just words.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — RAG (Retrieval-Augmented Generation)</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — RAG (Retrieval-Augmented Generation)</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 <span style="color:#71717a"># Step 1: Find relevant docs (semantic search from above)</span>
@@ -206,7 +206,7 @@ response = client.messages.create(
 )
 <span style="color:#34d399">print</span>(response.content[<span style="color:#fb923c">0</span>].text)</code></pre>
 </div>
-<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">This is RAG — the pattern behind every "chat with your data" product. Embeddings find the relevant context, then Claude generates an answer grounded in your actual data instead of hallucinating.</p>
+<p style="font-size:.85rem;margin-top:.5rem">This is RAG — the pattern behind every "chat with your data" product. Embeddings find the relevant context, then Claude generates an answer grounded in your actual data instead of hallucinating.</p>
 
 </div>
 
@@ -229,24 +229,24 @@ response = client.messages.create(
 
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
     <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-      <strong style="color:#34d399;font-size:.88rem">1. Semantic Search — Google, Notion AI, any "smart search"</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Traditional search matches keywords. Semantic search matches <strong style="color:#e5e5e5">meaning</strong>. Searching "how to fix a slow computer" can match an article titled "Speed up your PC performance" — zero keyword overlap, high semantic similarity. The search engine converts your query to a vector and finds the nearest document vectors.</p>
+      <strong style="font-size:.88rem">1. Semantic Search — Google, Notion AI, any "smart search"</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">Traditional search matches keywords. Semantic search matches <strong>meaning</strong>. Searching "how to fix a slow computer" can match an article titled "Speed up your PC performance" — zero keyword overlap, high semantic similarity. The search engine converts your query to a vector and finds the nearest document vectors.</p>
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-      <strong style="color:#8b5cf6;font-size:.88rem">2. Recommendations — Spotify, Netflix, Amazon</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">If you like Song A, Spotify finds other songs whose embedding vectors are close to Song A in "music taste space." The same principle works for movies, products, and articles. Recommendations are just nearest-neighbor lookups in embedding space.</p>
+      <strong style="font-size:.88rem">2. Recommendations — Spotify, Netflix, Amazon</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">If you like Song A, Spotify finds other songs whose embedding vectors are close to Song A in "music taste space." The same principle works for movies, products, and articles. Recommendations are just nearest-neighbor lookups in embedding space.</p>
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-      <strong style="color:#fb923c;font-size:.88rem">3. Duplicate Detection — support tickets, content moderation</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">If two support tickets have cosine similarity above 0.9, they are probably about the same issue. This lets companies automatically group related tickets, detect duplicate bug reports, or identify plagiarized content — all without writing manual rules.</p>
+      <strong style="font-size:.88rem">3. Duplicate Detection — support tickets, content moderation</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">If two support tickets have cosine similarity above 0.9, they are probably about the same issue. This lets companies automatically group related tickets, detect duplicate bug reports, or identify plagiarized content — all without writing manual rules.</p>
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-      <strong style="color:#38bdf8;font-size:.88rem">4. RAG — "chat with your data" products</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">When you upload a PDF and ask questions about it, the system converts your question to a vector, finds the most relevant paragraphs by cosine similarity, and feeds those paragraphs to the AI. This is RAG — and it is why the AI can answer questions about documents it was not trained on.</p>
+      <strong style="font-size:.88rem">4. RAG — "chat with your data" products</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">When you upload a PDF and ask questions about it, the system converts your question to a vector, finds the most relevant paragraphs by cosine similarity, and feeds those paragraphs to the AI. This is RAG — and it is why the AI can answer questions about documents it was not trained on.</p>
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-      <strong style="color:#ef4444;font-size:.88rem">5. Clustering — automatic organization</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Group thousands of customer reviews by topic without reading them. Embed each review, cluster similar vectors together, and label each cluster by its most representative review. "Battery complaints" naturally separates from "shipping complaints" because they occupy different regions of embedding space.</p>
+      <strong style="font-size:.88rem">5. Clustering — automatic organization</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">Group thousands of customer reviews by topic without reading them. Embed each review, cluster similar vectors together, and label each cluster by its most representative review. "Battery complaints" naturally separates from "shipping complaints" because they occupy different regions of embedding space.</p>
     </div>
   </div>
 </div>
@@ -350,23 +350,23 @@ response = client.messages.create(
 
   <div style="display:grid;gap:.75rem;margin-top:.75rem">
     <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-      <strong style="color:#ef4444;font-size:.88rem">Context blindness</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The word "bank" means different things in "river bank" vs "bank account." Basic word embeddings give "bank" one vector regardless of context. Modern models like BERT fix this by generating <strong style="color:#e5e5e5">contextual embeddings</strong> — different vectors for the same word depending on surrounding text. But this adds compute cost.</p>
+      <strong style="font-size:.88rem">Context blindness</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">The word "bank" means different things in "river bank" vs "bank account." Basic word embeddings give "bank" one vector regardless of context. Modern models like BERT fix this by generating <strong>contextual embeddings</strong> — different vectors for the same word depending on surrounding text. But this adds compute cost.</p>
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-      <strong style="color:#ef4444;font-size:.88rem">Bias reflection</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Embeddings learn from human text, which contains human biases. If training data associates certain professions with certain genders, the embeddings will encode those biases. "Nurse" might end up closer to "woman" than "man" in the vector space — reflecting social patterns, not truth. This is an active area of research and mitigation.</p>
+      <strong style="font-size:.88rem">Bias reflection</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">Embeddings learn from human text, which contains human biases. If training data associates certain professions with certain genders, the embeddings will encode those biases. "Nurse" might end up closer to "woman" than "man" in the vector space — reflecting social patterns, not truth. This is an active area of research and mitigation.</p>
     </div>
     <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-      <strong style="color:#ef4444;font-size:.88rem">Language boundaries</strong>
-      <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Most embedding models are trained primarily on English text. They work less well for other languages, especially low-resource languages with little training data. Multilingual models exist but trade off accuracy in any single language for breadth across many.</p>
+      <strong style="font-size:.88rem">Language boundaries</strong>
+      <p style="font-size:.82rem;margin:.4rem 0 0">Most embedding models are trained primarily on English text. They work less well for other languages, especially low-resource languages with little training data. Multilingual models exist but trade off accuracy in any single language for breadth across many.</p>
     </div>
   </div>
 </div>
 
 <!-- NEXT LESSON -->
 <div class="lesson-section" style="text-align:center;padding:2rem 0">
-  <a href="/academy/ai-foundations/similarity-challenge" style="display:inline-block;background:var(--orange);color:var(--bg);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Similarity Challenge →</a>
+  <a href="/academy/ai-foundations/similarity-challenge" style="display:inline-block;background:var(--orange);font-weight:700;padding:.75rem 2rem;border-radius:10px;text-decoration:none;font-size:.95rem">Next: Similarity Challenge →</a>
 </div>
 
 </div>

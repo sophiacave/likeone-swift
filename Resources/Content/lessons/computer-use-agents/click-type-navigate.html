@@ -36,11 +36,11 @@
 <div class="lesson-section">
   <span class="section-label">Implementation</span>
   <h2 class="section-title">Click Patterns</h2>
-  <p class="section-text"><strong style="color: var(--blue);">Single click.</strong> The most common action. Left-click at coordinates (x, y). Used for buttons, links, menu items, checkboxes, radio buttons. Always aim for the center of the element.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Double click.</strong> Used for selecting text, opening files in file managers, or activating edit mode in some interfaces. Less common in web automation but essential for desktop applications.</p>
-  <p class="section-text"><strong style="color: var(--green);">Right click.</strong> Opens context menus. Useful for accessing options not available through the main UI -- "Open in new tab," "Save image as," "Inspect element."</p>
-  <p class="section-text"><strong style="color: var(--orange);">Click and verify.</strong> The most important pattern. After every click, take a screenshot and verify the expected change occurred. Did the button change state? Did a new page load? Did a modal appear? If the expected change did not happen, the click may have missed or a loading delay prevented it.</p>
-  <div class="prompt-box"><code>// The click-and-verify pattern
+  <p class="section-text"><strong>Single click.</strong> The most common action. Left-click at coordinates (x, y). Used for buttons, links, menu items, checkboxes, radio buttons. Always aim for the center of the element.</p>
+  <p class="section-text"><strong>Double click.</strong> Used for selecting text, opening files in file managers, or activating edit mode in some interfaces. Less common in web automation but essential for desktop applications.</p>
+  <p class="section-text"><strong>Right click.</strong> Opens context menus. Useful for accessing options not available through the main UI -- "Open in new tab," "Save image as," "Inspect element."</p>
+  <p class="section-text"><strong>Click and verify.</strong> The most important pattern. After every click, take a screenshot and verify the expected change occurred. Did the button change state? Did a new page load? Did a modal appear? If the expected change did not happen, the click may have missed or a loading delay prevented it.</p>
+  <div class="demo-container"><code>// The click-and-verify pattern
 async function reliableClick(x, y, expectedChange) {
   // 1. Click at the coordinates
   await computerTool.click(x, y);
@@ -68,21 +68,21 @@ async function reliableClick(x, y, expectedChange) {
   <span class="section-label">Practice</span>
   <h2 class="section-title">Form Filling Patterns</h2>
   <p class="section-text">Forms are the bread and butter of computer use automation. Here is how to handle each form element reliably:</p>
-  <p class="section-text"><strong style="color: var(--blue);">Text inputs.</strong> Click the field to focus it. Verify the cursor is blinking inside. Then type. After typing, take a screenshot to verify the text appeared correctly. Watch out for auto-complete dropdowns that may cover other elements.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Dropdowns.</strong> Click the dropdown to open it. Take a screenshot to see the options. Find the desired option and click it. Verify the dropdown closed and shows the selected value. Some dropdowns are searchable -- type the option name after opening to filter.</p>
-  <p class="section-text"><strong style="color: var(--green);">Checkboxes.</strong> Click the checkbox or its label text. Take a screenshot to verify the check mark appeared. Some checkboxes use custom styling that looks different from standard checkboxes -- the AI needs to verify the visual change, not assume a standard appearance.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Date pickers.</strong> Often the trickiest form element. Click to open the calendar. Navigate months if needed (click left/right arrows). Click the specific date. Verify the date field shows the correct value. Alternative: if the input accepts typed dates (MM/DD/YYYY), type directly instead of using the picker -- it is faster and more reliable.</p>
+  <p class="section-text"><strong>Text inputs.</strong> Click the field to focus it. Verify the cursor is blinking inside. Then type. After typing, take a screenshot to verify the text appeared correctly. Watch out for auto-complete dropdowns that may cover other elements.</p>
+  <p class="section-text"><strong>Dropdowns.</strong> Click the dropdown to open it. Take a screenshot to see the options. Find the desired option and click it. Verify the dropdown closed and shows the selected value. Some dropdowns are searchable -- type the option name after opening to filter.</p>
+  <p class="section-text"><strong>Checkboxes.</strong> Click the checkbox or its label text. Take a screenshot to verify the check mark appeared. Some checkboxes use custom styling that looks different from standard checkboxes -- the AI needs to verify the visual change, not assume a standard appearance.</p>
+  <p class="section-text"><strong>Date pickers.</strong> Often the trickiest form element. Click to open the calendar. Navigate months if needed (click left/right arrows). Click the specific date. Verify the date field shows the correct value. Alternative: if the input accepts typed dates (MM/DD/YYYY), type directly instead of using the picker -- it is faster and more reliable.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Advanced</span>
   <h2 class="section-title">Keyboard Navigation</h2>
   <p class="section-text">The mouse is not always the best tool. Keyboard actions are often faster, more reliable, and more precise:</p>
-  <p class="section-text"><strong style="color: var(--blue);">Tab key.</strong> Move between form fields in order. Faster than clicking each field individually. Especially useful for multi-field forms where the tab order is logical.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Enter key.</strong> Submit forms, confirm dialogs, activate focused buttons. Often more reliable than clicking a Submit button -- no coordinate targeting needed.</p>
-  <p class="section-text"><strong style="color: var(--green);">Ctrl+A, Ctrl+C, Ctrl+V.</strong> Select all, copy, paste. Essential for data extraction and entry. Select the text in a field, copy it, paste it elsewhere. Faster than re-typing and eliminates typo risk.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Ctrl+L (or Cmd+L).</strong> Focus the browser address bar. Type a URL directly instead of clicking navigation links. This is the fastest way to navigate to a known page.</p>
-  <div class="prompt-box"><code>// Keyboard shortcuts the AI can use
+  <p class="section-text"><strong>Tab key.</strong> Move between form fields in order. Faster than clicking each field individually. Especially useful for multi-field forms where the tab order is logical.</p>
+  <p class="section-text"><strong>Enter key.</strong> Submit forms, confirm dialogs, activate focused buttons. Often more reliable than clicking a Submit button -- no coordinate targeting needed.</p>
+  <p class="section-text"><strong>Ctrl+A, Ctrl+C, Ctrl+V.</strong> Select all, copy, paste. Essential for data extraction and entry. Select the text in a field, copy it, paste it elsewhere. Faster than re-typing and eliminates typo risk.</p>
+  <p class="section-text"><strong>Ctrl+L (or Cmd+L).</strong> Focus the browser address bar. Type a URL directly instead of clicking navigation links. This is the fastest way to navigate to a known page.</p>
+  <div class="demo-container"><code>// Keyboard shortcuts the AI can use
 {action: "key", text: "Tab"}           // Move to next field
 {action: "key", text: "Return"}        // Submit / confirm
 {action: "key", text: "ctrl+a"}        // Select all text
@@ -96,16 +96,16 @@ async function reliableClick(x, y, expectedChange) {
 <div class="lesson-section">
   <span class="section-label">Anti-Patterns</span>
   <h2 class="section-title">Interaction Failures to Avoid</h2>
-  <p class="section-text"><strong style="color: var(--red);">Clicking without waiting.</strong> The page is still loading when the agent clicks. The element has not rendered yet. Result: the click lands on nothing or the wrong element. Always verify the page is fully loaded before interacting.</p>
-  <p class="section-text"><strong style="color: var(--red);">Typing into unfocused fields.</strong> The agent types text but no field is focused. The keystrokes go to the page body, triggering keyboard shortcuts or doing nothing. Always click the target field first and verify the cursor is active before typing.</p>
-  <p class="section-text"><strong style="color: var(--red);">Ignoring overlays.</strong> Cookie banners, popup ads, chat widgets, and notification bars can block the element the agent wants to click. The AI sees the target element in the screenshot but the overlay intercepts the click. Always dismiss overlays before interacting with page content.</p>
-  <p class="section-text"><strong style="color: var(--red);">Not clearing existing text.</strong> Clicking a pre-filled text field and typing without first selecting and deleting the existing content. The new text appends to the old text instead of replacing it. Use Ctrl+A then type to replace, or triple-click to select the line first.</p>
+  <p class="section-text"><strong>Clicking without waiting.</strong> The page is still loading when the agent clicks. The element has not rendered yet. Result: the click lands on nothing or the wrong element. Always verify the page is fully loaded before interacting.</p>
+  <p class="section-text"><strong>Typing into unfocused fields.</strong> The agent types text but no field is focused. The keystrokes go to the page body, triggering keyboard shortcuts or doing nothing. Always click the target field first and verify the cursor is active before typing.</p>
+  <p class="section-text"><strong>Ignoring overlays.</strong> Cookie banners, popup ads, chat widgets, and notification bars can block the element the agent wants to click. The AI sees the target element in the screenshot but the overlay intercepts the click. Always dismiss overlays before interacting with page content.</p>
+  <p class="section-text"><strong>Not clearing existing text.</strong> Clicking a pre-filled text field and typing without first selecting and deleting the existing content. The new text appends to the old text instead of replacing it. Use Ctrl+A then type to replace, or triple-click to select the line first.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Practice form filling with your vision agent:</p>
-  <div class="prompt-box"><code>1. Navigate to a simple form (a contact form, login page, or signup page)
+  <div class="demo-container"><code>1. Navigate to a simple form (a contact form, login page, or signup page)
 2. Have the agent:
    a. Take a screenshot and identify all form fields
    b. Click each field and type appropriate test data

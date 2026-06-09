@@ -37,11 +37,11 @@
   <span class="section-label">Model 1</span>
   <h2 class="section-title">Context Passing: The Relay Baton</h2>
   <p class="section-text">The simplest approach: each agent receives the accumulated context from all previous agents in its prompt. Agent A's output becomes part of Agent B's input, which becomes part of Agent C's input.</p>
-  <p class="section-text"><strong style="color: var(--green);">Pros:</strong> Simple to implement. No external infrastructure. Every agent has full history.</p>
-  <p class="section-text"><strong style="color: var(--red);">Cons:</strong> Context windows fill up fast. By agent 5 or 6, you're running out of room for the actual task. Doesn't scale.</p>
+  <p class="section-text"><strong>Pros:</strong> Simple to implement. No external infrastructure. Every agent has full history.</p>
+  <p class="section-text"><strong>Cons:</strong> Context windows fill up fast. By agent 5 or 6, you're running out of room for the actual task. Doesn't scale.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Context passing: accumulate history in the prompt</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Context passing: accumulate history in the prompt</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">pipeline_with_context</span>(task: str, agents: list) -> str:
     <span style="color:#71717a"># Each agent sees ALL previous outputs (context grows with each step)</span>
     context = <span style="color:#fbbf24">f"Original task: {task}\n"</span>
@@ -59,11 +59,11 @@
   <span class="section-label">Model 2</span>
   <h2 class="section-title">Shared Memory Store: The Team Database</h2>
   <p class="section-text">All agents read from and write to a central store — a database, a key-value store, or even a structured document. Each agent queries only what it needs instead of carrying everything.</p>
-  <p class="section-text"><strong style="color: var(--green);">Pros:</strong> Scales to many agents. Each agent gets relevant context without bloat. Persists across sessions.</p>
-  <p class="section-text"><strong style="color: var(--red);">Cons:</strong> Requires infrastructure. Agents need to know what to query. Stale data is a risk if updates lag.</p>
+  <p class="section-text"><strong>Pros:</strong> Scales to many agents. Each agent gets relevant context without bloat. Persists across sessions.</p>
+  <p class="section-text"><strong>Cons:</strong> Requires infrastructure. Agents need to know what to query. Stale data is a risk if updates lag.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Shared memory store with Supabase</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Shared memory store with Supabase</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> supabase <span style="color:#c084fc">import</span> create_client
 
 db = create_client(SUPABASE_URL, SUPABASE_KEY)
@@ -97,11 +97,11 @@ findings = mem.read(<span style="color:#fbbf24">"findings"</span>)              
   <span class="section-label">Model 3</span>
   <h2 class="section-title">Vector Store: The Semantic Brain</h2>
   <p class="section-text">Store agent outputs as embeddings in a vector database. When an agent needs context, it performs a semantic search — "find everything related to customer billing issues" — and gets the most relevant pieces, regardless of when or which agent produced them.</p>
-  <p class="section-text"><strong style="color: var(--green);">Pros:</strong> Handles massive amounts of context. Agents retrieve only what's relevant. Gets smarter as more data accumulates.</p>
-  <p class="section-text"><strong style="color: var(--red);">Cons:</strong> More complex to set up. Embedding quality matters. Results can be unpredictable.</p>
+  <p class="section-text"><strong>Pros:</strong> Handles massive amounts of context. Agents retrieve only what's relevant. Gets smarter as more data accumulates.</p>
+  <p class="section-text"><strong>Cons:</strong> More complex to set up. Embedding quality matters. Results can be unpredictable.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Vector store: semantic search for agent memory (pgvector)</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Vector store: semantic search for agent memory (pgvector)</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> sentence_transformers <span style="color:#c084fc">import</span> SentenceTransformer
 
 model = SentenceTransformer(<span style="color:#fbbf24">"all-MiniLM-L6-v2"</span>)  <span style="color:#71717a"># free, runs locally</span>
@@ -135,7 +135,7 @@ relevant = recall(<span style="color:#fbbf24">"customer billing history"</span>,
   <h2 class="section-title">A State Schema That Works</h2>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--blue);">
+    <div class="demo-container" style="border-left: 3px solid var(--blue);">
       <h4 style="color: var(--blue);">Shared State Object</h4>
       <code>{<br>  "task_id": "content-pipeline-042",<br>  "status": "in_progress",<br>  "current_stage": "editing",<br>  "artifacts": {<br>    "research": { "agent": "researcher", "completed": true, "output_ref": "..." },<br>    "draft": { "agent": "writer", "completed": true, "output_ref": "..." },<br>    "review": { "agent": "editor", "completed": false }<br>  },<br>  "shared_context": {<br>    "target_audience": "technical managers",<br>    "tone": "professional but approachable",<br>    "word_limit": 1500<br>  },<br>  "flags": ["needs_fact_check", "client_mentioned_deadline"]<br>}</code>
       <p style="color: var(--dim); margin-top: 0.5rem;">Every agent reads shared_context. Each updates its own artifact. Flags communicate cross-cutting concerns.</p>
@@ -147,15 +147,15 @@ relevant = recall(<span style="color:#fbbf24">"customer billing history"</span>,
   <span class="section-label">The Danger Zone</span>
   <h2 class="section-title">State Corruption Is Your Biggest Enemy</h2>
   <p class="section-text">When multiple agents write to shared state simultaneously, you get race conditions. Agent A reads the state, Agent B updates it, Agent A writes its update based on stale data — and Agent B's work is silently lost.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Prevention strategies:</strong> Use optimistic locking (version numbers on state updates). Give each agent its own namespace. Use append-only logs instead of mutable state. Designate one agent as the state manager.</p>
+  <p class="section-text"><strong>Prevention strategies:</strong> Use optimistic locking (version numbers on state updates). Give each agent its own namespace. Use append-only logs instead of mutable state. Designate one agent as the state manager.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Try It Yourself</span>
   <h2 class="section-title">Design Your State Layer</h2>
-  <div class="try-it-box">
+  <div class="callout">
     <p>Take your agent team from earlier lessons. Design the shared state schema. What does every agent need to know? What's agent-specific? How do you prevent conflicts?</p>
-    <div class="prompt-box">
+    <div class="demo-container">
       <code>Shared context (all agents read): [list fields]<br>Agent-specific state: [agent] owns [fields]<br>Conflict prevention: [strategy]<br>Storage: context passing / shared store / vector DB<br>Why: [reasoning]</code>
     </div>
   </div>
@@ -171,7 +171,7 @@ relevant = recall(<span style="color:#fbbf24">"customer billing history"</span>,
   <h2 class="section-title">Memory Patterns for Multi-Agent Systems</h2>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid #34d399;">
+    <div class="demo-container" style="border-left: 3px solid #34d399;">
       <h4 style="color: #34d399;">Four Proven Memory Patterns</h4>
       <code><strong>1. Shared State Object</strong> — A single structured document (JSON, database row) that all agents read from and write to. Each agent owns its namespace within the object. Best for: small teams (2-5 agents) with well-defined data schemas. Risk: write conflicts if two agents update simultaneously.<br><br><strong>2. Message Passing</strong> — Agents communicate by sending messages through a queue or bus. No shared mutable state — each agent receives messages, processes them, and emits new messages. Best for: event-driven systems, microservice-style architectures, systems where agents run asynchronously. Risk: messages can arrive out of order; requires careful sequencing.<br><br><strong>3. Event Log (Append-Only)</strong> — Every agent action is written as an immutable event to a chronological log. Any agent can read the full history to reconstruct current state. Best for: systems that need auditing, debugging, or replay capability. Corruption is impossible because nothing is overwritten. Risk: log size grows without bound; agents must filter for relevance.<br><br><strong>4. Blackboard Pattern</strong> — A shared workspace where agents post partial solutions. Any agent can read the blackboard and contribute when it has relevant expertise. An orchestrator monitors the blackboard and decides when the solution is complete. Best for: complex problem-solving where the solution emerges incrementally from multiple specialists. Risk: coordination overhead; requires a strong orchestrator to prevent thrashing.</code>
       <p style="color: #71717a; margin-top: 0.5rem;">Choose based on your system's size, consistency requirements, and whether agents run synchronously or asynchronously. Many production systems combine two or more patterns — for example, message passing between agents with an append-only event log for auditing.</p>

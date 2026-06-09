@@ -36,11 +36,11 @@
 <div class="lesson-section">
   <span class="section-label">Tools</span>
   <h2 class="section-title">The AI Music Toolkit</h2>
-  <p class="section-text"><strong style="color: var(--orange);">Suno:</strong> The most popular AI music generator. Text-to-song with lyrics, instrumentation, and production. V4 produces remarkably polished tracks. Free tier gives you 50 credits per day. Commercial license on paid plans.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Udio:</strong> Suno's main competitor. Some users prefer its audio fidelity, especially for complex arrangements. Better at capturing specific production styles. Worth testing both for any project.</p>
-  <p class="section-text"><strong style="color: var(--green);">Stable Audio:</strong> Stability AI's music model. Strong for sound effects, ambient textures, and shorter clips. Good API for integration into apps and workflows.</p>
-  <p class="section-text"><strong style="color: var(--blue);">AIVA:</strong> Designed for film and game scoring. More structured composition approach. Gives you MIDI output so you can edit arrangements in a traditional DAW. Great for when you need more control.</p>
-  <p class="section-text"><strong style="color: var(--red);">Mubert:</strong> Generates endless streams of royalty-free background music. Perfect for videos, streams, and ambient content. API lets you generate music programmatically.</p>
+  <p class="section-text"><strong>Suno:</strong> The most popular AI music generator. Text-to-song with lyrics, instrumentation, and production. V4 produces remarkably polished tracks. Free tier gives you 50 credits per day. Commercial license on paid plans.</p>
+  <p class="section-text"><strong>Udio:</strong> Suno's main competitor. Some users prefer its audio fidelity, especially for complex arrangements. Better at capturing specific production styles. Worth testing both for any project.</p>
+  <p class="section-text"><strong>Stable Audio:</strong> Stability AI's music model. Strong for sound effects, ambient textures, and shorter clips. Good API for integration into apps and workflows.</p>
+  <p class="section-text"><strong>AIVA:</strong> Designed for film and game scoring. More structured composition approach. Gives you MIDI output so you can edit arrangements in a traditional DAW. Great for when you need more control.</p>
+  <p class="section-text"><strong>Mubert:</strong> Generates endless streams of royalty-free background music. Perfect for videos, streams, and ambient content. API lets you generate music programmatically.</p>
 </div>
 
 <div class="lesson-section">
@@ -55,11 +55,11 @@
   <span class="section-label">Deep Dive</span>
   <h2 class="section-title">Platform Comparison: Which Tool for Which Job</h2>
   <p class="section-text">Each AI music tool has a sweet spot. Choosing wrong wastes time and credits:</p>
-  <p class="section-text"><strong style="color: var(--orange);">Suno</strong> — Best for: complete songs with vocals and lyrics, social media content, jingles, full productions. Strengths: polished output, handles lyrics well, massive style range. Cost: free tier (50 credits/day), Pro $10/month. Limitation: limited control over arrangement details, cannot edit individual stems.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Udio</strong> — Best for: instrumentals, complex arrangements, genre-specific production. Strengths: superior audio fidelity, better at replicating specific production styles. Cost: free tier available, Pro $10/month. Limitation: lyric handling less consistent than Suno.</p>
-  <p class="section-text"><strong style="color: var(--green);">AIVA</strong> — Best for: film scoring, game music, classical and orchestral compositions. Strengths: MIDI output for DAW editing, structured composition, emotional arc control. Cost: free tier (3 downloads/month), Pro $15/month. Limitation: less effective for modern pop, hip-hop, or electronic genres.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Stable Audio</strong> — Best for: sound effects, ambient textures, short clips, app integration. Strengths: good API, fast generation, strong on atmospheric content. Cost: free tier, Pro $12/month. Limitation: full songs lack the polish of Suno or Udio.</p>
-  <p class="section-text"><strong style="color: var(--red);">Mubert</strong> — Best for: background music streams, video soundtracks, continuous ambient audio. Strengths: generates endlessly without looping, royalty-free, good API. Cost: free with attribution, paid from $14/month. Limitation: not designed for individual songs or specific compositions.</p>
+  <p class="section-text"><strong>Suno</strong> — Best for: complete songs with vocals and lyrics, social media content, jingles, full productions. Strengths: polished output, handles lyrics well, massive style range. Cost: free tier (50 credits/day), Pro $10/month. Limitation: limited control over arrangement details, cannot edit individual stems.</p>
+  <p class="section-text"><strong>Udio</strong> — Best for: instrumentals, complex arrangements, genre-specific production. Strengths: superior audio fidelity, better at replicating specific production styles. Cost: free tier available, Pro $10/month. Limitation: lyric handling less consistent than Suno.</p>
+  <p class="section-text"><strong>AIVA</strong> — Best for: film scoring, game music, classical and orchestral compositions. Strengths: MIDI output for DAW editing, structured composition, emotional arc control. Cost: free tier (3 downloads/month), Pro $15/month. Limitation: less effective for modern pop, hip-hop, or electronic genres.</p>
+  <p class="section-text"><strong>Stable Audio</strong> — Best for: sound effects, ambient textures, short clips, app integration. Strengths: good API, fast generation, strong on atmospheric content. Cost: free tier, Pro $12/month. Limitation: full songs lack the polish of Suno or Udio.</p>
+  <p class="section-text"><strong>Mubert</strong> — Best for: background music streams, video soundtracks, continuous ambient audio. Strengths: generates endlessly without looping, royalty-free, good API. Cost: free with attribution, paid from $14/month. Limitation: not designed for individual songs or specific compositions.</p>
 </div>
 
 <div class="lesson-section">
@@ -126,7 +126,7 @@
   <span class="section-label">Code Example</span>
   <h2 class="section-title">Generating Music Programmatically</h2>
   <p class="section-text">While most music generation happens through web interfaces, API access opens up automation and integration possibilities:</p>
-  <div class="prompt-box"><code># Using Stable Audio API for sound effects generation
+  <div class="demo-container"><code># Using Stable Audio API for sound effects generation
 import requests
 
 url = "https://api.stability.ai/v2beta/stable-audio/generate"
@@ -163,10 +163,10 @@ print("Background music generated successfully.")</code></div>
   <p class="section-text">API-driven music generation lets you integrate audio creation into automated workflows — generate background music for each podcast episode automatically, create unique sound effects for game events programmatically, or build a tool that generates custom hold music for business phone systems.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It: Generate a Soundtrack</h3>
   <p>Go to <strong>Suno.com</strong> and generate three tracks for a fictional short film. Use these prompts as starting points:</p>
-  <div class="prompt-box"><code>Track 1 (Opening): Ambient electronic, mysterious and hopeful, soft synth pads with distant piano, sunrise energy
+  <div class="demo-container"><code>Track 1 (Opening): Ambient electronic, mysterious and hopeful, soft synth pads with distant piano, sunrise energy
 
 Track 2 (Conflict): Dark orchestral, tense and building, low strings with percussion hits, heartbeat rhythm
 

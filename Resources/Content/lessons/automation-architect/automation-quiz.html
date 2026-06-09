@@ -20,99 +20,99 @@
 <div class="lo-vis__caption">Master <strong>course recap: automation fundamentals</strong> step by step.</div>
 </div>
 
-    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">Review these core concepts before the quiz. Every question draws directly from these fundamentals.</p>
+    <p style="font-size:.85rem;margin-bottom:1rem">Review these core concepts before the quiz. Every question draws directly from these fundamentals.</p>
 
-    <h3 style="color:#8b5cf6;font-size:.9rem;margin-bottom:.75rem">Automation Triggers</h3>
-    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">A trigger is the event that starts an automation. Nothing happens until the trigger fires. There are three fundamental types, and choosing the right one determines the reliability and responsiveness of your entire workflow.</p>
+    <h3 style="font-size:.9rem;margin-bottom:.75rem">Automation Triggers</h3>
+    <p style="font-size:.85rem;margin-bottom:1rem">A trigger is the event that starts an automation. Nothing happens until the trigger fires. There are three fundamental types, and choosing the right one determines the reliability and responsiveness of your entire workflow.</p>
 
     <div style="display:flex;flex-direction:column;gap:.4rem;margin:1rem 0">
       <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.08)">
-        <strong style="color:#8b5cf6;font-size:.82rem">Webhook Trigger</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Real-time. An external system sends an HTTP POST to your URL the instant an event occurs. Zero delay. Used for: payment events, form submissions, GitHub commits, Slack messages.</p>
+        <strong style="font-size:.82rem">Webhook Trigger</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Real-time. An external system sends an HTTP POST to your URL the instant an event occurs. Zero delay. Used for: payment events, form submissions, GitHub commits, Slack messages.</p>
       </div>
       <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.08)">
-        <strong style="color:#8b5cf6;font-size:.82rem">Schedule Trigger</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Time-based. Fires on a cron schedule — every hour, every day at 9 AM, every Monday at noon. Used for: daily reports, data sync, cleanup tasks, digest emails.</p>
+        <strong style="font-size:.82rem">Schedule Trigger</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Time-based. Fires on a cron schedule — every hour, every day at 9 AM, every Monday at noon. Used for: daily reports, data sync, cleanup tasks, digest emails.</p>
       </div>
       <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.08)">
-        <strong style="color:#8b5cf6;font-size:.82rem">Event Trigger</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Internal. Fires when something changes in your own system — a database row updates, a user signs up, a file is uploaded. Used for: user onboarding, status changes, threshold alerts.</p>
+        <strong style="font-size:.82rem">Event Trigger</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Internal. Fires when something changes in your own system — a database row updates, a user signs up, a file is uploaded. Used for: user onboarding, status changes, threshold alerts.</p>
       </div>
     </div>
 
-    <h3 style="color:#34d399;font-size:.9rem;margin-bottom:.75rem;margin-top:1.5rem">Workflow Design</h3>
-    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">A workflow is a sequence of steps that processes data from trigger to final action. Good workflow design means thinking about data flow, error handling, and what happens when things go wrong.</p>
+    <h3 style="font-size:.9rem;margin-bottom:.75rem;margin-top:1.5rem">Workflow Design</h3>
+    <p style="font-size:.85rem;margin-bottom:1rem">A workflow is a sequence of steps that processes data from trigger to final action. Good workflow design means thinking about data flow, error handling, and what happens when things go wrong.</p>
 
     <div style="display:flex;flex-direction:column;gap:.4rem;margin:1rem 0">
       <div style="padding:.6rem 1rem;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.08)">
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Trigger &rarr; Payload &rarr; Action</strong> — the fundamental pattern. The trigger produces a payload (structured data), and the action consumes it.</span>
+        <span style="font-size:.82rem"><strong>Trigger &rarr; Payload &rarr; Action</strong> — the fundamental pattern. The trigger produces a payload (structured data), and the action consumes it.</span>
       </div>
       <div style="padding:.6rem 1rem;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.08)">
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Multi-step workflows</strong> chain actions together. Step 1's output becomes Step 2's input. Each step transforms the data for the next.</span>
+        <span style="font-size:.82rem"><strong>Multi-step workflows</strong> chain actions together. Step 1's output becomes Step 2's input. Each step transforms the data for the next.</span>
       </div>
       <div style="padding:.6rem 1rem;border-radius:8px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.08)">
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Conditional branches</strong> route data based on rules. Example: if order total > $100, send to priority queue; otherwise, standard queue.</span>
+        <span style="font-size:.82rem"><strong>Conditional branches</strong> route data based on rules. Example: if order total > $100, send to priority queue; otherwise, standard queue.</span>
       </div>
     </div>
 
-    <h3 style="color:#fb923c;font-size:.9rem;margin-bottom:.75rem;margin-top:1.5rem">API Integration</h3>
-    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">APIs are how your automation talks to external services. Every automation platform is fundamentally an API orchestrator — it calls APIs on your behalf in a sequence you define.</p>
+    <h3 style="font-size:.9rem;margin-bottom:.75rem;margin-top:1.5rem">API Integration</h3>
+    <p style="font-size:.85rem;margin-bottom:1rem">APIs are how your automation talks to external services. Every automation platform is fundamentally an API orchestrator — it calls APIs on your behalf in a sequence you define.</p>
 
     <div style="display:flex;flex-direction:column;gap:.4rem;margin:1rem 0">
       <div style="padding:.6rem 1rem;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.08)">
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">REST APIs</strong> use HTTP methods (GET, POST, PUT, DELETE) to perform operations on resources identified by URLs.</span>
+        <span style="font-size:.82rem"><strong>REST APIs</strong> use HTTP methods (GET, POST, PUT, DELETE) to perform operations on resources identified by URLs.</span>
       </div>
       <div style="padding:.6rem 1rem;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.08)">
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Authentication</strong> is required for most APIs. API keys, OAuth tokens, and JWTs are the three main patterns.</span>
+        <span style="font-size:.82rem"><strong>Authentication</strong> is required for most APIs. API keys, OAuth tokens, and JWTs are the three main patterns.</span>
       </div>
       <div style="padding:.6rem 1rem;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.08)">
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Rate limits</strong> cap how many requests you can make per time window. Automations in loops can hit limits fast — always add delays.</span>
+        <span style="font-size:.82rem"><strong>Rate limits</strong> cap how many requests you can make per time window. Automations in loops can hit limits fast — always add delays.</span>
       </div>
     </div>
 
-    <h3 style="color:#ef4444;font-size:.9rem;margin-bottom:.75rem;margin-top:1.5rem">Error Handling</h3>
-    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">Production automations fail. The difference between amateur and professional automation is how failures are handled.</p>
+    <h3 style="font-size:.9rem;margin-bottom:.75rem;margin-top:1.5rem">Error Handling</h3>
+    <p style="font-size:.85rem;margin-bottom:1rem">Production automations fail. The difference between amateur and professional automation is how failures are handled.</p>
 
     <div style="display:flex;flex-direction:column;gap:.4rem;margin:1rem 0">
       <div style="padding:.6rem 1rem;border-radius:8px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.08)">
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Idempotency</strong> — actions must be safe to run multiple times. Webhooks can fire twice. Your action should check before creating duplicates.</span>
+        <span style="font-size:.82rem"><strong>Idempotency</strong> — actions must be safe to run multiple times. Webhooks can fire twice. Your action should check before creating duplicates.</span>
       </div>
       <div style="padding:.6rem 1rem;border-radius:8px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.08)">
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Retry with backoff</strong> — transient failures (network blips, rate limits) should be retried with exponential backoff: 1s, 2s, 4s, 8s.</span>
+        <span style="font-size:.82rem"><strong>Retry with backoff</strong> — transient failures (network blips, rate limits) should be retried with exponential backoff: 1s, 2s, 4s, 8s.</span>
       </div>
       <div style="padding:.6rem 1rem;border-radius:8px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.08)">
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Dead letter queue</strong> — messages that fail after all retries go to a holding queue for manual inspection. Data is never lost.</span>
+        <span style="font-size:.82rem"><strong>Dead letter queue</strong> — messages that fail after all retries go to a holding queue for manual inspection. Data is never lost.</span>
       </div>
       <div style="padding:.6rem 1rem;border-radius:8px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.08)">
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Payload validation</strong> — always validate the incoming data structure before acting on it. External APIs can change their payload format without warning.</span>
+        <span style="font-size:.82rem"><strong>Payload validation</strong> — always validate the incoming data structure before acting on it. External APIs can change their payload format without warning.</span>
       </div>
     </div>
 
-    <h3 style="color:#38bdf8;font-size:.9rem;margin-bottom:.75rem;margin-top:1.5rem">Production Patterns</h3>
-    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">These patterns separate hobbyist automations from production-grade systems.</p>
+    <h3 style="font-size:.9rem;margin-bottom:.75rem;margin-top:1.5rem">Production Patterns</h3>
+    <p style="font-size:.85rem;margin-bottom:1rem">These patterns separate hobbyist automations from production-grade systems.</p>
 
     <div style="display:flex;flex-direction:column;gap:.4rem;margin:1rem 0">
       <div style="padding:.6rem 1rem;border-radius:8px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.08)">
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Logging</strong> — log every trigger event, every action result, and every error. Without logs, debugging production failures is blind guessing.</span>
+        <span style="font-size:.82rem"><strong>Logging</strong> — log every trigger event, every action result, and every error. Without logs, debugging production failures is blind guessing.</span>
       </div>
       <div style="padding:.6rem 1rem;border-radius:8px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.08)">
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Monitoring</strong> — set up alerts for failure rates, execution times, and queue depths. Know when something breaks before your users tell you.</span>
+        <span style="font-size:.82rem"><strong>Monitoring</strong> — set up alerts for failure rates, execution times, and queue depths. Know when something breaks before your users tell you.</span>
       </div>
       <div style="padding:.6rem 1rem;border-radius:8px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.08)">
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Testing</strong> — test with sample data in staging before going live. Run the full pipeline end-to-end, including error cases.</span>
+        <span style="font-size:.82rem"><strong>Testing</strong> — test with sample data in staging before going live. Run the full pipeline end-to-end, including error cases.</span>
       </div>
       <div style="padding:.6rem 1rem;border-radius:8px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.08)">
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Versioning</strong> — when you update a workflow, keep the old version running until the new one is verified. Never do a hard cutover.</span>
+        <span style="font-size:.82rem"><strong>Versioning</strong> — when you update a workflow, keep the old version running until the new one is verified. Never do a hard cutover.</span>
       </div>
     </div>
   </div>
 
   <div style="padding:0 1.5rem;margin:1.5rem 0">
     <h2>Cron Expression Quick Reference</h2>
-    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">Cron expressions control schedule triggers. The format has five fields: <code>minute hour day-of-month month day-of-week</code>.</p>
+    <p style="font-size:.85rem;margin-bottom:1rem">Cron expressions control schedule triggers. The format has five fields: <code>minute hour day-of-month month day-of-week</code>.</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Common Cron Expressions</div>
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Common Cron Expressions</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Every minute</span>
 <span style="color:#34d399">* * * * *</span>
 
@@ -135,72 +135,72 @@
 
   <div style="padding:0 1.5rem;margin:1.5rem 0">
     <h2>Webhook Security Essentials</h2>
-    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">Webhooks are publicly accessible URLs. Anyone who discovers the URL can send fake data to your automation. Securing your webhooks is not optional — it prevents attackers from triggering false actions in your system.</p>
+    <p style="font-size:.85rem;margin-bottom:1rem">Webhooks are publicly accessible URLs. Anyone who discovers the URL can send fake data to your automation. Securing your webhooks is not optional — it prevents attackers from triggering false actions in your system.</p>
 
     <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6;font-size:.85rem">Verify webhook signatures</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Most services (Stripe, GitHub, Slack) sign their webhook payloads with a secret key. Your code should verify the signature before processing the data. If the signature does not match, reject the request — it was not sent by the real service.</p>
+        <strong style="font-size:.85rem">Verify webhook signatures</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Most services (Stripe, GitHub, Slack) sign their webhook payloads with a secret key. Your code should verify the signature before processing the data. If the signature does not match, reject the request — it was not sent by the real service.</p>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6;font-size:.85rem">Use HTTPS only</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Never expose a webhook over plain HTTP. Without encryption, anyone on the network path can read the payloads, which may contain customer data, financial information, or authentication tokens.</p>
+        <strong style="font-size:.85rem">Use HTTPS only</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Never expose a webhook over plain HTTP. Without encryption, anyone on the network path can read the payloads, which may contain customer data, financial information, or authentication tokens.</p>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6;font-size:.85rem">Check timestamps</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Webhook payloads include a timestamp. Reject payloads older than 5 minutes — they could be replay attacks where someone captured a valid webhook and resent it later to trigger duplicate actions.</p>
+        <strong style="font-size:.85rem">Check timestamps</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Webhook payloads include a timestamp. Reject payloads older than 5 minutes — they could be replay attacks where someone captured a valid webhook and resent it later to trigger duplicate actions.</p>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6;font-size:.85rem">Respond fast, process async</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Return a 200 response immediately, then process the payload in a background job. If your webhook takes too long to respond, the sender will retry — causing duplicate processing. Accept fast, process later.</p>
+        <strong style="font-size:.85rem">Respond fast, process async</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Return a 200 response immediately, then process the payload in a background job. If your webhook takes too long to respond, the sender will retry — causing duplicate processing. Accept fast, process later.</p>
       </div>
     </div>
   </div>
 
   <div style="padding:0 1.5rem;margin:1.5rem 0">
     <h2>Automation Architecture Patterns</h2>
-    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">As your automations grow from single workflows to interconnected systems, these architecture patterns keep everything manageable.</p>
+    <p style="font-size:.85rem;margin-bottom:1rem">As your automations grow from single workflows to interconnected systems, these architecture patterns keep everything manageable.</p>
 
     <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">Event-Driven Architecture</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Systems communicate by emitting and consuming events. When a payment succeeds, it emits a "payment.succeeded" event. Multiple systems can react independently — billing creates an invoice, support creates an onboarding ticket, analytics logs the conversion. Each consumer is decoupled from the others.</p>
+        <strong style="font-size:.85rem">Event-Driven Architecture</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Systems communicate by emitting and consuming events. When a payment succeeds, it emits a "payment.succeeded" event. Multiple systems can react independently — billing creates an invoice, support creates an onboarding ticket, analytics logs the conversion. Each consumer is decoupled from the others.</p>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">Message Queue Pattern</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">A queue sits between producer and consumer. The producer adds messages to the queue, the consumer processes them at its own pace. This handles traffic spikes — if 1000 orders arrive in one second, the queue absorbs them and the consumer processes them steadily. No data is lost.</p>
+        <strong style="font-size:.85rem">Message Queue Pattern</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">A queue sits between producer and consumer. The producer adds messages to the queue, the consumer processes them at its own pace. This handles traffic spikes — if 1000 orders arrive in one second, the queue absorbs them and the consumer processes them steadily. No data is lost.</p>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">Circuit Breaker Pattern</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">If an external API fails repeatedly, the circuit breaker "opens" and stops sending requests for a cooldown period. This prevents your automation from hammering a broken service and gives it time to recover. After the cooldown, the breaker "half-opens" and sends a test request to check if the service is back.</p>
+        <strong style="font-size:.85rem">Circuit Breaker Pattern</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">If an external API fails repeatedly, the circuit breaker "opens" and stops sending requests for a cooldown period. This prevents your automation from hammering a broken service and gives it time to recover. After the cooldown, the breaker "half-opens" and sends a test request to check if the service is back.</p>
       </div>
     </div>
   </div>
 
   <div style="padding:0 1.5rem;margin:1.5rem 0">
     <h2>Automation Debugging Checklist</h2>
-    <p style="font-size:.85rem;color:#a1a1aa;margin-bottom:1rem">When an automation stops working, follow this systematic approach instead of guessing.</p>
+    <p style="font-size:.85rem;margin-bottom:1rem">When an automation stops working, follow this systematic approach instead of guessing.</p>
 
     <div style="display:flex;flex-direction:column;gap:.4rem;margin:1rem 0">
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.6rem 1rem;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.08)">
-        <span style="color:#8b5cf6;font-weight:700;font-size:.8rem;min-width:30px">1</span>
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Check if the trigger fired.</strong> Look at your logs. If the trigger never fired, the problem is upstream — the event never happened, the webhook URL changed, or the cron schedule is wrong.</span>
+        <span style="font-weight:700;font-size:.8rem;min-width:30px">1</span>
+        <span style="font-size:.82rem"><strong>Check if the trigger fired.</strong> Look at your logs. If the trigger never fired, the problem is upstream — the event never happened, the webhook URL changed, or the cron schedule is wrong.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.6rem 1rem;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.08)">
-        <span style="color:#8b5cf6;font-weight:700;font-size:.8rem;min-width:30px">2</span>
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Inspect the payload.</strong> If the trigger fired, check what data it produced. Did the payload structure change? Are required fields missing? Is the data in the expected format?</span>
+        <span style="font-weight:700;font-size:.8rem;min-width:30px">2</span>
+        <span style="font-size:.82rem"><strong>Inspect the payload.</strong> If the trigger fired, check what data it produced. Did the payload structure change? Are required fields missing? Is the data in the expected format?</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.6rem 1rem;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.08)">
-        <span style="color:#8b5cf6;font-weight:700;font-size:.8rem;min-width:30px">3</span>
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Test each action in isolation.</strong> Run each step manually with the payload data. Find which specific step is failing and what error it produces.</span>
+        <span style="font-weight:700;font-size:.8rem;min-width:30px">3</span>
+        <span style="font-size:.82rem"><strong>Test each action in isolation.</strong> Run each step manually with the payload data. Find which specific step is failing and what error it produces.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.6rem 1rem;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.08)">
-        <span style="color:#8b5cf6;font-weight:700;font-size:.8rem;min-width:30px">4</span>
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Check external dependencies.</strong> Is the API you are calling still up? Did they change their endpoint, authentication, or rate limits? Check their status page and changelog.</span>
+        <span style="font-weight:700;font-size:.8rem;min-width:30px">4</span>
+        <span style="font-size:.82rem"><strong>Check external dependencies.</strong> Is the API you are calling still up? Did they change their endpoint, authentication, or rate limits? Check their status page and changelog.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.6rem 1rem;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.08)">
-        <span style="color:#8b5cf6;font-weight:700;font-size:.8rem;min-width:30px">5</span>
-        <span style="font-size:.82rem;color:#a1a1aa"><strong style="color:#e5e5e5">Review recent changes.</strong> Did someone update the workflow? Did a dependency get upgraded? Did an API key expire? Most production failures trace back to a recent change.</span>
+        <span style="font-weight:700;font-size:.8rem;min-width:30px">5</span>
+        <span style="font-size:.82rem"><strong>Review recent changes.</strong> Did someone update the workflow? Did a dependency get upgraded? Did an API key expire? Most production failures trace back to a recent change.</span>
       </div>
     </div>
   </div>

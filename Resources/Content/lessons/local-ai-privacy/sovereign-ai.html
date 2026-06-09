@@ -111,7 +111,7 @@ cp -r ~/.ollama/Modelfiles ~/backups/</code></pre>
 <p><strong>Disk management:</strong> Models accumulate. Run <code>ollama list</code> monthly and remove models you haven't used. A clean stack with 4-5 models is better than a bloated one with 20.</p>
 <p><strong>Performance monitoring:</strong> Track your tokens-per-second over time. Degradation might indicate thermal issues, disk fragmentation, or a model that needs re-pulling.</p>
 
-<div class="tip-box">
+<div class="callout">
 <strong>The upgrade path:</strong> When you outgrow your hardware, the stack migrates cleanly. Copy your ChromaDB, Modelfiles, and agent scripts to the new machine. Pull models on the new hardware. Everything works because the stack is portable -- it depends on Ollama and Python, not on a specific machine.
 </tip>
 </div>

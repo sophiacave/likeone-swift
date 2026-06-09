@@ -14,29 +14,29 @@
 
   <div style="display:flex;flex-direction:column;gap:.75rem;margin:0 0 1.5rem">
     <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-      <strong style="color:#8b5cf6">&#128100; Identity</strong>
-      <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Who the agent is. Its name, role, personality, and voice. Identity is not decoration — it shapes every decision the agent makes. An agent with the identity "cautious security auditor" will behave very differently from one with the identity "creative marketing writer," even given the same tools and inputs.</p>
-      <p style="font-size:.82rem;color:#71717a;margin-top:.4rem">In practice, identity is encoded in the system prompt. Claude Agent SDK calls this the <code>instructions</code> field. LangChain calls it <code>system_message</code>.</p>
+      <strong>&#128100; Identity</strong>
+      <p style="font-size:.85rem;margin:.4rem 0 0">Who the agent is. Its name, role, personality, and voice. Identity is not decoration — it shapes every decision the agent makes. An agent with the identity "cautious security auditor" will behave very differently from one with the identity "creative marketing writer," even given the same tools and inputs.</p>
+      <p style="font-size:.82rem;margin-top:.4rem">In practice, identity is encoded in the system prompt. Claude Agent SDK calls this the <code>instructions</code> field. LangChain calls it <code>system_message</code>.</p>
     </div>
     <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-      <strong style="color:#34d399">&#129504; Memory</strong>
-      <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">What the agent knows and remembers. Three types: <strong>short-term</strong> (the current conversation window — fast but ephemeral), <strong>long-term</strong> (stored in a database — survives across sessions), and <strong>shared</strong> (accessible to other agents — the communication bus). Memory is what makes an agent smarter over time.</p>
+      <strong>&#129504; Memory</strong>
+      <p style="font-size:.85rem;margin:.4rem 0 0">What the agent knows and remembers. Three types: <strong>short-term</strong> (the current conversation window — fast but ephemeral), <strong>long-term</strong> (stored in a database — survives across sessions), and <strong>shared</strong> (accessible to other agents — the communication bus). Memory is what makes an agent smarter over time.</p>
     </div>
     <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-      <strong style="color:#fb923c">&#128295; Tools</strong>
-      <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">What the agent can do. API calls, database queries, file operations, sending messages, running shell commands. Tools are the agent's hands — without them, it can only think. In Claude's API, tools are defined as JSON schemas. MCP standardizes this across all clients.</p>
+      <strong>&#128295; Tools</strong>
+      <p style="font-size:.85rem;margin:.4rem 0 0">What the agent can do. API calls, database queries, file operations, sending messages, running shell commands. Tools are the agent's hands — without them, it can only think. In Claude's API, tools are defined as JSON schemas. MCP standardizes this across all clients.</p>
     </div>
     <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-      <strong style="color:#38bdf8">&#127919; Goals</strong>
-      <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">What the agent is trying to achieve. Goals drive the decide phase of the agent loop. They can be <strong>persistent</strong> (always active, like "keep the server healthy") or <strong>triggered</strong> (activated by events, like "respond to this support ticket"). A common mistake is vague goals like "be helpful." Effective goals are specific: "Respond to all support tickets within 5 minutes."</p>
+      <strong>&#127919; Goals</strong>
+      <p style="font-size:.85rem;margin:.4rem 0 0">What the agent is trying to achieve. Goals drive the decide phase of the agent loop. They can be <strong>persistent</strong> (always active, like "keep the server healthy") or <strong>triggered</strong> (activated by events, like "respond to this support ticket"). A common mistake is vague goals like "be helpful." Effective goals are specific: "Respond to all support tickets within 5 minutes."</p>
     </div>
     <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-      <strong style="color:#ef4444">&#128721; Guardrails</strong>
-      <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">What the agent must NOT do. Boundaries, safety rules, ethical constraints, and hard limits. Guardrails operate at a higher priority than goals. A goal says "send marketing emails." A guardrail says "never send more than 100 emails per hour." When they conflict, the guardrail wins.</p>
+      <strong>&#128721; Guardrails</strong>
+      <p style="font-size:.85rem;margin:.4rem 0 0">What the agent must NOT do. Boundaries, safety rules, ethical constraints, and hard limits. Guardrails operate at a higher priority than goals. A goal says "send marketing emails." A guardrail says "never send more than 100 emails per hour." When they conflict, the guardrail wins.</p>
     </div>
     <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
-      <strong style="color:#f472b6">&#9200; Schedule</strong>
-      <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">When and how the agent runs. Three modes: <strong>event-driven</strong> (reacts to triggers like webhooks), <strong>cron-based</strong> (runs on a fixed schedule), or <strong>always-on</strong> (continuously monitoring). Always-on agents respond instantly but consume the most resources. Event-driven agents balance responsiveness and efficiency.</p>
+      <strong>&#9200; Schedule</strong>
+      <p style="font-size:.85rem;margin:.4rem 0 0">When and how the agent runs. Three modes: <strong>event-driven</strong> (reacts to triggers like webhooks), <strong>cron-based</strong> (runs on a fixed schedule), or <strong>always-on</strong> (continuously monitoring). Always-on agents respond instantly but consume the most resources. Event-driven agents balance responsiveness and efficiency.</p>
     </div>
   </div>
 
@@ -44,7 +44,7 @@
     <h2>How This Maps to Real Code</h2>
     <p>Here is what a complete agent configuration looks like as a Python dataclass. This is a pattern you will see in nearly every agent framework:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0"><code><span style="color:#c084fc">from</span> dataclasses <span style="color:#c084fc">import</span> dataclass, field
 <span style="color:#c084fc">from</span> typing <span style="color:#c084fc">import</span> List, Optional
 
@@ -83,7 +83,7 @@ support_agent = AgentConfig(
     trigger=<span style="color:#fbbf24">"on_new_ticket"</span>
 )</code></pre>
     </div>
-    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Every field maps directly to one of the six components. When you use a framework like Claude Agent SDK, you are filling in these same fields — just through a different interface.</p>
+    <p style="font-size:.82rem;margin-top:.5rem">Every field maps directly to one of the six components. When you use a framework like Claude Agent SDK, you are filling in these same fields — just through a different interface.</p>
   </div>
 
   <div class="section">
@@ -92,16 +92,16 @@ support_agent = AgentConfig(
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444">Too many tools</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">An agent with 50 tools gets confused about which one to use. LLMs perform better with 5-15 focused tools. If you need more, split into multiple specialized agents.</p>
+        <strong>Too many tools</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">An agent with 50 tools gets confused about which one to use. LLMs perform better with 5-15 focused tools. If you need more, split into multiple specialized agents.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444">Vague identity</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">"You are a helpful assistant" produces generic behavior. "You are a senior DevOps engineer who prioritizes stability over speed and always explains trade-offs" produces targeted, useful behavior.</p>
+        <strong>Vague identity</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">"You are a helpful assistant" produces generic behavior. "You are a senior DevOps engineer who prioritizes stability over speed and always explains trade-offs" produces targeted, useful behavior.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444">No guardrails</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">An agent without guardrails will optimize its goals at any cost. A sales agent told to "maximize conversions" with no guardrails might start making false promises. Always define what the agent must NOT do.</p>
+        <strong>No guardrails</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">An agent without guardrails will optimize its goals at any cost. A sales agent told to "maximize conversions" with no guardrails might start making false promises. Always define what the agent must NOT do.</p>
       </div>
     </div>
   </div>
@@ -112,20 +112,20 @@ support_agent = AgentConfig(
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-        <strong style="color:#38bdf8">Identity shapes Decisions</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">An agent's identity (system prompt) directly affects which tools it chooses and how it interprets goals. A "cautious security auditor" will refuse risky actions that a "move-fast developer" would execute immediately. The same tools and goals produce different behavior with different identities.</p>
+        <strong>Identity shapes Decisions</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">An agent's identity (system prompt) directly affects which tools it chooses and how it interprets goals. A "cautious security auditor" will refuse risky actions that a "move-fast developer" would execute immediately. The same tools and goals produce different behavior with different identities.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">Memory informs Goals</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Long-term memory stores past outcomes. If the agent remembers that a particular approach failed last time, it adjusts its goal-pursuit strategy. Without memory, the agent repeats mistakes indefinitely. Memory is the mechanism by which agents learn.</p>
+        <strong>Memory informs Goals</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Long-term memory stores past outcomes. If the agent remembers that a particular approach failed last time, it adjusts its goal-pursuit strategy. Without memory, the agent repeats mistakes indefinitely. Memory is the mechanism by which agents learn.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444">Guardrails override Everything</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Guardrails sit above goals, tools, and identity in the priority hierarchy. A guardrail that says "never delete production data" cannot be overridden by a goal that says "clean up old records." This precedence is critical — without it, goal-oriented agents will optimize past safety boundaries.</p>
+        <strong>Guardrails override Everything</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Guardrails sit above goals, tools, and identity in the priority hierarchy. A guardrail that says "never delete production data" cannot be overridden by a goal that says "clean up old records." This precedence is critical — without it, goal-oriented agents will optimize past safety boundaries.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">Schedule determines Resource Usage</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">An always-on agent consumes compute 24/7. An event-driven agent consumes nothing until triggered. Choosing the wrong schedule wastes money (always-on for a weekly report) or misses events (cron for real-time alerts). Match the schedule to the use case.</p>
+        <strong>Schedule determines Resource Usage</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">An always-on agent consumes compute 24/7. An event-driven agent consumes nothing until triggered. Choosing the wrong schedule wastes money (always-on for a weekly report) or misses events (cron for real-time alerts). Match the schedule to the use case.</p>
       </div>
     </div>
   </div>
@@ -134,66 +134,66 @@ support_agent = AgentConfig(
     <h2>The Agent Config Pattern in Frameworks</h2>
     <p>Every major framework maps to these six components. Here is how the terminology translates:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.82rem;color:#a1a1aa;line-height:1.8;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.82rem;line-height:1.8;overflow-x:auto">
       <table style="width:100%;border-collapse:collapse">
         <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
-          <td style="padding:.5rem;color:#e5e5e5;font-weight:bold">Component</td>
-          <td style="padding:.5rem;color:#8b5cf6">Claude SDK</td>
-          <td style="padding:.5rem;color:#34d399">LangGraph</td>
-          <td style="padding:.5rem;color:#fb923c">CrewAI</td>
+          <td style="padding:.5rem;font-weight:bold">Component</td>
+          <td style="padding:.5rem">Claude SDK</td>
+          <td style="padding:.5rem">LangGraph</td>
+          <td style="padding:.5rem">CrewAI</td>
         </tr>
         <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
-          <td style="padding:.5rem;color:#e5e5e5">Identity</td>
+          <td style="padding:.5rem">Identity</td>
           <td style="padding:.5rem">instructions</td>
           <td style="padding:.5rem">system_message</td>
           <td style="padding:.5rem">role + backstory</td>
         </tr>
         <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
-          <td style="padding:.5rem;color:#e5e5e5">Memory</td>
+          <td style="padding:.5rem">Memory</td>
           <td style="padding:.5rem">conversation + tools</td>
           <td style="padding:.5rem">state / checkpointer</td>
           <td style="padding:.5rem">memory flag</td>
         </tr>
         <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
-          <td style="padding:.5rem;color:#e5e5e5">Tools</td>
+          <td style="padding:.5rem">Tools</td>
           <td style="padding:.5rem">tools (JSON schema)</td>
           <td style="padding:.5rem">tools (bound)</td>
           <td style="padding:.5rem">tools list</td>
         </tr>
         <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
-          <td style="padding:.5rem;color:#e5e5e5">Goals</td>
+          <td style="padding:.5rem">Goals</td>
           <td style="padding:.5rem">in instructions</td>
           <td style="padding:.5rem">in system_message</td>
           <td style="padding:.5rem">goal field</td>
         </tr>
         <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
-          <td style="padding:.5rem;color:#e5e5e5">Guardrails</td>
+          <td style="padding:.5rem">Guardrails</td>
           <td style="padding:.5rem">guardrails config</td>
           <td style="padding:.5rem">conditional edges</td>
           <td style="padding:.5rem">in backstory</td>
         </tr>
         <tr>
-          <td style="padding:.5rem;color:#e5e5e5">Schedule</td>
+          <td style="padding:.5rem">Schedule</td>
           <td style="padding:.5rem">external (cron/trigger)</td>
           <td style="padding:.5rem">external (cron/trigger)</td>
           <td style="padding:.5rem">process type</td>
         </tr>
       </table>
     </div>
-    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Different names, same anatomy. Learn the six components once and you understand every framework.</p>
+    <p style="font-size:.82rem;margin-top:.5rem">Different names, same anatomy. Learn the six components once and you understand every framework.</p>
   </div>
 
   <div class="section">
     <h2>Building Your First Agent Config</h2>
     <p>Start with these questions for each component. Answer them before writing any code:</p>
 
-    <div style="background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.8">
-      <strong style="color:#34d399">Identity:</strong> What role does this agent play? What is its voice — formal, casual, technical?<br>
-      <strong style="color:#34d399">Memory:</strong> Does it need to remember across sessions? Does it share state with other agents?<br>
-      <strong style="color:#34d399">Tools:</strong> What 5-10 actions does this agent need? (Start narrow — you can always add more.)<br>
-      <strong style="color:#34d399">Goals:</strong> What specific, measurable outcomes is this agent pursuing?<br>
-      <strong style="color:#34d399">Guardrails:</strong> What must this agent NEVER do? What are the hard limits?<br>
-      <strong style="color:#34d399">Schedule:</strong> Should it run on a timer, respond to events, or loop continuously?
+    <div style="background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;line-height:1.8">
+      <strong>Identity:</strong> What role does this agent play? What is its voice — formal, casual, technical?<br>
+      <strong>Memory:</strong> Does it need to remember across sessions? Does it share state with other agents?<br>
+      <strong>Tools:</strong> What 5-10 actions does this agent need? (Start narrow — you can always add more.)<br>
+      <strong>Goals:</strong> What specific, measurable outcomes is this agent pursuing?<br>
+      <strong>Guardrails:</strong> What must this agent NEVER do? What are the hard limits?<br>
+      <strong>Schedule:</strong> Should it run on a timer, respond to events, or loop continuously?
     </div>
   </div>
 

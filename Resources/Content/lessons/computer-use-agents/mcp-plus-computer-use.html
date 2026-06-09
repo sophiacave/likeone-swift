@@ -49,7 +49,7 @@
 <div class="lesson-section">
   <span class="section-label">Architecture</span>
   <h2 class="section-title">The Hybrid Agent Architecture</h2>
-  <div class="prompt-box"><code>                    ┌─────────────────┐
+  <div class="demo-container"><code>                    ┌─────────────────┐
                     │   Claude Agent   │
                     │   (orchestrator) │
                     └────────┬────────┘
@@ -75,19 +75,19 @@
   <span class="section-label">Strategy</span>
   <h2 class="section-title">The Decision Framework</h2>
   <p class="section-text">For each step in a workflow, the agent decides which approach to use:</p>
-  <p class="section-text"><strong style="color: var(--green);">Use MCP when:</strong> An MCP server exists for the target system. The action is data-oriented (read, write, query, send). Speed matters. The API is stable and well-documented. Examples: reading email via Gmail MCP, querying a database via Supabase MCP, creating a calendar event via Google Calendar MCP.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Use computer use when:</strong> No API or MCP server exists. The task requires visual interaction (navigating a dashboard, filling a web form). The interface is non-standard or frequently changes. The agent needs to verify visual output. Examples: filing a government form, navigating a legacy internal tool, verifying a website looks correct.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Use both when:</strong> Part of the workflow has API access and part does not. MCP provides context that computer use needs. Computer use verifies what MCP reported. Example: use Gmail MCP to read an email with a link, then use computer use to navigate to that link and fill the form it leads to.</p>
+  <p class="section-text"><strong>Use MCP when:</strong> An MCP server exists for the target system. The action is data-oriented (read, write, query, send). Speed matters. The API is stable and well-documented. Examples: reading email via Gmail MCP, querying a database via Supabase MCP, creating a calendar event via Google Calendar MCP.</p>
+  <p class="section-text"><strong>Use computer use when:</strong> No API or MCP server exists. The task requires visual interaction (navigating a dashboard, filling a web form). The interface is non-standard or frequently changes. The agent needs to verify visual output. Examples: filing a government form, navigating a legacy internal tool, verifying a website looks correct.</p>
+  <p class="section-text"><strong>Use both when:</strong> Part of the workflow has API access and part does not. MCP provides context that computer use needs. Computer use verifies what MCP reported. Example: use Gmail MCP to read an email with a link, then use computer use to navigate to that link and fill the form it leads to.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Implementation</span>
   <h2 class="section-title">Hybrid Workflow Example</h2>
   <p class="section-text">Here is a real hybrid workflow: processing a customer refund that requires both API access and a visual portal.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Step 1 (MCP - Email):</strong> Read the customer's refund request from email using Gmail MCP. Extract the order number, customer name, and refund amount. No screenshots needed -- this is structured data.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Step 2 (MCP - Database):</strong> Query the orders database using Supabase MCP to verify the order exists, check the purchase amount, and confirm the refund is valid. Again, pure data -- no visual interaction needed.</p>
-  <p class="section-text"><strong style="color: var(--green);">Step 3 (Computer Use - Payment Portal):</strong> Navigate to the payment processor's admin portal (which has no API for refunds). Log in, find the transaction, click Refund, enter the amount, confirm. This requires visual interaction -- screenshots, clicks, form filling.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Step 4 (MCP - Email):</strong> Send a confirmation email to the customer using the email MCP. Include the refund reference number captured via computer use in Step 3. Back to structured data.</p>
+  <p class="section-text"><strong>Step 1 (MCP - Email):</strong> Read the customer's refund request from email using Gmail MCP. Extract the order number, customer name, and refund amount. No screenshots needed -- this is structured data.</p>
+  <p class="section-text"><strong>Step 2 (MCP - Database):</strong> Query the orders database using Supabase MCP to verify the order exists, check the purchase amount, and confirm the refund is valid. Again, pure data -- no visual interaction needed.</p>
+  <p class="section-text"><strong>Step 3 (Computer Use - Payment Portal):</strong> Navigate to the payment processor's admin portal (which has no API for refunds). Log in, find the transaction, click Refund, enter the amount, confirm. This requires visual interaction -- screenshots, clicks, form filling.</p>
+  <p class="section-text"><strong>Step 4 (MCP - Email):</strong> Send a confirmation email to the customer using the email MCP. Include the refund reference number captured via computer use in Step 3. Back to structured data.</p>
   <p class="section-text">This workflow uses MCP for 3 of 4 steps (fast, reliable) and computer use for the one step that requires visual interaction (the payment portal). That is the hybrid advantage.</p>
 </div>
 
@@ -95,23 +95,23 @@
   <span class="section-label">Advanced</span>
   <h2 class="section-title">Passing Data Between MCP and Computer Use</h2>
   <p class="section-text">The trickiest part of hybrid workflows is passing data between the two modalities. Data extracted via MCP needs to be typed into visual forms. Data seen in screenshots needs to be stored in structured systems.</p>
-  <p class="section-text"><strong style="color: var(--blue);">MCP to Computer Use:</strong> Read data via MCP (email body, database record, calendar event), extract the relevant fields, then type them into a visual form using computer use. The agent carries the data in its context window -- it read the email, now it types the order number into the portal.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Computer Use to MCP:</strong> Read data from a screenshot (a confirmation number, a status, a table of results), extract it as text, then write it to a database or include it in an email via MCP. The agent sees the confirmation number on screen and writes it to the brain for future reference.</p>
-  <p class="section-text"><strong style="color: var(--green);">Using the brain as a bridge:</strong> For multi-step workflows, write intermediate results to the brain (persistent memory). Step 1 reads email and writes the order number to memory. Step 3 reads the order number from memory and types it into the portal. The brain ensures data survives across steps, sessions, and even agent restarts.</p>
+  <p class="section-text"><strong>MCP to Computer Use:</strong> Read data via MCP (email body, database record, calendar event), extract the relevant fields, then type them into a visual form using computer use. The agent carries the data in its context window -- it read the email, now it types the order number into the portal.</p>
+  <p class="section-text"><strong>Computer Use to MCP:</strong> Read data from a screenshot (a confirmation number, a status, a table of results), extract it as text, then write it to a database or include it in an email via MCP. The agent sees the confirmation number on screen and writes it to the brain for future reference.</p>
+  <p class="section-text"><strong>Using the brain as a bridge:</strong> For multi-step workflows, write intermediate results to the brain (persistent memory). Step 1 reads email and writes the order number to memory. Step 3 reads the order number from memory and types it into the portal. The brain ensures data survives across steps, sessions, and even agent restarts.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Anti-Patterns</span>
   <h2 class="section-title">Hybrid Workflow Mistakes</h2>
-  <p class="section-text"><strong style="color: var(--red);">Using computer use when MCP exists.</strong> Navigating Gmail in a browser to read email when the Gmail MCP can fetch it in milliseconds. Always check: is there an MCP server or API for this task? Use it first.</p>
-  <p class="section-text"><strong style="color: var(--red);">Not carrying context between modalities.</strong> Reading a confirmation number via computer use but not storing it anywhere. When the next step needs that number, the agent has to go back and re-read the screen. Write extracted data to the brain immediately.</p>
-  <p class="section-text"><strong style="color: var(--red);">Building separate pipelines.</strong> Creating one pipeline for MCP tasks and a separate pipeline for computer use tasks, then trying to connect them. Build one unified agent that can use either modality per-action. The orchestrator decides, not the pipeline.</p>
+  <p class="section-text"><strong>Using computer use when MCP exists.</strong> Navigating Gmail in a browser to read email when the Gmail MCP can fetch it in milliseconds. Always check: is there an MCP server or API for this task? Use it first.</p>
+  <p class="section-text"><strong>Not carrying context between modalities.</strong> Reading a confirmation number via computer use but not storing it anywhere. When the next step needs that number, the agent has to go back and re-read the screen. Write extracted data to the brain immediately.</p>
+  <p class="section-text"><strong>Building separate pipelines.</strong> Creating one pipeline for MCP tasks and a separate pipeline for computer use tasks, then trying to connect them. Build one unified agent that can use either modality per-action. The orchestrator decides, not the pipeline.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Design a hybrid workflow for a task you do regularly:</p>
-  <div class="prompt-box"><code>1. Choose a multi-step task from your work
+  <div class="demo-container"><code>1. Choose a multi-step task from your work
 2. For each step, decide: MCP or Computer Use?
    - Is there an API or MCP server? -> MCP
    - Is it a visual interface with no API? -> Computer Use

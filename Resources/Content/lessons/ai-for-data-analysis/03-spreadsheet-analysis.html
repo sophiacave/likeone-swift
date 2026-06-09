@@ -15,7 +15,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">Getting Data In</span>
+  <span class="section-label">Getting Data In</span>
   <h2 class="section-title">Feeding Spreadsheets to AI</h2>
 <div class="lo-vis" role="figure" aria-label="Three ways to feed spreadsheet data to AI"><div class="lo-vis__title">3 Ways to Get Data Into AI</div><div class="lo-steps" data-count="3"><div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Copy &amp; Paste</span><span class="lo-step__desc">Select data in Excel or Sheets, paste into chat. Best under a few hundred rows.</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Upload File</span><span class="lo-step__desc">Send CSV or Excel directly. Handles larger datasets and preserves formatting.</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Describe &amp; Sample</span><span class="lo-step__desc">Paste 20-30 rows and describe the full scope. AI suggests approaches from the sample.</span></div></div><div class="lo-vis__caption">Choose the method that matches your <strong>dataset size</strong> for best results.</div></div>
 
@@ -26,7 +26,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">Pro Tips</span>
+  <span class="section-label">Pro Tips</span>
   <h2 class="section-title">Formatting for Best Results</h2>
   <p class="section-text">A few small formatting choices make a massive difference in AI analysis quality:</p>
   <p class="section-text"><strong>Use clear headers:</strong> "monthly_revenue" beats "Col_F". AI reads your column names to understand meaning.</p>
@@ -36,7 +36,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">Formula Generation</span>
+  <span class="section-label">Formula Generation</span>
   <h2 class="section-title">AI-Powered Formula Prompts</h2>
   <p class="section-text">Here are battle-tested prompt patterns for the most common spreadsheet formulas. Save these — you will use them constantly:</p>
 
@@ -66,7 +66,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--red);">Strategy</span>
+  <span class="section-label">Strategy</span>
   <h2 class="section-title">Pivot Table Strategies with AI</h2>
   <p class="section-text">Pivot tables are one of the most powerful spreadsheet features — and one of the most confusing. AI eliminates the confusion by telling you exactly how to build them:</p>
   <p class="section-text"><strong>When to use a pivot table:</strong> Any time you need to summarize, group, or cross-tabulate data. If you are writing multiple SUMIF formulas for different categories, a pivot table is probably the better approach.</p>
@@ -82,7 +82,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">Game Changer</span>
+  <span class="section-label">Game Changer</span>
   <h2 class="section-title">AI-Generated Formulas</h2>
   <p class="section-text">One of the most practical uses of AI in spreadsheet work: getting it to write formulas for you. You don't need to memorize VLOOKUP syntax ever again.</p>
 
@@ -94,7 +94,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--blue);">Know the Limits</span>
+  <span class="section-label">Know the Limits</span>
   <h2 class="section-title">When to Stay in the Spreadsheet</h2>
   <p class="section-text">AI is brilliant for analysis, but spreadsheets still win for some tasks:</p>
   <p class="section-text"><strong>Live data:</strong> If your spreadsheet connects to a live database, keep the dynamic calculations there.</p>
@@ -104,7 +104,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">Large Datasets</span>
+  <span class="section-label">Large Datasets</span>
   <h2 class="section-title">Working with Large Spreadsheets</h2>
   <p class="section-text">Most AI tools have context limits. When your spreadsheet has thousands of rows, you need a strategy:</p>
   <p class="section-text"><strong>Summary statistics first:</strong> Before sending raw data, calculate basic stats in the spreadsheet (totals, averages, counts by category) and send those. AI can identify patterns from summaries without needing every row.</p>
@@ -115,7 +115,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--red);">Common Errors</span>
+  <span class="section-label">Common Errors</span>
   <h2 class="section-title">Spreadsheet Mistakes AI Catches</h2>
   <p class="section-text">One of the most valuable uses of AI in spreadsheet work is error detection. Paste your spreadsheet data and ask AI to audit it:</p>
   <p class="section-text"><strong>Formula errors:</strong> "Review these formulas for common mistakes — circular references, incorrect ranges, missing absolute references, and division by zero risks."</p>
@@ -126,7 +126,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">Cross-Platform</span>
+  <span class="section-label">Cross-Platform</span>
   <h2 class="section-title">Working Across Spreadsheet Platforms</h2>
   <p class="section-text">Excel, Google Sheets, and Numbers have slightly different formula syntax. AI handles the translation seamlessly:</p>
   <p class="section-text"><strong>"Write this formula for Google Sheets"</strong> — AI uses ARRAYFORMULA, QUERY, and Google-specific functions.</p>
@@ -135,8 +135,8 @@
   <p class="section-text">When in doubt, tell AI which platform you use. It will tailor the formula syntax, keyboard shortcuts, and feature references to your specific tool.</p>
 </div>
 
-  <div class="tip-box">
-    <div class="tip-label">Python Bonus</div>
+  <div class="callout">
+    <div class="section-label">Python Bonus</div>
     <p>Ask Claude to write Python code for recurring analysis. Here is what Claude generates when you say <em>"Write a Python script to analyze my monthly sales CSV"</em>:</p>
   </div>
 
@@ -163,14 +163,14 @@ print(f"\nTop 5 products:\n{top_products}")
 monthly["growth_pct"] = monthly["total_revenue"].pct_change() * 100
 print(f"\nMonth-over-month growth:\n{monthly['growth_pct']}")</code></pre>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Export any spreadsheet as CSV. Paste the first 50 rows into Claude along with this prompt:</p>
-  <div class="prompt-box"><code>Here's a sample of my [type] data (CSV format). The columns are: [list columns and what they mean]. Analyze the data and give me: 1) A summary of key metrics, 2) The top 3 insights, 3) Any Google Sheets formulas I should add to track these metrics ongoing.</code></div>
+  <div class="demo-container"><code>Here's a sample of my [type] data (CSV format). The columns are: [list columns and what they mean]. Analyze the data and give me: 1) A summary of key metrics, 2) The top 3 insights, 3) Any Google Sheets formulas I should add to track these metrics ongoing.</code></div>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--blue);">Key Concepts</span>
+  <span class="section-label">Key Concepts</span>
   <h2 class="section-title">Learn the Terms</h2>
   <div class="flash-block">
 <h3 class="quiz-title">Spreadsheet Analysis Essentials</h3>

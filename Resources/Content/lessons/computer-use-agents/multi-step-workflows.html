@@ -38,7 +38,7 @@
   <span class="section-label">Architecture</span>
   <h2 class="section-title">The Workflow State Machine</h2>
   <p class="section-text">A multi-step workflow is a state machine. Each state represents what the agent sees on screen, and transitions are the actions that move between states:</p>
-  <div class="prompt-box"><code>Login Page ──[enter credentials, click login]──> Dashboard
+  <div class="demo-container"><code>Login Page ──[enter credentials, click login]──> Dashboard
 Dashboard ──[click Settings]──> Settings Page
 Settings Page ──[update email, click Save]──> Confirmation Modal
 Confirmation Modal ──[click Confirm]──> Settings Page (updated)
@@ -48,27 +48,27 @@ Each transition:
 2. Execute action (click, type, scroll)
 3. Wait for transition (page load, animation)
 4. Verify new state (screenshot matches expected result)</code></div>
-  <p class="section-text"><strong style="color: var(--green);">State verification</strong> is the critical step most automation skips. Before acting, check that you are on the expected page. After acting, verify you arrived at the expected result. This catches navigation errors, unexpected popups, and session timeouts before they cascade.</p>
+  <p class="section-text"><strong>State verification</strong> is the critical step most automation skips. Before acting, check that you are on the expected page. After acting, verify you arrived at the expected result. This catches navigation errors, unexpected popups, and session timeouts before they cascade.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Implementation</span>
   <h2 class="section-title">Handling Page Transitions</h2>
   <p class="section-text">The gap between clicking a link and the new page loading is where most workflow failures occur. The agent clicks, takes a screenshot immediately, and sees a blank page or loading spinner. Then it gets confused.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Wait for stability.</strong> After clicking a navigation link, wait 1-3 seconds before taking the next screenshot. This gives the page time to load. For slow sites, increase to 5 seconds.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Check for loading indicators.</strong> Take a screenshot and ask Claude: "Is this page fully loaded or still loading?" Look for spinners, progress bars, skeleton screens, or "Loading..." text. If the page is still loading, wait and retry.</p>
-  <p class="section-text"><strong style="color: var(--green);">Verify arrival.</strong> After the page loads, confirm you are on the expected page. Look for page titles, headings, or unique elements that identify the page. "I expected to see the Settings page. The screenshot shows a heading that says Account Settings. Confirmed."</p>
-  <p class="section-text"><strong style="color: var(--orange);">Handle redirects.</strong> Some clicks trigger redirects through multiple URLs before landing on the final page. The agent should not act during redirects -- it should wait for the final destination. Take screenshots every 2 seconds until the page stabilizes.</p>
+  <p class="section-text"><strong>Wait for stability.</strong> After clicking a navigation link, wait 1-3 seconds before taking the next screenshot. This gives the page time to load. For slow sites, increase to 5 seconds.</p>
+  <p class="section-text"><strong>Check for loading indicators.</strong> Take a screenshot and ask Claude: "Is this page fully loaded or still loading?" Look for spinners, progress bars, skeleton screens, or "Loading..." text. If the page is still loading, wait and retry.</p>
+  <p class="section-text"><strong>Verify arrival.</strong> After the page loads, confirm you are on the expected page. Look for page titles, headings, or unique elements that identify the page. "I expected to see the Settings page. The screenshot shows a heading that says Account Settings. Confirmed."</p>
+  <p class="section-text"><strong>Handle redirects.</strong> Some clicks trigger redirects through multiple URLs before landing on the final page. The agent should not act during redirects -- it should wait for the final destination. Take screenshots every 2 seconds until the page stabilizes.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Practice</span>
   <h2 class="section-title">A Complete Workflow Example</h2>
   <p class="section-text">Here is a real multi-step workflow: updating your profile email on a web application. Watch how each step includes verification:</p>
-  <p class="section-text"><strong style="color: var(--blue);">Step 1: Login.</strong> Navigate to the login page. Verify: do I see a login form? Enter email and password. Click login. Wait 2 seconds. Verify: am I on the dashboard? If I see a "Wrong password" error, stop and report.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Step 2: Navigate to settings.</strong> Find and click the Settings link (usually in a sidebar or user menu). Wait for page load. Verify: do I see account settings options?</p>
-  <p class="section-text"><strong style="color: var(--green);">Step 3: Update email.</strong> Find the email field. Click it. Select all existing text (Ctrl+A). Type the new email. Verify: does the field show the new email?</p>
-  <p class="section-text"><strong style="color: var(--orange);">Step 4: Save and confirm.</strong> Click the Save button. Wait for response. If a confirmation modal appears, click Confirm. Verify: does the page show a success message? Does the email field display the updated value?</p>
+  <p class="section-text"><strong>Step 1: Login.</strong> Navigate to the login page. Verify: do I see a login form? Enter email and password. Click login. Wait 2 seconds. Verify: am I on the dashboard? If I see a "Wrong password" error, stop and report.</p>
+  <p class="section-text"><strong>Step 2: Navigate to settings.</strong> Find and click the Settings link (usually in a sidebar or user menu). Wait for page load. Verify: do I see account settings options?</p>
+  <p class="section-text"><strong>Step 3: Update email.</strong> Find the email field. Click it. Select all existing text (Ctrl+A). Type the new email. Verify: does the field show the new email?</p>
+  <p class="section-text"><strong>Step 4: Save and confirm.</strong> Click the Save button. Wait for response. If a confirmation modal appears, click Confirm. Verify: does the page show a success message? Does the email field display the updated value?</p>
   <p class="section-text">Four steps, each with pre-conditions, actions, and post-conditions. This is the pattern for every multi-step workflow.</p>
 </div>
 
@@ -76,24 +76,24 @@ Each transition:
   <span class="section-label">Advanced</span>
   <h2 class="section-title">Workflow Templates</h2>
   <p class="section-text">Many workflows follow common patterns. Build templates for these and reuse them:</p>
-  <p class="section-text"><strong style="color: var(--blue);">Login template:</strong> Navigate to URL -> find username/email field -> type credentials -> find password field -> type password -> click login/submit -> verify dashboard/home page loads.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Search template:</strong> Find search input -> type query -> press Enter or click search button -> wait for results -> verify results page loaded -> extract/interact with results.</p>
-  <p class="section-text"><strong style="color: var(--green);">Form submission template:</strong> Navigate to form page -> fill each field in order (top to bottom, using Tab) -> handle dropdowns and date pickers -> scroll to submit button -> click submit -> verify success confirmation.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Data extraction template:</strong> Navigate to data page -> identify table or list -> extract visible data -> if pagination exists, click Next -> extract next page -> repeat until all pages processed.</p>
+  <p class="section-text"><strong>Login template:</strong> Navigate to URL -> find username/email field -> type credentials -> find password field -> type password -> click login/submit -> verify dashboard/home page loads.</p>
+  <p class="section-text"><strong>Search template:</strong> Find search input -> type query -> press Enter or click search button -> wait for results -> verify results page loaded -> extract/interact with results.</p>
+  <p class="section-text"><strong>Form submission template:</strong> Navigate to form page -> fill each field in order (top to bottom, using Tab) -> handle dropdowns and date pickers -> scroll to submit button -> click submit -> verify success confirmation.</p>
+  <p class="section-text"><strong>Data extraction template:</strong> Navigate to data page -> identify table or list -> extract visible data -> if pagination exists, click Next -> extract next page -> repeat until all pages processed.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Anti-Patterns</span>
   <h2 class="section-title">Multi-Step Failure Modes</h2>
-  <p class="section-text"><strong style="color: var(--red);">Skipping verification between steps.</strong> The agent fills a form, clicks submit, and immediately starts the next task without checking if the submission succeeded. Result: the entire downstream workflow is built on a failed step. Always verify before moving on.</p>
-  <p class="section-text"><strong style="color: var(--red);">No timeout handling.</strong> The agent waits for a page to load, but the page is down or extremely slow. Without a timeout, the agent waits forever. Set maximum wait times (30 seconds is reasonable) and fail gracefully if the page does not load.</p>
-  <p class="section-text"><strong style="color: var(--red);">Assuming page structure.</strong> The agent assumes the Save button is always at the bottom of the page. But on this particular page, it is in a sticky header. Always locate elements visually from the current screenshot instead of assuming positions.</p>
+  <p class="section-text"><strong>Skipping verification between steps.</strong> The agent fills a form, clicks submit, and immediately starts the next task without checking if the submission succeeded. Result: the entire downstream workflow is built on a failed step. Always verify before moving on.</p>
+  <p class="section-text"><strong>No timeout handling.</strong> The agent waits for a page to load, but the page is down or extremely slow. Without a timeout, the agent waits forever. Set maximum wait times (30 seconds is reasonable) and fail gracefully if the page does not load.</p>
+  <p class="section-text"><strong>Assuming page structure.</strong> The agent assumes the Save button is always at the bottom of the page. But on this particular page, it is in a sticky header. Always locate elements visually from the current screenshot instead of assuming positions.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Build a multi-step workflow for a real task:</p>
-  <div class="prompt-box"><code>Choose one of these tasks:
+  <div class="demo-container"><code>Choose one of these tasks:
 1. Log into a test account and update the profile name
 2. Search for a product on an e-commerce site and add it to cart
 3. Navigate a multi-page form (like a job application)

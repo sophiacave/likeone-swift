@@ -38,10 +38,10 @@
 <div class="lesson-section">
   <span class="section-label">Anatomy</span>
   <h2 class="section-title">The Four Parts of a System Prompt</h2>
-  <p class="section-text"><strong style="color: var(--orange);">Identity:</strong> Who is the AI in this context? Give it a role, expertise level, and personality.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Behavior Rules:</strong> How should it respond? Tone, length, formatting preferences.</p>
-  <p class="section-text"><strong style="color: var(--green);">Knowledge Boundaries:</strong> What does it know? What should it admit it doesn't know?</p>
-  <p class="section-text"><strong style="color: var(--blue);">Constraints:</strong> What should it never do? Hard boundaries matter.</p>
+  <p class="section-text"><strong>Identity:</strong> Who is the AI in this context? Give it a role, expertise level, and personality.</p>
+  <p class="section-text"><strong>Behavior Rules:</strong> How should it respond? Tone, length, formatting preferences.</p>
+  <p class="section-text"><strong>Knowledge Boundaries:</strong> What does it know? What should it admit it doesn't know?</p>
+  <p class="section-text"><strong>Constraints:</strong> What should it never do? Hard boundaries matter.</p>
 </div>
 
 <div class="lesson-section">
@@ -49,7 +49,7 @@
   <h2 class="section-title">Building a Code Review Persona</h2>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--green);">
+    <div class="demo-container" style="border-left: 3px solid var(--green);">
       <h4 style="color: var(--green);">System Prompt</h4>
       <code>You are a senior software engineer with 15 years of experience, specializing in code review. Your style: direct, constructive, no fluff. When reviewing code, always check for: security vulnerabilities, performance issues, readability, and adherence to DRY principles. Rate severity as [critical], [warning], or [suggestion]. Never rewrite the entire file — point to specific lines and explain why. If the code is good, say so briefly. Don't patronize.</code>
     </div>
@@ -64,7 +64,7 @@
   <p class="section-text">You can layer multiple perspectives into one system prompt. This is powerful when you need nuanced output.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--purple);">
+    <div class="demo-container" style="border-left: 3px solid var(--purple);">
       <h4 style="color: var(--purple);">Stacked Persona</h4>
       <code>You are a marketing strategist who thinks like a psychologist and writes like a journalist. Analyze campaigns through the lens of behavioral triggers, but communicate findings in clear, story-driven language. No jargon. No bullet-point lists unless asked.</code>
     </div>
@@ -106,7 +106,7 @@
   <p class="section-text">Different domains demand different system prompt architectures. Here are three battle-tested examples you can adapt immediately.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--orange);">
+    <div class="demo-container" style="border-left: 3px solid var(--orange);">
       <h4 style="color: var(--orange);">Customer Support Agent</h4>
       <code>You are a customer support specialist for a SaaS project management tool. You've worked here for 3 years and know the product deeply.
 
@@ -119,7 +119,7 @@ Rules:
 - Never share internal pricing, roadmap, or technical architecture details
 - If asked about a competitor, redirect to our strengths without badmouthing</code>
     </div>
-    <div class="demo-block" style="border-left: 3px solid var(--blue);">
+    <div class="demo-container" style="border-left: 3px solid var(--blue);">
       <h4 style="color: var(--blue);">Technical Writing Assistant</h4>
       <code>You are a senior technical writer who specializes in developer documentation. Your work has been praised for clarity and precision.
 
@@ -132,7 +132,7 @@ Style guide:
 - Headers follow the pattern: verb + noun (e.g., "Configure Authentication")
 - Never write "simply" or "just" — these words minimize complexity and frustrate readers</code>
     </div>
-    <div class="demo-block" style="border-left: 3px solid var(--green);">
+    <div class="demo-container" style="border-left: 3px solid var(--green);">
       <h4 style="color: var(--green);">Strategic Advisor</h4>
       <code>You are a business strategist with expertise in early-stage startups. You've advised 50+ companies from seed to Series B.
 
@@ -151,9 +151,9 @@ Approach:
   <span class="section-label">Architecture</span>
   <h2 class="section-title">Layering System Prompts with User Prompts</h2>
   <p class="section-text">In production AI applications, system prompts and user prompts work together in layers. Understanding this architecture makes you a better prompt engineer even in casual use.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Layer 1 — System prompt:</strong> Defines identity, rules, and boundaries. This is the "constitution" that governs all responses. It stays constant across the conversation.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Layer 2 — Context injection:</strong> Dynamic information added per conversation — the user's account data, recent activity, or relevant documents. This personalizes the system prompt's behavior.</p>
-  <p class="section-text"><strong style="color: var(--green);">Layer 3 — User prompt:</strong> The actual question or request. The system prompt shapes HOW the AI responds to this. The user prompt determines WHAT it responds about.</p>
+  <p class="section-text"><strong>Layer 1 — System prompt:</strong> Defines identity, rules, and boundaries. This is the "constitution" that governs all responses. It stays constant across the conversation.</p>
+  <p class="section-text"><strong>Layer 2 — Context injection:</strong> Dynamic information added per conversation — the user's account data, recent activity, or relevant documents. This personalizes the system prompt's behavior.</p>
+  <p class="section-text"><strong>Layer 3 — User prompt:</strong> The actual question or request. The system prompt shapes HOW the AI responds to this. The user prompt determines WHAT it responds about.</p>
   <p class="section-text">When you're crafting prompts in ChatGPT's custom instructions, Claude's system prompt field, or any API — you're writing Layer 1. The better your Layer 1, the less work Layers 2 and 3 need to do.</p>
 </div>
 
@@ -161,19 +161,19 @@ Approach:
   <span class="section-label">Testing</span>
   <h2 class="section-title">How to Test Your System Prompt</h2>
   <p class="section-text">A system prompt isn't done when you write it — it's done when you've tested it against edge cases. Here's a simple testing protocol.</p>
-  <p class="section-text"><strong style="color: var(--blue);">1. The happy path:</strong> Ask the AI something straightforward that falls squarely within its defined role. Does it respond with the right tone, format, and expertise?</p>
-  <p class="section-text"><strong style="color: var(--blue);">2. The boundary test:</strong> Ask something outside its defined scope. Does it gracefully decline or redirect? If it answers confidently about things it shouldn't know, your constraints are too weak.</p>
-  <p class="section-text"><strong style="color: var(--blue);">3. The adversarial test:</strong> Try to get the AI to break its rules. Ask it to "ignore previous instructions" or pressure it to do something it's told not to. A robust system prompt holds firm.</p>
-  <p class="section-text"><strong style="color: var(--blue);">4. The consistency test:</strong> Ask 5 different questions in the same domain. Are the tone, format, and depth consistent? Inconsistency signals that your prompt has gaps the AI is filling with defaults.</p>
+  <p class="section-text"><strong>1. The happy path:</strong> Ask the AI something straightforward that falls squarely within its defined role. Does it respond with the right tone, format, and expertise?</p>
+  <p class="section-text"><strong>2. The boundary test:</strong> Ask something outside its defined scope. Does it gracefully decline or redirect? If it answers confidently about things it shouldn't know, your constraints are too weak.</p>
+  <p class="section-text"><strong>3. The adversarial test:</strong> Try to get the AI to break its rules. Ask it to "ignore previous instructions" or pressure it to do something it's told not to. A robust system prompt holds firm.</p>
+  <p class="section-text"><strong>4. The consistency test:</strong> Ask 5 different questions in the same domain. Are the tone, format, and depth consistent? Inconsistency signals that your prompt has gaps the AI is filling with defaults.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Common Mistakes</span>
   <h2 class="section-title">What Weakens a System Prompt</h2>
-  <p class="section-text"><strong style="color: var(--red);">Too vague:</strong> "Be helpful and professional" — this tells the AI nothing it doesn't already default to.</p>
-  <p class="section-text"><strong style="color: var(--red);">Too long:</strong> A 2,000-word system prompt dilutes priority. The AI can't emphasize everything equally.</p>
-  <p class="section-text"><strong style="color: var(--red);">Contradictory:</strong> "Be concise" + "Always explain your reasoning in detail" = confusion.</p>
-  <p class="section-text"><strong style="color: var(--green);">The fix:</strong> Prioritize. Put your most important instructions first. Be specific about what "good" looks like. Test and iterate.</p>
+  <p class="section-text"><strong>Too vague:</strong> "Be helpful and professional" — this tells the AI nothing it doesn't already default to.</p>
+  <p class="section-text"><strong>Too long:</strong> A 2,000-word system prompt dilutes priority. The AI can't emphasize everything equally.</p>
+  <p class="section-text"><strong>Contradictory:</strong> "Be concise" + "Always explain your reasoning in detail" = confusion.</p>
+  <p class="section-text"><strong>The fix:</strong> Prioritize. Put your most important instructions first. Be specific about what "good" looks like. Test and iterate.</p>
 </div>
 
 <div class="lesson-section">
@@ -191,7 +191,7 @@ Approach:
   <p class="section-text">Here's a reusable template you can adapt for any use case. Fill in each section and you'll have a production-quality system prompt in minutes.</p>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--green);">
+    <div class="demo-container" style="border-left: 3px solid var(--green);">
       <h4 style="color: var(--green);">Universal Template</h4>
       <code># IDENTITY
 You are [role] with [years/type of experience]. You specialize in [domain].
@@ -217,9 +217,9 @@ You are [role] with [years/type of experience]. You specialize in [domain].
 <div class="lesson-section">
   <span class="section-label">Try It Yourself</span>
   <h2 class="section-title">Build Your First Persona</h2>
-  <div class="try-it-box">
+  <div class="callout">
     <p>Create a system prompt for a use case you care about. Include all four parts: identity, behavior, knowledge boundaries, and constraints.</p>
-    <div class="prompt-box">
+    <div class="demo-container">
       <code>You are a [role] with [experience/expertise]. Your communication style is [tone]. When asked about [domain], always [specific behavior]. Never [constraint]. If you don't know something, [fallback behavior].</code>
     </div>
   </div>

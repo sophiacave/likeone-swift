@@ -23,26 +23,26 @@
     <div style="display:flex;align-items:center;gap:.5rem;justify-content:center;margin:1.5rem 0;flex-wrap:wrap">
       <div style="padding:.6rem 1rem;border-radius:10px;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.15);text-align:center;min-width:100px">
         <div style="font-size:1.1rem">&#x1F517;</div>
-        <strong style="color:#8b5cf6;font-size:.75rem">WEBHOOK</strong>
-        <div style="font-size:.75rem;color:#a1a1aa">Form submitted</div>
+        <strong style="font-size:.75rem">WEBHOOK</strong>
+        <div style="font-size:.75rem">Form submitted</div>
       </div>
-      <div style="font-size:1.2rem;color:#52525b">&rarr;</div>
+      <div style="font-size:1.2rem">&rarr;</div>
       <div style="padding:.6rem 1rem;border-radius:10px;background:rgba(251,146,60,.08);border:1px solid rgba(251,146,60,.15);text-align:center;min-width:100px">
         <div style="font-size:1.1rem">&#x1F6E1;</div>
-        <strong style="color:#fb923c;font-size:.75rem">VALIDATE</strong>
-        <div style="font-size:.75rem;color:#a1a1aa">Check payload</div>
+        <strong style="font-size:.75rem">VALIDATE</strong>
+        <div style="font-size:.75rem">Check payload</div>
       </div>
-      <div style="font-size:1.2rem;color:#52525b">&rarr;</div>
+      <div style="font-size:1.2rem">&rarr;</div>
       <div style="padding:.6rem 1rem;border-radius:10px;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.15);text-align:center;min-width:100px">
         <div style="font-size:1.1rem">&#x1F4BE;</div>
-        <strong style="color:#34d399;font-size:.75rem">SAVE</strong>
-        <div style="font-size:.75rem;color:#a1a1aa">Write to DB</div>
+        <strong style="font-size:.75rem">SAVE</strong>
+        <div style="font-size:.75rem">Write to DB</div>
       </div>
-      <div style="font-size:1.2rem;color:#52525b">&rarr;</div>
+      <div style="font-size:1.2rem">&rarr;</div>
       <div style="padding:.6rem 1rem;border-radius:10px;background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.15);text-align:center;min-width:100px">
         <div style="font-size:1.1rem">&#x1F4E7;</div>
-        <strong style="color:#60a5fa;font-size:.75rem">NOTIFY</strong>
-        <div style="font-size:.75rem;color:#a1a1aa">Send email</div>
+        <strong style="font-size:.75rem">NOTIFY</strong>
+        <div style="font-size:.75rem">Send email</div>
       </div>
     </div>
   </div>
@@ -52,30 +52,30 @@
     <p>Every automation starts with a trigger. A webhook is a URL that waits for incoming HTTP POST requests. When data arrives, your code runs. Here is a webhook handler in Node.js using Express:</p>
 
     <div style="background:#0a0a0f;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1rem;margin:1rem 0;font-family:monospace;font-size:.78rem;line-height:1.7;overflow-x:auto">
-      <span style="color:#71717a">// server.js — Your first automation</span><br>
-      <span style="color:#c084fc">const</span> <span style="color:#e2e8f0">express</span> = <span style="color:#34d399">require</span>(<span style="color:#fb923c">'express'</span>);<br>
-      <span style="color:#c084fc">const</span> <span style="color:#e2e8f0">app</span> = <span style="color:#34d399">express</span>();<br>
-      <span style="color:#e2e8f0">app</span>.<span style="color:#34d399">use</span>(<span style="color:#e2e8f0">express</span>.<span style="color:#34d399">json</span>());<br>
+      <span>// server.js — Your first automation</span><br>
+      <span>const</span> <span>express</span> = <span>require</span>(<span>'express'</span>);<br>
+      <span>const</span> <span>app</span> = <span>express</span>();<br>
+      <span>app</span>.<span>use</span>(<span>express</span>.<span>json</span>());<br>
       <br>
-      <span style="color:#71717a">// TRIGGER: Webhook receives form data</span><br>
-      <span style="color:#e2e8f0">app</span>.<span style="color:#34d399">post</span>(<span style="color:#fb923c">'/webhook/form-submitted'</span>, <span style="color:#c084fc">async</span> (<span style="color:#e2e8f0">req</span>, <span style="color:#e2e8f0">res</span>) => {<br>
-      &nbsp;&nbsp;<span style="color:#c084fc">const</span> <span style="color:#e2e8f0">payload</span> = <span style="color:#e2e8f0">req</span>.<span style="color:#e2e8f0">body</span>;<br>
+      <span>// TRIGGER: Webhook receives form data</span><br>
+      <span>app</span>.<span>post</span>(<span>'/webhook/form-submitted'</span>, <span>async</span> (<span>req</span>, <span>res</span>) => {<br>
+      &nbsp;&nbsp;<span>const</span> <span>payload</span> = <span>req</span>.<span>body</span>;<br>
       <br>
-      &nbsp;&nbsp;<span style="color:#71717a">// Acknowledge receipt IMMEDIATELY (within 3 seconds)</span><br>
-      &nbsp;&nbsp;<span style="color:#71717a">// Process in the background — never block the webhook</span><br>
-      &nbsp;&nbsp;<span style="color:#e2e8f0">res</span>.<span style="color:#34d399">status</span>(<span style="color:#fb923c">200</span>).<span style="color:#34d399">json</span>({ <span style="color:#e2e8f0">received</span>: <span style="color:#fb923c">true</span> });<br>
+      &nbsp;&nbsp;<span>// Acknowledge receipt IMMEDIATELY (within 3 seconds)</span><br>
+      &nbsp;&nbsp;<span>// Process in the background — never block the webhook</span><br>
+      &nbsp;&nbsp;<span>res</span>.<span>status</span>(<span>200</span>).<span>json</span>({ <span>received</span>: <span>true</span> });<br>
       <br>
-      &nbsp;&nbsp;<span style="color:#71717a">// Process asynchronously</span><br>
-      &nbsp;&nbsp;<span style="color:#34d399">processFormSubmission</span>(<span style="color:#e2e8f0">payload</span>).<span style="color:#34d399">catch</span>(<span style="color:#e2e8f0">err</span> => {<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">console</span>.<span style="color:#34d399">error</span>(<span style="color:#fb923c">'Automation failed:'</span>, <span style="color:#e2e8f0">err</span>);<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#34d399">saveToDeadLetterQueue</span>(<span style="color:#e2e8f0">payload</span>, <span style="color:#e2e8f0">err</span>);<br>
+      &nbsp;&nbsp;<span>// Process asynchronously</span><br>
+      &nbsp;&nbsp;<span>processFormSubmission</span>(<span>payload</span>).<span>catch</span>(<span>err</span> => {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>console</span>.<span>error</span>(<span>'Automation failed:'</span>, <span>err</span>);<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>saveToDeadLetterQueue</span>(<span>payload</span>, <span>err</span>);<br>
       &nbsp;&nbsp;});<br>
       });
     </div>
 
     <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1);margin:1rem 0">
-      <strong style="color:#fb923c;font-size:.85rem">Why respond immediately?</strong>
-      <p style="font-size:.8rem;color:#a1a1aa;margin:.3rem 0 0">Webhook senders (Stripe, Zapier, GitHub) expect a response within 3-5 seconds. If you do not respond in time, they will retry — causing duplicate processing. Always acknowledge first, process second.</p>
+      <strong style="font-size:.85rem">Why respond immediately?</strong>
+      <p style="font-size:.8rem;margin:.3rem 0 0">Webhook senders (Stripe, Zapier, GitHub) expect a response within 3-5 seconds. If you do not respond in time, they will retry — causing duplicate processing. Always acknowledge first, process second.</p>
     </div>
   </div>
 
@@ -84,18 +84,18 @@
     <p>Never trust incoming data. Validate every field before processing. A missing email address should not crash your entire pipeline.</p>
 
     <div style="background:#0a0a0f;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1rem;margin:1rem 0;font-family:monospace;font-size:.78rem;line-height:1.7;overflow-x:auto">
-      <span style="color:#c084fc">function</span> <span style="color:#34d399">validatePayload</span>(<span style="color:#e2e8f0">payload</span>) {<br>
-      &nbsp;&nbsp;<span style="color:#c084fc">const</span> <span style="color:#e2e8f0">errors</span> = [];<br>
+      <span>function</span> <span>validatePayload</span>(<span>payload</span>) {<br>
+      &nbsp;&nbsp;<span>const</span> <span>errors</span> = [];<br>
       <br>
-      &nbsp;&nbsp;<span style="color:#c084fc">if</span> (!<span style="color:#e2e8f0">payload</span>.<span style="color:#e2e8f0">email</span>) <span style="color:#e2e8f0">errors</span>.<span style="color:#34d399">push</span>(<span style="color:#fb923c">'Missing email'</span>);<br>
-      &nbsp;&nbsp;<span style="color:#c084fc">if</span> (!<span style="color:#e2e8f0">payload</span>.<span style="color:#e2e8f0">name</span>)  <span style="color:#e2e8f0">errors</span>.<span style="color:#34d399">push</span>(<span style="color:#fb923c">'Missing name'</span>);<br>
-      &nbsp;&nbsp;<span style="color:#c084fc">if</span> (<span style="color:#e2e8f0">payload</span>.<span style="color:#e2e8f0">email</span> && !<span style="color:#e2e8f0">payload</span>.<span style="color:#e2e8f0">email</span>.<span style="color:#34d399">includes</span>(<span style="color:#fb923c">'@'</span>)) {<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">errors</span>.<span style="color:#34d399">push</span>(<span style="color:#fb923c">'Invalid email format'</span>);<br>
+      &nbsp;&nbsp;<span>if</span> (!<span>payload</span>.<span>email</span>) <span>errors</span>.<span>push</span>(<span>'Missing email'</span>);<br>
+      &nbsp;&nbsp;<span>if</span> (!<span>payload</span>.<span>name</span>)  <span>errors</span>.<span>push</span>(<span>'Missing name'</span>);<br>
+      &nbsp;&nbsp;<span>if</span> (<span>payload</span>.<span>email</span> && !<span>payload</span>.<span>email</span>.<span>includes</span>(<span>'@'</span>)) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>errors</span>.<span>push</span>(<span>'Invalid email format'</span>);<br>
       &nbsp;&nbsp;}<br>
       <br>
-      &nbsp;&nbsp;<span style="color:#c084fc">return</span> {<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">valid</span>: <span style="color:#e2e8f0">errors</span>.<span style="color:#e2e8f0">length</span> === <span style="color:#fb923c">0</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">errors</span><br>
+      &nbsp;&nbsp;<span>return</span> {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>valid</span>: <span>errors</span>.<span>length</span> === <span>0</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>errors</span><br>
       &nbsp;&nbsp;};<br>
       }
     </div>
@@ -106,46 +106,46 @@
     <p>The action — what your automation actually does. This example uses Supabase, but the pattern works with any database:</p>
 
     <div style="background:#0a0a0f;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1rem;margin:1rem 0;font-family:monospace;font-size:.78rem;line-height:1.7;overflow-x:auto">
-      <span style="color:#c084fc">async function</span> <span style="color:#34d399">processFormSubmission</span>(<span style="color:#e2e8f0">payload</span>) {<br>
-      &nbsp;&nbsp;<span style="color:#71717a">// 1. Validate</span><br>
-      &nbsp;&nbsp;<span style="color:#c084fc">const</span> <span style="color:#e2e8f0">validation</span> = <span style="color:#34d399">validatePayload</span>(<span style="color:#e2e8f0">payload</span>);<br>
-      &nbsp;&nbsp;<span style="color:#c084fc">if</span> (!<span style="color:#e2e8f0">validation</span>.<span style="color:#e2e8f0">valid</span>) {<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">throw new</span> <span style="color:#e2e8f0">Error</span>(<span style="color:#fb923c">`Validation failed: ${<span style="color:#e2e8f0">validation</span>.<span style="color:#e2e8f0">errors</span>.<span style="color:#34d399">join</span>(<span style="color:#fb923c">', '</span>)}`</span>);<br>
+      <span>async function</span> <span>processFormSubmission</span>(<span>payload</span>) {<br>
+      &nbsp;&nbsp;<span>// 1. Validate</span><br>
+      &nbsp;&nbsp;<span>const</span> <span>validation</span> = <span>validatePayload</span>(<span>payload</span>);<br>
+      &nbsp;&nbsp;<span>if</span> (!<span>validation</span>.<span>valid</span>) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>throw new</span> <span>Error</span>(<span>`Validation failed: ${<span>validation</span>.<span>errors</span>.<span>join</span>(<span>', '</span>)}`</span>);<br>
       &nbsp;&nbsp;}<br>
       <br>
-      &nbsp;&nbsp;<span style="color:#71717a">// 2. Idempotency check — prevent duplicate processing</span><br>
-      &nbsp;&nbsp;<span style="color:#c084fc">const</span> { <span style="color:#e2e8f0">data</span>: <span style="color:#e2e8f0">existing</span> } = <span style="color:#c084fc">await</span> <span style="color:#e2e8f0">supabase</span><br>
-      &nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#34d399">from</span>(<span style="color:#fb923c">'submissions'</span>)<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#34d399">select</span>(<span style="color:#fb923c">'id'</span>)<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#34d399">eq</span>(<span style="color:#fb923c">'email'</span>, <span style="color:#e2e8f0">payload</span>.<span style="color:#e2e8f0">email</span>)<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#34d399">eq</span>(<span style="color:#fb923c">'submitted_at'</span>, <span style="color:#e2e8f0">payload</span>.<span style="color:#e2e8f0">submitted_at</span>)<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#34d399">single</span>();<br>
+      &nbsp;&nbsp;<span>// 2. Idempotency check — prevent duplicate processing</span><br>
+      &nbsp;&nbsp;<span>const</span> { <span>data</span>: <span>existing</span> } = <span>await</span> <span>supabase</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;.<span>from</span>(<span>'submissions'</span>)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;.<span>select</span>(<span>'id'</span>)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;.<span>eq</span>(<span>'email'</span>, <span>payload</span>.<span>email</span>)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;.<span>eq</span>(<span>'submitted_at'</span>, <span>payload</span>.<span>submitted_at</span>)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;.<span>single</span>();<br>
       <br>
-      &nbsp;&nbsp;<span style="color:#c084fc">if</span> (<span style="color:#e2e8f0">existing</span>) {<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">console</span>.<span style="color:#34d399">log</span>(<span style="color:#fb923c">'Duplicate detected, skipping'</span>);<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">return</span>;<br>
+      &nbsp;&nbsp;<span>if</span> (<span>existing</span>) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>console</span>.<span>log</span>(<span>'Duplicate detected, skipping'</span>);<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>return</span>;<br>
       &nbsp;&nbsp;}<br>
       <br>
-      &nbsp;&nbsp;<span style="color:#71717a">// 3. Save to database</span><br>
-      &nbsp;&nbsp;<span style="color:#c084fc">const</span> { <span style="color:#e2e8f0">error</span> } = <span style="color:#c084fc">await</span> <span style="color:#e2e8f0">supabase</span><br>
-      &nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#34d399">from</span>(<span style="color:#fb923c">'submissions'</span>)<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#34d399">insert</span>({<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">name</span>: <span style="color:#e2e8f0">payload</span>.<span style="color:#e2e8f0">name</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">email</span>: <span style="color:#e2e8f0">payload</span>.<span style="color:#e2e8f0">email</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">message</span>: <span style="color:#e2e8f0">payload</span>.<span style="color:#e2e8f0">message</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">submitted_at</span>: <span style="color:#e2e8f0">payload</span>.<span style="color:#e2e8f0">submitted_at</span><br>
+      &nbsp;&nbsp;<span>// 3. Save to database</span><br>
+      &nbsp;&nbsp;<span>const</span> { <span>error</span> } = <span>await</span> <span>supabase</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;.<span>from</span>(<span>'submissions'</span>)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;.<span>insert</span>({<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>name</span>: <span>payload</span>.<span>name</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>email</span>: <span>payload</span>.<span>email</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>message</span>: <span>payload</span>.<span>message</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>submitted_at</span>: <span>payload</span>.<span>submitted_at</span><br>
       &nbsp;&nbsp;&nbsp;&nbsp;});<br>
       <br>
-      &nbsp;&nbsp;<span style="color:#c084fc">if</span> (<span style="color:#e2e8f0">error</span>) <span style="color:#c084fc">throw</span> <span style="color:#e2e8f0">error</span>;<br>
+      &nbsp;&nbsp;<span>if</span> (<span>error</span>) <span>throw</span> <span>error</span>;<br>
       <br>
-      &nbsp;&nbsp;<span style="color:#71717a">// 4. Send confirmation email</span><br>
-      &nbsp;&nbsp;<span style="color:#c084fc">await</span> <span style="color:#34d399">sendConfirmation</span>(<span style="color:#e2e8f0">payload</span>.<span style="color:#e2e8f0">email</span>, <span style="color:#e2e8f0">payload</span>.<span style="color:#e2e8f0">name</span>);<br>
+      &nbsp;&nbsp;<span>// 4. Send confirmation email</span><br>
+      &nbsp;&nbsp;<span>await</span> <span>sendConfirmation</span>(<span>payload</span>.<span>email</span>, <span>payload</span>.<span>name</span>);<br>
       }
     </div>
 
     <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1);margin:1rem 0">
-      <strong style="color:#8b5cf6;font-size:.85rem">The idempotency check is critical</strong>
-      <p style="font-size:.8rem;color:#a1a1aa;margin:.3rem 0 0">Webhooks can fire twice (network retry, timeout, server restart). Without the duplicate check on line 8-13, you would save the same submission twice and send two confirmation emails. Always check before inserting.</p>
+      <strong style="font-size:.85rem">The idempotency check is critical</strong>
+      <p style="font-size:.8rem;margin:.3rem 0 0">Webhooks can fire twice (network retry, timeout, server restart). Without the duplicate check on line 8-13, you would save the same submission twice and send two confirmation emails. Always check before inserting.</p>
     </div>
   </div>
 
@@ -154,35 +154,35 @@
     <p>Production automations fail. The database goes down. The email API rate-limits you. Your code needs to handle every failure without losing data:</p>
 
     <div style="background:#0a0a0f;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1rem;margin:1rem 0;font-family:monospace;font-size:.78rem;line-height:1.7;overflow-x:auto">
-      <span style="color:#c084fc">async function</span> <span style="color:#34d399">saveToDeadLetterQueue</span>(<span style="color:#e2e8f0">payload</span>, <span style="color:#e2e8f0">error</span>) {<br>
-      &nbsp;&nbsp;<span style="color:#71717a">// Save failed messages for retry later</span><br>
-      &nbsp;&nbsp;<span style="color:#c084fc">await</span> <span style="color:#e2e8f0">supabase</span>.<span style="color:#34d399">from</span>(<span style="color:#fb923c">'dead_letter_queue'</span>).<span style="color:#34d399">insert</span>({<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">payload</span>: <span style="color:#e2e8f0">JSON</span>.<span style="color:#34d399">stringify</span>(<span style="color:#e2e8f0">payload</span>),<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">error_message</span>: <span style="color:#e2e8f0">error</span>.<span style="color:#e2e8f0">message</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">failed_at</span>: <span style="color:#c084fc">new</span> <span style="color:#e2e8f0">Date</span>().<span style="color:#34d399">toISOString</span>(),<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">retry_count</span>: <span style="color:#fb923c">0</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">status</span>: <span style="color:#fb923c">'pending'</span><br>
+      <span>async function</span> <span>saveToDeadLetterQueue</span>(<span>payload</span>, <span>error</span>) {<br>
+      &nbsp;&nbsp;<span>// Save failed messages for retry later</span><br>
+      &nbsp;&nbsp;<span>await</span> <span>supabase</span>.<span>from</span>(<span>'dead_letter_queue'</span>).<span>insert</span>({<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>payload</span>: <span>JSON</span>.<span>stringify</span>(<span>payload</span>),<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>error_message</span>: <span>error</span>.<span>message</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>failed_at</span>: <span>new</span> <span>Date</span>().<span>toISOString</span>(),<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>retry_count</span>: <span>0</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>status</span>: <span>'pending'</span><br>
       &nbsp;&nbsp;});<br>
       }<br>
       <br>
-      <span style="color:#71717a">// Retry failed messages (run on a schedule, e.g. every 10 min)</span><br>
-      <span style="color:#c084fc">async function</span> <span style="color:#34d399">retryFailedMessages</span>() {<br>
-      &nbsp;&nbsp;<span style="color:#c084fc">const</span> { <span style="color:#e2e8f0">data</span>: <span style="color:#e2e8f0">failed</span> } = <span style="color:#c084fc">await</span> <span style="color:#e2e8f0">supabase</span><br>
-      &nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#34d399">from</span>(<span style="color:#fb923c">'dead_letter_queue'</span>)<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#34d399">select</span>(<span style="color:#fb923c">'*'</span>)<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#34d399">eq</span>(<span style="color:#fb923c">'status'</span>, <span style="color:#fb923c">'pending'</span>)<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#34d399">lt</span>(<span style="color:#fb923c">'retry_count'</span>, <span style="color:#fb923c">3</span>);<br>
+      <span>// Retry failed messages (run on a schedule, e.g. every 10 min)</span><br>
+      <span>async function</span> <span>retryFailedMessages</span>() {<br>
+      &nbsp;&nbsp;<span>const</span> { <span>data</span>: <span>failed</span> } = <span>await</span> <span>supabase</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;.<span>from</span>(<span>'dead_letter_queue'</span>)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;.<span>select</span>(<span>'*'</span>)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;.<span>eq</span>(<span>'status'</span>, <span>'pending'</span>)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;.<span>lt</span>(<span>'retry_count'</span>, <span>3</span>);<br>
       <br>
-      &nbsp;&nbsp;<span style="color:#c084fc">for</span> (<span style="color:#c084fc">const</span> <span style="color:#e2e8f0">msg</span> <span style="color:#c084fc">of</span> <span style="color:#e2e8f0">failed</span>) {<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">try</span> {<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">await</span> <span style="color:#34d399">processFormSubmission</span>(<span style="color:#e2e8f0">JSON</span>.<span style="color:#34d399">parse</span>(<span style="color:#e2e8f0">msg</span>.<span style="color:#e2e8f0">payload</span>));<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">await</span> <span style="color:#e2e8f0">supabase</span>.<span style="color:#34d399">from</span>(<span style="color:#fb923c">'dead_letter_queue'</span>)<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#34d399">update</span>({ <span style="color:#e2e8f0">status</span>: <span style="color:#fb923c">'resolved'</span> })<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#34d399">eq</span>(<span style="color:#fb923c">'id'</span>, <span style="color:#e2e8f0">msg</span>.<span style="color:#e2e8f0">id</span>);<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;} <span style="color:#c084fc">catch</span> (<span style="color:#e2e8f0">err</span>) {<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">await</span> <span style="color:#e2e8f0">supabase</span>.<span style="color:#34d399">from</span>(<span style="color:#fb923c">'dead_letter_queue'</span>)<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#34d399">update</span>({ <span style="color:#e2e8f0">retry_count</span>: <span style="color:#e2e8f0">msg</span>.<span style="color:#e2e8f0">retry_count</span> + <span style="color:#fb923c">1</span> })<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#34d399">eq</span>(<span style="color:#fb923c">'id'</span>, <span style="color:#e2e8f0">msg</span>.<span style="color:#e2e8f0">id</span>);<br>
+      &nbsp;&nbsp;<span>for</span> (<span>const</span> <span>msg</span> <span>of</span> <span>failed</span>) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>try</span> {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>await</span> <span>processFormSubmission</span>(<span>JSON</span>.<span>parse</span>(<span>msg</span>.<span>payload</span>));<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>await</span> <span>supabase</span>.<span>from</span>(<span>'dead_letter_queue'</span>)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<span>update</span>({ <span>status</span>: <span>'resolved'</span> })<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<span>eq</span>(<span>'id'</span>, <span>msg</span>.<span>id</span>);<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;} <span>catch</span> (<span>err</span>) {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>await</span> <span>supabase</span>.<span>from</span>(<span>'dead_letter_queue'</span>)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<span>update</span>({ <span>retry_count</span>: <span>msg</span>.<span>retry_count</span> + <span>1</span> })<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<span>eq</span>(<span>'id'</span>, <span>msg</span>.<span>id</span>);<br>
       &nbsp;&nbsp;&nbsp;&nbsp;}<br>
       &nbsp;&nbsp;}<br>
       }
@@ -195,46 +195,46 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">Unit Test: Validation</strong>
+        <strong>Unit Test: Validation</strong>
         <div style="background:#0a0a0f;border-radius:8px;padding:.75rem;margin:.5rem 0;font-family:monospace;font-size:.75rem;line-height:1.6;overflow-x:auto">
-          <span style="color:#71717a">// test/validation.test.js</span><br>
-          <span style="color:#34d399">test</span>(<span style="color:#fb923c">'rejects missing email'</span>, () => {<br>
-          &nbsp;&nbsp;<span style="color:#c084fc">const</span> <span style="color:#e2e8f0">result</span> = <span style="color:#34d399">validatePayload</span>({ <span style="color:#e2e8f0">name</span>: <span style="color:#fb923c">'Alice'</span> });<br>
-          &nbsp;&nbsp;<span style="color:#34d399">expect</span>(<span style="color:#e2e8f0">result</span>.<span style="color:#e2e8f0">valid</span>).<span style="color:#34d399">toBe</span>(<span style="color:#fb923c">false</span>);<br>
-          &nbsp;&nbsp;<span style="color:#34d399">expect</span>(<span style="color:#e2e8f0">result</span>.<span style="color:#e2e8f0">errors</span>).<span style="color:#34d399">toContain</span>(<span style="color:#fb923c">'Missing email'</span>);<br>
+          <span>// test/validation.test.js</span><br>
+          <span>test</span>(<span>'rejects missing email'</span>, () => {<br>
+          &nbsp;&nbsp;<span>const</span> <span>result</span> = <span>validatePayload</span>({ <span>name</span>: <span>'Alice'</span> });<br>
+          &nbsp;&nbsp;<span>expect</span>(<span>result</span>.<span>valid</span>).<span>toBe</span>(<span>false</span>);<br>
+          &nbsp;&nbsp;<span>expect</span>(<span>result</span>.<span>errors</span>).<span>toContain</span>(<span>'Missing email'</span>);<br>
           });<br>
           <br>
-          <span style="color:#34d399">test</span>(<span style="color:#fb923c">'accepts valid payload'</span>, () => {<br>
-          &nbsp;&nbsp;<span style="color:#c084fc">const</span> <span style="color:#e2e8f0">result</span> = <span style="color:#34d399">validatePayload</span>({<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">name</span>: <span style="color:#fb923c">'Alice'</span>,<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">email</span>: <span style="color:#fb923c">'alice@example.com'</span><br>
+          <span>test</span>(<span>'accepts valid payload'</span>, () => {<br>
+          &nbsp;&nbsp;<span>const</span> <span>result</span> = <span>validatePayload</span>({<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span>name</span>: <span>'Alice'</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span>email</span>: <span>'alice@example.com'</span><br>
           &nbsp;&nbsp;});<br>
-          &nbsp;&nbsp;<span style="color:#34d399">expect</span>(<span style="color:#e2e8f0">result</span>.<span style="color:#e2e8f0">valid</span>).<span style="color:#34d399">toBe</span>(<span style="color:#fb923c">true</span>);<br>
+          &nbsp;&nbsp;<span>expect</span>(<span>result</span>.<span>valid</span>).<span>toBe</span>(<span>true</span>);<br>
           });
         </div>
       </div>
 
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">Integration Test: Full Pipeline</strong>
+        <strong>Integration Test: Full Pipeline</strong>
         <div style="background:#0a0a0f;border-radius:8px;padding:.75rem;margin:.5rem 0;font-family:monospace;font-size:.75rem;line-height:1.6;overflow-x:auto">
-          <span style="color:#71717a">// Test with cURL — send a real request to your webhook</span><br>
-          <span style="color:#34d399">curl</span> <span style="color:#fb923c">-X POST</span> <span style="color:#a1a1aa">http://localhost:3000/webhook/form-submitted</span> \<br>
-          &nbsp;&nbsp;<span style="color:#8b5cf6">-H</span> <span style="color:#a1a1aa">"Content-Type: application/json"</span> \<br>
-          &nbsp;&nbsp;<span style="color:#8b5cf6">-d</span> <span style="color:#a1a1aa">'{"name":"Test User","email":"test@example.com","message":"Hello"}'</span>
+          <span>// Test with cURL — send a real request to your webhook</span><br>
+          <span>curl</span> <span>-X POST</span> <span>http://localhost:3000/webhook/form-submitted</span> \<br>
+          &nbsp;&nbsp;<span>-H</span> <span>"Content-Type: application/json"</span> \<br>
+          &nbsp;&nbsp;<span>-d</span> <span>'{"name":"Test User","email":"test@example.com","message":"Hello"}'</span>
         </div>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.3rem 0 0">Then check: Did the database get a new row? Did the dead letter queue stay empty? Was the email sent?</p>
+        <p style="font-size:.8rem;margin:.3rem 0 0">Then check: Did the database get a new row? Did the dead letter queue stay empty? Was the email sent?</p>
       </div>
 
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">Failure Test: What Breaks?</strong>
+        <strong>Failure Test: What Breaks?</strong>
         <div style="background:#0a0a0f;border-radius:8px;padding:.75rem;margin:.5rem 0;font-family:monospace;font-size:.75rem;line-height:1.6;overflow-x:auto">
-          <span style="color:#71717a">// Send invalid data — does validation catch it?</span><br>
-          <span style="color:#34d399">curl</span> <span style="color:#fb923c">-X POST</span> <span style="color:#a1a1aa">http://localhost:3000/webhook/form-submitted</span> \<br>
-          &nbsp;&nbsp;<span style="color:#8b5cf6">-H</span> <span style="color:#a1a1aa">"Content-Type: application/json"</span> \<br>
-          &nbsp;&nbsp;<span style="color:#8b5cf6">-d</span> <span style="color:#a1a1aa">'{"name":"No Email User"}'</span><br>
+          <span>// Send invalid data — does validation catch it?</span><br>
+          <span>curl</span> <span>-X POST</span> <span>http://localhost:3000/webhook/form-submitted</span> \<br>
+          &nbsp;&nbsp;<span>-H</span> <span>"Content-Type: application/json"</span> \<br>
+          &nbsp;&nbsp;<span>-d</span> <span>'{"name":"No Email User"}'</span><br>
           <br>
-          <span style="color:#71717a">// Send the same payload twice — does idempotency work?</span><br>
-          <span style="color:#71717a">// Second call should be silently skipped, no duplicate row</span>
+          <span>// Send the same payload twice — does idempotency work?</span><br>
+          <span>// Second call should be silently skipped, no duplicate row</span>
         </div>
       </div>
     </div>
@@ -246,24 +246,24 @@
 
     <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">1. Duplicate triggers</strong>
-        <span style="font-size:.8rem;color:#a1a1aa"> — Webhook fires twice due to timeout/retry. <strong>Fix:</strong> Idempotency check before processing. Use a unique key (email + timestamp) to detect duplicates.</span>
+        <strong style="font-size:.85rem">1. Duplicate triggers</strong>
+        <span style="font-size:.8rem"> — Webhook fires twice due to timeout/retry. <strong>Fix:</strong> Idempotency check before processing. Use a unique key (email + timestamp) to detect duplicates.</span>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">2. Partial failure</strong>
-        <span style="font-size:.8rem;color:#a1a1aa"> — Database save succeeds but email send fails. <strong>Fix:</strong> Each step should be independently retriable. Save state after each step so retry knows where to resume.</span>
+        <strong style="font-size:.85rem">2. Partial failure</strong>
+        <span style="font-size:.8rem"> — Database save succeeds but email send fails. <strong>Fix:</strong> Each step should be independently retriable. Save state after each step so retry knows where to resume.</span>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">3. Invalid payload</strong>
-        <span style="font-size:.8rem;color:#a1a1aa"> — Missing fields, wrong types, unexpected values. <strong>Fix:</strong> Validate immediately. Reject bad data before it touches your database.</span>
+        <strong style="font-size:.85rem">3. Invalid payload</strong>
+        <span style="font-size:.8rem"> — Missing fields, wrong types, unexpected values. <strong>Fix:</strong> Validate immediately. Reject bad data before it touches your database.</span>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">4. Downstream service outage</strong>
-        <span style="font-size:.8rem;color:#a1a1aa"> — The email API or database is down. <strong>Fix:</strong> Dead letter queue preserves the message. Scheduled retry picks it up when the service recovers.</span>
+        <strong style="font-size:.85rem">4. Downstream service outage</strong>
+        <span style="font-size:.8rem"> — The email API or database is down. <strong>Fix:</strong> Dead letter queue preserves the message. Scheduled retry picks it up when the service recovers.</span>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">5. Payload format change</strong>
-        <span style="font-size:.8rem;color:#a1a1aa"> — The external service updates their API. Fields you depend on no longer exist. <strong>Fix:</strong> Validate payload structure, not just individual fields. Log unexpected shapes for debugging.</span>
+        <strong style="font-size:.85rem">5. Payload format change</strong>
+        <span style="font-size:.8rem"> — The external service updates their API. Fields you depend on no longer exist. <strong>Fix:</strong> Validate payload structure, not just individual fields. Log unexpected shapes for debugging.</span>
       </div>
     </div>
   </div>
@@ -272,8 +272,8 @@
     <h2>The Complete Script in Python</h2>
     <p>Everything above — webhook, validation, database, email, error handling — combined into a single production-ready Python automation. This is the pattern you will reuse for every webhook automation you build:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Complete form-submission automation</div>
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Complete form-submission automation</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> flask <span style="color:#c084fc">import</span> Flask, request, jsonify
 <span style="color:#c084fc">from</span> supabase <span style="color:#c084fc">import</span> create_client
 <span style="color:#c084fc">import</span> os, smtplib
@@ -340,26 +340,26 @@ db = <span style="color:#34d399">create_client</span>(os.environ[<span style="co
   <p>Before deploying any automation to production, verify every item:</p>
 
   <div style="display:flex;flex-direction:column;gap:.3rem;margin:1rem 0">
-    <div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .75rem;font-size:.85rem;color:#a1a1aa">
-      <span style="color:#34d399">&#x2713;</span> Webhook responds within 3 seconds (acknowledge first, process async)
+    <div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .75rem;font-size:.85rem">
+      <span>&#x2713;</span> Webhook responds within 3 seconds (acknowledge first, process async)
     </div>
-    <div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .75rem;font-size:.85rem;color:#a1a1aa">
-      <span style="color:#34d399">&#x2713;</span> Payload validation rejects bad data before any processing
+    <div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .75rem;font-size:.85rem">
+      <span>&#x2713;</span> Payload validation rejects bad data before any processing
     </div>
-    <div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .75rem;font-size:.85rem;color:#a1a1aa">
-      <span style="color:#34d399">&#x2713;</span> Idempotency check prevents duplicate processing
+    <div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .75rem;font-size:.85rem">
+      <span>&#x2713;</span> Idempotency check prevents duplicate processing
     </div>
-    <div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .75rem;font-size:.85rem;color:#a1a1aa">
-      <span style="color:#34d399">&#x2713;</span> Dead letter queue catches all failures — no data lost
+    <div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .75rem;font-size:.85rem">
+      <span>&#x2713;</span> Dead letter queue catches all failures — no data lost
     </div>
-    <div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .75rem;font-size:.85rem;color:#a1a1aa">
-      <span style="color:#34d399">&#x2713;</span> Retry logic with max attempts (3 retries, then stop)
+    <div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .75rem;font-size:.85rem">
+      <span>&#x2713;</span> Retry logic with max attempts (3 retries, then stop)
     </div>
-    <div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .75rem;font-size:.85rem;color:#a1a1aa">
-      <span style="color:#34d399">&#x2713;</span> Integration test passes with real HTTP request
+    <div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .75rem;font-size:.85rem">
+      <span>&#x2713;</span> Integration test passes with real HTTP request
     </div>
-    <div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .75rem;font-size:.85rem;color:#a1a1aa">
-      <span style="color:#34d399">&#x2713;</span> Failure test passes — bad data handled gracefully
+    <div style="display:flex;align-items:center;gap:.5rem;padding:.4rem .75rem;font-size:.85rem">
+      <span>&#x2713;</span> Failure test passes — bad data handled gracefully
     </div>
   </div>
 </div>

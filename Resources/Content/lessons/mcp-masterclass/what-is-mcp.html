@@ -28,12 +28,12 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Without MCP</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Every AI-tool connection is a custom integration. A GitHub tool built for ChatGPT does not work with Claude. A database connector for Cursor does not work with VS Code. N tools times M clients = N x M custom integrations.</p>
+        <strong style="font-size:.85rem">Without MCP</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Every AI-tool connection is a custom integration. A GitHub tool built for ChatGPT does not work with Claude. A database connector for Cursor does not work with VS Code. N tools times M clients = N x M custom integrations.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">With MCP</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">One universal protocol. Build a GitHub MCP server once and it works with Claude, VS Code, Cursor, and any other MCP client. N tools + M clients = N + M implementations. The protocol handles compatibility.</p>
+        <strong style="font-size:.85rem">With MCP</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">One universal protocol. Build a GitHub MCP server once and it works with Claude, VS Code, Cursor, and any other MCP client. N tools + M clients = N + M implementations. The protocol handles compatibility.</p>
       </div>
     </div>
   </div>
@@ -70,16 +70,16 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">Open, not proprietary.</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">MCP is not locked to Claude. Any AI model, any provider can implement it. The spec is public. This means tools built for Claude also work with any other MCP-compatible client.</p>
+        <strong>Open, not proprietary.</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">MCP is not locked to Claude. Any AI model, any provider can implement it. The spec is public. This means tools built for Claude also work with any other MCP-compatible client.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">Build once, connect everywhere.</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">A single MCP server works with Claude Desktop, Claude Code, VS Code Copilot, Cursor, and any other MCP client. No adapters, no rewrites. The protocol handles compatibility.</p>
+        <strong>Build once, connect everywhere.</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">A single MCP server works with Claude Desktop, Claude Code, VS Code Copilot, Cursor, and any other MCP client. No adapters, no rewrites. The protocol handles compatibility.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">Security by design.</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">MCP separates the AI model from the tool execution. The model never has direct access to your database or files — it sends structured requests through the protocol, and the server decides what to allow. This is fundamentally safer than giving AI raw API keys.</p>
+        <strong>Security by design.</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">MCP separates the AI model from the tool execution. The model never has direct access to your database or files — it sends structured requests through the protocol, and the server decides what to allow. This is fundamentally safer than giving AI raw API keys.</p>
       </div>
     </div>
   </div>
@@ -88,8 +88,8 @@
     <h2>What Does an MCP Server Look Like?</h2>
     <p>At its core, an MCP server is just a few lines of code. You create a server, register tools, and start listening. Here is a minimal example:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — minimal MCP server with one tool</div>
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — minimal MCP server with one tool</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { McpServer } <span style="color:#c084fc">from</span> <span style="color:#fb923c">"@modelcontextprotocol/sdk/server/mcp.js"</span>;
 <span style="color:#c084fc">import</span> { StdioServerTransport } <span style="color:#c084fc">from</span> <span style="color:#fb923c">"@modelcontextprotocol/sdk/server/stdio.js"</span>;
 <span style="color:#c084fc">import</span> { z } <span style="color:#c084fc">from</span> <span style="color:#fb923c">"zod"</span>;
@@ -115,7 +115,7 @@ server.<span style="color:#34d399">tool</span>(
 <span style="color:#c084fc">await</span> server.<span style="color:#34d399">connect</span>(transport);</code></pre>
 </div>
 
-    <p style="font-size:.85rem;color:#a1a1aa;margin-top:.5rem">That is a complete, working MCP server. When Claude connects to it, it automatically discovers the <code>greet</code> tool, knows what arguments it accepts, and can call it. You will build servers like this from scratch later in the course.</p>
+    <p style="font-size:.85rem;margin-top:.5rem">That is a complete, working MCP server. When Claude connects to it, it automatically discovers the <code>greet</code> tool, knows what arguments it accepts, and can call it. You will build servers like this from scratch later in the course.</p>
   </div>
 
   <div class="section">
@@ -124,28 +124,28 @@ server.<span style="color:#34d399">tool</span>(
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
-        <strong style="font-size:.85rem;color:#e2e8f0">&#x1F4C1; Read and write files</strong>
-        <p style="font-size:.8rem;color:#71717a;margin:.25rem 0 0">"Search my project for all TODO comments and create a summary."</p>
+        <strong style="font-size:.85rem">&#x1F4C1; Read and write files</strong>
+        <p style="font-size:.8rem;margin:.25rem 0 0">"Search my project for all TODO comments and create a summary."</p>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
-        <strong style="font-size:.85rem;color:#e2e8f0">&#x1F4BE; Query databases</strong>
-        <p style="font-size:.8rem;color:#71717a;margin:.25rem 0 0">"How many new users signed up this week? Show me the trend."</p>
+        <strong style="font-size:.85rem">&#x1F4BE; Query databases</strong>
+        <p style="font-size:.8rem;margin:.25rem 0 0">"How many new users signed up this week? Show me the trend."</p>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
-        <strong style="font-size:.85rem;color:#e2e8f0">&#x1F4BB; Manage code</strong>
-        <p style="font-size:.8rem;color:#71717a;margin:.25rem 0 0">"Create a PR that fixes the bug in issue #42 and tag the reviewer."</p>
+        <strong style="font-size:.85rem">&#x1F4BB; Manage code</strong>
+        <p style="font-size:.8rem;margin:.25rem 0 0">"Create a PR that fixes the bug in issue #42 and tag the reviewer."</p>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
-        <strong style="font-size:.85rem;color:#e2e8f0">&#x1F4AC; Send messages</strong>
-        <p style="font-size:.8rem;color:#71717a;margin:.25rem 0 0">"Post the standup summary to #engineering in Slack."</p>
+        <strong style="font-size:.85rem">&#x1F4AC; Send messages</strong>
+        <p style="font-size:.8rem;margin:.25rem 0 0">"Post the standup summary to #engineering in Slack."</p>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
-        <strong style="font-size:.85rem;color:#e2e8f0">&#x1F310; Browse the web</strong>
-        <p style="font-size:.8rem;color:#71717a;margin:.25rem 0 0">"Check our pricing page and tell me if the new tier is live."</p>
+        <strong style="font-size:.85rem">&#x1F310; Browse the web</strong>
+        <p style="font-size:.8rem;margin:.25rem 0 0">"Check our pricing page and tell me if the new tier is live."</p>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
-        <strong style="font-size:.85rem;color:#e2e8f0">&#x1F9E0; Remember context</strong>
-        <p style="font-size:.8rem;color:#71717a;margin:.25rem 0 0">"Remember that we decided to use PostgreSQL for the analytics DB."</p>
+        <strong style="font-size:.85rem">&#x1F9E0; Remember context</strong>
+        <p style="font-size:.8rem;margin:.25rem 0 0">"Remember that we decided to use PostgreSQL for the analytics DB."</p>
       </div>
     </div>
   </div>
@@ -178,33 +178,33 @@ server.<span style="color:#34d399">tool</span>(
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Direct API Calls</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The oldest approach: write custom HTTP calls for every tool you want AI to use. Each integration is unique — different auth patterns, different payloads, different error handling. Nothing is reusable. When the API changes, your integration breaks. MCP replaces this with a single protocol that handles discovery, invocation, and data flow automatically.</p>
+        <strong style="font-size:.85rem">Direct API Calls</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">The oldest approach: write custom HTTP calls for every tool you want AI to use. Each integration is unique — different auth patterns, different payloads, different error handling. Nothing is reusable. When the API changes, your integration breaks. MCP replaces this with a single protocol that handles discovery, invocation, and data flow automatically.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c;font-size:.85rem">OpenAI Function Calling</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">OpenAI introduced function calling to let GPT models invoke structured tools. It works well — but only inside OpenAI's ecosystem. Tools you define for GPT cannot be reused with Claude, Gemini, or open-source models. MCP is provider-agnostic: a server built once works with every MCP-compatible client, regardless of which AI model powers it.</p>
+        <strong style="font-size:.85rem">OpenAI Function Calling</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">OpenAI introduced function calling to let GPT models invoke structured tools. It works well — but only inside OpenAI's ecosystem. Tools you define for GPT cannot be reused with Claude, Gemini, or open-source models. MCP is provider-agnostic: a server built once works with every MCP-compatible client, regardless of which AI model powers it.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6;font-size:.85rem">LangChain Tools</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">LangChain provides a rich library of tool integrations for Python developers. But it is a framework, not a protocol. Your tools are tied to LangChain's abstractions and runtime. If you switch frameworks or want to use tools outside Python, you start over. MCP operates at the protocol level — any language, any framework, any client can participate.</p>
+        <strong style="font-size:.85rem">LangChain Tools</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">LangChain provides a rich library of tool integrations for Python developers. But it is a framework, not a protocol. Your tools are tied to LangChain's abstractions and runtime. If you switch frameworks or want to use tools outside Python, you start over. MCP operates at the protocol level — any language, any framework, any client can participate.</p>
       </div>
     </div>
 
-    <p style="font-size:.85rem;color:#a1a1aa;margin-top:.5rem">The pattern is clear: previous approaches tied tool integrations to a specific vendor, framework, or language. MCP breaks that lock-in by defining a universal protocol that any tool and any AI client can speak.</p>
+    <p style="font-size:.85rem;margin-top:.5rem">The pattern is clear: previous approaches tied tool integrations to a specific vendor, framework, or language. MCP breaks that lock-in by defining a universal protocol that any tool and any AI client can speak.</p>
   </div>
 
   <div class="section">
     <h2>Course Roadmap</h2>
     <p>By the end of this course, you will be able to:</p>
     <div style="display:flex;flex-direction:column;gap:.4rem;margin:.75rem 0">
-      <div style="font-size:.85rem;color:#a1a1aa">&#x2705; Explain MCP architecture (Hosts, Clients, Servers) and how data flows</div>
-      <div style="font-size:.85rem;color:#a1a1aa">&#x2705; Build a working MCP server from scratch in TypeScript</div>
-      <div style="font-size:.85rem;color:#a1a1aa">&#x2705; Define tools with proper schemas that Claude uses correctly</div>
-      <div style="font-size:.85rem;color:#a1a1aa">&#x2705; Use Resources and Prompts to give AI context and structured workflows</div>
-      <div style="font-size:.85rem;color:#a1a1aa">&#x2705; Connect your server to Claude Desktop and Claude Code</div>
-      <div style="font-size:.85rem;color:#a1a1aa">&#x2705; Apply security best practices for production deployment</div>
-      <div style="font-size:.85rem;color:#a1a1aa">&#x2705; Recognize and implement six real-world server patterns</div>
+      <div style="font-size:.85rem">&#x2705; Explain MCP architecture (Hosts, Clients, Servers) and how data flows</div>
+      <div style="font-size:.85rem">&#x2705; Build a working MCP server from scratch in TypeScript</div>
+      <div style="font-size:.85rem">&#x2705; Define tools with proper schemas that Claude uses correctly</div>
+      <div style="font-size:.85rem">&#x2705; Use Resources and Prompts to give AI context and structured workflows</div>
+      <div style="font-size:.85rem">&#x2705; Connect your server to Claude Desktop and Claude Code</div>
+      <div style="font-size:.85rem">&#x2705; Apply security best practices for production deployment</div>
+      <div style="font-size:.85rem">&#x2705; Recognize and implement six real-world server patterns</div>
     </div>
   </div>
 

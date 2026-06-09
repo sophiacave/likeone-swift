@@ -27,31 +27,31 @@
 
 <p>When you call <code>query()</code>, you wait for the entire response before seeing anything. For short tasks, that is fine. But when an agent is reading files, running commands, and thinking for 30 seconds, your user stares at a blank screen. Streaming fixes that by sending you each piece of the response as it happens — word by word, tool by tool, event by event.</p>
 
-<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">Real-world analogy:</strong> Non-streaming is like ordering food at a restaurant and sitting in silence until the entire meal arrives at once. Streaming is like watching the chef cook through the kitchen window — you see the prep, the sizzle, the plating. Same food, completely different experience.
+<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.88rem;line-height:1.7">
+<strong>Real-world analogy:</strong> Non-streaming is like ordering food at a restaurant and sitting in silence until the entire meal arrives at once. Streaming is like watching the chef cook through the kitchen window — you see the prep, the sizzle, the plating. Same food, completely different experience.
 </div>
 </div>
 
 <div class="card">
 <h2>The Event Stream</h2>
-<p>When you use streaming mode, the SDK emits a sequence of <strong style="color:#e5e5e5">events</strong> that tell you exactly what is happening inside your agent. Each event has a type and a payload:</p>
+<p>When you use streaming mode, the SDK emits a sequence of <strong>events</strong> that tell you exactly what is happening inside your agent. Each event has a type and a payload:</p>
 
 <div style="display:grid;gap:.75rem;margin-top:.75rem">
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(139,92,246,.06);border-radius:10px;border:1px solid rgba(139,92,246,.12)">
 <div style="font-size:1.25rem">1</div>
-<div><div style="font-size:.85rem;font-weight:700;color:#8b5cf6;margin-bottom:.2rem">content_block_start</div><div style="font-size:.82rem;color:#a1a1aa;line-height:1.5">Claude is about to start generating text or requesting a tool. This is your signal to prepare the UI for incoming content.</div></div>
+<div><div style="font-size:.85rem;font-weight:700;margin-bottom:.2rem">content_block_start</div><div style="font-size:.82rem;line-height:1.5">Claude is about to start generating text or requesting a tool. This is your signal to prepare the UI for incoming content.</div></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(56,189,248,.06);border-radius:10px;border:1px solid rgba(56,189,248,.12)">
 <div style="font-size:1.25rem">2</div>
-<div><div style="font-size:.85rem;font-weight:700;color:#38bdf8;margin-bottom:.2rem">content_block_delta</div><div style="font-size:.82rem;color:#a1a1aa;line-height:1.5">A chunk of text or tool input has arrived. This is what you append to your display in real time — the "typing" effect users expect from AI interfaces.</div></div>
+<div><div style="font-size:.85rem;font-weight:700;margin-bottom:.2rem">content_block_delta</div><div style="font-size:.82rem;line-height:1.5">A chunk of text or tool input has arrived. This is what you append to your display in real time — the "typing" effect users expect from AI interfaces.</div></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(251,146,60,.06);border-radius:10px;border:1px solid rgba(251,146,60,.12)">
 <div style="font-size:1.25rem">3</div>
-<div><div style="font-size:.85rem;font-weight:700;color:#fb923c;margin-bottom:.2rem">content_block_stop</div><div style="font-size:.82rem;color:#a1a1aa;line-height:1.5">A content block is complete. If it was a tool call, the SDK will now execute the tool and continue the loop.</div></div>
+<div><div style="font-size:.85rem;font-weight:700;margin-bottom:.2rem">content_block_stop</div><div style="font-size:.82rem;line-height:1.5">A content block is complete. If it was a tool call, the SDK will now execute the tool and continue the loop.</div></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(52,211,153,.06);border-radius:10px;border:1px solid rgba(52,211,153,.12)">
 <div style="font-size:1.25rem">4</div>
-<div><div style="font-size:.85rem;font-weight:700;color:#34d399;margin-bottom:.2rem">tool_use / tool_result</div><div style="font-size:.82rem;color:#a1a1aa;line-height:1.5">A tool was called and returned a result. You can display this to show users what the agent is doing behind the scenes.</div></div>
+<div><div style="font-size:.85rem;font-weight:700;margin-bottom:.2rem">tool_use / tool_result</div><div style="font-size:.82rem;line-height:1.5">A tool was called and returned a result. You can display this to show users what the agent is doing behind the scenes.</div></div>
 </div>
 </div>
 </div>
@@ -60,8 +60,8 @@
 <h2>Streaming in Practice</h2>
 <p>The SDK provides a streaming interface that lets you handle events as they arrive. Here is a complete example:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — streaming agent output</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — streaming agent output</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { Claude } <span style="color:#c084fc">from</span> <span style="color:#fbbf24">"@anthropic-ai/claude-agent"</span>;
 
 <span style="color:#c084fc">const</span> agent = <span style="color:#c084fc">new</span> Claude({
@@ -105,8 +105,8 @@
 <h2>Building a Real-Time Terminal UI</h2>
 <p>Here is a more polished example that shows tool activity and text output in a terminal interface — the kind of experience you see in Claude Code itself:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — terminal UI with streaming</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — terminal UI with streaming</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">async function</span> <span style="color:#38bdf8">runWithUI</span>(prompt: string) {
   <span style="color:#c084fc">const</span> agent = <span style="color:#c084fc">new</span> Claude({
     model: <span style="color:#fbbf24">"claude-sonnet-4-6"</span>,
@@ -144,7 +144,7 @@ runWithUI(<span style="color:#fbbf24">"Find all TypeScript files in this project
 <h2>Event Lifecycle</h2>
 <p>Understanding the full event lifecycle helps you build robust UIs. Here is the sequence for a typical agent interaction:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:#a1a1aa;line-height:1.8;overflow-x:auto">
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.8;overflow-x:auto">
 <pre style="margin:0;color:#e5e5e5"><code>User prompt: "How many .ts files are in src/?"
 
 <span style="color:#8b5cf6">text_delta</span>     "Let me check"
@@ -157,23 +157,23 @@ runWithUI(<span style="color:#fbbf24">"Find all TypeScript files in this project
 <span style="color:#f472b6">result</span>         { cost: 0.003, toolCalls: 1 }</code></pre>
 </div>
 
-<p style="font-size:.85rem;color:#a1a1aa;line-height:1.7">Notice how text deltas arrive in small chunks — sometimes just a word or part of a word. Tool events arrive as complete units. The <code>result</code> event always comes last and signals that the agent is done.</p>
+<p style="font-size:.85rem;line-height:1.7">Notice how text deltas arrive in small chunks — sometimes just a word or part of a word. Tool events arrive as complete units. The <code>result</code> event always comes last and signals that the agent is done.</p>
 </div>
 
 <div class="card">
 <h2>Common Pitfalls</h2>
 <div style="display:grid;gap:.75rem;margin-top:.75rem">
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">Forgetting to handle all event types</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">If you only handle <code>text_delta</code>, you will miss tool activity and the final result. Always have a default case or handle at least text, tool_use, tool_result, and result events.</p>
+<strong style="font-size:.88rem">Forgetting to handle all event types</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">If you only handle <code>text_delta</code>, you will miss tool activity and the final result. Always have a default case or handle at least text, tool_use, tool_result, and result events.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">Using console.log for text deltas</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0"><code>console.log()</code> adds a newline after each call. Use <code>process.stdout.write()</code> for text deltas so words flow together naturally instead of appearing on separate lines.</p>
+<strong style="font-size:.88rem">Using console.log for text deltas</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0"><code>console.log()</code> adds a newline after each call. Use <code>process.stdout.write()</code> for text deltas so words flow together naturally instead of appearing on separate lines.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">Not handling stream errors</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Network issues, rate limits, or API errors can interrupt the stream. Wrap your <code>for await</code> loop in a try/catch to handle errors gracefully instead of crashing.</p>
+<strong style="font-size:.88rem">Not handling stream errors</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Network issues, rate limits, or API errors can interrupt the stream. Wrap your <code>for await</code> loop in a try/catch to handle errors gracefully instead of crashing.</p>
 </div>
 </div>
 </div>

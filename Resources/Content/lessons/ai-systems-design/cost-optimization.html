@@ -86,7 +86,7 @@ Three levels of budget enforcement:
 2. **Session-level**: Cap total tokens for an entire user session or agent run. Prevents infinite loops.
 3. **User-level**: Daily or monthly caps per user or API key. Prevents abuse and enables tiered pricing.
 
-<div class="tip-box">
+<div class="callout">
 <strong>Output token trick:</strong> Setting a lower <code>max_tokens</code> on the API call doesn't just save money -- it forces the model to be concise. For many tasks, 500 output tokens produces a better response than 4,000 because the model prioritizes essential information.
 </div>
 </div>

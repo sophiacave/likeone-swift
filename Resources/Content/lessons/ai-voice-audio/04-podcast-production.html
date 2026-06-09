@@ -36,9 +36,9 @@
 <div class="lesson-section">
   <span class="section-label">Workflows</span>
   <h2 class="section-title">Three AI Podcast Models</h2>
-  <p class="section-text"><strong style="color: var(--orange);">Fully AI-Generated:</strong> Script with Claude or GPT. Voice with ElevenLabs. Music with Suno. Edit with Descript. Zero human audio. Works well for educational content, news summaries, and niche topic shows. Disclose that it's AI-generated — always.</p>
-  <p class="section-text"><strong style="color: var(--purple);">AI-Assisted Human:</strong> You record your voice. AI cleans the audio, removes filler words, generates show notes, creates social clips, and writes the transcript. This is the sweet spot for most creators. Your authentic voice with professional polish.</p>
-  <p class="section-text"><strong style="color: var(--green);">AI Co-Host:</strong> You speak as yourself. An AI voice plays the co-host, interviewer, or narrator. NotebookLM's podcast feature showed this model to millions. It works when the AI voice adds genuine value, not just novelty.</p>
+  <p class="section-text"><strong>Fully AI-Generated:</strong> Script with Claude or GPT. Voice with ElevenLabs. Music with Suno. Edit with Descript. Zero human audio. Works well for educational content, news summaries, and niche topic shows. Disclose that it's AI-generated — always.</p>
+  <p class="section-text"><strong>AI-Assisted Human:</strong> You record your voice. AI cleans the audio, removes filler words, generates show notes, creates social clips, and writes the transcript. This is the sweet spot for most creators. Your authentic voice with professional polish.</p>
+  <p class="section-text"><strong>AI Co-Host:</strong> You speak as yourself. An AI voice plays the co-host, interviewer, or narrator. NotebookLM's podcast feature showed this model to millions. It works when the AI voice adds genuine value, not just novelty.</p>
 </div>
 
 <div class="lesson-section">
@@ -55,7 +55,7 @@
   <span class="section-label">Code Example</span>
   <h2 class="section-title">Automated Podcast Production Script</h2>
   <p class="section-text">Here is a Python script that automates the core podcast production pipeline — from script to multi-voice audio file:</p>
-  <div class="prompt-box"><code>from openai import OpenAI
+  <div class="demo-container"><code>from openai import OpenAI
 import requests
 from pydub import AudioSegment
 
@@ -172,10 +172,10 @@ final.export("episode_draft.mp3", format="mp3")</code></div>
   <p class="section-text"><strong>Comedy and personality-driven (poor):</strong> Comedic timing, improvisation, and personality are the hardest things for AI voices to replicate. These formats still benefit most from human performance with AI handling post-production only.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It: Generate a Podcast Intro</h3>
   <p>Use Claude to write a 30-second podcast intro, then generate it with <strong>ElevenLabs</strong>:</p>
-  <div class="prompt-box"><code>Write a 30-second podcast intro for a show called "Signal and Noise" — a weekly show about finding clarity in the chaos of modern technology. Tone: warm, curious, slightly irreverent. Include a host greeting and a one-line show description.</code></div>
+  <div class="demo-container"><code>Write a 30-second podcast intro for a show called "Signal and Noise" — a weekly show about finding clarity in the chaos of modern technology. Tone: warm, curious, slightly irreverent. Include a host greeting and a one-line show description.</code></div>
   <p>Generate the script with an AI voice. Then generate a 15-second intro jingle with Suno using the prompt "podcast intro, electronic, warm, curious, lo-fi." Layer them together. You just produced a professional podcast intro in under ten minutes.</p>
 </div>
 

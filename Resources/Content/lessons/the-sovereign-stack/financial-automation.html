@@ -29,17 +29,17 @@
 <div class="lo-vis__caption">Master <strong>the financial agent stack</strong> step by step.</div>
 </div>
 
-  <p class="section-text"><strong style="color: var(--blue);">Payment processing (Stripe).</strong> Accept payments, manage subscriptions, handle refunds. Stripe's API is comprehensive -- your AI can read transaction history, create invoices, and monitor payment status programmatically.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Data aggregation.</strong> Pull transaction data from Stripe, bank APIs, and accounting tools. Normalize into a single format. Store in your brain for historical analysis and trend detection.</p>
-  <p class="section-text"><strong style="color: var(--green);">Reporting.</strong> Generate daily, weekly, and monthly financial summaries. Revenue by product, by customer, by time period. Expense tracking. Profit margins. All calculated from your own data on your own hardware.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Alerts.</strong> Real-time monitoring for financial anomalies: failed payments, unusual refund patterns, revenue drops, large transactions. The AI notices problems before you do.</p>
+  <p class="section-text"><strong>Payment processing (Stripe).</strong> Accept payments, manage subscriptions, handle refunds. Stripe's API is comprehensive -- your AI can read transaction history, create invoices, and monitor payment status programmatically.</p>
+  <p class="section-text"><strong>Data aggregation.</strong> Pull transaction data from Stripe, bank APIs, and accounting tools. Normalize into a single format. Store in your brain for historical analysis and trend detection.</p>
+  <p class="section-text"><strong>Reporting.</strong> Generate daily, weekly, and monthly financial summaries. Revenue by product, by customer, by time period. Expense tracking. Profit margins. All calculated from your own data on your own hardware.</p>
+  <p class="section-text"><strong>Alerts.</strong> Real-time monitoring for financial anomalies: failed payments, unusual refund patterns, revenue drops, large transactions. The AI notices problems before you do.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Implementation</span>
   <h2 class="section-title">Stripe Integration</h2>
   <p class="section-text">Stripe's API lets your AI interact with your payment infrastructure programmatically:</p>
-  <div class="prompt-box"><code>// Install: npm install stripe
+  <div class="demo-container"><code>// Install: npm install stripe
 import Stripe from 'stripe';
 
 // Initialize with your secret key (from environment variable)
@@ -99,7 +99,7 @@ async function createInvoice(customerEmail, items) {
   <span class="section-label">Strategy</span>
   <h2 class="section-title">Revenue Dashboard</h2>
   <p class="section-text">Your AI builds a revenue dashboard by aggregating Stripe data and storing summaries in the brain:</p>
-  <div class="prompt-box"><code>// Daily revenue summary -- runs via cron or agent loop
+  <div class="demo-container"><code>// Daily revenue summary -- runs via cron or agent loop
 async function dailyRevenueSummary() {
   const today = await getRecentRevenue(1);
   const week = await getRecentRevenue(7);
@@ -137,33 +137,33 @@ async function dailyRevenueSummary() {
   <span class="section-label">Advanced</span>
   <h2 class="section-title">Webhook-Driven Financial Events</h2>
   <p class="section-text">Instead of polling Stripe for updates, webhooks push events to your server in real time. Every payment, refund, subscription change, and failed charge triggers an immediate notification:</p>
-  <p class="section-text"><strong style="color: var(--blue);">payment_intent.succeeded:</strong> A payment completed. Log it. Update revenue totals. If it is a new customer, write their info to the brain.</p>
-  <p class="section-text"><strong style="color: var(--purple);">charge.refunded:</strong> A refund was processed. Log it. Update revenue totals. Alert the agent to investigate if refunds exceed normal rates.</p>
-  <p class="section-text"><strong style="color: var(--green);">invoice.payment_failed:</strong> A subscription payment failed. The agent can automatically send a friendly reminder email, update the customer record, and retry after 3 days.</p>
-  <p class="section-text"><strong style="color: var(--orange);">customer.subscription.deleted:</strong> A customer canceled. Log the churn. The agent can send a feedback request email and update retention metrics.</p>
+  <p class="section-text"><strong>payment_intent.succeeded:</strong> A payment completed. Log it. Update revenue totals. If it is a new customer, write their info to the brain.</p>
+  <p class="section-text"><strong>charge.refunded:</strong> A refund was processed. Log it. Update revenue totals. Alert the agent to investigate if refunds exceed normal rates.</p>
+  <p class="section-text"><strong>invoice.payment_failed:</strong> A subscription payment failed. The agent can automatically send a friendly reminder email, update the customer record, and retry after 3 days.</p>
+  <p class="section-text"><strong>customer.subscription.deleted:</strong> A customer canceled. Log the churn. The agent can send a feedback request email and update retention metrics.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Security</span>
   <h2 class="section-title">Financial Data Security</h2>
-  <p class="section-text"><strong style="color: var(--red);">Never store API keys in code.</strong> Stripe secret keys go in environment variables or a secret manager. A leaked key gives full access to your payment infrastructure.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Use restricted keys.</strong> Stripe lets you create API keys with limited permissions. Your revenue dashboard only needs read access. Your invoice generator only needs invoice and customer access. Never use your full secret key where a restricted key would suffice.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Verify webhook signatures.</strong> Always validate that incoming webhooks actually came from Stripe by checking the signature. An attacker who discovers your webhook endpoint could send fake events that trigger real actions.</p>
-  <p class="section-text"><strong style="color: var(--green);">Spending guardrails.</strong> Any agent that can create invoices or process refunds must have hard limits. Maximum invoice amount. Maximum refund amount per day. These limits are enforced in code, not just in the agent's instructions.</p>
+  <p class="section-text"><strong>Never store API keys in code.</strong> Stripe secret keys go in environment variables or a secret manager. A leaked key gives full access to your payment infrastructure.</p>
+  <p class="section-text"><strong>Use restricted keys.</strong> Stripe lets you create API keys with limited permissions. Your revenue dashboard only needs read access. Your invoice generator only needs invoice and customer access. Never use your full secret key where a restricted key would suffice.</p>
+  <p class="section-text"><strong>Verify webhook signatures.</strong> Always validate that incoming webhooks actually came from Stripe by checking the signature. An attacker who discovers your webhook endpoint could send fake events that trigger real actions.</p>
+  <p class="section-text"><strong>Spending guardrails.</strong> Any agent that can create invoices or process refunds must have hard limits. Maximum invoice amount. Maximum refund amount per day. These limits are enforced in code, not just in the agent's instructions.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Anti-Patterns</span>
   <h2 class="section-title">Financial Automation Mistakes</h2>
-  <p class="section-text"><strong style="color: var(--red);">No human review for large transactions.</strong> The agent processes a $50,000 refund without flagging it for review. Set thresholds: any transaction above $X requires human confirmation before execution.</p>
-  <p class="section-text"><strong style="color: var(--red);">Using live keys for development.</strong> Testing your financial agent with real Stripe keys and accidentally charging real customers. Always use Stripe's test mode keys (sk_test_*) during development.</p>
-  <p class="section-text"><strong style="color: var(--red);">No audit trail.</strong> Financial actions without logging. When tax season arrives, you cannot reconstruct what happened. Log every transaction, every invoice, every refund to the brain with timestamps.</p>
+  <p class="section-text"><strong>No human review for large transactions.</strong> The agent processes a $50,000 refund without flagging it for review. Set thresholds: any transaction above $X requires human confirmation before execution.</p>
+  <p class="section-text"><strong>Using live keys for development.</strong> Testing your financial agent with real Stripe keys and accidentally charging real customers. Always use Stripe's test mode keys (sk_test_*) during development.</p>
+  <p class="section-text"><strong>No audit trail.</strong> Financial actions without logging. When tax season arrives, you cannot reconstruct what happened. Log every transaction, every invoice, every refund to the brain with timestamps.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Build your financial automation foundation:</p>
-  <div class="prompt-box"><code>1. Get your Stripe TEST mode API key (sk_test_...)
+  <div class="demo-container"><code>1. Get your Stripe TEST mode API key (sk_test_...)
 2. Write a getRecentRevenue function
 3. Create a test invoice and send it
 4. Build a daily revenue summary and write it to your brain

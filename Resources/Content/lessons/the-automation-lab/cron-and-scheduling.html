@@ -12,16 +12,16 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">Cron-based (time-triggered)</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Agent wakes on a fixed schedule — every 5 minutes, daily at 9 AM, weekly on Mondays. Predictable, efficient, but has latency (up to one full interval). Best for: reports, backups, periodic health checks, batch processing.</p>
+        <strong>Cron-based (time-triggered)</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Agent wakes on a fixed schedule — every 5 minutes, daily at 9 AM, weekly on Mondays. Predictable, efficient, but has latency (up to one full interval). Best for: reports, backups, periodic health checks, batch processing.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">Event-driven (trigger-based)</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Agent sleeps until something happens — a webhook fires, a database row is inserted, a file is uploaded. Zero latency for the triggering event. Efficient because the agent uses zero resources while sleeping. Best for: incoming requests, real-time processing, notifications.</p>
+        <strong>Event-driven (trigger-based)</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Agent sleeps until something happens — a webhook fires, a database row is inserted, a file is uploaded. Zero latency for the triggering event. Efficient because the agent uses zero resources while sleeping. Best for: incoming requests, real-time processing, notifications.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">Always-on (continuous)</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Agent runs in a permanent loop, continuously monitoring and acting. Instant response time but highest resource cost. Best for: chat agents, real-time dashboards, security monitoring, anything that must respond in under a second.</p>
+        <strong>Always-on (continuous)</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Agent runs in a permanent loop, continuously monitoring and acting. Instant response time but highest resource cost. Best for: chat agents, real-time dashboards, security monitoring, anything that must respond in under a second.</p>
       </div>
     </div>
   </div>
@@ -30,7 +30,7 @@
     <h2>The Cron Expression Format</h2>
     <p>A cron expression is five fields separated by spaces. Each field controls one dimension of timing:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.9rem;color:#e5e5e5;line-height:2;overflow-x:auto;text-align:center">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.9rem;line-height:2;overflow-x:auto;text-align:center">
       <pre style="margin:0"><code><span style="color:#fb923c">*</span>  <span style="color:#34d399">*</span>  <span style="color:#8b5cf6">*</span>  <span style="color:#38bdf8">*</span>  <span style="color:#ef4444">*</span>
 <span style="color:#fb923c">│</span>  <span style="color:#34d399">│</span>  <span style="color:#8b5cf6">│</span>  <span style="color:#38bdf8">│</span>  <span style="color:#ef4444">│</span>
 <span style="color:#fb923c">│</span>  <span style="color:#34d399">│</span>  <span style="color:#8b5cf6">│</span>  <span style="color:#38bdf8">│</span>  <span style="color:#ef4444">└─ Day of week (0-6, Sun=0)</span>
@@ -40,20 +40,20 @@
 <span style="color:#fb923c">└─────────────── Minute (0-59)</span></code></pre>
     </div>
 
-    <div style="font-size:.85rem;color:#a1a1aa;line-height:1.8;margin:1rem 0">
-      <strong style="color:#e5e5e5"><code>*</code></strong> = every value (wildcard)<br>
-      <strong style="color:#e5e5e5"><code>*/N</code></strong> = every N units (<code>*/5</code> in minute = every 5 minutes)<br>
-      <strong style="color:#e5e5e5"><code>1-5</code></strong> = range (in weekday field: Monday through Friday)<br>
-      <strong style="color:#e5e5e5"><code>1,15</code></strong> = specific values (1st and 15th of the month)<br>
+    <div style="font-size:.85rem;line-height:1.8;margin:1rem 0">
+      <strong><code>*</code></strong> = every value (wildcard)<br>
+      <strong><code>*/N</code></strong> = every N units (<code>*/5</code> in minute = every 5 minutes)<br>
+      <strong><code>1-5</code></strong> = range (in weekday field: Monday through Friday)<br>
+      <strong><code>1,15</code></strong> = specific values (1st and 15th of the month)<br>
     </div>
 
-    <div style="background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);border-radius:10px;padding:1rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.8">
-      <strong style="color:#34d399">Common examples:</strong><br>
-      <code style="color:#e5e5e5">*/5 * * * *</code> — every 5 minutes (health checks)<br>
-      <code style="color:#e5e5e5">0 9 * * 1-5</code> — 9:00 AM weekdays (daily standup report)<br>
-      <code style="color:#e5e5e5">0 0 * * *</code> — midnight every day (nightly backup)<br>
-      <code style="color:#e5e5e5">30 17 * * 5</code> — 5:30 PM every Friday (weekly summary)<br>
-      <code style="color:#e5e5e5">0 */6 * * *</code> — every 6 hours (periodic sync)
+    <div style="background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.12);border-radius:10px;padding:1rem;margin:1rem 0;font-size:.85rem;line-height:1.8">
+      <strong>Common examples:</strong><br>
+      <code>*/5 * * * *</code> — every 5 minutes (health checks)<br>
+      <code>0 9 * * 1-5</code> — 9:00 AM weekdays (daily standup report)<br>
+      <code>0 0 * * *</code> — midnight every day (nightly backup)<br>
+      <code>30 17 * * 5</code> — 5:30 PM every Friday (weekly summary)<br>
+      <code>0 */6 * * *</code> — every 6 hours (periodic sync)
     </div>
   </div>
 
@@ -77,7 +77,7 @@
     <h2>Real-World: How Like One Uses Cron</h2>
     <p>Like One's fleet uses all three scheduling modes in production right now:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0"><code><span style="color:#71717a"># GCP Watcher — systemd timers (upgraded from crontab)</span>
 <span style="color:#fb923c">brain-heartbeat.timer</span>  → every 5 min  → updates machine_heartbeats table
 <span style="color:#fb923c">brain-health.timer</span>     → every 15 min → checks site, brain, edge functions, academy
@@ -95,9 +95,9 @@
     <h2>Scheduling Conflicts</h2>
     <p>When multiple resource-heavy agents fire at the same time, they compete for CPU, memory, and API rate limits. This is called a <strong>scheduling conflict</strong>. The fix is simple: stagger start times.</p>
 
-    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#ef4444">Bad:</strong> 5 agents all scheduled at <code>0 9 * * *</code> (9:00 AM) — they all wake up and hit the API simultaneously.<br>
-      <strong style="color:#34d399">Good:</strong> Stagger them: <code>0 9</code>, <code>2 9</code>, <code>4 9</code>, <code>6 9</code>, <code>8 9</code> — two minutes apart, no contention.
+    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1rem;margin:1rem 0;font-size:.85rem;line-height:1.7">
+      <strong>Bad:</strong> 5 agents all scheduled at <code>0 9 * * *</code> (9:00 AM) — they all wake up and hit the API simultaneously.<br>
+      <strong>Good:</strong> Stagger them: <code>0 9</code>, <code>2 9</code>, <code>4 9</code>, <code>6 9</code>, <code>8 9</code> — two minutes apart, no contention.
     </div>
   </div>
 
@@ -107,12 +107,12 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c;font-size:.85rem">Crontab (classic)</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Simple one-liner format. No built-in failure logging. If a job fails, you may never know unless you manually check logs. Fine for simple scripts.</p>
+        <strong style="font-size:.85rem">Crontab (classic)</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Simple one-liner format. No built-in failure logging. If a job fails, you may never know unless you manually check logs. Fine for simple scripts.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">Systemd Timers (modern)</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Built-in failure tracking via <code>journalctl</code>. Can depend on other services. Survives reboots with lingering. The S+ choice for production agents.</p>
+        <strong style="font-size:.85rem">Systemd Timers (modern)</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Built-in failure tracking via <code>journalctl</code>. Can depend on other services. Survives reboots with lingering. The S+ choice for production agents.</p>
       </div>
     </div>
   </div>
@@ -136,9 +136,9 @@
     <h2>Timezone Pitfalls</h2>
     <p>Cron expressions run in the timezone of the server, not the user. This causes real problems in production:</p>
 
-    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#ef4444">DST trap:</strong> A cron job scheduled at <code>0 2 * * *</code> (2:00 AM) will either skip or double-fire during daylight saving transitions. In spring, 2:00 AM does not exist (clocks jump from 1:59 to 3:00). In fall, 2:00 AM happens twice. Use UTC for all server cron to avoid this entirely.<br><br>
-      <strong style="color:#ef4444">Multi-region trap:</strong> If your agents run across US-East and EU-West, "9:00 AM" is two different moments. Coordinate with UTC timestamps in the database, then convert to local time only for display.
+    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;line-height:1.7">
+      <strong>DST trap:</strong> A cron job scheduled at <code>0 2 * * *</code> (2:00 AM) will either skip or double-fire during daylight saving transitions. In spring, 2:00 AM does not exist (clocks jump from 1:59 to 3:00). In fall, 2:00 AM happens twice. Use UTC for all server cron to avoid this entirely.<br><br>
+      <strong>Multi-region trap:</strong> If your agents run across US-East and EU-West, "9:00 AM" is two different moments. Coordinate with UTC timestamps in the database, then convert to local time only for display.
     </div>
   </div>
 
@@ -146,7 +146,7 @@
     <h2>Dead Letter Queues</h2>
     <p>When a scheduled task fails repeatedly, it needs to go somewhere instead of being silently dropped. A <strong>dead letter queue</strong> (DLQ) captures failed tasks for later analysis:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0"><code><span style="color:#71717a"># When a scheduled task fails after max retries</span>
 <span style="color:#c084fc">def</span> <span style="color:#38bdf8">handle_failure</span>(task, error, retry_count):
     <span style="color:#c084fc">if</span> retry_count >= MAX_RETRIES:
@@ -162,7 +162,7 @@
         <span style="color:#71717a"># Retry with exponential backoff</span>
         schedule_retry(task, delay=<span style="color:#fbbf24">2</span> ** retry_count)</code></pre>
     </div>
-    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Dead letter queues prevent data loss and give you a clear list of failures to investigate. Review the DLQ regularly — patterns in failed tasks reveal systemic issues.</p>
+    <p style="font-size:.82rem;margin-top:.5rem">Dead letter queues prevent data loss and give you a clear list of failures to investigate. Review the DLQ regularly — patterns in failed tasks reveal systemic issues.</p>
   </div>
 
   <div class="section">
@@ -171,12 +171,12 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Non-idempotent (dangerous)</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0"><code>INSERT INTO reports ...</code> — running twice creates duplicate reports. <code>balance += 100</code> — running twice adds $200 instead of $100.</p>
+        <strong style="font-size:.85rem">Non-idempotent (dangerous)</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0"><code>INSERT INTO reports ...</code> — running twice creates duplicate reports. <code>balance += 100</code> — running twice adds $200 instead of $100.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">Idempotent (safe)</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0"><code>INSERT ... ON CONFLICT DO UPDATE</code> — upsert instead of insert. <code>SET balance = 200</code> — absolute value, not relative. Running twice produces the same result.</p>
+        <strong style="font-size:.85rem">Idempotent (safe)</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0"><code>INSERT ... ON CONFLICT DO UPDATE</code> — upsert instead of insert. <code>SET balance = 200</code> — absolute value, not relative. Running twice produces the same result.</p>
       </div>
     </div>
   </div>
@@ -281,12 +281,12 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">Last-Run Tracking</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Log the timestamp of every task execution. If the last run is older than 2x the expected interval, the task has stopped. Alert immediately.</p>
+        <strong style="font-size:.85rem">Last-Run Tracking</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Log the timestamp of every task execution. If the last run is older than 2x the expected interval, the task has stopped. Alert immediately.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c;font-size:.85rem">Duration Tracking</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Track how long each task takes. A task that normally takes 10 seconds but suddenly takes 5 minutes is degraded even if it still completes. Trending duration upward is an early warning.</p>
+        <strong style="font-size:.85rem">Duration Tracking</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Track how long each task takes. A task that normally takes 10 seconds but suddenly takes 5 minutes is degraded even if it still completes. Trending duration upward is an early warning.</p>
       </div>
     </div>
   </div>

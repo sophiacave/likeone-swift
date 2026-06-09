@@ -65,31 +65,31 @@
   <span class="section-label">Architecture</span>
   <h2 class="section-title">The Complete System Diagram</h2>
   <p class="section-text">Your convergence system has four layers, each building on the one below:</p>
-  <p class="section-text"><strong style="color: var(--green);">Layer 1: Storage.</strong> The brain database. PostgreSQL with key-value storage and optional vector embeddings. This is where all persistent state lives — identity, directives, memory, session state. Everything above depends on this layer being reliable.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Layer 2: Agent Engine.</strong> The perceive-plan-execute-verify loop. This is the runtime that reads the brain, makes decisions, takes actions, and writes results back. It can be Claude Code, a custom Python script, or any LLM-powered agent framework. The engine is replaceable — the brain persists.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Layer 3: Interface.</strong> How you interact with the system — terminal (Claude Code), web app, Electron desktop app, mobile, voice. The interface connects the human to the agent engine. Multiple interfaces can connect to the same brain simultaneously.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Layer 4: Integrations.</strong> External services the agent connects to — email, calendar, social media, payment processors, monitoring tools. Each integration gives the agent new capabilities. Start with 1-2 integrations and add more as you prove reliability.</p>
+  <p class="section-text"><strong>Layer 1: Storage.</strong> The brain database. PostgreSQL with key-value storage and optional vector embeddings. This is where all persistent state lives — identity, directives, memory, session state. Everything above depends on this layer being reliable.</p>
+  <p class="section-text"><strong>Layer 2: Agent Engine.</strong> The perceive-plan-execute-verify loop. This is the runtime that reads the brain, makes decisions, takes actions, and writes results back. It can be Claude Code, a custom Python script, or any LLM-powered agent framework. The engine is replaceable — the brain persists.</p>
+  <p class="section-text"><strong>Layer 3: Interface.</strong> How you interact with the system — terminal (Claude Code), web app, Electron desktop app, mobile, voice. The interface connects the human to the agent engine. Multiple interfaces can connect to the same brain simultaneously.</p>
+  <p class="section-text"><strong>Layer 4: Integrations.</strong> External services the agent connects to — email, calendar, social media, payment processors, monitoring tools. Each integration gives the agent new capabilities. Start with 1-2 integrations and add more as you prove reliability.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Checklist</span>
   <h2 class="section-title">Pre-Launch Quality Gate</h2>
   <p class="section-text">Before declaring your convergence system "live," verify each of these independently:</p>
-  <p class="section-text"><strong style="color: var(--green);">Memory persistence test:</strong> Write a value to the brain. End the session. Start a new session. Can the AI read the value without being told about it? If yes, persistence works.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Values alignment test:</strong> Ask the AI to do something that violates one of its directives. Does it refuse or find an aligned alternative? If yes, alignment works. If it blindly complies, your values are not properly encoded.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Autonomy test:</strong> Give the AI a multi-step task and do not intervene. Does it complete each step without asking permission? Does it checkpoint progress? Does it handle errors gracefully? If yes, autonomy works.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Handoff test:</strong> Run a session, let it checkpoint, start a new session. Does the new session resume exactly where the old one left off, without any "catching up" or re-explanation? If yes, handoff works.</p>
-  <p class="section-text"><strong style="color: var(--red);">Privacy test:</strong> Ask the AI to include sacred-layer information in public-facing output. Does it refuse? If yes, privacy boundaries hold. If it complies, your trust layers need work.</p>
+  <p class="section-text"><strong>Memory persistence test:</strong> Write a value to the brain. End the session. Start a new session. Can the AI read the value without being told about it? If yes, persistence works.</p>
+  <p class="section-text"><strong>Values alignment test:</strong> Ask the AI to do something that violates one of its directives. Does it refuse or find an aligned alternative? If yes, alignment works. If it blindly complies, your values are not properly encoded.</p>
+  <p class="section-text"><strong>Autonomy test:</strong> Give the AI a multi-step task and do not intervene. Does it complete each step without asking permission? Does it checkpoint progress? Does it handle errors gracefully? If yes, autonomy works.</p>
+  <p class="section-text"><strong>Handoff test:</strong> Run a session, let it checkpoint, start a new session. Does the new session resume exactly where the old one left off, without any "catching up" or re-explanation? If yes, handoff works.</p>
+  <p class="section-text"><strong>Privacy test:</strong> Ask the AI to include sacred-layer information in public-facing output. Does it refuse? If yes, privacy boundaries hold. If it complies, your trust layers need work.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Guidance</span>
   <h2 class="section-title">Common First-Project Mistakes</h2>
   <p class="section-text">Every builder makes these mistakes on their first convergence project. Knowing them in advance saves weeks of debugging:</p>
-  <p class="section-text"><strong style="color: var(--red);">Building too much at once.</strong> You do not need a complete life OS on day one. Start with one capability — persistent memory and session continuity. Get that working perfectly. Then add autonomy. Then add values. Then add integrations. Layer by layer.</p>
-  <p class="section-text"><strong style="color: var(--red);">Storing too much, retrieving too little.</strong> Writing everything to the brain but never building retrieval into the agent loop. A brain the AI never reads is just a database. Make sure your boot sequence reads the critical keys on every session start.</p>
-  <p class="section-text"><strong style="color: var(--red);">Skipping the handoff protocol.</strong> The most common convergence failure is session discontinuity. The AI works great during a session, then the next session starts from scratch because nothing was checkpointed. Build handoff into the loop from day one — it is not an optimization, it is a requirement.</p>
-  <p class="section-text"><strong style="color: var(--red);">Declaring L6 autonomy prematurely.</strong> Start at L3 or L4. Let the AI prove itself. Promote deliberately based on demonstrated reliability. An AI that earns autonomy is safer and more trusted than one that is given it on day one.</p>
+  <p class="section-text"><strong>Building too much at once.</strong> You do not need a complete life OS on day one. Start with one capability — persistent memory and session continuity. Get that working perfectly. Then add autonomy. Then add values. Then add integrations. Layer by layer.</p>
+  <p class="section-text"><strong>Storing too much, retrieving too little.</strong> Writing everything to the brain but never building retrieval into the agent loop. A brain the AI never reads is just a database. Make sure your boot sequence reads the critical keys on every session start.</p>
+  <p class="section-text"><strong>Skipping the handoff protocol.</strong> The most common convergence failure is session discontinuity. The AI works great during a session, then the next session starts from scratch because nothing was checkpointed. Build handoff into the loop from day one — it is not an optimization, it is a requirement.</p>
+  <p class="section-text"><strong>Declaring L6 autonomy prematurely.</strong> Start at L3 or L4. Let the AI prove itself. Promote deliberately based on demonstrated reliability. An AI that earns autonomy is safer and more trusted than one that is given it on day one.</p>
 </div>
 
 <div class="lesson-section">
@@ -103,27 +103,27 @@
   <span class="section-label">Resources</span>
   <h2 class="section-title">Tools and Technologies for Your Project</h2>
   <p class="section-text">Here are the specific tools you can use to build each layer of your convergence system:</p>
-  <p class="section-text"><strong style="color: var(--green);">Brain layer:</strong> Supabase (free tier, PostgreSQL + pgvector), PlanetScale (MySQL), Turso (SQLite in the cloud), or a local SQLite file. Supabase is the recommended choice because it includes vector embeddings, Row-Level Security, and real-time subscriptions out of the box.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Agent engine:</strong> Claude Code (Anthropic's CLI agent), Cursor (AI-powered editor with agent mode), a custom Python script using the Anthropic API, or LangGraph for complex multi-step workflows. Start with whichever tool you are already comfortable with.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Interface:</strong> Terminal (simplest — Claude Code runs here), Electron app (for a desktop experience), web app (Next.js + Vercel for hosted access), or a combination. The interface is the least important layer — get the brain and agent working first.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Integrations:</strong> Gmail API for email, Google Calendar API for scheduling, Stripe for payments, GitHub API for code management, Slack for team communication. Each integration multiplies the value of your convergence system. Add them one at a time, verify each works reliably before adding the next.</p>
+  <p class="section-text"><strong>Brain layer:</strong> Supabase (free tier, PostgreSQL + pgvector), PlanetScale (MySQL), Turso (SQLite in the cloud), or a local SQLite file. Supabase is the recommended choice because it includes vector embeddings, Row-Level Security, and real-time subscriptions out of the box.</p>
+  <p class="section-text"><strong>Agent engine:</strong> Claude Code (Anthropic's CLI agent), Cursor (AI-powered editor with agent mode), a custom Python script using the Anthropic API, or LangGraph for complex multi-step workflows. Start with whichever tool you are already comfortable with.</p>
+  <p class="section-text"><strong>Interface:</strong> Terminal (simplest — Claude Code runs here), Electron app (for a desktop experience), web app (Next.js + Vercel for hosted access), or a combination. The interface is the least important layer — get the brain and agent working first.</p>
+  <p class="section-text"><strong>Integrations:</strong> Gmail API for email, Google Calendar API for scheduling, Stripe for payments, GitHub API for code management, Slack for team communication. Each integration multiplies the value of your convergence system. Add them one at a time, verify each works reliably before adding the next.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Timeline</span>
   <h2 class="section-title">Your 30-Day Convergence Plan</h2>
   <p class="section-text">Here is a realistic 30-day plan for building your convergence system from scratch:</p>
-  <p class="section-text"><strong style="color: var(--green);">Week 1: Brain.</strong> Set up the database. Create the brain_context table. Populate 10-15 foundational keys (identity, values, rules, current work). Verify you can read and write from your AI tool of choice.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Week 2: Boot + Handoff.</strong> Build the boot sequence — AI reads critical keys on every session start. Build the handoff protocol — AI writes active_work and next_steps before every session end. Test: start three sessions. Does each one resume seamlessly?</p>
-  <p class="section-text"><strong style="color: var(--purple);">Week 3: Autonomy.</strong> Define your autonomy policy. Implement the three-strike rule. Set guardrails for irreversible actions. Let the AI complete a multi-step task without intervention. Monitor closely. Adjust as needed.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Week 4: Twin.</strong> Write your identity layer — voice, judgment, values. Feed corrections to the twin. Run the twin maturity checklist. By the end of week 4, you should have a working convergence system that persists, acts autonomously within guardrails, and sounds like you.</p>
+  <p class="section-text"><strong>Week 1: Brain.</strong> Set up the database. Create the brain_context table. Populate 10-15 foundational keys (identity, values, rules, current work). Verify you can read and write from your AI tool of choice.</p>
+  <p class="section-text"><strong>Week 2: Boot + Handoff.</strong> Build the boot sequence — AI reads critical keys on every session start. Build the handoff protocol — AI writes active_work and next_steps before every session end. Test: start three sessions. Does each one resume seamlessly?</p>
+  <p class="section-text"><strong>Week 3: Autonomy.</strong> Define your autonomy policy. Implement the three-strike rule. Set guardrails for irreversible actions. Let the AI complete a multi-step task without intervention. Monitor closely. Adjust as needed.</p>
+  <p class="section-text"><strong>Week 4: Twin.</strong> Write your identity layer — voice, judgment, values. Feed corrections to the twin. Run the twin maturity checklist. By the end of week 4, you should have a working convergence system that persists, acts autonomously within guardrails, and sounds like you.</p>
   <p class="section-text">This is not a graduation. It is a beginning. The system improves with every session. Month two is when the compound returns start to feel real.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Your Mission</h3>
   <p>Build your convergence system. Here's your starting architecture:</p>
-  <div class="prompt-box"><code>1. BRAIN: Set up a persistent store (Supabase, SQLite, JSON)
+  <div class="demo-container"><code>1. BRAIN: Set up a persistent store (Supabase, SQLite, JSON)
 2. IDENTITY: Write your voice, values, and rules into it
 3. BOOT: Create a boot sequence that reads brain on startup
 4. LOOP: Design the perceive-plan-execute-verify cycle
@@ -188,7 +188,7 @@ Welcome to Like One.</code></div>
     track these metrics to ensure it stays healthy:
   </p>
   <p class="section-text">
-    <strong style="color: var(--green);">Brain size:</strong>
+    <strong>Brain size:</strong>
     How many keys are in your brain?
     Under 100 is typical for a new system.
     Over 1,000 means you may need consolidation.
@@ -196,21 +196,21 @@ Welcome to Like One.</code></div>
     corresponding value, something is storing noise.
   </p>
   <p class="section-text">
-    <strong style="color: var(--blue);">Handoff success rate:</strong>
+    <strong>Handoff success rate:</strong>
     What percentage of session transitions are seamless?
     If you frequently need to re-explain context
     to the new session, handoff is broken.
     Target: 95% seamless transitions.
   </p>
   <p class="section-text">
-    <strong style="color: var(--purple);">Decision quality:</strong>
+    <strong>Decision quality:</strong>
     Review the AI's autonomous decisions weekly.
     How many would you have made differently?
     Track this number over time — it should decrease
     as the twin's alignment deepens.
   </p>
   <p class="section-text">
-    <strong style="color: var(--orange);">Value delivery:</strong>
+    <strong>Value delivery:</strong>
     Is the system saving you time?
     Estimate hours saved per week.
     If this number is not growing,
@@ -218,7 +218,7 @@ Welcome to Like One.</code></div>
     or the capabilities it has are not being used effectively.
   </p>
   <p class="section-text">
-    <strong style="color: var(--red);">Error rate:</strong>
+    <strong>Error rate:</strong>
     How often does the system make a mistake
     that requires human correction?
     Track errors by category: voice mismatches,

@@ -38,11 +38,11 @@
   <span class="section-label">The Landscape</span>
   <h2 class="section-title">Five Pillars of AI Audio</h2>
   <p class="section-text">Every AI audio tool falls into one of five categories. Understanding them gives you a map of the entire space:</p>
-  <p class="section-text"><strong style="color: var(--orange);">Text-to-Speech (TTS):</strong> Turn written words into natural-sounding voice. ElevenLabs, OpenAI TTS, Google Cloud TTS, and dozens more. The quality gap between AI and human voice actors is closing fast.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Voice Cloning:</strong> Capture and reproduce a specific voice. Ethical implications are real. Creative possibilities are enormous. We'll cover both.</p>
-  <p class="section-text"><strong style="color: var(--green);">Music Generation:</strong> Suno, Udio, MusicLM — AI that composes, arranges, and produces music from text descriptions. Game-changing for content creators who need original audio.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Speech-to-Text (STT):</strong> Whisper, Deepgram, AssemblyAI. Transcription is essentially solved. What matters now is what you do with the transcript — analysis, search, summarization.</p>
-  <p class="section-text"><strong style="color: var(--red);">Audio Enhancement:</strong> Noise removal, voice isolation, mastering. Adobe Podcast, Descript, Auphonic. Turn a phone recording into broadcast quality.</p>
+  <p class="section-text"><strong>Text-to-Speech (TTS):</strong> Turn written words into natural-sounding voice. ElevenLabs, OpenAI TTS, Google Cloud TTS, and dozens more. The quality gap between AI and human voice actors is closing fast.</p>
+  <p class="section-text"><strong>Voice Cloning:</strong> Capture and reproduce a specific voice. Ethical implications are real. Creative possibilities are enormous. We'll cover both.</p>
+  <p class="section-text"><strong>Music Generation:</strong> Suno, Udio, MusicLM — AI that composes, arranges, and produces music from text descriptions. Game-changing for content creators who need original audio.</p>
+  <p class="section-text"><strong>Speech-to-Text (STT):</strong> Whisper, Deepgram, AssemblyAI. Transcription is essentially solved. What matters now is what you do with the transcript — analysis, search, summarization.</p>
+  <p class="section-text"><strong>Audio Enhancement:</strong> Noise removal, voice isolation, mastering. Adobe Podcast, Descript, Auphonic. Turn a phone recording into broadcast quality.</p>
 </div>
 
 <div class="lesson-section">
@@ -75,18 +75,18 @@
   <span class="section-label">Comparison</span>
   <h2 class="section-title">AI Audio Tools at a Glance</h2>
   <p class="section-text">Choosing the right tool starts with understanding what each category does best. Here is a practical comparison across the five pillars:</p>
-  <p class="section-text"><strong style="color: var(--orange);">TTS Leaders:</strong> ElevenLabs dominates quality and emotional range. OpenAI TTS wins on developer simplicity with six reliable voices and clean API design. Google Cloud TTS leads enterprise deployments with 220+ voices across 40+ languages. Edge TTS is the best free option for prototyping.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Voice Cloning:</strong> ElevenLabs offers instant cloning from 30 seconds of audio. Resemble AI is built for enterprise with real-time voice conversion. PlayHT has an ethical marketplace where real voice actors license their clones. OpenVoice is the best open-source option for running locally.</p>
-  <p class="section-text"><strong style="color: var(--green);">Music Generation:</strong> Suno produces full songs with lyrics and production from text prompts. Udio excels at audio fidelity and complex arrangements. AIVA is purpose-built for film and game scoring with MIDI export. Stable Audio handles sound effects and ambient textures well.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Transcription:</strong> Whisper is the open-source baseline — free, 99-language support, run locally. Deepgram is the speed champion with real-time streaming. AssemblyAI adds sentiment analysis, topic detection, and PII redaction on top of transcription.</p>
-  <p class="section-text"><strong style="color: var(--red);">Enhancement:</strong> Adobe Podcast Enhance Speech is the gold standard for one-click voice cleanup. Descript combines text-based editing with Studio Sound enhancement. Auphonic handles automated mastering trusted by professional broadcasters.</p>
+  <p class="section-text"><strong>TTS Leaders:</strong> ElevenLabs dominates quality and emotional range. OpenAI TTS wins on developer simplicity with six reliable voices and clean API design. Google Cloud TTS leads enterprise deployments with 220+ voices across 40+ languages. Edge TTS is the best free option for prototyping.</p>
+  <p class="section-text"><strong>Voice Cloning:</strong> ElevenLabs offers instant cloning from 30 seconds of audio. Resemble AI is built for enterprise with real-time voice conversion. PlayHT has an ethical marketplace where real voice actors license their clones. OpenVoice is the best open-source option for running locally.</p>
+  <p class="section-text"><strong>Music Generation:</strong> Suno produces full songs with lyrics and production from text prompts. Udio excels at audio fidelity and complex arrangements. AIVA is purpose-built for film and game scoring with MIDI export. Stable Audio handles sound effects and ambient textures well.</p>
+  <p class="section-text"><strong>Transcription:</strong> Whisper is the open-source baseline — free, 99-language support, run locally. Deepgram is the speed champion with real-time streaming. AssemblyAI adds sentiment analysis, topic detection, and PII redaction on top of transcription.</p>
+  <p class="section-text"><strong>Enhancement:</strong> Adobe Podcast Enhance Speech is the gold standard for one-click voice cleanup. Descript combines text-based editing with Studio Sound enhancement. Auphonic handles automated mastering trusted by professional broadcasters.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Code Example</span>
   <h2 class="section-title">Your First TTS API Call</h2>
   <p class="section-text">Understanding the code behind these tools demystifies them. Here is a minimal example using the OpenAI TTS API in Python — the simplest way to generate speech programmatically:</p>
-  <div class="prompt-box"><code>from openai import OpenAI
+  <div class="demo-container"><code>from openai import OpenAI
 
 client = OpenAI()
 
@@ -172,10 +172,10 @@ response.stream_to_file("revolution.mp3")</code></div>
   <p class="section-text"><strong>Lesson 10 (Studio):</strong> Connecting everything into repeatable pipelines, automation strategies, budget tiers, and monetization. You will architect your complete AI audio studio.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It: Your First AI Voice</h3>
   <p>Go to <strong>ElevenLabs.io</strong> (free tier available). Paste this into the text box and generate:</p>
-  <div class="prompt-box"><code>The future of audio isn't about replacing human voices. It's about giving every creator the power to sound exactly the way they imagine. That's the revolution.</code></div>
+  <div class="demo-container"><code>The future of audio isn't about replacing human voices. It's about giving every creator the power to sound exactly the way they imagine. That's the revolution.</code></div>
   <p>Listen to the output. Notice the pacing, the inflection, the breath sounds. This is where we start.</p>
 </div>
 

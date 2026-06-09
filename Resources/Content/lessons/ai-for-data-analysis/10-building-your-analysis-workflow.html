@@ -15,7 +15,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">The Full Picture</span>
+  <span class="section-label">The Full Picture</span>
   <h2 class="section-title">Your Analysis Pipeline</h2>
 <div class="lo-vis" role="figure" aria-label="Complete AI analysis pipeline"><div class="lo-vis__title">Your Complete Analysis Pipeline</div><div class="lo-steps" data-count="4"><div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">Frame</span><span class="lo-step__desc">Define your question with the SCOPE method before touching data</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">Ingest &amp; Clean</span><span class="lo-step__desc">Feed data to AI, run the cleaning checklist, fix quality issues</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">Analyze</span><span class="lo-step__desc">Find patterns, test hypotheses, visualize findings with AI</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--purple"><span class="lo-step__num">04</span><span class="lo-step__label">Report</span><span class="lo-step__desc">Package insights into audience-tailored reports that drive action</span></div></div><div class="lo-vis__caption">Every stage from this course <strong>chains together</strong> into one repeatable system.</div></div>
 
@@ -29,7 +29,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">Templates</span>
+  <span class="section-label">Templates</span>
   <h2 class="section-title">Reusable Prompt Templates</h2>
   <p class="section-text">The fastest analysts aren't the smartest — they have the best templates. Here are three you should save and reuse:</p>
 
@@ -50,7 +50,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">Your Toolkit</span>
+  <span class="section-label">Your Toolkit</span>
   <h2 class="section-title">Building Your Personal System</h2>
   <p class="section-text">A great data analyst has a system, not just skills. Here's how to build yours:</p>
   <p class="section-text"><strong>Save your prompts:</strong> Every time you write a prompt that works well, save it in a document. Your prompt library grows more valuable over time.</p>
@@ -60,7 +60,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--red);">Architecture</span>
+  <span class="section-label">Architecture</span>
   <h2 class="section-title">Workflow Architecture</h2>
   <p class="section-text">A well-designed analysis workflow has three layers that work together:</p>
   <p class="section-text"><strong>Layer 1 — Data layer:</strong> Where your raw data lives and how it flows into your analysis. This includes data sources (spreadsheets, databases, APIs, exports), storage formats (CSV, Excel, JSON), and update frequency (real-time, daily, weekly, monthly). Map your data sources once, and every future analysis starts faster.</p>
@@ -70,7 +70,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">Automation</span>
+  <span class="section-label">Automation</span>
   <h2 class="section-title">Automation Patterns</h2>
   <p class="section-text">The highest-value skill in data analysis is not doing the analysis — it is automating it so it runs without you. Here are patterns you can implement today:</p>
   <p class="section-text"><strong>Prompt chains:</strong> Build a sequence of prompts where each one feeds into the next. Clean → Analyze → Visualize → Report. Save the entire chain as a document. Next time, paste in new data and run the chain. Same quality, fraction of the time.</p>
@@ -81,7 +81,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--blue);">What's Next</span>
+  <span class="section-label">What's Next</span>
   <h2 class="section-title">Continuing Your Journey</h2>
   <p class="section-text">You now have the skills to analyze any dataset that comes your way, without writing a single line of code. But this is just the foundation. Here's where to grow:</p>
   <p class="section-text"><strong>Learn basic SQL:</strong> AI can write SQL for you, but understanding the logic helps you ask better questions.</p>
@@ -90,7 +90,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--red);">Mastery</span>
+  <span class="section-label">Mastery</span>
   <h2 class="section-title">Signs You Are Becoming a Data Thinker</h2>
   <p class="section-text">You know the skills are taking hold when you start noticing these shifts in your thinking:</p>
   <p class="section-text"><strong>You question claims:</strong> When someone says "sales are up," your first instinct is "compared to what?" You think in baselines and comparisons, not isolated numbers.</p>
@@ -102,7 +102,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">Recap</span>
+  <span class="section-label">Recap</span>
   <h2 class="section-title">The Complete Toolkit Checklist</h2>
   <p class="section-text">Before you finish this course, make sure you have assembled these assets for your personal analysis toolkit:</p>
   <p class="section-text"><strong>Quick Analysis prompt template</strong> — saved and ready to paste with new data.</p>
@@ -115,8 +115,8 @@
   <p class="section-text">If you have these seven items, you are better equipped than most professional analysts were five years ago. The difference: your toolkit runs on AI, and it gets better every time you use it.</p>
 </div>
 
-  <div class="tip-box">
-    <div class="tip-label">Python: Full Pipeline Script</div>
+  <div class="callout">
+    <div class="section-label">Python: Full Pipeline Script</div>
     <p>The entire 6-stage pipeline in one reusable script — ask Claude to customize it for your data:</p>
   </div>
 
@@ -159,15 +159,15 @@ print(f"Top category: {top_categories.index[0]} (${top_categories.iloc[0]:,.0f})
 if growth.iloc[-1] < 0:
     print("WARNING: Most recent month shows decline — investigate.")</code></pre>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Your Final Exercise</h3>
   <p>Run a complete end-to-end analysis using the full pipeline. Pick a real dataset that matters to you — business data, personal finances, a project you care about. Use this master prompt:</p>
-  <div class="prompt-box"><code>I'm running a complete data analysis. Here's my dataset [paste data]. My question: [specific question using SCOPE]. Please: 1) Assess data quality and clean if needed, 2) Analyze for trends, patterns, and outliers, 3) Create visualization recommendations, 4) Write a three-layer report (executive summary, key metrics, detailed findings), 5) Give me 3 specific actions I should take based on this analysis.</code></div>
-  <p style="color: var(--dim);">You've learned to think like an analyst, communicate like a storyteller, and use AI as your engine. That's a powerful combination. Now go find insights that matter.</p>
+  <div class="demo-container"><code>I'm running a complete data analysis. Here's my dataset [paste data]. My question: [specific question using SCOPE]. Please: 1) Assess data quality and clean if needed, 2) Analyze for trends, patterns, and outliers, 3) Create visualization recommendations, 4) Write a three-layer report (executive summary, key metrics, detailed findings), 5) Give me 3 specific actions I should take based on this analysis.</code></div>
+  <p>You've learned to think like an analyst, communicate like a storyteller, and use AI as your engine. That's a powerful combination. Now go find insights that matter.</p>
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--blue);">Key Concepts</span>
+  <span class="section-label">Key Concepts</span>
   <h2 class="section-title">Learn the Terms</h2>
   <div class="flash-block">
 <h3 class="quiz-title">Analysis Workflow Essentials</h3>

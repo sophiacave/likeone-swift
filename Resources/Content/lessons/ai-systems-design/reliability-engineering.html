@@ -74,7 +74,7 @@ Three rules for AI retries:
 2. **Use full jitter.** Without jitter, all clients retry at the same time, creating a thundering herd that re-crashes the service.
 3. **Cap your retry budget.** Three retries with exponential backoff is usually sufficient. More than five is almost never the right answer.
 
-<div class="tip-box">
+<div class="callout">
 <strong>Cost awareness:</strong> If you're retrying Claude Opus calls, each retry costs the same as the original. Three retries on a $0.15 call means you might spend $0.60 total. Factor retry budgets into your cost models.
 </div>
 </div>

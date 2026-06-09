@@ -23,12 +23,12 @@
 <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="padding:6px 10px;border-radius:6px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.12);color:#38bdf8;font-weight:600;">context window</span><span style="color:#52525b;">=</span><span style="color:#52525b;">everything the model sees at once</span></div></div>
 <p>The context window is the total amount of text an AI can "see" at once — including your prompt, system instructions, conversation history, and the response it generates. Think of it as the model's working memory. Everything inside the window is available for reasoning. Everything outside it does not exist.</p>
 
-<p>Claude's standard context window is <strong style="color:#e5e5e5">200,000 tokens</strong> — roughly 500 pages of a novel. Claude Opus 4.6 extends to <strong style="color:#e5e5e5">1,000,000 tokens</strong> (1M), which is roughly 2,500 pages — enough to hold an entire codebase, a full textbook, or days of conversation history in a single request.</p>
+<p>Claude's standard context window is <strong>200,000 tokens</strong> — roughly 500 pages of a novel. Claude Opus 4.6 extends to <strong>1,000,000 tokens</strong> (1M), which is roughly 2,500 pages — enough to hold an entire codebase, a full textbook, or days of conversation history in a single request.</p>
 
 <p>This matters because context is the single biggest lever for AI quality. An LLM with the right context is dramatically more useful than a smarter LLM without it. RAG, long-document analysis, and multi-turn conversations all depend on fitting the right information into the context window.</p>
 
-<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">Key insight:</strong> The context window is shared between input and output. If you send 190K tokens of input, Claude only has 10K tokens left for its response. Always budget for output when loading long documents into the context.
+<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;line-height:1.7">
+<strong>Key insight:</strong> The context window is shared between input and output. If you send 190K tokens of input, Claude only has 10K tokens left for its response. Always budget for output when loading long documents into the context.
 </div>
 </div>
 
@@ -38,8 +38,8 @@
 
 <p>Why does this matter? Because you pay per token, and you are limited per token. Understanding tokenization helps you estimate costs, fit more content into the context window, and debug unexpected behavior (like responses getting cut off because you ran out of output tokens).</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — counting tokens with Anthropic's tokenizer</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — counting tokens with Anthropic's tokenizer</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 <span style="color:#71717a"># The Anthropic SDK includes a token counter</span>
@@ -71,17 +71,17 @@ cost = (tokens / <span style="color:#fb923c">1_000_000</span>) * <span style="co
 <p>See how Claude stacks up against other models:</p>
 <div class="comparison-grid">
 <div class="model-bar">
-<div class="model-name" style="color:#8b5cf6">Claude 4.6</div>
+<div class="model-name">Claude 4.6</div>
 <div class="model-tokens">200K tokens (up to 1M with Opus)</div>
 <div class="model-visual"></div>
 </div>
 <div class="model-bar">
-<div class="model-name" style="color:#34d399">GPT-4o</div>
+<div class="model-name">GPT-4o</div>
 <div class="model-tokens">128K tokens</div>
 <div class="model-visual"></div>
 </div>
 <div class="model-bar">
-<div class="model-name" style="color:#fb923c">Gemini 2.5 Pro</div>
+<div class="model-name">Gemini 2.5 Pro</div>
 <div class="model-tokens">1M tokens</div>
 <div class="model-visual"></div>
 </div>
@@ -120,8 +120,8 @@ cost = (tokens / <span style="color:#fb923c">1_000_000</span>) * <span style="co
 </div>
 </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — cost calculator for different content types</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — cost calculator for different content types</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Token density ratios (chars per token)</span>
 DENSITY = {
     <span style="color:#fbbf24">"prose"</span>:    <span style="color:#fb923c">4.0</span>,
@@ -175,20 +175,20 @@ report = <span style="color:#fbbf24">"..."</span> * <span style="color:#fb923c">
 
 <div style="display:grid;gap:.75rem;margin-top:.75rem">
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(52,211,153,.04);border-radius:10px;border:1px solid rgba(52,211,153,.1)">
-<div style="font-size:.85rem;font-weight:700;color:#34d399;min-width:1.5rem">1</div>
-<div style="font-size:.85rem;color:#a1a1aa;line-height:1.6"><strong style="color:#e5e5e5">Put critical instructions at the top.</strong> System prompts and key instructions should go first, before any document content. The model pays the most attention to the beginning.</div>
+<div style="font-size:.85rem;font-weight:700;min-width:1.5rem">1</div>
+<div style="font-size:.85rem;line-height:1.6"><strong>Put critical instructions at the top.</strong> System prompts and key instructions should go first, before any document content. The model pays the most attention to the beginning.</div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(52,211,153,.04);border-radius:10px;border:1px solid rgba(52,211,153,.1)">
-<div style="font-size:.85rem;font-weight:700;color:#34d399;min-width:1.5rem">2</div>
-<div style="font-size:.85rem;color:#a1a1aa;line-height:1.6"><strong style="color:#e5e5e5">Repeat important facts.</strong> If a fact is critical, mention it in the system prompt AND near the user's question. Redundancy helps retrieval.</div>
+<div style="font-size:.85rem;font-weight:700;min-width:1.5rem">2</div>
+<div style="font-size:.85rem;line-height:1.6"><strong>Repeat important facts.</strong> If a fact is critical, mention it in the system prompt AND near the user's question. Redundancy helps retrieval.</div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(52,211,153,.04);border-radius:10px;border:1px solid rgba(52,211,153,.1)">
-<div style="font-size:.85rem;font-weight:700;color:#34d399;min-width:1.5rem">3</div>
-<div style="font-size:.85rem;color:#a1a1aa;line-height:1.6"><strong style="color:#e5e5e5">Use structured formatting.</strong> Headers, XML tags, and numbered lists help the model navigate long documents. <code>&lt;document&gt;...&lt;/document&gt;</code> tags are especially effective.</div>
+<div style="font-size:.85rem;font-weight:700;min-width:1.5rem">3</div>
+<div style="font-size:.85rem;line-height:1.6"><strong>Use structured formatting.</strong> Headers, XML tags, and numbered lists help the model navigate long documents. <code>&lt;document&gt;...&lt;/document&gt;</code> tags are especially effective.</div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(52,211,153,.04);border-radius:10px;border:1px solid rgba(52,211,153,.1)">
-<div style="font-size:.85rem;font-weight:700;color:#34d399;min-width:1.5rem">4</div>
-<div style="font-size:.85rem;color:#a1a1aa;line-height:1.6"><strong style="color:#e5e5e5">Use RAG instead of stuffing.</strong> If you have more content than fits in the window, use vector search to retrieve only the relevant chunks (covered in the RAG course).</div>
+<div style="font-size:.85rem;font-weight:700;min-width:1.5rem">4</div>
+<div style="font-size:.85rem;line-height:1.6"><strong>Use RAG instead of stuffing.</strong> If you have more content than fits in the window, use vector search to retrieve only the relevant chunks (covered in the RAG course).</div>
 </div>
 </div>
 </div>
@@ -197,8 +197,8 @@ report = <span style="color:#fbbf24">"..."</span> * <span style="color:#fb923c">
 <h2>Managing Context in Code</h2>
 <p>In production applications, you need to actively manage the context window — tracking how many tokens you've used, truncating conversation history when it gets too long, and deciding what to keep and what to drop.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — context window management</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — context window management</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 client = anthropic.Anthropic()
@@ -251,25 +251,25 @@ history.append({<span style="color:#fbbf24">"role"</span>: <span style="color:#f
 <div class="model-bar" style="border-color:rgba(139,92,246,.2)">
 <div style="font-size:2rem;margin-bottom:.5rem">📚</div>
 <div class="model-name">~500 Pages</div>
-<div style="font-size:.8rem;color:#71717a">of a novel</div>
+<div style="font-size:.8rem">of a novel</div>
 </div>
 <div class="model-bar" style="border-color:rgba(251,146,60,.2)">
 <div style="font-size:2rem;margin-bottom:.5rem">💻</div>
 <div class="model-name">~150K Lines</div>
-<div style="font-size:.8rem;color:#71717a">of code</div>
+<div style="font-size:.8rem">of code</div>
 </div>
 <div class="model-bar" style="border-color:rgba(56,189,248,.2)">
 <div style="font-size:2rem;margin-bottom:.5rem">📄</div>
 <div class="model-name">~300 PDFs</div>
-<div style="font-size:.8rem;color:#71717a">typical business docs</div>
+<div style="font-size:.8rem">typical business docs</div>
 </div>
 <div class="model-bar" style="border-color:rgba(52,211,153,.2)">
 <div style="font-size:2rem;margin-bottom:.5rem">💬</div>
 <div class="model-name">~8 Hours</div>
-<div style="font-size:.8rem;color:#71717a">of conversation</div>
+<div style="font-size:.8rem">of conversation</div>
 </div>
 </div>
-<p style="font-size:.85rem;color:#a1a1aa;margin-top:.75rem">With Opus 4.6's 1M token window, multiply all of these by 5x. That is enough to hold an entire codebase (most production repos are under 1M tokens), a full college textbook, or a week of conversation history.</p>
+<p style="font-size:.85rem;margin-top:.75rem">With Opus 4.6's 1M token window, multiply all of these by 5x. That is enough to hold an entire codebase (most production repos are under 1M tokens), a full college textbook, or a week of conversation history.</p>
 </div>
 
 <div class="flash-block">

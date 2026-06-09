@@ -36,11 +36,11 @@
 <div class="lesson-section">
   <span class="section-label">Pipelines</span>
   <h2 class="section-title">Five Core Audio Pipelines</h2>
-  <p class="section-text"><strong style="color: var(--orange);">Content Pipeline:</strong> Idea → script (Claude) → voice (ElevenLabs) → music bed (Suno) → edit (Descript) → master (Auphonic) → publish. This covers podcasts, YouTube narration, course content, and marketing audio.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Repurposing Pipeline:</strong> Long recording → transcribe (Whisper) → analyze (Claude) → extract clips → generate social audio → write show notes → create blog post. One recording becomes ten pieces of content.</p>
-  <p class="section-text"><strong style="color: var(--green);">Production Pipeline:</strong> Script → multi-voice generation → sound design → mix → master → distribute. This is your audiobook and audio drama workflow. Longer timelines, higher quality standards.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Intelligence Pipeline:</strong> Audio archive → batch transcribe → index → search → analyze patterns → generate reports. For researchers, journalists, and anyone sitting on hours of unprocessed recordings.</p>
-  <p class="section-text"><strong style="color: var(--red);">Voice App Pipeline:</strong> User speech → STT → LLM processing → TTS response → feedback loop. Your interactive voice application architecture from Lesson 8, productionized.</p>
+  <p class="section-text"><strong>Content Pipeline:</strong> Idea → script (Claude) → voice (ElevenLabs) → music bed (Suno) → edit (Descript) → master (Auphonic) → publish. This covers podcasts, YouTube narration, course content, and marketing audio.</p>
+  <p class="section-text"><strong>Repurposing Pipeline:</strong> Long recording → transcribe (Whisper) → analyze (Claude) → extract clips → generate social audio → write show notes → create blog post. One recording becomes ten pieces of content.</p>
+  <p class="section-text"><strong>Production Pipeline:</strong> Script → multi-voice generation → sound design → mix → master → distribute. This is your audiobook and audio drama workflow. Longer timelines, higher quality standards.</p>
+  <p class="section-text"><strong>Intelligence Pipeline:</strong> Audio archive → batch transcribe → index → search → analyze patterns → generate reports. For researchers, journalists, and anyone sitting on hours of unprocessed recordings.</p>
+  <p class="section-text"><strong>Voice App Pipeline:</strong> User speech → STT → LLM processing → TTS response → feedback loop. Your interactive voice application architecture from Lesson 8, productionized.</p>
 </div>
 
 <div class="lesson-section">
@@ -62,7 +62,7 @@
   <span class="section-label">Code Example</span>
   <h2 class="section-title">Automated Content Pipeline Script</h2>
   <p class="section-text">Here is a Python script that implements the Content Pipeline end-to-end — from topic to published-ready audio with show notes:</p>
-  <div class="prompt-box"><code>from openai import OpenAI
+  <div class="demo-container"><code>from openai import OpenAI
 import edge_tts
 import asyncio
 from pydub import AudioSegment
@@ -141,9 +141,9 @@ print("Pipeline complete. Ready to publish.")</code></div>
   <span class="section-label">Deep Dive</span>
   <h2 class="section-title">Budget Tiers: Building Your Studio at Any Price Point</h2>
   <p class="section-text">Your AI audio studio can cost anywhere from zero to hundreds per month. Here are three tiers with specific tool recommendations for each:</p>
-  <p class="section-text"><strong style="color: var(--green);">Free Tier ($0/month):</strong> Edge TTS for voice generation. Suno free tier for music (50 credits/day). Whisper locally for transcription. Audacity for editing. ffmpeg for mastering. Adobe Podcast Enhance free tier for cleanup. This stack produces genuinely professional output for zero dollars. The trade-off is more manual work and less automation.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Creator Tier ($25-50/month):</strong> ElevenLabs Starter ($5) for premium voice quality. Descript Creator ($24) for text-based editing plus Studio Sound. Suno Pro ($10) for commercial-use music. Auphonic ($11) for automated mastering. Total: ~$50/month. This tier eliminates most manual work and produces broadcast-quality output consistently.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Professional Tier ($100-200/month):</strong> ElevenLabs Scale ($22) for high-volume TTS and voice cloning. Descript Business ($33). Deepgram ($0.0043/min) for real-time transcription. AssemblyAI for audio intelligence. iZotope RX ($129 one-time). This tier handles production at scale — multiple shows, client work, or commercial products.</p>
+  <p class="section-text"><strong>Free Tier ($0/month):</strong> Edge TTS for voice generation. Suno free tier for music (50 credits/day). Whisper locally for transcription. Audacity for editing. ffmpeg for mastering. Adobe Podcast Enhance free tier for cleanup. This stack produces genuinely professional output for zero dollars. The trade-off is more manual work and less automation.</p>
+  <p class="section-text"><strong>Creator Tier ($25-50/month):</strong> ElevenLabs Starter ($5) for premium voice quality. Descript Creator ($24) for text-based editing plus Studio Sound. Suno Pro ($10) for commercial-use music. Auphonic ($11) for automated mastering. Total: ~$50/month. This tier eliminates most manual work and produces broadcast-quality output consistently.</p>
+  <p class="section-text"><strong>Professional Tier ($100-200/month):</strong> ElevenLabs Scale ($22) for high-volume TTS and voice cloning. Descript Business ($33). Deepgram ($0.0043/min) for real-time transcription. AssemblyAI for audio intelligence. iZotope RX ($129 one-time). This tier handles production at scale — multiple shows, client work, or commercial products.</p>
 </div>
 
 <div class="lesson-section">
@@ -178,10 +178,10 @@ print("Pipeline complete. Ready to publish.")</code></div>
   <p><strong>Brain:</strong> Claude, GPT-4 — for scripting, analysis, and creative direction</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It: Build Your First Pipeline</h3>
   <p>Pick one content type you want to produce regularly. Map your complete pipeline from idea to published output:</p>
-  <div class="prompt-box"><code>Ask Claude: "I want to produce a weekly [podcast / audiobook chapter / YouTube narration / music track]. Help me design an end-to-end pipeline. For each step, recommend a specific tool, estimate the time it takes, and identify which steps can be automated. My budget is [free / $20-month / $50-month]."</code></div>
+  <div class="demo-container"><code>Ask Claude: "I want to produce a weekly [podcast / audiobook chapter / YouTube narration / music track]. Help me design an end-to-end pipeline. For each step, recommend a specific tool, estimate the time it takes, and identify which steps can be automated. My budget is [free / $20-month / $50-month]."</code></div>
   <p>Document your pipeline. Test it with one real piece of content. Refine it. Run it again. By the third iteration, you'll have a system that produces professional audio as naturally as breathing. That's your studio. You built it. Now use it to make something that matters.</p>
 </div>
 

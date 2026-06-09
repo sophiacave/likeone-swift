@@ -30,15 +30,15 @@
 </div>
 
   <p class="section-text">Effective monitoring has three layers:</p>
-  <p class="section-text"><strong style="color: var(--blue);">Health checks (is it alive?).</strong> Periodic pings to every service. Is Ollama responding? Is the brain database accessible? Is the website up? Binary alive/dead status, checked every 30-60 seconds.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Metrics (how is it performing?).</strong> Response times, CPU usage, RAM consumption, queue depths, error rates. Not just alive, but healthy. A service with 99% CPU usage is alive but about to crash.</p>
-  <p class="section-text"><strong style="color: var(--green);">Logs (what happened?).</strong> Structured logs from every service. When something goes wrong, logs tell you why. When the self-healer fixes something, logs prove it worked. Essential for debugging and audit trails.</p>
+  <p class="section-text"><strong>Health checks (is it alive?).</strong> Periodic pings to every service. Is Ollama responding? Is the brain database accessible? Is the website up? Binary alive/dead status, checked every 30-60 seconds.</p>
+  <p class="section-text"><strong>Metrics (how is it performing?).</strong> Response times, CPU usage, RAM consumption, queue depths, error rates. Not just alive, but healthy. A service with 99% CPU usage is alive but about to crash.</p>
+  <p class="section-text"><strong>Logs (what happened?).</strong> Structured logs from every service. When something goes wrong, logs tell you why. When the self-healer fixes something, logs prove it worked. Essential for debugging and audit trails.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Implementation</span>
   <h2 class="section-title">Health Check System</h2>
-  <div class="prompt-box"><code>// Health check runner -- checks all services every 60 seconds
+  <div class="demo-container"><code>// Health check runner -- checks all services every 60 seconds
 const services = [
   {
     name: 'ollama',
@@ -99,20 +99,20 @@ async function runHealthChecks() {
   <span class="section-label">Strategy</span>
   <h2 class="section-title">Self-Healing Patterns</h2>
   <p class="section-text">Self-healing turns monitoring from passive observation into active repair:</p>
-  <p class="section-text"><strong style="color: var(--blue);">Auto-restart.</strong> The simplest self-healing: if a service is down, restart it. Ollama crashed? Run <code>ollama serve</code>. Cron job stopped? Restart the scheduler. Most transient failures are fixed by a restart.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Exponential backoff restart.</strong> If restarting fails, do not hammer the service. Wait 10 seconds, then 30, then 60, then 5 minutes. After 5 failed restarts, stop trying and alert a human. The service has a deeper problem that automation cannot fix.</p>
-  <p class="section-text"><strong style="color: var(--green);">Resource-triggered healing.</strong> RAM above 90%? The self-healer kills the least-important process. CPU at 100% for 5 minutes? Pause non-critical background tasks. Disk above 95%? Clean old logs and temporary files. Prevention beats cure.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Service substitution.</strong> The primary Ollama instance is down? Route requests to a backup model. The primary database is unreachable? Switch to a read-only replica. Cloud API is rate-limited? Fall back to local model. The system degrades instead of breaking.</p>
+  <p class="section-text"><strong>Auto-restart.</strong> The simplest self-healing: if a service is down, restart it. Ollama crashed? Run <code>ollama serve</code>. Cron job stopped? Restart the scheduler. Most transient failures are fixed by a restart.</p>
+  <p class="section-text"><strong>Exponential backoff restart.</strong> If restarting fails, do not hammer the service. Wait 10 seconds, then 30, then 60, then 5 minutes. After 5 failed restarts, stop trying and alert a human. The service has a deeper problem that automation cannot fix.</p>
+  <p class="section-text"><strong>Resource-triggered healing.</strong> RAM above 90%? The self-healer kills the least-important process. CPU at 100% for 5 minutes? Pause non-critical background tasks. Disk above 95%? Clean old logs and temporary files. Prevention beats cure.</p>
+  <p class="section-text"><strong>Service substitution.</strong> The primary Ollama instance is down? Route requests to a backup model. The primary database is unreachable? Switch to a read-only replica. Cloud API is rate-limited? Fall back to local model. The system degrades instead of breaking.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Advanced</span>
   <h2 class="section-title">Proactive Alerting</h2>
   <p class="section-text">The best monitoring catches problems before they become emergencies:</p>
-  <p class="section-text"><strong style="color: var(--orange);">Trend detection.</strong> RAM usage has increased 5% every day for a week. At this rate, you will hit 100% in 6 days. The monitor alerts now, not when the machine crashes. This is proactive -- predicting failure from trends.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Anomaly detection.</strong> Response times are normally 200ms. Today they are 800ms. The service is not down, but something is wrong. Alert before the 800ms becomes 8000ms becomes timeout becomes crash.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Dependency chain awareness.</strong> Your website depends on the brain, which depends on SQLite, which depends on the disk. If disk I/O slows down, every layer above it suffers. Monitor the dependencies, not just the top-level services.</p>
-  <div class="prompt-box"><code>// Proactive alert: RAM trend detection
+  <p class="section-text"><strong>Trend detection.</strong> RAM usage has increased 5% every day for a week. At this rate, you will hit 100% in 6 days. The monitor alerts now, not when the machine crashes. This is proactive -- predicting failure from trends.</p>
+  <p class="section-text"><strong>Anomaly detection.</strong> Response times are normally 200ms. Today they are 800ms. The service is not down, but something is wrong. Alert before the 800ms becomes 8000ms becomes timeout becomes crash.</p>
+  <p class="section-text"><strong>Dependency chain awareness.</strong> Your website depends on the brain, which depends on SQLite, which depends on the disk. If disk I/O slows down, every layer above it suffers. Monitor the dependencies, not just the top-level services.</p>
+  <div class="demo-container"><code>// Proactive alert: RAM trend detection
 function checkRAMTrend() {
   const history = brain.search('system.health_status')
     .slice(-7)  // Last 7 days
@@ -138,24 +138,24 @@ function checkRAMTrend() {
   <span class="section-label">Implementation</span>
   <h2 class="section-title">Graceful Degradation</h2>
   <p class="section-text">When a component fails, the system should degrade gracefully -- losing some capability but staying functional:</p>
-  <p class="section-text"><strong style="color: var(--green);">Ollama down:</strong> Route all AI requests to cloud API (Claude/GPT). Costs more money but the business keeps running. Set a flag in the brain so the agent knows it is in degraded mode and should avoid high-volume AI tasks.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Cloud API down:</strong> Route to local Ollama. Accept lower quality for complex tasks. The business runs, just with a quality ceiling.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Brain database inaccessible:</strong> The AI loses its persistent memory. Fall back to session-only context. Critical directives are cached in the system prompt as a last resort. Log everything for later brain reconciliation.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Email service down:</strong> Queue outbound emails locally. When the service recovers, flush the queue. No emails are lost, just delayed.</p>
+  <p class="section-text"><strong>Ollama down:</strong> Route all AI requests to cloud API (Claude/GPT). Costs more money but the business keeps running. Set a flag in the brain so the agent knows it is in degraded mode and should avoid high-volume AI tasks.</p>
+  <p class="section-text"><strong>Cloud API down:</strong> Route to local Ollama. Accept lower quality for complex tasks. The business runs, just with a quality ceiling.</p>
+  <p class="section-text"><strong>Brain database inaccessible:</strong> The AI loses its persistent memory. Fall back to session-only context. Critical directives are cached in the system prompt as a last resort. Log everything for later brain reconciliation.</p>
+  <p class="section-text"><strong>Email service down:</strong> Queue outbound emails locally. When the service recovers, flush the queue. No emails are lost, just delayed.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Anti-Patterns</span>
   <h2 class="section-title">Monitoring Mistakes</h2>
-  <p class="section-text"><strong style="color: var(--red);">Alert fatigue.</strong> Alerting on every minor fluctuation. CPU hit 80% for 10 seconds? Alert. Response time was 300ms instead of 200ms? Alert. After 50 alerts in a day, you ignore all of them -- including the real one. Set thresholds that mean something.</p>
-  <p class="section-text"><strong style="color: var(--red);">Restart loops.</strong> A service crashes, the self-healer restarts it, it crashes again immediately, restart, crash, restart. This loop consumes resources and never fixes the problem. Cap restart attempts and alert after the cap.</p>
-  <p class="section-text"><strong style="color: var(--red);">Monitoring only the happy path.</strong> Checking that the website returns 200 OK but not checking that the content is correct. The page could show an error message while returning 200. Health checks should verify functionality, not just connectivity.</p>
+  <p class="section-text"><strong>Alert fatigue.</strong> Alerting on every minor fluctuation. CPU hit 80% for 10 seconds? Alert. Response time was 300ms instead of 200ms? Alert. After 50 alerts in a day, you ignore all of them -- including the real one. Set thresholds that mean something.</p>
+  <p class="section-text"><strong>Restart loops.</strong> A service crashes, the self-healer restarts it, it crashes again immediately, restart, crash, restart. This loop consumes resources and never fixes the problem. Cap restart attempts and alert after the cap.</p>
+  <p class="section-text"><strong>Monitoring only the happy path.</strong> Checking that the website returns 200 OK but not checking that the content is correct. The page could show an error message while returning 200. Health checks should verify functionality, not just connectivity.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Build your monitoring and self-healing system:</p>
-  <div class="prompt-box"><code>1. List your critical services (Ollama, brain, website, email)
+  <div class="demo-container"><code>1. List your critical services (Ollama, brain, website, email)
 2. Write a health check for each (can I reach it? does it respond correctly?)
 3. Add auto-restart for services that support it
 4. Set up a cron job to run health checks every 60 seconds

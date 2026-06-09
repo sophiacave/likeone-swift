@@ -25,24 +25,24 @@
 
 <div class="lesson-visual"><div style="display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 16px;font-family:'SF Mono','JetBrains Mono',monospace;font-size:.8rem;"><span style="padding:6px 12px;border-radius:8px;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);color:#34d399;font-weight:600;">Anthropic</span><span style="color:#3f3f46;">&rarr;</span><span style="padding:6px 12px;border-radius:8px;background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.15);color:#c084fc;font-weight:600;">Constitutional AI</span><span style="color:#3f3f46;">&rarr;</span><span style="padding:6px 12px;border-radius:8px;background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.12);color:#38bdf8;font-weight:600;">Claude</span></div></div>
 
-<p>Claude is an AI assistant made by <strong style="color:#e5e5e5">Anthropic</strong> — a company founded in 2021 by former OpenAI researchers who believed AI safety should be a first-class engineering priority, not an afterthought. Where most AI labs optimize for impressive demos, Anthropic optimizes for models you can actually trust.</p>
+<p>Claude is an AI assistant made by <strong>Anthropic</strong> — a company founded in 2021 by former OpenAI researchers who believed AI safety should be a first-class engineering priority, not an afterthought. Where most AI labs optimize for impressive demos, Anthropic optimizes for models you can actually trust.</p>
 
-<p>The philosophy behind Claude is called <strong style="color:#e5e5e5">Constitutional AI</strong>. Instead of training a model purely on human preference ratings (where annotators might reward confident-sounding wrong answers), Anthropic gave Claude a set of explicit principles — like a constitution — and trained it to <em>reason against those principles</em>. The model evaluates its own outputs: "Does this response follow the principles? If not, how should I revise it?" This self-evaluation loop runs thousands of times during training, shaping how Claude thinks — not just what it says.</p>
+<p>The philosophy behind Claude is called <strong>Constitutional AI</strong>. Instead of training a model purely on human preference ratings (where annotators might reward confident-sounding wrong answers), Anthropic gave Claude a set of explicit principles — like a constitution — and trained it to <em>reason against those principles</em>. The model evaluates its own outputs: "Does this response follow the principles? If not, how should I revise it?" This self-evaluation loop runs thousands of times during training, shaping how Claude thinks — not just what it says.</p>
 
 <p>The practical result is an AI that behaves differently from its competitors in three specific ways: it admits uncertainty instead of fabricating answers, it pushes back when asked to do something harmful instead of finding loopholes, and it maintains consistent reasoning across long, complex conversations instead of losing coherence. These aren't marketing claims — they're measurable properties that show up in benchmarks and real-world use.</p>
 
 <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.25rem">
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(52,211,153,.06);border-radius:10px;border:1px solid rgba(52,211,153,.12);flex:1;min-width:160px">
 <div style="font-size:1.25rem">🏛️</div>
-<div><div style="font-size:.8rem;font-weight:700;color:#34d399;margin-bottom:.2rem">Constitutional AI</div><div style="font-size:.78rem;color:#71717a;line-height:1.5">Trained with explicit values and self-evaluation, not just human thumbs-up/down</div></div>
+<div><div style="font-size:.8rem;font-weight:700;margin-bottom:.2rem">Constitutional AI</div><div style="font-size:.78rem;line-height:1.5">Trained with explicit values and self-evaluation, not just human thumbs-up/down</div></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(139,92,246,.06);border-radius:10px;border:1px solid rgba(139,92,246,.12);flex:1;min-width:160px">
 <div style="font-size:1.25rem">🔬</div>
-<div><div style="font-size:.8rem;font-weight:700;color:#8b5cf6;margin-bottom:.2rem">Safety-First Research</div><div style="font-size:.78rem;color:#71717a;line-height:1.5">Anthropic publishes alignment research openly and built the industry's first Responsible Scaling Policy</div></div>
+<div><div style="font-size:.8rem;font-weight:700;margin-bottom:.2rem">Safety-First Research</div><div style="font-size:.78rem;line-height:1.5">Anthropic publishes alignment research openly and built the industry's first Responsible Scaling Policy</div></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(251,146,60,.06);border-radius:10px;border:1px solid rgba(251,146,60,.12);flex:1;min-width:160px">
 <div style="font-size:1.25rem">💬</div>
-<div><div style="font-size:.8rem;font-weight:700;color:#fb923c;margin-bottom:.2rem">Reasoning-Heavy</div><div style="font-size:.78rem;color:#71717a;line-height:1.5">Extended thinking mode lets Claude reason through hard problems step by step before answering</div></div>
+<div><div style="font-size:.8rem;font-weight:700;margin-bottom:.2rem">Reasoning-Heavy</div><div style="font-size:.78rem;line-height:1.5">Extended thinking mode lets Claude reason through hard problems step by step before answering</div></div>
 </div>
 </div>
 </div>
@@ -53,7 +53,7 @@
 
 <p>Constitutional AI adds a layer. After the initial training, Claude is given a set of principles (the "constitution") and asked to critique its own outputs against those principles. Here is a simplified version of the loop:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Simplified Constitutional AI training loop</span>
 <span style="color:#71717a"># (This is conceptual — actual training uses billions of examples)</span>
 
@@ -84,7 +84,7 @@
     model.learn(prompt, revised)</code></pre>
 </div>
 
-<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">This self-critique loop runs during training, not during your conversations. By the time you use Claude, these principles are baked into the model's weights. The result: Claude's default behavior is to be honest, helpful, and harmless — without needing to be told.</p>
+<p style="font-size:.85rem;margin-top:.5rem">This self-critique loop runs during training, not during your conversations. By the time you use Claude, these principles are baked into the model's weights. The result: Claude's default behavior is to be honest, helpful, and harmless — without needing to be told.</p>
 </div>
 
 <div class="card">
@@ -126,7 +126,7 @@
 <div class="compare-cell other">ChatGPT has the largest plugin ecosystem. Gemini integrates deeply with Google Workspace.</div>
 </div>
 </div>
-<p style="margin-top:1rem;font-size:.85rem">None of this makes Claude universally "better." The honest answer: <strong style="color:#e5e5e5">use the right model for the right job.</strong> Claude's edge is trustworthiness under pressure, long-context fidelity, and agentic coding. ChatGPT has ecosystem breadth. Gemini has Google integration. Many teams use all three.</p>
+<p style="margin-top:1rem;font-size:.85rem">None of this makes Claude universally "better." The honest answer: <strong>use the right model for the right job.</strong> Claude's edge is trustworthiness under pressure, long-context fidelity, and agentic coding. ChatGPT has ecosystem breadth. Gemini has Google integration. Many teams use all three.</p>
 </div>
 
 <div class="card">
@@ -140,26 +140,26 @@
 <div class="model-name">Claude Opus 4.6</div>
 <div class="model-desc">The most capable model. Exceptional at nuanced reasoning, long-form analysis, research synthesis, complex multi-step tasks, and agentic coding. Extended thinking for hard problems. Up to 1M token context window.</div>
 <div class="model-use">Deep work, analysis, agents</div>
-<div style="margin-top:.5rem;font-size:.75rem;color:#71717a;font-family:'JetBrains Mono',monospace">ID: claude-opus-4-6 · $15/$75 per 1M tokens</div>
+<div style="margin-top:.5rem;font-size:.75rem;font-family:'JetBrains Mono',monospace">ID: claude-opus-4-6 · $15/$75 per 1M tokens</div>
 </div>
 <div class="model-card sonnet">
 <div class="model-tier">Balanced</div>
 <div class="model-name">Claude Sonnet 4.6</div>
 <div class="model-desc">The sweet spot. Strong reasoning, fast enough for real-time use, cost-effective at scale. This is what most production applications use — coding, writing, strategy, business tasks. Extended thinking available.</div>
 <div class="model-use">Everyday powerhouse</div>
-<div style="margin-top:.5rem;font-size:.75rem;color:#71717a;font-family:'JetBrains Mono',monospace">ID: claude-sonnet-4-6 · $3/$15 per 1M tokens</div>
+<div style="margin-top:.5rem;font-size:.75rem;font-family:'JetBrains Mono',monospace">ID: claude-sonnet-4-6 · $3/$15 per 1M tokens</div>
 </div>
 <div class="model-card haiku">
 <div class="model-tier">Lightweight</div>
 <div class="model-name">Claude Haiku 4.5</div>
 <div class="model-desc">The smallest, fastest, cheapest model. Surprisingly capable for its size — great for classification, summarization, simple Q&A, and high-volume pipelines where speed and cost matter most.</div>
 <div class="model-use">Speed &amp; volume tasks</div>
-<div style="margin-top:.5rem;font-size:.75rem;color:#71717a;font-family:'JetBrains Mono',monospace">ID: claude-haiku-4-5-20251001 · $0.80/$4 per 1M tokens</div>
+<div style="margin-top:.5rem;font-size:.75rem;font-family:'JetBrains Mono',monospace">ID: claude-haiku-4-5-20251001 · $0.80/$4 per 1M tokens</div>
 </div>
 </div>
 
-<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-top:1rem;font-size:.85rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">Pricing decoded:</strong> The two numbers (e.g., $3/$15) mean <strong>input/output per million tokens</strong>. Input is what you send to Claude (your prompt, system message, context). Output is what Claude generates back. Output is always more expensive because generation is computationally harder. A million tokens is roughly 750,000 words — most conversations cost fractions of a cent.
+<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-top:1rem;font-size:.85rem;line-height:1.7">
+<strong>Pricing decoded:</strong> The two numbers (e.g., $3/$15) mean <strong>input/output per million tokens</strong>. Input is what you send to Claude (your prompt, system message, context). Output is what Claude generates back. Output is always more expensive because generation is computationally harder. A million tokens is roughly 750,000 words — most conversations cost fractions of a cent.
 </div>
 
 <p style="font-size:.85rem;margin-top:1rem">In Claude.ai (the web interface), Sonnet is the default. You can switch to Opus for harder tasks. Via the API, you specify exactly which model to use — which is what we'll learn next.</p>
@@ -188,15 +188,15 @@
 </div>
 </div>
 
-<p style="margin-top:1rem;font-size:.85rem;color:#a1a1aa;line-height:1.7">These three properties are in tension with each other. A maximally helpful model might give dangerous advice. A maximally harmless model might refuse everything. A maximally honest model might be blunt to the point of unhelpfulness. The art of Constitutional AI is training Claude to balance all three simultaneously — which is why it sometimes says "I can help with that, but here's an important caveat" instead of blindly complying or blindly refusing.</p>
+<p style="margin-top:1rem;font-size:.85rem;line-height:1.7">These three properties are in tension with each other. A maximally helpful model might give dangerous advice. A maximally harmless model might refuse everything. A maximally honest model might be blunt to the point of unhelpfulness. The art of Constitutional AI is training Claude to balance all three simultaneously — which is why it sometimes says "I can help with that, but here's an important caveat" instead of blindly complying or blindly refusing.</p>
 </div>
 
 <div class="card">
 <h2>Your First Claude API Call</h2>
 <p>You do not need the API to use Claude — Claude.ai works with no setup. But the API is where the real power is: you control the model, the system prompt, the temperature, the tools, and every parameter. Here is the simplest possible API call using curl and then Python:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">curl — raw API call</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">curl — raw API call</div>
 <pre style="margin:0;color:#e5e5e5"><code>curl https://api.anthropic.com/v1/messages \
   -H <span style="color:#fbbf24">"x-api-key: $ANTHROPIC_API_KEY"</span> \
   -H <span style="color:#fbbf24">"anthropic-version: 2023-06-01"</span> \
@@ -210,8 +210,8 @@
   }'</span></code></pre>
 </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — using the Anthropic SDK</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — using the Anthropic SDK</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 <span style="color:#71717a"># pip install anthropic</span>
@@ -235,20 +235,20 @@ message = client.messages.create(
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
 <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-<strong style="color:#34d399;font-size:.85rem">Key parameters</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0"><strong>model</strong> — which Claude model to use (see tier table above)</p>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0"><strong>max_tokens</strong> — maximum output length (required)</p>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0"><strong>messages</strong> — the conversation (user and assistant turns)</p>
+<strong style="font-size:.85rem">Key parameters</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0"><strong>model</strong> — which Claude model to use (see tier table above)</p>
+<p style="font-size:.82rem;margin:.4rem 0 0"><strong>max_tokens</strong> — maximum output length (required)</p>
+<p style="font-size:.82rem;margin:.4rem 0 0"><strong>messages</strong> — the conversation (user and assistant turns)</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-<strong style="color:#8b5cf6;font-size:.85rem">What you'll add later</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0"><strong>system</strong> — system prompt (Lesson 4)</p>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0"><strong>temperature</strong> — creativity dial (Lesson 3)</p>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0"><strong>tools</strong> — function calling (Lesson 8)</p>
+<strong style="font-size:.85rem">What you'll add later</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0"><strong>system</strong> — system prompt (Lesson 4)</p>
+<p style="font-size:.82rem;margin:.4rem 0 0"><strong>temperature</strong> — creativity dial (Lesson 3)</p>
+<p style="font-size:.82rem;margin:.4rem 0 0"><strong>tools</strong> — function calling (Lesson 8)</p>
 </div>
 </div>
 
-<p style="font-size:.85rem;color:#a1a1aa;line-height:1.7">This is the foundation. Every feature in this course — system prompts, temperature, tool use, agents — builds on this exact API call. You add parameters, but the shape stays the same: choose a model, send messages, get a response.</p>
+<p style="font-size:.85rem;line-height:1.7">This is the foundation. Every feature in this course — system prompts, temperature, tool use, agents — builds on this exact API call. You add parameters, but the shape stays the same: choose a model, send messages, get a response.</p>
 </div>
 
 <div class="card">
@@ -256,25 +256,25 @@ message = client.messages.create(
 <p>To make API calls, you need a key from the Anthropic Console. Here is the process:</p>
 <div style="display:grid;gap:.75rem;margin-top:.75rem">
 <div style="display:flex;gap:.75rem;align-items:flex-start;padding:.75rem 1rem;background:rgba(139,92,246,.04);border-radius:10px;border:1px solid rgba(139,92,246,.08)">
-<div style="font-size:.85rem;font-weight:700;color:#8b5cf6;min-width:1.5rem">1</div>
-<div style="font-size:.85rem;color:#a1a1aa;line-height:1.6">Go to <strong style="color:#e5e5e5">console.anthropic.com</strong> and create an account (or sign in)</div>
+<div style="font-size:.85rem;font-weight:700;min-width:1.5rem">1</div>
+<div style="font-size:.85rem;line-height:1.6">Go to <strong>console.anthropic.com</strong> and create an account (or sign in)</div>
 </div>
 <div style="display:flex;gap:.75rem;align-items:flex-start;padding:.75rem 1rem;background:rgba(139,92,246,.04);border-radius:10px;border:1px solid rgba(139,92,246,.08)">
-<div style="font-size:.85rem;font-weight:700;color:#8b5cf6;min-width:1.5rem">2</div>
-<div style="font-size:.85rem;color:#a1a1aa;line-height:1.6">Navigate to <strong style="color:#e5e5e5">Settings → API Keys</strong> and click "Create Key"</div>
+<div style="font-size:.85rem;font-weight:700;min-width:1.5rem">2</div>
+<div style="font-size:.85rem;line-height:1.6">Navigate to <strong>Settings → API Keys</strong> and click "Create Key"</div>
 </div>
 <div style="display:flex;gap:.75rem;align-items:flex-start;padding:.75rem 1rem;background:rgba(139,92,246,.04);border-radius:10px;border:1px solid rgba(139,92,246,.08)">
-<div style="font-size:.85rem;font-weight:700;color:#8b5cf6;min-width:1.5rem">3</div>
-<div style="font-size:.85rem;color:#a1a1aa;line-height:1.6">Copy the key (starts with <code style="color:#fb923c">sk-ant-</code>) — you will only see it once</div>
+<div style="font-size:.85rem;font-weight:700;min-width:1.5rem">3</div>
+<div style="font-size:.85rem;line-height:1.6">Copy the key (starts with <code>sk-ant-</code>) — you will only see it once</div>
 </div>
 <div style="display:flex;gap:.75rem;align-items:flex-start;padding:.75rem 1rem;background:rgba(139,92,246,.04);border-radius:10px;border:1px solid rgba(139,92,246,.08)">
-<div style="font-size:.85rem;font-weight:700;color:#8b5cf6;min-width:1.5rem">4</div>
-<div style="font-size:.85rem;color:#a1a1aa;line-height:1.6">Set it as an environment variable: <code style="color:#fb923c">export ANTHROPIC_API_KEY="sk-ant-..."</code></div>
+<div style="font-size:.85rem;font-weight:700;min-width:1.5rem">4</div>
+<div style="font-size:.85rem;line-height:1.6">Set it as an environment variable: <code>export ANTHROPIC_API_KEY="sk-ant-..."</code></div>
 </div>
 </div>
 
-<div style="background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);border-radius:12px;padding:1rem;margin-top:1rem;font-size:.82rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#fb923c">Security:</strong> Never hardcode your API key in source code. Never commit it to Git. Use environment variables or a secrets manager. If you accidentally expose a key, rotate it immediately in the Console.
+<div style="background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);border-radius:12px;padding:1rem;margin-top:1rem;font-size:.82rem;line-height:1.7">
+<strong>Security:</strong> Never hardcode your API key in source code. Never commit it to Git. Use environment variables or a secrets manager. If you accidentally expose a key, rotate it immediately in the Console.
 </div>
 </div>
 
@@ -284,21 +284,21 @@ message = client.messages.create(
 
 <div style="display:grid;gap:.75rem;margin-top:.75rem">
 <div style="padding:1rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
-<strong style="color:#f472b6;font-size:.88rem">Use Opus when...</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The task requires sustained reasoning over long inputs (100K+ tokens), the cost of a wrong answer is high (legal analysis, medical triage, financial modeling), you need an AI agent that runs autonomously for hours, or the problem genuinely requires the smartest model available.</p>
+<strong style="font-size:.88rem">Use Opus when...</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">The task requires sustained reasoning over long inputs (100K+ tokens), the cost of a wrong answer is high (legal analysis, medical triage, financial modeling), you need an AI agent that runs autonomously for hours, or the problem genuinely requires the smartest model available.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-<strong style="color:#38bdf8;font-size:.88rem">Use Sonnet when...</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">You need a balance of quality and speed (most coding, writing, analysis, conversation). Sonnet handles 90% of real-world tasks at 1/5 the cost of Opus. Start here unless you have a reason not to.</p>
+<strong style="font-size:.88rem">Use Sonnet when...</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">You need a balance of quality and speed (most coding, writing, analysis, conversation). Sonnet handles 90% of real-world tasks at 1/5 the cost of Opus. Start here unless you have a reason not to.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-<strong style="color:#34d399;font-size:.88rem">Use Haiku when...</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Speed and cost dominate. Classification (is this email spam?), extraction (pull the date from this invoice), summarization (condense this to 3 bullets), or any pipeline processing thousands of items per hour.</p>
+<strong style="font-size:.88rem">Use Haiku when...</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Speed and cost dominate. Classification (is this email spam?), extraction (pull the date from this invoice), summarization (condense this to 3 bullets), or any pipeline processing thousands of items per hour.</p>
 </div>
 </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — smart model routing</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — smart model routing</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">choose_model</span>(task_type: str, input_length: int) -> str:
     <span style="color:#fb923c">"""Route to the right Claude model based on the task."""</span>
     <span style="color:#c084fc">if</span> task_type <span style="color:#c084fc">in</span> (<span style="color:#fbbf24">"classification"</span>, <span style="color:#fbbf24">"extraction"</span>, <span style="color:#fbbf24">"summarization"</span>):

@@ -36,11 +36,11 @@
 <div class="lesson-section">
   <span class="section-label">Tools</span>
   <h2 class="section-title">The AI Audio Editing Arsenal</h2>
-  <p class="section-text"><strong style="color: var(--orange);">Adobe Podcast (Enhance Speech):</strong> The gold standard for voice cleanup. Upload any recording and get studio-quality speech back. It removes background noise, reduces echo, and normalizes levels. Free tier available. The results are genuinely shocking on bad audio.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Descript:</strong> Text-based audio editing. Your recording becomes a transcript — delete a word from the text and it's deleted from the audio. Remove all filler words in one click. Studio Sound feature cleans audio on par with Adobe. The editing paradigm itself is the innovation.</p>
-  <p class="section-text"><strong style="color: var(--green);">Auphonic:</strong> Automated mastering. Upload your audio and it handles leveling, noise reduction, loudness normalization, and encoding. Two hours free per month. Trusted by broadcasters and podcasters worldwide.</p>
-  <p class="section-text"><strong style="color: var(--blue);">LALAL.AI:</strong> Stem separation specialist. Split any audio into vocals, drums, bass, guitar, piano, and other instruments. Isolate a voice from a noisy recording. Extract the music bed from a video. Remarkably clean separation.</p>
-  <p class="section-text"><strong style="color: var(--red);">RX by iZotope:</strong> The professional's choice. AI-assisted repair tools for click removal, de-hum, de-reverb, spectral editing. More control than the one-button tools. Worth learning if audio editing is a regular part of your work.</p>
+  <p class="section-text"><strong>Adobe Podcast (Enhance Speech):</strong> The gold standard for voice cleanup. Upload any recording and get studio-quality speech back. It removes background noise, reduces echo, and normalizes levels. Free tier available. The results are genuinely shocking on bad audio.</p>
+  <p class="section-text"><strong>Descript:</strong> Text-based audio editing. Your recording becomes a transcript — delete a word from the text and it's deleted from the audio. Remove all filler words in one click. Studio Sound feature cleans audio on par with Adobe. The editing paradigm itself is the innovation.</p>
+  <p class="section-text"><strong>Auphonic:</strong> Automated mastering. Upload your audio and it handles leveling, noise reduction, loudness normalization, and encoding. Two hours free per month. Trusted by broadcasters and podcasters worldwide.</p>
+  <p class="section-text"><strong>LALAL.AI:</strong> Stem separation specialist. Split any audio into vocals, drums, bass, guitar, piano, and other instruments. Isolate a voice from a noisy recording. Extract the music bed from a video. Remarkably clean separation.</p>
+  <p class="section-text"><strong>RX by iZotope:</strong> The professional's choice. AI-assisted repair tools for click removal, de-hum, de-reverb, spectral editing. More control than the one-button tools. Worth learning if audio editing is a regular part of your work.</p>
 </div>
 
 <div class="lesson-section">
@@ -57,7 +57,7 @@
   <span class="section-label">Code Example</span>
   <h2 class="section-title">Automated Audio Processing Pipeline</h2>
   <p class="section-text">Here is a Python script that automates the most common audio editing tasks — noise profiling, normalization, and format conversion — using free, open-source tools:</p>
-  <div class="prompt-box"><code>from pydub import AudioSegment
+  <div class="demo-container"><code>from pydub import AudioSegment
 from pydub.effects import normalize, compress_dynamic_range
 import subprocess
 import os
@@ -117,11 +117,11 @@ for f in glob.glob("raw_episodes/*.mp3"):
   <span class="section-label">Deep Dive</span>
   <h2 class="section-title">AI Audio Editing Tools: Detailed Comparison</h2>
   <p class="section-text">Understanding what each tool does best prevents wasted time and subscription costs:</p>
-  <p class="section-text"><strong style="color: var(--orange);">Adobe Podcast Enhance</strong> — What it does: one-click voice cleanup — noise removal, echo reduction, level normalization. Cost: free tier available, included with Creative Cloud. Best for: quick cleanup of interviews, voice memos, field recordings. Limitation: voice-only — does not handle music or sound effects well. The AI is trained specifically on speech and can damage non-speech audio.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Descript</strong> — What it does: text-based editing with Studio Sound enhancement. Cost: free tier, Creator at $24/month. Best for: podcast and video editing where you need to cut content and clean audio simultaneously. Limitation: the text-editing paradigm has a learning curve, and export options are limited on lower tiers.</p>
-  <p class="section-text"><strong style="color: var(--green);">Auphonic</strong> — What it does: automated mastering — loudness normalization, noise reduction, EQ, encoding to platform specs. Cost: 2 hours free/month, then $11/month for 9 hours. Best for: final mastering step before publishing. Limitation: it is a mastering tool, not an editor — it does not cut or rearrange content.</p>
-  <p class="section-text"><strong style="color: var(--blue);">LALAL.AI</strong> — What it does: stem separation — isolates vocals, drums, bass, guitar, piano, and other instruments. Cost: 10 minutes free, packages from $15. Best for: isolating a voice from background music, extracting music beds from video, remixing. Limitation: extreme separation (very quiet instruments) can introduce artifacts.</p>
-  <p class="section-text"><strong style="color: var(--red);">iZotope RX</strong> — What it does: professional-grade AI repair — spectral editing, de-click, de-hum, de-reverb, dialogue isolation. Cost: $129-$1,199 depending on edition. Best for: forensic-level audio repair, broadcast post-production, film audio. Limitation: steep learning curve, expensive, overkill for casual use.</p>
+  <p class="section-text"><strong>Adobe Podcast Enhance</strong> — What it does: one-click voice cleanup — noise removal, echo reduction, level normalization. Cost: free tier available, included with Creative Cloud. Best for: quick cleanup of interviews, voice memos, field recordings. Limitation: voice-only — does not handle music or sound effects well. The AI is trained specifically on speech and can damage non-speech audio.</p>
+  <p class="section-text"><strong>Descript</strong> — What it does: text-based editing with Studio Sound enhancement. Cost: free tier, Creator at $24/month. Best for: podcast and video editing where you need to cut content and clean audio simultaneously. Limitation: the text-editing paradigm has a learning curve, and export options are limited on lower tiers.</p>
+  <p class="section-text"><strong>Auphonic</strong> — What it does: automated mastering — loudness normalization, noise reduction, EQ, encoding to platform specs. Cost: 2 hours free/month, then $11/month for 9 hours. Best for: final mastering step before publishing. Limitation: it is a mastering tool, not an editor — it does not cut or rearrange content.</p>
+  <p class="section-text"><strong>LALAL.AI</strong> — What it does: stem separation — isolates vocals, drums, bass, guitar, piano, and other instruments. Cost: 10 minutes free, packages from $15. Best for: isolating a voice from background music, extracting music beds from video, remixing. Limitation: extreme separation (very quiet instruments) can introduce artifacts.</p>
+  <p class="section-text"><strong>iZotope RX</strong> — What it does: professional-grade AI repair — spectral editing, de-click, de-hum, de-reverb, dialogue isolation. Cost: $129-$1,199 depending on edition. Best for: forensic-level audio repair, broadcast post-production, film audio. Limitation: steep learning curve, expensive, overkill for casual use.</p>
 </div>
 
 <div class="lesson-section">
@@ -164,10 +164,10 @@ for f in glob.glob("raw_episodes/*.mp3"):
   <p class="section-text"><strong>Environment control:</strong> Turn off fans, AC, and any appliances with motors before recording. Close windows. Put your phone on silent. Record a 10-second room tone sample before you start — this gives noise removal tools a clean reference of your room's ambient sound.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It: Rescue Bad Audio</h3>
   <p>Record yourself talking for 30 seconds in the worst conditions you can find — near a fan, with the TV on, in a room with echo. Then run it through this rescue pipeline:</p>
-  <div class="prompt-box"><code>1. Upload to Adobe Podcast Enhance (podcast.adobe.com) → download cleaned version
+  <div class="demo-container"><code>1. Upload to Adobe Podcast Enhance (podcast.adobe.com) → download cleaned version
 2. Upload cleaned version to Auphonic (auphonic.com) → apply "Podcast" preset
 3. Compare: original → Adobe cleaned → Auphonic mastered
 

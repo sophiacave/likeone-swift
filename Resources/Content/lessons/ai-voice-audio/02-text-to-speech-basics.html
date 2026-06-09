@@ -36,11 +36,11 @@
 <div class="lesson-section">
   <span class="section-label">Tools</span>
   <h2 class="section-title">The TTS Landscape</h2>
-  <p class="section-text"><strong style="color: var(--orange);">ElevenLabs:</strong> The current quality leader. Exceptional emotional range, multilingual support, and the best voice cloning integration. Free tier is generous. Pro plans start at $5/month.</p>
-  <p class="section-text"><strong style="color: var(--purple);">OpenAI TTS:</strong> Built into the API. Six voices, simple to use, great for developers building apps. Less customization than ElevenLabs but rock-solid reliability.</p>
-  <p class="section-text"><strong style="color: var(--green);">Google Cloud TTS:</strong> Enterprise-grade. Hundreds of voices across 40+ languages. WaveNet and Neural2 voices are excellent. Pay-per-character pricing keeps costs predictable.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Coqui / XTTS:</strong> Open-source option. Run it locally, no API costs, full control. Quality is slightly behind the commercial options but improving fast.</p>
-  <p class="section-text"><strong style="color: var(--red);">Edge TTS:</strong> Microsoft's free option via the Edge browser engine. Surprisingly good quality for zero cost. Great for prototyping.</p>
+  <p class="section-text"><strong>ElevenLabs:</strong> The current quality leader. Exceptional emotional range, multilingual support, and the best voice cloning integration. Free tier is generous. Pro plans start at $5/month.</p>
+  <p class="section-text"><strong>OpenAI TTS:</strong> Built into the API. Six voices, simple to use, great for developers building apps. Less customization than ElevenLabs but rock-solid reliability.</p>
+  <p class="section-text"><strong>Google Cloud TTS:</strong> Enterprise-grade. Hundreds of voices across 40+ languages. WaveNet and Neural2 voices are excellent. Pay-per-character pricing keeps costs predictable.</p>
+  <p class="section-text"><strong>Coqui / XTTS:</strong> Open-source option. Run it locally, no API costs, full control. Quality is slightly behind the commercial options but improving fast.</p>
+  <p class="section-text"><strong>Edge TTS:</strong> Microsoft's free option via the Edge browser engine. Surprisingly good quality for zero cost. Great for prototyping.</p>
 </div>
 
 <div class="lesson-section">
@@ -55,18 +55,18 @@
   <span class="section-label">Deep Dive</span>
   <h2 class="section-title">TTS Platform Comparison: Cost, Quality, and Use Cases</h2>
   <p class="section-text">Choosing the right TTS platform depends on your project type, budget, and technical requirements. Here is a detailed breakdown:</p>
-  <p class="section-text"><strong style="color: var(--orange);">ElevenLabs</strong> — Best for: content creators, voiceover, audiobooks. Free tier: 10,000 characters/month. Starter plan: $5/month for 30,000 characters. Strengths: emotional range, multilingual (29 languages), voice cloning built in. Weakness: can sound slightly over-processed on dry technical content.</p>
-  <p class="section-text"><strong style="color: var(--purple);">OpenAI TTS</strong> — Best for: developers building apps, quick prototypes. Pricing: $15/million characters (tts-1), $30/million characters (tts-1-hd). Strengths: dead-simple API, rock-solid reliability, consistent output. Weakness: only six voices, no voice cloning, limited customization.</p>
-  <p class="section-text"><strong style="color: var(--green);">Google Cloud TTS</strong> — Best for: enterprise, multilingual apps, IVR systems. Pricing: free for first 4 million characters/month (standard), $4-16/million for WaveNet/Neural2. Strengths: 220+ voices, 40+ languages, SSML support. Weakness: requires GCP account setup, more complex integration.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Coqui / XTTS</strong> — Best for: privacy-sensitive projects, offline use, experimentation. Cost: free (open-source). Strengths: runs locally, no data leaves your machine, full customization. Weakness: requires technical setup, quality slightly behind commercial options.</p>
-  <p class="section-text"><strong style="color: var(--red);">Edge TTS</strong> — Best for: prototyping, budget projects, bulk generation. Cost: free. Strengths: surprisingly good quality for zero cost, easy Python library (edge-tts). Weakness: limited voice customization, depends on Microsoft servers.</p>
+  <p class="section-text"><strong>ElevenLabs</strong> — Best for: content creators, voiceover, audiobooks. Free tier: 10,000 characters/month. Starter plan: $5/month for 30,000 characters. Strengths: emotional range, multilingual (29 languages), voice cloning built in. Weakness: can sound slightly over-processed on dry technical content.</p>
+  <p class="section-text"><strong>OpenAI TTS</strong> — Best for: developers building apps, quick prototypes. Pricing: $15/million characters (tts-1), $30/million characters (tts-1-hd). Strengths: dead-simple API, rock-solid reliability, consistent output. Weakness: only six voices, no voice cloning, limited customization.</p>
+  <p class="section-text"><strong>Google Cloud TTS</strong> — Best for: enterprise, multilingual apps, IVR systems. Pricing: free for first 4 million characters/month (standard), $4-16/million for WaveNet/Neural2. Strengths: 220+ voices, 40+ languages, SSML support. Weakness: requires GCP account setup, more complex integration.</p>
+  <p class="section-text"><strong>Coqui / XTTS</strong> — Best for: privacy-sensitive projects, offline use, experimentation. Cost: free (open-source). Strengths: runs locally, no data leaves your machine, full customization. Weakness: requires technical setup, quality slightly behind commercial options.</p>
+  <p class="section-text"><strong>Edge TTS</strong> — Best for: prototyping, budget projects, bulk generation. Cost: free. Strengths: surprisingly good quality for zero cost, easy Python library (edge-tts). Weakness: limited voice customization, depends on Microsoft servers.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Code Example</span>
   <h2 class="section-title">TTS API Integration in Python</h2>
   <p class="section-text">Here is how to call three different TTS APIs from Python. Each example generates speech from the same text so you can compare outputs directly:</p>
-  <div class="prompt-box"><code># --- OpenAI TTS ---
+  <div class="demo-container"><code># --- OpenAI TTS ---
 from openai import OpenAI
 client = OpenAI()
 response = client.audio.speech.create(
@@ -106,7 +106,7 @@ asyncio.run(generate())</code></div>
   <h2 class="section-title">SSML Mastery: Fine-Tuning Every Syllable</h2>
   <p class="section-text">SSML is your precision tool. While basic text input gets you 80% of the way, SSML handles the remaining 20% — the pauses that create drama, the emphasis that drives meaning, the pronunciation that prevents embarrassing errors.</p>
   <p class="section-text">Here is a complete SSML example that demonstrates the most useful tags working together:</p>
-  <div class="prompt-box"><code>&lt;speak&gt;
+  <div class="demo-container"><code>&lt;speak&gt;
   &lt;prosody rate="95%" pitch="+2%"&gt;
     Welcome to Signal and Noise.
   &lt;/prosody&gt;
@@ -166,10 +166,10 @@ asyncio.run(generate())</code></div>
   <p class="section-text"><strong>Step 5 — Post-processing:</strong> Run the final audio through Auphonic or your mastering chain. Normalize loudness to your platform's standard. Add room tone, intro/outro, and any music beds. Export in the required format.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It: The Same Text, Three Ways</h3>
   <p>Take this paragraph and generate it on <strong>three different TTS platforms</strong>. Compare the results:</p>
-  <div class="prompt-box"><code>I didn't expect it to work. But when I pressed play and heard my own words come back to me in a voice that wasn't mine — a voice that somehow understood where to pause, where to push — I realized the game had changed.</code></div>
+  <div class="demo-container"><code>I didn't expect it to work. But when I pressed play and heard my own words come back to me in a voice that wasn't mine — a voice that somehow understood where to pause, where to push — I realized the game had changed.</code></div>
   <p>Notice how each platform handles the em-dash, the emotional arc, and the final phrase. These differences define your tool choice for real projects.</p>
 </div>
 

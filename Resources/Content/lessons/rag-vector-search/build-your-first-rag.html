@@ -24,8 +24,8 @@
 
     <p>A knowledge-base chatbot that can answer questions about any collection of documents. You will load text files, split them into searchable chunks, embed them with OpenAI, store them in either Chroma (for quick prototyping) or Supabase pgvector (for production), and query them with Claude. The same architecture powers customer support bots, internal knowledge systems, and documentation search at companies of every size.</p>
 
-    <div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#e5e5e5">Prerequisites:</strong> Python 3.9+, an OpenAI API key (for embeddings), and an Anthropic API key (for generation). Install dependencies: <code>pip install openai anthropic chromadb</code>
+    <div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;line-height:1.7">
+      <strong>Prerequisites:</strong> Python 3.9+, an OpenAI API key (for embeddings), and an Anthropic API key (for generation). Install dependencies: <code>pip install openai anthropic chromadb</code>
     </div>
   </div>
 
@@ -33,7 +33,7 @@
     <h2>Step 1: Load Your Documents</h2>
     <p>Your RAG system can only answer questions about information it has seen. The first step is loading the documents that will become your knowledge base.</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> os
 <span style="color:#c084fc">from</span> pathlib <span style="color:#c084fc">import</span> Path
 
@@ -53,14 +53,14 @@
 <span style="color:#71717a"># Load your knowledge base</span>
 documents = load_documents(<span style="color:#fbbf24">"./knowledge-base"</span>)</code></pre>
     </div>
-    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">In production, you would also support PDFs (PyPDF2), web pages (BeautifulSoup), Markdown, and databases. The pattern is the same: extract text + attach metadata.</p>
+    <p style="font-size:.82rem;margin-top:.5rem">In production, you would also support PDFs (PyPDF2), web pages (BeautifulSoup), Markdown, and databases. The pattern is the same: extract text + attach metadata.</p>
   </div>
 
   <div class="section">
     <h2>Step 2: Chunk the Documents</h2>
     <p>Documents are too long to embed as single vectors. We split them into focused chunks with overlap to prevent boundary information loss.</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> re
 
 <span style="color:#c084fc">def</span> <span style="color:#38bdf8">chunk_document</span>(doc, max_words=<span style="color:#fbbf24">200</span>, overlap_sentences=<span style="color:#fbbf24">1</span>):
@@ -103,7 +103,7 @@ all_chunks = []
     <h2>Step 3: Embed All Chunks</h2>
     <p>Convert every chunk into a vector using the OpenAI embedding API. Batch processing is significantly cheaper and faster than embedding one at a time.</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> openai <span style="color:#c084fc">import</span> OpenAI
 
 client = OpenAI()
@@ -129,15 +129,15 @@ client = OpenAI()
 all_chunks = embed_chunks(all_chunks)
 <span style="color:#34d399">print</span>(<span style="color:#c084fc">f</span><span style="color:#fbbf24">"All {len(all_chunks)} chunks embedded (1536 dimensions each)"</span>)</code></pre>
     </div>
-    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Cost estimate: embedding 10,000 chunks of 200 words each costs about $0.06 with text-embedding-3-small. Embedding is the cheapest part of a RAG system.</p>
+    <p style="font-size:.82rem;margin-top:.5rem">Cost estimate: embedding 10,000 chunks of 200 words each costs about $0.06 with text-embedding-3-small. Embedding is the cheapest part of a RAG system.</p>
   </div>
 
   <div class="section">
     <h2>Step 4: Store in a Vector Database</h2>
     <p>Here are two options — Chroma for prototyping, Supabase for production:</p>
 
-    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem;color:#e5e5e5">Option A: Chroma (Prototype)</h3>
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem">Option A: Chroma (Prototype)</h3>
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> chromadb
 
 chroma = chromadb.PersistentClient(path=<span style="color:#fbbf24">"./chroma-db"</span>)
@@ -153,8 +153,8 @@ collection.add(
 <span style="color:#34d399">print</span>(<span style="color:#c084fc">f</span><span style="color:#fbbf24">"Stored {collection.count()} chunks in Chroma"</span>)</code></pre>
     </div>
 
-    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem;color:#e5e5e5">Option B: Supabase pgvector (Production)</h3>
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <h3 style="font-size:.95rem;margin:1.5rem 0 .75rem">Option B: Supabase pgvector (Production)</h3>
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> supabase <span style="color:#c084fc">import</span> create_client
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
@@ -178,7 +178,7 @@ supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
     <h2>Step 5: Query Your RAG System</h2>
     <p>Now bring it all together — embed the user's question, search for relevant chunks, and generate a grounded answer:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 claude = anthropic.Anthropic()
@@ -230,25 +230,25 @@ answer = ask(<span style="color:#fbbf24">"What is the refund policy?"</span>)
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">chunk_size</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Start at 200 words. If answers lack context, increase to 300-400. If answers include irrelevant content, decrease to 100-150.</p>
+        <strong style="font-size:.85rem">chunk_size</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Start at 200 words. If answers lack context, increase to 300-400. If answers include irrelevant content, decrease to 100-150.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6;font-size:.85rem">top_k</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Start at 5. If the right answer is not being found, increase to 8-10. If the LLM seems confused by too much context, decrease to 3.</p>
+        <strong style="font-size:.85rem">top_k</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Start at 5. If the right answer is not being found, increase to 8-10. If the LLM seems confused by too much context, decrease to 3.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c;font-size:.85rem">similarity_threshold</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Start at 0.75. If irrelevant chunks are being retrieved, raise to 0.8-0.85. If too few results are returned, lower to 0.65-0.70.</p>
+        <strong style="font-size:.85rem">similarity_threshold</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Start at 0.75. If irrelevant chunks are being retrieved, raise to 0.8-0.85. If too few results are returned, lower to 0.65-0.70.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">temperature</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">For factual RAG, use 0.0-0.2. Higher values make the model more creative — which is the opposite of what you want for grounded answers.</p>
+        <strong style="font-size:.85rem">temperature</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">For factual RAG, use 0.0-0.2. Higher values make the model more creative — which is the opposite of what you want for grounded answers.</p>
       </div>
     </div>
 
-    <div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#e5e5e5">Pro Tip:</strong> Keep a test set of 10-20 question-answer pairs that you know the correct answers to. After every parameter change, run your test set and check whether accuracy improved. Lesson 8 covers automated evaluation frameworks that do this at scale.
+    <div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;line-height:1.7">
+      <strong>Pro Tip:</strong> Keep a test set of 10-20 question-answer pairs that you know the correct answers to. After every parameter change, run your test set and check whether accuracy improved. Lesson 8 covers automated evaluation frameworks that do this at scale.
     </div>
   </div>
 
@@ -256,10 +256,10 @@ answer = ask(<span style="color:#fbbf24">"What is the refund policy?"</span>)
     <h2>What You Built</h2>
     <p>Congratulations — you now have a working RAG system. Let's summarize the architecture:</p>
 
-    <div style="font-size:.85rem;color:#a1a1aa;line-height:1.8;margin:1rem 0">
-      <strong style="color:#e5e5e5">Document Pipeline:</strong> Load files → Chunk (sentence-based, 200 words, 1-sentence overlap) → Embed (OpenAI text-embedding-3-small, 1536 dimensions) → Store (Chroma or Supabase pgvector)<br><br>
-      <strong style="color:#e5e5e5">Query Pipeline:</strong> User question → Embed query → Vector search (top-5, threshold 0.75) → Augment prompt with context → Claude generates grounded answer<br><br>
-      <strong style="color:#e5e5e5">Total Code:</strong> ~100 lines of Python. The same architecture powers production systems at scale — you just add more documents, better chunking, and evaluation.
+    <div style="font-size:.85rem;line-height:1.8;margin:1rem 0">
+      <strong>Document Pipeline:</strong> Load files → Chunk (sentence-based, 200 words, 1-sentence overlap) → Embed (OpenAI text-embedding-3-small, 1536 dimensions) → Store (Chroma or Supabase pgvector)<br><br>
+      <strong>Query Pipeline:</strong> User question → Embed query → Vector search (top-5, threshold 0.75) → Augment prompt with context → Claude generates grounded answer<br><br>
+      <strong>Total Code:</strong> ~100 lines of Python. The same architecture powers production systems at scale — you just add more documents, better chunking, and evaluation.
     </div>
   </div>
 

@@ -12,7 +12,7 @@
 
 <p>The most common enterprise AI mistake is not choosing the wrong model or the wrong vendor. It is building the wrong team. Organizations hire three data scientists, give them a Jupyter notebook, declare themselves "AI-ready," and then wonder why nothing ever makes it to production.</p>
 
-<p>The truth is uncomfortable: <strong style="color:#e5e5e5">data scientists alone cannot deliver enterprise AI</strong>. They can build models. They cannot build data pipelines, deploy to production, monitor for drift, translate business requirements, manage stakeholders, or navigate the organizational politics that determine whether an AI project lives or dies. You need an ecosystem — and the most critical role in that ecosystem is not the one you think.</p>
+<p>The truth is uncomfortable: <strong>data scientists alone cannot deliver enterprise AI</strong>. They can build models. They cannot build data pipelines, deploy to production, monitor for drift, translate business requirements, manage stakeholders, or navigate the organizational politics that determine whether an AI project lives or dies. You need an ecosystem — and the most critical role in that ecosystem is not the one you think.</p>
 
 <p>This lesson breaks down how to build, hire, and organize an AI team that actually delivers — even if you are starting from zero.</p>
 </div>
@@ -23,53 +23,53 @@
 
 <div style="display:grid;gap:.75rem;margin-top:1rem">
 <div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:rgba(244,114,182,.06);border-radius:10px;border:1px solid rgba(244,114,182,.1)">
-<div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(244,114,182,.15);display:flex;align-items:center;justify-content:center;font-weight:700;color:#f472b6;font-size:.8rem">⭐</div>
+<div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(244,114,182,.15);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem">⭐</div>
 <div>
-<strong style="color:#f472b6;font-size:.88rem">AI Product Manager — Hire First</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0;line-height:1.7">Translates business needs into technical requirements and back again. Scopes use cases, defines success metrics, manages stakeholders, and makes build vs. buy decisions. This is the most commonly missing role and the most critical — without it, data scientists build interesting models that solve the wrong problem.</p>
-<p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0"><strong>Key skill:</strong> Fluency in both business language and technical concepts. Can explain gradient descent to a CFO and unit economics to an ML engineer.</p>
+<strong style="font-size:.88rem">AI Product Manager — Hire First</strong>
+<p style="font-size:.82rem;margin:.3rem 0 0;line-height:1.7">Translates business needs into technical requirements and back again. Scopes use cases, defines success metrics, manages stakeholders, and makes build vs. buy decisions. This is the most commonly missing role and the most critical — without it, data scientists build interesting models that solve the wrong problem.</p>
+<p style="font-size:.78rem;margin:.2rem 0 0"><strong>Key skill:</strong> Fluency in both business language and technical concepts. Can explain gradient descent to a CFO and unit economics to an ML engineer.</p>
 </div>
 </div>
 <div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:rgba(139,92,246,.04);border-radius:10px;border:1px solid rgba(139,92,246,.08)">
 <div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(139,92,246,.12);display:flex;align-items:center;justify-content:center;font-size:.9rem">🔬</div>
 <div>
-<strong style="color:#8b5cf6;font-size:.88rem">AI/ML Engineer</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0;line-height:1.7">Builds, trains, and evaluates models. Selects architectures. Tunes hyperparameters. In the LLM era, this increasingly means prompt engineering, fine-tuning, and RAG pipeline design rather than training from scratch. The distinction between "ML engineer" and "AI engineer" is blurring — you want someone who can work with both custom models and API-based AI.</p>
+<strong style="font-size:.88rem">AI/ML Engineer</strong>
+<p style="font-size:.82rem;margin:.3rem 0 0;line-height:1.7">Builds, trains, and evaluates models. Selects architectures. Tunes hyperparameters. In the LLM era, this increasingly means prompt engineering, fine-tuning, and RAG pipeline design rather than training from scratch. The distinction between "ML engineer" and "AI engineer" is blurring — you want someone who can work with both custom models and API-based AI.</p>
 </div>
 </div>
 <div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:rgba(52,211,153,.04);border-radius:10px;border:1px solid rgba(52,211,153,.08)">
 <div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(52,211,153,.12);display:flex;align-items:center;justify-content:center;font-size:.9rem">🔧</div>
 <div>
-<strong style="color:#34d399;font-size:.88rem">Data Engineer</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0;line-height:1.7">Builds and maintains the data pipelines that feed AI systems. ETL/ELT, data warehousing, pipeline orchestration, data quality monitoring. Without reliable data pipelines, your data scientists spend 80% of their time cleaning data instead of building models. This role is the unsung hero of every successful AI team.</p>
+<strong style="font-size:.88rem">Data Engineer</strong>
+<p style="font-size:.82rem;margin:.3rem 0 0;line-height:1.7">Builds and maintains the data pipelines that feed AI systems. ETL/ELT, data warehousing, pipeline orchestration, data quality monitoring. Without reliable data pipelines, your data scientists spend 80% of their time cleaning data instead of building models. This role is the unsung hero of every successful AI team.</p>
 </div>
 </div>
 <div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:rgba(251,146,60,.04);border-radius:10px;border:1px solid rgba(251,146,60,.08)">
 <div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(251,146,60,.12);display:flex;align-items:center;justify-content:center;font-size:.9rem">🏭</div>
 <div>
-<strong style="color:#fb923c;font-size:.88rem">MLOps Engineer</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0;line-height:1.7">Deploys AI systems to production and keeps them running. CI/CD for models, monitoring for drift, A/B testing infrastructure, scaling, security. This is the difference between a demo and a live product. Many organizations do not realize they need this role until their first model degrades in production and nobody knows why.</p>
+<strong style="font-size:.88rem">MLOps Engineer</strong>
+<p style="font-size:.82rem;margin:.3rem 0 0;line-height:1.7">Deploys AI systems to production and keeps them running. CI/CD for models, monitoring for drift, A/B testing infrastructure, scaling, security. This is the difference between a demo and a live product. Many organizations do not realize they need this role until their first model degrades in production and nobody knows why.</p>
 </div>
 </div>
 <div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:rgba(56,189,248,.04);border-radius:10px;border:1px solid rgba(56,189,248,.08)">
 <div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(56,189,248,.12);display:flex;align-items:center;justify-content:center;font-size:.9rem">🏢</div>
 <div>
-<strong style="color:#38bdf8;font-size:.88rem">Domain Expert</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0;line-height:1.7">Knows the problem deeply from a business perspective. Provides context that cannot be learned from data alone. Validates whether model outputs make sense in the real world. The most dangerous AI system is one that produces statistically plausible but operationally wrong results — domain experts catch these before they cause damage.</p>
+<strong style="font-size:.88rem">Domain Expert</strong>
+<p style="font-size:.82rem;margin:.3rem 0 0;line-height:1.7">Knows the problem deeply from a business perspective. Provides context that cannot be learned from data alone. Validates whether model outputs make sense in the real world. The most dangerous AI system is one that produces statistically plausible but operationally wrong results — domain experts catch these before they cause damage.</p>
 </div>
 </div>
 <div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:rgba(234,179,8,.04);border-radius:10px;border:1px solid rgba(234,179,8,.08)">
 <div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(234,179,8,.12);display:flex;align-items:center;justify-content:center;font-size:.9rem">⚖️</div>
 <div>
-<strong style="color:#eab308;font-size:.88rem">Governance/Ethics Lead</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0;line-height:1.7">Ensures responsible AI use. Bias auditing, fairness testing, compliance with regulations, transparency documentation. This does not need to be a full-time role early on — but someone must own it. The cost of an AI bias incident in the press is orders of magnitude higher than the cost of prevention.</p>
+<strong style="font-size:.88rem">Governance/Ethics Lead</strong>
+<p style="font-size:.82rem;margin:.3rem 0 0;line-height:1.7">Ensures responsible AI use. Bias auditing, fairness testing, compliance with regulations, transparency documentation. This does not need to be a full-time role early on — but someone must own it. The cost of an AI bias incident in the press is orders of magnitude higher than the cost of prevention.</p>
 </div>
 </div>
 <div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:rgba(239,68,68,.04);border-radius:10px;border:1px solid rgba(239,68,68,.08)">
 <div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(239,68,68,.12);display:flex;align-items:center;justify-content:center;font-size:.9rem">🏛️</div>
 <div>
-<strong style="color:#ef4444;font-size:.88rem">Executive Sponsor</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0;line-height:1.7">Protects budget, removes organizational blockers, provides cross-departmental authority. This is not a hire — it is a commitment from an existing C-suite executive. Without it, your AI team has no air cover when political resistance emerges (and it always does).</p>
+<strong style="font-size:.88rem">Executive Sponsor</strong>
+<p style="font-size:.82rem;margin:.3rem 0 0;line-height:1.7">Protects budget, removes organizational blockers, provides cross-departmental authority. This is not a hire — it is a commitment from an existing C-suite executive. Without it, your AI team has no air cover when political resistance emerges (and it always does).</p>
 </div>
 </div>
 </div>
@@ -77,14 +77,14 @@
 
 <div class="card">
 <h2>Upskilling Over Hiring</h2>
-<p>The market for AI talent is brutal and expensive. Senior ML engineers command $300K+ in major markets, and they have their pick of employers. But your existing employees have something no external hire can bring: <strong style="color:#e5e5e5">deep knowledge of your business, your customers, and your data</strong>.</p>
+<p>The market for AI talent is brutal and expensive. Senior ML engineers command $300K+ in major markets, and they have their pick of employers. But your existing employees have something no external hire can bring: <strong>deep knowledge of your business, your customers, and your data</strong>.</p>
 
 <p>A domain expert who learns prompt engineering delivers more value in month one than a brilliant data scientist who spends six months learning your industry. An analyst who learns SQL-based ML (BigQuery ML, Snowflake Cortex) can build production models without writing a single line of Python. A product manager who understands AI trade-offs can scope use cases that actually ship.</p>
 
 <div style="display:grid;gap:.75rem;margin-top:1rem">
 <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-<strong style="color:#34d399;font-size:.88rem">The Upskilling Playbook</strong>
-<div style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0;line-height:1.7">
+<strong style="font-size:.88rem">The Upskilling Playbook</strong>
+<div style="font-size:.82rem;margin:.4rem 0 0;line-height:1.7">
 <div>→ <strong>Dedicate 10% of work time</strong> to AI skill development — not as a perk, as a strategic investment</div>
 <div>→ <strong>Create structured learning paths</strong> by role: PM path, analyst path, engineer path, leader path</div>
 <div>→ <strong>Partner junior developers</strong> with senior AI practitioners (external mentors if needed)</div>
@@ -95,8 +95,8 @@
 </div>
 </div>
 
-<div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);border-radius:12px;padding:1rem;margin-top:1rem;font-size:.82rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">The math is simple:</strong> Hiring one senior ML engineer costs $300K+/year. Upskilling 10 existing employees to be AI-literate costs about $50K in training and lost productivity. The 10 upskilled employees collectively understand your business 100x better than the one external hire. Do both — but start with upskilling.
+<div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);border-radius:12px;padding:1rem;margin-top:1rem;font-size:.82rem;line-height:1.7">
+<strong>The math is simple:</strong> Hiring one senior ML engineer costs $300K+/year. Upskilling 10 existing employees to be AI-literate costs about $50K in training and lost productivity. The 10 upskilled employees collectively understand your business 100x better than the one external hire. Do both — but start with upskilling.
 </div>
 </div>
 
@@ -107,54 +107,54 @@
 <div style="display:grid;gap:.75rem;margin-top:1rem">
 <div style="padding:1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem">
-<strong style="color:#34d399;font-size:.9rem">Centralized</strong>
-<span style="background:rgba(52,211,153,.12);color:#34d399;padding:.15rem .6rem;border-radius:6px;font-size:.72rem;font-weight:600">START HERE</span>
+<strong style="font-size:.9rem">Centralized</strong>
+<span style="background:rgba(52,211,153,.12);padding:.15rem .6rem;border-radius:6px;font-size:.72rem;font-weight:600">START HERE</span>
 </div>
-<p style="font-size:.85rem;color:#a1a1aa;margin:0;line-height:1.7">One AI team serves the whole organization. Good for building initial capability, establishing standards, and maintaining governance consistency. Bad for responsiveness — business units wait in a queue. Best when you have fewer than 3 production AI systems.</p>
+<p style="font-size:.85rem;margin:0;line-height:1.7">One AI team serves the whole organization. Good for building initial capability, establishing standards, and maintaining governance consistency. Bad for responsiveness — business units wait in a queue. Best when you have fewer than 3 production AI systems.</p>
 </div>
 <div style="padding:1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem">
-<strong style="color:#8b5cf6;font-size:.9rem">Hub-and-Spoke</strong>
-<span style="background:rgba(139,92,246,.12);color:#8b5cf6;padding:.15rem .6rem;border-radius:6px;font-size:.72rem;font-weight:600">SCALE TO THIS</span>
+<strong style="font-size:.9rem">Hub-and-Spoke</strong>
+<span style="background:rgba(139,92,246,.12);padding:.15rem .6rem;border-radius:6px;font-size:.72rem;font-weight:600">SCALE TO THIS</span>
 </div>
-<p style="font-size:.85rem;color:#a1a1aa;margin:0;line-height:1.7">A central team sets standards, builds platforms, and provides specialized expertise — while embedded practitioners in business units apply those standards to their specific domains. The best of both worlds: consistency from the center, relevance from the edge. This is where most mature AI organizations land.</p>
+<p style="font-size:.85rem;margin:0;line-height:1.7">A central team sets standards, builds platforms, and provides specialized expertise — while embedded practitioners in business units apply those standards to their specific domains. The best of both worlds: consistency from the center, relevance from the edge. This is where most mature AI organizations land.</p>
 </div>
 <div style="padding:1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem">
-<strong style="color:#fb923c;font-size:.9rem">Fully Embedded</strong>
-<span style="background:rgba(251,146,60,.12);color:#fb923c;padding:.15rem .6rem;border-radius:6px;font-size:.72rem;font-weight:600">ADVANCED</span>
+<strong style="font-size:.9rem">Fully Embedded</strong>
+<span style="background:rgba(251,146,60,.12);padding:.15rem .6rem;border-radius:6px;font-size:.72rem;font-weight:600">ADVANCED</span>
 </div>
-<p style="font-size:.85rem;color:#a1a1aa;margin:0;line-height:1.7">AI practitioners sit entirely within business units with no central team. Maximum responsiveness and business alignment. Risks: duplicated effort, inconsistent standards, knowledge silos. Only works when AI literacy is so widespread that central coordination is unnecessary. Few organizations reach this stage.</p>
+<p style="font-size:.85rem;margin:0;line-height:1.7">AI practitioners sit entirely within business units with no central team. Maximum responsiveness and business alignment. Risks: duplicated effort, inconsistent standards, knowledge silos. Only works when AI literacy is so widespread that central coordination is unnecessary. Few organizations reach this stage.</p>
 </div>
 </div>
 
-<p style="margin-top:1rem;font-size:.85rem;color:#a1a1aa;line-height:1.7">Start centralized to build capability. Move to hub-and-spoke as you scale — typically around your third or fourth production AI system. The transition requires investing in internal platforms (shared ML infrastructure, model registries, standard evaluation frameworks) that make it possible for distributed teams to work independently while maintaining quality standards.</p>
+<p style="margin-top:1rem;font-size:.85rem;line-height:1.7">Start centralized to build capability. Move to hub-and-spoke as you scale — typically around your third or fourth production AI system. The transition requires investing in internal platforms (shared ML infrastructure, model registries, standard evaluation frameworks) that make it possible for distributed teams to work independently while maintaining quality standards.</p>
 </div>
 
 <div class="card">
 <h2>Building a Learning Culture</h2>
-<p>AI capability is not a one-time hire. It is a <strong style="color:#e5e5e5">continuously compounding asset</strong> — but only if you build the culture to sustain it. The organizations that win at AI over a 5-year horizon are not the ones with the biggest teams. They are the ones where learning is built into how work gets done.</p>
+<p>AI capability is not a one-time hire. It is a <strong>continuously compounding asset</strong> — but only if you build the culture to sustain it. The organizations that win at AI over a 5-year horizon are not the ones with the biggest teams. They are the ones where learning is built into how work gets done.</p>
 
 <div style="display:grid;gap:.75rem;margin-top:1rem">
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(52,211,153,.04);border-radius:10px;border:1px solid rgba(52,211,153,.08)">
 <div style="font-size:1.1rem;min-width:1.5rem">📚</div>
 <div>
-<strong style="color:#34d399;font-size:.85rem">Make learning visible</strong>
-<p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0;line-height:1.6">Celebrate AI experiments in all-hands meetings. Share failure post-mortems as openly as success stories. When the CEO asks "what did we learn?" instead of "did it work?" — the culture shifts.</p>
+<strong style="font-size:.85rem">Make learning visible</strong>
+<p style="font-size:.78rem;margin:.2rem 0 0;line-height:1.6">Celebrate AI experiments in all-hands meetings. Share failure post-mortems as openly as success stories. When the CEO asks "what did we learn?" instead of "did it work?" — the culture shifts.</p>
 </div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(139,92,246,.04);border-radius:10px;border:1px solid rgba(139,92,246,.08)">
 <div style="font-size:1.1rem;min-width:1.5rem">🔄</div>
 <div>
-<strong style="color:#8b5cf6;font-size:.85rem">Build feedback loops</strong>
-<p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0;line-height:1.6">Every AI system should have a mechanism for users to flag wrong outputs. Those flags become training data for the next version. This creates a virtuous cycle: use → feedback → improvement → more use.</p>
+<strong style="font-size:.85rem">Build feedback loops</strong>
+<p style="font-size:.78rem;margin:.2rem 0 0;line-height:1.6">Every AI system should have a mechanism for users to flag wrong outputs. Those flags become training data for the next version. This creates a virtuous cycle: use → feedback → improvement → more use.</p>
 </div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(251,146,60,.04);border-radius:10px;border:1px solid rgba(251,146,60,.08)">
 <div style="font-size:1.1rem;min-width:1.5rem">🤝</div>
 <div>
-<strong style="color:#fb923c;font-size:.85rem">Reward AI application, not just AI knowledge</strong>
-<p style="font-size:.78rem;color:#71717a;margin:.2rem 0 0;line-height:1.6">A certification means nothing if it does not lead to a shipped product. Tie AI learning to business outcomes: "used AI to reduce processing time by X%" is worth more than "completed advanced ML course."</p>
+<strong style="font-size:.85rem">Reward AI application, not just AI knowledge</strong>
+<p style="font-size:.78rem;margin:.2rem 0 0;line-height:1.6">A certification means nothing if it does not lead to a shipped product. Tie AI learning to business outcomes: "used AI to reduce processing time by X%" is worth more than "completed advanced ML course."</p>
 </div>
 </div>
 </div>
@@ -166,13 +166,13 @@
 
 <p>The fear of job displacement is real, and ignoring it does not make it go away. Address it head-on: be transparent about which roles will change, invest in reskilling for affected employees, and show (with real examples from your organization) how AI makes people more effective rather than redundant. The companies that manage this transition with empathy and transparency attract the best talent. The ones that use AI as a threat lose their best people to competitors who treat them better.</p>
 
-<p style="font-size:.85rem;color:#a1a1aa;line-height:1.7">Build your team with that philosophy — AI as amplifier, not replacer — and you will attract talent that your competitors cannot.</p>
+<p style="font-size:.85rem;line-height:1.7">Build your team with that philosophy — AI as amplifier, not replacer — and you will attract talent that your competitors cannot.</p>
 </div>
 
 <div class="card">
 <h2>Try It Now: Plan Your AI Team</h2>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;line-height:1.7;overflow-x:auto">
 <pre style="margin:0;white-space:pre-wrap;color:#e5e5e5">Help me build an AI team strategy.
 
 Context:

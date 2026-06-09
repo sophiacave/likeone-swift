@@ -37,10 +37,10 @@
 <div class="lesson-section">
   <span class="section-label">Tools</span>
   <h2 class="section-title">Voice Cloning Platforms</h2>
-  <p class="section-text"><strong style="color: var(--orange);">ElevenLabs Instant Voice Cloning:</strong> Upload as little as 30 seconds. Results are impressive for the speed. Professional Voice Cloning requires more samples but produces studio-quality output.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Resemble AI:</strong> Built for enterprise. Custom voice models with fine control over emotion and style. Strong API for integration. Their real-time voice conversion is particularly powerful.</p>
-  <p class="section-text"><strong style="color: var(--green);">PlayHT:</strong> Good mid-tier option with solid cloning quality. Their voice marketplace lets you license cloned voices from real voice actors — an ethical model worth supporting.</p>
-  <p class="section-text"><strong style="color: var(--blue);">OpenVoice (open-source):</strong> Run locally. Clone any voice with a short reference clip. Great for experimentation and projects where you need full data control.</p>
+  <p class="section-text"><strong>ElevenLabs Instant Voice Cloning:</strong> Upload as little as 30 seconds. Results are impressive for the speed. Professional Voice Cloning requires more samples but produces studio-quality output.</p>
+  <p class="section-text"><strong>Resemble AI:</strong> Built for enterprise. Custom voice models with fine control over emotion and style. Strong API for integration. Their real-time voice conversion is particularly powerful.</p>
+  <p class="section-text"><strong>PlayHT:</strong> Good mid-tier option with solid cloning quality. Their voice marketplace lets you license cloned voices from real voice actors — an ethical model worth supporting.</p>
+  <p class="section-text"><strong>OpenVoice (open-source):</strong> Run locally. Clone any voice with a short reference clip. Great for experimentation and projects where you need full data control.</p>
 </div>
 
 <div class="lesson-section">
@@ -56,17 +56,17 @@
   <span class="section-label">Deep Dive</span>
   <h2 class="section-title">Voice Cloning Platform Comparison</h2>
   <p class="section-text">Each platform has different strengths depending on your use case, budget, and technical requirements:</p>
-  <p class="section-text"><strong style="color: var(--orange);">ElevenLabs</strong> — Instant clone: 30 seconds of audio. Professional clone: 30+ minutes for near-indistinguishable results. Cost: free tier for instant cloning, $5+/month for professional. Best for: content creators, individual projects, quick turnaround.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Resemble AI</strong> — Minimum: 3+ minutes of clean audio for best results. Cost: starts at $0.006/second of generated audio. Best for: enterprise products, real-time voice conversion, customer-facing applications. Unique feature: emotion control sliders let you dial specific feelings into the output.</p>
-  <p class="section-text"><strong style="color: var(--green);">PlayHT</strong> — Clone quality: solid mid-tier with good consistency across long-form content. Cost: starts at $29/month. Best for: audiobooks, ongoing content series. Unique feature: voice marketplace where real actors license their cloned voices — you get quality and ethics in one package.</p>
-  <p class="section-text"><strong style="color: var(--blue);">OpenVoice (open-source)</strong> — Clone from a single short reference clip. Cost: free, runs locally. Best for: experimentation, data-sensitive projects, custom fine-tuning. Trade-off: requires Python environment setup and GPU for best performance.</p>
+  <p class="section-text"><strong>ElevenLabs</strong> — Instant clone: 30 seconds of audio. Professional clone: 30+ minutes for near-indistinguishable results. Cost: free tier for instant cloning, $5+/month for professional. Best for: content creators, individual projects, quick turnaround.</p>
+  <p class="section-text"><strong>Resemble AI</strong> — Minimum: 3+ minutes of clean audio for best results. Cost: starts at $0.006/second of generated audio. Best for: enterprise products, real-time voice conversion, customer-facing applications. Unique feature: emotion control sliders let you dial specific feelings into the output.</p>
+  <p class="section-text"><strong>PlayHT</strong> — Clone quality: solid mid-tier with good consistency across long-form content. Cost: starts at $29/month. Best for: audiobooks, ongoing content series. Unique feature: voice marketplace where real actors license their cloned voices — you get quality and ethics in one package.</p>
+  <p class="section-text"><strong>OpenVoice (open-source)</strong> — Clone from a single short reference clip. Cost: free, runs locally. Best for: experimentation, data-sensitive projects, custom fine-tuning. Trade-off: requires Python environment setup and GPU for best performance.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Code Example</span>
   <h2 class="section-title">Voice Cloning API Integration</h2>
   <p class="section-text">Here is how to create and use a voice clone programmatically with the ElevenLabs API:</p>
-  <div class="prompt-box"><code># Step 1: Create a voice clone from audio samples
+  <div class="demo-container"><code># Step 1: Create a voice clone from audio samples
 import requests
 
 url = "https://api.elevenlabs.io/v1/voices/add"
@@ -168,10 +168,10 @@ with open("cloned_output.mp3", "wb") as f:
   <p class="section-text"><strong>Decision framework:</strong> If you need it today and it will be used once, use instant cloning. If it will be used across 10+ pieces of content, invest in professional cloning. The quality difference compounds over volume — a slight improvement multiplied across hundreds of generations is significant.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It: Clone Your Own Voice</h3>
   <p>Record yourself reading the passage below in a quiet space. Upload it to <strong>ElevenLabs</strong> (free tier) to create an instant clone:</p>
-  <div class="prompt-box"><code>The best technology disappears into usefulness. You stop thinking about the tool and start thinking about what you're making. That's when the real work begins — not when you learn the buttons, but when you forget them entirely and just create.</code></div>
+  <div class="demo-container"><code>The best technology disappears into usefulness. You stop thinking about the tool and start thinking about what you're making. That's when the real work begins — not when you learn the buttons, but when you forget them entirely and just create.</code></div>
   <p>Then type something completely different and hear your clone speak words you never said. That moment changes your understanding of what's possible.</p>
 </div>
 

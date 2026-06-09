@@ -28,29 +28,29 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">1. Accuracy</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">How often does the agent give correct, useful responses? Measure by running a test suite of known questions with expected answers.</p>
-        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem"><strong>Improve:</strong> Better system prompts, few-shot examples, output validation, tool result verification.</div>
+        <strong>1. Accuracy</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">How often does the agent give correct, useful responses? Measure by running a test suite of known questions with expected answers.</p>
+        <div style="font-size:.78rem;margin-top:.4rem"><strong>Improve:</strong> Better system prompts, few-shot examples, output validation, tool result verification.</div>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(96,165,250,.04);border:1px solid rgba(96,165,250,.1)">
-        <strong style="color:#60a5fa">2. Speed</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">How quickly does the agent complete tasks? Users expect responses within 5-10 seconds for simple queries, 30 seconds for complex multi-tool tasks.</p>
-        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem"><strong>Improve:</strong> Caching frequent queries, parallel tool calls, routing simple tasks to faster models.</div>
+        <strong>2. Speed</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">How quickly does the agent complete tasks? Users expect responses within 5-10 seconds for simple queries, 30 seconds for complex multi-tool tasks.</p>
+        <div style="font-size:.78rem;margin-top:.4rem"><strong>Improve:</strong> Caching frequent queries, parallel tool calls, routing simple tasks to faster models.</div>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">3. Reliability</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Does the agent work consistently without crashes or silent failures? Measure error rate over 100+ runs.</p>
-        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem"><strong>Improve:</strong> Retry logic, fallback tools, comprehensive error handling, dead letter queues.</div>
+        <strong>3. Reliability</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Does the agent work consistently without crashes or silent failures? Measure error rate over 100+ runs.</p>
+        <div style="font-size:.78rem;margin-top:.4rem"><strong>Improve:</strong> Retry logic, fallback tools, comprehensive error handling, dead letter queues.</div>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">4. Cost Efficiency</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">How much does each agent interaction cost? At scale, a $0.50 interaction that should cost $0.05 will kill your budget.</p>
-        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem"><strong>Improve:</strong> Caching, token limits, tiered model routing (fast model for simple tasks, powerful model for complex).</div>
+        <strong>4. Cost Efficiency</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">How much does each agent interaction cost? At scale, a $0.50 interaction that should cost $0.05 will kill your budget.</p>
+        <div style="font-size:.78rem;margin-top:.4rem"><strong>Improve:</strong> Caching, token limits, tiered model routing (fast model for simple tasks, powerful model for complex).</div>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
-        <strong style="color:#f472b6">5. User Satisfaction</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Are users happy? An agent can be technically correct but still frustrating if the tone is wrong, the format is confusing, or it does not explain its limitations.</p>
-        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem"><strong>Improve:</strong> Feedback collection, tone adjustments, clearer output formatting, transparency about limitations.</div>
+        <strong>5. User Satisfaction</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Are users happy? An agent can be technically correct but still frustrating if the tone is wrong, the format is confusing, or it does not explain its limitations.</p>
+        <div style="font-size:.78rem;margin-top:.4rem"><strong>Improve:</strong> Feedback collection, tone adjustments, clearer output formatting, transparency about limitations.</div>
       </div>
     </div>
   </div>
@@ -62,56 +62,56 @@
     <p>You cannot evaluate what you do not measure. Here is how to build an automated test suite for your agent:</p>
 
     <div style="background:#0a0a0f;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1rem;margin:1rem 0;font-family:monospace;font-size:.78rem;line-height:1.7;overflow-x:auto">
-      <span style="color:#71717a"># eval.py — Agent evaluation framework</span><br>
-      <span style="color:#c084fc">import</span> <span style="color:#e2e8f0">time</span><br>
+      <span># eval.py — Agent evaluation framework</span><br>
+      <span>import</span> <span>time</span><br>
       <br>
-      <span style="color:#e2e8f0">TEST_CASES</span> = [<br>
+      <span>TEST_CASES</span> = [<br>
       &nbsp;&nbsp;{<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"input"</span>: <span style="color:#fb923c">"What plan is jane@acme.co on?"</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"expected_tool"</span>: <span style="color:#fb923c">"lookup_customer"</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"expected_contains"</span>: [<span style="color:#fb923c">"Pro"</span>, <span style="color:#fb923c">"$49"</span>],<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>"input"</span>: <span>"What plan is jane@acme.co on?"</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>"expected_tool"</span>: <span>"lookup_customer"</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>"expected_contains"</span>: [<span>"Pro"</span>, <span>"$49"</span>],<br>
       &nbsp;&nbsp;},<br>
       &nbsp;&nbsp;{<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"input"</span>: <span style="color:#fb923c">"How do I reset my password?"</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"expected_tool"</span>: <span style="color:#fb923c">"search_knowledge_base"</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"expected_contains"</span>: [<span style="color:#fb923c">"settings"</span>, <span style="color:#fb923c">"reset"</span>],<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>"input"</span>: <span>"How do I reset my password?"</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>"expected_tool"</span>: <span>"search_knowledge_base"</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>"expected_contains"</span>: [<span>"settings"</span>, <span>"reset"</span>],<br>
       &nbsp;&nbsp;},<br>
       &nbsp;&nbsp;{<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"input"</span>: <span style="color:#fb923c">"I need help"</span>,&nbsp;&nbsp;<span style="color:#71717a"># Ambiguous</span><br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"expected_tool"</span>: <span style="color:#c084fc">None</span>,&nbsp;&nbsp;<span style="color:#71717a"># Should ask for clarification</span><br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"expected_contains"</span>: [<span style="color:#fb923c">"what"</span>, <span style="color:#fb923c">"help"</span>],<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>"input"</span>: <span>"I need help"</span>,&nbsp;&nbsp;<span># Ambiguous</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>"expected_tool"</span>: <span>None</span>,&nbsp;&nbsp;<span># Should ask for clarification</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>"expected_contains"</span>: [<span>"what"</span>, <span>"help"</span>],<br>
       &nbsp;&nbsp;},<br>
       ]<br>
       <br>
-      <span style="color:#c084fc">def</span> <span style="color:#34d399">evaluate_agent</span>(<span style="color:#e2e8f0">agent_fn</span>):<br>
-      &nbsp;&nbsp;<span style="color:#e2e8f0">results</span> = []<br>
-      &nbsp;&nbsp;<span style="color:#c084fc">for</span> <span style="color:#e2e8f0">case</span> <span style="color:#c084fc">in</span> <span style="color:#e2e8f0">TEST_CASES</span>:<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">start</span> = <span style="color:#e2e8f0">time</span>.<span style="color:#34d399">time</span>()<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">try</span>:<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">response</span> = <span style="color:#34d399">agent_fn</span>(<span style="color:#e2e8f0">case</span>[<span style="color:#fb923c">"input"</span>])<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">elapsed</span> = <span style="color:#e2e8f0">time</span>.<span style="color:#34d399">time</span>() - <span style="color:#e2e8f0">start</span><br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">results</span>.<span style="color:#34d399">append</span>({<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"input"</span>: <span style="color:#e2e8f0">case</span>[<span style="color:#fb923c">"input"</span>],<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"passed"</span>: <span style="color:#34d399">all</span>(<span style="color:#e2e8f0">kw</span>.<span style="color:#34d399">lower</span>() <span style="color:#c084fc">in</span> <span style="color:#e2e8f0">response</span>.<span style="color:#34d399">lower</span>()<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">for</span> <span style="color:#e2e8f0">kw</span> <span style="color:#c084fc">in</span> <span style="color:#e2e8f0">case</span>[<span style="color:#fb923c">"expected_contains"</span>]),<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"time_s"</span>: <span style="color:#34d399">round</span>(<span style="color:#e2e8f0">elapsed</span>, <span style="color:#fb923c">2</span>),<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"error"</span>: <span style="color:#c084fc">None</span><br>
+      <span>def</span> <span>evaluate_agent</span>(<span>agent_fn</span>):<br>
+      &nbsp;&nbsp;<span>results</span> = []<br>
+      &nbsp;&nbsp;<span>for</span> <span>case</span> <span>in</span> <span>TEST_CASES</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>start</span> = <span>time</span>.<span>time</span>()<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>try</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>response</span> = <span>agent_fn</span>(<span>case</span>[<span>"input"</span>])<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>elapsed</span> = <span>time</span>.<span>time</span>() - <span>start</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>results</span>.<span>append</span>({<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>"input"</span>: <span>case</span>[<span>"input"</span>],<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>"passed"</span>: <span>all</span>(<span>kw</span>.<span>lower</span>() <span>in</span> <span>response</span>.<span>lower</span>()<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>for</span> <span>kw</span> <span>in</span> <span>case</span>[<span>"expected_contains"</span>]),<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>"time_s"</span>: <span>round</span>(<span>elapsed</span>, <span>2</span>),<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>"error"</span>: <span>None</span><br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">except</span> <span style="color:#e2e8f0">Exception</span> <span style="color:#c084fc">as</span> <span style="color:#e2e8f0">e</span>:<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">results</span>.<span style="color:#34d399">append</span>({<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"input"</span>: <span style="color:#e2e8f0">case</span>[<span style="color:#fb923c">"input"</span>],<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"passed"</span>: <span style="color:#c084fc">False</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"error"</span>: <span style="color:#c084fc">str</span>(<span style="color:#e2e8f0">e</span>)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>except</span> <span>Exception</span> <span>as</span> <span>e</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>results</span>.<span>append</span>({<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>"input"</span>: <span>case</span>[<span>"input"</span>],<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>"passed"</span>: <span>False</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>"error"</span>: <span>str</span>(<span>e</span>)<br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})<br>
       <br>
-      &nbsp;&nbsp;<span style="color:#71717a"># Calculate scores</span><br>
-      &nbsp;&nbsp;<span style="color:#e2e8f0">accuracy</span> = <span style="color:#34d399">sum</span>(<span style="color:#e2e8f0">r</span>[<span style="color:#fb923c">"passed"</span>] <span style="color:#c084fc">for</span> <span style="color:#e2e8f0">r</span> <span style="color:#c084fc">in</span> <span style="color:#e2e8f0">results</span>) / <span style="color:#34d399">len</span>(<span style="color:#e2e8f0">results</span>)<br>
-      &nbsp;&nbsp;<span style="color:#e2e8f0">avg_time</span> = <span style="color:#34d399">sum</span>(<span style="color:#e2e8f0">r</span>.<span style="color:#34d399">get</span>(<span style="color:#fb923c">"time_s"</span>, <span style="color:#fb923c">0</span>) <span style="color:#c084fc">for</span> <span style="color:#e2e8f0">r</span> <span style="color:#c084fc">in</span> <span style="color:#e2e8f0">results</span>) / <span style="color:#34d399">len</span>(<span style="color:#e2e8f0">results</span>)<br>
-      &nbsp;&nbsp;<span style="color:#e2e8f0">errors</span> = <span style="color:#34d399">sum</span>(<span style="color:#fb923c">1</span> <span style="color:#c084fc">for</span> <span style="color:#e2e8f0">r</span> <span style="color:#c084fc">in</span> <span style="color:#e2e8f0">results</span> <span style="color:#c084fc">if</span> <span style="color:#e2e8f0">r</span>[<span style="color:#fb923c">"error"</span>])<br>
+      &nbsp;&nbsp;<span># Calculate scores</span><br>
+      &nbsp;&nbsp;<span>accuracy</span> = <span>sum</span>(<span>r</span>[<span>"passed"</span>] <span>for</span> <span>r</span> <span>in</span> <span>results</span>) / <span>len</span>(<span>results</span>)<br>
+      &nbsp;&nbsp;<span>avg_time</span> = <span>sum</span>(<span>r</span>.<span>get</span>(<span>"time_s"</span>, <span>0</span>) <span>for</span> <span>r</span> <span>in</span> <span>results</span>) / <span>len</span>(<span>results</span>)<br>
+      &nbsp;&nbsp;<span>errors</span> = <span>sum</span>(<span>1</span> <span>for</span> <span>r</span> <span>in</span> <span>results</span> <span>if</span> <span>r</span>[<span>"error"</span>])<br>
       <br>
-      &nbsp;&nbsp;<span style="color:#34d399">print</span>(<span style="color:#fb923c">f"Accuracy: {accuracy*100:.0f}%"</span>)<br>
-      &nbsp;&nbsp;<span style="color:#34d399">print</span>(<span style="color:#fb923c">f"Avg time: {avg_time:.1f}s"</span>)<br>
-      &nbsp;&nbsp;<span style="color:#34d399">print</span>(<span style="color:#fb923c">f"Errors: {errors}/{len(results)}"</span>)
+      &nbsp;&nbsp;<span>print</span>(<span>f"Accuracy: {accuracy*100:.0f}%"</span>)<br>
+      &nbsp;&nbsp;<span>print</span>(<span>f"Avg time: {avg_time:.1f}s"</span>)<br>
+      &nbsp;&nbsp;<span>print</span>(<span>f"Errors: {errors}/{len(results)}"</span>)
     </div>
   </div>
 
@@ -122,20 +122,20 @@
 
     <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Testing only the happy path</strong>
-        <span style="font-size:.8rem;color:#a1a1aa"> — Your test suite only has clear, well-formed queries. Add ambiguous inputs, edge cases, and adversarial prompts. Real users are messy.</span>
+        <strong style="font-size:.85rem">Testing only the happy path</strong>
+        <span style="font-size:.8rem"> — Your test suite only has clear, well-formed queries. Add ambiguous inputs, edge cases, and adversarial prompts. Real users are messy.</span>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Ignoring speed</strong>
-        <span style="font-size:.8rem;color:#a1a1aa"> — An agent that takes 45 seconds per response will frustrate users even if every answer is perfect. Measure latency on every test case.</span>
+        <strong style="font-size:.85rem">Ignoring speed</strong>
+        <span style="font-size:.8rem"> — An agent that takes 45 seconds per response will frustrate users even if every answer is perfect. Measure latency on every test case.</span>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Measuring once</strong>
-        <span style="font-size:.8rem;color:#a1a1aa"> — LLM outputs are non-deterministic. Run each test case 3-5 times and measure the spread. An agent that passes 3/5 times is 60% reliable, not 100%.</span>
+        <strong style="font-size:.85rem">Measuring once</strong>
+        <span style="font-size:.8rem"> — LLM outputs are non-deterministic. Run each test case 3-5 times and measure the spread. An agent that passes 3/5 times is 60% reliable, not 100%.</span>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">No production monitoring</strong>
-        <span style="font-size:.8rem;color:#a1a1aa"> — Pre-launch testing is not enough. Log every production interaction and review failure cases weekly. Accuracy drifts over time as user patterns change.</span>
+        <strong style="font-size:.85rem">No production monitoring</strong>
+        <span style="font-size:.8rem"> — Pre-launch testing is not enough. Log every production interaction and review failure cases weekly. Accuracy drifts over time as user patterns change.</span>
       </div>
     </div>
   </div>
@@ -146,29 +146,29 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">Step 1 — Define Test Cases</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Write three categories of test cases: <strong style="color:#e5e5e5">happy path</strong> (clear, well-formed queries your agent is designed for), <strong style="color:#e5e5e5">edge cases</strong> (unusual inputs, empty strings, extremely long queries, special characters), and <strong style="color:#e5e5e5">adversarial</strong> (prompt injections, attempts to make the agent ignore its instructions, requests for actions outside its scope).</p>
-        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem"><strong>Target:</strong> At least 10 happy path, 5 edge cases, and 5 adversarial cases per agent capability.</div>
+        <strong>Step 1 — Define Test Cases</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Write three categories of test cases: <strong>happy path</strong> (clear, well-formed queries your agent is designed for), <strong>edge cases</strong> (unusual inputs, empty strings, extremely long queries, special characters), and <strong>adversarial</strong> (prompt injections, attempts to make the agent ignore its instructions, requests for actions outside its scope).</p>
+        <div style="font-size:.78rem;margin-top:.4rem"><strong>Target:</strong> At least 10 happy path, 5 edge cases, and 5 adversarial cases per agent capability.</div>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(96,165,250,.04);border:1px solid rgba(96,165,250,.1)">
-        <strong style="color:#60a5fa">Step 2 — Run Batch Tests</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Run each test case <strong style="color:#e5e5e5">3-5 times</strong>. LLM outputs are non-deterministic, so a single pass tells you almost nothing about reliability. Record every response, every tool call, every latency measurement. A test case that passes 4 out of 5 runs is 80% reliable — not 100%.</p>
-        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem"><strong>Tip:</strong> Automate this with a loop. Never run evaluation tests by hand — you will skip cases and introduce bias.</div>
+        <strong>Step 2 — Run Batch Tests</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Run each test case <strong>3-5 times</strong>. LLM outputs are non-deterministic, so a single pass tells you almost nothing about reliability. Record every response, every tool call, every latency measurement. A test case that passes 4 out of 5 runs is 80% reliable — not 100%.</p>
+        <div style="font-size:.78rem;margin-top:.4rem"><strong>Tip:</strong> Automate this with a loop. Never run evaluation tests by hand — you will skip cases and introduce bias.</div>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">Step 3 — Calculate Dimension Scores</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Aggregate your batch results into a score for each of the five dimensions. Accuracy = percentage of correct responses across all runs. Speed = average latency. Reliability = percentage of runs without errors or crashes. Cost = average token spend per interaction. Satisfaction = manual review score or user feedback rating.</p>
-        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem"><strong>Formula:</strong> dimension_score = (passes / total_runs) * 100, weighted by severity if needed.</div>
+        <strong>Step 3 — Calculate Dimension Scores</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Aggregate your batch results into a score for each of the five dimensions. Accuracy = percentage of correct responses across all runs. Speed = average latency. Reliability = percentage of runs without errors or crashes. Cost = average token spend per interaction. Satisfaction = manual review score or user feedback rating.</p>
+        <div style="font-size:.78rem;margin-top:.4rem"><strong>Formula:</strong> dimension_score = (passes / total_runs) * 100, weighted by severity if needed.</div>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">Step 4 — Check Against the 70+ Threshold</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Every dimension must score <strong style="color:#e5e5e5">70 or above</strong>. This is not an average — it is a minimum per dimension. An agent scoring 95/90/88/92/<strong style="color:#ef4444">55</strong> fails because one dimension is below threshold. The chain is only as strong as its weakest link.</p>
-        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem"><strong>Why 70?</strong> Below 70 means roughly 1 in 3 interactions will disappoint. Users forgive occasional issues but not frequent ones.</div>
+        <strong>Step 4 — Check Against the 70+ Threshold</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Every dimension must score <strong>70 or above</strong>. This is not an average — it is a minimum per dimension. An agent scoring 95/90/88/92/<strong>55</strong> fails because one dimension is below threshold. The chain is only as strong as its weakest link.</p>
+        <div style="font-size:.78rem;margin-top:.4rem"><strong>Why 70?</strong> Below 70 means roughly 1 in 3 interactions will disappoint. Users forgive occasional issues but not frequent ones.</div>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
-        <strong style="color:#f472b6">Step 5 — Deploy or Iterate</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">If all five dimensions are 70+, deploy with monitoring (see next section). If any dimension is below 70, <strong style="color:#e5e5e5">fix the lowest-scoring dimension first</strong>. Do not try to improve everything at once. Target the weakest link, re-run evaluation, and repeat until all dimensions pass.</p>
-        <div style="font-size:.78rem;color:#71717a;margin-top:.4rem"><strong>Common fixes by dimension:</strong> Accuracy → better prompts, few-shot examples. Speed → caching, model routing. Reliability → retry logic, error handling. Cost → token limits, tiered models. Satisfaction → tone tuning, output formatting.</div>
+        <strong>Step 5 — Deploy or Iterate</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">If all five dimensions are 70+, deploy with monitoring (see next section). If any dimension is below 70, <strong>fix the lowest-scoring dimension first</strong>. Do not try to improve everything at once. Target the weakest link, re-run evaluation, and repeat until all dimensions pass.</p>
+        <div style="font-size:.78rem;margin-top:.4rem"><strong>Common fixes by dimension:</strong> Accuracy → better prompts, few-shot examples. Speed → caching, model routing. Reliability → retry logic, error handling. Cost → token limits, tiered models. Satisfaction → tone tuning, output formatting.</div>
       </div>
     </div>
   </div>
@@ -199,63 +199,63 @@
 
     <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">Log every production interaction</strong>
-        <span style="font-size:.8rem;color:#a1a1aa"> — Store the input, output, tool calls, latency, and token count for every request. This is your evaluation dataset for free — real user behavior, not synthetic tests.</span>
+        <strong style="font-size:.85rem">Log every production interaction</strong>
+        <span style="font-size:.8rem"> — Store the input, output, tool calls, latency, and token count for every request. This is your evaluation dataset for free — real user behavior, not synthetic tests.</span>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(96,165,250,.04);border:1px solid rgba(96,165,250,.1)">
-        <strong style="color:#60a5fa;font-size:.85rem">Review failure cases weekly</strong>
-        <span style="font-size:.8rem;color:#a1a1aa"> — Set a recurring review of interactions that errored, timed out, or received negative feedback. Patterns in failures reveal systemic issues that test suites miss.</span>
+        <strong style="font-size:.85rem">Review failure cases weekly</strong>
+        <span style="font-size:.8rem"> — Set a recurring review of interactions that errored, timed out, or received negative feedback. Patterns in failures reveal systemic issues that test suites miss.</span>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c;font-size:.85rem">Track accuracy drift over time</strong>
-        <span style="font-size:.8rem;color:#a1a1aa"> — Run your original test suite against the live agent monthly. If accuracy drops more than 5 points, investigate immediately. Model updates, API changes, and data shifts all cause drift.</span>
+        <strong style="font-size:.85rem">Track accuracy drift over time</strong>
+        <span style="font-size:.8rem"> — Run your original test suite against the live agent monthly. If accuracy drops more than 5 points, investigate immediately. Model updates, API changes, and data shifts all cause drift.</span>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Set up alerts for error rate spikes</strong>
-        <span style="font-size:.8rem;color:#a1a1aa"> — If your error rate exceeds 5% in any rolling hour, trigger an alert. A sudden spike usually means an external dependency broke (API down, rate limit hit, schema change). Catch it before users report it.</span>
+        <strong style="font-size:.85rem">Set up alerts for error rate spikes</strong>
+        <span style="font-size:.8rem"> — If your error rate exceeds 5% in any rolling hour, trigger an alert. A sudden spike usually means an external dependency broke (API down, rate limit hit, schema change). Catch it before users report it.</span>
       </div>
     </div>
 
     <p style="margin-top:1rem">Here is a minimal logging wrapper you can add around any agent function to capture production data:</p>
 
     <div style="background:#0a0a0f;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.7;overflow-x:auto">
-      <span style="color:#71717a"># monitor.py — Production logging wrapper</span><br>
-      <span style="color:#c084fc">import</span> <span style="color:#e2e8f0">time, json, datetime</span><br>
+      <span># monitor.py — Production logging wrapper</span><br>
+      <span>import</span> <span>time, json, datetime</span><br>
       <br>
-      <span style="color:#c084fc">def</span> <span style="color:#34d399">monitored_agent</span>(<span style="color:#e2e8f0">agent_fn</span>, <span style="color:#e2e8f0">log_file</span>=<span style="color:#fb923c">"agent_log.jsonl"</span>):<br>
-      &nbsp;&nbsp;<span style="color:#c084fc">def</span> <span style="color:#34d399">wrapper</span>(<span style="color:#e2e8f0">user_input</span>):<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">start</span> = <span style="color:#e2e8f0">time</span>.<span style="color:#34d399">time</span>()<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">error</span> = <span style="color:#c084fc">None</span><br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">response</span> = <span style="color:#c084fc">None</span><br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">try</span>:<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">response</span> = <span style="color:#34d399">agent_fn</span>(<span style="color:#e2e8f0">user_input</span>)<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">except</span> <span style="color:#e2e8f0">Exception</span> <span style="color:#c084fc">as</span> <span style="color:#e2e8f0">e</span>:<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">error</span> = <span style="color:#c084fc">str</span>(<span style="color:#e2e8f0">e</span>)<br>
+      <span>def</span> <span>monitored_agent</span>(<span>agent_fn</span>, <span>log_file</span>=<span>"agent_log.jsonl"</span>):<br>
+      &nbsp;&nbsp;<span>def</span> <span>wrapper</span>(<span>user_input</span>):<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>start</span> = <span>time</span>.<span>time</span>()<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>error</span> = <span>None</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>response</span> = <span>None</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>try</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>response</span> = <span>agent_fn</span>(<span>user_input</span>)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>except</span> <span>Exception</span> <span>as</span> <span>e</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>error</span> = <span>str</span>(<span>e</span>)<br>
       <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">entry</span> = {<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"timestamp"</span>: <span style="color:#e2e8f0">datetime</span>.<span style="color:#e2e8f0">datetime</span>.<span style="color:#34d399">utcnow</span>().<span style="color:#34d399">isoformat</span>(),<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"input"</span>: <span style="color:#e2e8f0">user_input</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"output"</span>: <span style="color:#e2e8f0">response</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"latency_s"</span>: <span style="color:#34d399">round</span>(<span style="color:#e2e8f0">time</span>.<span style="color:#34d399">time</span>() - <span style="color:#e2e8f0">start</span>, <span style="color:#fb923c">2</span>),<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"error"</span>: <span style="color:#e2e8f0">error</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>entry</span> = {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>"timestamp"</span>: <span>datetime</span>.<span>datetime</span>.<span>utcnow</span>().<span>isoformat</span>(),<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>"input"</span>: <span>user_input</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>"output"</span>: <span>response</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>"latency_s"</span>: <span>round</span>(<span>time</span>.<span>time</span>() - <span>start</span>, <span>2</span>),<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>"error"</span>: <span>error</span>,<br>
       &nbsp;&nbsp;&nbsp;&nbsp;}<br>
       <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#71717a"># Append to JSONL — one JSON object per line</span><br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">with</span> <span style="color:#34d399">open</span>(<span style="color:#e2e8f0">log_file</span>, <span style="color:#fb923c">"a"</span>) <span style="color:#c084fc">as</span> <span style="color:#e2e8f0">f</span>:<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#e2e8f0">f</span>.<span style="color:#34d399">write</span>(<span style="color:#e2e8f0">json</span>.<span style="color:#34d399">dumps</span>(<span style="color:#e2e8f0">entry</span>) + <span style="color:#fb923c">"\n"</span>)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span># Append to JSONL — one JSON object per line</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>with</span> <span>open</span>(<span>log_file</span>, <span>"a"</span>) <span>as</span> <span>f</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>f</span>.<span>write</span>(<span>json</span>.<span>dumps</span>(<span>entry</span>) + <span>"\n"</span>)<br>
       <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">if</span> <span style="color:#e2e8f0">error</span>:<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">raise</span> <span style="color:#e2e8f0">Exception</span>(<span style="color:#e2e8f0">error</span>)<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c084fc">return</span> <span style="color:#e2e8f0">response</span><br>
-      &nbsp;&nbsp;<span style="color:#c084fc">return</span> <span style="color:#e2e8f0">wrapper</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>if</span> <span>error</span>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>raise</span> <span>Exception</span>(<span>error</span>)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>return</span> <span>response</span><br>
+      &nbsp;&nbsp;<span>return</span> <span>wrapper</span><br>
       <br>
-      <span style="color:#71717a"># Usage: wrap your agent function</span><br>
-      <span style="color:#e2e8f0">safe_agent</span> = <span style="color:#34d399">monitored_agent</span>(<span style="color:#e2e8f0">my_agent</span>)<br>
-      <span style="color:#e2e8f0">result</span> = <span style="color:#34d399">safe_agent</span>(<span style="color:#fb923c">"What plan is jane@acme.co on?"</span>)
+      <span># Usage: wrap your agent function</span><br>
+      <span>safe_agent</span> = <span>monitored_agent</span>(<span>my_agent</span>)<br>
+      <span>result</span> = <span>safe_agent</span>(<span>"What plan is jane@acme.co on?"</span>)
     </div>
 
-    <div style="font-size:.8rem;color:#71717a;margin-top:.5rem;padding:.75rem 1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-      <strong style="color:#8b5cf6">Why JSONL?</strong> One JSON object per line makes it easy to stream, grep, and load into pandas or any analytics tool. Never use a plain CSV for agent logs — nested objects (tool calls, multi-turn context) do not fit flat tables.
+    <div style="font-size:.8rem;margin-top:.5rem;padding:.75rem 1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
+      <strong>Why JSONL?</strong> One JSON object per line makes it easy to stream, grep, and load into pandas or any analytics tool. Never use a plain CSV for agent logs — nested objects (tool calls, multi-turn context) do not fit flat tables.
     </div>
   </div>
 </div>

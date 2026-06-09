@@ -10,34 +10,34 @@
 <h2>Why Database Design Matters for AI</h2>
 <div class="lo-vis" role="figure" aria-label="Three-table AI database architecture"><div class="lo-vis__title">The Three-Table AI Architecture</div><div class="lo-steps" data-count="3"><div class="lo-step lo-step--purple"><span class="lo-step__num">01</span><span class="lo-step__label">brain_context</span><span class="lo-step__desc">Key-value state -- what the agent knows RIGHT NOW</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--green"><span class="lo-step__num">02</span><span class="lo-step__label">agent_memory</span><span class="lo-step__desc">Append-only journal -- searchable by meaning via pgvector</span></div><span class="lo-steps__arrow">&rarr;</span><div class="lo-step lo-step--orange"><span class="lo-step__num">03</span><span class="lo-step__label">consciousness_stream</span><span class="lo-step__desc">Event log -- every action recorded with input, output, timing</span></div></div><div class="lo-vis__caption">State + Memory + Logs = <strong>an AI agent that remembers, learns, and can be debugged</strong>.</div></div>
 
-<p>Most AI tutorials focus on prompts and models. But <strong style="color:#e5e5e5">the database is where AI becomes useful</strong>. Without persistent memory, every conversation starts from zero. Without structured state, your agent cannot plan or learn. Without event logs, you cannot debug or improve.</p>
+<p>Most AI tutorials focus on prompts and models. But <strong>the database is where AI becomes useful</strong>. Without persistent memory, every conversation starts from zero. Without structured state, your agent cannot plan or learn. Without event logs, you cannot debug or improve.</p>
 
 <p>The three-table architecture below is not theoretical — it is the exact schema powering production AI systems. Each table serves a distinct purpose, and separating them lets you query and optimize each independently.</p>
 
 <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.25rem">
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(52,211,153,.06);border-radius:10px;border:1px solid rgba(52,211,153,.12);flex:1;min-width:160px">
 <div style="font-size:1.25rem">&#x1f9e0;</div>
-<div><div style="font-size:.8rem;font-weight:700;color:#34d399;margin-bottom:.2rem">brain_context</div><div style="font-size:.78rem;color:#71717a;line-height:1.5">Current state — like a whiteboard. What the agent knows RIGHT NOW.</div></div>
+<div><div style="font-size:.8rem;font-weight:700;margin-bottom:.2rem">brain_context</div><div style="font-size:.78rem;line-height:1.5">Current state — like a whiteboard. What the agent knows RIGHT NOW.</div></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(139,92,246,.06);border-radius:10px;border:1px solid rgba(139,92,246,.12);flex:1;min-width:160px">
 <div style="font-size:1.25rem">&#x1f4d3;</div>
-<div><div style="font-size:.8rem;font-weight:700;color:#8b5cf6;margin-bottom:.2rem">agent_memory</div><div style="font-size:.78rem;color:#71717a;line-height:1.5">Past interactions — like a journal. Searchable by meaning, not just keywords.</div></div>
+<div><div style="font-size:.8rem;font-weight:700;margin-bottom:.2rem">agent_memory</div><div style="font-size:.78rem;line-height:1.5">Past interactions — like a journal. Searchable by meaning, not just keywords.</div></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(251,146,60,.06);border-radius:10px;border:1px solid rgba(251,146,60,.12);flex:1;min-width:160px">
 <div style="font-size:1.25rem">&#x1f4f9;</div>
-<div><div style="font-size:.8rem;font-weight:700;color:#fb923c;margin-bottom:.2rem">consciousness_stream</div><div style="font-size:.78rem;color:#71717a;line-height:1.5">Action log — like security footage. Every decision recorded.</div></div>
+<div><div style="font-size:.8rem;font-weight:700;margin-bottom:.2rem">consciousness_stream</div><div style="font-size:.78rem;line-height:1.5">Action log — like security footage. Every decision recorded.</div></div>
 </div>
 </div>
 </div>
 
 <div class="card">
 <h2>Pattern 1: Key-Value Brain</h2>
-<p>Instead of creating a new column for every piece of information, you store everything as key-value pairs. This means your AI agent can learn new things <strong style="color:#e5e5e5">without database migrations</strong>. No ALTER TABLE. No downtime. Just insert a new key.</p>
+<p>Instead of creating a new column for every piece of information, you store everything as key-value pairs. This means your AI agent can learn new things <strong>without database migrations</strong>. No ALTER TABLE. No downtime. Just insert a new key.</p>
 
-<p>Keys use <strong style="color:#e5e5e5">dot notation</strong> (like <code style="color:#f59e0b">identity.name</code>, <code style="color:#f59e0b">session.active_work</code>) for namespacing — the dots create a hierarchy, like folders on your computer. Values are <strong style="color:#e5e5e5">JSONB</strong> — a Postgres data type that stores structured JSON data. It can hold strings, numbers, arrays, or nested objects, and you can query inside it.</p>
+<p>Keys use <strong>dot notation</strong> (like <code>identity.name</code>, <code>session.active_work</code>) for namespacing — the dots create a hierarchy, like folders on your computer. Values are <strong>JSONB</strong> — a Postgres data type that stores structured JSON data. It can hold strings, numbers, arrays, or nested objects, and you can query inside it.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Create the brain_context table</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Create the brain_context table</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">-- Pattern 1: Key-Value Brain (flexible, no migrations needed)</span>
 <span style="color:#c084fc">CREATE TABLE</span> brain_context (
   id          <span style="color:#34d399">UUID</span> <span style="color:#c084fc">PRIMARY KEY DEFAULT</span> <span style="color:#34d399">gen_random_uuid</span>(),
@@ -55,10 +55,10 @@
 <span style="color:#c084fc">CREATE INDEX</span> idx_brain_category <span style="color:#c084fc">ON</span> brain_context(category);</code></pre>
 </div>
 
-<p>The power of this pattern is the <strong style="color:#e5e5e5">upsert</strong> — a single query that either creates a new key or updates an existing one. Your agent never has to check "does this key exist?" before writing.</p>
+<p>The power of this pattern is the <strong>upsert</strong> — a single query that either creates a new key or updates an existing one. Your agent never has to check "does this key exist?" before writing.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Upsert: write or update a brain key</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Upsert: write or update a brain key</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">-- If 'session.active_work' exists → update it</span>
 <span style="color:#71717a">-- If it doesn't exist → create it</span>
 <span style="color:#c084fc">INSERT INTO</span> brain_context (key, value, category, description)
@@ -74,19 +74,19 @@
   updated_at = <span style="color:#34d399">now</span>();</code></pre>
 </div>
 
-<div style="background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">Real-world categories:</strong> <code style="color:#f59e0b">session.*</code> (what the agent is doing now), <code style="color:#f59e0b">directive.*</code> (rules and behaviors), <code style="color:#f59e0b">identity.*</code> (who the agent is), <code style="color:#f59e0b">system.*</code> (infrastructure state), <code style="color:#f59e0b">infrastructure.*</code> (deployment config). Each category can hold hundreds of keys.
+<div style="background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;line-height:1.7">
+<strong>Real-world categories:</strong> <code>session.*</code> (what the agent is doing now), <code>directive.*</code> (rules and behaviors), <code>identity.*</code> (who the agent is), <code>system.*</code> (infrastructure state), <code>infrastructure.*</code> (deployment config). Each category can hold hundreds of keys.
 </div>
 </div>
 
 <div class="card">
 <h2>Pattern 2: Append-Only Memory</h2>
-<p>Deleting data destroys context. An AI agent that forgets past interactions cannot learn or improve. The <strong style="color:#e5e5e5">append-only</strong> pattern means you <strong style="color:#e5e5e5">never delete, always append</strong> — building a complete history the agent can search through.</p>
+<p>Deleting data destroys context. An AI agent that forgets past interactions cannot learn or improve. The <strong>append-only</strong> pattern means you <strong>never delete, always append</strong> — building a complete history the agent can search through.</p>
 
-<p>The <code style="color:#f59e0b">embedding</code> column is what makes this powerful. It stores a <strong style="color:#e5e5e5">vector</strong> — a list of numbers that represent the <em>meaning</em> of text. AI models convert text into these vectors, and you can find semantically similar memories even when the words are completely different (e.g., searching "deployment" finds a memory about "pushed code to Vercel").</p>
+<p>The <code>embedding</code> column is what makes this powerful. It stores a <strong>vector</strong> — a list of numbers that represent the <em>meaning</em> of text. AI models convert text into these vectors, and you can find semantically similar memories even when the words are completely different (e.g., searching "deployment" finds a memory about "pushed code to Vercel").</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Create the agent_memory table with vector search</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Create the agent_memory table with vector search</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">-- Enable pgvector extension (run once per database)</span>
 <span style="color:#c084fc">CREATE EXTENSION IF NOT EXISTS</span> vector;
 
@@ -108,10 +108,10 @@
   <span style="color:#c084fc">WITH</span> (lists = <span style="color:#fb923c">100</span>);</code></pre>
 </div>
 
-<p>To find relevant memories, you compute the embedding of your query and search by <strong style="color:#e5e5e5">cosine similarity</strong> — a measure of how close two vectors are in meaning-space. The <code style="color:#f59e0b">&lt;=&gt;</code> operator is pgvector's similarity function.</p>
+<p>To find relevant memories, you compute the embedding of your query and search by <strong>cosine similarity</strong> — a measure of how close two vectors are in meaning-space. The <code>&lt;=&gt;</code> operator is pgvector's similarity function.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Find the 5 most relevant memories by meaning</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Find the 5 most relevant memories by meaning</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">-- $1 is the embedding of your search query</span>
 <span style="color:#71717a">-- (generated by BGE-small or another embedding model)</span>
 <span style="color:#c084fc">SELECT</span> content, importance,
@@ -122,19 +122,19 @@
 <span style="color:#c084fc">LIMIT</span> <span style="color:#fb923c">5</span>;</code></pre>
 </div>
 
-<div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">Embedding dimensions:</strong> The number in <code style="color:#f59e0b">vector(384)</code> must match your embedding model. BGE-small produces 384 dimensions (free via HuggingFace). OpenAI's ada-002 produces 1536. Larger dimensions capture more nuance but use more storage and are slightly slower to search.
+<div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;line-height:1.7">
+<strong>Embedding dimensions:</strong> The number in <code>vector(384)</code> must match your embedding model. BGE-small produces 384 dimensions (free via HuggingFace). OpenAI's ada-002 produces 1536. Larger dimensions capture more nuance but use more storage and are slightly slower to search.
 </div>
 </div>
 
 <div class="card">
 <h2>Pattern 3: Event Streaming (Consciousness Log)</h2>
-<p>When something goes wrong (and it will), you need to know <strong style="color:#e5e5e5">exactly what your agent did and when</strong>. The consciousness stream is an event log — every action the agent takes gets recorded with its input, output, and duration.</p>
+<p>When something goes wrong (and it will), you need to know <strong>exactly what your agent did and when</strong>. The consciousness stream is an event log — every action the agent takes gets recorded with its input, output, and duration.</p>
 
-<p>This is invaluable for three things: <strong style="color:#e5e5e5">debugging</strong> ("why did the agent send that email?"), <strong style="color:#e5e5e5">auditing</strong> ("who changed this data?"), and <strong style="color:#e5e5e5">replaying</strong> agent behavior to test improvements.</p>
+<p>This is invaluable for three things: <strong>debugging</strong> ("why did the agent send that email?"), <strong>auditing</strong> ("who changed this data?"), and <strong>replaying</strong> agent behavior to test improvements.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Create the consciousness_stream event log</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Create the consciousness_stream event log</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">-- Pattern 3: Event Streaming (every action logged, never deleted)</span>
 <span style="color:#c084fc">CREATE TABLE</span> consciousness_stream (
   id          <span style="color:#34d399">UUID</span> <span style="color:#c084fc">PRIMARY KEY DEFAULT</span> <span style="color:#34d399">gen_random_uuid</span>(),
@@ -151,8 +151,8 @@
 <span style="color:#c084fc">CREATE INDEX</span> idx_stream_type <span style="color:#c084fc">ON</span> consciousness_stream(event_type);</code></pre>
 </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Debug: what did the agent do in the last hour?</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Debug: what did the agent do in the last hour?</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">SELECT</span> event_type,
        input->>(<span style="color:#fb923c">'action'</span>) <span style="color:#c084fc">AS</span> action,
        output->>(<span style="color:#fb923c">'status'</span>) <span style="color:#c084fc">AS</span> status,
@@ -171,27 +171,27 @@
 <table style="width:100%;border-collapse:collapse;font-size:.82rem">
 <thead>
 <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
-<th style="text-align:left;padding:.75rem;color:#e5e5e5;font-weight:600">Table</th>
-<th style="text-align:left;padding:.75rem;color:#e5e5e5;font-weight:600">Question It Answers</th>
-<th style="text-align:left;padding:.75rem;color:#e5e5e5;font-weight:600">Write Pattern</th>
-<th style="text-align:left;padding:.75rem;color:#e5e5e5;font-weight:600">Read Pattern</th>
+<th style="text-align:left;padding:.75rem;font-weight:600">Table</th>
+<th style="text-align:left;padding:.75rem;font-weight:600">Question It Answers</th>
+<th style="text-align:left;padding:.75rem;font-weight:600">Write Pattern</th>
+<th style="text-align:left;padding:.75rem;font-weight:600">Read Pattern</th>
 </tr>
 </thead>
-<tbody style="color:#a1a1aa">
+<tbody>
 <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
-<td style="padding:.75rem;font-weight:600;color:#34d399">brain_context</td>
+<td style="padding:.75rem;font-weight:600">brain_context</td>
 <td style="padding:.75rem">"What do I know RIGHT NOW?"</td>
 <td style="padding:.75rem">Upsert (INSERT ... ON CONFLICT UPDATE)</td>
 <td style="padding:.75rem">SELECT by key or category</td>
 </tr>
 <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
-<td style="padding:.75rem;font-weight:600;color:#8b5cf6">agent_memory</td>
+<td style="padding:.75rem;font-weight:600">agent_memory</td>
 <td style="padding:.75rem">"What happened before that is relevant?"</td>
 <td style="padding:.75rem">Append only (INSERT, never DELETE)</td>
 <td style="padding:.75rem">Vector similarity search</td>
 </tr>
 <tr>
-<td style="padding:.75rem;font-weight:600;color:#fb923c">consciousness_stream</td>
+<td style="padding:.75rem;font-weight:600">consciousness_stream</td>
 <td style="padding:.75rem">"What exactly did I do and when?"</td>
 <td style="padding:.75rem">Append only (INSERT, never DELETE)</td>
 <td style="padding:.75rem">Time-range query + filter by event_type</td>
@@ -200,20 +200,20 @@
 </table>
 </div>
 
-<div style="display:grid;gap:.3rem;margin-top:1rem;font-size:.85rem;color:#a1a1aa;line-height:2">
-<div style="padding:.5rem .75rem;background:rgba(52,211,153,.04);border-radius:6px"><span style="color:#34d399;font-weight:700">Boot:</span> Agent reads <strong style="color:#e5e5e5">brain_context</strong> for current state &rarr; knows what it was doing</div>
-<div style="padding:.5rem .75rem;background:rgba(139,92,246,.04);border-radius:6px"><span style="color:#8b5cf6;font-weight:700">Query:</span> User asks a question &rarr; agent searches <strong style="color:#e5e5e5">agent_memory</strong> for relevant past context</div>
-<div style="padding:.5rem .75rem;background:rgba(251,146,60,.04);border-radius:6px"><span style="color:#fb923c;font-weight:700">Act:</span> Agent takes an action &rarr; logs it to <strong style="color:#e5e5e5">consciousness_stream</strong></div>
-<div style="padding:.5rem .75rem;background:rgba(52,211,153,.04);border-radius:6px"><span style="color:#34d399;font-weight:700">Update:</span> Agent writes new state to <strong style="color:#e5e5e5">brain_context</strong> &rarr; ready for next session</div>
+<div style="display:grid;gap:.3rem;margin-top:1rem;font-size:.85rem;line-height:2">
+<div style="padding:.5rem .75rem;background:rgba(52,211,153,.04);border-radius:6px"><span style="font-weight:700">Boot:</span> Agent reads <strong>brain_context</strong> for current state &rarr; knows what it was doing</div>
+<div style="padding:.5rem .75rem;background:rgba(139,92,246,.04);border-radius:6px"><span style="font-weight:700">Query:</span> User asks a question &rarr; agent searches <strong>agent_memory</strong> for relevant past context</div>
+<div style="padding:.5rem .75rem;background:rgba(251,146,60,.04);border-radius:6px"><span style="font-weight:700">Act:</span> Agent takes an action &rarr; logs it to <strong>consciousness_stream</strong></div>
+<div style="padding:.5rem .75rem;background:rgba(52,211,153,.04);border-radius:6px"><span style="font-weight:700">Update:</span> Agent writes new state to <strong>brain_context</strong> &rarr; ready for next session</div>
 </div>
 </div>
 
 <div class="card">
 <h2>Security: Row Level Security (RLS)</h2>
-<p>Every table that stores sensitive data <strong style="color:#e5e5e5">must</strong> have RLS enabled. Without it, anyone with your Supabase anon key can read all data. With RLS, the database itself enforces access rules — even if your application code has a bug.</p>
+<p>Every table that stores sensitive data <strong>must</strong> have RLS enabled. Without it, anyone with your Supabase anon key can read all data. With RLS, the database itself enforces access rules — even if your application code has a bug.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — RLS policies for brain tables</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — RLS policies for brain tables</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">-- Enable RLS on all three tables</span>
 <span style="color:#c084fc">ALTER TABLE</span> brain_context <span style="color:#c084fc">ENABLE ROW LEVEL SECURITY</span>;
 <span style="color:#c084fc">ALTER TABLE</span> agent_memory <span style="color:#c084fc">ENABLE ROW LEVEL SECURITY</span>;
@@ -224,8 +224,8 @@
 <span style="color:#71717a">-- This is why edge functions use the service role key</span></code></pre>
 </div>
 
-<div style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#ef4444">Critical:</strong> The service role key bypasses RLS entirely — it has full access to all data. This key must <strong style="color:#e5e5e5">never</strong> appear in frontend code. It belongs exclusively in server-side environments: Supabase Edge Functions, server API routes, and cron jobs. If you accidentally expose it, revoke and regenerate immediately.
+<div style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;line-height:1.7">
+<strong>Critical:</strong> The service role key bypasses RLS entirely — it has full access to all data. This key must <strong>never</strong> appear in frontend code. It belongs exclusively in server-side environments: Supabase Edge Functions, server API routes, and cron jobs. If you accidentally expose it, revoke and regenerate immediately.
 </div>
 </div>
 
@@ -235,24 +235,24 @@
 
 <div style="display:grid;gap:.75rem;margin-top:1rem">
 <div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:rgba(52,211,153,.04);border-radius:10px;border:1px solid rgba(52,211,153,.08)">
-<div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(52,211,153,.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:#34d399;font-size:.75rem">KV</div>
+<div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(52,211,153,.12);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem">KV</div>
 <div>
-<strong style="color:#34d399;font-size:.88rem">brain_context</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0;line-height:1.7">Stays small (hundreds to low thousands of rows). The UNIQUE constraint on key means it grows slowly. Upserts keep it current. <strong style="color:#e5e5e5">No scaling concerns</strong> — this table is effectively always fast.</p>
+<strong style="font-size:.88rem">brain_context</strong>
+<p style="font-size:.82rem;margin:.3rem 0 0;line-height:1.7">Stays small (hundreds to low thousands of rows). The UNIQUE constraint on key means it grows slowly. Upserts keep it current. <strong>No scaling concerns</strong> — this table is effectively always fast.</p>
 </div>
 </div>
 <div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:rgba(139,92,246,.04);border-radius:10px;border:1px solid rgba(139,92,246,.08)">
-<div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(139,92,246,.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:#8b5cf6;font-size:.75rem">MEM</div>
+<div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(139,92,246,.12);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem">MEM</div>
 <div>
-<strong style="color:#8b5cf6;font-size:.88rem">agent_memory</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0;line-height:1.7">Grows continuously (append-only). At 100K+ rows, add an IVFFlat index on the embedding column for fast vector search. At 1M+ rows, consider partitioning by date or archiving old memories to cold storage.</p>
+<strong style="font-size:.88rem">agent_memory</strong>
+<p style="font-size:.82rem;margin:.3rem 0 0;line-height:1.7">Grows continuously (append-only). At 100K+ rows, add an IVFFlat index on the embedding column for fast vector search. At 1M+ rows, consider partitioning by date or archiving old memories to cold storage.</p>
 </div>
 </div>
 <div style="display:flex;gap:1rem;align-items:flex-start;padding:1rem 1.25rem;background:rgba(251,146,60,.04);border-radius:10px;border:1px solid rgba(251,146,60,.08)">
-<div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(251,146,60,.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fb923c;font-size:.75rem">LOG</div>
+<div style="min-width:2.5rem;height:2.5rem;border-radius:50%;background:rgba(251,146,60,.12);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem">LOG</div>
 <div>
-<strong style="color:#fb923c;font-size:.88rem">consciousness_stream</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0;line-height:1.7">Grows the fastest (every agent action = a row). Partition by month for clean archival. The time-based index keeps recent queries fast. Consider a retention policy: keep 90 days hot, archive the rest.</p>
+<strong style="font-size:.88rem">consciousness_stream</strong>
+<p style="font-size:.82rem;margin:.3rem 0 0;line-height:1.7">Grows the fastest (every agent action = a row). Partition by month for clean archival. The time-based index keeps recent queries fast. Consider a retention policy: keep 90 days hot, archive the rest.</p>
 </div>
 </div>
 </div>

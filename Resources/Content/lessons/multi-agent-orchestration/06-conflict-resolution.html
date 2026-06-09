@@ -37,32 +37,32 @@
   <span class="section-label">Strategy 1</span>
   <h2 class="section-title">Hierarchical Override</h2>
   <p class="section-text">One agent has final authority. When agents conflict, the designated authority makes the call. Simple and fast. The orchestrator agent is the natural choice — it has the broadest context and the mandate to make decisions.</p>
-  <p class="section-text"><strong style="color: var(--green);">Best for:</strong> Time-sensitive systems, clear chain of command, when one agent genuinely has better judgment for the decision.</p>
-  <p class="section-text"><strong style="color: var(--red);">Risk:</strong> The authority agent might consistently override valuable dissent. Important signals get silenced.</p>
+  <p class="section-text"><strong>Best for:</strong> Time-sensitive systems, clear chain of command, when one agent genuinely has better judgment for the decision.</p>
+  <p class="section-text"><strong>Risk:</strong> The authority agent might consistently override valuable dissent. Important signals get silenced.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Strategy 2</span>
   <h2 class="section-title">Voting and Consensus</h2>
   <p class="section-text">Multiple agents weigh in, and the majority wins. You can run three instances of the same agent with different temperatures, or have three different specialist agents evaluate the same question. If two out of three agree, that's the answer.</p>
-  <p class="section-text"><strong style="color: var(--green);">Best for:</strong> High-stakes decisions where accuracy matters more than speed. Fact-checking, classification, risk assessment.</p>
-  <p class="section-text"><strong style="color: var(--red);">Risk:</strong> Expensive — you're running multiple agents for one decision. Majority isn't always right.</p>
+  <p class="section-text"><strong>Best for:</strong> High-stakes decisions where accuracy matters more than speed. Fact-checking, classification, risk assessment.</p>
+  <p class="section-text"><strong>Risk:</strong> Expensive — you're running multiple agents for one decision. Majority isn't always right.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Strategy 3</span>
   <h2 class="section-title">Debate and Synthesis</h2>
   <p class="section-text">Conflicting agents present their positions to a synthesis agent. The synthesizer doesn't just pick a winner — it integrates the best elements of each position into a stronger output. This mirrors how real teams work: debate produces better ideas than any individual contribution.</p>
-  <p class="section-text"><strong style="color: var(--green);">Best for:</strong> Creative work, strategy, any domain where combining perspectives adds value.</p>
-  <p class="section-text"><strong style="color: var(--red);">Risk:</strong> The synthesizer might produce wishy-washy compromises instead of sharp decisions.</p>
+  <p class="section-text"><strong>Best for:</strong> Creative work, strategy, any domain where combining perspectives adds value.</p>
+  <p class="section-text"><strong>Risk:</strong> The synthesizer might produce wishy-washy compromises instead of sharp decisions.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Strategy 4</span>
   <h2 class="section-title">Confidence-Weighted Resolution</h2>
   <p class="section-text">Each agent reports a confidence score alongside its output. When agents conflict, the higher-confidence agent wins. This lets agents self-assess: "I'm 92% confident in this analysis" vs. "I'm 60% confident — the data was ambiguous."</p>
-  <p class="section-text"><strong style="color: var(--green);">Best for:</strong> Data-driven systems where confidence is measurable. Search, classification, prediction.</p>
-  <p class="section-text"><strong style="color: var(--red);">Risk:</strong> LLMs are notoriously bad at calibrating confidence. An agent might report 95% confidence on a hallucination.</p>
+  <p class="section-text"><strong>Best for:</strong> Data-driven systems where confidence is measurable. Search, classification, prediction.</p>
+  <p class="section-text"><strong>Risk:</strong> LLMs are notoriously bad at calibrating confidence. An agent might report 95% confidence on a hallucination.</p>
 </div>
 
 <div class="lesson-section">
@@ -70,14 +70,14 @@
   <h2 class="section-title">Three Types of Agent Conflict</h2>
   <p class="section-text">Not all conflicts are the same. Understanding the type of conflict helps you choose the right resolution strategy. Each type has different causes, different signals, and different solutions.</p>
 
-  <p class="section-text"><strong style="color: #ef4444;">Resource Conflicts</strong> — Two or more agents need the same limited resource at the same time. This might be a shared database connection, an API with rate limits, a file that only one process can write to, or a context window that both agents want to fill with their data. Resource conflicts are mechanical, not intellectual — the agents don't disagree on substance, they're just competing for access.</p>
-  <p class="section-text" style="color: #a1a1aa; padding-left: 1.5rem;"><em>Signal:</em> Timeouts, lock errors, rate limit exceptions, corrupted shared state. <em>Fix:</em> Queue management, resource locks, turn-taking protocols.</p>
+  <p class="section-text"><strong>Resource Conflicts</strong> — Two or more agents need the same limited resource at the same time. This might be a shared database connection, an API with rate limits, a file that only one process can write to, or a context window that both agents want to fill with their data. Resource conflicts are mechanical, not intellectual — the agents don't disagree on substance, they're just competing for access.</p>
+  <p class="section-text" style="padding-left: 1.5rem"><em>Signal:</em> Timeouts, lock errors, rate limit exceptions, corrupted shared state. <em>Fix:</em> Queue management, resource locks, turn-taking protocols.</p>
 
-  <p class="section-text"><strong style="color: #fb923c;">Opinion Conflicts</strong> — Two agents analyze the same data and reach different conclusions. Your sentiment agent says the customer is frustrated. Your topic agent says the message is a routine inquiry. Your writer produces an assertive draft. Your editor says the tone is too aggressive. These are the productive conflicts — they surface genuine ambiguity in the data.</p>
-  <p class="section-text" style="color: #a1a1aa; padding-left: 1.5rem;"><em>Signal:</em> Contradictory outputs from different agents given the same input. <em>Fix:</em> Debate and synthesis, voting, or confidence-weighted resolution.</p>
+  <p class="section-text"><strong>Opinion Conflicts</strong> — Two agents analyze the same data and reach different conclusions. Your sentiment agent says the customer is frustrated. Your topic agent says the message is a routine inquiry. Your writer produces an assertive draft. Your editor says the tone is too aggressive. These are the productive conflicts — they surface genuine ambiguity in the data.</p>
+  <p class="section-text" style="padding-left: 1.5rem"><em>Signal:</em> Contradictory outputs from different agents given the same input. <em>Fix:</em> Debate and synthesis, voting, or confidence-weighted resolution.</p>
 
-  <p class="section-text"><strong style="color: #8b5cf6;">Priority Conflicts</strong> — Agents agree on the facts but disagree on what matters most. Security says block the deployment because of a vulnerability. Product says ship it because the feature is promised to a customer today. Both are right about the facts — they disagree about priorities. Priority conflicts cannot be resolved by better data. They require a decision framework that encodes your organization's values.</p>
-  <p class="section-text" style="color: #a1a1aa; padding-left: 1.5rem;"><em>Signal:</em> Both agents produce valid outputs that recommend incompatible actions. <em>Fix:</em> Hierarchical override with clear priority rules, or escalation to a human decision-maker.</p>
+  <p class="section-text"><strong>Priority Conflicts</strong> — Agents agree on the facts but disagree on what matters most. Security says block the deployment because of a vulnerability. Product says ship it because the feature is promised to a customer today. Both are right about the facts — they disagree about priorities. Priority conflicts cannot be resolved by better data. They require a decision framework that encodes your organization's values.</p>
+  <p class="section-text" style="padding-left: 1.5rem"><em>Signal:</em> Both agents produce valid outputs that recommend incompatible actions. <em>Fix:</em> Hierarchical override with clear priority rules, or escalation to a human decision-maker.</p>
 </div>
 
 <div class="lesson-section">
@@ -85,15 +85,15 @@
   <h2 class="section-title">Resolution Strategies: A Complete Toolkit</h2>
   <p class="section-text">Beyond the four core strategies covered above, here are additional resolution approaches and when to deploy each one.</p>
 
-  <p class="section-text"><strong style="color: #34d399;">Voting with Weighted Ballots</strong> — Not all agents' opinions should carry equal weight. A security agent's vote on security matters should outweigh a formatting agent's vote. Assign domain-specific weights so that expertise is reflected in the resolution. Three agents vote, but the domain expert's vote counts double.</p>
+  <p class="section-text"><strong>Voting with Weighted Ballots</strong> — Not all agents' opinions should carry equal weight. A security agent's vote on security matters should outweigh a formatting agent's vote. Assign domain-specific weights so that expertise is reflected in the resolution. Three agents vote, but the domain expert's vote counts double.</p>
 
-  <p class="section-text"><strong style="color: #38bdf8;">Authority Hierarchy</strong> — Define a clear chain of command. When the security agent and the performance agent conflict, security always wins (or vice versa, depending on your system's values). The hierarchy is encoded in the orchestrator's decision logic, not left to ad-hoc judgment. This is fast and predictable, but inflexible — the hierarchy might be wrong for edge cases.</p>
+  <p class="section-text"><strong>Authority Hierarchy</strong> — Define a clear chain of command. When the security agent and the performance agent conflict, security always wins (or vice versa, depending on your system's values). The hierarchy is encoded in the orchestrator's decision logic, not left to ad-hoc judgment. This is fast and predictable, but inflexible — the hierarchy might be wrong for edge cases.</p>
 
-  <p class="section-text"><strong style="color: #fb923c;">Structured Consensus</strong> — Instead of simple majority vote, require agents to explain their reasoning. A consensus agent reviews all positions and their justifications, then produces a resolution that addresses each agent's core concerns. Slower than voting, but produces higher-quality decisions because it forces engagement with dissenting views.</p>
+  <p class="section-text"><strong>Structured Consensus</strong> — Instead of simple majority vote, require agents to explain their reasoning. A consensus agent reviews all positions and their justifications, then produces a resolution that addresses each agent's core concerns. Slower than voting, but produces higher-quality decisions because it forces engagement with dissenting views.</p>
 
-  <p class="section-text"><strong style="color: #8b5cf6;">Fallback to Human</strong> — When automated resolution fails or the stakes are too high, escalate to a human decision-maker. The system presents both positions with supporting evidence and a recommendation. The human makes the call, and that decision is logged and fed back into the system to improve future automated resolution.</p>
+  <p class="section-text"><strong>Fallback to Human</strong> — When automated resolution fails or the stakes are too high, escalate to a human decision-maker. The system presents both positions with supporting evidence and a recommendation. The human makes the call, and that decision is logged and fed back into the system to improve future automated resolution.</p>
 
-  <p class="section-text"><strong style="color: #ef4444;">Time-Bounded Debate</strong> — Give conflicting agents a fixed number of rounds to resolve their disagreement. Each round, both agents see the other's position and can update their own. If they converge, the conflict is resolved. If they don't converge within the limit, the orchestrator makes a forced decision. This prevents infinite debate loops while still allowing productive back-and-forth.</p>
+  <p class="section-text"><strong>Time-Bounded Debate</strong> — Give conflicting agents a fixed number of rounds to resolve their disagreement. Each round, both agents see the other's position and can update their own. If they converge, the conflict is resolved. If they don't converge within the limit, the orchestrator makes a forced decision. This prevents infinite debate loops while still allowing productive back-and-forth.</p>
 </div>
 
 <div class="lesson-section">
@@ -101,8 +101,8 @@
   <h2 class="section-title">Implementing Conflict Resolution</h2>
   <p class="section-text">Here is a practical implementation showing how to build a conflict resolution layer into an orchestrator agent.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Conflict resolution with voting and escalation</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Conflict resolution with voting and escalation</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">class</span> <span style="color:#38bdf8">ConflictResolver</span>:
     <span style="color:#c084fc">def</span> <span style="color:#38bdf8">__init__</span>(self, strategy: str = <span style="color:#fbbf24">"weighted_vote"</span>):
         self.strategy = strategy
@@ -160,7 +160,7 @@ result = resolver.resolve(outputs, weights)
   <h2 class="section-title">Productive Conflict in Practice</h2>
 
   <div class="demo-container">
-    <div class="demo-block" style="border-left: 3px solid var(--purple);">
+    <div class="demo-container" style="border-left: 3px solid var(--purple);">
       <h4 style="color: var(--purple);">Code Review Debate</h4>
       <code>Security Agent: "This SQL query is vulnerable to injection. Block the PR."<br>Performance Agent: "This query is already 3x faster than the previous version. Approve."<br><br>Synthesis Agent: "The performance improvement is real, but the security risk is critical. Resolution: keep the optimized query structure but add parameterized inputs. Both goals met."</code>
       <p style="color: var(--dim); margin-top: 0.5rem;">Neither agent was wrong. The conflict surfaced a solution better than either alone would produce.</p>
@@ -171,9 +171,9 @@ result = resolver.resolve(outputs, weights)
 <div class="lesson-section">
   <span class="section-label">Try It Yourself</span>
   <h2 class="section-title">Design a Conflict Protocol</h2>
-  <div class="try-it-box">
+  <div class="callout">
     <p>Identify two agents in your system that might conflict. Define the resolution strategy, including: who resolves it, how disagreements are surfaced, and what happens if resolution fails.</p>
-    <div class="prompt-box">
+    <div class="demo-container">
       <code>Potential conflict: [Agent A] says X, [Agent B] says Y<br>Resolution strategy: [hierarchy / voting / debate / confidence]<br>Resolver: [which agent or process decides]<br>Fallback: [what happens if resolution fails]<br>Logging: [how is the conflict recorded for future improvement]</code>
     </div>
   </div>

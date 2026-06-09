@@ -198,10 +198,10 @@
   <p class="section-text"><strong>API key security:</strong> Never expose AI provider API keys to the client. All model calls should go through your backend. A leaked API key can result in thousands of dollars in unauthorized usage within hours. Rotate keys regularly and set spending limits with your provider.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Map your product's architecture using this decision tree:</p>
-  <div class="prompt-box"><code>1. Does the model need my data? → Yes: RAG. No: Prompt engineering.
+  <div class="demo-container"><code>1. Does the model need my data? → Yes: RAG. No: Prompt engineering.
 2. Does it need a unique behavior? → Yes: Consider fine-tuning. No: Stay with prompts.
 3. Do I need &lt;100ms response? → Yes: Consider open source. No: APIs are fine.
 4. Am I spending &gt;$500/mo on API calls? → Yes: Evaluate open source. No: Stay with APIs.</code></div>

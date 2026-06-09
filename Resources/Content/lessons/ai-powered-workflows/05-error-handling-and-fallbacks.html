@@ -62,10 +62,10 @@
   <span class="section-label">Error Categories</span>
   <h2 class="section-title">Knowing What Went Wrong Changes Everything</h2>
   <p class="section-text">Not all errors are created equal. Categorizing errors helps you build the right response for each type:</p>
-  <p class="section-text"><strong style="color: var(--blue);">Transient errors:</strong> Network timeouts, rate limits, temporary service outages. These resolve themselves. Strategy: retry with backoff. Most APIs recover within 30-60 seconds.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Data errors:</strong> Malformed input, missing required fields, type mismatches. These won't fix themselves on retry. Strategy: validate at the boundary, return a clear error message, route to a dead-letter queue for manual review.</p>
-  <p class="section-text"><strong style="color: var(--red);">Configuration errors:</strong> Expired API keys, wrong endpoint URLs, missing environment variables. These affect every request until fixed. Strategy: detect early (test on startup), alert immediately, fail fast rather than retrying endlessly.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Logic errors:</strong> The workflow ran successfully but produced the wrong result — wrong classification, wrong routing, wrong calculation. The hardest to detect because no exception is thrown. Strategy: output validation, sample auditing, and anomaly detection.</p>
+  <p class="section-text"><strong>Transient errors:</strong> Network timeouts, rate limits, temporary service outages. These resolve themselves. Strategy: retry with backoff. Most APIs recover within 30-60 seconds.</p>
+  <p class="section-text"><strong>Data errors:</strong> Malformed input, missing required fields, type mismatches. These won't fix themselves on retry. Strategy: validate at the boundary, return a clear error message, route to a dead-letter queue for manual review.</p>
+  <p class="section-text"><strong>Configuration errors:</strong> Expired API keys, wrong endpoint URLs, missing environment variables. These affect every request until fixed. Strategy: detect early (test on startup), alert immediately, fail fast rather than retrying endlessly.</p>
+  <p class="section-text"><strong>Logic errors:</strong> The workflow ran successfully but produced the wrong result — wrong classification, wrong routing, wrong calculation. The hardest to detect because no exception is thrown. Strategy: output validation, sample auditing, and anomaly detection.</p>
 </div>
 
 <div class="lesson-section">
@@ -89,10 +89,10 @@
   <p class="section-text">This protects the failing service, saves your API quota, and keeps your workflow responsive by immediately routing to fallbacks instead of waiting through retry cycles.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Now</h3>
   <p>Add error handling to your workflow design from previous lessons.</p>
-  <div class="prompt-box">
+  <div class="demo-container">
     <code>For each step in your workflow, answer: (1) What could go wrong? (2) What's the retry strategy? (3) What's the fallback? (4) Who gets alerted, and with what information?</code>
   </div>
 </div>
@@ -115,11 +115,11 @@
   <span class="section-label">Logging</span>
   <h2 class="section-title">Error Logs That Actually Help You Debug</h2>
   <p class="section-text">A log entry that says "Error occurred" is useless. A log entry that says "CRM API returned 429 (rate limit exceeded) during contact creation for customer_id=cust_7823 at step 3 of onboarding workflow, attempt 2 of 3" tells you everything. Good error logs include:</p>
-  <p class="section-text"><strong style="color: var(--green);">What failed:</strong> The specific step, function, or API call.</p>
-  <p class="section-text"><strong style="color: var(--green);">Why it failed:</strong> The error code, message, and response body.</p>
-  <p class="section-text"><strong style="color: var(--green);">What data was involved:</strong> The input that triggered the error (redact sensitive fields).</p>
-  <p class="section-text"><strong style="color: var(--green);">Where in the retry cycle:</strong> Is this attempt 1, 2, or 3? Has the fallback been triggered?</p>
-  <p class="section-text"><strong style="color: var(--green);">When it happened:</strong> Timestamp with timezone. This is critical for correlating with external service outages.</p>
+  <p class="section-text"><strong>What failed:</strong> The specific step, function, or API call.</p>
+  <p class="section-text"><strong>Why it failed:</strong> The error code, message, and response body.</p>
+  <p class="section-text"><strong>What data was involved:</strong> The input that triggered the error (redact sensitive fields).</p>
+  <p class="section-text"><strong>Where in the retry cycle:</strong> Is this attempt 1, 2, or 3? Has the fallback been triggered?</p>
+  <p class="section-text"><strong>When it happened:</strong> Timestamp with timezone. This is critical for correlating with external service outages.</p>
 </div>
 
 <div class="lesson-section">
@@ -152,8 +152,8 @@
   <span class="section-label">The Code</span>
   <h2 class="section-title">Retry-fallback-alert in Python.</h2>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — production retry with exponential backoff</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — production retry with exponential backoff</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> time
 <span style="color:#c084fc">import</span> anthropic
 
@@ -185,8 +185,8 @@ client = anthropic.Anthropic()
     <span style="color:#c084fc">return</span> <span style="color:#fbbf24">"GENERAL"</span>  <span style="color:#71717a"># safe default category</span></code></pre>
 </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — AI confidence thresholds</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — AI confidence thresholds</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">route_by_confidence</span>(text: str):
     <span style="color:#71717a">"""Route based on AI confidence level."""</span>
     response = client.messages.create(
@@ -206,7 +206,7 @@ client = anthropic.Anthropic()
     <span style="color:#c084fc">else</span>:
         route_to_human(result)              <span style="color:#71717a"># too uncertain</span></code></pre>
 </div>
-<p style="font-size:.85rem;color:#71717a;margin-top:.5rem">The retry pattern uses exponential backoff (5s → 15s → 45s) to handle transient API failures. The confidence threshold pattern turns AI uncertainty into a routing decision — high confidence acts, low confidence escalates.</p>
+<p style="font-size:.85rem;margin-top:.5rem">The retry pattern uses exponential backoff (5s → 15s → 45s) to handle transient API failures. The confidence threshold pattern turns AI uncertainty into a routing decision — high confidence acts, low confidence escalates.</p>
 </div>
 
 <div class="lesson-section">

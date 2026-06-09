@@ -18,16 +18,16 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">&#9889; Short-Term Memory</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The current conversation window. Exists only during the active session — vanishes when the session ends. Fast and immediate, like a mental scratchpad. Implementation: the messages array passed to the API on each turn.</p>
+        <strong>&#9889; Short-Term Memory</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The current conversation window. Exists only during the active session — vanishes when the session ends. Fast and immediate, like a mental scratchpad. Implementation: the messages array passed to the API on each turn.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">&#128451;&#65039; Long-Term Memory</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Persisted in a database (<code>agent_memory</code> table). Survives across sessions, making agents smarter over time. Use for user preferences, past decisions, learned facts, and resolution patterns.</p>
+        <strong>&#128451;&#65039; Long-Term Memory</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Persisted in a database (<code>agent_memory</code> table). Survives across sessions, making agents smarter over time. Use for user preferences, past decisions, learned facts, and resolution patterns.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">&#127760; Shared Memory</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">A key-value store accessible to ALL agents (<code>brain_context</code>). The communication bus that lets agents coordinate without talking directly to each other. One agent writes; others read.</p>
+        <strong>&#127760; Shared Memory</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">A key-value store accessible to ALL agents (<code>brain_context</code>). The communication bus that lets agents coordinate without talking directly to each other. One agent writes; others read.</p>
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@
     <h2>Memory in Code</h2>
     <p>Here is a practical memory system in Python. Short-term is a list. Long-term is a database table. Shared is a key-value store accessible to all agents:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0"><code><span style="color:#c084fc">class</span> <span style="color:#34d399">AgentMemory</span>:
     <span style="color:#c084fc">def</span> <span style="color:#38bdf8">__init__</span>(self, agent_name, db):
         self.agent_name = agent_name
@@ -71,7 +71,7 @@
             [key]
         )</code></pre>
     </div>
-    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem"><code>remember_now()</code> stores in a Python list — gone when the process ends. <code>remember_forever()</code> writes to a database — survives forever. <code>share()</code> writes to the shared brain — any agent can read it.</p>
+    <p style="font-size:.82rem;margin-top:.5rem"><code>remember_now()</code> stores in a Python list — gone when the process ends. <code>remember_forever()</code> writes to a database — survives forever. <code>share()</code> writes to the shared brain — any agent can read it.</p>
   </div>
 
   <div class="section">
@@ -80,12 +80,12 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Problem: Context Overflow</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">After 50 tool calls, the conversation history might be 80K tokens. Add a large file read and you are at 120K. The agent starts losing earlier context as new information pushes old information out.</p>
+        <strong style="font-size:.85rem">Problem: Context Overflow</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">After 50 tool calls, the conversation history might be 80K tokens. Add a large file read and you are at 120K. The agent starts losing earlier context as new information pushes old information out.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">Solution: Write to Long-Term Memory</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Smart agents periodically checkpoint important facts to long-term memory. When context gets full, they can start a fresh session and recall what matters from the database. The brain remembers; the chat forgets.</p>
+        <strong style="font-size:.85rem">Solution: Write to Long-Term Memory</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Smart agents periodically checkpoint important facts to long-term memory. When context gets full, they can start a fresh session and recall what matters from the database. The brain remembers; the chat forgets.</p>
       </div>
     </div>
 
@@ -97,18 +97,18 @@
     <p>Simple key-value memory works when you know exactly what to look up. But what if you need to find memories by <em>meaning</em> rather than exact key?</p>
     <p><strong>Vector embeddings</strong> convert text into numerical arrays that capture semantic meaning. Similar concepts end up near each other in vector space. This lets agents search their memory the way humans do — by association, not exact match.</p>
 
-    <div style="background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#8b5cf6">Example:</strong> An agent stores the memory "User prefers dark mode and minimal UI." Later, a query asks "what design preferences does this user have?" A key-value lookup would fail (wrong key). A vector search finds it instantly because the <em>meaning</em> is similar — even though the words are different.
+    <div style="background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;line-height:1.7">
+      <strong>Example:</strong> An agent stores the memory "User prefers dark mode and minimal UI." Later, a query asks "what design preferences does this user have?" A key-value lookup would fail (wrong key). A vector search finds it instantly because the <em>meaning</em> is similar — even though the words are different.
     </div>
 
-    <p style="font-size:.85rem;color:#71717a">Supabase supports vector search natively via pgvector. You store embeddings alongside your brain_context rows, then query with cosine similarity. This is the foundation of RAG (Retrieval-Augmented Generation), covered in depth in the RAG & Vector Search course.</p>
+    <p style="font-size:.85rem">Supabase supports vector search natively via pgvector. You store embeddings alongside your brain_context rows, then query with cosine similarity. This is the foundation of RAG (Retrieval-Augmented Generation), covered in depth in the RAG & Vector Search course.</p>
   </div>
 
   <div class="section">
     <h2>Querying Agent Memory</h2>
     <p>To read from agent memory, you use SQL queries against the appropriate table. Here are common query patterns:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0"><code><span style="color:#71717a">-- Read all shared memories in a category</span>
 <span style="color:#c084fc">SELECT</span> * <span style="color:#c084fc">FROM</span> brain_context <span style="color:#c084fc">WHERE</span> category = <span style="color:#fbbf24">'identity'</span>;
 
@@ -118,7 +118,7 @@
 <span style="color:#71717a">-- Find a specific key</span>
 <span style="color:#c084fc">SELECT</span> value <span style="color:#c084fc">FROM</span> brain_context <span style="color:#c084fc">WHERE</span> key = <span style="color:#fbbf24">'session.active_work'</span>;</code></pre>
     </div>
-    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem"><strong>SELECT *</strong> means "get all columns." <strong>FROM</strong> names the table. <strong>WHERE</strong> filters rows by a condition. Use <code>brain_context</code> for shared memory and <code>agent_memory</code> for an individual agent's long-term storage.</p>
+    <p style="font-size:.82rem;margin-top:.5rem"><strong>SELECT *</strong> means "get all columns." <strong>FROM</strong> names the table. <strong>WHERE</strong> filters rows by a condition. Use <code>brain_context</code> for shared memory and <code>agent_memory</code> for an individual agent's long-term storage.</p>
   </div>
 
   <div class="section">
@@ -127,16 +127,16 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-        <strong style="color:#38bdf8">TTL (Time-To-Live)</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Set an expiration on temporary memories. Session state that is 30 days old is probably stale. Task outputs from completed projects can be archived. Use a background job that cleans expired entries weekly.</p>
+        <strong>TTL (Time-To-Live)</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Set an expiration on temporary memories. Session state that is 30 days old is probably stale. Task outputs from completed projects can be archived. Use a background job that cleans expired entries weekly.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
-        <strong style="color:#f472b6">Consolidation</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Periodically merge related memories into summaries. Instead of 50 individual session records, create one consolidated entry: "Q1 2026: deployed 12 features, fixed 8 bugs, migrated to new database." This reduces read time while preserving the essential information.</p>
+        <strong>Consolidation</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Periodically merge related memories into summaries. Instead of 50 individual session records, create one consolidated entry: "Q1 2026: deployed 12 features, fixed 8 bugs, migrated to new database." This reduces read time while preserving the essential information.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(250,204,21,.04);border:1px solid rgba(250,204,21,.1)">
-        <strong style="color:#facc15">Versioning</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">When updating a memory, keep the previous version. This creates an audit trail and enables rollbacks. If a memory update introduces bad data, you can revert to the last known good state. Store versions in a separate history table or use a <code>version</code> column.</p>
+        <strong>Versioning</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">When updating a memory, keep the previous version. This creates an audit trail and enables rollbacks. If a memory update introduces bad data, you can revert to the last known good state. Store versions in a separate history table or use a <code>version</code> column.</p>
       </div>
     </div>
   </div>
@@ -147,29 +147,29 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6;font-size:.85rem">Flat Key-Value</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Simple key-value store with no nesting. Fast reads, easy to understand. Works for small to medium memory stores (under 1,000 keys). Starts to struggle when you need complex queries or relationships between entries.</p>
+        <strong style="font-size:.85rem">Flat Key-Value</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Simple key-value store with no nesting. Fast reads, easy to understand. Works for small to medium memory stores (under 1,000 keys). Starts to struggle when you need complex queries or relationships between entries.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">Hierarchical Namespaced</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Keys organized in a tree structure: <code>identity.user</code>, <code>identity.preferences</code>, <code>system.infrastructure</code>. Agents can read entire namespaces (<code>identity.*</code>) without loading the full store. Scales to thousands of entries while staying organized.</p>
+        <strong style="font-size:.85rem">Hierarchical Namespaced</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Keys organized in a tree structure: <code>identity.user</code>, <code>identity.preferences</code>, <code>system.infrastructure</code>. Agents can read entire namespaces (<code>identity.*</code>) without loading the full store. Scales to thousands of entries while staying organized.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c;font-size:.85rem">Hybrid (KV + Vectors)</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Combines key-value for structured data (settings, config, rules) with vector embeddings for unstructured data (conversations, decisions, learning). Queries by key for known lookups and by semantic similarity for contextual retrieval.</p>
+        <strong style="font-size:.85rem">Hybrid (KV + Vectors)</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Combines key-value for structured data (settings, config, rules) with vector embeddings for unstructured data (conversations, decisions, learning). Queries by key for known lookups and by semantic similarity for contextual retrieval.</p>
       </div>
     </div>
-    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Most production agent systems use the hybrid pattern. It gives you the speed of key-value lookups for routine reads and the intelligence of semantic search for complex queries.</p>
+    <p style="font-size:.82rem;margin-top:.5rem">Most production agent systems use the hybrid pattern. It gives you the speed of key-value lookups for routine reads and the intelligence of semantic search for complex queries.</p>
   </div>
 
   <div class="section">
     <h2>Memory Anti-Patterns</h2>
     <p>Common mistakes that degrade agent memory performance:</p>
 
-    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#ef4444">Store-everything syndrome:</strong> Writing every conversation turn to long-term memory. This fills the database with low-value noise that makes retrieval slower and less accurate. Store decisions, outcomes, and learned facts — not raw conversation logs.<br><br>
-      <strong style="color:#ef4444">Key name collisions:</strong> Two agents both using <code>status</code> as a key name. Agent A overwrites Agent B's status. Use namespaced keys: <code>agent.writer.status</code> vs <code>agent.editor.status</code>.<br><br>
-      <strong style="color:#ef4444">No cleanup:</strong> Memory that grows forever eventually degrades retrieval quality. Set TTLs on temporary data. Archive completed project memories. Consolidate old session logs into summaries.
+    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;line-height:1.7">
+      <strong>Store-everything syndrome:</strong> Writing every conversation turn to long-term memory. This fills the database with low-value noise that makes retrieval slower and less accurate. Store decisions, outcomes, and learned facts — not raw conversation logs.<br><br>
+      <strong>Key name collisions:</strong> Two agents both using <code>status</code> as a key name. Agent A overwrites Agent B's status. Use namespaced keys: <code>agent.writer.status</code> vs <code>agent.editor.status</code>.<br><br>
+      <strong>No cleanup:</strong> Memory that grows forever eventually degrades retrieval quality. Set TTLs on temporary data. Archive completed project memories. Consolidate old session logs into summaries.
     </div>
   </div>
 
@@ -205,14 +205,14 @@
     <h2>When to Use Each Memory Type</h2>
     <p>A common mistake is using the wrong memory type for the job. Here is a decision guide:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.8">
-      <strong style="color:#e5e5e5">Is it temporary (just this session)?</strong><br>
-      &nbsp;&nbsp;Yes &rarr; <strong style="color:#fb923c">Short-term</strong> — keep it in the conversation context<br>
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;line-height:1.8">
+      <strong>Is it temporary (just this session)?</strong><br>
+      &nbsp;&nbsp;Yes &rarr; <strong>Short-term</strong> — keep it in the conversation context<br>
       &nbsp;&nbsp;No &rarr; Does it belong to one agent or many?<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;One agent &rarr; <strong style="color:#8b5cf6">Long-term</strong> — write to agent_memory<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;Multiple agents &rarr; <strong style="color:#34d399">Shared</strong> — write to brain_context
+      &nbsp;&nbsp;&nbsp;&nbsp;One agent &rarr; <strong>Long-term</strong> — write to agent_memory<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;Multiple agents &rarr; <strong>Shared</strong> — write to brain_context
     </div>
-    <p style="font-size:.82rem;color:#71717a">If in doubt, default to shared memory. It is always better for another agent to have access to a memory it does not need than for it to lack a memory it does need.</p>
+    <p style="font-size:.82rem">If in doubt, default to shared memory. It is always better for another agent to have access to a memory it does not need than for it to lack a memory it does need.</p>
   </div>
 
   <div class="quiz-block">

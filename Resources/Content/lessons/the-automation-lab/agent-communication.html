@@ -14,12 +14,12 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Direct Coupling (fragile)</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Agent A calls Agent B's API. If B is down, A fails. If B changes, A breaks. Adding Agent C requires modifying A. N agents = N&sup2; connections.</p>
+        <strong style="font-size:.85rem">Direct Coupling (fragile)</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Agent A calls Agent B's API. If B is down, A fails. If B changes, A breaks. Adding Agent C requires modifying A. N agents = N&sup2; connections.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">Shared Memory (resilient)</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Agent A writes to a key. Agent B reads the key. They are fully independent. If B is down, A still writes successfully. Adding Agent C requires zero changes to A or B.</p>
+        <strong style="font-size:.85rem">Shared Memory (resilient)</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Agent A writes to a key. Agent B reads the key. They are fully independent. If B is down, A still writes successfully. Adding Agent C requires zero changes to A or B.</p>
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@
     <h2>How It Works in Code</h2>
     <p>The pattern is simple: a sender writes to a key, a receiver polls or subscribes to that key. Here is a complete example:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0"><code><span style="color:#71717a"># Sender agent writes its output to shared memory</span>
 <span style="color:#c084fc">def</span> <span style="color:#38bdf8">writer_agent</span>(db, content):
     db.execute(
@@ -58,7 +58,7 @@
             )
         time.sleep(<span style="color:#fbbf24">5</span>)  <span style="color:#71717a"># poll every 5 seconds</span></code></pre>
     </div>
-    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">The writer does not know or care if anyone reads its output. The publisher does not know or care who wrote the content. They only share a key name: <code>task.output</code>.</p>
+    <p style="font-size:.82rem;margin-top:.5rem">The writer does not know or care if anyone reads its output. The publisher does not know or care who wrote the content. They only share a key name: <code>task.output</code>.</p>
   </div>
 
   <div class="section">
@@ -67,16 +67,16 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">Polling (simple, some latency)</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Agent checks the database on a timer. Easy to implement. Latency = poll interval. Fine for most use cases. Used by cron-based agents.</p>
+        <strong>Polling (simple, some latency)</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Agent checks the database on a timer. Easy to implement. Latency = poll interval. Fine for most use cases. Used by cron-based agents.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">Database triggers / Supabase Realtime (instant)</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Supabase can push changes to subscribers via WebSockets the moment a row is inserted. Zero latency. The receiver is notified instantly — no polling required.</p>
+        <strong>Database triggers / Supabase Realtime (instant)</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Supabase can push changes to subscribers via WebSockets the moment a row is inserted. Zero latency. The receiver is notified instantly — no polling required.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">Webhooks (push-based)</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">When Agent A writes, a database trigger fires an HTTP request to Agent B's endpoint. B wakes up and processes immediately. Used in production event-driven systems.</p>
+        <strong>Webhooks (push-based)</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">When Agent A writes, a database trigger fires an HTTP request to Agent B's endpoint. B wakes up and processes immediately. Used in production event-driven systems.</p>
       </div>
     </div>
   </div>
@@ -89,10 +89,10 @@
     <h2>When Communication Fails</h2>
     <p>Shared memory communication is resilient, but not bulletproof. Common failure modes:</p>
 
-    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#ef4444">Lost messages:</strong> If the database is down when Agent A writes, the message is lost. Solution: retry with exponential backoff, or use a write-ahead log.<br><br>
-      <strong style="color:#ef4444">Stale reads:</strong> Agent B reads an old value because Agent A has not written yet. Solution: include timestamps and have Agent B check freshness.<br><br>
-      <strong style="color:#ef4444">Race conditions:</strong> Two agents write to the same key simultaneously. The second write overwrites the first. This is the conflict problem covered in Lesson 6.
+    <div style="background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1.25rem;margin:1rem 0;font-size:.85rem;line-height:1.7">
+      <strong>Lost messages:</strong> If the database is down when Agent A writes, the message is lost. Solution: retry with exponential backoff, or use a write-ahead log.<br><br>
+      <strong>Stale reads:</strong> Agent B reads an old value because Agent A has not written yet. Solution: include timestamps and have Agent B check freshness.<br><br>
+      <strong>Race conditions:</strong> Two agents write to the same key simultaneously. The second write overwrites the first. This is the conflict problem covered in Lesson 6.
     </div>
   </div>
 
@@ -100,7 +100,7 @@
     <h2>Message Schemas and Contracts</h2>
     <p>When agents communicate through shared memory, they need to agree on a message format. Without a schema, Agent B cannot reliably parse what Agent A wrote. Here is a practical message schema:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0"><code><span style="color:#71717a"># Standard message schema for agent communication</span>
 message = {
     <span style="color:#fbbf24">"key"</span>: <span style="color:#fbbf24">"task.content_review"</span>,       <span style="color:#71717a"># namespaced key</span>
@@ -115,7 +115,7 @@ message = {
     <span style="color:#fbbf24">"ttl"</span>: <span style="color:#fbbf24">3600</span>                        <span style="color:#71717a"># expires after 1 hour</span>
 }</code></pre>
     </div>
-    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">A consistent schema means any agent can read any message. The <code>ttl</code> (time-to-live) field prevents stale messages from clogging the stream. The <code>status</code> field lets downstream agents know whether the task is still pending or already claimed.</p>
+    <p style="font-size:.82rem;margin-top:.5rem">A consistent schema means any agent can read any message. The <code>ttl</code> (time-to-live) field prevents stale messages from clogging the stream. The <code>status</code> field lets downstream agents know whether the task is still pending or already claimed.</p>
   </div>
 
   <div class="section">
@@ -124,15 +124,15 @@ message = {
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">Single Key, Multiple Readers</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Agent A writes to <code>task.new_post</code>. Agent B (Twitter publisher), Agent C (email sender), and Agent D (Slack notifier) all watch this key. When Agent A writes, all three activate independently. No coordination needed — each reads the same payload and does its own job.</p>
+        <strong>Single Key, Multiple Readers</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Agent A writes to <code>task.new_post</code>. Agent B (Twitter publisher), Agent C (email sender), and Agent D (Slack notifier) all watch this key. When Agent A writes, all three activate independently. No coordination needed — each reads the same payload and does its own job.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">Multiple Keys, Targeted Delivery</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Agent A writes to <code>task.twitter</code>, <code>task.email</code>, and <code>task.slack</code> separately, each with a tailored payload. More work for the sender, but each receiver gets exactly the data it needs — no parsing required.</p>
+        <strong>Multiple Keys, Targeted Delivery</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Agent A writes to <code>task.twitter</code>, <code>task.email</code>, and <code>task.slack</code> separately, each with a tailored payload. More work for the sender, but each receiver gets exactly the data it needs — no parsing required.</p>
       </div>
     </div>
-    <p style="font-size:.85rem;color:#a1a1aa">The first approach is simpler and works when all receivers need the same data. The second is better when each downstream agent needs a different format or subset of the data.</p>
+    <p style="font-size:.85rem">The first approach is simpler and works when all receivers need the same data. The second is better when each downstream agent needs a different format or subset of the data.</p>
   </div>
 
   <div class="section">
@@ -141,16 +141,16 @@ message = {
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">At-most-once (fire and forget)</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Agent A writes the message and moves on. If Agent B never reads it, the message is lost. Simple but unreliable. Fine for non-critical notifications.</p>
+        <strong>At-most-once (fire and forget)</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Agent A writes the message and moves on. If Agent B never reads it, the message is lost. Simple but unreliable. Fine for non-critical notifications.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">At-least-once (with acknowledgment)</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Agent B marks the message as <code>processed = true</code> after handling it. If B crashes mid-processing, the message stays unprocessed and gets retried. May process the same message twice — actions must be idempotent.</p>
+        <strong>At-least-once (with acknowledgment)</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Agent B marks the message as <code>processed = true</code> after handling it. If B crashes mid-processing, the message stays unprocessed and gets retried. May process the same message twice — actions must be idempotent.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">Exactly-once (transactional)</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Uses database transactions to ensure the message is processed exactly one time. The read, process, and acknowledgment happen atomically. Most reliable but most complex. Use for financial transactions and critical state changes.</p>
+        <strong>Exactly-once (transactional)</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Uses database transactions to ensure the message is processed exactly one time. The read, process, and acknowledgment happen atomically. Most reliable but most complex. Use for financial transactions and critical state changes.</p>
       </div>
     </div>
   </div>
@@ -253,7 +253,7 @@ message = {
     <h2>Namespacing and Key Design</h2>
     <p>As your agent fleet grows, message keys can collide. Two agents both writing to <code>task.output</code> creates chaos. Namespacing solves this:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#e5e5e5;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0"><code><span style="color:#71717a"># Good: namespaced keys prevent collisions</span>
 <span style="color:#fbbf24">"pipeline.content.draft"</span>        <span style="color:#71717a"># writer → editor</span>
 <span style="color:#fbbf24">"pipeline.content.reviewed"</span>     <span style="color:#71717a"># editor → publisher</span>
@@ -267,7 +267,7 @@ message = {
 <span style="color:#fbbf24">"status"</span>    <span style="color:#71717a"># which agent's status?</span>
 <span style="color:#fbbf24">"result"</span>    <span style="color:#71717a"># result of what?</span></code></pre>
     </div>
-    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Use a three-level namespace: <code>domain.subsystem.key</code>. This scales to hundreds of agents without confusion. Agents can watch entire domains (<code>monitor.*</code>) or specific keys (<code>pipeline.content.draft</code>).</p>
+    <p style="font-size:.82rem;margin-top:.5rem">Use a three-level namespace: <code>domain.subsystem.key</code>. This scales to hundreds of agents without confusion. Agents can watch entire domains (<code>monitor.*</code>) or specific keys (<code>pipeline.content.draft</code>).</p>
   </div>
 
   <div class="section">
@@ -276,12 +276,12 @@ message = {
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Without Backpressure</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Producer writes 100 messages/minute. Consumer processes 10/minute. After an hour: 5,400 unprocessed messages. System becomes unusable.</p>
+        <strong style="font-size:.85rem">Without Backpressure</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Producer writes 100 messages/minute. Consumer processes 10/minute. After an hour: 5,400 unprocessed messages. System becomes unusable.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">With Backpressure</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.3rem 0 0">Queue has a max depth of 50. When full, the producer waits or drops lowest-priority messages. System stays healthy. Latency stays bounded.</p>
+        <strong style="font-size:.85rem">With Backpressure</strong>
+        <p style="font-size:.82rem;margin:.3rem 0 0">Queue has a max depth of 50. When full, the producer waits or drops lowest-priority messages. System stays healthy. Latency stays bounded.</p>
       </div>
     </div>
   </div>

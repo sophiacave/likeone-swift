@@ -26,9 +26,9 @@
 <div class="lesson-section">
   <span class="section-label">Architecture</span>
   <h2 class="section-title">The Three Layers of AI Memory</h2>
-  <p class="section-text"><strong style="color: var(--orange);">Working Memory.</strong> The current conversation context. What's happening right now. This is what every AI already has — the context window. It's fast but it evaporates when the session ends.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Episodic Memory.</strong> Records of specific events, decisions, and interactions stored permanently. "On March 15th, we decided to use Stripe for payments because of their webhook reliability." This is your project history — timestamped, retrievable, accumulating.</p>
-  <p class="section-text"><strong style="color: var(--green);">Semantic Memory.</strong> Distilled knowledge — facts, preferences, rules, identity. Not tied to a specific moment but always true. "Faye prefers concise responses." "The deploy pipeline uses Vercel." This is the brain's permanent knowledge base.</p>
+  <p class="section-text"><strong>Working Memory.</strong> The current conversation context. What's happening right now. This is what every AI already has — the context window. It's fast but it evaporates when the session ends.</p>
+  <p class="section-text"><strong>Episodic Memory.</strong> Records of specific events, decisions, and interactions stored permanently. "On March 15th, we decided to use Stripe for payments because of their webhook reliability." This is your project history — timestamped, retrievable, accumulating.</p>
+  <p class="section-text"><strong>Semantic Memory.</strong> Distilled knowledge — facts, preferences, rules, identity. Not tied to a specific moment but always true. "Faye prefers concise responses." "The deploy pipeline uses Vercel." This is the brain's permanent knowledge base.</p>
 </div>
 
 <div class="demo-container">
@@ -48,27 +48,27 @@
   <span class="section-label">Implementation</span>
   <h2 class="section-title">Building a Brain in Practice</h2>
   <p class="section-text">Here is a concrete implementation using Supabase (PostgreSQL). This is the actual pattern used by production convergence systems — not a toy example:</p>
-  <p class="section-text"><strong style="color: var(--blue);">Step 1: Create the table.</strong> A single <code>brain_context</code> table with columns: <code>key</code> (text, primary key), <code>value</code> (jsonb for flexibility), <code>category</code> (text — identity, directive, session, system), and <code>updated_at</code> (timestamp, auto-updated). This is your semantic memory store.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Step 2: Populate the foundation.</strong> Start with 10-15 keys that define your AI's world: <code>identity.user</code> (who you are), <code>directive.rules</code> (what the AI must always do), <code>directive.guardrails</code> (what the AI must never do), <code>system.infrastructure</code> (what tools are available), <code>session.active_work</code> (what is being worked on right now).</p>
-  <p class="section-text"><strong style="color: var(--green);">Step 3: Add vector support.</strong> Enable pgvector and add an <code>embedding</code> column. Every brain entry gets embedded when created or updated. This enables semantic search — finding memories by meaning, not just by key name.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Step 4: Build the boot sequence.</strong> On every session start, the AI reads its critical keys in parallel: identity, directives, active work, and next steps. This takes under a second and gives the AI full context immediately.</p>
+  <p class="section-text"><strong>Step 1: Create the table.</strong> A single <code>brain_context</code> table with columns: <code>key</code> (text, primary key), <code>value</code> (jsonb for flexibility), <code>category</code> (text — identity, directive, session, system), and <code>updated_at</code> (timestamp, auto-updated). This is your semantic memory store.</p>
+  <p class="section-text"><strong>Step 2: Populate the foundation.</strong> Start with 10-15 keys that define your AI's world: <code>identity.user</code> (who you are), <code>directive.rules</code> (what the AI must always do), <code>directive.guardrails</code> (what the AI must never do), <code>system.infrastructure</code> (what tools are available), <code>session.active_work</code> (what is being worked on right now).</p>
+  <p class="section-text"><strong>Step 3: Add vector support.</strong> Enable pgvector and add an <code>embedding</code> column. Every brain entry gets embedded when created or updated. This enables semantic search — finding memories by meaning, not just by key name.</p>
+  <p class="section-text"><strong>Step 4: Build the boot sequence.</strong> On every session start, the AI reads its critical keys in parallel: identity, directives, active work, and next steps. This takes under a second and gives the AI full context immediately.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Anti-Patterns</span>
   <h2 class="section-title">Memory Architecture Mistakes</h2>
-  <p class="section-text"><strong style="color: var(--red);">The everything-in-one-key mistake.</strong> Storing all your rules in a single giant JSON blob under <code>system.config</code>. The AI has to read the entire blob even when it only needs one rule. Break it up: <code>directive.name_safety</code>, <code>directive.autonomy</code>, <code>directive.privacy</code>. Each key is independently readable and updatable.</p>
-  <p class="section-text"><strong style="color: var(--red);">The no-category mistake.</strong> Every key lives in a flat namespace with no grouping. After 500 keys, the AI cannot efficiently find what it needs. Use hierarchical categories: <code>identity.*</code>, <code>directive.*</code>, <code>session.*</code>, <code>project.*</code>. The AI reads an entire category at once instead of guessing individual keys.</p>
-  <p class="section-text"><strong style="color: var(--red);">The write-never-read mistake.</strong> Diligently storing every decision and interaction, but never building retrieval into the agent loop. The brain fills up but the AI never consults it. Memory that is not read is not memory — it is a log file. Build reads into the boot sequence and decision-making loop.</p>
+  <p class="section-text"><strong>The everything-in-one-key mistake.</strong> Storing all your rules in a single giant JSON blob under <code>system.config</code>. The AI has to read the entire blob even when it only needs one rule. Break it up: <code>directive.name_safety</code>, <code>directive.autonomy</code>, <code>directive.privacy</code>. Each key is independently readable and updatable.</p>
+  <p class="section-text"><strong>The no-category mistake.</strong> Every key lives in a flat namespace with no grouping. After 500 keys, the AI cannot efficiently find what it needs. Use hierarchical categories: <code>identity.*</code>, <code>directive.*</code>, <code>session.*</code>, <code>project.*</code>. The AI reads an entire category at once instead of guessing individual keys.</p>
+  <p class="section-text"><strong>The write-never-read mistake.</strong> Diligently storing every decision and interaction, but never building retrieval into the agent loop. The brain fills up but the AI never consults it. Memory that is not read is not memory — it is a log file. Build reads into the boot sequence and decision-making loop.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Scale</span>
   <h2 class="section-title">When Memory Gets Large</h2>
   <p class="section-text">A brain with 100 keys is easy. A brain with 10,000 keys requires strategy. The AI cannot read everything on boot — that would consume the entire context window. Three solutions:</p>
-  <p class="section-text"><strong style="color: var(--blue);">Tiered loading.</strong> Boot reads only critical keys (identity, active work, directives). Other keys are loaded on-demand when the AI encounters a relevant task. This keeps boot fast while preserving access to everything.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Semantic retrieval.</strong> Instead of loading keys by name, embed the current task description and retrieve the most semantically relevant memories. The AI gets context it did not know it needed — surfacing connections that key-name-based retrieval would miss.</p>
-  <p class="section-text"><strong style="color: var(--green);">Memory consolidation.</strong> Periodically merge old entries into summaries. 200 daily session logs become one quarterly summary. This keeps the brain's active size manageable while preserving historical knowledge in compressed form.</p>
+  <p class="section-text"><strong>Tiered loading.</strong> Boot reads only critical keys (identity, active work, directives). Other keys are loaded on-demand when the AI encounters a relevant task. This keeps boot fast while preserving access to everything.</p>
+  <p class="section-text"><strong>Semantic retrieval.</strong> Instead of loading keys by name, embed the current task description and retrieve the most semantically relevant memories. The AI gets context it did not know it needed — surfacing connections that key-name-based retrieval would miss.</p>
+  <p class="section-text"><strong>Memory consolidation.</strong> Periodically merge old entries into summaries. 200 daily session logs become one quarterly summary. This keeps the brain's active size manageable while preserving historical knowledge in compressed form.</p>
 </div>
 
 <div class="lesson-section">
@@ -83,10 +83,10 @@
   <span class="section-label">Advanced</span>
   <h2 class="section-title">The Boot Sequence Pattern</h2>
   <p class="section-text">The most important moment in a convergence session is the first 500 milliseconds — the boot sequence. This is when the AI reads its critical memories and establishes context. A well-designed boot sequence reads in parallel:</p>
-  <p class="section-text"><strong style="color: var(--orange);">Identity keys:</strong> Who the user is, their preferences, their voice. This shapes every subsequent response.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Directive keys:</strong> The rules the AI must follow — autonomy level, privacy boundaries, operational constraints. These are the guardrails that ensure safe behavior.</p>
-  <p class="section-text"><strong style="color: var(--green);">Session state:</strong> What was happening in the last session — active work, next steps, any blockers. This enables seamless continuity.</p>
-  <p class="section-text"><strong style="color: var(--blue);">System state:</strong> What infrastructure is available — which services are running, which tools are deployed, what the current system health looks like.</p>
+  <p class="section-text"><strong>Identity keys:</strong> Who the user is, their preferences, their voice. This shapes every subsequent response.</p>
+  <p class="section-text"><strong>Directive keys:</strong> The rules the AI must follow — autonomy level, privacy boundaries, operational constraints. These are the guardrails that ensure safe behavior.</p>
+  <p class="section-text"><strong>Session state:</strong> What was happening in the last session — active work, next steps, any blockers. This enables seamless continuity.</p>
+  <p class="section-text"><strong>System state:</strong> What infrastructure is available — which services are running, which tools are deployed, what the current system health looks like.</p>
   <p class="section-text">Reading these in parallel (not sequentially) cuts boot time dramatically. The AI does not need to read everything in the brain — just the keys that establish context. Everything else can be loaded on-demand.</p>
 </div>
 
@@ -94,17 +94,17 @@
   <span class="section-label">Comparison</span>
   <h2 class="section-title">Memory Technologies Compared</h2>
   <p class="section-text">Several technologies can serve as your AI's brain. Each has tradeoffs:</p>
-  <p class="section-text"><strong style="color: var(--green);">Supabase (PostgreSQL):</strong> Full SQL database with built-in auth, RLS, and pgvector for embeddings. Free tier available. Best for production convergence systems. Like One uses this architecture.</p>
-  <p class="section-text"><strong style="color: var(--blue);">SQLite:</strong> Local file-based database. No server needed. Zero-latency reads. Best for local-only systems or prototyping. Limitation: cannot be accessed by multiple machines simultaneously.</p>
-  <p class="section-text"><strong style="color: var(--orange);">JSON files:</strong> The simplest option — just read and write a JSON file. Good for getting started in an afternoon. Limitation: no querying, no concurrency, no vector search. You will outgrow this in a week.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Redis:</strong> In-memory key-value store. Extremely fast reads. Best for short-term and shared memory where speed matters. Limitation: data can be lost on restart unless persistence is configured.</p>
+  <p class="section-text"><strong>Supabase (PostgreSQL):</strong> Full SQL database with built-in auth, RLS, and pgvector for embeddings. Free tier available. Best for production convergence systems. Like One uses this architecture.</p>
+  <p class="section-text"><strong>SQLite:</strong> Local file-based database. No server needed. Zero-latency reads. Best for local-only systems or prototyping. Limitation: cannot be accessed by multiple machines simultaneously.</p>
+  <p class="section-text"><strong>JSON files:</strong> The simplest option — just read and write a JSON file. Good for getting started in an afternoon. Limitation: no querying, no concurrency, no vector search. You will outgrow this in a week.</p>
+  <p class="section-text"><strong>Redis:</strong> In-memory key-value store. Extremely fast reads. Best for short-term and shared memory where speed matters. Limitation: data can be lost on restart unless persistence is configured.</p>
   <p class="section-text">Start with whatever gets you building fastest. Migrate to Supabase when you need persistence, vector search, or multi-device access. The brain schema (key, value, category, updated_at) is the same regardless of technology.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Design a memory schema for your own AI brain. Start with these categories:</p>
-  <div class="prompt-box"><code>identity.*    — Who you are, your preferences, your voice
+  <div class="demo-container"><code>identity.*    — Who you are, your preferences, your voice
 directive.*   — Rules the AI must always follow
 system.*      — Technical infrastructure and tools
 session.*     — Current work state and next steps
@@ -154,7 +154,7 @@ AI's permanent knowledge base — the foundation of convergence.</code></div>
   <h2 class="section-title">Memory and the Context Window</h2>
   <p class="section-text">The context window is the AI's working memory — the total text it can process at once. Claude's window is up to 200K tokens (roughly 150,000 words). This sounds large, but a busy agent session can fill it in under an hour of active tool use.</p>
   <p class="section-text">When the context window fills, old information gets pushed out. The AI literally forgets what happened at the beginning of the session. This is the "goldfish problem" — and persistent memory is the solution.</p>
-  <p class="section-text"><strong style="color: var(--green);">The fix:</strong> Checkpoint critical state to the brain every 15-20 minutes of active work. When the context window gets heavy, start a fresh session. The AI reads the brain on boot and has full context in seconds — no information lost, no re-explanation needed.</p>
+  <p class="section-text"><strong>The fix:</strong> Checkpoint critical state to the brain every 15-20 minutes of active work. When the context window gets heavy, start a fresh session. The AI reads the brain on boot and has full context in seconds — no information lost, no re-explanation needed.</p>
   <p class="section-text">This pattern — working memory in the context window, permanent memory in the brain — mirrors how human memory works. You hold the current task in your head. You store important facts in notebooks and systems. The combination is more powerful than either alone.</p>
 </div>
 
@@ -166,13 +166,13 @@ AI's permanent knowledge base — the foundation of convergence.</code></div>
     Securing it is not optional — it is the first priority:
   </p>
   <p class="section-text">
-    <strong style="color: var(--red);">Row-Level Security (RLS):</strong>
+    <strong>Row-Level Security (RLS):</strong>
     Enable RLS on every table. This ensures that even if someone
     gets your database URL, they cannot read your data without
     the correct authentication. Supabase makes this a checkbox.
   </p>
   <p class="section-text">
-    <strong style="color: var(--orange);">Service role vs. anon key:</strong>
+    <strong>Service role vs. anon key:</strong>
     Your database has two keys — anon (limited) and service role (full access).
     Use the anon key for public-facing functions.
     Use the service role key only in secure, server-side contexts.
@@ -180,7 +180,7 @@ AI's permanent knowledge base — the foundation of convergence.</code></div>
     If a service key leaks, everything is exposed.
   </p>
   <p class="section-text">
-    <strong style="color: var(--green);">Environment variables:</strong>
+    <strong>Environment variables:</strong>
     Never store database credentials in code.
     Use <code>.env</code> files locally and environment variable
     configuration in deployment platforms.
@@ -189,7 +189,7 @@ AI's permanent knowledge base — the foundation of convergence.</code></div>
     can expose your entire brain.
   </p>
   <p class="section-text">
-    <strong style="color: var(--blue);">Regular key rotation:</strong>
+    <strong>Regular key rotation:</strong>
     Rotate your database keys every 90 days.
     If a key was ever exposed or you suspect a breach,
     rotate immediately. Update all agents and services

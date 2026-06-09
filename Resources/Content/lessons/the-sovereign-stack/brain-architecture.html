@@ -30,17 +30,17 @@
 </div>
 
   <p class="section-text">SQLite is the most deployed database in the world. It is a single file on your disk -- no server process, no network port, no configuration. Your entire brain lives in one file that you can copy, backup, and move between machines.</p>
-  <p class="section-text"><strong style="color: var(--green);">Zero dependencies.</strong> No database server to install, configure, or maintain. No Docker containers. No cloud services. The database is a file. Your application reads and writes it directly.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Zero latency.</strong> Reads from a local SQLite file take microseconds. No network round-trip. No connection pooling. Your AI's boot sequence that reads 50 keys completes in under 10 milliseconds.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Zero cost.</strong> No monthly bill. No storage fees. No bandwidth charges. A brain with 10,000 entries takes a few megabytes of disk space. You will never outgrow a single machine for brain storage.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Full portability.</strong> Copy the file to another machine and your brain moves with it. Backup to a USB drive. Sync between machines with rsync. No vendor lock-in. No export/import headaches.</p>
+  <p class="section-text"><strong>Zero dependencies.</strong> No database server to install, configure, or maintain. No Docker containers. No cloud services. The database is a file. Your application reads and writes it directly.</p>
+  <p class="section-text"><strong>Zero latency.</strong> Reads from a local SQLite file take microseconds. No network round-trip. No connection pooling. Your AI's boot sequence that reads 50 keys completes in under 10 milliseconds.</p>
+  <p class="section-text"><strong>Zero cost.</strong> No monthly bill. No storage fees. No bandwidth charges. A brain with 10,000 entries takes a few megabytes of disk space. You will never outgrow a single machine for brain storage.</p>
+  <p class="section-text"><strong>Full portability.</strong> Copy the file to another machine and your brain moves with it. Backup to a USB drive. Sync between machines with rsync. No vendor lock-in. No export/import headaches.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Architecture</span>
   <h2 class="section-title">The Brain Schema</h2>
   <p class="section-text">A sovereign brain needs a simple, flexible schema that supports fast reads, hierarchical organization, and full-text search:</p>
-  <div class="prompt-box"><code>-- Create the brain table
+  <div class="demo-container"><code>-- Create the brain table
 CREATE TABLE IF NOT EXISTS brain (
   key TEXT PRIMARY KEY,           -- Hierarchical key: "identity.user"
   value TEXT NOT NULL,            -- The actual content (JSON or plain text)
@@ -75,7 +75,7 @@ INSERT INTO brain (key, value, category) VALUES
   <span class="section-label">Implementation</span>
   <h2 class="section-title">Read and Write Operations</h2>
   <p class="section-text">The brain API is deliberately simple -- read a key, write a key, search by text, list by category:</p>
-  <div class="prompt-box"><code>// brain.js -- Sovereign brain operations
+  <div class="demo-container"><code>// brain.js -- Sovereign brain operations
 import Database from 'better-sqlite3';
 
 const db = new Database('./brain.db');
@@ -127,19 +127,19 @@ function boot() {
   <span class="section-label">Strategy</span>
   <h2 class="section-title">Brain Categories</h2>
   <p class="section-text">Organize your brain into clear categories so the AI can efficiently load what it needs:</p>
-  <p class="section-text"><strong style="color: var(--blue);">identity.*</strong> -- Who you are, your preferences, your voice, your background. Read on every boot. Examples: identity.user, identity.preferences, identity.voice.</p>
-  <p class="section-text"><strong style="color: var(--purple);">directive.*</strong> -- Rules the AI must follow. Non-negotiable. Read on every boot. Examples: directive.autonomy, directive.privacy, directive.spending_limit.</p>
-  <p class="section-text"><strong style="color: var(--green);">system.*</strong> -- Infrastructure and tool configuration. Read on boot when relevant. Examples: system.infrastructure, system.api_keys, system.active_services.</p>
-  <p class="section-text"><strong style="color: var(--orange);">session.*</strong> -- Current work state. Read on boot to resume. Written at every checkpoint. Examples: session.active_work, session.next_steps, session.blockers.</p>
-  <p class="section-text"><strong style="color: var(--accent);">project.*</strong> -- Ongoing project details. Read when working on that project. Examples: project.website_redesign, project.client_proposal, project.product_launch.</p>
-  <p class="section-text"><strong style="color: var(--dim);">episode.*</strong> -- Historical records. Searched when context is needed. Examples: episode.2026-04-15_deploy, episode.client_meeting_notes.</p>
+  <p class="section-text"><strong>identity.*</strong> -- Who you are, your preferences, your voice, your background. Read on every boot. Examples: identity.user, identity.preferences, identity.voice.</p>
+  <p class="section-text"><strong>directive.*</strong> -- Rules the AI must follow. Non-negotiable. Read on every boot. Examples: directive.autonomy, directive.privacy, directive.spending_limit.</p>
+  <p class="section-text"><strong>system.*</strong> -- Infrastructure and tool configuration. Read on boot when relevant. Examples: system.infrastructure, system.api_keys, system.active_services.</p>
+  <p class="section-text"><strong>session.*</strong> -- Current work state. Read on boot to resume. Written at every checkpoint. Examples: session.active_work, session.next_steps, session.blockers.</p>
+  <p class="section-text"><strong>project.*</strong> -- Ongoing project details. Read when working on that project. Examples: project.website_redesign, project.client_proposal, project.product_launch.</p>
+  <p class="section-text"><strong>episode.*</strong> -- Historical records. Searched when context is needed. Examples: episode.2026-04-15_deploy, episode.client_meeting_notes.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Advanced</span>
   <h2 class="section-title">The Boot Sequence</h2>
   <p class="section-text">The boot sequence is the most important moment in every AI session. In under 50 milliseconds, your AI loads its full identity, rules, and current context from the local brain:</p>
-  <div class="prompt-box"><code>// Boot sequence -- runs at the start of every session
+  <div class="demo-container"><code>// Boot sequence -- runs at the start of every session
 async function bootAgent() {
   const brain = boot();  // Read all categories in parallel
 
@@ -170,15 +170,15 @@ ${brain.system.map(s => `${s.key}: ${s.value}`).join('\n')}
 <div class="lesson-section">
   <span class="section-label">Anti-Patterns</span>
   <h2 class="section-title">Brain Architecture Mistakes</h2>
-  <p class="section-text"><strong style="color: var(--red);">No backup strategy.</strong> Your brain is a single file. If your hard drive fails, it is gone. Set up automated daily backups -- rsync to an external drive, copy to a second machine, or version with git. The brain is the most valuable file you own.</p>
-  <p class="section-text"><strong style="color: var(--red);">Writing but never reading.</strong> Carefully logging every decision to the brain but never building read operations into the agent loop. Memory that is written but never consulted is just a log file. Build reads into the boot sequence and decision-making process.</p>
-  <p class="section-text"><strong style="color: var(--red);">Giant value blobs.</strong> Storing an entire project plan as one massive value under a single key. When the AI reads it, the entire blob consumes context. Break it up: project.plan.goals, project.plan.timeline, project.plan.budget. Read only what is needed.</p>
+  <p class="section-text"><strong>No backup strategy.</strong> Your brain is a single file. If your hard drive fails, it is gone. Set up automated daily backups -- rsync to an external drive, copy to a second machine, or version with git. The brain is the most valuable file you own.</p>
+  <p class="section-text"><strong>Writing but never reading.</strong> Carefully logging every decision to the brain but never building read operations into the agent loop. Memory that is written but never consulted is just a log file. Build reads into the boot sequence and decision-making process.</p>
+  <p class="section-text"><strong>Giant value blobs.</strong> Storing an entire project plan as one massive value under a single key. When the AI reads it, the entire blob consumes context. Break it up: project.plan.goals, project.plan.timeline, project.plan.budget. Read only what is needed.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Build your sovereign brain:</p>
-  <div class="prompt-box"><code>1. Create a brain.db file using SQLite
+  <div class="demo-container"><code>1. Create a brain.db file using SQLite
    sqlite3 brain.db < schema.sql
 2. Populate it with your identity (3-5 keys):
    - identity.user: who you are

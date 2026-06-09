@@ -36,10 +36,10 @@
 <div class="lesson-section">
   <span class="section-label">Tools</span>
   <h2 class="section-title">The Transcription Stack</h2>
-  <p class="section-text"><strong style="color: var(--orange);">Whisper (local):</strong> Free. Run it on your machine. No data leaves your computer. Best for privacy-sensitive content. Slower than cloud options but you control everything.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Deepgram:</strong> Fastest cloud transcription. Real-time streaming support. Excellent speaker diarization. Their Nova-2 model rivals Whisper's accuracy at 10x the speed. Pay-per-minute pricing.</p>
-  <p class="section-text"><strong style="color: var(--green);">AssemblyAI:</strong> Best for analysis features beyond raw transcription. Sentiment analysis, topic detection, content moderation, PII redaction — all built in. Their Universal model handles challenging audio well.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Descript:</strong> Transcription plus editing in one interface. Edit audio by editing text. Remove filler words with a click. Best for content creators who need transcripts and polished audio simultaneously.</p>
+  <p class="section-text"><strong>Whisper (local):</strong> Free. Run it on your machine. No data leaves your computer. Best for privacy-sensitive content. Slower than cloud options but you control everything.</p>
+  <p class="section-text"><strong>Deepgram:</strong> Fastest cloud transcription. Real-time streaming support. Excellent speaker diarization. Their Nova-2 model rivals Whisper's accuracy at 10x the speed. Pay-per-minute pricing.</p>
+  <p class="section-text"><strong>AssemblyAI:</strong> Best for analysis features beyond raw transcription. Sentiment analysis, topic detection, content moderation, PII redaction — all built in. Their Universal model handles challenging audio well.</p>
+  <p class="section-text"><strong>Descript:</strong> Transcription plus editing in one interface. Edit audio by editing text. Remove filler words with a click. Best for content creators who need transcripts and polished audio simultaneously.</p>
 </div>
 
 <div class="lesson-section">
@@ -56,7 +56,7 @@
   <span class="section-label">Code Example</span>
   <h2 class="section-title">Building a Transcription Pipeline in Python</h2>
   <p class="section-text">Here is a complete pipeline that transcribes audio, identifies speakers, and generates a structured summary — all automated:</p>
-  <div class="prompt-box"><code>import whisper
+  <div class="demo-container"><code>import whisper
 from openai import OpenAI
 
 # Step 1: Transcribe with Whisper (local, free, private)
@@ -103,10 +103,10 @@ with open("meeting_analysis.md", "w") as f:
   <span class="section-label">Deep Dive</span>
   <h2 class="section-title">Choosing the Right Transcription Tool</h2>
   <p class="section-text">Each transcription tool has a specific sweet spot. The wrong choice wastes time or money:</p>
-  <p class="section-text"><strong style="color: var(--orange);">Whisper (local)</strong> — Best when: privacy matters, budget is zero, you have time. Speed: 1-5x slower than real-time depending on model size. Accuracy: 95-99% on clean audio in major languages. Run the "large-v3" model for best accuracy or "tiny" for fast drafts. No internet required.</p>
-  <p class="section-text"><strong style="color: var(--purple);">Deepgram Nova-2</strong> — Best when: speed is critical, real-time streaming needed, production applications. Speed: faster than real-time. Accuracy: matches Whisper large model. Cost: $0.0043/minute. Unique: WebSocket streaming API, custom vocabulary for domain-specific terms.</p>
-  <p class="section-text"><strong style="color: var(--green);">AssemblyAI Universal</strong> — Best when: you need analysis beyond raw transcription. Speed: near real-time. Accuracy: competitive with Whisper large. Cost: $0.00025/second ($0.015/minute). Unique: built-in sentiment analysis, topic detection, PII redaction, content moderation — all in one API call.</p>
-  <p class="section-text"><strong style="color: var(--blue);">Descript</strong> — Best when: you are editing audio/video content. Speed: fast. Accuracy: excellent. Cost: $24/month for Creator plan. Unique: transcript and audio are linked — edit text to edit audio. Not an API — it is an editing application.</p>
+  <p class="section-text"><strong>Whisper (local)</strong> — Best when: privacy matters, budget is zero, you have time. Speed: 1-5x slower than real-time depending on model size. Accuracy: 95-99% on clean audio in major languages. Run the "large-v3" model for best accuracy or "tiny" for fast drafts. No internet required.</p>
+  <p class="section-text"><strong>Deepgram Nova-2</strong> — Best when: speed is critical, real-time streaming needed, production applications. Speed: faster than real-time. Accuracy: matches Whisper large model. Cost: $0.0043/minute. Unique: WebSocket streaming API, custom vocabulary for domain-specific terms.</p>
+  <p class="section-text"><strong>AssemblyAI Universal</strong> — Best when: you need analysis beyond raw transcription. Speed: near real-time. Accuracy: competitive with Whisper large. Cost: $0.00025/second ($0.015/minute). Unique: built-in sentiment analysis, topic detection, PII redaction, content moderation — all in one API call.</p>
+  <p class="section-text"><strong>Descript</strong> — Best when: you are editing audio/video content. Speed: fast. Accuracy: excellent. Cost: $24/month for Creator plan. Unique: transcript and audio are linked — edit text to edit audio. Not an API — it is an editing application.</p>
   <p class="section-text"><strong>Decision framework:</strong> If privacy matters most, use Whisper locally. If speed matters most, use Deepgram. If you need analysis on top of transcription, use AssemblyAI. If you are editing content, use Descript. If budget is zero and you need decent quality, use Whisper tiny or base model.</p>
 </div>
 
@@ -167,10 +167,10 @@ with open("meeting_analysis.md", "w") as f:
   <p class="section-text"><strong>Language detection:</strong> If your audio contains multiple languages, specify the primary language in your API call rather than relying on auto-detection. Auto-detection works well for monolingual content but can produce erratic results when languages are mixed within a single recording.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It: Transcribe and Analyze</h3>
   <p>Record a 2-minute voice memo about your current project. Then run it through this pipeline:</p>
-  <div class="prompt-box"><code>1. Transcribe with Whisper (huggingface.co/spaces has free Whisper demos)
+  <div class="demo-container"><code>1. Transcribe with Whisper (huggingface.co/spaces has free Whisper demos)
 2. Feed the transcript to Claude: "Analyze this transcript. What are the key ideas? What questions does the speaker leave unanswered? Suggest 3 follow-up topics."
 3. Ask Claude to rewrite it as a structured blog post outline.</code></div>
   <p>You just turned a rambling voice memo into a content plan. This is the audio-to-insight pipeline. Once you build it, you'll use it for everything.</p>

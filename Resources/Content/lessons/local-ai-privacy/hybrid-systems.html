@@ -86,7 +86,7 @@ answer = route_request(messages, tier="cloud")</code></pre>
 <p><strong>Token count:</strong> If the prompt exceeds the local model's effective context window (typically 4K-16K tokens for quality output), and the data is non-sensitive, route to a cloud model with 128K+ context.</p>
 <p><strong>Cost thresholds:</strong> Set a daily or monthly cloud budget. When the budget is exhausted, all requests route local regardless of complexity. This prevents runaway cloud costs.</p>
 
-<div class="tip-box">
+<div class="callout">
 <strong>The sensitivity detector:</strong> Build a simple regex-based scanner that checks inputs for patterns like SSNs (XXX-XX-XXXX), credit card numbers, email addresses, phone numbers, and medical terms. If any match, force local routing. This is a safety net, not a replacement for proper data classification.
 </tip>
 </div>

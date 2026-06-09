@@ -56,7 +56,7 @@ class AnthropicAdapter:
 
 Every adapter normalizes its provider's response format into a `UnifiedResponse`. Your application code never touches provider-specific APIs directly. Switching from Claude to GPT-4 becomes a configuration change, not a code change.
 
-<div class="tip-box">
+<div class="callout">
 <strong>Adapter parity:</strong> Not all models support the same features (tool use, vision, structured output, streaming). Your adapter layer should declare capabilities per model so the router can make informed decisions. Don't discover missing features at runtime.
 </div>
 </div>
@@ -168,7 +168,7 @@ Design principles for fallback chains:
 - **Cache as final fallback**: Serving a slightly stale cached response beats returning an error.
 - **Track fallback usage**: If fallbacks fire frequently, your primary model selection or capacity planning needs adjustment.
 
-<div class="tip-box">
+<div class="callout">
 <strong>Prompt compatibility:</strong> Different models respond differently to the same prompt. Maintain model-specific prompt variants in your prompt registry. When falling back from Claude to GPT-4, swap the prompt template too.
 </div>
 </div>

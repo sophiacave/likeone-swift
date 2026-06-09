@@ -22,8 +22,8 @@
 
 <p>Before you write a single line of agent code, you need three things: Node.js, an Anthropic API key, and the SDK package. If you have ever set up a JavaScript project, this will feel familiar. If you have not, follow every step — we will not skip anything.</p>
 
-<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">Real-world analogy:</strong> Setting up the SDK is like setting up a workshop. Node.js is the workbench. The API key is your badge that gets you into the building. The SDK package is the toolbox. You need all three before you can build anything.
+<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.88rem;line-height:1.7">
+<strong>Real-world analogy:</strong> Setting up the SDK is like setting up a workshop. Node.js is the workbench. The API key is your badge that gets you into the building. The SDK package is the toolbox. You need all three before you can build anything.
 </div>
 </div>
 
@@ -31,8 +31,8 @@
 <h2>Step 1: Install Node.js</h2>
 <p>The Agent SDK runs on Node.js 18 or later. Check if you already have it:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — check your Node.js version</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — check your Node.js version</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Check if Node.js is installed and what version</span>
 node --version
 <span style="color:#71717a"># You need v18.0.0 or higher</span>
@@ -47,21 +47,21 @@ node --version
 
 <div style="display:grid;gap:.75rem;margin-top:.75rem">
 <div style="display:flex;gap:.75rem;align-items:flex-start;padding:.75rem 1rem;background:rgba(139,92,246,.04);border-radius:10px;border:1px solid rgba(139,92,246,.08)">
-<div style="font-size:.85rem;font-weight:700;color:#8b5cf6;min-width:1.5rem">1</div>
-<div style="font-size:.85rem;color:#a1a1aa;line-height:1.6">Go to <strong style="color:#e5e5e5">console.anthropic.com</strong> and sign in (or create an account)</div>
+<div style="font-size:.85rem;font-weight:700;min-width:1.5rem">1</div>
+<div style="font-size:.85rem;line-height:1.6">Go to <strong>console.anthropic.com</strong> and sign in (or create an account)</div>
 </div>
 <div style="display:flex;gap:.75rem;align-items:flex-start;padding:.75rem 1rem;background:rgba(139,92,246,.04);border-radius:10px;border:1px solid rgba(139,92,246,.08)">
-<div style="font-size:.85rem;font-weight:700;color:#8b5cf6;min-width:1.5rem">2</div>
-<div style="font-size:.85rem;color:#a1a1aa;line-height:1.6">Navigate to <strong style="color:#e5e5e5">Settings > API Keys</strong> and click "Create Key"</div>
+<div style="font-size:.85rem;font-weight:700;min-width:1.5rem">2</div>
+<div style="font-size:.85rem;line-height:1.6">Navigate to <strong>Settings > API Keys</strong> and click "Create Key"</div>
 </div>
 <div style="display:flex;gap:.75rem;align-items:flex-start;padding:.75rem 1rem;background:rgba(139,92,246,.04);border-radius:10px;border:1px solid rgba(139,92,246,.08)">
-<div style="font-size:.85rem;font-weight:700;color:#8b5cf6;min-width:1.5rem">3</div>
-<div style="font-size:.85rem;color:#a1a1aa;line-height:1.6">Set it as an environment variable so the SDK can find it automatically</div>
+<div style="font-size:.85rem;font-weight:700;min-width:1.5rem">3</div>
+<div style="font-size:.85rem;line-height:1.6">Set it as an environment variable so the SDK can find it automatically</div>
 </div>
 </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — set your API key</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — set your API key</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Add to your shell profile (~/.zshrc or ~/.bashrc)</span>
 <span style="color:#c084fc">export</span> ANTHROPIC_API_KEY=<span style="color:#fbbf24">"sk-ant-api03-your-key-here"</span>
 
@@ -69,8 +69,8 @@ node --version
 source ~/.zshrc</code></pre>
 </div>
 
-<div style="background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);border-radius:12px;padding:1rem;margin-top:1rem;font-size:.82rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#fb923c">Security:</strong> Never put your API key directly in source code. Never commit it to Git. Use environment variables or a <code>.env</code> file (and add <code>.env</code> to your <code>.gitignore</code>). If you accidentally expose a key, rotate it immediately in the Console.
+<div style="background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);border-radius:12px;padding:1rem;margin-top:1rem;font-size:.82rem;line-height:1.7">
+<strong>Security:</strong> Never put your API key directly in source code. Never commit it to Git. Use environment variables or a <code>.env</code> file (and add <code>.env</code> to your <code>.gitignore</code>). If you accidentally expose a key, rotate it immediately in the Console.
 </div>
 </div>
 
@@ -78,8 +78,8 @@ source ~/.zshrc</code></pre>
 <h2>Step 3: Install the SDK</h2>
 <p>Create a new project and install the Claude Agent SDK:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — create project and install</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — create project and install</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Create a new directory for your agent project</span>
 mkdir my-first-agent && cd my-first-agent
 
@@ -98,8 +98,8 @@ npm install typescript tsx --save-dev</code></pre>
 <h2>Your First Query</h2>
 <p>The most basic SDK operation is <code>query()</code>. It sends a prompt to Claude and returns a result. Unlike a raw API call, the agent can use tools during query execution — reading files, running commands, whatever it needs to answer your question.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — first-agent.ts</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — first-agent.ts</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { Claude } <span style="color:#c084fc">from</span> <span style="color:#fbbf24">"@anthropic-ai/claude-agent"</span>;
 
 <span style="color:#71717a">// Create an agent instance</span>
@@ -118,8 +118,8 @@ npm install typescript tsx --save-dev</code></pre>
 <span style="color:#71717a">// Claude responds with a thoughtful answer about agent architecture</span></code></pre>
 </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — run your first agent</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Terminal — run your first agent</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># Run with tsx (TypeScript executor)</span>
 npx tsx first-agent.ts</code></pre>
 </div>
@@ -129,8 +129,8 @@ npx tsx first-agent.ts</code></pre>
 <h2>Adding Tools: An Agent That Reads Files</h2>
 <p>A query without tools is just a fancy API call. The real power starts when you give your agent tools. The <code>tools</code> option tells Claude what it can interact with:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — agent with file tools</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — agent with file tools</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { Claude } <span style="color:#c084fc">from</span> <span style="color:#fbbf24">"@anthropic-ai/claude-agent"</span>;
 
 <span style="color:#c084fc">const</span> agent = <span style="color:#c084fc">new</span> Claude({
@@ -148,15 +148,15 @@ npx tsx first-agent.ts</code></pre>
 <span style="color:#71717a">// parses the JSON, and gives you a clean summary</span></code></pre>
 </div>
 
-<p style="font-size:.85rem;color:#a1a1aa;line-height:1.7">Behind the scenes, the SDK runs a tool loop: Claude decides to use the Read tool, the SDK executes it, sends the file contents back to Claude, and Claude formulates a response. All of that happens inside the single <code>query()</code> call.</p>
+<p style="font-size:.85rem;line-height:1.7">Behind the scenes, the SDK runs a tool loop: Claude decides to use the Read tool, the SDK executes it, sends the file contents back to Claude, and Claude formulates a response. All of that happens inside the single <code>query()</code> call.</p>
 </div>
 
 <div class="card">
 <h2>Understanding the Result Object</h2>
 <p>The <code>query()</code> method returns a result object with more than just text:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — inspecting the result</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — inspecting the result</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">const</span> result = <span style="color:#c084fc">await</span> agent.query(<span style="color:#fbbf24">"What files are in this directory?"</span>);
 
 <span style="color:#71717a">// The text response from Claude</span>
@@ -177,16 +177,16 @@ npx tsx first-agent.ts</code></pre>
 <h2>Common Pitfalls</h2>
 <div style="display:grid;gap:.75rem;margin-top:.75rem">
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">"ANTHROPIC_API_KEY is not set"</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">You forgot to export the environment variable, or you are in a different terminal session. Run <code>echo $ANTHROPIC_API_KEY</code> to check. If it is empty, re-export it or add it to your shell profile.</p>
+<strong style="font-size:.88rem">"ANTHROPIC_API_KEY is not set"</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">You forgot to export the environment variable, or you are in a different terminal session. Run <code>echo $ANTHROPIC_API_KEY</code> to check. If it is empty, re-export it or add it to your shell profile.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">"Cannot find module @anthropic-ai/claude-agent"</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">You did not run <code>npm install</code> in the correct directory, or you are running your script from a different folder. Make sure your terminal is in the project root where <code>package.json</code> lives.</p>
+<strong style="font-size:.88rem">"Cannot find module @anthropic-ai/claude-agent"</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">You did not run <code>npm install</code> in the correct directory, or you are running your script from a different folder. Make sure your terminal is in the project root where <code>package.json</code> lives.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">"Permission denied" when using file tools</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The SDK respects file system permissions. If Claude tries to read a file you do not have access to, it will fail. Run the agent with appropriate permissions for the directories you want it to access.</p>
+<strong style="font-size:.88rem">"Permission denied" when using file tools</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">The SDK respects file system permissions. If Claude tries to read a file you do not have access to, it will fail. Run the agent with appropriate permissions for the directories you want it to access.</p>
 </div>
 </div>
 </div>

@@ -53,43 +53,43 @@
 
     <div style="display:flex;flex-direction:column;gap:1rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Chatbot Approach</strong>
+        <strong style="font-size:.85rem">Chatbot Approach</strong>
         <div style="background:#0a0a0f;border-radius:8px;padding:.75rem;margin:.5rem 0;font-family:monospace;font-size:.75rem;line-height:1.6;overflow-x:auto">
-          <span style="color:#71717a"># Chatbot: one API call, returns text, done</span><br>
-          <span style="color:#e2e8f0">response</span> = <span style="color:#e2e8f0">client</span>.<span style="color:#e2e8f0">messages</span>.<span style="color:#34d399">create</span>(<br>
-          &nbsp;&nbsp;<span style="color:#e2e8f0">model</span>=<span style="color:#fb923c">"claude-sonnet-4-6"</span>,<br>
-          &nbsp;&nbsp;<span style="color:#e2e8f0">messages</span>=[{<span style="color:#fb923c">"role"</span>: <span style="color:#fb923c">"user"</span>,<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"content"</span>: <span style="color:#fb923c">"Write an email about tomorrow's meeting"</span>}]<br>
+          <span># Chatbot: one API call, returns text, done</span><br>
+          <span>response</span> = <span>client</span>.<span>messages</span>.<span>create</span>(<br>
+          &nbsp;&nbsp;<span>model</span>=<span>"claude-sonnet-4-6"</span>,<br>
+          &nbsp;&nbsp;<span>messages</span>=[{<span>"role"</span>: <span>"user"</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span>"content"</span>: <span>"Write an email about tomorrow's meeting"</span>}]<br>
           )<br>
-          <span style="color:#34d399">print</span>(<span style="color:#e2e8f0">response</span>.<span style="color:#e2e8f0">content</span>[<span style="color:#fb923c">0</span>].<span style="color:#e2e8f0">text</span>)<br>
-          <span style="color:#71717a"># Output: "Subject: Tomorrow's Meeting..."</span><br>
-          <span style="color:#71717a"># YOU have to copy this, open Gmail, paste, find</span><br>
-          <span style="color:#71717a"># team emails, and send it yourself. The AI is done.</span>
+          <span>print</span>(<span>response</span>.<span>content</span>[<span>0</span>].<span>text</span>)<br>
+          <span># Output: "Subject: Tomorrow's Meeting..."</span><br>
+          <span># YOU have to copy this, open Gmail, paste, find</span><br>
+          <span># team emails, and send it yourself. The AI is done.</span>
         </div>
       </div>
 
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">Agent Approach</strong>
+        <strong style="font-size:.85rem">Agent Approach</strong>
         <div style="background:#0a0a0f;border-radius:8px;padding:.75rem;margin:.5rem 0;font-family:monospace;font-size:.75rem;line-height:1.6;overflow-x:auto">
-          <span style="color:#71717a"># Agent: loops, uses tools, takes real action</span><br>
-          <span style="color:#71717a"># Loop 1: Check calendar for meeting details</span><br>
-          <span style="color:#71717a"># → tool_use: calendar.get_events(date="tomorrow")</span><br>
-          <span style="color:#71717a"># → result: "Sprint Planning, 10am, Room 4B"</span><br>
+          <span># Agent: loops, uses tools, takes real action</span><br>
+          <span># Loop 1: Check calendar for meeting details</span><br>
+          <span># → tool_use: calendar.get_events(date="tomorrow")</span><br>
+          <span># → result: "Sprint Planning, 10am, Room 4B"</span><br>
           <br>
-          <span style="color:#71717a"># Loop 2: Get team email addresses</span><br>
-          <span style="color:#71717a"># → tool_use: contacts.search(group="engineering")</span><br>
-          <span style="color:#71717a"># → result: ["alice@co.com", "bob@co.com", ...]</span><br>
+          <span># Loop 2: Get team email addresses</span><br>
+          <span># → tool_use: contacts.search(group="engineering")</span><br>
+          <span># → result: ["alice@co.com", "bob@co.com", ...]</span><br>
           <br>
-          <span style="color:#71717a"># Loop 3: Compose and send the email</span><br>
-          <span style="color:#71717a"># → tool_use: email.send(</span><br>
-          <span style="color:#71717a">#     to=["alice@co.com", "bob@co.com"],</span><br>
-          <span style="color:#71717a">#     subject="Sprint Planning Tomorrow 10am",</span><br>
-          <span style="color:#71717a">#     body="Hi team, reminder: Sprint Planning..."</span><br>
-          <span style="color:#71717a"># )</span><br>
+          <span># Loop 3: Compose and send the email</span><br>
+          <span># → tool_use: email.send(</span><br>
+          <span>#     to=["alice@co.com", "bob@co.com"],</span><br>
+          <span>#     subject="Sprint Planning Tomorrow 10am",</span><br>
+          <span>#     body="Hi team, reminder: Sprint Planning..."</span><br>
+          <span># )</span><br>
           <br>
-          <span style="color:#71717a"># Loop 4: Confirm success</span><br>
-          <span style="color:#71717a"># → "Done. Sent to 8 team members about Sprint</span><br>
-          <span style="color:#71717a">#    Planning at 10am in Room 4B."</span>
+          <span># Loop 4: Confirm success</span><br>
+          <span># → "Done. Sent to 8 team members about Sprint</span><br>
+          <span>#    Planning at 10am in Room 4B."</span>
         </div>
       </div>
     </div>
@@ -98,8 +98,8 @@
 
     <p>Here is a minimal agent skeleton in Python — this is the foundation everything else in this course builds on:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Minimal agent loop (the foundation)</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Minimal agent loop (the foundation)</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 client = anthropic.Anthropic()
@@ -137,16 +137,16 @@ tools = [<span style="color:#71717a"># your tool definitions here</span>]
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">1. Tools</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The ability to take real actions — call APIs, read files, send emails, query databases. Without tools, the AI can only generate text. With tools, it changes the world.</p>
+        <strong>1. Tools</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The ability to take real actions — call APIs, read files, send emails, query databases. Without tools, the AI can only generate text. With tools, it changes the world.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">2. Memory</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The ability to remember past actions and their results. Without memory, every loop starts from scratch. With memory, the agent builds on what it learned.</p>
+        <strong>2. Memory</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The ability to remember past actions and their results. Without memory, every loop starts from scratch. With memory, the agent builds on what it learned.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">3. A Loop</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The ability to call the LLM multiple times, feeding results back in. Without a loop, the AI responds once. With a loop, it works until the job is done.</p>
+        <strong>3. A Loop</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The ability to call the LLM multiple times, feeding results back in. Without a loop, the AI responds once. With a loop, it works until the job is done.</p>
       </div>
     </div>
   </div>
@@ -157,20 +157,20 @@ tools = [<span style="color:#71717a"># your tool definitions here</span>]
 
     <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
-        <span style="color:#8b5cf6;font-weight:700;font-size:.75rem;min-width:110px">CLAUDE CODE</span>
-        <span style="font-size:.85rem;color:#a1a1aa"><strong>Agent.</strong> Reads your codebase, plans changes, edits files, runs tests, fixes errors, loops until the code works. Dozens of tool calls per task.</span>
+        <span style="font-weight:700;font-size:.75rem;min-width:110px">CLAUDE CODE</span>
+        <span style="font-size:.85rem"><strong>Agent.</strong> Reads your codebase, plans changes, edits files, runs tests, fixes errors, loops until the code works. Dozens of tool calls per task.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
-        <span style="color:#fb923c;font-weight:700;font-size:.75rem;min-width:110px">CHATGPT</span>
-        <span style="font-size:.85rem;color:#a1a1aa"><strong>Chatbot (mostly).</strong> You ask, it answers. When you use Code Interpreter or web browsing, it edges toward agent behavior — but it stops after one action.</span>
+        <span style="font-weight:700;font-size:.75rem;min-width:110px">CHATGPT</span>
+        <span style="font-size:.85rem"><strong>Chatbot (mostly).</strong> You ask, it answers. When you use Code Interpreter or web browsing, it edges toward agent behavior — but it stops after one action.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
-        <span style="color:#34d399;font-weight:700;font-size:.75rem;min-width:110px">GMAIL FILTER</span>
-        <span style="font-size:.85rem;color:#a1a1aa"><strong>Automation.</strong> Trigger + action, no AI reasoning. "If from X, apply label Y." It does not think — it follows a rule. One step below an agent.</span>
+        <span style="font-weight:700;font-size:.75rem;min-width:110px">GMAIL FILTER</span>
+        <span style="font-size:.85rem"><strong>Automation.</strong> Trigger + action, no AI reasoning. "If from X, apply label Y." It does not think — it follows a rule. One step below an agent.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
-        <span style="color:#f472b6;font-weight:700;font-size:.75rem;min-width:110px">DEVIN</span>
-        <span style="font-size:.85rem;color:#a1a1aa"><strong>Agent.</strong> Receives a task, plans its approach, writes code, runs tests, debugs failures, deploys. Full autonomy loop across hours of work.</span>
+        <span style="font-weight:700;font-size:.75rem;min-width:110px">DEVIN</span>
+        <span style="font-size:.85rem"><strong>Agent.</strong> Receives a task, plans its approach, writes code, runs tests, debugs failures, deploys. Full autonomy loop across hours of work.</span>
       </div>
     </div>
   </div>
@@ -183,15 +183,15 @@ tools = [<span style="color:#71717a"># your tool definitions here</span>]
     <p>Chatbot and agent are not binary — they exist on a spectrum. As you add tools, memory, and loops, the system moves from chatbot toward full agent:</p>
 
     <div style="display:flex;align-items:center;gap:.3rem;margin:1.5rem 0;flex-wrap:wrap;justify-content:center">
-      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(239,68,68,.08);font-size:.75rem;color:#ef4444;text-align:center">Chatbot<br><span style="font-size:.6rem;color:#a1a1aa">text only</span></div>
-      <span style="color:#52525b">&rarr;</span>
-      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(251,146,60,.08);font-size:.75rem;color:#fb923c;text-align:center">+ Tools<br><span style="font-size:.6rem;color:#a1a1aa">can act once</span></div>
-      <span style="color:#52525b">&rarr;</span>
-      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(139,92,246,.08);font-size:.75rem;color:#8b5cf6;text-align:center">+ Memory<br><span style="font-size:.6rem;color:#a1a1aa">learns over time</span></div>
-      <span style="color:#52525b">&rarr;</span>
-      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(52,211,153,.08);font-size:.75rem;color:#34d399;text-align:center">+ Loop<br><span style="font-size:.6rem;color:#a1a1aa">works until done</span></div>
-      <span style="color:#52525b">&rarr;</span>
-      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(52,211,153,.15);font-size:.75rem;color:#34d399;font-weight:700;text-align:center">Full Agent<br><span style="font-size:.6rem;color:#a1a1aa">autonomous</span></div>
+      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(239,68,68,.08);font-size:.75rem;text-align:center">Chatbot<br><span style="font-size:.6rem">text only</span></div>
+      <span>&rarr;</span>
+      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(251,146,60,.08);font-size:.75rem;text-align:center">+ Tools<br><span style="font-size:.6rem">can act once</span></div>
+      <span>&rarr;</span>
+      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(139,92,246,.08);font-size:.75rem;text-align:center">+ Memory<br><span style="font-size:.6rem">learns over time</span></div>
+      <span>&rarr;</span>
+      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(52,211,153,.08);font-size:.75rem;text-align:center">+ Loop<br><span style="font-size:.6rem">works until done</span></div>
+      <span>&rarr;</span>
+      <div style="padding:.4rem .6rem;border-radius:6px;background:rgba(52,211,153,.15);font-size:.75rem;font-weight:700;text-align:center">Full Agent<br><span style="font-size:.6rem">autonomous</span></div>
     </div>
   </div>
 </div>
@@ -202,20 +202,20 @@ tools = [<span style="color:#71717a"># your tool definitions here</span>]
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Build a Chatbot When...</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The user just needs <strong>information</strong> — answering questions, summarizing documents, translating text, or brainstorming ideas. No external systems need to change. The interaction is one question, one answer. Example: a FAQ bot that answers product questions from documentation.</p>
+        <strong style="font-size:.85rem">Build a Chatbot When...</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">The user just needs <strong>information</strong> — answering questions, summarizing documents, translating text, or brainstorming ideas. No external systems need to change. The interaction is one question, one answer. Example: a FAQ bot that answers product questions from documentation.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">Build an Agent When...</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The task requires <strong>real-world actions</strong> — sending emails, updating databases, calling APIs, creating files. The AI needs to gather information from multiple sources, make decisions, and execute a multi-step plan. Example: a support agent that looks up the customer, diagnoses the issue, applies a fix, and sends a confirmation email.</p>
+        <strong style="font-size:.85rem">Build an Agent When...</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">The task requires <strong>real-world actions</strong> — sending emails, updating databases, calling APIs, creating files. The AI needs to gather information from multiple sources, make decisions, and execute a multi-step plan. Example: a support agent that looks up the customer, diagnoses the issue, applies a fix, and sends a confirmation email.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c;font-size:.85rem">Consider Complexity vs Cost</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Agents use more API calls (each loop iteration is a separate call), require error handling for tool failures, and need safety guardrails to prevent unintended actions. If a chatbot solves the problem, an agent adds unnecessary cost and risk. Start with a chatbot — upgrade to an agent only when you need action, memory, or multi-step reasoning.</p>
+        <strong style="font-size:.85rem">Consider Complexity vs Cost</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Agents use more API calls (each loop iteration is a separate call), require error handling for tool failures, and need safety guardrails to prevent unintended actions. If a chatbot solves the problem, an agent adds unnecessary cost and risk. Start with a chatbot — upgrade to an agent only when you need action, memory, or multi-step reasoning.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6;font-size:.85rem">The Hybrid Path</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Many production systems start as chatbots and evolve into agents. Ship a chatbot first, track which queries require human follow-up actions, then add tools for those specific actions. This iterative approach reduces risk and lets real user behavior guide your architecture decisions.</p>
+        <strong style="font-size:.85rem">The Hybrid Path</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Many production systems start as chatbots and evolve into agents. Ship a chatbot first, track which queries require human follow-up actions, then add tools for those specific actions. This iterative approach reduces risk and lets real user behavior guide your architecture decisions.</p>
       </div>
     </div>
   </div>

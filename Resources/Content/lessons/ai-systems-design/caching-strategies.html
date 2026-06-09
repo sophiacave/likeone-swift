@@ -84,7 +84,7 @@ def cosine_similarity(a, b):
 
 The threshold is critical. Too low (0.80) and you serve wrong answers for different questions. Too high (0.98) and the cache rarely hits. Start at 0.92 and tune based on your domain -- narrow domains (technical docs) can go lower, broad domains (general chat) need higher thresholds.
 
-<div class="tip-box">
+<div class="callout">
 <strong>Embedding model choice:</strong> Use a fast, cheap embedding model for cache lookups (like <code>text-embedding-3-small</code>). The embedding call itself must be faster than the savings from a cache hit. At ~10ms per embedding vs. ~3s per model call, this pays for itself immediately.
 </div>
 </div>
@@ -153,7 +153,7 @@ class EdgeCacheStrategy:
 
 Edge caching works best for read-heavy patterns with low personalization: FAQ responses, documentation summaries, product descriptions. For personalized or conversational AI, edge caching has limited value because each response is unique.
 
-<div class="tip-box">
+<div class="callout">
 <strong>Stale-while-revalidate:</strong> For content that changes occasionally, use <code>stale-while-revalidate</code>. Serve the cached version instantly while regenerating in the background. Users get sub-100ms responses, and the cache stays fresh.
 </div>
 </div>

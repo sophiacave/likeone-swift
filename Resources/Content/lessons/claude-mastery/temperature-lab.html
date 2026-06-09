@@ -29,16 +29,16 @@
 
 <p>Technically, temperature scales the logits (raw probability scores) before the model picks the next token. Lower temperature sharpens the probability distribution — the most likely token becomes overwhelmingly dominant. Higher temperature flattens it — less likely tokens get a real chance of being selected. The result: lower temperature produces consistent, predictable text; higher temperature produces varied, surprising text.</p>
 
-<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">Important:</strong> Temperature does not make the model "smarter" or "dumber." It changes the <em>selection strategy</em>, not the model's knowledge. A temperature 0 response is not "better" than a temperature 1 response — it is more <em>predictable</em>. The right temperature depends entirely on your use case.
+<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;line-height:1.7">
+<strong>Important:</strong> Temperature does not make the model "smarter" or "dumber." It changes the <em>selection strategy</em>, not the model's knowledge. A temperature 0 response is not "better" than a temperature 1 response — it is more <em>predictable</em>. The right temperature depends entirely on your use case.
 </div>
 
 <div class="spectrum-bar">
-<div class="spectrum-section" id="spec0" style="background:rgba(56,189,248,.3);color:#38bdf8">0.0<br>Precise</div>
-<div class="spectrum-section" id="spec1" style="background:rgba(139,92,246,.3);color:#8b5cf6">0.25<br>Focused</div>
-<div class="spectrum-section" id="spec2" style="background:rgba(139,92,246,.3);color:#c084fc">0.5<br>Balanced</div>
-<div class="spectrum-section" id="spec3" style="background:rgba(251,146,60,.3);color:#fb923c">0.75<br>Creative</div>
-<div class="spectrum-section" id="spec4" style="background:rgba(248,113,113,.3);color:#f87171">1.0<br>Wild</div>
+<div class="spectrum-section" id="spec0" style="background:rgba(56,189,248,.3)">0.0<br>Precise</div>
+<div class="spectrum-section" id="spec1" style="background:rgba(139,92,246,.3)">0.25<br>Focused</div>
+<div class="spectrum-section" id="spec2" style="background:rgba(139,92,246,.3)">0.5<br>Balanced</div>
+<div class="spectrum-section" id="spec3" style="background:rgba(251,146,60,.3)">0.75<br>Creative</div>
+<div class="spectrum-section" id="spec4" style="background:rgba(248,113,113,.3)">1.0<br>Wild</div>
 </div>
 </div>
 
@@ -46,8 +46,8 @@
 <h2>Temperature in the API</h2>
 <p>Temperature is a single parameter in the API call. Here is how to use it:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — temperature parameter</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — temperature parameter</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 client = anthropic.Anthropic()
@@ -80,8 +80,8 @@ prompt = <span style="color:#fbbf24">"Name a product that helps people sleep bet
 <span style="color:#71717a"># → "NightHaven" (different answer each time)</span></code></pre>
 </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">curl — temperature in the raw API</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">curl — temperature in the raw API</div>
 <pre style="margin:0;color:#e5e5e5"><code>curl https://api.anthropic.com/v1/messages \
   -H <span style="color:#fbbf24">"x-api-key: $ANTHROPIC_API_KEY"</span> \
   -H <span style="color:#fbbf24">"anthropic-version: 2023-06-01"</span> \
@@ -103,21 +103,21 @@ prompt = <span style="color:#fbbf24">"Name a product that helps people sleep bet
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
 <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-<strong style="color:#38bdf8;font-size:.85rem">Temperature 0.0 (Deterministic)</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Output: "SleepWell"</p>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0">Run it again: "SleepWell"</p>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0">Run it again: "SleepWell"</p>
-<p style="font-size:.78rem;color:#71717a;margin:.4rem 0 0">Always the same — the most probable answer every time.</p>
+<strong style="font-size:.85rem">Temperature 0.0 (Deterministic)</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Output: "SleepWell"</p>
+<p style="font-size:.82rem;margin:.2rem 0 0">Run it again: "SleepWell"</p>
+<p style="font-size:.82rem;margin:.2rem 0 0">Run it again: "SleepWell"</p>
+<p style="font-size:.78rem;margin:.4rem 0 0">Always the same — the most probable answer every time.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.85rem">Temperature 0.8 (Creative)</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Output: "DreamDrift"</p>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0">Run it again: "NightHaven"</p>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.2rem 0 0">Run it again: "LunaRest"</p>
-<p style="font-size:.78rem;color:#71717a;margin:.4rem 0 0">Different each time — less probable tokens get a real chance.</p>
+<strong style="font-size:.85rem">Temperature 0.8 (Creative)</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Output: "DreamDrift"</p>
+<p style="font-size:.82rem;margin:.2rem 0 0">Run it again: "NightHaven"</p>
+<p style="font-size:.82rem;margin:.2rem 0 0">Run it again: "LunaRest"</p>
+<p style="font-size:.78rem;margin:.4rem 0 0">Different each time — less probable tokens get a real chance.</p>
 </div>
 </div>
-<p style="font-size:.85rem;color:#71717a">Try this yourself: run the same prompt at temperature 0 five times (identical results), then at temperature 0.8 five times (five different creative answers). The difference is immediately obvious.</p>
+<p style="font-size:.85rem">Try this yourself: run the same prompt at temperature 0 five times (identical results), then at temperature 0.8 five times (five different creative answers). The difference is immediately obvious.</p>
 </div>
 
 <div class="card">
@@ -125,19 +125,19 @@ prompt = <span style="color:#fbbf24">"Name a product that helps people sleep bet
 <div style="display:grid;gap:1rem;margin-top:1rem">
 <div style="display:flex;gap:1rem;padding:1rem;background:rgba(56,189,248,.05);border-radius:10px;border:1px solid rgba(56,189,248,.1)">
 <div style="font-size:1.5rem">🧊</div>
-<div><strong style="color:#38bdf8">Temperature 0</strong><p style="font-size:.85rem;margin:0">Code generation, data extraction, math, factual Q&A, classification, JSON output. When you need consistency and reproducibility. <strong>If you run the same prompt twice and want the same answer, use 0.</strong></p></div>
+<div><strong>Temperature 0</strong><p style="font-size:.85rem;margin:0">Code generation, data extraction, math, factual Q&A, classification, JSON output. When you need consistency and reproducibility. <strong>If you run the same prompt twice and want the same answer, use 0.</strong></p></div>
 </div>
 <div style="display:flex;gap:1rem;padding:1rem;background:rgba(139,92,246,.05);border-radius:10px;border:1px solid rgba(139,92,246,.1)">
 <div style="font-size:1.5rem">⚖️</div>
-<div><strong style="color:#8b5cf6">Temperature 0.3-0.5</strong><p style="font-size:.85rem;margin:0">General conversation, summarization, editing, analysis. Good balance of reliability and naturalness. Most chatbots use this range.</p></div>
+<div><strong>Temperature 0.3-0.5</strong><p style="font-size:.85rem;margin:0">General conversation, summarization, editing, analysis. Good balance of reliability and naturalness. Most chatbots use this range.</p></div>
 </div>
 <div style="display:flex;gap:1rem;padding:1rem;background:rgba(251,146,60,.05);border-radius:10px;border:1px solid rgba(251,146,60,.1)">
 <div style="font-size:1.5rem">🎨</div>
-<div><strong style="color:#fb923c">Temperature 0.7-0.8</strong><p style="font-size:.85rem;margin:0">Creative writing, brainstorming, marketing copy, poetry. When you want variety and surprise. Run the same prompt 5 times and you'll get 5 different creative angles.</p></div>
+<div><strong>Temperature 0.7-0.8</strong><p style="font-size:.85rem;margin:0">Creative writing, brainstorming, marketing copy, poetry. When you want variety and surprise. Run the same prompt 5 times and you'll get 5 different creative angles.</p></div>
 </div>
 <div style="display:flex;gap:1rem;padding:1rem;background:rgba(248,113,113,.05);border-radius:10px;border:1px solid rgba(248,113,113,.1)">
 <div style="font-size:1.5rem">🔥</div>
-<div><strong style="color:#f87171">Temperature 0.9-1.0</strong><p style="font-size:.85rem;margin:0">Experimental writing, wild brainstorming, artistic exploration. Output may become incoherent — less likely tokens get selected, producing unexpected word choices. Use sparingly.</p></div>
+<div><strong>Temperature 0.9-1.0</strong><p style="font-size:.85rem;margin:0">Experimental writing, wild brainstorming, artistic exploration. Output may become incoherent — less likely tokens get selected, producing unexpected word choices. Use sparingly.</p></div>
 </div>
 </div>
 </div>
@@ -148,17 +148,17 @@ prompt = <span style="color:#fbbf24">"Name a product that helps people sleep bet
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
 <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-<strong style="color:#38bdf8;font-size:.85rem">Temperature</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Scales all probabilities. Lower = sharper distribution, higher = flatter. Affects how the model weights its options.</p>
+<strong style="font-size:.85rem">Temperature</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Scales all probabilities. Lower = sharper distribution, higher = flatter. Affects how the model weights its options.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-<strong style="color:#fb923c;font-size:.85rem">Top-P (Nucleus Sampling)</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Cuts off low-probability tokens entirely. top_p=0.9 means "only consider tokens in the top 90% of probability mass." Prevents rare, incoherent tokens.</p>
+<strong style="font-size:.85rem">Top-P (Nucleus Sampling)</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Cuts off low-probability tokens entirely. top_p=0.9 means "only consider tokens in the top 90% of probability mass." Prevents rare, incoherent tokens.</p>
 </div>
 </div>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — combining temperature and top_p</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — combining temperature and top_p</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># For creative tasks: high temperature + moderate top_p</span>
 <span style="color:#71717a"># This gives variety while preventing total nonsense</span>
 response = client.messages.create(
@@ -185,8 +185,8 @@ response = client.messages.create(
 <span style="color:#71717a"># → "normal" (every single time)</span></code></pre>
 </div>
 
-<div style="background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);border-radius:12px;padding:1rem;margin-top:1rem;font-size:.82rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#fb923c">Pro tip:</strong> Anthropic recommends using <em>either</em> temperature or top_p, not both at once. If you set temperature=0, top_p is irrelevant (the model always picks the single most probable token). For most use cases, temperature alone is sufficient.
+<div style="background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);border-radius:12px;padding:1rem;margin-top:1rem;font-size:.82rem;line-height:1.7">
+<strong>Pro tip:</strong> Anthropic recommends using <em>either</em> temperature or top_p, not both at once. If you set temperature=0, top_p is irrelevant (the model always picks the single most probable token). For most use cases, temperature alone is sufficient.
 </div>
 </div>
 
@@ -196,20 +196,20 @@ response = client.messages.create(
 
 <div style="display:grid;gap:.75rem;margin-top:.75rem">
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">Using high temperature for code generation</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Temperature 0.7+ introduces random token choices into syntax, variable names, and logic. The result: code that looks creative but has subtle bugs. Always use temperature 0 for code.</p>
+<strong style="font-size:.88rem">Using high temperature for code generation</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Temperature 0.7+ introduces random token choices into syntax, variable names, and logic. The result: code that looks creative but has subtle bugs. Always use temperature 0 for code.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">Using temperature 0 for creative writing</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Temperature 0 always picks the most probable token. For creative tasks, this produces generic, predictable text. "The sun set over the horizon" instead of something surprising. Bump to 0.7-0.8.</p>
+<strong style="font-size:.88rem">Using temperature 0 for creative writing</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Temperature 0 always picks the most probable token. For creative tasks, this produces generic, predictable text. "The sun set over the horizon" instead of something surprising. Bump to 0.7-0.8.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">Thinking temperature affects intelligence</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">It does not. Temperature only changes the selection strategy. A temperature 0 response uses the same model knowledge as temperature 1 — just with different randomness in word choice.</p>
+<strong style="font-size:.88rem">Thinking temperature affects intelligence</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">It does not. Temperature only changes the selection strategy. A temperature 0 response uses the same model knowledge as temperature 1 — just with different randomness in word choice.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">Not setting temperature at all</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Claude's default temperature is 1.0, which is more random than most use cases need. For production applications, always set temperature explicitly. A common starting point is 0.3 for general tasks.</p>
+<strong style="font-size:.88rem">Not setting temperature at all</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Claude's default temperature is 1.0, which is more random than most use cases need. For production applications, always set temperature explicitly. A common starting point is 0.3 for general tasks.</p>
 </div>
 </div>
 </div>

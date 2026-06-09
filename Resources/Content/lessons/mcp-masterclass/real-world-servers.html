@@ -45,12 +45,12 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-        <strong style="color:#38bdf8;font-size:.85rem">Tools Exposed</strong>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0"><code>query</code> — Execute SELECT statements<br><code>list_tables</code> — Show available tables<br><code>describe_table</code> — Show columns and types<br><code>insert</code> / <code>update</code> — Write data (if enabled)</p>
+        <strong style="font-size:.85rem">Tools Exposed</strong>
+        <p style="font-size:.8rem;margin:.4rem 0 0"><code>query</code> — Execute SELECT statements<br><code>list_tables</code> — Show available tables<br><code>describe_table</code> — Show columns and types<br><code>insert</code> / <code>update</code> — Write data (if enabled)</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-        <strong style="color:#38bdf8;font-size:.85rem">Key Architecture</strong>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0">Maintains a <strong>connection pool</strong> — the DB connection stays open across calls, so Claude can run multiple queries without reconnection overhead. Typically 5-10 connections in the pool.</p>
+        <strong style="font-size:.85rem">Key Architecture</strong>
+        <p style="font-size:.8rem;margin:.4rem 0 0">Maintains a <strong>connection pool</strong> — the DB connection stays open across calls, so Claude can run multiple queries without reconnection overhead. Typically 5-10 connections in the pool.</p>
       </div>
     </div>
 
@@ -76,8 +76,8 @@ server.tool(<span class="str">"query"</span>, {
 });</div>
     </div>
 
-    <div style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1rem;margin-top:.75rem;font-size:.85rem;color:#a1a1aa">
-      <strong style="color:#ef4444">&#x1F6E1; Security:</strong> Always use a <strong>read-only database user</strong> (see Lesson 9). The SQL prefix check above is a defense-in-depth layer, not the primary protection. A determined prompt injection can craft SQL that starts with SELECT but contains subqueries that modify data. The read-only user is what truly prevents damage.
+    <div style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:1rem;margin-top:.75rem;font-size:.85rem">
+      <strong>&#x1F6E1; Security:</strong> Always use a <strong>read-only database user</strong> (see Lesson 9). The SQL prefix check above is a defense-in-depth layer, not the primary protection. A determined prompt injection can craft SQL that starts with SELECT but contains subqueries that modify data. The read-only user is what truly prevents damage.
     </div>
   </div>
 
@@ -87,12 +87,12 @@ server.tool(<span class="str">"query"</span>, {
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6;font-size:.85rem">Tools Exposed</strong>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0"><code>search_repositories</code><br><code>create_pull_request</code><br><code>list_issues</code> / <code>create_issue</code><br><code>get_file_contents</code><br><code>create_or_update_file</code></p>
+        <strong style="font-size:.85rem">Tools Exposed</strong>
+        <p style="font-size:.8rem;margin:.4rem 0 0"><code>search_repositories</code><br><code>create_pull_request</code><br><code>list_issues</code> / <code>create_issue</code><br><code>get_file_contents</code><br><code>create_or_update_file</code></p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6;font-size:.85rem">Authentication</strong>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0">Uses <strong>fine-grained personal access tokens (PATs)</strong>. You choose exactly which repos and permissions to grant. Token goes in the <code>env</code> field of your config — never in code.</p>
+        <strong style="font-size:.85rem">Authentication</strong>
+        <p style="font-size:.8rem;margin:.4rem 0 0">Uses <strong>fine-grained personal access tokens (PATs)</strong>. You choose exactly which repos and permissions to grant. Token goes in the <code>env</code> field of your config — never in code.</p>
       </div>
     </div>
 
@@ -111,8 +111,8 @@ server.tool(<span class="str">"query"</span>, {
 }</div>
     </div>
 
-    <div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);border-radius:10px;padding:1rem;margin-top:.75rem;font-size:.85rem;color:#a1a1aa">
-      <strong style="color:#8b5cf6">&#x1F511; Best Practice:</strong> Create a fine-grained PAT with <strong>read-only access</strong> to start. Only add write permissions (create PR, push commits) after you are comfortable with how Claude uses the tools. You can always upgrade permissions later.
+    <div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);border-radius:10px;padding:1rem;margin-top:.75rem;font-size:.85rem">
+      <strong>&#x1F511; Best Practice:</strong> Create a fine-grained PAT with <strong>read-only access</strong> to start. Only add write permissions (create PR, push commits) after you are comfortable with how Claude uses the tools. You can always upgrade permissions later.
     </div>
   </div>
 
@@ -122,17 +122,17 @@ server.tool(<span class="str">"query"</span>, {
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c;font-size:.85rem">Tools Exposed</strong>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0"><code>read_channel</code> — Get recent messages<br><code>search_messages</code> — Full-text search<br><code>send_message</code> — Post to a channel<br><code>list_channels</code> — Discover channels</p>
+        <strong style="font-size:.85rem">Tools Exposed</strong>
+        <p style="font-size:.8rem;margin:.4rem 0 0"><code>read_channel</code> — Get recent messages<br><code>search_messages</code> — Full-text search<br><code>send_message</code> — Post to a channel<br><code>list_channels</code> — Discover channels</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c;font-size:.85rem">Authentication</strong>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0">Uses a <strong>Slack Bot token</strong> (<code>xoxb-...</code>) with scoped OAuth permissions. The bot must be <strong>invited</strong> to any channel it needs to read or post in.</p>
+        <strong style="font-size:.85rem">Authentication</strong>
+        <p style="font-size:.8rem;margin:.4rem 0 0">Uses a <strong>Slack Bot token</strong> (<code>xoxb-...</code>) with scoped OAuth permissions. The bot must be <strong>invited</strong> to any channel it needs to read or post in.</p>
       </div>
     </div>
 
-    <div style="background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);border-radius:10px;padding:1rem;font-size:.85rem;color:#a1a1aa">
-      <strong style="color:#fb923c">&#x26A0; Caution:</strong> Be very careful with <code>send_message</code>. A prompt injection that tricks Claude into posting to #general could be embarrassing or worse. Consider using the <strong>human-in-the-loop pattern</strong> (Lesson 9) for any send/post tools, or restricting the bot to a dedicated channel.
+    <div style="background:rgba(251,146,60,.06);border:1px solid rgba(251,146,60,.12);border-radius:10px;padding:1rem;font-size:.85rem">
+      <strong>&#x26A0; Caution:</strong> Be very careful with <code>send_message</code>. A prompt injection that tricks Claude into posting to #general could be embarrassing or worse. Consider using the <strong>human-in-the-loop pattern</strong> (Lesson 9) for any send/post tools, or restricting the bot to a dedicated channel.
     </div>
   </div>
 
@@ -142,17 +142,17 @@ server.tool(<span class="str">"query"</span>, {
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
-        <strong style="color:#f472b6;font-size:.85rem">Tools Exposed</strong>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0"><code>navigate</code> — Go to a URL<br><code>screenshot</code> — Capture the page<br><code>click</code> — Click an element<br><code>type</code> — Enter text into a field<br><code>get_text</code> — Extract page content</p>
+        <strong style="font-size:.85rem">Tools Exposed</strong>
+        <p style="font-size:.8rem;margin:.4rem 0 0"><code>navigate</code> — Go to a URL<br><code>screenshot</code> — Capture the page<br><code>click</code> — Click an element<br><code>type</code> — Enter text into a field<br><code>get_text</code> — Extract page content</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
-        <strong style="color:#f472b6;font-size:.85rem">Key Architecture</strong>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0">Runs a <strong>persistent headless browser</strong>. The browser stays open across tool calls, maintaining cookies, session state, and page context. This means Claude can log in once and continue navigating.</p>
+        <strong style="font-size:.85rem">Key Architecture</strong>
+        <p style="font-size:.8rem;margin:.4rem 0 0">Runs a <strong>persistent headless browser</strong>. The browser stays open across tool calls, maintaining cookies, session state, and page context. This means Claude can log in once and continue navigating.</p>
       </div>
     </div>
 
-    <div style="background:rgba(244,114,182,.06);border:1px solid rgba(244,114,182,.12);border-radius:10px;padding:1rem;font-size:.85rem;color:#a1a1aa">
-      <strong style="color:#f472b6">&#x1F3AF; Use Cases:</strong> Web scraping, automated testing, form filling, price monitoring, competitor analysis, accessibility auditing. Any workflow that currently requires you to manually navigate a website.
+    <div style="background:rgba(244,114,182,.06);border:1px solid rgba(244,114,182,.12);border-radius:10px;padding:1rem;font-size:.85rem">
+      <strong>&#x1F3AF; Use Cases:</strong> Web scraping, automated testing, form filling, price monitoring, competitor analysis, accessibility auditing. Any workflow that currently requires you to manually navigate a website.
     </div>
   </div>
 
@@ -162,12 +162,12 @@ server.tool(<span class="str">"query"</span>, {
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1)">
-        <strong style="color:#a78bfa;font-size:.85rem">Tools Exposed</strong>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0"><code>store_memory</code> — Save a fact or observation<br><code>recall</code> — Retrieve memories by topic<br><code>search_memory</code> — Semantic search<br><code>create_relation</code> — Link two memories</p>
+        <strong style="font-size:.85rem">Tools Exposed</strong>
+        <p style="font-size:.8rem;margin:.4rem 0 0"><code>store_memory</code> — Save a fact or observation<br><code>recall</code> — Retrieve memories by topic<br><code>search_memory</code> — Semantic search<br><code>create_relation</code> — Link two memories</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(167,139,250,.04);border:1px solid rgba(167,139,250,.1)">
-        <strong style="color:#a78bfa;font-size:.85rem">Key Architecture</strong>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0">Stores memories as <strong>entities with relations</strong> — a knowledge graph. Some implementations use vector embeddings for semantic search, letting Claude find related memories even when the exact keywords do not match.</p>
+        <strong style="font-size:.85rem">Key Architecture</strong>
+        <p style="font-size:.8rem;margin:.4rem 0 0">Stores memories as <strong>entities with relations</strong> — a knowledge graph. Some implementations use vector embeddings for semantic search, letting Claude find related memories even when the exact keywords do not match.</p>
       </div>
     </div>
 
@@ -207,12 +207,12 @@ server.tool(<span class="str">"recall"</span>, {
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">Tools Exposed</strong>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0">Whatever your API does. Common:<br><code>get_customer</code> — Fetch CRM data<br><code>create_ticket</code> — Open support tickets<br><code>check_status</code> — Monitor service health<br><code>search_inventory</code> — Query product data</p>
+        <strong style="font-size:.85rem">Tools Exposed</strong>
+        <p style="font-size:.8rem;margin:.4rem 0 0">Whatever your API does. Common:<br><code>get_customer</code> — Fetch CRM data<br><code>create_ticket</code> — Open support tickets<br><code>check_status</code> — Monitor service health<br><code>search_inventory</code> — Query product data</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">Key Architecture</strong>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0">Your MCP server acts as an <strong>authenticated proxy</strong>. It holds the API credentials and translates MCP tool calls into REST/GraphQL requests. Claude never sees the raw API key.</p>
+        <strong style="font-size:.85rem">Key Architecture</strong>
+        <p style="font-size:.8rem;margin:.4rem 0 0">Your MCP server acts as an <strong>authenticated proxy</strong>. It holds the API credentials and translates MCP tool calls into REST/GraphQL requests. Claude never sees the raw API key.</p>
       </div>
     </div>
 
@@ -239,8 +239,8 @@ server.tool(<span class="str">"get_weather"</span>, {
 });</div>
     </div>
 
-    <div style="background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);border-radius:10px;padding:1rem;margin-top:.75rem;font-size:.85rem;color:#a1a1aa">
-      <strong style="color:#34d399">&#x1F4A1; Pattern:</strong> Always <code>encodeURIComponent()</code> user inputs in URLs. Always check <code>res.ok</code> before parsing. Always return <code>isError: true</code> on failure. These three rules cover 90% of API wrapper security.
+    <div style="background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);border-radius:10px;padding:1rem;margin-top:.75rem;font-size:.85rem">
+      <strong>&#x1F4A1; Pattern:</strong> Always <code>encodeURIComponent()</code> user inputs in URLs. Always check <code>res.ok</code> before parsing. Always return <code>isError: true</code> on failure. These three rules cover 90% of API wrapper security.
     </div>
   </div>
 
@@ -250,28 +250,28 @@ server.tool(<span class="str">"get_weather"</span>, {
 
     <div style="display:flex;flex-direction:column;gap:.5rem">
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
-        <span style="color:#38bdf8;font-size:.85rem;font-weight:700;min-width:100px">Database</span>
-        <span style="font-size:.85rem;color:#a1a1aa">You have structured data in SQL or NoSQL and want Claude to explore, analyze, or report on it.</span>
+        <span style="font-size:.85rem;font-weight:700;min-width:100px">Database</span>
+        <span style="font-size:.85rem">You have structured data in SQL or NoSQL and want Claude to explore, analyze, or report on it.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
-        <span style="color:#8b5cf6;font-size:.85rem;font-weight:700;min-width:100px">GitHub</span>
-        <span style="font-size:.85rem;color:#a1a1aa">You want Claude to help with code reviews, issue triage, PR creation, or repository management.</span>
+        <span style="font-size:.85rem;font-weight:700;min-width:100px">GitHub</span>
+        <span style="font-size:.85rem">You want Claude to help with code reviews, issue triage, PR creation, or repository management.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
-        <span style="color:#fb923c;font-size:.85rem;font-weight:700;min-width:100px">Slack</span>
-        <span style="font-size:.85rem;color:#a1a1aa">You want Claude to summarize conversations, search history, or post team updates.</span>
+        <span style="font-size:.85rem;font-weight:700;min-width:100px">Slack</span>
+        <span style="font-size:.85rem">You want Claude to summarize conversations, search history, or post team updates.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
-        <span style="color:#f472b6;font-size:.85rem;font-weight:700;min-width:100px">Browser</span>
-        <span style="font-size:.85rem;color:#a1a1aa">You need to automate web interactions — scraping, testing, form filling, monitoring.</span>
+        <span style="font-size:.85rem;font-weight:700;min-width:100px">Browser</span>
+        <span style="font-size:.85rem">You need to automate web interactions — scraping, testing, form filling, monitoring.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
-        <span style="color:#a78bfa;font-size:.85rem;font-weight:700;min-width:100px">Memory</span>
-        <span style="font-size:.85rem;color:#a1a1aa">You want Claude to remember context across conversations — user preferences, project decisions, facts.</span>
+        <span style="font-size:.85rem;font-weight:700;min-width:100px">Memory</span>
+        <span style="font-size:.85rem">You want Claude to remember context across conversations — user preferences, project decisions, facts.</span>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06)">
-        <span style="color:#34d399;font-size:.85rem;font-weight:700;min-width:100px">Custom API</span>
-        <span style="font-size:.85rem;color:#a1a1aa">You have an internal service, CRM, or third-party API you want Claude to access through MCP.</span>
+        <span style="font-size:.85rem;font-weight:700;min-width:100px">Custom API</span>
+        <span style="font-size:.85rem">You have an internal service, CRM, or third-party API you want Claude to access through MCP.</span>
       </div>
     </div>
   </div>

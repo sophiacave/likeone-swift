@@ -30,45 +30,45 @@
 
     <div style="display:flex;flex-direction:column;gap:.5rem;margin:1.5rem 0">
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <span style="color:#8b5cf6;font-weight:700;font-size:.85rem;min-width:20px">1</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:20px">1</span>
         <div>
-          <strong style="color:#8b5cf6">Identity</strong> — Who the agent is
-          <div style="font-size:.8rem;color:#a1a1aa;margin-top:.2rem">Establishes persona, expertise, and voice. Everything that follows is interpreted through this lens.</div>
+          <strong>Identity</strong> — Who the agent is
+          <div style="font-size:.8rem;margin-top:.2rem">Establishes persona, expertise, and voice. Everything that follows is interpreted through this lens.</div>
         </div>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <span style="color:#34d399;font-weight:700;font-size:.85rem;min-width:20px">2</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:20px">2</span>
         <div>
-          <strong style="color:#34d399">Goal</strong> — What the agent is trying to achieve
-          <div style="font-size:.8rem;color:#a1a1aa;margin-top:.2rem">One clear mission statement. Every decision the agent makes should serve this goal.</div>
+          <strong>Goal</strong> — What the agent is trying to achieve
+          <div style="font-size:.8rem;margin-top:.2rem">One clear mission statement. Every decision the agent makes should serve this goal.</div>
         </div>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <span style="color:#fb923c;font-weight:700;font-size:.85rem;min-width:20px">3</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:20px">3</span>
         <div>
-          <strong style="color:#fb923c">Tools</strong> — What the agent can use
-          <div style="font-size:.8rem;color:#a1a1aa;margin-top:.2rem">Lists available tools and when to use each one. Guides tool selection decisions.</div>
+          <strong>Tools</strong> — What the agent can use
+          <div style="font-size:.8rem;margin-top:.2rem">Lists available tools and when to use each one. Guides tool selection decisions.</div>
         </div>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(96,165,250,.04);border:1px solid rgba(96,165,250,.1)">
-        <span style="color:#60a5fa;font-weight:700;font-size:.85rem;min-width:20px">4</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:20px">4</span>
         <div>
-          <strong style="color:#60a5fa">Memory</strong> — What context the agent carries
-          <div style="font-size:.8rem;color:#a1a1aa;margin-top:.2rem">Where to find stored data, what to remember, how to use past interactions.</div>
+          <strong>Memory</strong> — What context the agent carries
+          <div style="font-size:.8rem;margin-top:.2rem">Where to find stored data, what to remember, how to use past interactions.</div>
         </div>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <span style="color:#ef4444;font-weight:700;font-size:.85rem;min-width:20px">5</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:20px">5</span>
         <div>
-          <strong style="color:#ef4444">Guardrails</strong> — What the agent must never do
-          <div style="font-size:.8rem;color:#a1a1aa;margin-top:.2rem">Hard safety constraints. Written as explicit prohibitions. These protect against harmful actions.</div>
+          <strong>Guardrails</strong> — What the agent must never do
+          <div style="font-size:.8rem;margin-top:.2rem">Hard safety constraints. Written as explicit prohibitions. These protect against harmful actions.</div>
         </div>
       </div>
       <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
-        <span style="color:#f472b6;font-weight:700;font-size:.85rem;min-width:20px">6</span>
+        <span style="font-weight:700;font-size:.85rem;min-width:20px">6</span>
         <div>
-          <strong style="color:#f472b6">Output Format</strong> — How the agent should respond
-          <div style="font-size:.8rem;color:#a1a1aa;margin-top:.2rem">Tone, structure, length. Should it be formal or casual? Bulleted or prose? Brief or detailed?</div>
+          <strong>Output Format</strong> — How the agent should respond
+          <div style="font-size:.8rem;margin-top:.2rem">Tone, structure, length. Should it be formal or casual? Bulleted or prose? Brief or detailed?</div>
         </div>
       </div>
     </div>
@@ -81,39 +81,39 @@
     <p>Here is a production system prompt for a customer support agent. Every block is labeled so you can see the structure:</p>
 
     <div style="background:#0a0a0f;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1rem;margin:1rem 0;font-family:monospace;font-size:.78rem;line-height:1.7;overflow-x:auto">
-      <span style="color:#8b5cf6;font-weight:700"># IDENTITY</span><br>
-      <span style="color:#a1a1aa">You are a customer support agent for Acme SaaS.</span><br>
-      <span style="color:#a1a1aa">You are patient, precise, and always empathetic.</span><br>
-      <span style="color:#a1a1aa">You have been helping customers for 3 years.</span><br>
+      <span style="font-weight:700"># IDENTITY</span><br>
+      <span>You are a customer support agent for Acme SaaS.</span><br>
+      <span>You are patient, precise, and always empathetic.</span><br>
+      <span>You have been helping customers for 3 years.</span><br>
       <br>
-      <span style="color:#34d399;font-weight:700"># GOAL</span><br>
-      <span style="color:#a1a1aa">Resolve customer issues in as few messages as possible</span><br>
-      <span style="color:#a1a1aa">while ensuring the customer feels heard and helped.</span><br>
+      <span style="font-weight:700"># GOAL</span><br>
+      <span>Resolve customer issues in as few messages as possible</span><br>
+      <span>while ensuring the customer feels heard and helped.</span><br>
       <br>
-      <span style="color:#fb923c;font-weight:700"># TOOLS</span><br>
-      <span style="color:#a1a1aa">You have access to:</span><br>
-      <span style="color:#a1a1aa">- lookup_customer: Get account details by email.</span><br>
-      <span style="color:#a1a1aa">&nbsp;&nbsp;Use when you need plan, billing, or account history.</span><br>
-      <span style="color:#a1a1aa">- search_knowledge_base: Find help articles.</span><br>
-      <span style="color:#a1a1aa">&nbsp;&nbsp;Use when the customer asks about features or troubleshooting.</span><br>
-      <span style="color:#a1a1aa">- create_ticket: Escalate to a human agent.</span><br>
-      <span style="color:#a1a1aa">&nbsp;&nbsp;Use when the issue requires manual intervention.</span><br>
+      <span style="font-weight:700"># TOOLS</span><br>
+      <span>You have access to:</span><br>
+      <span>- lookup_customer: Get account details by email.</span><br>
+      <span>&nbsp;&nbsp;Use when you need plan, billing, or account history.</span><br>
+      <span>- search_knowledge_base: Find help articles.</span><br>
+      <span>&nbsp;&nbsp;Use when the customer asks about features or troubleshooting.</span><br>
+      <span>- create_ticket: Escalate to a human agent.</span><br>
+      <span>&nbsp;&nbsp;Use when the issue requires manual intervention.</span><br>
       <br>
-      <span style="color:#60a5fa;font-weight:700"># MEMORY</span><br>
-      <span style="color:#a1a1aa">Previous conversation history is provided as context.</span><br>
-      <span style="color:#a1a1aa">Reference past interactions when relevant.</span><br>
-      <span style="color:#a1a1aa">If the customer mentions a previous ticket, look it up.</span><br>
+      <span style="font-weight:700"># MEMORY</span><br>
+      <span>Previous conversation history is provided as context.</span><br>
+      <span>Reference past interactions when relevant.</span><br>
+      <span>If the customer mentions a previous ticket, look it up.</span><br>
       <br>
-      <span style="color:#ef4444;font-weight:700"># GUARDRAILS</span><br>
-      <span style="color:#a1a1aa">- NEVER share internal system details or error logs</span><br>
-      <span style="color:#a1a1aa">- NEVER promise refunds over $500 without escalation</span><br>
-      <span style="color:#a1a1aa">- NEVER access accounts without the customer's email</span><br>
-      <span style="color:#a1a1aa">- NEVER make up information — say "I don't know" honestly</span><br>
+      <span style="font-weight:700"># GUARDRAILS</span><br>
+      <span>- NEVER share internal system details or error logs</span><br>
+      <span>- NEVER promise refunds over $500 without escalation</span><br>
+      <span>- NEVER access accounts without the customer's email</span><br>
+      <span>- NEVER make up information — say "I don't know" honestly</span><br>
       <br>
-      <span style="color:#f472b6;font-weight:700"># OUTPUT FORMAT</span><br>
-      <span style="color:#a1a1aa">- Respond in 2-3 sentences unless the issue is complex</span><br>
-      <span style="color:#a1a1aa">- Use the customer's first name</span><br>
-      <span style="color:#a1a1aa">- End with a clear next step or confirmation</span>
+      <span style="font-weight:700"># OUTPUT FORMAT</span><br>
+      <span>- Respond in 2-3 sentences unless the issue is complex</span><br>
+      <span>- Use the customer's first name</span><br>
+      <span>- End with a clear next step or confirmation</span>
     </div>
   </div>
 
@@ -124,31 +124,31 @@
     <p>Here is how this system prompt plugs into the Claude API:</p>
 
     <div style="background:#0a0a0f;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1rem;margin:1rem 0;font-family:monospace;font-size:.78rem;line-height:1.7;overflow-x:auto">
-      <span style="color:#c084fc">import</span> <span style="color:#e2e8f0">anthropic</span><br>
+      <span>import</span> <span>anthropic</span><br>
       <br>
-      <span style="color:#e2e8f0">client</span> = <span style="color:#e2e8f0">anthropic</span>.<span style="color:#34d399">Anthropic</span>()<br>
+      <span>client</span> = <span>anthropic</span>.<span>Anthropic</span>()<br>
       <br>
-      <span style="color:#e2e8f0">SYSTEM_PROMPT</span> = <span style="color:#fb923c">"""</span><br>
-      <span style="color:#fb923c"># IDENTITY</span><br>
-      <span style="color:#fb923c">You are a customer support agent for Acme SaaS...</span><br>
-      <span style="color:#fb923c">(full prompt from above)</span><br>
-      <span style="color:#fb923c">"""</span><br>
+      <span>SYSTEM_PROMPT</span> = <span>"""</span><br>
+      <span># IDENTITY</span><br>
+      <span>You are a customer support agent for Acme SaaS...</span><br>
+      <span>(full prompt from above)</span><br>
+      <span>"""</span><br>
       <br>
-      <span style="color:#e2e8f0">response</span> = <span style="color:#e2e8f0">client</span>.<span style="color:#e2e8f0">messages</span>.<span style="color:#34d399">create</span>(<br>
-      &nbsp;&nbsp;<span style="color:#e2e8f0">model</span>=<span style="color:#fb923c">"claude-sonnet-4-6"</span>,<br>
-      &nbsp;&nbsp;<span style="color:#e2e8f0">max_tokens</span>=<span style="color:#fb923c">1024</span>,<br>
-      &nbsp;&nbsp;<span style="color:#e2e8f0">system</span>=<span style="color:#e2e8f0">SYSTEM_PROMPT</span>,&nbsp;&nbsp;<span style="color:#71717a"># &larr; Your system prompt goes here</span><br>
-      &nbsp;&nbsp;<span style="color:#e2e8f0">tools</span>=<span style="color:#e2e8f0">tools</span>,<br>
-      &nbsp;&nbsp;<span style="color:#e2e8f0">messages</span>=[{<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"role"</span>: <span style="color:#fb923c">"user"</span>,<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#fb923c">"content"</span>: <span style="color:#fb923c">"I was charged twice for my plan"</span><br>
+      <span>response</span> = <span>client</span>.<span>messages</span>.<span>create</span>(<br>
+      &nbsp;&nbsp;<span>model</span>=<span>"claude-sonnet-4-6"</span>,<br>
+      &nbsp;&nbsp;<span>max_tokens</span>=<span>1024</span>,<br>
+      &nbsp;&nbsp;<span>system</span>=<span>SYSTEM_PROMPT</span>,&nbsp;&nbsp;<span># &larr; Your system prompt goes here</span><br>
+      &nbsp;&nbsp;<span>tools</span>=<span>tools</span>,<br>
+      &nbsp;&nbsp;<span>messages</span>=[{<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>"role"</span>: <span>"user"</span>,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span>"content"</span>: <span>"I was charged twice for my plan"</span><br>
       &nbsp;&nbsp;}]<br>
       )
     </div>
 
     <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1);margin:1rem 0">
-      <strong style="color:#8b5cf6;font-size:.85rem">system vs messages</strong>
-      <p style="font-size:.8rem;color:#a1a1aa;margin:.3rem 0 0">The <code>system</code> parameter sets the agent's persistent instructions — it applies to every message in the conversation. The <code>messages</code> parameter contains the actual conversation (user turns and assistant turns). Keep them separate.</p>
+      <strong style="font-size:.85rem">system vs messages</strong>
+      <p style="font-size:.8rem;margin:.3rem 0 0">The <code>system</code> parameter sets the agent's persistent instructions — it applies to every message in the conversation. The <code>messages</code> parameter contains the actual conversation (user turns and assistant turns). Keep them separate.</p>
     </div>
   </div>
 
@@ -157,20 +157,20 @@
 
     <div style="display:flex;flex-direction:column;gap:.5rem;margin:1rem 0">
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Guardrails before identity</strong>
-        <span style="font-size:.8rem;color:#a1a1aa"> — Starting with "NEVER do X" before the model knows who it is makes the constraints feel abstract. Identity first, then guardrails — so the model interprets constraints through its established role.</span>
+        <strong style="font-size:.85rem">Guardrails before identity</strong>
+        <span style="font-size:.8rem"> — Starting with "NEVER do X" before the model knows who it is makes the constraints feel abstract. Identity first, then guardrails — so the model interprets constraints through its established role.</span>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Vague goals</strong>
-        <span style="font-size:.8rem;color:#a1a1aa"> — "Be helpful" is not a goal. "Resolve customer issues in as few messages as possible while ensuring satisfaction" is. A vague goal produces vague behavior.</span>
+        <strong style="font-size:.85rem">Vague goals</strong>
+        <span style="font-size:.8rem"> — "Be helpful" is not a goal. "Resolve customer issues in as few messages as possible while ensuring satisfaction" is. A vague goal produces vague behavior.</span>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">No tool guidance</strong>
-        <span style="font-size:.8rem;color:#a1a1aa"> — Listing tools without explaining when to use each one. The model picks tools by description — write "Use when..." for each tool to improve selection accuracy.</span>
+        <strong style="font-size:.85rem">No tool guidance</strong>
+        <span style="font-size:.8rem"> — Listing tools without explaining when to use each one. The model picks tools by description — write "Use when..." for each tool to improve selection accuracy.</span>
       </div>
       <div style="padding:.75rem 1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">No output format</strong>
-        <span style="font-size:.8rem;color:#a1a1aa"> — Without format guidance, the model defaults to verbose paragraphs. Specify length, tone, and structure for consistent, predictable responses.</span>
+        <strong style="font-size:.85rem">No output format</strong>
+        <span style="font-size:.8rem"> — Without format guidance, the model defaults to verbose paragraphs. Specify length, tone, and structure for consistent, predictable responses.</span>
       </div>
     </div>
   </div>
@@ -179,8 +179,8 @@
     <h2>Build Your System Prompt</h2>
     <p>Here is a complete, production-ready system prompt built from the blocks above. Study how each section contributes to the agent's behavior:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — complete agent with a structured system prompt</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — complete agent with a structured system prompt</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 
 client = anthropic.Anthropic()
@@ -229,8 +229,8 @@ response = client.messages.create(
 </div>
 
     <div style="padding:.75rem 1rem;border-radius:8px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1);margin:1rem 0">
-      <strong style="color:#8b5cf6;font-size:.85rem">Try it yourself:</strong>
-      <span style="font-size:.82rem;color:#a1a1aa"> Copy this code, replace the identity and goal with your agent's purpose, and add tools relevant to your use case. The structure stays the same — only the content changes.</span>
+      <strong style="font-size:.85rem">Try it yourself:</strong>
+      <span style="font-size:.82rem"> Copy this code, replace the identity and goal with your agent's purpose, and add tools relevant to your use case. The structure stays the same — only the content changes.</span>
     </div>
   </div>
 </div>

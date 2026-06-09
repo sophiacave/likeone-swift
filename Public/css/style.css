@@ -1500,14 +1500,10 @@ a:focus-visible, button:focus-visible {
    Apple-native: bg elevation, no colored borders.
    ═══════════════════════════════════════════════ */
 
-/* Intentional containers — keep visible (Apple-like asides) */
+/* Intentional containers — keep visible (Apple-like asides)
+   P5: consolidated from 7 legacy types to 2 (callout, demo-container) */
 .lesson-content .demo-container,
-.lesson-content .demo-block,
-.lesson-content .try-it-box,
-.lesson-content .prompt-box,
-.lesson-content .prompt-card,
-.lesson-content .callout,
-.lesson-content .tip-box {
+.lesson-content .callout {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-card);
@@ -1525,13 +1521,8 @@ a:focus-visible, button:focus-visible {
     margin: 0;
 }
 
-.lesson-content .tip-box h3,
 .lesson-content .callout h3,
 .lesson-content .demo-container h3,
-.lesson-content .demo-block h3,
-.lesson-content .try-it-box h3,
-.lesson-content .prompt-box h3,
-.lesson-content .prompt-card h3,
 .lesson-content .card h3 {
     font-size: 1rem;
     font-weight: 600;
@@ -1539,13 +1530,47 @@ a:focus-visible, button:focus-visible {
     margin: 0 0 var(--space-12);
 }
 
-/* Nested ghost classes — inherit parent's flat treatment */
+/* Code block component — was a ghost class (zero CSS).
+   .code-block > .code-header (.filename/.lang) + .code-body
+   with .kw/.str/.cm syntax spans. */
+.lesson-content .code-block {
+    background: #111118;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    margin: var(--space-24) 0;
+    overflow: hidden;
+}
+.lesson-content .code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-8) var(--space-16);
+    border-bottom: 1px solid var(--border);
+    font-family: 'SF Mono', 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+.lesson-content .code-header .lang {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.lesson-content .code-body {
+    padding: var(--space-16);
+    font-family: 'SF Mono', 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    white-space: pre;
+    overflow-x: auto;
+}
+.lesson-content .code-body .kw { color: #c084fc; }
+.lesson-content .code-body .str { color: #fb923c; }
+.lesson-content .code-body .cm { color: #71717a; }
+
+/* Nested containers — inherit parent's flat treatment */
 .lesson-content .card .card,
 .lesson-content .card .demo-container,
-.lesson-content .card .demo-block,
-.lesson-content .card .tip-box,
-.lesson-content .card .callout,
-.lesson-content .card .prompt-box {
+.lesson-content .card .callout {
     background: transparent !important;
     border: none !important;
     padding: 0 !important;

@@ -22,21 +22,21 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">1. Relevance — Did we find the right context?</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The retrieved chunks should actually relate to the question asked. If the user asks about refund policies and you retrieve chunks about shipping schedules, the answer will be useless — even if the LLM faithfully summarizes the shipping information. Low relevance = retrieval failure.</p>
+        <strong>1. Relevance — Did we find the right context?</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The retrieved chunks should actually relate to the question asked. If the user asks about refund policies and you retrieve chunks about shipping schedules, the answer will be useless — even if the LLM faithfully summarizes the shipping information. Low relevance = retrieval failure.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">2. Faithfulness — Is the answer grounded in context?</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">Every claim in the answer must be supported by the retrieved context. If the answer says "refunds take 5-7 business days" but no chunk mentions this, the model hallucinated. Faithfulness = zero hallucination. This is the most critical safety metric for production RAG.</p>
+        <strong>2. Faithfulness — Is the answer grounded in context?</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">Every claim in the answer must be supported by the retrieved context. If the answer says "refunds take 5-7 business days" but no chunk mentions this, the model hallucinated. Faithfulness = zero hallucination. This is the most critical safety metric for production RAG.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">3. Completeness — Did we cover everything?</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The answer should include all key information from the retrieved context. If the context mentions three refund options but the answer only mentions one, it is incomplete. A correct but partial answer can be just as misleading as a wrong one.</p>
+        <strong>3. Completeness — Did we cover everything?</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The answer should include all key information from the retrieved context. If the context mentions three refund options but the answer only mentions one, it is incomplete. A correct but partial answer can be just as misleading as a wrong one.</p>
       </div>
     </div>
 
-    <div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-      <strong style="color:#e5e5e5">Diagnostic Tip:</strong> When an answer is wrong, the triangle tells you WHERE to fix:<br>
+    <div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-bottom:1.5rem;font-size:.88rem;line-height:1.7">
+      <strong>Diagnostic Tip:</strong> When an answer is wrong, the triangle tells you WHERE to fix:<br>
       High faithfulness + low relevance → <strong>Retrieval problem.</strong> Fix chunking, embeddings, or search parameters.<br>
       Low faithfulness + high relevance → <strong>Generation problem.</strong> Fix prompt template or grounding instructions.<br>
       Low completeness → <strong>top_k too low</strong> or chunks too small. Retrieve more context.
@@ -47,7 +47,7 @@
     <h2>LLM-as-a-Judge</h2>
     <p>Manually evaluating thousands of question-answer pairs is impossibly slow. The solution: use a powerful LLM to score answers automatically. You send the question, context, and answer to a judge model (like Claude or GPT-4) and ask it to rate each metric on a 1-5 scale with explanation.</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic
 <span style="color:#c084fc">import</span> json
 
@@ -101,7 +101,7 @@ scores = evaluate_rag_answer(
     <h2>Running Evaluation at Scale</h2>
     <p>A proper evaluation runs your test set through the RAG pipeline and scores every answer:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">def</span> <span style="color:#38bdf8">run_evaluation</span>(test_set, rag_fn):
     <span style="color:#fb923c">"""Evaluate a RAG system against a test set."""</span>
     results = []
@@ -128,7 +128,7 @@ scores = evaluate_rag_answer(
 
     <span style="color:#c084fc">return</span> results, avg</code></pre>
     </div>
-    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">Build your test set with 20-50 questions covering your most common query types. Include edge cases (unanswerable questions, multi-topic queries, exact-match queries).</p>
+    <p style="font-size:.82rem;margin-top:.5rem">Build your test set with 20-50 questions covering your most common query types. Include edge cases (unanswerable questions, multi-topic queries, exact-match queries).</p>
   </div>
 
   <div class="section">
@@ -137,20 +137,20 @@ scores = evaluate_rag_answer(
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">RAGAS</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The most popular RAG evaluation framework. Measures faithfulness, answer relevancy, context precision, and context recall. Open-source Python library. <code>pip install ragas</code></p>
+        <strong style="font-size:.85rem">RAGAS</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">The most popular RAG evaluation framework. Measures faithfulness, answer relevancy, context precision, and context recall. Open-source Python library. <code>pip install ragas</code></p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6;font-size:.85rem">DeepEval</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">LLM evaluation framework with RAG-specific metrics: hallucination detection, answer relevancy, contextual precision/recall. Integrates with CI/CD pipelines for automated quality gates.</p>
+        <strong style="font-size:.85rem">DeepEval</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">LLM evaluation framework with RAG-specific metrics: hallucination detection, answer relevancy, contextual precision/recall. Integrates with CI/CD pipelines for automated quality gates.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c;font-size:.85rem">TruLens</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Evaluation and tracking for LLM apps. Provides the "RAG Triad" of metrics: answer relevance, context relevance, and groundedness. Good dashboard for monitoring quality over time.</p>
+        <strong style="font-size:.85rem">TruLens</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Evaluation and tracking for LLM apps. Provides the "RAG Triad" of metrics: answer relevance, context relevance, and groundedness. Good dashboard for monitoring quality over time.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-        <strong style="color:#38bdf8;font-size:.85rem">Custom LLM Judge</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Build your own evaluator (like the code above). Simple, flexible, domain-adaptable. No dependencies. This is what most teams start with before adopting a framework.</p>
+        <strong style="font-size:.85rem">Custom LLM Judge</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Build your own evaluator (like the code above). Simple, flexible, domain-adaptable. No dependencies. This is what most teams start with before adopting a framework.</p>
       </div>
     </div>
   </div>
@@ -160,20 +160,20 @@ scores = evaluate_rag_answer(
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Low Relevance (< 3/5)</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0"><strong>Fix retrieval:</strong> Better embeddings, better chunking, hybrid search, higher top_k, or query rewriting. The wrong documents are being retrieved.</p>
+        <strong style="font-size:.85rem">Low Relevance (< 3/5)</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0"><strong>Fix retrieval:</strong> Better embeddings, better chunking, hybrid search, higher top_k, or query rewriting. The wrong documents are being retrieved.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Low Faithfulness (< 4/5)</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0"><strong>Fix generation:</strong> Stronger grounding instructions, lower temperature, explicit "cite your source" instructions, or a more capable LLM. The model is inventing claims not in the context.</p>
+        <strong style="font-size:.85rem">Low Faithfulness (< 4/5)</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0"><strong>Fix generation:</strong> Stronger grounding instructions, lower temperature, explicit "cite your source" instructions, or a more capable LLM. The model is inventing claims not in the context.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Low Completeness (< 3/5)</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0"><strong>Fix scope:</strong> Higher top_k, larger chunks, or "Include all relevant details" in the prompt. The answer is leaving out information that exists in the context.</p>
+        <strong style="font-size:.85rem">Low Completeness (< 3/5)</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0"><strong>Fix scope:</strong> Higher top_k, larger chunks, or "Include all relevant details" in the prompt. The answer is leaving out information that exists in the context.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">All High (4-5/5)</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0"><strong>Ship it.</strong> Your RAG system is performing well. Monitor over time and re-evaluate when you add new documents or change parameters.</p>
+        <strong style="font-size:.85rem">All High (4-5/5)</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0"><strong>Ship it.</strong> Your RAG system is performing well. Monitor over time and re-evaluate when you add new documents or change parameters.</p>
       </div>
     </div>
   </div>
@@ -182,12 +182,12 @@ scores = evaluate_rag_answer(
     <h2>Building a Test Set</h2>
     <p>A good evaluation test set has these properties:</p>
 
-    <div style="font-size:.85rem;color:#a1a1aa;line-height:1.8;margin:1rem 0">
-      <strong style="color:#e5e5e5">20-50 questions minimum.</strong> Fewer gives unreliable averages. More is better but expensive to create.<br>
-      <strong style="color:#e5e5e5">Cover your query types.</strong> Simple factual, multi-topic, comparative, "how to," and exact-match queries.<br>
-      <strong style="color:#e5e5e5">Include unanswerable questions.</strong> 10-20% should be questions the knowledge base cannot answer. A good RAG system says "I don't know" for these.<br>
-      <strong style="color:#e5e5e5">Include expected answers.</strong> For each question, write the ideal answer so you can compare against the RAG output.<br>
-      <strong style="color:#e5e5e5">Update when docs change.</strong> When you add or modify documents, update your test set to match.
+    <div style="font-size:.85rem;line-height:1.8;margin:1rem 0">
+      <strong>20-50 questions minimum.</strong> Fewer gives unreliable averages. More is better but expensive to create.<br>
+      <strong>Cover your query types.</strong> Simple factual, multi-topic, comparative, "how to," and exact-match queries.<br>
+      <strong>Include unanswerable questions.</strong> 10-20% should be questions the knowledge base cannot answer. A good RAG system says "I don't know" for these.<br>
+      <strong>Include expected answers.</strong> For each question, write the ideal answer so you can compare against the RAG output.<br>
+      <strong>Update when docs change.</strong> When you add or modify documents, update your test set to match.
     </div>
   </div>
 

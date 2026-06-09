@@ -29,7 +29,7 @@
 <div class="lo-vis__caption">Master <strong>the content pipeline</strong> step by step.</div>
 </div>
 
-  <div class="prompt-box"><code>Brain Context → Ideation → Drafting → Review → Publishing → Distribution
+  <div class="demo-container"><code>Brain Context → Ideation → Drafting → Review → Publishing → Distribution
 
 1. IDEATION: AI reads brain (projects, expertise, trends)
    → generates topic ideas aligned with your business goals
@@ -51,7 +51,7 @@
   <span class="section-label">Implementation</span>
   <h2 class="section-title">Content Generation from Brain Context</h2>
   <p class="section-text">The brain is the content engine's fuel. Instead of generating generic content, the AI writes from your actual expertise, projects, and perspective:</p>
-  <div class="prompt-box"><code>// Content generation using brain context
+  <div class="demo-container"><code>// Content generation using brain context
 async function generateBlogPost(topic) {
   // Read relevant brain context
   const voice = brain.read('directive.voice');
@@ -90,12 +90,12 @@ Requirements:
   <span class="section-label">Strategy</span>
   <h2 class="section-title">Content Repurposing</h2>
   <p class="section-text">One piece of content becomes five with strategic repurposing. Write once, publish everywhere:</p>
-  <p class="section-text"><strong style="color: var(--blue);">Blog post (1000 words).</strong> The anchor content. Deep, detailed, SEO-optimized. Lives on your website permanently.</p>
-  <p class="section-text"><strong style="color: var(--purple);">LinkedIn post (200 words).</strong> Extract the key insight and one actionable takeaway. Professional tone. End with a question to drive engagement.</p>
-  <p class="section-text"><strong style="color: var(--green);">Twitter/X thread (5-8 tweets).</strong> Break the blog post into bite-sized insights. Each tweet stands alone but flows as a thread. Hook in the first tweet.</p>
-  <p class="section-text"><strong style="color: var(--orange);">Email newsletter snippet (150 words).</strong> Tease the blog post with the most compelling insight. Link to the full article. Personal tone -- "Here is what I learned this week."</p>
-  <p class="section-text"><strong style="color: var(--accent);">Video script (2 minutes).</strong> Convert the key points into a talking-head script. Visual cues, natural speech patterns, call to action at the end.</p>
-  <div class="prompt-box"><code>// Repurpose a blog post into social formats
+  <p class="section-text"><strong>Blog post (1000 words).</strong> The anchor content. Deep, detailed, SEO-optimized. Lives on your website permanently.</p>
+  <p class="section-text"><strong>LinkedIn post (200 words).</strong> Extract the key insight and one actionable takeaway. Professional tone. End with a question to drive engagement.</p>
+  <p class="section-text"><strong>Twitter/X thread (5-8 tweets).</strong> Break the blog post into bite-sized insights. Each tweet stands alone but flows as a thread. Hook in the first tweet.</p>
+  <p class="section-text"><strong>Email newsletter snippet (150 words).</strong> Tease the blog post with the most compelling insight. Link to the full article. Personal tone -- "Here is what I learned this week."</p>
+  <p class="section-text"><strong>Video script (2 minutes).</strong> Convert the key points into a talking-head script. Visual cues, natural speech patterns, call to action at the end.</p>
+  <div class="demo-container"><code>// Repurpose a blog post into social formats
 async function repurposeContent(blogPost) {
   const voice = brain.read('directive.voice');
 
@@ -129,23 +129,23 @@ Blog: ${blogPost}`
   <span class="section-label">Advanced</span>
   <h2 class="section-title">SEO Optimization</h2>
   <p class="section-text">Content that nobody finds is content that does not exist. Basic SEO ensures your content reaches people searching for your expertise:</p>
-  <p class="section-text"><strong style="color: var(--blue);">Keyword research (automated).</strong> The AI identifies relevant keywords from your brain's expertise areas, recent search trends, and competitor analysis. Store target keywords in the brain: seo.target_keywords.</p>
-  <p class="section-text"><strong style="color: var(--purple);">On-page optimization.</strong> Every blog post includes: keyword in title and first paragraph, meta description under 160 characters, proper heading hierarchy (H1, H2, H3), internal links to related content, alt text for images.</p>
-  <p class="section-text"><strong style="color: var(--green);">Content calendar.</strong> The AI generates a monthly content plan based on target keywords, seasonal trends, and your business goals. Stored in the brain as plan.content_calendar. Each entry has a topic, target keyword, target publish date, and status.</p>
+  <p class="section-text"><strong>Keyword research (automated).</strong> The AI identifies relevant keywords from your brain's expertise areas, recent search trends, and competitor analysis. Store target keywords in the brain: seo.target_keywords.</p>
+  <p class="section-text"><strong>On-page optimization.</strong> Every blog post includes: keyword in title and first paragraph, meta description under 160 characters, proper heading hierarchy (H1, H2, H3), internal links to related content, alt text for images.</p>
+  <p class="section-text"><strong>Content calendar.</strong> The AI generates a monthly content plan based on target keywords, seasonal trends, and your business goals. Stored in the brain as plan.content_calendar. Each entry has a topic, target keyword, target publish date, and status.</p>
 </div>
 
 <div class="lesson-section">
   <span class="section-label">Anti-Patterns</span>
   <h2 class="section-title">Content Pipeline Mistakes</h2>
-  <p class="section-text"><strong style="color: var(--red);">Publishing without review.</strong> Auto-publishing AI-generated blog posts without reading them. AI can produce factual errors, awkward phrasing, or off-brand content. All long-form content gets human review before publishing.</p>
-  <p class="section-text"><strong style="color: var(--red);">Generic content.</strong> Using AI without brain context produces content that sounds like everyone else's AI content. The brain is the differentiator -- your expertise, your voice, your examples. Without it, you are just generating noise.</p>
-  <p class="section-text"><strong style="color: var(--red);">Publishing volume over quality.</strong> Generating 20 mediocre posts instead of 4 excellent ones. Search engines penalize thin content. Readers unsubscribe from spammy newsletters. Quality beats quantity every time.</p>
+  <p class="section-text"><strong>Publishing without review.</strong> Auto-publishing AI-generated blog posts without reading them. AI can produce factual errors, awkward phrasing, or off-brand content. All long-form content gets human review before publishing.</p>
+  <p class="section-text"><strong>Generic content.</strong> Using AI without brain context produces content that sounds like everyone else's AI content. The brain is the differentiator -- your expertise, your voice, your examples. Without it, you are just generating noise.</p>
+  <p class="section-text"><strong>Publishing volume over quality.</strong> Generating 20 mediocre posts instead of 4 excellent ones. Search engines penalize thin content. Readers unsubscribe from spammy newsletters. Quality beats quantity every time.</p>
 </div>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Build your content pipeline:</p>
-  <div class="prompt-box"><code>1. Add to your brain:
+  <div class="demo-container"><code>1. Add to your brain:
    - directive.voice: your writing style
    - identity.expertise: what you know deeply
    - directive.brand_guidelines: tone, audience, no-go topics

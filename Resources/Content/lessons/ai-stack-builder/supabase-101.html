@@ -20,43 +20,43 @@
 <div class="lo-vis__caption">Master <strong>why supabase is the foundation</strong> step by step.</div>
 </div>
 
-<p>Most backend setups require stitching together a database (RDS), authentication (Auth0), serverless functions (Lambda), real-time features (Pusher), and file storage (S3). Supabase bundles <strong style="color:#e5e5e5">all of these into one platform</strong> built on Postgres — the most battle-tested database in existence.</p>
+<p>Most backend setups require stitching together a database (RDS), authentication (Auth0), serverless functions (Lambda), real-time features (Pusher), and file storage (S3). Supabase bundles <strong>all of these into one platform</strong> built on Postgres — the most battle-tested database in existence.</p>
 
-<p>For AI applications specifically, Supabase adds <strong style="color:#e5e5e5">pgvector</strong> — a Postgres extension that stores AI embeddings (numerical representations of text meaning) and enables semantic search. This means your AI agent can find memories by meaning, not just keywords.</p>
+<p>For AI applications specifically, Supabase adds <strong>pgvector</strong> — a Postgres extension that stores AI embeddings (numerical representations of text meaning) and enables semantic search. This means your AI agent can find memories by meaning, not just keywords.</p>
 
 <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.25rem">
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(52,211,153,.06);border-radius:10px;border:1px solid rgba(52,211,153,.12);flex:1;min-width:160px">
 <div style="font-size:1.25rem">&#x1f5c4;&#xfe0f;</div>
-<div><div style="font-size:.8rem;font-weight:700;color:#34d399;margin-bottom:.2rem">Postgres</div><div style="font-size:.78rem;color:#71717a;line-height:1.5">Full SQL database with JSONB, indexes, and 30+ years of reliability</div></div>
+<div><div style="font-size:.8rem;font-weight:700;margin-bottom:.2rem">Postgres</div><div style="font-size:.78rem;line-height:1.5">Full SQL database with JSONB, indexes, and 30+ years of reliability</div></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(139,92,246,.06);border-radius:10px;border:1px solid rgba(139,92,246,.12);flex:1;min-width:160px">
 <div style="font-size:1.25rem">&#x1f512;</div>
-<div><div style="font-size:.8rem;font-weight:700;color:#8b5cf6;margin-bottom:.2rem">Auth + RLS</div><div style="font-size:.78rem;color:#71717a;line-height:1.5">User management + row-level security — the database enforces who sees what</div></div>
+<div><div style="font-size:.8rem;font-weight:700;margin-bottom:.2rem">Auth + RLS</div><div style="font-size:.78rem;line-height:1.5">User management + row-level security — the database enforces who sees what</div></div>
 </div>
 <div style="display:flex;gap:.75rem;padding:.75rem 1rem;background:rgba(251,146,60,.06);border-radius:10px;border:1px solid rgba(251,146,60,.12);flex:1;min-width:160px">
 <div style="font-size:1.25rem">&#x1f9e0;</div>
-<div><div style="font-size:.8rem;font-weight:700;color:#fb923c;margin-bottom:.2rem">pgvector</div><div style="font-size:.78rem;color:#71717a;line-height:1.5">Store AI embeddings and search by meaning — the foundation of AI memory</div></div>
+<div><div style="font-size:.8rem;font-weight:700;margin-bottom:.2rem">pgvector</div><div style="font-size:.78rem;line-height:1.5">Store AI embeddings and search by meaning — the foundation of AI memory</div></div>
 </div>
 </div>
 </div>
 
 <div class="card">
 <h2>Two Keys, Two Levels of Access</h2>
-<p>When you create a Supabase project, you get two API keys. Understanding the difference between them is <strong style="color:#e5e5e5">the most important security concept</strong> in this entire course.</p>
+<p>When you create a Supabase project, you get two API keys. Understanding the difference between them is <strong>the most important security concept</strong> in this entire course.</p>
 
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem">
 <div style="padding:1rem 1.25rem;background:rgba(52,211,153,.04);border-radius:10px;border:1px solid rgba(52,211,153,.08)">
-<strong style="color:#34d399;font-size:.88rem">Anon Key (Public)</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.5rem 0 0;line-height:1.7"><strong style="color:#e5e5e5">Safe for frontend.</strong> Can be seen in browser source code. Designed to be public. RLS policies control what it can access — without policies, it can access nothing.</p>
-<div style="background:#0a0a0a;border-radius:6px;padding:.5rem;margin-top:.5rem;font-family:'JetBrains Mono',monospace;font-size:.75rem;color:#34d399">
-eyJhbGciOi... <span style="color:#71717a">// public, safe</span>
+<strong style="font-size:.88rem">Anon Key (Public)</strong>
+<p style="font-size:.82rem;margin:.5rem 0 0;line-height:1.7"><strong>Safe for frontend.</strong> Can be seen in browser source code. Designed to be public. RLS policies control what it can access — without policies, it can access nothing.</p>
+<div style="background:#0a0a0a;border-radius:6px;padding:.5rem;margin-top:.5rem;font-family:'JetBrains Mono',monospace;font-size:.75rem">
+eyJhbGciOi... <span>// public, safe</span>
 </div>
 </div>
 <div style="padding:1rem 1.25rem;background:rgba(239,68,68,.04);border-radius:10px;border:1px solid rgba(239,68,68,.08)">
-<strong style="color:#ef4444;font-size:.88rem">Service Role Key (Secret)</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.5rem 0 0;line-height:1.7"><strong style="color:#e5e5e5">Server-side ONLY.</strong> Bypasses ALL RLS. Full access to every table, every row. If this key leaks, your entire database is compromised.</p>
-<div style="background:#0a0a0a;border-radius:6px;padding:.5rem;margin-top:.5rem;font-family:'JetBrains Mono',monospace;font-size:.75rem;color:#ef4444">
-eyJhbGciOi... <span style="color:#71717a">// SECRET, never in browser</span>
+<strong style="font-size:.88rem">Service Role Key (Secret)</strong>
+<p style="font-size:.82rem;margin:.5rem 0 0;line-height:1.7"><strong>Server-side ONLY.</strong> Bypasses ALL RLS. Full access to every table, every row. If this key leaks, your entire database is compromised.</p>
+<div style="background:#0a0a0a;border-radius:6px;padding:.5rem;margin-top:.5rem;font-family:'JetBrains Mono',monospace;font-size:.75rem">
+eyJhbGciOi... <span>// SECRET, never in browser</span>
 </div>
 </div>
 </div>
@@ -66,13 +66,13 @@ eyJhbGciOi... <span style="color:#71717a">// SECRET, never in browser</span>
 <h2>Step-by-Step: Create Your First Project</h2>
 <p>Follow these steps to go from zero to a working Supabase project with a table, RLS, and your first data.</p>
 
-<div style="display:grid;gap:.3rem;margin-top:1rem;font-size:.85rem;color:#a1a1aa;line-height:2">
-<div style="padding:.5rem .75rem;background:rgba(52,211,153,.04);border-radius:6px"><span style="color:#34d399;font-weight:700">1.</span> Go to <strong style="color:#e5e5e5">supabase.com</strong> and create a new project. Pick a region close to your users.</div>
-<div style="padding:.5rem .75rem;background:rgba(139,92,246,.04);border-radius:6px"><span style="color:#8b5cf6;font-weight:700">2.</span> Save your <strong style="color:#e5e5e5">Project URL</strong>, <strong style="color:#e5e5e5">Anon Key</strong>, and <strong style="color:#e5e5e5">Service Role Key</strong> from Settings &rarr; API.</div>
-<div style="padding:.5rem .75rem;background:rgba(251,146,60,.04);border-radius:6px"><span style="color:#fb923c;font-weight:700">3.</span> Open the <strong style="color:#e5e5e5">SQL Editor</strong> in the dashboard — this is where you run all database commands.</div>
-<div style="padding:.5rem .75rem;background:rgba(244,114,182,.04);border-radius:6px"><span style="color:#f472b6;font-weight:700">4.</span> Create your first table (SQL below).</div>
-<div style="padding:.5rem .75rem;background:rgba(56,189,248,.04);border-radius:6px"><span style="color:#38bdf8;font-weight:700">5.</span> Enable RLS and create an access policy.</div>
-<div style="padding:.5rem .75rem;background:rgba(52,211,153,.04);border-radius:6px"><span style="color:#34d399;font-weight:700">6.</span> Insert your first record to verify everything works.</div>
+<div style="display:grid;gap:.3rem;margin-top:1rem;font-size:.85rem;line-height:2">
+<div style="padding:.5rem .75rem;background:rgba(52,211,153,.04);border-radius:6px"><span style="font-weight:700">1.</span> Go to <strong>supabase.com</strong> and create a new project. Pick a region close to your users.</div>
+<div style="padding:.5rem .75rem;background:rgba(139,92,246,.04);border-radius:6px"><span style="font-weight:700">2.</span> Save your <strong>Project URL</strong>, <strong>Anon Key</strong>, and <strong>Service Role Key</strong> from Settings &rarr; API.</div>
+<div style="padding:.5rem .75rem;background:rgba(251,146,60,.04);border-radius:6px"><span style="font-weight:700">3.</span> Open the <strong>SQL Editor</strong> in the dashboard — this is where you run all database commands.</div>
+<div style="padding:.5rem .75rem;background:rgba(244,114,182,.04);border-radius:6px"><span style="font-weight:700">4.</span> Create your first table (SQL below).</div>
+<div style="padding:.5rem .75rem;background:rgba(56,189,248,.04);border-radius:6px"><span style="font-weight:700">5.</span> Enable RLS and create an access policy.</div>
+<div style="padding:.5rem .75rem;background:rgba(52,211,153,.04);border-radius:6px"><span style="font-weight:700">6.</span> Insert your first record to verify everything works.</div>
 </div>
 </div>
 
@@ -80,8 +80,8 @@ eyJhbGciOi... <span style="color:#71717a">// SECRET, never in browser</span>
 <h2>Create the brain_context Table</h2>
 <p>This table stores your AI agent's memory as key-value pairs. It is the single most important table in any AI application — the agent's persistent brain.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Create brain_context with pgvector support</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Create brain_context with pgvector support</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">-- Enable the vector extension for AI embeddings</span>
 <span style="color:#c084fc">CREATE EXTENSION IF NOT EXISTS</span> vector;
 
@@ -107,8 +107,8 @@ eyJhbGciOi... <span style="color:#71717a">// SECRET, never in browser</span>
   <span style="color:#c084fc">WITH</span> (lists = <span style="color:#fb923c">100</span>);</code></pre>
 </div>
 
-<div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">Column breakdown:</strong> <code style="color:#f59e0b">key</code> uses dot notation (<code style="color:#f59e0b">identity.name</code>, <code style="color:#f59e0b">session.active_work</code>) for organization. <code style="color:#f59e0b">value</code> is JSONB — a binary JSON format that supports indexing and querying inside the structure. <code style="color:#f59e0b">embedding</code> stores 384 numbers representing the semantic meaning of the key's content (for AI search).
+<div style="background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;line-height:1.7">
+<strong>Column breakdown:</strong> <code>key</code> uses dot notation (<code>identity.name</code>, <code>session.active_work</code>) for organization. <code>value</code> is JSONB — a binary JSON format that supports indexing and querying inside the structure. <code>embedding</code> stores 384 numbers representing the semantic meaning of the key's content (for AI search).
 </div>
 </div>
 
@@ -116,8 +116,8 @@ eyJhbGciOi... <span style="color:#71717a">// SECRET, never in browser</span>
 <h2>Enable Row Level Security</h2>
 <p>RLS is the bouncer for your database. Without it, anyone with your anon key can read all data. With it, the database itself enforces who can see what — even if your application code has bugs.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Enable RLS and create a service role policy</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Enable RLS and create a service role policy</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">-- Enable RLS — default-deny: nobody can access without a policy</span>
 <span style="color:#c084fc">ALTER TABLE</span> brain_context <span style="color:#c084fc">ENABLE ROW LEVEL SECURITY</span>;
 
@@ -130,8 +130,8 @@ eyJhbGciOi... <span style="color:#71717a">// SECRET, never in browser</span>
 <span style="color:#71717a">-- Add more policies later if users need direct access</span></code></pre>
 </div>
 
-<div style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#ef4444">Critical:</strong> Enabling RLS with <strong style="color:#e5e5e5">no policies</strong> creates a default-deny state — nobody can access the table. This is the safe default. You explicitly create policies to grant access. Start locked down, open up only what is needed.
+<div style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;line-height:1.7">
+<strong>Critical:</strong> Enabling RLS with <strong>no policies</strong> creates a default-deny state — nobody can access the table. This is the safe default. You explicitly create policies to grant access. Start locked down, open up only what is needed.
 </div>
 </div>
 
@@ -139,8 +139,8 @@ eyJhbGciOi... <span style="color:#71717a">// SECRET, never in browser</span>
 <h2>Essential SQL Queries</h2>
 <p>Run these in the Supabase SQL Editor. They cover the four operations you will use constantly: read, write, update, and filter.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Essential brain_context queries</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">SQL — Essential brain_context queries</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">-- READ: Fetch all rows (most recent first)</span>
 <span style="color:#c084fc">SELECT</span> key, value, updated_at
 <span style="color:#c084fc">FROM</span> brain_context
@@ -167,8 +167,8 @@ eyJhbGciOi... <span style="color:#71717a">// SECRET, never in browser</span>
 <h2>Supabase Client: JavaScript SDK</h2>
 <p>In production, you interact with Supabase through the JavaScript SDK — not raw SQL. The SDK provides type-safe methods for every operation.</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JavaScript — Supabase client setup + queries</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">JavaScript — Supabase client setup + queries</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { createClient } <span style="color:#c084fc">from</span> <span style="color:#fb923c">'@supabase/supabase-js'</span>
 
 <span style="color:#71717a">// Initialize (these are safe for the frontend)</span>
@@ -208,34 +208,34 @@ eyJhbGciOi... <span style="color:#71717a">// SECRET, never in browser</span>
 <table style="width:100%;border-collapse:collapse;font-size:.82rem">
 <thead>
 <tr style="border-bottom:1px solid rgba(255,255,255,.1)">
-<th style="text-align:left;padding:.75rem;color:#e5e5e5;font-weight:600">Feature</th>
-<th style="text-align:left;padding:.75rem;color:#e5e5e5;font-weight:600">What It Does</th>
-<th style="text-align:left;padding:.75rem;color:#e5e5e5;font-weight:600">Replaces</th>
+<th style="text-align:left;padding:.75rem;font-weight:600">Feature</th>
+<th style="text-align:left;padding:.75rem;font-weight:600">What It Does</th>
+<th style="text-align:left;padding:.75rem;font-weight:600">Replaces</th>
 </tr>
 </thead>
-<tbody style="color:#a1a1aa">
+<tbody>
 <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
-<td style="padding:.75rem;font-weight:600;color:#e5e5e5">Postgres Database</td>
+<td style="padding:.75rem;font-weight:600">Postgres Database</td>
 <td style="padding:.75rem">Full SQL database with JSONB, views, triggers, and 30+ years of reliability</td>
 <td style="padding:.75rem">AWS RDS, PlanetScale, MongoDB</td>
 </tr>
 <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
-<td style="padding:.75rem;font-weight:600;color:#e5e5e5">Auth + RLS</td>
+<td style="padding:.75rem;font-weight:600">Auth + RLS</td>
 <td style="padding:.75rem">User signup/login, JWT tokens, row-level access control</td>
 <td style="padding:.75rem">Auth0, Firebase Auth, Clerk</td>
 </tr>
 <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
-<td style="padding:.75rem;font-weight:600;color:#e5e5e5">Edge Functions</td>
+<td style="padding:.75rem;font-weight:600">Edge Functions</td>
 <td style="padding:.75rem">Serverless TypeScript functions deployed globally (Deno runtime)</td>
 <td style="padding:.75rem">AWS Lambda, Cloudflare Workers</td>
 </tr>
 <tr style="border-bottom:1px solid rgba(255,255,255,.05)">
-<td style="padding:.75rem;font-weight:600;color:#e5e5e5">Realtime</td>
+<td style="padding:.75rem;font-weight:600">Realtime</td>
 <td style="padding:.75rem">Live subscriptions — your UI updates instantly when data changes</td>
 <td style="padding:.75rem">Pusher, Socket.io, Firebase Realtime</td>
 </tr>
 <tr>
-<td style="padding:.75rem;font-weight:600;color:#e5e5e5">pgvector</td>
+<td style="padding:.75rem;font-weight:600">pgvector</td>
 <td style="padding:.75rem">Store AI embeddings, search by semantic meaning</td>
 <td style="padding:.75rem">Pinecone, Weaviate, Chroma</td>
 </tr>
@@ -243,8 +243,8 @@ eyJhbGciOi... <span style="color:#71717a">// SECRET, never in browser</span>
 </table>
 </div>
 
-<div style="background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">Cost:</strong> Supabase Pro is <strong style="color:#34d399">$25/month</strong> and includes all five features. The free tier gives you 2 projects with generous limits for learning and prototyping.
+<div style="background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.12);border-radius:12px;padding:1rem;margin-top:.75rem;font-size:.82rem;line-height:1.7">
+<strong>Cost:</strong> Supabase Pro is <strong>$25/month</strong> and includes all five features. The free tier gives you 2 projects with generous limits for learning and prototyping.
 </div>
 </div>
 

@@ -27,8 +27,8 @@
 
 <p>Building an agent that works on your laptop is lesson 2. Shipping an agent that serves real users, handles failures gracefully, stays within budget, and runs 24/7 — that is this lesson. Production agents need infrastructure that prototypes do not: error recovery, cost tracking, graceful shutdowns, monitoring, and operational runbooks.</p>
 
-<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">Real-world analogy:</strong> A prototype is a food truck. Production is a restaurant. Both serve food, but the restaurant needs a kitchen that can handle the dinner rush, health inspections, supply chain management, and a plan for when the oven breaks at 7 PM on a Friday.
+<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin-top:1.25rem;font-size:.88rem;line-height:1.7">
+<strong>Real-world analogy:</strong> A prototype is a food truck. Production is a restaurant. Both serve food, but the restaurant needs a kitchen that can handle the dinner rush, health inspections, supply chain management, and a plan for when the oven breaks at 7 PM on a Friday.
 </div>
 </div>
 
@@ -36,8 +36,8 @@
 <h2>Error Handling Architecture</h2>
 <p>In production, everything fails. APIs time out, rate limits kick in, tools crash, and network connections drop. Your agent needs to handle every failure mode gracefully:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — production error handling</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — production error handling</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> { Claude, AgentError, BudgetExceededError } <span style="color:#c084fc">from</span> <span style="color:#fbbf24">"@anthropic-ai/claude-agent"</span>;
 
 <span style="color:#c084fc">async function</span> <span style="color:#38bdf8">runAgentSafely</span>(prompt: string) {
@@ -78,8 +78,8 @@
 <h2>Abort Controllers</h2>
 <p>Long-running agents need a way to be stopped — by users, by timeouts, or by your system. Abort controllers provide clean cancellation:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — abort controller with timeout</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — abort controller with timeout</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a">// Create a controller that aborts after 60 seconds</span>
 <span style="color:#c084fc">const</span> controller = <span style="color:#c084fc">new</span> AbortController();
 <span style="color:#c084fc">const</span> timeout = setTimeout(() => controller.abort(), <span style="color:#fb923c">60_000</span>);
@@ -103,8 +103,8 @@
 <h2>Cost Tracking and Monitoring</h2>
 <p>In production, you need to know exactly how much each agent interaction costs and spot anomalies before they become expensive problems:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — cost tracking with hooks</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">TypeScript — cost tracking with hooks</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">const</span> metrics = {
   totalCost: <span style="color:#fb923c">0</span>,
   totalQueries: <span style="color:#fb923c">0</span>,
@@ -147,28 +147,28 @@
 
 <div style="display:grid;gap:.5rem;margin-top:.75rem">
 <div style="display:flex;gap:.75rem;align-items:center;padding:.5rem 1rem;background:rgba(52,211,153,.04);border-radius:8px;border:1px solid rgba(52,211,153,.08)">
-<div style="font-size:.82rem;color:#a1a1aa">maxBudgetUsd set to a reasonable limit</div>
+<div style="font-size:.82rem">maxBudgetUsd set to a reasonable limit</div>
 </div>
 <div style="display:flex;gap:.75rem;align-items:center;padding:.5rem 1rem;background:rgba(52,211,153,.04);border-radius:8px;border:1px solid rgba(52,211,153,.08)">
-<div style="font-size:.82rem;color:#a1a1aa">maxTurns configured to prevent infinite loops</div>
+<div style="font-size:.82rem">maxTurns configured to prevent infinite loops</div>
 </div>
 <div style="display:flex;gap:.75rem;align-items:center;padding:.5rem 1rem;background:rgba(52,211,153,.04);border-radius:8px;border:1px solid rgba(52,211,153,.08)">
-<div style="font-size:.82rem;color:#a1a1aa">PreToolUse hook blocks dangerous operations</div>
+<div style="font-size:.82rem">PreToolUse hook blocks dangerous operations</div>
 </div>
 <div style="display:flex;gap:.75rem;align-items:center;padding:.5rem 1rem;background:rgba(52,211,153,.04);border-radius:8px;border:1px solid rgba(52,211,153,.08)">
-<div style="font-size:.82rem;color:#a1a1aa">Error handling for API errors, rate limits, and timeouts</div>
+<div style="font-size:.82rem">Error handling for API errors, rate limits, and timeouts</div>
 </div>
 <div style="display:flex;gap:.75rem;align-items:center;padding:.5rem 1rem;background:rgba(52,211,153,.04);border-radius:8px;border:1px solid rgba(52,211,153,.08)">
-<div style="font-size:.82rem;color:#a1a1aa">Abort controller with timeout for long-running queries</div>
+<div style="font-size:.82rem">Abort controller with timeout for long-running queries</div>
 </div>
 <div style="display:flex;gap:.75rem;align-items:center;padding:.5rem 1rem;background:rgba(52,211,153,.04);border-radius:8px;border:1px solid rgba(52,211,153,.08)">
-<div style="font-size:.82rem;color:#a1a1aa">Cost tracking and anomaly alerting</div>
+<div style="font-size:.82rem">Cost tracking and anomaly alerting</div>
 </div>
 <div style="display:flex;gap:.75rem;align-items:center;padding:.5rem 1rem;background:rgba(52,211,153,.04);border-radius:8px;border:1px solid rgba(52,211,153,.08)">
-<div style="font-size:.82rem;color:#a1a1aa">Audit logging via hooks for compliance</div>
+<div style="font-size:.82rem">Audit logging via hooks for compliance</div>
 </div>
 <div style="display:flex;gap:.75rem;align-items:center;padding:.5rem 1rem;background:rgba(52,211,153,.04);border-radius:8px;border:1px solid rgba(52,211,153,.08)">
-<div style="font-size:.82rem;color:#a1a1aa">Adversarial testing completed and guardrails verified</div>
+<div style="font-size:.82rem">Adversarial testing completed and guardrails verified</div>
 </div>
 </div>
 </div>
@@ -179,20 +179,20 @@
 
 <div style="display:grid;gap:1rem;margin-top:1rem">
 <div style="padding:1rem;background:rgba(139,92,246,.05);border-radius:10px;border:1px solid rgba(139,92,246,.1)">
-<strong style="color:#8b5cf6">Foundation (Lessons 1-3)</strong>
-<p style="font-size:.85rem;color:#a1a1aa;margin:.25rem 0 0">Why agents matter, installation, your first query, streaming events</p>
+<strong>Foundation (Lessons 1-3)</strong>
+<p style="font-size:.85rem;margin:.25rem 0 0">Why agents matter, installation, your first query, streaming events</p>
 </div>
 <div style="padding:1rem;background:rgba(56,189,248,.05);border-radius:10px;border:1px solid rgba(56,189,248,.1)">
-<strong style="color:#38bdf8">Capabilities (Lessons 4-6)</strong>
-<p style="font-size:.85rem;color:#a1a1aa;margin:.25rem 0 0">Tool use, MCP integration, sub-agent delegation</p>
+<strong>Capabilities (Lessons 4-6)</strong>
+<p style="font-size:.85rem;margin:.25rem 0 0">Tool use, MCP integration, sub-agent delegation</p>
 </div>
 <div style="padding:1rem;background:rgba(52,211,153,.05);border-radius:10px;border:1px solid rgba(52,211,153,.1)">
-<strong style="color:#34d399">Production (Lessons 7-10)</strong>
-<p style="font-size:.85rem;color:#a1a1aa;margin:.25rem 0 0">Sessions, hooks, safety, and deployment architecture</p>
+<strong>Production (Lessons 7-10)</strong>
+<p style="font-size:.85rem;margin:.25rem 0 0">Sessions, hooks, safety, and deployment architecture</p>
 </div>
 </div>
 
-<p style="font-size:.85rem;color:#a1a1aa;line-height:1.7;margin-top:1rem">You now have the knowledge to build agents that do real work in the real world — safely, efficiently, and at scale. The gap between you and everyone else who is still copy-pasting into chat windows just got very wide.</p>
+<p style="font-size:.85rem;line-height:1.7;margin-top:1rem">You now have the knowledge to build agents that do real work in the real world — safely, efficiently, and at scale. The gap between you and everyone else who is still copy-pasting into chat windows just got very wide.</p>
 </div>
 
 <div class="flash-block">

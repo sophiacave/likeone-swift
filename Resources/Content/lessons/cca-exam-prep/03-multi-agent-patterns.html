@@ -141,7 +141,7 @@ async def handle_research(event):
     await agent_writer.run(event.data)</code></pre>
 <p><strong>Pros:</strong> Fully decoupled, scalable. <strong>Cons:</strong> Harder to debug, eventual consistency.</p>
 
-<div class="tip-box">
+<div class="callout">
 <strong>Our production choice:</strong> Shared memory via brain (SQLite). All agents read/write brain keys. Loose coupling. Any agent can pick up where another left off. This is the pattern the CCA exam favors for persistent multi-agent systems.
 </div>
 </div>

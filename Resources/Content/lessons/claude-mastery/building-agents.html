@@ -26,8 +26,8 @@
 
 <p>You have already learned all the components. System prompts define the agent's identity. Chain-of-thought enables its reasoning. Tools give it hands. Now it is time to assemble them into something powerful.</p>
 
-<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin:1rem 0;font-size:.88rem;color:#a1a1aa;line-height:1.7">
-<strong style="color:#e5e5e5">The agent pattern in one sentence:</strong> A loop that keeps calling Claude with tools until the task is complete. That is it. Everything else — memory, guardrails, planning — is refinement on top of that core loop.
+<div style="background:rgba(192,132,252,.06);border:1px solid rgba(192,132,252,.12);border-radius:12px;padding:1.25rem;margin:1rem 0;font-size:.88rem;line-height:1.7">
+<strong>The agent pattern in one sentence:</strong> A loop that keeps calling Claude with tools until the task is complete. That is it. Everything else — memory, guardrails, planning — is refinement on top of that core loop.
 </div>
 </div>
 
@@ -36,20 +36,20 @@
 
 <div style="display:grid;gap:.75rem;margin-top:.75rem">
 <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-<strong style="color:#8b5cf6;font-size:.88rem">1. Goal — What should the agent accomplish?</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">A clear objective, defined in the system prompt. "Research the top 5 competitors and produce a comparison table." "Monitor this API endpoint every hour and alert if response time exceeds 500ms." The goal shapes every decision the agent makes.</p>
+<strong style="font-size:.88rem">1. Goal — What should the agent accomplish?</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">A clear objective, defined in the system prompt. "Research the top 5 competitors and produce a comparison table." "Monitor this API endpoint every hour and alert if response time exceeds 500ms." The goal shapes every decision the agent makes.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-<strong style="color:#fb923c;font-size:.88rem">2. Tools — What can it do?</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">The set of actions available to the agent: web search, file read/write, database queries, API calls, email sending. More tools = more capable agent, but also more surface area for errors. Start minimal and add tools as needed.</p>
+<strong style="font-size:.88rem">2. Tools — What can it do?</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">The set of actions available to the agent: web search, file read/write, database queries, API calls, email sending. More tools = more capable agent, but also more surface area for errors. Start minimal and add tools as needed.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-<strong style="color:#38bdf8;font-size:.88rem">3. Memory — How does it retain context?</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0"><strong>Conversation memory:</strong> The messages array — ephemeral, lost when the conversation ends. <strong>Persistent memory:</strong> Database-backed storage that survives across sessions. <strong>RAG memory:</strong> Vector search over documents for retrieval (see the RAG course).</p>
+<strong style="font-size:.88rem">3. Memory — How does it retain context?</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0"><strong>Conversation memory:</strong> The messages array — ephemeral, lost when the conversation ends. <strong>Persistent memory:</strong> Database-backed storage that survives across sessions. <strong>RAG memory:</strong> Vector search over documents for retrieval (see the RAG course).</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-<strong style="color:#34d399;font-size:.88rem">4. Guardrails — What limits should it have?</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Safety boundaries: max steps (prevent infinite loops), budget caps (prevent runaway API costs), human approval gates (for destructive actions like deleting data or sending emails), scope locks (prevent the agent from drifting to unrelated tasks).</p>
+<strong style="font-size:.88rem">4. Guardrails — What limits should it have?</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Safety boundaries: max steps (prevent infinite loops), budget caps (prevent runaway API costs), human approval gates (for destructive actions like deleting data or sending emails), scope locks (prevent the agent from drifting to unrelated tasks).</p>
 </div>
 </div>
 </div>
@@ -58,8 +58,8 @@
 <h2>Building an Agent from Scratch</h2>
 <p>Here is a complete, working agent that can research topics using web search and produce structured reports. This code runs as-is with the Anthropic SDK:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — complete research agent</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — complete research agent</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">import</span> anthropic, json
 
 client = anthropic.Anthropic()
@@ -167,8 +167,8 @@ report = run_agent(<span style="color:#fbbf24">"Research the current state of AI
 <h2>The Claude Agent SDK</h2>
 <p>For production agents, Anthropic provides the <strong>Claude Agent SDK</strong> — a framework that handles the tool loop, guardrails, and multi-agent orchestration for you:</p>
 
-<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
-<div style="font-size:.75rem;color:#71717a;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Claude Agent SDK (production pattern)</div>
+<div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
+<div style="font-size:.75rem;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.05em">Python — Claude Agent SDK (production pattern)</div>
 <pre style="margin:0;color:#e5e5e5"><code><span style="color:#71717a"># pip install claude-agent-sdk</span>
 <span style="color:#c084fc">from</span> claude_agent_sdk <span style="color:#c084fc">import</span> Agent, tool
 
@@ -197,7 +197,7 @@ agent = Agent(
 result = agent.run(<span style="color:#fbbf24">"Research AI agents in 2026 and save a report."</span>)
 <span style="color:#34d399">print</span>(result.final_text)</code></pre>
 </div>
-<p style="font-size:.85rem;color:#a1a1aa;margin-top:.5rem">The Agent SDK handles the tool loop, error handling, and turn limits for you. The <code>@tool</code> decorator automatically generates the JSON schema from your function's type hints and docstring.</p>
+<p style="font-size:.85rem;margin-top:.5rem">The Agent SDK handles the tool loop, error handling, and turn limits for you. The <code>@tool</code> decorator automatically generates the JSON schema from your function's type hints and docstring.</p>
 </div>
 
 <div class="card">
@@ -206,24 +206,24 @@ result = agent.run(<span style="color:#fbbf24">"Research AI agents in 2026 and s
 
 <div style="display:grid;gap:.75rem;margin-top:.75rem">
 <div style="padding:1rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-<strong style="color:#8b5cf6;font-size:.88rem">Step 1: Define the Goal</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Write a clear, specific objective in the system prompt. "Research the top 5 competitors and produce a comparison table" is a goal. "Be helpful" is not.</p>
+<strong style="font-size:.88rem">Step 1: Define the Goal</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Write a clear, specific objective in the system prompt. "Research the top 5 competitors and produce a comparison table" is a goal. "Be helpful" is not.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-<strong style="color:#fb923c;font-size:.88rem">Step 2: Give Tools</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Start with 3-5 tools that cover the agent's core needs — web search, file read/write, database queries. Add more only as needed.</p>
+<strong style="font-size:.88rem">Step 2: Give Tools</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Start with 3-5 tools that cover the agent's core needs — web search, file read/write, database queries. Add more only as needed.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-<strong style="color:#38bdf8;font-size:.88rem">Step 3: Set Memory</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Choose a memory strategy: conversation memory (ephemeral), persistent database storage, or RAG with vector search for document retrieval.</p>
+<strong style="font-size:.88rem">Step 3: Set Memory</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Choose a memory strategy: conversation memory (ephemeral), persistent database storage, or RAG with vector search for document retrieval.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-<strong style="color:#34d399;font-size:.88rem">Step 4: Add Guardrails</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Set max steps to prevent infinite loops, add budget caps, and require human approval for destructive actions like sending emails or deleting data.</p>
+<strong style="font-size:.88rem">Step 4: Add Guardrails</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Set max steps to prevent infinite loops, add budget caps, and require human approval for destructive actions like sending emails or deleting data.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(244,114,182,.04);border:1px solid rgba(244,114,182,.1)">
-<strong style="color:#f472b6;font-size:.88rem">Step 5: Deploy</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Launch the agent, monitor its behavior, and iterate. Start with simple tasks and gradually increase complexity as you build confidence in its reliability.</p>
+<strong style="font-size:.88rem">Step 5: Deploy</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Launch the agent, monitor its behavior, and iterate. Start with simple tasks and gradually increase complexity as you build confidence in its reliability.</p>
 </div>
 </div>
 </div>
@@ -234,20 +234,20 @@ result = agent.run(<span style="color:#fbbf24">"Research AI agents in 2026 and s
 
 <div style="display:grid;gap:.75rem;margin-top:.75rem">
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">No max steps guard</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Without a step limit, an agent can loop forever — burning API credits and never completing. Always set <code>max_steps</code> or <code>max_turns</code>. Start with 10-15 and increase if the agent genuinely needs more.</p>
+<strong style="font-size:.88rem">No max steps guard</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">Without a step limit, an agent can loop forever — burning API credits and never completing. Always set <code>max_steps</code> or <code>max_turns</code>. Start with 10-15 and increase if the agent genuinely needs more.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">Too many tools</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">More tools means more confusion. Claude has to choose between all of them, and with 20+ tools it starts making poor choices. Start with 3-5 tools and add more only when the agent clearly needs them.</p>
+<strong style="font-size:.88rem">Too many tools</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">More tools means more confusion. Claude has to choose between all of them, and with 20+ tools it starts making poor choices. Start with 3-5 tools and add more only when the agent clearly needs them.</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">No human approval for destructive actions</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">An agent that can delete files, send emails, or spend money without confirmation is a liability. Gate all destructive actions behind human approval. "Are you sure you want to send this email to 500 people?"</p>
+<strong style="font-size:.88rem">No human approval for destructive actions</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">An agent that can delete files, send emails, or spend money without confirmation is a liability. Gate all destructive actions behind human approval. "Are you sure you want to send this email to 500 people?"</p>
 </div>
 <div style="padding:1rem;border-radius:10px;background:rgba(248,113,113,.04);border:1px solid rgba(248,113,113,.1)">
-<strong style="color:#f87171;font-size:.88rem">Vague goal in the system prompt</strong>
-<p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">"Be helpful" is not a goal. "Research the top 5 competitors, compare them on pricing, features, and market share, and produce a markdown table" is a goal. Specificity prevents drift.</p>
+<strong style="font-size:.88rem">Vague goal in the system prompt</strong>
+<p style="font-size:.82rem;margin:.4rem 0 0">"Be helpful" is not a goal. "Research the top 5 competitors, compare them on pricing, features, and market share, and produce a markdown table" is a goal. Specificity prevents drift.</p>
 </div>
 </div>
 </div>
@@ -255,13 +255,13 @@ result = agent.run(<span style="color:#fbbf24">"Research AI agents in 2026 and s
 <div class="card">
 <div style="text-align:center;padding:2rem 0">
 <h2 style="font-size:1.8rem;margin-bottom:.5rem;background:linear-gradient(135deg,#8b5cf6,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Course Complete!</h2>
-<p style="color:#a1a1aa;font-size:1rem;margin-bottom:2rem">You have mastered Claude — from fundamentals to building production agents.</p>
+<p style="font-size:1rem;margin-bottom:2rem">You have mastered Claude — from fundamentals to building production agents.</p>
 <div style="display:flex;justify-content:center;gap:2rem;margin-bottom:2rem">
-<div><div style="font-size:2rem;font-weight:800;color:#8b5cf6">10</div><div style="font-size:.8rem;color:#71717a">Lessons</div></div>
-<div><div style="font-size:2rem;font-weight:800;color:#fb923c">2,400</div><div style="font-size:.8rem;color:#71717a">XP Earned</div></div>
-<div><div style="font-size:2rem;font-weight:800;color:#34d399">12</div><div style="font-size:.8rem;color:#71717a">Hours</div></div>
+<div><div style="font-size:2rem;font-weight:800">10</div><div style="font-size:.8rem">Lessons</div></div>
+<div><div style="font-size:2rem;font-weight:800">2,400</div><div style="font-size:.8rem">XP Earned</div></div>
+<div><div style="font-size:2rem;font-weight:800">12</div><div style="font-size:.8rem">Hours</div></div>
 </div>
-<p style="font-size:.85rem;color:#71717a">Next steps: Build your own agent, explore MCP servers, or check out the RAG & Vector Search course for retrieval-augmented generation.</p>
+<p style="font-size:.85rem">Next steps: Build your own agent, explore MCP servers, or check out the RAG & Vector Search course for retrieval-augmented generation.</p>
 </div>
 </div>
 

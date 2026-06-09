@@ -45,28 +45,28 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6">Step 1: User Query</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">A natural language question enters the system. "What is the refund policy for international orders?" This is the starting point of every RAG loop. The quality of the query directly affects retrieval quality — vague queries get vague results.</p>
+        <strong>Step 1: User Query</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">A natural language question enters the system. "What is the refund policy for international orders?" This is the starting point of every RAG loop. The quality of the query directly affects retrieval quality — vague queries get vague results.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399">Step 2: Embed Query</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The question is converted to a vector using the <strong>same embedding model</strong> that processed the documents. This is critical — the query vector and document vectors must live in the same semantic space for similarity scores to be meaningful. Different models = different spaces = meaningless comparisons.</p>
+        <strong>Step 2: Embed Query</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The question is converted to a vector using the <strong>same embedding model</strong> that processed the documents. This is critical — the query vector and document vectors must live in the same semantic space for similarity scores to be meaningful. Different models = different spaces = meaningless comparisons.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c">Step 3: Vector Search</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The query vector is compared against all stored document vectors using cosine similarity. The HNSW index makes this fast — milliseconds even across millions of chunks. The database returns candidates ranked by how close they are to the query in semantic space.</p>
+        <strong>Step 3: Vector Search</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The query vector is compared against all stored document vectors using cosine similarity. The HNSW index makes this fast — milliseconds even across millions of chunks. The database returns candidates ranked by how close they are to the query in semantic space.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444">Step 4: Retrieve Chunks</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The top-K most similar chunks are fetched — typically 3 to 5. Each chunk comes with its text content, similarity score, and metadata (source document, section, date). The similarity threshold (usually 0.7-0.85) filters out low-relevance noise.</p>
+        <strong>Step 4: Retrieve Chunks</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The top-K most similar chunks are fetched — typically 3 to 5. Each chunk comes with its text content, similarity score, and metadata (source document, section, date). The similarity threshold (usually 0.7-0.85) filters out low-relevance noise.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-        <strong style="color:#38bdf8">Step 5: Augment Prompt</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The retrieved chunks are inserted into a prompt template alongside the original question. The template tells the LLM: "Here is context from our documentation. Answer based ONLY on this context." This is the "A" in RAG — and it is what prevents hallucination.</p>
+        <strong>Step 5: Augment Prompt</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The retrieved chunks are inserted into a prompt template alongside the original question. The template tells the LLM: "Here is context from our documentation. Answer based ONLY on this context." This is the "A" in RAG — and it is what prevents hallucination.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(250,204,21,.04);border:1px solid rgba(250,204,21,.1)">
-        <strong style="color:#facc15">Step 6: LLM Response</strong>
-        <p style="font-size:.85rem;color:#a1a1aa;margin:.4rem 0 0">The model generates an answer grounded in the retrieved context, not in potentially outdated training data. With temperature set low (0.0-0.2), the model sticks closely to the context, producing reliable, verifiable answers.</p>
+        <strong>Step 6: LLM Response</strong>
+        <p style="font-size:.85rem;margin:.4rem 0 0">The model generates an answer grounded in the retrieved context, not in potentially outdated training data. With temperature set low (0.0-0.2), the model sticks closely to the context, producing reliable, verifiable answers.</p>
       </div>
     </div>
   </div>
@@ -75,7 +75,7 @@
     <h2>The Complete Pipeline in Code</h2>
     <p>Here is a full RAG loop implementation using OpenAI embeddings, Supabase pgvector, and Claude for generation:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">from</span> openai <span style="color:#c084fc">import</span> OpenAI
 <span style="color:#c084fc">from</span> supabase <span style="color:#c084fc">import</span> create_client
 <span style="color:#c084fc">import</span> anthropic
@@ -133,14 +133,14 @@ Question: {question}"""</span>
 answer = rag_query(<span style="color:#fbbf24">"What is the refund policy for international orders?"</span>)
 <span style="color:#34d399">print</span>(answer)</code></pre>
     </div>
-    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">This 40-line function is a complete, production-ready RAG pipeline. Every enterprise RAG system — no matter how complex — is built on this same pattern.</p>
+    <p style="font-size:.82rem;margin-top:.5rem">This 40-line function is a complete, production-ready RAG pipeline. Every enterprise RAG system — no matter how complex — is built on this same pattern.</p>
   </div>
 
   <div class="section">
     <h2>The Supabase Match Function</h2>
     <p>The <code>match_documents</code> function called above is a PostgreSQL function that performs the vector search. Here is how to create it:</p>
 
-    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:#a1a1aa;line-height:1.7;overflow-x:auto">
+    <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.25rem;margin:1rem 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto">
       <pre style="margin:0;color:#e5e5e5"><code><span style="color:#c084fc">CREATE OR REPLACE FUNCTION</span> match_documents(
   query_embedding <span style="color:#38bdf8">VECTOR(1536)</span>,
   match_threshold <span style="color:#38bdf8">FLOAT DEFAULT 0.75</span>,
@@ -166,7 +166,7 @@ answer = rag_query(<span style="color:#fbbf24">"What is the refund policy for in
 <span style="color:#c084fc">END</span>;
 $$;</code></pre>
     </div>
-    <p style="font-size:.82rem;color:#71717a;margin-top:.5rem">This function takes a query vector, finds all document chunks above the similarity threshold, and returns them ranked by relevance. It is the core of every Supabase RAG system.</p>
+    <p style="font-size:.82rem;margin-top:.5rem">This function takes a query vector, finds all document chunks above the similarity threshold, and returns them ranked by relevance. It is the core of every Supabase RAG system.</p>
   </div>
 
   <div class="section">
@@ -175,20 +175,20 @@ $$;</code></pre>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Bad Embeddings</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">If you use different models for documents vs. queries, similarity scores are meaningless. If you use a weak model, subtle meaning differences are lost.</p>
+        <strong style="font-size:.85rem">Bad Embeddings</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">If you use different models for documents vs. queries, similarity scores are meaningless. If you use a weak model, subtle meaning differences are lost.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Bad Chunks</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Chunks too large? Irrelevant content dilutes results. Too small? Missing context makes retrieved chunks useless. Wrong overlap? Boundary information is lost.</p>
+        <strong style="font-size:.85rem">Bad Chunks</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Chunks too large? Irrelevant content dilutes results. Too small? Missing context makes retrieved chunks useless. Wrong overlap? Boundary information is lost.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Wrong Top-K</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Too few chunks? The answer might be in chunk #6 that you did not retrieve. Too many chunks? You fill the LLM's context window with noise, causing confusion.</p>
+        <strong style="font-size:.85rem">Wrong Top-K</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Too few chunks? The answer might be in chunk #6 that you did not retrieve. Too many chunks? You fill the LLM's context window with noise, causing confusion.</p>
       </div>
       <div style="padding:1rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1)">
-        <strong style="color:#ef4444;font-size:.85rem">Weak Prompt</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Without explicit grounding instructions ("Answer based ONLY on the context"), the LLM blends retrieved context with training knowledge — introducing potential hallucinations even with good retrieval.</p>
+        <strong style="font-size:.85rem">Weak Prompt</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Without explicit grounding instructions ("Answer based ONLY on the context"), the LLM blends retrieved context with training knowledge — introducing potential hallucinations even with good retrieval.</p>
       </div>
     </div>
   </div>
@@ -208,20 +208,20 @@ $$;</code></pre>
 
     <div style="display:flex;flex-direction:column;gap:.75rem;margin:1rem 0">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(139,92,246,.04);border:1px solid rgba(139,92,246,.1)">
-        <strong style="color:#8b5cf6;font-size:.85rem">1. Check Embedding Quality</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Embed a known query and its expected answer. Compute cosine similarity — it should be above 0.8. If not, your embedding model may be too weak for your domain, or your chunks are poorly formatted. Try a larger model or clean up chunk preprocessing.</p>
+        <strong style="font-size:.85rem">1. Check Embedding Quality</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Embed a known query and its expected answer. Compute cosine similarity — it should be above 0.8. If not, your embedding model may be too weak for your domain, or your chunks are poorly formatted. Try a larger model or clean up chunk preprocessing.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(52,211,153,.04);border:1px solid rgba(52,211,153,.1)">
-        <strong style="color:#34d399;font-size:.85rem">2. Verify Retrieval Returns Relevant Chunks</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Log the retrieved chunks for failing queries. Read them yourself — are they actually relevant? If the right chunks exist in your database but are not retrieved, adjust your similarity threshold or increase top-K. If the right content was never chunked properly, fix your ingestion pipeline.</p>
+        <strong style="font-size:.85rem">2. Verify Retrieval Returns Relevant Chunks</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Log the retrieved chunks for failing queries. Read them yourself — are they actually relevant? If the right chunks exist in your database but are not retrieved, adjust your similarity threshold or increase top-K. If the right content was never chunked properly, fix your ingestion pipeline.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(251,146,60,.04);border:1px solid rgba(251,146,60,.1)">
-        <strong style="color:#fb923c;font-size:.85rem">3. Test the Augmented Prompt</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Copy the exact prompt your system sends to the LLM (context + question) and paste it into a playground. Does the model answer correctly with this prompt? If yes, your retrieval is the bottleneck. If no, your prompt template needs work — the grounding instructions may be too weak or the context format confusing.</p>
+        <strong style="font-size:.85rem">3. Test the Augmented Prompt</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Copy the exact prompt your system sends to the LLM (context + question) and paste it into a playground. Does the model answer correctly with this prompt? If yes, your retrieval is the bottleneck. If no, your prompt template needs work — the grounding instructions may be too weak or the context format confusing.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.1)">
-        <strong style="color:#38bdf8;font-size:.85rem">4. Validate Generation Output</strong>
-        <p style="font-size:.82rem;color:#a1a1aa;margin:.4rem 0 0">Check if the model is faithfully using the context or hallucinating beyond it. Ask it to cite sources for each claim. If it cites a chunk that does not support the claim, lower the temperature or add stricter grounding instructions like "If the context does not contain the answer, say so."</p>
+        <strong style="font-size:.85rem">4. Validate Generation Output</strong>
+        <p style="font-size:.82rem;margin:.4rem 0 0">Check if the model is faithfully using the context or hallucinating beyond it. Ask it to cite sources for each claim. If it cites a chunk that does not support the claim, lower the temperature or add stricter grounding instructions like "If the context does not contain the answer, say so."</p>
       </div>
     </div>
   </div>

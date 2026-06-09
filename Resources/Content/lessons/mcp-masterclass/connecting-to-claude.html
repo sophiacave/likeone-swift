@@ -199,7 +199,7 @@
 }</div>
     </div>
 
-    <p style="font-size:.85rem;color:#a1a1aa">You can also add MCP servers interactively via <code>/mcp</code> in Claude Code. The format is the same — command, args, and optional env.</p>
+    <p style="font-size:.85rem">You can also add MCP servers interactively via <code>/mcp</code> in Claude Code. The format is the same — command, args, and optional env.</p>
   </div>
 
   <div class="section">
@@ -208,24 +208,24 @@
 
     <div style="display:flex;flex-direction:column;gap:.75rem">
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12)">
-        <strong style="color:#ef4444;font-size:.85rem">Server not appearing in Claude</strong>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0"><strong>Fix:</strong> Restart Claude Desktop after editing config. Check that your JSON is valid (a missing comma or bracket breaks everything). Use <code>npx jsonlint claude_desktop_config.json</code> to validate.</p>
+        <strong style="font-size:.85rem">Server not appearing in Claude</strong>
+        <p style="font-size:.8rem;margin:.4rem 0 0"><strong>Fix:</strong> Restart Claude Desktop after editing config. Check that your JSON is valid (a missing comma or bracket breaks everything). Use <code>npx jsonlint claude_desktop_config.json</code> to validate.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12)">
-        <strong style="color:#ef4444;font-size:.85rem">Tools show but calls fail silently</strong>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0"><strong>Fix:</strong> Your server crashes during handler execution. Run it manually in a terminal to see errors: <code>npx tsx server.ts</code>. Check stderr output. Common cause: missing environment variables (the <code>env</code> field is not set in config).</p>
+        <strong style="font-size:.85rem">Tools show but calls fail silently</strong>
+        <p style="font-size:.8rem;margin:.4rem 0 0"><strong>Fix:</strong> Your server crashes during handler execution. Run it manually in a terminal to see errors: <code>npx tsx server.ts</code>. Check stderr output. Common cause: missing environment variables (the <code>env</code> field is not set in config).</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12)">
-        <strong style="color:#ef4444;font-size:.85rem">"npx: command not found" in Claude</strong>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0"><strong>Fix:</strong> Claude Desktop does not inherit your shell's PATH. Use the full absolute path: <code>/usr/local/bin/npx</code> or <code>/opt/homebrew/bin/npx</code> (find it with <code>which npx</code> in your terminal).</p>
+        <strong style="font-size:.85rem">"npx: command not found" in Claude</strong>
+        <p style="font-size:.8rem;margin:.4rem 0 0"><strong>Fix:</strong> Claude Desktop does not inherit your shell's PATH. Use the full absolute path: <code>/usr/local/bin/npx</code> or <code>/opt/homebrew/bin/npx</code> (find it with <code>which npx</code> in your terminal).</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12)">
-        <strong style="color:#ef4444;font-size:.85rem">Server works locally but not in Claude</strong>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0"><strong>Fix:</strong> Most likely a relative path issue. Claude launches servers from a different working directory. Always use absolute paths for file arguments, e.g. <code>/Users/you/project/server.ts</code> not <code>./server.ts</code>.</p>
+        <strong style="font-size:.85rem">Server works locally but not in Claude</strong>
+        <p style="font-size:.8rem;margin:.4rem 0 0"><strong>Fix:</strong> Most likely a relative path issue. Claude launches servers from a different working directory. Always use absolute paths for file arguments, e.g. <code>/Users/you/project/server.ts</code> not <code>./server.ts</code>.</p>
       </div>
       <div style="padding:1rem 1.25rem;border-radius:10px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12)">
-        <strong style="color:#ef4444;font-size:.85rem">Multiple servers — some work, some do not</strong>
-        <p style="font-size:.8rem;color:#a1a1aa;margin:.4rem 0 0"><strong>Fix:</strong> Each server is independent. If one fails, check its config entry specifically. Look at Claude Desktop's developer tools (View &rarr; Developer &rarr; Developer Tools) for MCP connection errors in the console.</p>
+        <strong style="font-size:.85rem">Multiple servers — some work, some do not</strong>
+        <p style="font-size:.8rem;margin:.4rem 0 0"><strong>Fix:</strong> Each server is independent. If one fails, check its config entry specifically. Look at Claude Desktop's developer tools (View &rarr; Developer &rarr; Developer Tools) for MCP connection errors in the console.</p>
       </div>
     </div>
   </div>

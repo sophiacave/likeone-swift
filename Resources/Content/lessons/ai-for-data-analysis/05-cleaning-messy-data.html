@@ -15,7 +15,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--red);">The Reality</span>
+  <span class="section-label">The Reality</span>
   <h2 class="section-title">All Real Data Is Messy</h2>
 <div class="lo-vis" role="figure" aria-label="Manual data cleaning vs AI data cleaning"><div class="lo-vis__title">Data Cleaning: Manual vs AI</div><div class="lo-versus"><div class="lo-versus__side lo-versus__side--before"><div class="lo-versus__tag">Manual</div><div class="lo-versus__body">Read each row. Spot typos by eye. Fix formats one cell at a time. Miss inconsistencies. Analysts spend 80% of their time here.</div><div class="lo-versus__result" style="color:var(--vis-red)">Hours of tedious work</div></div><div class="lo-versus__side lo-versus__side--after"><div class="lo-versus__tag">With AI</div><div class="lo-versus__body">Paste the data. AI scans for duplicates, inconsistent names, mixed formats, missing values, and outliers in seconds.</div><div class="lo-versus__result" style="color:var(--vis-green)">5-minute quality check</div></div></div><div class="lo-vis__caption">AI turns the <strong>80% time sink</strong> into the fastest step of your analysis.</div></div>
 
@@ -24,7 +24,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">The Usual Suspects</span>
+  <span class="section-label">The Usual Suspects</span>
   <h2 class="section-title">Common Data Problems</h2>
   <p class="section-text"><strong>Duplicates:</strong> The same record entered twice (or three times) with slightly different formatting.</p>
   <p class="section-text"><strong>Inconsistent names:</strong> "United States," "US," "U.S.A.," and "usa" are all the same country but look like four.</p>
@@ -34,7 +34,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--blue);">Framework</span>
+  <span class="section-label">Framework</span>
   <h2 class="section-title">The Data Quality Framework</h2>
   <p class="section-text">Professional data teams use quality frameworks to ensure data is fit for analysis. Here are the six dimensions of data quality — and how to check each one with AI:</p>
   <p class="section-text"><strong>1. Completeness:</strong> Is all required data present? Ask AI: "What percentage of each column has missing values? Are the missing values random or concentrated in specific time periods or categories?"</p>
@@ -47,7 +47,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">Strategies</span>
+  <span class="section-label">Strategies</span>
   <h2 class="section-title">Advanced Cleaning Strategies</h2>
   <p class="section-text">Beyond the basics, here are strategies for the trickiest cleaning challenges:</p>
   <p class="section-text"><strong>Fuzzy matching:</strong> When the same entity appears with different spellings — "McDonald's," "McDonalds," "Mc Donald's" — ask AI to group them. Prompt: "These company names likely contain duplicates with different spellings. Group them and suggest a canonical name for each group."</p>
@@ -57,7 +57,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">AI Cleaning</span>
+  <span class="section-label">AI Cleaning</span>
   <h2 class="section-title">Let AI Do the Scrubbing</h2>
 
   <div class="demo-container" style="border-left: 3px solid var(--green); padding: 1rem; background: var(--bg);">
@@ -68,7 +68,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">Strategy</span>
+  <span class="section-label">Strategy</span>
   <h2 class="section-title">The Cleaning Checklist</h2>
   <p class="section-text">Before any analysis, run your data through this AI-powered checklist:</p>
   <p class="section-text"><strong>1. Scan for structure:</strong> "Describe the shape of this data — how many rows, columns, data types, and what percentage of values are missing per column."</p>
@@ -82,7 +82,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--orange);">Prevention</span>
+  <span class="section-label">Prevention</span>
   <h2 class="section-title">Preventing Messy Data</h2>
   <p class="section-text">The best cleaning strategy is prevention. If you control the data collection process, these practices dramatically reduce future cleaning work:</p>
   <p class="section-text"><strong>Use dropdowns instead of free text:</strong> If there are only 5 valid categories, do not let people type them. Use a dropdown menu. This eliminates typos and inconsistencies at the source.</p>
@@ -92,7 +92,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--green);">Practical</span>
+  <span class="section-label">Practical</span>
   <h2 class="section-title">Cleaning Different Data Types</h2>
   <p class="section-text">Different data types have different cleaning challenges. Here is how to handle each:</p>
   <p class="section-text"><strong>Dates:</strong> The most common source of errors. "01/02/2024" is January 2nd in the US but February 1st in Europe. Always tell AI your locale and expected format. Ask AI to parse all dates and flag any that do not match the expected pattern.</p>
@@ -103,7 +103,7 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--red);">Critical</span>
+  <span class="section-label">Critical</span>
   <h2 class="section-title">When Not to Clean</h2>
   <p class="section-text">Sometimes the "mess" is the signal. Before cleaning everything, consider:</p>
   <p class="section-text"><strong>Outliers that are real:</strong> That $1,000,000 transaction might not be a typo — it might be your most important customer. Ask AI to investigate outliers before removing them. "Is this outlier consistent with any pattern, or does it look like a data entry error?"</p>
@@ -114,15 +114,15 @@
 </div>
 
 <div class="lesson-section">
-  <span class="section-label" style="color: var(--purple);">Documentation</span>
+  <span class="section-label">Documentation</span>
   <h2 class="section-title">Documenting Your Cleaning Process</h2>
   <p class="section-text">Professional data work requires a cleaning log. Ask AI to generate one automatically:</p>
   <p class="section-text"><strong>"After cleaning this data, provide a cleaning report that includes: number of rows before and after, number of duplicates removed, columns with missing values and how they were handled, standardization changes made, and outliers flagged. Format as a numbered list I can save with my analysis."</strong></p>
   <p class="section-text">This log becomes essential when someone questions your findings. You can show exactly what was changed and why, demonstrating rigor and transparency in your analysis process.</p>
 </div>
 
-  <div class="tip-box">
-    <div class="tip-label">Python Data Cleaning</div>
+  <div class="callout">
+    <div class="section-label">Python Data Cleaning</div>
     <p>Ask Claude to generate a cleaning script you can reuse on any dataset:</p>
   </div>
 
@@ -158,10 +158,10 @@ print(f"Outliers flagged: {df['is_outlier'].sum()}")
 df.to_csv("cleaned_data.csv", index=False)
 print("Cleaned data saved.")</code></pre>
 
-<div class="try-it-box">
+<div class="callout">
   <h3>Try It Yourself</h3>
   <p>Find the messiest spreadsheet you have. We all have one. Paste it into Claude with this prompt:</p>
-  <div class="prompt-box"><code>This data is messy and I need it cleaned. Please: 1) Identify all data quality issues, 2) Fix what you can and explain what you changed, 3) Flag anything you need my input on, 4) Return the cleaned data as CSV. Here's the data: [paste data]</code></div>
+  <div class="demo-container"><code>This data is messy and I need it cleaned. Please: 1) Identify all data quality issues, 2) Fix what you can and explain what you changed, 3) Flag anything you need my input on, 4) Return the cleaned data as CSV. Here's the data: [paste data]</code></div>
 </div>
 
 <div class="lesson-section">
