@@ -2,8 +2,21 @@ import Foundation
 import LOCore
 import CSQLite3
 
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
+
 // SQLITE_TRANSIENT tells SQLite to copy the string immediately
 private let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+
+/// Collections safe to expose to public site search.
+/// Anything not in this set is filtered out (brain_entries, sessions, facts, etc.).
+private let PUBLIC_COLLECTIONS: Set<String> = [
+    "blog_posts", "blog_content", "faqs", "lessons", "academy"
+]
+
+/// brain_server.py runs as launchd job com.likeone.brain-api on this host.
+private let BRAIN_API_BASE = URL(string: "http://127.0.0.1:8788")!
 
 public final class LocalBrainClient: BrainClient, @unchecked Sendable {
     public let dbPath: String
@@ -108,6 +121,110 @@ public final class LocalBrainClient: BrainClient, @unchecked Sendable {
             }
             return results
         }
+    }
+
+    /// Count total indexed entries in content_fts (for admin dashboard).
+    public func contentCount() -> Int {
+        guard isAvailable else { return 0 }
+        let sql = "SELECT COUNT(*) FROM content_fts"
+        return (try? withDB { db in
+            var stmt: OpaquePointer?
+            guard sqlite3_prepare_v2(db, sql, -1, &stmt, nil) == SQLITE_OK else { return 0 }
+            defer { sqlite3_finalize(stmt) }
+            return sqlite3_step(stmt) == SQLITE_ROW ? Int(sqlite3_column_int(stmt, 0)) : 0
+        }) ?? 0
+    }
+
+    // MARK: - Hybrid Content Search (FTS5 + sqlite-vec via brain_server.py)
+
+    /// Hybrid search across PUBLIC content collections only.
+    /// Combines FTS5 keyword (instant, local) + semantic vec (HTTP to brain_server.py).
+    /// Falls back to FTS5-only if brain_server is unreachable.
+    ///
+    /// Result ranking: Reciprocal Rank Fusion (RRF, k=60). Each result gets
+    ///   score = sum(1 / (60 + rank_in_list)) across both lists.
+    /// Items appearing in both lists rank above either source alone.
+    public func hybridContentSearch(query: String, limit: Int = 15) async throws -> [ContentSearchResult] {
+        guard isAvailable, !query.isEmpty else { return [] }
+
+        // Run FTS5 + vec in parallel
+        async let ftsTask: [ContentSearchResult] = (try? await self.contentSearch(query: query, limit: limit * 2)) ?? []
+        async let vecTask: [ContentSearchResult] = (try? await self.vecContentSearch(query: query, limit: limit * 2)) ?? []
+        let fts = await ftsTask
+        let vec = await vecTask
+
+        // RRF fusion: docID -> combined score + best-seen result
+        let k: Double = 60.0
+        var scores: [String: Double] = [:]
+        var best: [String: ContentSearchResult] = [:]
+
+        for (rank, r) in fts.enumerated() {
+            let s = 1.0 / (k + Double(rank + 1))
+            scores[r.docID, default: 0] += s
+            best[r.docID] = r
+        }
+        for (rank, r) in vec.enumerated() {
+            let s = 1.0 / (k + Double(rank + 1))
+            scores[r.docID, default: 0] += s
+            // Prefer vec result if it has a richer snippet
+            if let prev = best[r.docID], prev.snippet.count >= r.snippet.count {
+                continue
+            }
+            best[r.docID] = r
+        }
+
+        // Sort by fused score (descending) and stamp the fused score into result
+        let ranked = scores.sorted { $0.value > $1.value }.prefix(limit)
+        return ranked.compactMap { docID, score in
+            guard let r = best[docID] else { return nil }
+            return ContentSearchResult(docID: r.docID, collection: r.collection,
+                                       snippet: r.snippet, score: score)
+        }
+    }
+
+    /// Semantic vector search via brain_server.py /vec_search. Filters to public collections.
+    /// Returns [] if brain_server is unreachable (graceful degradation).
+    public func vecContentSearch(query: String, limit: Int = 15) async throws -> [ContentSearchResult] {
+        guard !query.isEmpty else { return [] }
+
+        // Fetch 3x to allow post-filter to public collections
+        let body: [String: Any] = ["query": query, "k": limit * 3]
+        guard let data = try? JSONSerialization.data(withJSONObject: body) else { return [] }
+
+        var req = URLRequest(url: BRAIN_API_BASE.appendingPathComponent("vec_search"))
+        req.httpMethod = "POST"
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.httpBody = data
+        req.timeoutInterval = 3.0 // fail fast — FTS5 fallback handles it
+
+        let (respData, resp) = try await URLSession.shared.data(for: req)
+        guard let http = resp as? HTTPURLResponse, http.statusCode == 200 else { return [] }
+
+        struct VecResponse: Decodable {
+            struct Item: Decodable {
+                let key: String?
+                let collection: String?
+                let description: String?
+                let similarity: Double?
+            }
+            let results: [Item]
+        }
+        guard let parsed = try? JSONDecoder().decode(VecResponse.self, from: respData) else { return [] }
+
+        var results: [ContentSearchResult] = []
+        for item in parsed.results {
+            guard let coll = item.collection, PUBLIC_COLLECTIONS.contains(coll) else { continue }
+            let docID = item.key ?? ""
+            guard !docID.isEmpty else { continue }
+            results.append(ContentSearchResult(
+                docID: docID,
+                collection: coll,
+                snippet: item.description ?? "",
+                score: item.similarity ?? 0
+            ))
+            if results.count >= limit { break }
+        }
+        return results
     }
 
     // MARK: - SQLite Operations

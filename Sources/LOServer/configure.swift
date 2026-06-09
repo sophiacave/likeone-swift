@@ -22,6 +22,7 @@ func configure(_ app: Application) async throws {
     app.migrations.add(AddUserMemoryFields())
     app.migrations.add(AddSubscriberPreferences())
     app.migrations.add(CreatePageViews())
+    app.migrations.add(AddUserRole())
     try await app.autoMigrate()
 
     // Leaf templates

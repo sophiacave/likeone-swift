@@ -14,9 +14,15 @@ final class UserModel: Model, Content, @unchecked Sendable {
     @Field(key: "subscription") var subscription: String
     @OptionalField(key: "last_active_at") var lastActiveAt: Date?
     @OptionalField(key: "interests") var interests: String?
+    @Field(key: "role") var role: String
     @Timestamp(key: "created_at", on: .create) var createdAt: Date?
 
-    init() {}
+    /// True when this user has admin privileges (dashboard, metrics).
+    var isAdmin: Bool { role == "admin" }
+
+    init() {
+        self.role = "user"
+    }
 
     init(from user: User) {
         self.id = user.id
@@ -26,6 +32,7 @@ final class UserModel: Model, Content, @unchecked Sendable {
         self.provider = user.provider.rawValue
         self.stripeCustomerID = user.stripeCustomerID
         self.subscription = user.subscription.rawValue
+        self.role = "user"
     }
 
     func toUser() -> User {

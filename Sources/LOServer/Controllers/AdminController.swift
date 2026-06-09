@@ -1,15 +1,23 @@
 import Vapor
 import Fluent
 import LOBrain
+import LOContent
 
 /// Admin dashboard (Phase 6 — Living AI App)
 /// Privacy-first analytics. All data local. No third-party.
 struct AdminController: RouteCollection {
     let brain: LocalBrainClient
+    let blog: BlogProvider
+    let courses: CourseProvider
 
     func boot(routes: RoutesBuilder) throws {
-        // Admin routes require auth (TODO: add role check for admin-only)
-        let admin = routes.grouped("admin").grouped(AuthMiddleware())
+        // Admin routes require auth AND admin role (S265).
+        // AuthMiddleware sets request.authenticatedUser or redirects to /signin.
+        // AdminOnlyMiddleware enforces role == "admin" (404 for non-admins).
+        let admin = routes
+            .grouped("admin")
+            .grouped(AuthMiddleware())
+            .grouped(AdminOnlyMiddleware())
         admin.get(use: dashboard)
         admin.get("api", "stats", use: apiStats)
     }
@@ -66,12 +74,12 @@ struct AdminController: RouteCollection {
         let totalLessonsCompleted = try await ProgressModel.query(on: db).count()
         let certs = try await CertificateModel.query(on: db).count()
 
-        // Brain stats
-        var brainVectors = 0
-        if brain.isAvailable {
-            // Quick count from content_fts
-            brainVectors = (try? await brain.contentSearch(query: "a", limit: 1).isEmpty) != nil ? 4061 : 0
-        }
+        // Brain stats (real count, not hardcoded)
+        let brainVectors = brain.contentCount()
+
+        // Content stats
+        let blogCount = blog.allPosts().count
+        let courseCount = courses.allCourses().count
 
         return AdminStats(
             title: "Admin | Like One",
@@ -85,7 +93,9 @@ struct AdminController: RouteCollection {
             totalSubscribers: totalSubs,
             lessonsCompleted: totalLessonsCompleted,
             certificates: certs,
-            brainVectors: brainVectors
+            brainVectors: brainVectors,
+            blogPosts: blogCount,
+            courses: courseCount
         )
     }
 }
@@ -103,6 +113,8 @@ struct AdminStats: Content {
     let lessonsCompleted: Int
     let certificates: Int
     let brainVectors: Int
+    let blogPosts: Int
+    let courses: Int
 }
 
 struct TopPage: Content {

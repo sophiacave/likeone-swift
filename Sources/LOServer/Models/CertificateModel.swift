@@ -7,8 +7,8 @@ final class CertificateModel: Model, Content, @unchecked Sendable {
     @ID(key: .id) var id: UUID?
     @Field(key: "user_id") var userID: UUID
     @Field(key: "type") var type: String
-    @Field(key: "course_slug") var courseSlug: String?
-    @Field(key: "track_slug") var trackSlug: String?
+    @OptionalField(key: "course_slug") var courseSlug: String?
+    @OptionalField(key: "track_slug") var trackSlug: String?
     @Field(key: "title") var title: String
     @Field(key: "recipient_name") var recipientName: String
     @Timestamp(key: "earned_at", on: .create) var earnedAt: Date?
