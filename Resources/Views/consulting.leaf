@@ -144,5 +144,34 @@
                 </div>
             </div>
         </section>
+
+        <section class="site-section">
+            <div class="site-container" style="max-width:700px;">
+                <h2 class="site-section-title text-center">Open source. Production-proven.</h2>
+                <p class="text-center" style="color:var(--muted);margin-bottom:2rem;">3 MCP servers on the official registry. 4 packages published. All running in production.</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                    <div class="pricing-card" style="padding:1.25rem;">
+                        <h3 style="font-size:1rem;margin:0 0 0.5rem;">lo-eyes</h3>
+                        <p style="font-size:0.85rem;color:var(--muted);margin:0;">Visual accessibility inspector. WCAG contrast, touch targets, heading audits.</p>
+                        <code style="font-size:0.75rem;margin-top:0.5rem;display:block;">pip install lo-eyes</code>
+                    </div>
+                    <div class="pricing-card" style="padding:1.25rem;">
+                        <h3 style="font-size:1rem;margin:0 0 0.5rem;">apple-fm-mcp</h3>
+                        <p style="font-size:0.85rem;color:var(--muted);margin:0;">Apple Foundation Models on-device. Generate, summarize, classify.</p>
+                        <code style="font-size:0.75rem;margin-top:0.5rem;display:block;">pip install apple-fm-mcp</code>
+                    </div>
+                    <div class="pricing-card" style="padding:1.25rem;">
+                        <h3 style="font-size:1rem;margin:0 0 0.5rem;">mcp-shield</h3>
+                        <p style="font-size:0.85rem;color:var(--muted);margin:0;">Security scanner for MCP servers. SSRF, injection, auth. Grade A-F.</p>
+                        <code style="font-size:0.75rem;margin-top:0.5rem;display:block;">npm i @sophiacave/mcp-shield</code>
+                    </div>
+                    <div class="pricing-card" style="padding:1.25rem;">
+                        <h3 style="font-size:1rem;margin:0 0 0.5rem;">sovereign-brain</h3>
+                        <p style="font-size:0.85rem;color:var(--muted);margin:0;">Persistent AI memory. sqlite-vec, FTS5, graph search. No cloud.</p>
+                        <code style="font-size:0.75rem;margin-top:0.5rem;display:block;">pip install sovereign-brain</code>
+                    </div>
+                </div>
+            </div>
+        </section>
     #endexport
 #endextend
