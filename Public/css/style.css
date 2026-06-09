@@ -1,19 +1,49 @@
 :root {
+    /* Brand */
     --purple-400: #c084fc;
     --purple-500: #a855f7;
     --purple-600: #9333ea;
     --purple-900: #581c87;
+
+    /* Apple-aligned dark mode palette */
     --bg-dark: #0a0a0f;
     --bg-section: #111118;
     --bg-card: #1a1a24;
-    --text-primary: #f5f5f7;
+    --bg-elevated: #2c2c2e;
+    --text-primary: #f5f5f7;           /* Apple: rgb(245,245,247) — NOT pure white */
     --text-secondary: #a1a1aa;
     --text-muted: #828288;
+    --text-tertiary: rgba(235, 235, 245, 0.3);
     --border: #27272a;
+    --separator: rgba(84, 84, 88, 0.6); /* Apple 0.5px separator */
+    --accent: var(--purple-400);         /* ONE accent color */
+
+    /* Semantic (quiz/interactive only) */
+    --color-success: #34d399;
+    --color-error: #f87171;
+
+    /* Apple spacing grid (8pt) */
+    --space-4: 4px;
+    --space-8: 8px;
+    --space-12: 12px;
+    --space-16: 16px;
+    --space-20: 20px;
+    --space-24: 24px;
+    --space-32: 32px;
+    --space-48: 48px;
+
+    /* Radii — Apple-aligned */
     --radius: 12px;
+    --radius-sm: 8px;
     --radius-lg: 16px;
+    --radius-card: 14px;
+
+    /* Layout */
     --max-width: 1120px;
+    --reading-width: 680px;
     --surface-secondary: #1a1a24;
+
+    /* Motion */
     --ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);
     --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -1461,6 +1491,192 @@ a:focus-visible, button:focus-visible {
     width: 100%;
     height: auto;
     display: block;
+}
+
+/* ═══════════════════════════════════════════════
+   P1: GHOST CLASS DEFINITIONS
+   These classes are used in 2,387 lesson elements
+   but had ZERO CSS — broken on iOS, inconsistent on web.
+   Apple-native: bg elevation, no colored borders.
+   ═══════════════════════════════════════════════ */
+
+.lesson-content .demo-container,
+.lesson-content .demo-block,
+.lesson-content .try-it-box,
+.lesson-content .prompt-box,
+.lesson-content .prompt-card,
+.lesson-content .callout,
+.lesson-content .tip-box,
+.lesson-content .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: var(--space-20);
+    margin: var(--space-24) 0;
+}
+
+.lesson-content .tip-box h3,
+.lesson-content .callout h3,
+.lesson-content .demo-container h3,
+.lesson-content .demo-block h3,
+.lesson-content .try-it-box h3,
+.lesson-content .prompt-box h3,
+.lesson-content .prompt-card h3,
+.lesson-content .card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 var(--space-12);
+}
+
+/* ═══════════════════════════════════════════════
+   P2: APPLE-NATIVE LESSON OVERRIDE LAYER
+   Typography-driven hierarchy. No color for emphasis.
+   One accent (purple) for interactive only.
+   Neutralizes inline chaos without touching content files.
+   ═══════════════════════════════════════════════ */
+
+/* Force ALL strong/bold in lessons to white — not colored */
+.lesson-content strong {
+    color: var(--text-primary) !important;
+    font-weight: 600;
+}
+
+/* Force section labels to muted gray — not purple/orange */
+.lesson-content .section-label {
+    color: var(--text-muted) !important;
+}
+
+/* Neutralize colored border-left → subtle neutral */
+.lesson-content [style*="border-left"] {
+    border-left-color: var(--border) !important;
+}
+
+/* Neutralize inline colored text on paragraphs */
+.lesson-content .section-text {
+    color: var(--text-secondary) !important;
+}
+
+/* Neutralize inline background colors on divs — use card bg */
+.lesson-content div[style*="background:#"],
+.lesson-content div[style*="background: #"],
+.lesson-content div[style*="background:rgba"],
+.lesson-content div[style*="background: rgba"] {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-card) !important;
+}
+
+/* Preserve code block styling — don't override pre/code */
+.lesson-content pre {
+    background: #161622 !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important;
+    padding: var(--space-16);
+    margin: var(--space-24) 0;
+    overflow-x: auto;
+}
+
+.lesson-content pre code {
+    color: var(--text-secondary) !important;
+    background: none !important;
+    padding: 0;
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+/* Inline code — accent purple only */
+.lesson-content code {
+    color: var(--accent);
+    background: rgba(192, 132, 252, 0.08);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.88em;
+}
+
+/* Links — accent only */
+.lesson-content a {
+    color: var(--accent);
+}
+
+/* Lists — clean, no color overrides */
+.lesson-content ul, .lesson-content ol {
+    color: var(--text-secondary);
+    padding-left: 1.25rem;
+    margin-bottom: 1rem;
+}
+.lesson-content li {
+    margin-bottom: 0.4rem;
+    line-height: 1.7;
+}
+
+/* Tables — clean Apple style */
+.lesson-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-24) 0;
+    font-size: 0.9rem;
+}
+.lesson-content th {
+    text-align: left;
+    padding: var(--space-8) var(--space-12);
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid var(--border);
+}
+.lesson-content td {
+    padding: var(--space-8) var(--space-12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    color: var(--text-secondary);
+}
+
+/* Blockquotes — subtle, not colored */
+.lesson-content blockquote {
+    border-left: 2px solid var(--border);
+    padding-left: var(--space-16);
+    margin: var(--space-24) 0;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* Images */
+.lesson-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+}
+
+/* Headings — weight + size only, no color decoration */
+.lesson-content h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: var(--space-48) 0 var(--space-16);
+    color: var(--text-primary);
+}
+
+.lesson-content h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: var(--space-32) 0 var(--space-12);
+    color: var(--text-primary);
+}
+
+.lesson-content h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: var(--space-24) 0 var(--space-8);
+    color: var(--text-primary);
+}
+
+/* Body text — Apple reading optimized */
+.lesson-content p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
 }
 
 /* Lesson Progress */

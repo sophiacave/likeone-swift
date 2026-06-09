@@ -82,8 +82,12 @@ struct LessonWebView: UIViewRepresentable {
         .lo-step--green { background: rgba(52,211,153,0.08); border-left: 3px solid #34d399; }
         .lo-step--purple { background: rgba(168,85,247,0.08); border-left: 3px solid #a855f7; }
         .lo-step--orange { background: rgba(251,146,60,0.08); border-left: 3px solid #fb923c; }
-        .learn-card { background: #1a1a24; border: 1px solid #27272a; border-radius: 12px; padding: 16px; margin: 1rem 0; }
-        .learn-card h3 { font-size: 1rem; margin: 0 0 8px; }
+        .learn-card, .demo-container, .demo-block, .try-it-box, .prompt-box, .prompt-card, .callout, .tip-box, .card { background: #1a1a24; border: 1px solid #27272a; border-radius: 14px; padding: 20px; margin: 1.25rem 0; }
+        .learn-card h3, .demo-container h3, .demo-block h3, .try-it-box h3, .prompt-box h3, .prompt-card h3, .callout h3, .tip-box h3, .card h3 { font-size: 1rem; font-weight: 600; color: #f5f5f7; margin: 0 0 12px; }
+        /* Apple-native overrides — typography-driven, no inline color */
+        strong { color: #f5f5f7 !important; font-weight: 600; }
+        [style*="border-left"] { border-left-color: #27272a !important; }
+        div[style*="background:#"], div[style*="background: #"], div[style*="background:rgba"], div[style*="background: rgba"] { background: #1a1a24 !important; border: 1px solid #27272a !important; border-radius: 14px !important; }
 
         /* Quiz styles */
         .quiz-block { background: #1a1a24; border: 1px solid #27272a; border-radius: 16px; padding: 20px; margin: 1.25rem 0; }
