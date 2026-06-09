@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary purpose of content pillars in a content strategy?",
+    "options": [
+      "To increase the number of posts created daily",
+      "To provide structure and focus for all content",
+      "To replace the need for audience research",
+      "To ensure all content is promotional in nature"
+    ],
+    "correctIndex": 1,
+    "explanation": "Content pillars provide structure and focus by defining 3-5 core themes that all content aligns with, ensuring consistency and brand recognition."
+  },
+  {
+    "question": "Which of the following best describes the 40/30/20/10 ratio in content strategy?",
+    "options": [
+      "40% promotional, 30% educational, 20% engaging, 10% personal",
+      "40% educational, 30% engaging, 20% personal/story, 10% promotional",
+      "40% personal, 30% educational, 20% promotional, 10% engaging",
+      "40% engaging, 30% educational, 20% promotional, 10% personal"
+    ],
+    "correctIndex": 1,
+    "explanation": "The 40/30/20/10 ratio ensures a balanced mix of content: 40% educational, 30% engaging, 20% personal/story, and 10% promotional."
+  },
+  {
+    "question": "What is the role of an emotional hook in content creation?",
+    "options": [
+      "To increase the length of the content",
+      "To make the content more visually appealing",
+      "To connect the content to a feeling that drives engagement",
+      "To ensure the content is always promotional"
+    ],
+    "correctIndex": 2,
+    "explanation": "An emotional hook connects the content to a feeling that drives engagement, making it more likely for the audience to click and interact."
+  },
+  {
+    "question": "What is the main benefit of using AI to build a 30-day editorial calendar?",
+    "options": [
+      "It reduces the need for content pillars",
+      "It allows for quick, strategic planning in one session",
+      "It eliminates the need for audience research",
+      "It ensures all content is random and unpredictable"
+    ],
+    "correctIndex": 1,
+    "explanation": "AI enables quick, strategic planning by generating a full month of content in one session, ensuring alignment with pillars and audience needs."
+  },
+  {
+    "question": "What is the first step in building a 30-day editorial calendar using AI?",
+    "options": [
+      "Assign each week a primary pillar",
+      "Create a list of random topics",
+      "Post content immediately without planning",
+      "Ignore the 40/30/20/10 ratio"
+    ],
+    "correctIndex": 0,
+    "explanation": "Assigning each week a primary pillar is the first step, as it ensures variety and alignment with content pillars throughout the month."
+  }
+]

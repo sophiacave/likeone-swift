@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary benefit of using a multimedia pipeline in content creation?",
+    "options": [
+      "It reduces the time needed to create content",
+      "It allows content to be produced in multiple formats from a single source",
+      "It eliminates the need for image generation",
+      "It ensures all content is text-only"
+    ],
+    "correctIndex": 1,
+    "explanation": "A multimedia pipeline produces coordinated multi-modal outputs from a single source of truth, maximizing reach and impact across different channels."
+  },
+  {
+    "question": "Which step in the multimedia pipeline generates image prompts based on written content?",
+    "options": [
+      "Video script creation",
+      "Image brief generation",
+      "Podcast outline development",
+      "Carousel design"
+    ],
+    "correctIndex": 1,
+    "explanation": "The image brief step generates prompts for visuals that complement the text, specifying style, composition, and mood for image AI tools."
+  },
+  {
+    "question": "What is the purpose of a two-column video script format?",
+    "options": [
+      "To make the script easier to read",
+      "To separate audio narration from visual directions",
+      "To reduce the length of the video",
+      "To eliminate the need for editing"
+    ],
+    "correctIndex": 1,
+    "explanation": "The two-column format separates what the viewer hears (audio) from what they see (visual), making it easier to plan and execute the video."
+  },
+  {
+    "question": "Which of the following is NOT a component of a multimedia pipeline's output?",
+    "options": [
+      "Blog post",
+      "Video script",
+      "Audio outline",
+      "Text-only content"
+    ],
+    "correctIndex": 3,
+    "explanation": "A multimedia pipeline produces coordinated outputs across multiple modalities, not just text-only content."
+  },
+  {
+    "question": "What is the role of retention hooks in a video script?",
+    "options": [
+      "To increase the length of the video",
+      "To keep viewers engaged at key moments",
+      "To reduce the cost of production",
+      "To replace the need for a narrator"
+    ],
+    "correctIndex": 1,
+    "explanation": "Retention hooks are placed at key moments (e.g., 30 seconds, 2 minutes) to keep viewers engaged and reduce drop-off."
+  }
+]

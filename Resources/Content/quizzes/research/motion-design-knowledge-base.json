@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which animation principle is demonstrated when a text block slides into position with the last word arriving 50-80ms after the first word?",
+    "options": [
+      "Squash and Stretch",
+      "Follow-Through and Overlapping Action",
+      "Ease In / Ease Out",
+      "Arcs"
+    ],
+    "correctIndex": 1,
+    "explanation": "Follow-Through and Overlapping Action refers to elements not moving uniformly, such as staggered entry of text elements."
+  },
+  {
+    "question": "Which principle involves using a subtle arc for motion instead of straight-line movement?",
+    "options": [
+      "Anticipation",
+      "Arcs",
+      "Staging",
+      "Timing"
+    ],
+    "correctIndex": 1,
+    "explanation": "Arcs is the principle that emphasizes natural, curved motion paths over rigid straight lines."
+  },
+  {
+    "question": "Which principle is applied when a key concept 'lands' on screen with a subtle Y-scale compression followed by a spring back to normal?",
+    "options": [
+      "Squash and Stretch",
+      "Staging",
+      "Ease In / Ease Out",
+      "Secondary Action"
+    ],
+    "correctIndex": 0,
+    "explanation": "Squash and Stretch gives abstract information physical weight by applying deformation and recovery."
+  },
+  {
+    "question": "Which principle is demonstrated when a background subtly shifts or a placeholder scales down before a title flies in?",
+    "options": [
+      "Anticipation",
+      "Staging",
+      "Pose-to-Pose",
+      "Exaggeration"
+    ],
+    "correctIndex": 0,
+    "explanation": "Anticipation prepares the viewer by showing a subtle change before the main action occurs."
+  },
+  {
+    "question": "Which principle is used when a chart label 'overshoots' past its target position by a few pixels before easing back?",
+    "options": [
+      "Follow-Through and Overlapping Action",
+      "Ease In / Ease Out",
+      "Arcs",
+      "Timing"
+    ],
+    "correctIndex": 0,
+    "explanation": "Follow-Through and Overlapping Action is demonstrated by overshooting and then settling, mimicking natural motion."
+  }
+]

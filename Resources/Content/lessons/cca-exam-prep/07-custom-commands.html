@@ -340,3 +340,57 @@ STRONG ANSWER:
 </div>
 
 </div>
+
+<div class="quiz-block">
+<h3 class="quiz-title">Quick Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Where should a project-level custom slash command be stored in a Claude Code project?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>.claude/commands/</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>~/.claude/commands/</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>src/commands/</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>node_modules/commands/</button>
+</div>
+<div class="quiz-explanation" style="display:none">Project-level commands are stored in the .claude/commands/ directory and are shared via git.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>What is the correct syntax for using a parameter in a custom slash command?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>$ARGUMENTS</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>$arguments</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>@ARGUMENTS</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>arguments</button>
+</div>
+<div class="quiz-explanation" style="display:none">The $ARGUMENTS pattern is used to denote dynamic input in custom slash commands.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>Which automation mechanism is best suited for tasks that require Claude to interact with external systems like GitHub or a database?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Slash Commands</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>MCP Tools</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Agents</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>None of the above</button>
+</div>
+<div class="quiz-explanation" style="display:none">MCP Tools are used when Claude needs to call external systems, as they expose functions via JSON-RPC.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Which command design pattern is best suited for creating a new API endpoint with predefined structure?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Workflow Automation</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Analysis & Reporting</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Code Generation</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Guardrails</button>
+</div>
+<div class="quiz-explanation" style="display:none">The Code Generation pattern is used for scaffolding new code from templates, such as creating a new API endpoint.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What is the primary difference between a slash command and an agent?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Slash commands are used for complex tasks, agents are for simple shortcuts</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Slash commands are human-initiated, agents are autonomous</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Slash commands are stored in JSON, agents are stored in markdown</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Slash commands require an MCP server, agents do not</button>
+</div>
+<div class="quiz-explanation" style="display:none">Slash commands are initiated by humans and are defined in markdown, while agents are autonomous instances that can be spawned on demand.</div>
+</div>
+</div>

@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which of the following is a key advantage of structured output over free-form output when feeding into downstream systems?",
+    "options": [
+      "It allows for more creative and flexible responses",
+      "It is easier to parse and process by machines",
+      "It reduces the need for validation",
+      "It is more suitable for human-readable explanations"
+    ],
+    "correctIndex": 1,
+    "explanation": "Structured output is machine-parseable and consistent, making it ideal for downstream systems like APIs, databases, and UIs."
+  },
+  {
+    "question": "Which method of enforcing structured output from Claude has the highest reliability (~99.5%)?",
+    "options": [
+      "Prompt-Based Method",
+      "Output Format Flag (Claude Code)",
+      "Schema + Validation Method",
+      "Free-form text with manual parsing"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Schema + Validation Method, which includes a schema in the system prompt and validates the response, has the highest reliability when combined with retry logic."
+  },
+  {
+    "question": "Which of the following is a best practice for designing a JSON schema?",
+    "options": [
+      "Use strings for all numeric fields",
+      "Use enums for categorical data",
+      "Allow all fields to be optional",
+      "Avoid setting minimum or maximum values for numeric fields"
+    ],
+    "correctIndex": 1,
+    "explanation": "Enums ensure that categorical data is limited to a predefined set of valid values, reducing ambiguity and improving reliability."
+  },
+  {
+    "question": "In which scenario is free-form output most appropriate?",
+    "options": [
+      "When the output is intended for automated processing",
+      "When the output is for human consumption and requires flexibility",
+      "When the output needs to be validated against a strict schema",
+      "When the output is part of a multi-step pipeline"
+    ],
+    "correctIndex": 1,
+    "explanation": "Free-form output is best suited for human consumption and scenarios where flexibility is more important than machine-parseability."
+  },
+  {
+    "question": "What is the primary purpose of the 'PARSE-RETRY' error recovery pattern?",
+    "options": [
+      "To extract JSON from markdown-formatted text",
+      "To retry generating structured output if parsing fails",
+      "To fall back to a simpler schema when the complex one fails",
+      "To validate the schema incrementally during streaming"
+    ],
+    "correctIndex": 1,
+    "explanation": "The 'PARSE-RETRY' pattern attempts to parse the response and retries with a corrected prompt if parsing fails, ensuring structured output reliability."
+  }
+]

@@ -61,7 +61,7 @@
                                     <div style="height:100%;width:#(course.percent)%;background:#if(course.isComplete):var(--green,#34d399)#else:var(--purple-400)#endif;border-radius:2px;transition:width .5s;"></div>
                                 </div>
                                 #if(course.nextLessonSlug):
-                                    <a href="/academy/#(course.slug)/#(course.nextLessonSlug)/" class="site-btn-primary" style="display:inline-block;font-size:.8rem;padding:6px 16px;text-decoration:none;">Continue &rarr;</a>
+                                    <a href="/academy/#(course.slug)/#(course.nextLessonSlug)/" class="site-btn-primary" style="font-size:.8rem;padding:6px 16px;min-height:auto;text-decoration:none;">Continue &rarr;</a>
                                 #elseif(course.isComplete):
                                     <span style="font-size:.8rem;color:var(--green,#34d399);">Complete</span>
                                 #endif

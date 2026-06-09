@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which MCP primitive should be used to expose a database schema for Claude to browse on demand?",
+    "options": [
+      "Tool",
+      "Resource",
+      "Prompt",
+      "System instruction"
+    ],
+    "correctIndex": 1,
+    "explanation": "Resources are used for data that the application or user loads, such as a database schema. Tools are for executing actions, prompts for workflows, and system instructions for general guidance."
+  },
+  {
+    "question": "A tool description says: 'Process data.' What is the primary problem with this description?",
+    "options": [
+      "It's too short",
+      "It doesn't specify the return value",
+      "Claude cannot determine WHEN to use this tool",
+      "It should include implementation details"
+    ],
+    "correctIndex": 2,
+    "explanation": "Claude uses tool descriptions to decide when to call them. 'Process data' is too vague for Claude to match against specific user requests, making it unlikely to be used appropriately."
+  },
+  {
+    "question": "You have a tool that deletes database records. What is the MOST important schema design decision?",
+    "options": [
+      "Add a description explaining what it deletes",
+      "Require a confirmation parameter",
+      "Return the deleted record count",
+      "Use an enum for table names"
+    ],
+    "correctIndex": 1,
+    "explanation": "For destructive operations, requiring a confirmation parameter is the most important design decision, as it prevents accidental deletions and ensures intentional use of the tool."
+  },
+  {
+    "question": "What transport should a shared team MCP server use?",
+    "options": [
+      "stdio",
+      "HTTP/SSE",
+      "WebSocket",
+      "gRPC"
+    ],
+    "correctIndex": 1,
+    "explanation": "HTTP/SSE is the correct transport for a shared team MCP server, as it supports remote access and multiple clients. stdio is for local tools, and WebSocket and gRPC are not standard MCP transports."
+  },
+  {
+    "question": "An MCP server has tools for both reading and writing customer data. What's the best security improvement?",
+    "options": [
+      "Add rate limiting",
+      "Split into two servers (read-only and read-write)",
+      "Require authentication for all tools",
+      "Log all tool calls"
+    ],
+    "correctIndex": 1,
+    "explanation": "Splitting into two servers allows for different permission profiles, improving security by isolating read-only and read-write operations. This is a structural fix that enhances overall security."
+  }
+]

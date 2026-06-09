@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which of the following is a key metric for measuring engagement depth in content performance?",
+    "options": [
+      "Number of followers",
+      "Time on page",
+      "Number of shares",
+      "Impressions"
+    ],
+    "correctIndex": 1,
+    "explanation": "Time on page is a key metric for measuring engagement depth as it indicates how long the audience interacts with the content."
+  },
+  {
+    "question": "What is the primary purpose of template-level tracking in content analytics?",
+    "options": [
+      "To measure individual post performance",
+      "To identify which templates produce the most effective content",
+      "To count total content pieces published",
+      "To track audience demographics"
+    ],
+    "correctIndex": 1,
+    "explanation": "Template-level tracking helps identify which templates consistently produce top-performing content, making it easier to refine and improve them."
+  },
+  {
+    "question": "Which of the following is an example of a vanity metric that does not drive decision-making?",
+    "options": [
+      "Conversion rate",
+      "Follower count",
+      "Engagement rate",
+      "Cost per piece"
+    ],
+    "correctIndex": 1,
+    "explanation": "Follower count is a vanity metric that feels good but does not directly drive decisions about content performance or strategy."
+  },
+  {
+    "question": "What is the main benefit of running a monthly content performance analysis?",
+    "options": [
+      "To increase the number of posts published",
+      "To refine templates and improve topic selection",
+      "To reduce production time",
+      "To increase follower count"
+    ],
+    "correctIndex": 1,
+    "explanation": "Monthly analysis refines templates, improves topic selection, and sharpens audience targeting, leading to more effective content over time."
+  },
+  {
+    "question": "Which of the following is a key component of the feedback loop in content pipelines?",
+    "options": [
+      "Ignoring performance data",
+      "Publishing content without measuring results",
+      "Feeding performance data back into the pipeline",
+      "Only tracking vanity metrics"
+    ],
+    "correctIndex": 2,
+    "explanation": "Feeding performance data back into the pipeline is a key component of the feedback loop, enabling continuous improvement of content and templates."
+  }
+]

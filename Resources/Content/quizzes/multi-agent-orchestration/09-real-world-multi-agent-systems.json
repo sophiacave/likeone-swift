@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which agent is responsible for ensuring that the code written by the coder agent is free of bugs and adheres to style guidelines in autonomous coding assistants?",
+    "options": [
+      "Planner agent",
+      "Coder agent",
+      "Reviewer agent",
+      "Test agent"
+    ],
+    "correctIndex": 2,
+    "explanation": "The reviewer agent's role is specifically to check the work of the coder agent for bugs and style issues."
+  },
+  {
+    "question": "What is a common failure mode in customer support orchestration systems involving the triage agent?",
+    "options": [
+      "Overlooking customer satisfaction",
+      "Misrouting edge cases",
+      "Failing to escalate issues",
+      "Ignoring documentation"
+    ],
+    "correctIndex": 1,
+    "explanation": "Edge cases that don't fit any known category are a known failure mode where the triage agent may misroute the issue."
+  },
+  {
+    "question": "What is the primary function of the synthesis agent in research and analysis swarms?",
+    "options": [
+      "Generating new research topics",
+      "Validating claims against primary sources",
+      "Aggregating findings from multiple research agents",
+      "Writing the final report"
+    ],
+    "correctIndex": 2,
+    "explanation": "The synthesis agent's role is to aggregate findings from multiple research agents into a cohesive analysis."
+  },
+  {
+    "question": "In the content pipeline case study, which stage significantly reduces processing time by allowing parallel processing of outputs?",
+    "options": [
+      "Content analysis stage",
+      "Quality gate stage",
+      "Fan-out stage",
+      "SEO optimization stage"
+    ],
+    "correctIndex": 2,
+    "explanation": "The fan-out stage allows multiple agents to process different output formats in parallel, drastically reducing processing time."
+  },
+  {
+    "question": "Which agent in the DevOps incident response system is responsible for executing automated fixes based on diagnosed problems?",
+    "options": [
+      "Monitor agent",
+      "Diagnostician agent",
+      "Runbook agent",
+      "Escalation agent"
+    ],
+    "correctIndex": 2,
+    "explanation": "The runbook agent is responsible for executing automated fixes by matching diagnosed problems with known runbooks."
+  }
+]

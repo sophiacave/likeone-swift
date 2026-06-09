@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary limitation of a single-agent system when handling complex, multi-step workflows?",
+    "options": [
+      "It cannot process data quickly enough",
+      "It lacks the ability to learn from mistakes",
+      "It struggles with maintaining deep context across different roles",
+      "It requires too much computational power"
+    ],
+    "correctIndex": 2,
+    "explanation": "A single agent must juggle multiple roles simultaneously, which leads to shallow context and reduced quality in each role."
+  },
+  {
+    "question": "Which of the following is a key advantage of using a multi-agent system over a single-agent system?",
+    "options": [
+      "It reduces the need for human oversight",
+      "It allows for parallel processing of subtasks",
+      "It eliminates the need for context management",
+      "It increases the cost of implementation"
+    ],
+    "correctIndex": 1,
+    "explanation": "Multi-agent systems can process different parts of a workflow simultaneously, improving efficiency and scalability."
+  },
+  {
+    "question": "When should you consider using a single-agent system instead of a multi-agent system?",
+    "options": [
+      "When the task requires multiple specialized skills",
+      "When the task is self-contained and fits in a single context window",
+      "When the task involves parallelizable subtasks",
+      "When the task requires built-in checks and balances"
+    ],
+    "correctIndex": 1,
+    "explanation": "A single-agent system is suitable for tasks that are self-contained and do not require multiple specialized skills or parallel processing."
+  },
+  {
+    "question": "What is a benefit of using specialized agents in a multi-agent system?",
+    "options": [
+      "They reduce the overall cost of the system",
+      "They allow each agent to maintain deep context for its domain",
+      "They eliminate the need for human input",
+      "They increase the complexity of the system"
+    ],
+    "correctIndex": 1,
+    "explanation": "Specialized agents can focus on their specific domain, leading to higher quality output and better performance."
+  },
+  {
+    "question": "Which of the following is a reason to use multiple agents in a system?",
+    "options": [
+      "To reduce the number of required models",
+      "To isolate errors within individual agents",
+      "To simplify the overall system architecture",
+      "To increase the context window size for a single agent"
+    ],
+    "correctIndex": 1,
+    "explanation": "Multi-agent systems allow errors to be contained within individual agents, preventing them from affecting the entire workflow."
+  }
+]

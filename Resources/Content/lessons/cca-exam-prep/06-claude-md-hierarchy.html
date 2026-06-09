@@ -336,3 +336,57 @@ EXAM SCORING:
 </div>
 
 </div>
+
+<div class="quiz-block">
+<h3 class="quiz-title">Quick Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which configuration file has the highest priority in the CLAUDE.md hierarchy?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>SYSTEM PROMPT</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>ENTERPRISE POLICY</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>CLAUDE.md (PROJECT ROOT)</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>.claude/rules/*.md</button>
+</div>
+<div class="quiz-explanation" style="display:none">The SYSTEM PROMPT is the highest priority and cannot be modified. It defines Claude's core behavior.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Where should project-specific coding standards and build commands be defined?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>~/.claude/rules/*.md</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>CLAUDE.md (PROJECT ROOT)</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>SESSION CONTEXT</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>ENTERPRISE POLICY</button>
+</div>
+<div class="quiz-explanation" style="display:none">CLAUDE.md (PROJECT ROOT) is the primary configuration file for any project and is used to define coding standards, build commands, and other project-specific rules.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the correct use of subdirectory CLAUDE.md files in a monorepo?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>To override all project-level rules</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>To define rules specific to a package</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>To store personal preferences</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>To set enterprise-wide policies</button>
+</div>
+<div class="quiz-explanation" style="display:none">Subdirectory CLAUDE.md files are used to define rules specific to a package in a monorepo, adding context without overriding the root file.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Which of the following should NOT be included in CLAUDE.md (PROJECT ROOT)?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Build and test commands</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Coding conventions</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Personal preferences</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>File structure explanation</button>
+</div>
+<div class="quiz-explanation" style="display:none">Personal preferences should be included in ~/.claude/rules/*.md, not in CLAUDE.md (PROJECT ROOT), which is for project-specific rules.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What happens if a subdirectory CLAUDE.md file contains a rule that conflicts with the project root CLAUDE.md?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>The subdirectory rule is ignored</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>The project root rule is ignored</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>The subdirectory rule overrides the project root rule</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Both rules are applied, with the project root rule taking precedence</button>
+</div>
+<div class="quiz-explanation" style="display:none">The project root CLAUDE.md has higher priority and takes precedence over subdirectory rules, even though subdirectory rules can add context.</div>
+</div>
+</div>

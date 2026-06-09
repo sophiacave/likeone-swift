@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary reason solo creators often experience burnout compared to studios?",
+    "options": [
+      "Lack of AI tools",
+      "Inconsistent content quality",
+      "No strategy, repurposing, or calendar",
+      "Not enough time spent writing"
+    ],
+    "correctIndex": 2,
+    "explanation": "Solo creators often burn out because they lack systems like strategy, repurposing, and editorial calendars, which studios use to maintain consistency and efficiency."
+  },
+  {
+    "question": "Which of the following best describes the role of AI as a 'strategist' in a content studio?",
+    "options": [
+      "AI writes the content for you",
+      "AI analyzes trends and helps plan content",
+      "AI edits and polishes your drafts",
+      "AI schedules your posts on social media"
+    ],
+    "correctIndex": 1,
+    "explanation": "As a strategist, AI helps decide what to create by analyzing trends, reviewing past performance, and mapping out an editorial calendar."
+  },
+  {
+    "question": "What is the main benefit of using AI as a 'producer' in a content studio?",
+    "options": [
+      "AI helps you write better content",
+      "AI helps you find new audiences",
+      "AI turns one piece of content into multiple formats",
+      "AI helps you set content goals"
+    ],
+    "correctIndex": 2,
+    "explanation": "The producer role of AI allows you to take one piece of content and turn it into various formats, maximizing efficiency and output."
+  },
+  {
+    "question": "What is the key difference between a writer and a studio in terms of content creation?",
+    "options": [
+      "Writers use AI, studios don't",
+      "Writers focus on strategy, studios focus on execution",
+      "Writers create one piece at a time, studios repurpose content",
+      "Writers are more creative, studios are more organized"
+    ],
+    "correctIndex": 2,
+    "explanation": "Studios repurpose content into multiple formats, while writers typically create one piece at a time, leading to inconsistency and burnout."
+  },
+  {
+    "question": "Which of the following is a key part of the 'studio mindset' when working with AI?",
+    "options": [
+      "Asking AI to write full articles from scratch",
+      "Using AI only for editing and grammar checks",
+      "Using AI across the entire content lifecycle",
+      "Letting AI decide your content strategy entirely"
+    ],
+    "correctIndex": 2,
+    "explanation": "The studio mindset involves using AI across the entire content lifecycle, including strategy, creation, repurposing, and optimization."
+  }
+]

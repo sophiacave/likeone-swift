@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which of the following is a key principle for securing MCP servers?",
+    "options": [
+      "Principle of least privilege",
+      "Principle of maximum access",
+      "Principle of shared access",
+      "Principle of unrestricted access"
+    ],
+    "correctIndex": 0,
+    "explanation": "The principle of least privilege ensures that tools have only the minimum permissions required to perform their function, reducing the risk of misuse or compromise."
+  },
+  {
+    "question": "What is the main purpose of input sanitization in MCP tool integrations?",
+    "options": [
+      "To validate all parameters before passing them to tools",
+      "To allow models to handle all validation",
+      "To increase the speed of tool execution",
+      "To reduce the number of tool calls"
+    ],
+    "correctIndex": 0,
+    "explanation": "Input sanitization ensures that all parameters are validated before being passed to tools, preventing malicious input from being processed by the system."
+  },
+  {
+    "question": "Which of the following is an example of a security threat in MCP tool integrations?",
+    "options": [
+      "Prompt injection",
+      "Data encryption",
+      "Secure authentication",
+      "Access control"
+    ],
+    "correctIndex": 0,
+    "explanation": "Prompt injection is a security threat where an attacker embeds malicious instructions in user data, which can be executed by the model if not properly validated."
+  },
+  {
+    "question": "Which of the following is a correct practice for output filtering in MCP tools?",
+    "options": [
+      "Returning only the data necessary for the use case",
+      "Returning all data from the database",
+      "Allowing the model to decide what data to return",
+      "Returning unfiltered data for security testing"
+    ],
+    "correctIndex": 0,
+    "explanation": "Output filtering should return only the data necessary for the use case to minimize exposure of sensitive information."
+  },
+  {
+    "question": "What is the purpose of a confirmation barrier in secure MCP server patterns?",
+    "options": [
+      "To require two-step verification before executing dangerous operations",
+      "To allow unlimited access to all tools",
+      "To increase the speed of tool execution",
+      "To reduce the number of tool calls"
+    ],
+    "correctIndex": 0,
+    "explanation": "A confirmation barrier ensures that dangerous operations require a two-step process, reducing the risk of accidental or malicious execution."
+  }
+]

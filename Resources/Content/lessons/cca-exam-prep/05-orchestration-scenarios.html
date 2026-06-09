@@ -317,3 +317,57 @@ CRITICAL SAFETY: Rollback is always automatic and fast.
 </div>
 
 </div>
+
+<div class="quiz-block">
+<h3 class="quiz-title">Quick Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which orchestration pattern is most appropriate for automated invoice processing, and why?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Single agent per invoice with parallel execution because the steps are sequential and the domain is unified</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Multi-agent system with a supervisor because the steps require parallel expertise</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Human-in-the-loop for all steps because financial data is too sensitive for automation</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Batch processing with a single agent because the volume is low and the process is simple</button>
+</div>
+<div class="quiz-explanation" style="display:none">A single agent per invoice with parallel execution is correct because the steps are sequential and the domain is unified, making a multi-agent system unnecessary.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>In the security incident response scenario, why is a multi-agent system with a supervisor the best choice?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Because the scenario involves multiple domains and requires parallel investigation</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Because the process is sequential and the domain is unified</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Because the volume is low and a single agent can handle all tasks</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Because the process is simple and does not require error handling</button>
+</div>
+<div class="quiz-explanation" style="display:none">A multi-agent system with a supervisor is correct because the scenario involves multiple domains and requires parallel investigation to meet the 3-minute SLA.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is a key consideration for error handling in the automated invoice processing system?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Extraction failure should trigger a queue for human review</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Extraction failure should be ignored to avoid delays</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Extraction failure should automatically cancel the invoice</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Extraction failure should be logged but not acted upon</button>
+</div>
+<div class="quiz-explanation" style="display:none">Extraction failure should trigger a queue for human review to ensure accuracy and prevent errors in financial data processing.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>In the content moderation pipeline, what is the purpose of the 'fast filter' stage?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>To quickly flag or block content that is clearly inappropriate, such as CSAM</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>To perform in-depth analysis of all content for accuracy</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>To replace human moderators entirely</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>To delay processing to allow for more thorough review</button>
+</div>
+<div class="quiz-explanation" style="display:none">The fast filter is used to quickly flag or block content that is clearly inappropriate, such as CSAM, to meet the 60-second latency requirement.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What is a critical design choice in the security incident response system that differentiates a good answer from a great one?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Tiering response actions based on reversibility</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Using a single agent for all tasks</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Automating all response actions without human involvement</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Ignoring error handling for speed</button>
+</div>
+<div class="quiz-explanation" style="display:none">Tiering response actions based on reversibility is a critical design choice because it ensures that irreversible actions like wiping an endpoint require human approval.</div>
+</div>
+</div>

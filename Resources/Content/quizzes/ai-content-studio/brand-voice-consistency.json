@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary purpose of a brand voice document when used with AI?",
+    "options": [
+      "To make AI generate more content",
+      "To teach AI how to sound like you",
+      "To replace human writers",
+      "To improve AI's grammar skills"
+    ],
+    "correctIndex": 1,
+    "explanation": "A brand voice document teaches AI how to sound like you by providing specific tone, style, and language guidelines."
+  },
+  {
+    "question": "Which of the following is NOT a typical component of a brand voice document?",
+    "options": [
+      "Tone words",
+      "Kill list",
+      "AI model preferences",
+      "Sample writing"
+    ],
+    "correctIndex": 2,
+    "explanation": "AI model preferences are not part of a brand voice document. The document focuses on your brand's communication style, not the AI's capabilities."
+  },
+  {
+    "question": "What is the benefit of asking AI to describe your brand voice back to you after providing the voice document?",
+    "options": [
+      "It helps AI remember your name",
+      "It ensures AI has understood your voice",
+      "It improves AI's typing speed",
+      "It increases AI's creativity"
+    ],
+    "correctIndex": 1,
+    "explanation": "Asking AI to describe your brand voice back ensures that it has internalized the guidelines and understands your communication style."
+  },
+  {
+    "question": "Which of the following is a common example of a 'kill list' entry in a brand voice document?",
+    "options": [
+      "Use contractions",
+      "Be concise",
+      "Dive deep",
+      "Use bold for key phrases"
+    ],
+    "correctIndex": 2,
+    "explanation": "'Dive deep' is a common phrase that AI tends to overuse, so it is often included in a kill list to avoid it in the output."
+  },
+  {
+    "question": "Why is it important to include sample writing in a brand voice document?",
+    "options": [
+      "To make the document look more professional",
+      "To give AI a concrete example of your voice",
+      "To increase AI's processing speed",
+      "To reduce the number of words AI uses"
+    ],
+    "correctIndex": 1,
+    "explanation": "Including sample writing gives AI a concrete example of your voice, helping it match your tone, style, and language more accurately."
+  }
+]

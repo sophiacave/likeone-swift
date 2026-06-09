@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary purpose of the 'Hero + Learning Objectives' section in a lesson?",
+    "options": [
+      "To provide technical details about the lesson's content",
+      "To hook the learner with a relatable scenario and outline clear outcomes",
+      "To explain the lesson's structure in detail",
+      "To introduce complex jargon and define it"
+    ],
+    "correctIndex": 1,
+    "explanation": "The 'Hero + Learning Objectives' section is designed to engage the learner with a relatable scenario and clearly outline what they will learn, using everyday language."
+  },
+  {
+    "question": "Which of the following best describes the role of a real-world analogy in a lesson?",
+    "options": [
+      "To introduce complex jargon without explanation",
+      "To connect abstract concepts to familiar experiences",
+      "To replace technical explanations with vague descriptions",
+      "To increase the difficulty of the lesson"
+    ],
+    "correctIndex": 1,
+    "explanation": "Real-world analogies help learners relate abstract or technical concepts to everyday experiences, making them more accessible and easier to understand."
+  },
+  {
+    "question": "What is the main goal of the 'Accessibility Checklist' in the lesson structure?",
+    "options": [
+      "To ensure the lesson is visually appealing",
+      "To confirm that the lesson is understandable to a wide range of learners",
+      "To increase the length of the lesson",
+      "To make the lesson more technical and challenging"
+    ],
+    "correctIndex": 1,
+    "explanation": "The 'Accessibility Checklist' ensures that the lesson is written in a way that is inclusive and understandable to all learners, regardless of their background or experience level."
+  },
+  {
+    "question": "In the 'Core Concepts \u2014 Plain Language First' section, how should technical terms be introduced?",
+    "options": [
+      "By using them without explanation",
+      "By defining them in plain language before introducing the term",
+      "By using them only in code examples",
+      "By avoiding them entirely"
+    ],
+    "correctIndex": 1,
+    "explanation": "Technical terms should be introduced in plain language first, ensuring that learners understand their meaning before encountering the term itself."
+  },
+  {
+    "question": "What is the purpose of the 'Worked Example / Real-World Walkthrough' section?",
+    "options": [
+      "To provide a list of exercises for the learner to complete",
+      "To show how to apply concepts to real-life situations",
+      "To introduce new jargon and technical terms",
+      "To summarize the lesson's key points"
+    ],
+    "correctIndex": 1,
+    "explanation": "The 'Worked Example / Real-World Walkthrough' section helps learners see how to apply the lesson's concepts in practical, relatable scenarios."
+  }
+]

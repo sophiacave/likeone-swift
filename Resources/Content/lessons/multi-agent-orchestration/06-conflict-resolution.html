@@ -231,3 +231,57 @@ result = resolver.resolve(outputs, weights)
 </nav>
 
 </div>
+
+<div class="quiz-block">
+<h3 class="quiz-title">Quick Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which of the following is a key reason why agent conflicts are considered a feature rather than a bug?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Agents are not trained properly</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Agents always agree on everything</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Agents are not specialized enough</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Agents provide diverse perspectives that improve system accuracy</button>
+</div>
+<div class="quiz-explanation" style="display:none">Agent conflicts are a feature because they surface diverse perspectives, leading to more accurate and well-rounded system outputs.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Which strategy is best suited for high-stakes decisions where accuracy is more important than speed?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Hierarchical Override</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Debate and Synthesis</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Voting and Consensus</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Confidence-Weighted Resolution</button>
+</div>
+<div class="quiz-explanation" style="display:none">Voting and Consensus is best for high-stakes decisions because it leverages multiple agents' input to increase accuracy.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is a signal that indicates an opinion conflict between agents?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Timeout errors</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Contradictory outputs from different agents</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Rate limit exceptions</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Conflicting priorities in the same task</button>
+</div>
+<div class="quiz-explanation" style="display:none">Contradictory outputs from different agents indicate an opinion conflict, as they analyze the same data and reach different conclusions.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Which resolution strategy involves integrating the best elements of conflicting positions into a stronger output?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Hierarchical Override</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Voting and Consensus</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Debate and Synthesis</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Confidence-Weighted Resolution</button>
+</div>
+<div class="quiz-explanation" style="display:none">Debate and Synthesis is the strategy where conflicting agents' positions are integrated into a stronger output by a synthesis agent.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>What is a risk associated with the hierarchical override strategy?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>It increases system complexity</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>It may silence valuable dissent</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>It leads to inconsistent outputs</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>It reduces the speed of decision-making</button>
+</div>
+<div class="quiz-explanation" style="display:none">A risk of hierarchical override is that the authority agent may consistently override valuable dissent, leading to missed insights.</div>
+</div>
+</div>

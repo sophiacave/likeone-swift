@@ -350,3 +350,57 @@ STRONG ANSWER:
 </div>
 
 </div>
+
+<div class="quiz-block">
+<h3 class="quiz-title">Quick Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which permission mode is recommended for CI/CD environments?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Allowlist mode</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Prompt mode</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Trust mode</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Read-only mode</button>
+</div>
+<div class="quiz-explanation" style="display:none">Allowlist mode is recommended for CI/CD because it restricts execution to only specified tools, ensuring no unexpected actions occur in the absence of human oversight.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Which tool category is considered high risk and should never be allowed unrestricted in CI/CD?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Read-only tools</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Write tools</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Execution tools</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>MCP tools</button>
+</div>
+<div class="quiz-explanation" style="display:none">Execution tools, such as Bash, are high risk because they can perform arbitrary actions like deleting files or modifying system configurations, making them unsuitable for unrestricted use in CI/CD.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>What is the purpose of a pre-tool hook?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>To run after a tool completes</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>To modify or block a prompt submission</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>To validate or block a tool call before it executes</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>To log all tool calls for audit purposes</button>
+</div>
+<div class="quiz-explanation" style="display:none">Pre-tool hooks run before a tool executes and can be used to validate or block the tool call based on predefined conditions, enhancing safety and governance.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Which permission mode allows all tools to run without prompting?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Allowlist mode</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Prompt mode</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Trust mode</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Read-only mode</button>
+</div>
+<div class="quiz-explanation" style="display:none">Trust mode grants full autonomy to the agent, allowing all tools to run without prompting. It should only be used in environments where the agent's judgment is trusted and consequences are reversible.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>Which hook type is used to enforce code quality by running a linter after a file is edited?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Pre-tool hook</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Post-tool hook</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Prompt submit hook</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Audit logger hook</button>
+</div>
+<div class="quiz-explanation" style="display:none">Post-tool hooks run after a tool completes, making them ideal for enforcing code quality by running linters or formatters on modified files.</div>
+</div>
+</div>

@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary purpose of splitting a large CLAUDE.md into multiple files?",
+    "options": [
+      "To reduce the total number of lines in the configuration",
+      "To make the configuration easier to maintain and review",
+      "To avoid using any markdown formatting",
+      "To hide sensitive information from team members"
+    ],
+    "correctIndex": 1,
+    "explanation": "Splitting a large CLAUDE.md into multiple files improves maintainability and reviewability by separating concerns and making each file focused on a single topic."
+  },
+  {
+    "question": "In a monorepo with conflicting Prettier rules, which configuration strategy ensures that the correct formatting is applied based on file location?",
+    "options": [
+      "Use a single global Prettier configuration for all teams",
+      "Rely on Claude to automatically detect the correct formatting style",
+      "Define team-specific CLAUDE.md files and use a post-edit hook to enforce formatting",
+      "Remove all formatting rules and let developers self-regulate"
+    ],
+    "correctIndex": 2,
+    "explanation": "Team-specific CLAUDE.md files with hooks ensure that the correct formatting is applied based on the file's location, resolving conflicts explicitly."
+  },
+  {
+    "question": "Which of the following is a key principle in the 3-phase rollout plan for gradual AI adoption?",
+    "options": [
+      "Grant full permissions to all users immediately",
+      "Avoid using any hooks or automation",
+      "Expand permissions based on trust and evidence",
+      "Ignore metrics and focus only on speed of adoption"
+    ],
+    "correctIndex": 2,
+    "explanation": "Permission expansion is earned through evidence and trust, ensuring that each phase builds a foundation for more autonomy safely."
+  },
+  {
+    "question": "Which configuration mechanism is most appropriate for enforcing SOX compliance by restricting deployment permissions to specific roles?",
+    "options": [
+      "Custom commands",
+      "Hooks",
+      "Permissions",
+      "CLAUD.md hierarchy"
+    ],
+    "correctIndex": 2,
+    "explanation": "Permissions are the correct mechanism for enforcing SOX compliance by restricting deployment to specific roles and ensuring separation of duties."
+  },
+  {
+    "question": "What is the correct approach for handling personal preferences in a CLAUDE.md file?",
+    "options": [
+      "Include them in the main CLAUDE.md file for easy access",
+      "Move them to a user-specific configuration file outside the project",
+      "Remove them entirely to avoid clutter",
+      "Share them with the team for transparency"
+    ],
+    "correctIndex": 1,
+    "explanation": "Personal preferences should be moved to a user-specific configuration file outside the project to avoid cluttering the shared configuration and to respect privacy."
+  }
+]

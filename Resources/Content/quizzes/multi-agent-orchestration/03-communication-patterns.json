@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which communication pattern is best suited for sequential workflows where each agent's output is the next agent's input?",
+    "options": [
+      "Broadcast (Pub/Sub)",
+      "Blackboard (Shared Space)",
+      "Direct Messaging",
+      "None of the above"
+    ],
+    "correctIndex": 2,
+    "explanation": "Direct Messaging is ideal for linear pipelines where one agent's output directly feeds into the next agent's input."
+  },
+  {
+    "question": "What is a key advantage of the Broadcast (Pub/Sub) pattern?",
+    "options": [
+      "It ensures all agents have the same context",
+      "It allows multiple agents to react independently to the same event",
+      "It prevents any data loss during handoffs",
+      "It is best for complex, iterative tasks"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Broadcast pattern enables multiple agents to process the same message independently, making it ideal for parallel processing and event-driven systems."
+  },
+  {
+    "question": "Which communication pattern is most prone to race conditions and duplicate work?",
+    "options": [
+      "Direct Messaging",
+      "Blackboard (Shared Space)",
+      "Broadcast (Pub/Sub)",
+      "All patterns are equally prone"
+    ],
+    "correctIndex": 2,
+    "explanation": "Broadcast (Pub/Sub) can lead to race conditions and duplicate work if multiple agents attempt to handle the same task simultaneously."
+  },
+  {
+    "question": "What is a common pitfall of the Blackboard (Shared Space) pattern?",
+    "options": [
+      "Format mismatches between agents",
+      "Race conditions and write conflicts",
+      "Lack of parallel processing",
+      "No support for complex workflows"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Blackboard pattern can lead to write conflicts and stale reads when multiple agents attempt to modify the same shared workspace simultaneously."
+  },
+  {
+    "question": "Which of the following best describes the role of communication patterns in agent systems?",
+    "options": [
+      "They allow agents to communicate without any structure",
+      "They define agreed-upon formats and protocols for information exchange",
+      "They are only useful for simple two-agent systems",
+      "They are not important for agent coordination"
+    ],
+    "correctIndex": 1,
+    "explanation": "Communication patterns establish contracts between agents, ensuring structured and predictable information flow, which is essential for coordination."
+  }
+]

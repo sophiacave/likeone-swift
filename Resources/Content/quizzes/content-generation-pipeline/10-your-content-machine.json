@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which stage of the pipeline is responsible for collecting analytics data and audience signals to inform content creation?",
+    "options": [
+      "Stage 1 \u2014 Intelligence",
+      "Stage 2 \u2014 Ideation",
+      "Stage 3 \u2014 Creation",
+      "Stage 7 \u2014 Learning"
+    ],
+    "correctIndex": 0,
+    "explanation": "Stage 1 \u2014 Intelligence is where inputs such as analytics data, audience signals, and trending topics are gathered to guide the pipeline."
+  },
+  {
+    "question": "What is the primary solution to the problem of 'output feels generic' in the pipeline?",
+    "options": [
+      "Add voice examples and structural patterns to templates",
+      "Increase the number of quality gates",
+      "Multiply content across more formats",
+      "Improve the distribution schedule"
+    ],
+    "correctIndex": 0,
+    "explanation": "Adding voice examples, word-level preferences, and structural patterns from top-performing content makes templates more specific and improves output quality."
+  },
+  {
+    "question": "Which stage of the pipeline is responsible for transforming a core piece of content into multiple formats such as social media posts, emails, and video scripts?",
+    "options": [
+      "Stage 3 \u2014 Creation",
+      "Stage 4 \u2014 Multiplication",
+      "Stage 5 \u2014 Quality",
+      "Stage 6 \u2014 Distribution"
+    ],
+    "correctIndex": 1,
+    "explanation": "Stage 4 \u2014 Multiplication is where the core content is transformed into various formats and personalized for different audience segments."
+  },
+  {
+    "question": "What is the main purpose of Stage 7 \u2014 Learning in the pipeline?",
+    "options": [
+      "To generate new content ideas",
+      "To collect performance data and update templates",
+      "To distribute content across platforms",
+      "To refine quality gates"
+    ],
+    "correctIndex": 1,
+    "explanation": "Stage 7 \u2014 Learning is where performance data is collected, analyzed, and used to update templates, topics, and targeting for continuous improvement."
+  },
+  {
+    "question": "When scaling from 3 to 10 pieces of content per week, what is the main factor that needs to be improved?",
+    "options": [
+      "The number of team members",
+      "The frequency of quality gate checks",
+      "The quality of templates and voice documentation",
+      "The number of distribution channels"
+    ],
+    "correctIndex": 2,
+    "explanation": "Scaling volume requires improving templates, voice documentation, and audience profiles to ensure consistent quality across more pipeline runs."
+  }
+]

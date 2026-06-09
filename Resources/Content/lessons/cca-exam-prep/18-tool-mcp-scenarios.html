@@ -305,3 +305,57 @@ STRONG ANSWER:
 </div>
 
 </div>
+
+<div class="quiz-block">
+<h3 class="quiz-title">Quick Check</h3>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">1</span>Which of the following is a correct description of the 'search_tasks' tool in Scenario 1?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Search tasks by keyword, assignee, status, or label. Returns max 25 tasks sorted by priority then due date.</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Search tasks by project ID only. Returns all tasks in the project.</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Search tasks by task ID only. Returns the full task details.</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Search tasks by team member roles. Returns tasks assigned to specific roles.</button>
+</div>
+<div class="quiz-explanation" style="display:none">The 'search_tasks' tool allows searching by keyword, assignee, status, or label and returns up to 25 tasks sorted by priority and due date, as specified in the lesson.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">2</span>Which of the following is a valid security measure implemented in the 'preview_migration' tool in Scenario 2?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>It is read-only and does not execute any SQL.</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>It allows execution of any SQL after preview.</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>It does not require a preview_token for execution.</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>It allows DROP DATABASE commands.</button>
+</div>
+<div class="quiz-explanation" style="display:none">The 'preview_migration' tool is read-only and does not execute any SQL, ensuring that no changes are made to the database during the preview phase.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">3</span>In Scenario 3, which of the following is a correct reason for splitting the MCP servers into four separate servers?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>To isolate different domains (infrastructure, monitoring, incidents, documentation) and enforce security and access controls.</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>To reduce the number of tools available to engineers.</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>To increase the number of API calls made to external services.</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>To allow all tools to share the same transport protocol.</button>
+</div>
+<div class="quiz-explanation" style="display:none">Splitting into four servers isolates different domains and enforces security and access controls, which is a key design principle in the lesson.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">4</span>Which of the following is a correct description of the 'notify_channel' tool in Scenario 1?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>Send notification to Slack channel. Links to task if provided. Rate limited: 10 notifications per minute.</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>Send notification to any Slack channel or DM. No rate limits.</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>Send notification only via email. No Slack integration.</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>Send notifications only to admin channels. No user-specific channels.</button>
+</div>
+<div class="quiz-explanation" style="display:none">The 'notify_channel' tool sends notifications to pre-configured Slack channels only and is rate limited to 10 notifications per minute, as specified in the lesson.</div>
+</div>
+<div class="quiz-question">
+<p class="quiz-q"><span class="quiz-num">5</span>Which of the following is a correct error example for the 'close_task' tool in Scenario 1?</p>
+<div class="quiz-options">
+<button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>{ "error": "FORBIDDEN", "message": "Cannot close task assigned to @jane. Reassign first or ask @jane to close.", "suggestion": "Use update_task to reassign, then close" }</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>{ "error": "NOT_FOUND", "message": "Task not found", "suggestion": "Check the task ID" }</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>{ "error": "INVALID_PARAMETER", "message": "Invalid project ID", "suggestion": "Use a valid project ID" }</button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>{ "error": "UNAUTHORIZED", "message": "You are not a member of the project", "suggestion": "Contact the admin" }</button>
+</div>
+<div class="quiz-explanation" style="display:none">The correct error example for 'close_task' includes a 'FORBIDDEN' error when the task is assigned to someone else, as described in the lesson.</div>
+</div>
+</div>

@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which type of hallucination occurs when an agent states something false as a fact, such as claiming 'Python 3.12 removed list comprehensions' when it did not?",
+    "options": [
+      "Factual Hallucination",
+      "Fabricated References",
+      "Invented Data",
+      "Capability Hallucination"
+    ],
+    "correctIndex": 0,
+    "explanation": "Factual Hallucination involves stating something false as if it were true, which matches the example given."
+  },
+  {
+    "question": "What is the main cause of Fabricated References hallucination?",
+    "options": [
+      "Model pattern-matches citation format without verifying",
+      "Model fills in numbers when none are available",
+      "Model generates expected success narrative",
+      "Model confuses or fabricates context linkages"
+    ],
+    "correctIndex": 0,
+    "explanation": "Fabricated References occur when the model cites non-existent sources by pattern-matching citation formats without verification."
+  },
+  {
+    "question": "Which grounding strategy requires every claim to have a source and instructs the agent to say 'I don't have data on this' if no source exists?",
+    "options": [
+      "Source Grounding",
+      "Tool-First Architecture",
+      "Uncertainty Expression",
+      "Verification Patterns"
+    ],
+    "correctIndex": 0,
+    "explanation": "Source Grounding enforces that every claim must be backed by a source, and instructs the agent to state uncertainty when no source is available."
+  },
+  {
+    "question": "Which verification pattern involves reading the actual file and finding the specific line before making a claim?",
+    "options": [
+      "Read-Before-Claim",
+      "Cross-Reference",
+      "Output Review",
+      "Claim Tagging"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Read-Before-Claim pattern ensures that claims about code are based on actual file content and specific line numbers."
+  },
+  {
+    "question": "Which layer of the Five-Layer Defense involves post-generation checks to ensure outputs do not contain unverified numbers or cite non-existent sources?",
+    "options": [
+      "Layer 3: Output Validation",
+      "Layer 1: Prompt Design",
+      "Layer 2: Tool-First Workflow",
+      "Layer 4: Human Review"
+    ],
+    "correctIndex": 0,
+    "explanation": "Layer 3: Output Validation checks for unverified numbers or fabricated sources after the agent generates a response."
+  }
+]

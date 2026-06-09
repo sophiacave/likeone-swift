@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which orchestration pattern is most appropriate for automated invoice processing, and why?",
+    "options": [
+      "Single agent per invoice with parallel execution because the steps are sequential and the domain is unified",
+      "Multi-agent system with a supervisor because the steps require parallel expertise",
+      "Human-in-the-loop for all steps because financial data is too sensitive for automation",
+      "Batch processing with a single agent because the volume is low and the process is simple"
+    ],
+    "correctIndex": 0,
+    "explanation": "A single agent per invoice with parallel execution is correct because the steps are sequential and the domain is unified, making a multi-agent system unnecessary."
+  },
+  {
+    "question": "In the security incident response scenario, why is a multi-agent system with a supervisor the best choice?",
+    "options": [
+      "Because the scenario involves multiple domains and requires parallel investigation",
+      "Because the process is sequential and the domain is unified",
+      "Because the volume is low and a single agent can handle all tasks",
+      "Because the process is simple and does not require error handling"
+    ],
+    "correctIndex": 0,
+    "explanation": "A multi-agent system with a supervisor is correct because the scenario involves multiple domains and requires parallel investigation to meet the 3-minute SLA."
+  },
+  {
+    "question": "What is a key consideration for error handling in the automated invoice processing system?",
+    "options": [
+      "Extraction failure should trigger a queue for human review",
+      "Extraction failure should be ignored to avoid delays",
+      "Extraction failure should automatically cancel the invoice",
+      "Extraction failure should be logged but not acted upon"
+    ],
+    "correctIndex": 0,
+    "explanation": "Extraction failure should trigger a queue for human review to ensure accuracy and prevent errors in financial data processing."
+  },
+  {
+    "question": "In the content moderation pipeline, what is the purpose of the 'fast filter' stage?",
+    "options": [
+      "To quickly flag or block content that is clearly inappropriate, such as CSAM",
+      "To perform in-depth analysis of all content for accuracy",
+      "To replace human moderators entirely",
+      "To delay processing to allow for more thorough review"
+    ],
+    "correctIndex": 0,
+    "explanation": "The fast filter is used to quickly flag or block content that is clearly inappropriate, such as CSAM, to meet the 60-second latency requirement."
+  },
+  {
+    "question": "What is a critical design choice in the security incident response system that differentiates a good answer from a great one?",
+    "options": [
+      "Tiering response actions based on reversibility",
+      "Using a single agent for all tasks",
+      "Automating all response actions without human involvement",
+      "Ignoring error handling for speed"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tiering response actions based on reversibility is a critical design choice because it ensures that irreversible actions like wiping an endpoint require human approval."
+  }
+]

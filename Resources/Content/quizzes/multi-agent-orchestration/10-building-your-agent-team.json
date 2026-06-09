@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the first step in building a multi-agent system according to the lesson?",
+    "options": [
+      "Write the agent specifications",
+      "Map the workflow",
+      "Identify agent boundaries",
+      "Test each agent in isolation"
+    ],
+    "correctIndex": 1,
+    "explanation": "Mapping the workflow is the first step because it ensures a clear understanding of the process before designing agents."
+  },
+  {
+    "question": "Which of the following is a key principle when identifying agent boundaries?",
+    "options": [
+      "Use as many agents as possible",
+      "Group steps with different capabilities into the same agent",
+      "Split steps that require fundamentally different capabilities",
+      "Ignore the workflow map and focus on agent roles"
+    ],
+    "correctIndex": 2,
+    "explanation": "Splitting steps that require different capabilities ensures agents are focused and reliable, which is a key principle in identifying boundaries."
+  },
+  {
+    "question": "What is the recommended number of agents to start with when launching a multi-agent system?",
+    "options": [
+      "8 agents",
+      "2-3 agents",
+      "10 agents",
+      "As many as needed for the task"
+    ],
+    "correctIndex": 1,
+    "explanation": "Starting with 2-3 agents is recommended to maintain reliability and avoid unnecessary complexity."
+  },
+  {
+    "question": "Which of the following is NOT a part of an agent's specification?",
+    "options": [
+      "Model tier",
+      "System prompt",
+      "Agent's favorite color",
+      "Expected inputs and outputs"
+    ],
+    "correctIndex": 2,
+    "explanation": "An agent's specification includes technical details like model tier, system prompt, and input/output formats, but not subjective details like favorite color."
+  },
+  {
+    "question": "What is the primary purpose of integration testing in multi-agent systems?",
+    "options": [
+      "To test individual agent performance in isolation",
+      "To ensure agents work correctly when combined",
+      "To define agent roles",
+      "To write system prompts"
+    ],
+    "correctIndex": 1,
+    "explanation": "Integration testing ensures that agents function correctly when combined, as individual agents may fail when interacting with others."
+  }
+]

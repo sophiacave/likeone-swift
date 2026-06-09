@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which layer of Claude's instruction hierarchy has the highest priority and is set by the developer?",
+    "options": [
+      "System Prompt",
+      "Context",
+      "User Message",
+      "None of the above"
+    ],
+    "correctIndex": 0,
+    "explanation": "The system prompt is set by the developer and has the highest priority, overriding both context and user messages when there is a conflict."
+  },
+  {
+    "question": "What is the primary purpose of the system prompt in Claude's architecture?",
+    "options": [
+      "To provide background knowledge",
+      "To define the agent's role, capabilities, and boundaries",
+      "To execute user tasks",
+      "To store conversation history"
+    ],
+    "correctIndex": 1,
+    "explanation": "The system prompt defines the agent's role, capabilities, and boundaries, which are critical for shaping the agent's behavior and identity."
+  },
+  {
+    "question": "Which of the following is a key component of an effective system prompt?",
+    "options": [
+      "Lengthy and detailed instructions",
+      "Contradictory rules",
+      "Role definition",
+      "Negative-only instructions"
+    ],
+    "correctIndex": 2,
+    "explanation": "Role definition is a key component of an effective system prompt, as it sets the agent's expertise and domain."
+  },
+  {
+    "question": "In the identity framework for agents, which dimension determines how much the agent can act without being asked?",
+    "options": [
+      "Expertise Level",
+      "Communication Style",
+      "Proactivity",
+      "Autonomy"
+    ],
+    "correctIndex": 3,
+    "explanation": "Autonomy determines how much the agent can act without being asked, ranging from confirmatory to fully autonomous."
+  },
+  {
+    "question": "When there is a conflict between the system prompt and CLAUDE.md, which layer takes precedence?",
+    "options": [
+      "System Prompt",
+      "CLAUDE.md",
+      "User Message",
+      "They are equally weighted"
+    ],
+    "correctIndex": 1,
+    "explanation": "CLAUDE.md takes precedence over the system prompt for project-specific context, while the system prompt governs general behavior."
+  }
+]

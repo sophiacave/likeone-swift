@@ -41,18 +41,33 @@
                     </div>
                 </div>
 
+                #if(completedCount > 0):
+                <div class="course-progress-header">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                        <span style="font-size:.85rem;font-weight:600;color:var(--text-primary);">#if(progressPct >= 100):Course Complete#else:Your Progress#endif</span>
+                        <span style="font-size:.8rem;color:var(--text-muted);font-variant-numeric:tabular-nums;">#(completedCount) of #(totalLessons)</span>
+                    </div>
+                    <div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;">
+                        <div style="height:100%;width:#(progressPct)%;background:#if(progressPct >= 100):#34d399#else:var(--purple-400)#endif;border-radius:3px;transition:width .5s ease-out;"></div>
+                    </div>
+                </div>
+                #endif
+
                 <div class="course-lesson-header">
                     <h2 class="course-lesson-heading">Lessons</h2>
                 </div>
 
                 <div class="lesson-list">
                     #for(lesson in lessons):
-                        <a href="/academy/#(lesson.courseSlug)/#(lesson.slug)" class="lesson-row" aria-label="Lesson #(lesson.order): #(lesson.title)">
+                        <a href="/academy/#(lesson.courseSlug)/#(lesson.slug)" class="lesson-row #if(lesson.isCompleted):lesson-done#endif" aria-label="Lesson #(lesson.order): #(lesson.title)">
                             <div class="lesson-row-left">
                                 <span class="lesson-num">#(lesson.order)</span>
                                 <span class="lesson-title">#(lesson.title)</span>
                             </div>
                             <div class="lesson-row-right">
+                                #if(lesson.isCompleted):
+                                    <span class="lesson-done-check" aria-label="Completed">&#x2714;</span>
+                                #endif
                                 #if(lesson.isFree):
                                     #if(isPro):
                                         <span class="lesson-badge lesson-free" style="background:rgba(52,211,153,.1);color:#34d399;">Unlocked</span>

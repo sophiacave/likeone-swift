@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which transport is recommended for local development and single-user tools in an MCP server?",
+    "options": [
+      "HTTP/SSE",
+      "STDIO",
+      "FTP",
+      "WebSocket"
+    ],
+    "correctIndex": 1,
+    "explanation": "STDIO is the default transport for local development and single-user tools because it uses stdin/stdout for communication, which is fast and doesn't require a network."
+  },
+  {
+    "question": "What is the primary difference between a tool and a resource in MCP?",
+    "options": [
+      "Tools are used for reading data, resources are used for executing actions",
+      "Tools are used for executing actions, resources are used for reading data",
+      "Tools are user-controlled, resources are model-controlled",
+      "Tools are for prompts, resources are for commands"
+    ],
+    "correctIndex": 1,
+    "explanation": "Tools are functions that the model can call to perform actions, while resources are data that the server exposes for the model to read."
+  },
+  {
+    "question": "Which of the following is a correct example of a well-designed MCP tool?",
+    "options": [
+      "do_database_operation(action, params)",
+      "search_users(query)",
+      "run_query('SELECT * FROM users')",
+      "read_file(path, mode)"
+    ],
+    "correctIndex": 1,
+    "explanation": "A well-designed tool should have a single, clear purpose. 'search_users(query)' is a good example because it performs one specific action."
+  },
+  {
+    "question": "What is the main purpose of the 'initialize' method in the MCP server lifecycle?",
+    "options": [
+      "To execute a tool",
+      "To list available resources",
+      "To send server capabilities to the client",
+      "To read a prompt template"
+    ],
+    "correctIndex": 2,
+    "explanation": "The 'initialize' method is used by the client to send initialization information to the server, and the server responds by sending its capabilities, including tools, resources, and prompts."
+  },
+  {
+    "question": "Which transport is appropriate for a shared, cloud-hosted MCP server that needs to support multiple clients?",
+    "options": [
+      "STDIO",
+      "HTTP/SSE",
+      "FTP",
+      "WebSocket"
+    ],
+    "correctIndex": 1,
+    "explanation": "HTTP/SSE is appropriate for shared, cloud-hosted servers because it allows multiple clients to access the server over the network and supports persistent connections for streaming."
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "question": "According to Cognitive Load Theory, which type of cognitive load is caused by poorly designed presentation elements?",
+    "options": [
+      "Intrinsic Load",
+      "Extraneous Load",
+      "Germane Load",
+      "Visual Load"
+    ],
+    "correctIndex": 1,
+    "explanation": "Extraneous Load is caused by unnecessary or poorly designed presentation elements that waste cognitive effort and hinder learning."
+  },
+  {
+    "question": "Which principle of Mayer's theory suggests that related text and graphics should be placed near each other?",
+    "options": [
+      "Spatial Contiguity",
+      "Temporal Contiguity",
+      "Redundancy",
+      "Coherence"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Spatial Contiguity principle states that related text and graphics should be placed near each other to enhance learning."
+  },
+  {
+    "question": "Which of the following is a recommended practice to reduce extraneous cognitive load in video production?",
+    "options": [
+      "Adding on-screen text while narrating",
+      "Using decorative animations",
+      "Avoiding unnecessary visual elements",
+      "Including ambient music"
+    ],
+    "correctIndex": 2,
+    "explanation": "Avoiding unnecessary visual elements is a recommended practice to reduce extraneous cognitive load and ensure that the learner's attention is focused on the essential content."
+  },
+  {
+    "question": "According to Mayer's principles, which method is more effective for learning: graphics + narration or graphics + on-screen text?",
+    "options": [
+      "Graphics + on-screen text",
+      "Graphics + narration",
+      "Narration alone",
+      "On-screen text alone"
+    ],
+    "correctIndex": 1,
+    "explanation": "Graphics + narration is more effective for learning, as it reduces cognitive load by allowing the visual channel to process graphics and the auditory channel to process narration."
+  },
+  {
+    "question": "Which principle of Mayer's theory emphasizes the importance of breaking content into learner-paced segments?",
+    "options": [
+      "Segmenting",
+      "Pre-training",
+      "Modality",
+      "Multimedia"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Segmenting principle emphasizes breaking content into learner-paced segments to improve comprehension and retention."
+  }
+]

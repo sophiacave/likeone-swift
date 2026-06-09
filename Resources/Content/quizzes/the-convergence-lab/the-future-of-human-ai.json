@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary difference between AI-as-service and AI-as-self?",
+    "options": [
+      "AI-as-service is more personalized, while AI-as-self is generic.",
+      "AI-as-self is trained on your data and runs on your infrastructure, while AI-as-service is shared among many users.",
+      "AI-as-service is more secure, while AI-as-self is less reliable.",
+      "AI-as-self is only available to a select few, while AI-as-service is widely accessible."
+    ],
+    "correctIndex": 1,
+    "explanation": "AI-as-self is uniquely trained on individual data and runs on personal infrastructure, unlike AI-as-service, which is shared among many users."
+  },
+  {
+    "question": "Which of the following is NOT a key application of convergence technology in accessibility?",
+    "options": [
+      "Managing executive function for people with ADHD.",
+      "Providing real-time language translation for all users.",
+      "Automating daily tasks for people with chronic illness.",
+      "Bridging the gap between intention and action for people with disabilities."
+    ],
+    "correctIndex": 1,
+    "explanation": "Real-time language translation is not specifically highlighted as a key accessibility application in the lesson, whereas the others are explicitly mentioned."
+  },
+  {
+    "question": "According to the convergence timeline, when is it expected that having a personal AI twin becomes as normal as having a smartphone?",
+    "options": [
+      "2025-2026",
+      "2027-2028",
+      "2029-2030",
+      "2031-2035"
+    ],
+    "correctIndex": 2,
+    "explanation": "The timeline states that normalization of personal AI twins is expected between 2029 and 2030."
+  },
+  {
+    "question": "Which relationship model between a human and their AI twin emphasizes collaboration and mutual trust?",
+    "options": [
+      "The tool model",
+      "The employee model",
+      "The partner model",
+      "The assistant model"
+    ],
+    "correctIndex": 2,
+    "explanation": "The partner model emphasizes collaboration, mutual trust, and shared decision-making between the human and their AI twin."
+  },
+  {
+    "question": "What is a major ethical concern regarding AI twins after a person's death?",
+    "options": [
+      "The cost of maintaining the AI twin.",
+      "The AI twin's ability to learn new skills.",
+      "Ownership and legal status of the AI twin's memory.",
+      "The AI twin's ability to interact with social media."
+    ],
+    "correctIndex": 2,
+    "explanation": "A major ethical concern is determining the legal and ownership status of the AI twin's memory after the person's death."
+  }
+]

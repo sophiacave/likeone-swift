@@ -1,5 +1,6 @@
 import Vapor
 import Leaf
+import Fluent
 import LOCore
 import LOContent
 
@@ -53,11 +54,20 @@ struct AcademyController: RouteCollection {
         }
 
         var isPro = false
+        var completedSlugs: Set<String> = []
         if let user = req.authenticatedUser {
             isPro = user.subscription == "pro" || user.subscription == "founding"
+            let progress = try await ProgressModel.query(on: req.db)
+                .filter(\.$userID == user.id!)
+                .filter(\.$courseSlug == slug)
+                .all()
+            completedSlugs = Set(progress.map(\.lessonSlug))
         }
 
         let courseLessons = lessons.lessons(forCourse: slug)
+        let totalLessons = courseLessons.count
+        let completedCount = completedSlugs.count
+        let progressPct = totalLessons > 0 ? Int(Double(completedCount) / Double(totalLessons) * 100) : 0
 
         let canonicalUrl = "https://likeone.ai/academy/\(slug)/"
         let context = CourseDetailContext(
@@ -68,9 +78,13 @@ struct AcademyController: RouteCollection {
                 title: $0.title,
                 order: $0.order,
                 isFree: isPro || $0.order <= 3,
-                courseSlug: slug
+                courseSlug: slug,
+                isCompleted: completedSlugs.contains($0.slug)
             )},
             isPro: isPro,
+            completedCount: completedCount,
+            totalLessons: totalLessons,
+            progressPct: progressPct,
             canonicalUrl: canonicalUrl,
             ogUrl: canonicalUrl
         )
@@ -194,6 +208,9 @@ struct CourseDetailContext: Content {
     let course: CourseCard
     let lessons: [LessonItem]
     let isPro: Bool
+    let completedCount: Int
+    let totalLessons: Int
+    let progressPct: Int
     let canonicalUrl: String?
     let ogUrl: String?
 }
@@ -204,6 +221,7 @@ struct LessonItem: Content {
     let order: Int
     let isFree: Bool
     let courseSlug: String
+    let isCompleted: Bool
 }
 
 struct CourseGridContext: Content {

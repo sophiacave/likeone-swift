@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which of the following is a real-world harm that can occur when AI ethics are ignored?",
+    "options": [
+      "Bias Amplification",
+      "Improved Decision-Making",
+      "Increased Transparency",
+      "Enhanced Privacy"
+    ],
+    "correctIndex": 0,
+    "explanation": "Bias Amplification is a real-world harm that occurs when AI systems inherit and reinforce existing biases from historical data."
+  },
+  {
+    "question": "According to the TRUST framework, what does the 'S' stand for?",
+    "options": [
+      "Safeguard Privacy",
+      "Sustain Growth",
+      "Secure Data",
+      "Strengthen Ethics"
+    ],
+    "correctIndex": 0,
+    "explanation": "In the TRUST framework, 'S' stands for 'Safeguard Privacy,' emphasizing the importance of protecting sensitive data."
+  },
+  {
+    "question": "Who is considered the 'ethics layer' when using AI?",
+    "options": [
+      "The AI developer",
+      "The AI user",
+      "The AI itself",
+      "The government"
+    ],
+    "correctIndex": 1,
+    "explanation": "The AI user is considered the 'ethics layer' because AI does not evaluate whether its output is ethical; it is the user's responsibility to ensure ethical use."
+  },
+  {
+    "question": "Which of the following is an example of a real-world AI ethics failure?",
+    "options": [
+      "Amazon's Hiring Tool (2018)",
+      "Improved Customer Service",
+      "Increased Productivity",
+      "Enhanced Creativity"
+    ],
+    "correctIndex": 0,
+    "explanation": "Amazon's Hiring Tool (2018) is a real-world example of an AI ethics failure, as it penalized resumes based on gender-related terms."
+  },
+  {
+    "question": "What is a key ethical responsibility of an AI user according to the lesson?",
+    "options": [
+      "To review AI output for accuracy and bias",
+      "To ignore AI-generated content",
+      "To avoid using AI altogether",
+      "To focus only on the benefits of AI"
+    ],
+    "correctIndex": 0,
+    "explanation": "Reviewing AI output for accuracy and bias is a key ethical responsibility of an AI user, as outlined in the TRUST framework."
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary goal of the 'create once, publish everywhere' framework?",
+    "options": [
+      "To reduce the time spent on content creation",
+      "To ensure all content is identical across platforms",
+      "To generate multiple versions of the same idea for different channels",
+      "To eliminate the need for content planning"
+    ],
+    "correctIndex": 2,
+    "explanation": "The primary goal is to generate multiple versions of the same idea for different channels, ensuring the content is adapted to each platform's needs while maintaining consistency."
+  },
+  {
+    "question": "Which of the following is a key component of maintaining voice consistency across platforms?",
+    "options": [
+      "Using the same exact wording on all platforms",
+      "Creating a voice document that all transformation templates reference",
+      "Avoiding any use of personal tone",
+      "Using a different tone for each platform"
+    ],
+    "correctIndex": 1,
+    "explanation": "A voice document that all transformation templates reference ensures that the tone, vocabulary, and style remain consistent across all platforms."
+  },
+  {
+    "question": "What is the recommended structure for a Twitter thread according to the lesson?",
+    "options": [
+      "A single tweet with all the information",
+      "A hook tweet followed by 4-7 value tweets and a CTA closer",
+      "A series of tweets with no clear order",
+      "A thread with only hashtags and no content"
+    ],
+    "correctIndex": 1,
+    "explanation": "A Twitter thread should follow a structure of a hook tweet, followed by 4-7 value tweets, and end with a CTA closer to maintain engagement and clarity."
+  },
+  {
+    "question": "Which of the following is a correct specification for LinkedIn posts?",
+    "options": [
+      "Use long paragraphs and include multiple links in the body",
+      "Start with a personal observation, include a data point, and end with a question",
+      "Use a casual tone with emojis and slang",
+      "Avoid using any professional takeaways or data points"
+    ],
+    "correctIndex": 1,
+    "explanation": "LinkedIn posts should start with a personal observation, include a data point or result, and end with a question to invite engagement."
+  },
+  {
+    "question": "What is the recommended format for an Instagram carousel?",
+    "options": [
+      "A single image with text overlay",
+      "Up to 10 slides with a hook on the first slide and a CTA on the last",
+      "A video with no text",
+      "A series of unrelated images with no clear structure"
+    ],
+    "correctIndex": 1,
+    "explanation": "An Instagram carousel should have up to 10 slides, with the first slide as a hook and the last as a CTA, ensuring each slide delivers one clear idea."
+  }
+]

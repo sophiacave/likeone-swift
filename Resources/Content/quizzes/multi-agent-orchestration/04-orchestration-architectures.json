@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which orchestration architecture is best suited for a well-defined workflow with fewer than 5-6 agents?",
+    "options": [
+      "Pipeline",
+      "Swarm",
+      "Hub-Spoke",
+      "None of the above"
+    ],
+    "correctIndex": 2,
+    "explanation": "Hub-Spoke is ideal for well-defined workflows with a small number of agents because it provides clear control and a single point of coordination."
+  },
+  {
+    "question": "What is a key weakness of the Hub-Spoke architecture?",
+    "options": [
+      "It lacks flexibility for branching logic",
+      "It is difficult to scale",
+      "It is a single point of failure",
+      "It cannot handle parallel tasks"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Hub-Spoke architecture has a single orchestrator, making it a single point of failure if it fails, the entire system can break down."
+  },
+  {
+    "question": "Which architecture is best for a linear workflow such as research \u2192 write \u2192 edit \u2192 publish?",
+    "options": [
+      "Swarm",
+      "Hub-Spoke",
+      "Pipeline",
+      "None of the above"
+    ],
+    "correctIndex": 2,
+    "explanation": "Pipeline architecture is designed for linear workflows where each agent processes the input and passes it to the next agent in sequence."
+  },
+  {
+    "question": "What is a key strength of the Swarm architecture?",
+    "options": [
+      "It provides a clear chain of command",
+      "It is easy to debug",
+      "It is highly resilient and scales naturally",
+      "It is simple and predictable"
+    ],
+    "correctIndex": 2,
+    "explanation": "Swarm architecture is highly resilient and scales naturally because agents operate independently and can adapt to changes in the system."
+  },
+  {
+    "question": "Which architecture is best suited for dynamic, unpredictable workflows where agents can self-organize?",
+    "options": [
+      "Pipeline",
+      "Hub-Spoke",
+      "Swarm",
+      "None of the above"
+    ],
+    "correctIndex": 2,
+    "explanation": "Swarm architecture is best for dynamic and unpredictable workflows because agents can self-organize and adapt without a central controller."
+  }
+]

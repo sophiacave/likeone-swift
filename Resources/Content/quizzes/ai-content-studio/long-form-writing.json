@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary purpose of the outline-first method in writing?",
+    "options": [
+      "To make the writing process faster",
+      "To ensure the content is generic and bland",
+      "To structure the content for both scanners and deep readers",
+      "To replace the writer's voice with AI"
+    ],
+    "correctIndex": 2,
+    "explanation": "The outline-first method structures content in a way that is easy for both scanners and deep readers to engage with, ensuring clarity and flow."
+  },
+  {
+    "question": "Which step of the Layered Writing Method involves using AI to expand on rough draft sections?",
+    "options": [
+      "Layer 1: Rough Draft",
+      "Layer 2: AI Expansion",
+      "Layer 3: Edit Pass",
+      "Brainstorming Phase"
+    ],
+    "correctIndex": 1,
+    "explanation": "Layer 2 is specifically for using AI to expand rough draft sections with more detail and examples while preserving the writer's voice."
+  },
+  {
+    "question": "What is the main goal of the rough draft in the Layered Writing Method?",
+    "options": [
+      "To create a polished final piece",
+      "To get the writer's voice, stories, and ideas down quickly",
+      "To let AI generate the entire post",
+      "To format the content for publishing"
+    ],
+    "correctIndex": 1,
+    "explanation": "The rough draft is meant to capture the writer's unique voice and ideas quickly, without worrying about perfection."
+  },
+  {
+    "question": "Which formatting technique is recommended to make long-form content scannable?",
+    "options": [
+      "Using long paragraphs with no subheadings",
+      "Using subheadings every 200-300 words",
+      "Avoiding bold text for key phrases",
+      "Writing in a highly formal tone"
+    ],
+    "correctIndex": 1,
+    "explanation": "Using subheadings every 200-300 words helps make content scannable and rewards both scanners and deep readers."
+  },
+  {
+    "question": "What is the role of AI in the editing pass of the Layered Writing Method?",
+    "options": [
+      "To replace the writer's voice entirely",
+      "To cut repetition and strengthen transitions",
+      "To generate the entire draft from scratch",
+      "To brainstorm new ideas for the writer"
+    ],
+    "correctIndex": 1,
+    "explanation": "In the edit pass, AI is used to improve clarity, flow, and impact by cutting repetition and strengthening transitions."
+  }
+]

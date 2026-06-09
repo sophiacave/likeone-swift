@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary purpose of a quality gate in a content pipeline?",
+    "options": [
+      "To speed up the content creation process",
+      "To ensure content meets technical, brand, and strategic standards before moving forward",
+      "To replace human editors entirely",
+      "To increase the number of content pieces produced"
+    ],
+    "correctIndex": 1,
+    "explanation": "Quality gates ensure content meets technical, brand, and strategic standards before moving forward, preventing low-quality or inconsistent content from being published."
+  },
+  {
+    "question": "Which layer of the quality gate checks for banned words and required brand elements?",
+    "options": [
+      "Layer 1: Technical Quality",
+      "Layer 2: Brand Consistency",
+      "Layer 3: Strategic Alignment",
+      "All layers equally"
+    ],
+    "correctIndex": 1,
+    "explanation": "Layer 2: Brand Consistency checks for banned words, required brand elements, and tone alignment with the brand's voice document."
+  },
+  {
+    "question": "What happens when content fails a quality gate?",
+    "options": [
+      "It is automatically published with a warning",
+      "It is discarded and not revisited",
+      "It returns to the relevant pipeline step for revision",
+      "It is sent directly to a human editor for review"
+    ],
+    "correctIndex": 2,
+    "explanation": "When content fails a quality gate, it returns to the relevant pipeline step for revision with specific feedback, ensuring continuous improvement."
+  },
+  {
+    "question": "Which of the following is NOT a part of the strategic alignment layer of the quality gate?",
+    "options": [
+      "Checking if the content targets the correct audience segment",
+      "Ensuring the CTA is appropriate for the reader's funnel stage",
+      "Verifying the content's readability score",
+      "Confirming the content maps to the correct pillar and cluster"
+    ],
+    "correctIndex": 2,
+    "explanation": "Verifying the content's readability score is part of the technical quality layer, not the strategic alignment layer."
+  },
+  {
+    "question": "What is the minimum score required for the brand layer in the quality gate scorecard?",
+    "options": [
+      "4/5",
+      "5/5",
+      "3/5",
+      "2/5"
+    ],
+    "correctIndex": 1,
+    "explanation": "The brand layer requires a minimum score of 5/5 to pass, ensuring strict adherence to brand guidelines."
+  }
+]

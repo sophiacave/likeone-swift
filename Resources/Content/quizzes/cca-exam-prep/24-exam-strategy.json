@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the passing score for the CCA Foundations exam?",
+    "options": [
+      "720/1000",
+      "600/1000",
+      "700/1000",
+      "750/1000"
+    ],
+    "correctIndex": 0,
+    "explanation": "The passing score for the CCA Foundations exam is 720 out of 1000, which is approximately 72%."
+  },
+  {
+    "question": "Which question type requires identifying what is wrong with a given design?",
+    "options": [
+      "Type A",
+      "Type B",
+      "Type C",
+      "Type D"
+    ],
+    "correctIndex": 2,
+    "explanation": "Type C questions are designed to test the ability to identify anti-patterns or what is wrong with a given design."
+  },
+  {
+    "question": "What is the recommended strategy for the first pass during the exam?",
+    "options": [
+      "Answer all questions, even if unsure",
+      "Skip all questions and return later",
+      "Answer only the easiest questions and mark the rest for review",
+      "Focus on the most difficult questions first"
+    ],
+    "correctIndex": 2,
+    "explanation": "During the first pass, the recommended strategy is to answer all questions you're confident about and mark the rest for review."
+  },
+  {
+    "question": "Which of the following is a common wrong answer pattern?",
+    "options": [
+      "Too vague",
+      "Too specific",
+      "Too detailed",
+      "Too short"
+    ],
+    "correctIndex": 0,
+    "explanation": "A common wrong answer pattern is being too vague, such as 'Use best practices,' which lacks actionable detail."
+  },
+  {
+    "question": "What is the primary purpose of a confirmation barrier in tool design?",
+    "options": [
+      "To increase the number of parameters required",
+      "To prevent accidental execution of destructive operations",
+      "To improve the performance of the tool",
+      "To reduce the need for input validation"
+    ],
+    "correctIndex": 1,
+    "explanation": "Confirmation barriers are used to prevent accidental execution of destructive operations, ensuring user intent is confirmed before proceeding."
+  }
+]

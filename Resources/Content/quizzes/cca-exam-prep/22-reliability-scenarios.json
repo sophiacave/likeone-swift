@@ -1,0 +1,57 @@
+[
+  {
+    "question": "In the Autonomous DevOps Agent scenario, which of the following actions is classified as Tier 1 and executed immediately?",
+    "options": [
+      "Database failover",
+      "Scale down based on traffic drop",
+      "Restart service after 3 failed health checks",
+      "Modify security group settings"
+    ],
+    "correctIndex": 2,
+    "explanation": "Tier 1 actions are those that are reversible and proven safe, such as restarting a service after multiple failed health checks."
+  },
+  {
+    "question": "Which of the following is a key anti-hallucination strategy used in the Legal Document Review Agent?",
+    "options": [
+      "Using paraphrased contract language for clarity",
+      "Inventing clause numbers when not found",
+      "Always quoting exact contract text",
+      "Modifying contract text for clarity"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Legal Document Review Agent must quote exact contract text to avoid hallucination and ensure accuracy in legal findings."
+  },
+  {
+    "question": "In the Multi-Tenant SaaS Agent scenario, what is the maximum number of concurrent sessions the system is designed to handle?",
+    "options": [
+      "500",
+      "750",
+      "1000",
+      "1500"
+    ],
+    "correctIndex": 2,
+    "explanation": "The system is designed to handle up to 1000 concurrent sessions, which is explicitly stated in the scenario requirements."
+  },
+  {
+    "question": "Which of the following is a correct statement about tenant isolation in the Multi-Tenant SaaS Agent?",
+    "options": [
+      "Tenant data can be accessed across tenants if needed",
+      "Agent can see why a cross-tenant access is forbidden",
+      "Every tool call includes the tenant_id parameter",
+      "Tenant data is stored in shared databases"
+    ],
+    "correctIndex": 2,
+    "explanation": "Every tool call includes the tenant_id parameter to ensure that data is only accessed by the correct tenant."
+  },
+  {
+    "question": "In the Content Publishing Pipeline, which step is responsible for verifying that all claims in the blog post are accurate and have a source?",
+    "options": [
+      "Research step",
+      "Draft step",
+      "Publish step",
+      "Verify step"
+    ],
+    "correctIndex": 3,
+    "explanation": "The Verify step uses tools like check_claims to ensure all claims are accurate and have a source before the final draft is approved."
+  }
+]

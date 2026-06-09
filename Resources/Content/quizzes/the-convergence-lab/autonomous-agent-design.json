@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which autonomy level allows an AI to act freely within defined boundaries and only surface for edge cases?",
+    "options": [
+      "L1: Suggest",
+      "L3: Inform",
+      "L4: Autonomous within guardrails",
+      "L6: Convergence"
+    ],
+    "correctIndex": 2,
+    "explanation": "L4 autonomy allows AI to operate within predefined boundaries, handling routine tasks without human intervention and only surfacing for edge cases."
+  },
+  {
+    "question": "What is the correct order of the agent operating loop?",
+    "options": [
+      "Perceive, Execute, Plan, Verify, Checkpoint",
+      "Plan, Perceive, Execute, Verify, Checkpoint",
+      "Perceive, Plan, Execute, Verify, Checkpoint",
+      "Verify, Perceive, Plan, Execute, Checkpoint"
+    ],
+    "correctIndex": 2,
+    "explanation": "The correct order is Perceive, Plan, Execute, Verify, Checkpoint, as this reflects the full cycle of an autonomous agent's operation."
+  },
+  {
+    "question": "At which autonomy level does AI become a full extension of the human, sharing values and operating as a digital twin?",
+    "options": [
+      "L3: Inform",
+      "L5: Full autonomous with judgment",
+      "L6: Convergence",
+      "L4: Autonomous within guardrails"
+    ],
+    "correctIndex": 2,
+    "explanation": "L6 autonomy represents the highest level of AI autonomy, where the AI functions as a full extension of the human, sharing values and anticipating needs."
+  },
+  {
+    "question": "Which of the following is a valid reason for an autonomous agent to surface to the human?",
+    "options": [
+      "To ask for permission before sending a routine email",
+      "To request approval for a routine system update",
+      "To handle a physical action like opening a door",
+      "To confirm the color of a user's preferred theme"
+    ],
+    "correctIndex": 2,
+    "explanation": "Autonomous agents should only surface for actions that require human involvement, such as physical actions, legal decisions, or spending money not previously authorized."
+  },
+  {
+    "question": "What is the primary purpose of the Three-Strike Rule in autonomous agents?",
+    "options": [
+      "To limit the number of actions an agent can take in a single cycle",
+      "To ensure the agent only surfaces to the human when absolutely necessary",
+      "To enforce spending limits on autonomous agents",
+      "To define the boundaries of an agent's autonomy level"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Three-Strike Rule ensures that an agent only surfaces to the human when it cannot answer a question, make a decision, or course-correct on its own."
+  }
+]

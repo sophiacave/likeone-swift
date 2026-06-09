@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which component of the context window is the biggest consumer of tokens in most applications?",
+    "options": [
+      "System prompt",
+      "Conversation history",
+      "Tool results",
+      "Output tokens"
+    ],
+    "correctIndex": 2,
+    "explanation": "Tool results are typically the largest consumers of tokens, as a single file read can consume 2-10K tokens."
+  },
+  {
+    "question": "What happens when the context window is near its limit in Claude?",
+    "options": [
+      "Claude automatically compresses earlier messages",
+      "Claude stops processing new input",
+      "Claude increases the token limit",
+      "Claude ignores the system prompt"
+    ],
+    "correctIndex": 0,
+    "explanation": "When the context window is near its limit, Claude automatically compresses earlier messages, which can lead to the loss of critical information."
+  },
+  {
+    "question": "Which strategy is best for managing large PR diffs that exceed the token budget?",
+    "options": [
+      "Load the entire diff at once",
+      "Summarize the diff first and then review per-file",
+      "Ignore the diff and proceed",
+      "Increase the token limit"
+    ],
+    "correctIndex": 1,
+    "explanation": "Summarizing the diff first and then reviewing per-file is an effective strategy to manage large PR diffs within the token budget."
+  },
+  {
+    "question": "Which optimization strategy involves loading information only when it is needed?",
+    "options": [
+      "Context Rotation",
+      "Chunked Processing",
+      "Lazy Loading",
+      "Summarize Don't Stuff"
+    ],
+    "correctIndex": 2,
+    "explanation": "Lazy Loading is the strategy that involves loading information only when it is needed, which helps in conserving token budget."
+  },
+  {
+    "question": "What is a common mistake when using tool results in the context window?",
+    "options": [
+      "Limiting results to only the most relevant ones",
+      "Reading files only when needed",
+      "Returning too many search results",
+      "Using summaries instead of full content"
+    ],
+    "correctIndex": 2,
+    "explanation": "Returning too many search results is a common mistake, as it can waste a large portion of the token budget."
+  }
+]

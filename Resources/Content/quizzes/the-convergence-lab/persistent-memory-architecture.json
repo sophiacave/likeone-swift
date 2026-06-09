@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which of the following best describes working memory in AI systems?",
+    "options": [
+      "A permanent storage of facts and rules",
+      "A temporary context window that disappears when the session ends",
+      "A long-term storage of past events and decisions",
+      "A system for embedding and searching by meaning"
+    ],
+    "correctIndex": 1,
+    "explanation": "Working memory is the current session context, which is fast but ephemeral and disappears when the session ends."
+  },
+  {
+    "question": "What is the primary purpose of semantic memory in AI systems?",
+    "options": [
+      "To store specific events and decisions with timestamps",
+      "To provide fast, temporary context for the current session",
+      "To store distilled knowledge such as facts, preferences, and rules",
+      "To enable vector-based search for meaning-based retrieval"
+    ],
+    "correctIndex": 2,
+    "explanation": "Semantic memory stores distilled knowledge such as facts, preferences, and rules, which are not tied to a specific moment but are always true."
+  },
+  {
+    "question": "Which of the following is a correct implementation strategy for semantic memory?",
+    "options": [
+      "Storing all rules in a single JSON blob under system.config",
+      "Using a key-value store with hierarchical categories",
+      "Embedding every interaction as a vector without categorization",
+      "Storing session state in a separate database without integration"
+    ],
+    "correctIndex": 1,
+    "explanation": "A key-value store with hierarchical categories is a correct strategy for organizing semantic memory for efficient retrieval."
+  },
+  {
+    "question": "What is a common anti-pattern when designing AI memory systems?",
+    "options": [
+      "Using vector embeddings for semantic search",
+      "Storing all rules in a single key",
+      "Using hierarchical categories for keys",
+      "Implementing tiered loading for memory retrieval"
+    ],
+    "correctIndex": 1,
+    "explanation": "Storing all rules in a single key is a common anti-pattern because it makes retrieval inefficient and difficult."
+  },
+  {
+    "question": "Which of the following is a valid strategy for scaling memory retrieval in AI systems?",
+    "options": [
+      "Storing all data in a flat namespace without categorization",
+      "Using semantic search to find the most relevant memories",
+      "Never reading from memory to avoid performance issues",
+      "Disabling vector embeddings to reduce complexity"
+    ],
+    "correctIndex": 1,
+    "explanation": "Using semantic search to find the most relevant memories is a valid strategy for scaling memory retrieval by meaning, not by key names."
+  }
+]

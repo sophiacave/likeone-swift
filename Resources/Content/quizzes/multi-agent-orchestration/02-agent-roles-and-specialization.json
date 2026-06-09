@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary purpose of an agent's job description?",
+    "options": [
+      "To increase the agent's autonomy",
+      "To define the agent's role, boundaries, and expertise",
+      "To allow the agent to perform multiple tasks simultaneously",
+      "To make the agent more flexible and adaptable"
+    ],
+    "correctIndex": 1,
+    "explanation": "A clear job description ensures the agent knows its responsibilities and limitations, leading to consistent and accurate results."
+  },
+  {
+    "question": "Which agent archetype is responsible for taking actions like running code or calling APIs?",
+    "options": [
+      "Researcher",
+      "Executor",
+      "Critic",
+      "Orchestrator"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Executor agent is responsible for performing actions in the real world, such as running code or interacting with external systems."
+  },
+  {
+    "question": "What is the main function of a Router Agent?",
+    "options": [
+      "To generate content",
+      "To evaluate the output of other agents",
+      "To classify incoming requests and route them to the appropriate agent",
+      "To manage the overall workflow of a project"
+    ],
+    "correctIndex": 2,
+    "explanation": "A Router Agent's main role is to classify incoming tasks and direct them to the correct specialist agent without performing the work itself."
+  },
+  {
+    "question": "Which of the following is a correct constraint for a Researcher Agent?",
+    "options": [
+      "It may make strategic recommendations based on findings",
+      "It should never draw conclusions or make recommendations",
+      "It is responsible for writing the final output",
+      "It should always include marketing language in its findings"
+    ],
+    "correctIndex": 1,
+    "explanation": "A Researcher Agent is constrained to only gather and present facts without making conclusions or recommendations to avoid bias."
+  },
+  {
+    "question": "What is the role of a Monitor Agent in a multi-agent system?",
+    "options": [
+      "To execute code and manage external systems",
+      "To review and evaluate the output of other agents",
+      "To continuously watch for anomalies and trigger alerts",
+      "To coordinate the workflow between different agents"
+    ],
+    "correctIndex": 2,
+    "explanation": "A Monitor Agent acts as an early warning system by detecting anomalies or threshold breaches and reporting them without attempting to resolve the issues."
+  }
+]

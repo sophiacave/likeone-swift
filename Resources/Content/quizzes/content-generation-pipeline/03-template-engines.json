@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary purpose of a template engine in prompt creation?",
+    "options": [
+      "To replace the need for human input entirely",
+      "To store and reuse proven prompt patterns with variable slots",
+      "To generate completely new content without any user input",
+      "To reduce the need for AI models"
+    ],
+    "correctIndex": 1,
+    "explanation": "A template engine stores and reuses proven prompt patterns with variable slots, ensuring consistency and quality across outputs."
+  },
+  {
+    "question": "Which of the following is NOT a layer of a strong content template?",
+    "options": [
+      "Role",
+      "Context",
+      "Variables",
+      "Feedback"
+    ],
+    "correctIndex": 3,
+    "explanation": "Feedback is not one of the four layers of a strong content template. The four layers are Role, Context, Variables, and Output spec."
+  },
+  {
+    "question": "What is the function of a 'Transformer Template'?",
+    "options": [
+      "To generate a full first draft from a topic",
+      "To reshape existing content for a different format or audience",
+      "To evaluate a draft against specific criteria",
+      "To combine multiple content atoms into a larger piece"
+    ],
+    "correctIndex": 1,
+    "explanation": "A Transformer Template reshapes existing content for a different format or audience, such as converting a blog post into an email."
+  },
+  {
+    "question": "What is the key benefit of using template composition?",
+    "options": [
+      "It allows for faster content generation",
+      "It enables sub-templates to be independently testable and improvable",
+      "It eliminates the need for any variables",
+      "It reduces the need for user input"
+    ],
+    "correctIndex": 1,
+    "explanation": "Template composition allows sub-templates to be independently testable and improvable, making the overall system more efficient and scalable."
+  },
+  {
+    "question": "What is the correct format for defining variables in a template?",
+    "options": [
+      "[VARIABLE]",
+      "{{VARIABLE}}",
+      "<VARIABLE>",
+      "VARIABLE()"
+    ],
+    "correctIndex": 1,
+    "explanation": "Variables in a template are wrapped in double curly brackets, {{VARIABLE}}, to clearly indicate where content should be inserted."
+  }
+]

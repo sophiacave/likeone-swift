@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which of the following HTTP status codes should NOT be retried according to the lesson?",
+    "options": [
+      "503",
+      "429",
+      "400",
+      "500"
+    ],
+    "correctIndex": 2,
+    "explanation": "400 status codes indicate bad requests and should not be retried because the issue is with the request itself, not a temporary failure."
+  },
+  {
+    "question": "What is the primary purpose of adding jitter to a retry pattern?",
+    "options": [
+      "To increase the number of retries",
+      "To reduce server load by spreading out retries",
+      "To increase the delay between retries",
+      "To ensure all retries happen at the same time"
+    ],
+    "correctIndex": 1,
+    "explanation": "Jitter helps prevent the 'thundering herd' problem by spreading out retries, reducing server load during failures."
+  },
+  {
+    "question": "Which of the following is a valid fallback strategy when an external API is unavailable?",
+    "options": [
+      "Ignore the failure and continue processing",
+      "Use cached data and inform the user",
+      "Retry the API call indefinitely",
+      "Log the error and terminate the task"
+    ],
+    "correctIndex": 1,
+    "explanation": "Using cached data and informing the user is a valid fallback strategy that maintains functionality while acknowledging the limitation."
+  },
+  {
+    "question": "When should a circuit breaker be used according to the lesson?",
+    "options": [
+      "When the agent needs to process large files",
+      "When the agent needs to perform complex calculations",
+      "When calling external APIs that may go down",
+      "When the agent is running low on memory"
+    ],
+    "correctIndex": 2,
+    "explanation": "Circuit breakers are recommended when calling external APIs that may go down to prevent wasted time and ensure agent availability."
+  },
+  {
+    "question": "Which of the following is a key benefit of guardrails in agent design?",
+    "options": [
+      "They increase the speed of tool calls",
+      "They prevent agents from exceeding predefined limits",
+      "They eliminate the need for fallback strategies",
+      "They improve the accuracy of model outputs"
+    ],
+    "correctIndex": 1,
+    "explanation": "Guardrails help prevent agents from exceeding predefined limits such as maximum tool calls, ensuring safety, cost control, and scope enforcement."
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the main advantage of using a pipeline approach over a single prompt?",
+    "options": [
+      "It reduces the need for human oversight",
+      "It allows for more creativity in each step",
+      "It ensures consistent and scalable results",
+      "It eliminates the need for AI altogether"
+    ],
+    "correctIndex": 2,
+    "explanation": "A pipeline approach ensures consistent and scalable results by breaking down the content creation process into repeatable, structured steps."
+  },
+  {
+    "question": "Which of the following best describes the 'transform' layer in a content pipeline?",
+    "options": [
+      "The final output ready for publishing",
+      "The raw material such as topics and data",
+      "The AI steps that shape and refine the content",
+      "The feedback loop that sends failed content back for revision"
+    ],
+    "correctIndex": 2,
+    "explanation": "The transform layer consists of AI steps that shape, refine, and format the raw material into structured content."
+  },
+  {
+    "question": "Why is it beneficial to break a content task into discrete steps with specific prompts?",
+    "options": [
+      "It increases the number of AI models used",
+      "It allows for better control and higher quality output",
+      "It reduces the time needed to complete the task",
+      "It eliminates the need for human input"
+    ],
+    "correctIndex": 1,
+    "explanation": "Breaking a task into discrete steps with specific prompts allows for better control and higher quality output by focusing each step on a narrow, well-defined goal."
+  },
+  {
+    "question": "What is the purpose of the 'review' stage in a content pipeline?",
+    "options": [
+      "To generate new content ideas",
+      "To format the content for publishing",
+      "To ensure the output meets quality standards",
+      "To collect data for future pipeline runs"
+    ],
+    "correctIndex": 2,
+    "explanation": "The review stage ensures the output meets quality standards by checking for readability, brand voice, factual accuracy, and strategic alignment."
+  },
+  {
+    "question": "Which of the following is a key component of the 'intake' stage in a content pipeline?",
+    "options": [
+      "Final formatting of content",
+      "AI-generated content drafts",
+      "Raw inputs such as topics and data",
+      "Quality checks and feedback"
+    ],
+    "correctIndex": 2,
+    "explanation": "The intake stage involves raw inputs such as topics, data, and audience signals, which are standardized for processing by the pipeline."
+  }
+]

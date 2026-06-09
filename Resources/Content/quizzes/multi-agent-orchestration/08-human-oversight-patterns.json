@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which oversight pattern requires humans to approve every action before it is executed?",
+    "options": [
+      "Human-in-the-Loop",
+      "Human-on-the-Loop",
+      "Exception-Based Oversight",
+      "Post-Hoc Review"
+    ],
+    "correctIndex": 0,
+    "explanation": "Human-in-the-Loop requires explicit human approval for every action, ensuring no action is taken without permission."
+  },
+  {
+    "question": "Which oversight pattern allows agents to act autonomously but enables humans to intervene in real-time if needed?",
+    "options": [
+      "Human-in-the-Loop",
+      "Human-on-the-Loop",
+      "Exception-Based Oversight",
+      "Post-Hoc Review"
+    ],
+    "correctIndex": 1,
+    "explanation": "Human-on-the-Loop allows agents to operate independently but permits human intervention in real-time, similar to a self-driving car with a human driver."
+  },
+  {
+    "question": "Which oversight pattern only involves humans when an agent's action falls outside of predefined parameters?",
+    "options": [
+      "Human-in-the-Loop",
+      "Human-on-the-Loop",
+      "Exception-Based Oversight",
+      "Post-Hoc Review"
+    ],
+    "correctIndex": 2,
+    "explanation": "Exception-Based Oversight only involves humans when unusual or out-of-bound actions occur, allowing normal operations to proceed unimpeded."
+  },
+  {
+    "question": "Which oversight level is appropriate for actions that are irreversible, such as deleting data or sending legal documents?",
+    "options": [
+      "Level 0",
+      "Level 1",
+      "Level 2",
+      "Level 3"
+    ],
+    "correctIndex": 0,
+    "explanation": "Level 0 requires full human control for irreversible actions to prevent unintended consequences."
+  },
+  {
+    "question": "Which oversight level is appropriate for low-stakes, high-volume tasks with robust error handling and self-correction mechanisms?",
+    "options": [
+      "Level 0",
+      "Level 1",
+      "Level 3",
+      "Level 4"
+    ],
+    "correctIndex": 3,
+    "explanation": "Level 4 is reserved for fully autonomous systems where tasks are low-risk and errors can be handled internally without human intervention."
+  }
+]

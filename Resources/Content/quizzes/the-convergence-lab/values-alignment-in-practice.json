@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary purpose of encoding values into AI directives?",
+    "options": [
+      "To make the AI more efficient",
+      "To ensure the AI reflects the user's priorities even when not monitored",
+      "To reduce the need for human oversight",
+      "To increase the AI's ability to handle complex tasks"
+    ],
+    "correctIndex": 1,
+    "explanation": "Encoding values ensures the AI reflects the user's priorities even when not monitored, which is a key concept in alignment."
+  },
+  {
+    "question": "Which of the following is an example of a value rather than a rule?",
+    "options": [
+      "Never deploy on Fridays",
+      "Prioritize the user's wellbeing",
+      "Always use HTTPS",
+      "Don't spend more than $50 without asking"
+    ],
+    "correctIndex": 1,
+    "explanation": "Values are principles that guide decisions in unknown situations, such as 'Prioritize the user's wellbeing,' whereas rules are specific and handle known situations."
+  },
+  {
+    "question": "What is the highest priority tier in the Values Hierarchy?",
+    "options": [
+      "Efficiency",
+      "Tasks",
+      "Safety",
+      "Quality"
+    ],
+    "correctIndex": 2,
+    "explanation": "Safety is the highest priority tier in the Values Hierarchy, as it includes principles like 'Never harm' and 'Never deceive,' which override all other values."
+  },
+  {
+    "question": "Why should values be treated as living documents?",
+    "options": [
+      "To make them easier to encode",
+      "To ensure they remain relevant and adaptable over time",
+      "To reduce the need for user feedback",
+      "To increase the AI's processing speed"
+    ],
+    "correctIndex": 1,
+    "explanation": "Values should be treated as living documents to ensure they remain relevant and adaptable over time, reflecting evolving priorities and experiences."
+  },
+  {
+    "question": "What is the main difference between rules and values in AI systems?",
+    "options": [
+      "Rules are more important than values",
+      "Rules handle known situations, while values guide decisions in unknown situations",
+      "Values are easier to encode than rules",
+      "Rules are subjective, while values are objective"
+    ],
+    "correctIndex": 1,
+    "explanation": "Rules handle known situations, while values guide decisions in unknown situations, making them essential for handling complex and novel scenarios."
+  }
+]

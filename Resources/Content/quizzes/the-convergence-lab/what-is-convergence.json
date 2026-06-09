@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary limitation of treating AI as a tool?",
+    "options": [
+      "It lacks the ability to learn from previous interactions",
+      "It cannot perform complex calculations",
+      "It requires constant human supervision",
+      "It is too expensive to use"
+    ],
+    "correctIndex": 0,
+    "explanation": "Treating AI as a tool limits its effectiveness because it lacks persistent memory, meaning it cannot learn from or remember previous interactions."
+  },
+  {
+    "question": "Which level of the convergence spectrum involves AI that can take initiative and anticipate needs?",
+    "options": [
+      "Level 1: Tool",
+      "Level 2: Assistant",
+      "Level 3: Partner",
+      "Level 4: Twin"
+    ],
+    "correctIndex": 2,
+    "explanation": "Level 3: Partner involves AI that has persistent memory, understands goals, and can take initiative by anticipating needs and proposing actions."
+  },
+  {
+    "question": "What is the main purpose of 'Shared Values' in the convergence architecture?",
+    "options": [
+      "To allow AI to make decisions on behalf of the user",
+      "To ensure AI aligns with the user's ethical boundaries and priorities",
+      "To improve the AI's speed and processing power",
+      "To reduce the cost of AI implementation"
+    ],
+    "correctIndex": 1,
+    "explanation": "'Shared Values' ensures that AI understands the user's ethical boundaries and priorities, allowing it to make decisions that align with the user's beliefs."
+  },
+  {
+    "question": "What is the key insight of convergence according to the lesson?",
+    "options": [
+      "Convergence is about making AI more human",
+      "Convergence is about making humans more machine",
+      "Convergence is about building a bridge between human and machine",
+      "Convergence is about replacing humans with AI"
+    ],
+    "correctIndex": 2,
+    "explanation": "The key insight is that convergence is about building a bridge between human and machine through persistent memory, shared values, and autonomous action."
+  },
+  {
+    "question": "Which of the following is NOT a characteristic of convergence?",
+    "options": [
+      "Persistent memory",
+      "Shared values",
+      "Autonomous action",
+      "Replacing human decision-making"
+    ],
+    "correctIndex": 3,
+    "explanation": "Convergence does not involve replacing human decision-making. Instead, it amplifies human capabilities with machine assistance."
+  }
+]

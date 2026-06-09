@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which of the following is a key reason why traditional productivity tools fail people who need them most?",
+    "options": [
+      "They are too expensive",
+      "They require strong executive function to use effectively",
+      "They are not compatible with mobile devices",
+      "They are only available in certain countries"
+    ],
+    "correctIndex": 1,
+    "explanation": "Traditional productivity tools assume users have the executive function to manage them, which is exactly what people with ADHD, chronic illness, or mental health challenges often lack."
+  },
+  {
+    "question": "What is the primary role of the AI in the 'Work' domain of a life OS?",
+    "options": [
+      "To replace human decision-making entirely",
+      "To handle operational tasks and free up the user for creative decisions",
+      "To monitor user behavior and report back daily",
+      "To generate income on behalf of the user"
+    ],
+    "correctIndex": 1,
+    "explanation": "In the 'Work' domain, the AI manages operational tasks like email triage and meeting prep, allowing the user to focus on creative and strategic decisions."
+  },
+  {
+    "question": "Which of the following is NOT a function of the 'Health' domain in a life OS?",
+    "options": [
+      "Medication reminders",
+      "Appointment scheduling",
+      "Diagnosing medical conditions",
+      "Habit tracking"
+    ],
+    "correctIndex": 2,
+    "explanation": "The 'Health' domain supports users with reminders and tracking, but it is not designed to diagnose medical conditions, which requires professional healthcare input."
+  },
+  {
+    "question": "What is the purpose of the 'Daily Loop' in a life OS?",
+    "options": [
+      "To allow users to customize their AI's behavior",
+      "To run a daily cycle of tasks automatically without user input",
+      "To collect user feedback for AI improvement",
+      "To generate income through automation"
+    ],
+    "correctIndex": 1,
+    "explanation": "The 'Daily Loop' refers to the automatic cycle of tasks handled by the AI throughout the day, such as reviewing the calendar, monitoring inboxes, and summarizing the day's events."
+  },
+  {
+    "question": "Which of the following domains should always be supervised by a human and never fully autonomous?",
+    "options": [
+      "Scheduling meetings",
+      "Paying bills",
+      "Generating reports",
+      "Making financial transfers above a certain threshold"
+    ],
+    "correctIndex": 3,
+    "explanation": "High-risk domains like financial transfers above a certain threshold require human supervision due to the serious consequences of errors."
+  }
+]

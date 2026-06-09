@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary purpose of audience segmentation in content pipelines?",
+    "options": [
+      "To divide your audience into clearly defined profiles with documented differences in priorities, vocabulary, and experience level",
+      "To create a single, generic message for all audiences",
+      "To reduce the number of content pieces produced",
+      "To eliminate the need for AI in content creation"
+    ],
+    "correctIndex": 0,
+    "explanation": "Audience segmentation allows for personalized content by dividing the audience into distinct groups with specific characteristics, ensuring the message resonates with each segment."
+  },
+  {
+    "question": "Which of the following is an example of a variable injection in personalized content?",
+    "options": [
+      "Injecting {{PAIN_POINT}} and {{ASPIRATION}} into a template based on the audience segment",
+      "Using the same greeting for all recipients",
+      "Repeating the same example for all segments",
+      "Avoiding any customization to maintain brand consistency"
+    ],
+    "correctIndex": 0,
+    "explanation": "Variable injection involves using placeholders like {{PAIN_POINT}} and {{ASPIRATION}} to insert segment-specific values, enabling tailored content for each group."
+  },
+  {
+    "question": "What is the ideal number of audience segments for effective personalization?",
+    "options": [
+      "Three to five segments",
+      "One segment only",
+      "Ten or more segments",
+      "As many as possible"
+    ],
+    "correctIndex": 0,
+    "explanation": "Three to five segments is considered the sweet spot, as it allows for enough variety to feel personal while remaining manageable for content creation."
+  },
+  {
+    "question": "What is the role of a segment profile document in AI content pipelines?",
+    "options": [
+      "It serves as a lookup table with segment-specific values for variables used in templates",
+      "It is used to store generic content for all segments",
+      "It is a marketing document for internal use only",
+      "It is a tool for analyzing audience demographics"
+    ],
+    "correctIndex": 0,
+    "explanation": "A segment profile document provides the AI with specific data for each segment, allowing it to inject personalized variables into content templates."
+  },
+  {
+    "question": "What is the key difference between tone shifting and simple personalization techniques like mail merge?",
+    "options": [
+      "Tone shifting adjusts complexity, vocabulary, and examples while maintaining brand voice, whereas mail merge only inserts names into templates",
+      "Tone shifting is used for marketing emails, while mail merge is for internal communication",
+      "Tone shifting is only used for B2B audiences, while mail merge is for B2C",
+      "Tone shifting is a manual process, while mail merge is automated"
+    ],
+    "correctIndex": 0,
+    "explanation": "Tone shifting involves deeper personalization by adjusting language and examples while preserving brand voice, unlike mail merge, which only inserts basic placeholders like names."
+  }
+]

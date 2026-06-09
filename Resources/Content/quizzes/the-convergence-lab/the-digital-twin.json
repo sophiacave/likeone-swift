@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the key difference between an AI assistant and a digital twin?",
+    "options": [
+      "An assistant answers your questions. A twin continues your work. The difference is identity \u2014 the twin knows not just what to do, but how you would do it.",
+      "An assistant is more advanced than a twin in terms of learning capabilities.",
+      "A twin is only useful for simple tasks, while an assistant can handle complex ones.",
+      "An assistant is more expensive to maintain than a twin."
+    ],
+    "correctIndex": 0,
+    "explanation": "The key difference is identity \u2014 a digital twin knows how you would do things, not just what to do."
+  },
+  {
+    "question": "What are the three components of the identity layer?",
+    "options": [
+      "1) Voice \u2014 how you write (sentence length, formality, vocabulary). 2) Judgment \u2014 how you decide (speed vs. perfection, when to push back). 3) Values \u2014 what you care about (the deeper stuff beyond professional priorities).",
+      "1) Voice \u2014 how you speak. 2) Judgment \u2014 how you eat. 3) Values \u2014 what you like in food.",
+      "1) Voice \u2014 how you sing. 2) Judgment \u2014 how you dance. 3) Values \u2014 what you wear.",
+      "1) Voice \u2014 how you think. 2) Judgment \u2014 how you feel. 3) Values \u2014 what you believe."
+    ],
+    "correctIndex": 0,
+    "explanation": "The identity layer consists of voice, judgment, and values \u2014 all aspects that define how you think and act."
+  },
+  {
+    "question": "What is the handoff protocol?",
+    "options": [
+      "Before ending: write active work, next steps, and blockers to the brain. On starting: read the brain immediately, resume where the last session left off. No greeting, no asking. Sessions become invisible seams.",
+      "Before ending: take a break. On starting: ask the user what they want to do next.",
+      "Before ending: delete all session data. On starting: start from scratch.",
+      "Before ending: save to a file. On starting: load from the file."
+    ],
+    "correctIndex": 0,
+    "explanation": "The handoff protocol ensures continuity by writing session data to the brain and resuming from where the last session left off."
+  },
+  {
+    "question": "How does a digital twin improve over time?",
+    "options": [
+      "Every correction teaches the twin. Feedback is stored as directives in the brain: \"keep emails under three sentences,\" \"prefer the simpler approach.\" These accumulate into a rich identity layer that makes the twin genuinely yours.",
+      "It improves by reading books and articles on the internet.",
+      "It improves by copying other twins' behaviors.",
+      "It improves by guessing what the user wants based on previous interactions."
+    ],
+    "correctIndex": 0,
+    "explanation": "A digital twin improves through feedback, which is stored as directives in the brain, shaping its identity over time."
+  },
+  {
+    "question": "What is the test for whether you've built a true twin?",
+    "options": [
+      "If you went to sleep and your twin kept working, would you recognize the output as your own when you woke up? If yes, you've built a twin. If it feels off, you've built an assistant with good memory.",
+      "If your twin can answer questions correctly.",
+      "If your twin can write emails.",
+      "If your twin can remember your name."
+    ],
+    "correctIndex": 0,
+    "explanation": "The test for a true twin is whether the output feels like your own work after a session, indicating the twin has learned your identity."
+  }
+]

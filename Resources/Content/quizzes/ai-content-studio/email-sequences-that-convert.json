@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which of the following is a key advantage of an email list over social media followers?",
+    "options": [
+      "It is managed by algorithms",
+      "You have direct access to your audience",
+      "It is less personal",
+      "You cannot track engagement"
+    ],
+    "correctIndex": 1,
+    "explanation": "An email list provides a direct line to your audience without algorithms or gatekeepers, making it more reliable and personal."
+  },
+  {
+    "question": "What is the primary purpose of the Welcome Sequence in email marketing?",
+    "options": [
+      "To promote a product immediately",
+      "To build trust and introduce a paid offering",
+      "To collect more email addresses",
+      "To increase social media followers"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Welcome Sequence is designed to build trust with new subscribers and gradually introduce a paid offering by the fifth email."
+  },
+  {
+    "question": "Which of the following is NOT a recommended style for a subject line?",
+    "options": [
+      "Curiosity gap",
+      "Direct benefit",
+      "Clickbait",
+      "Personal and casual"
+    ],
+    "correctIndex": 2,
+    "explanation": "Clickbait is not recommended as it can mislead readers and damage trust, unlike curiosity gap, direct benefit, and personal/casual styles."
+  },
+  {
+    "question": "What is the main goal of the Weekly Newsletter?",
+    "options": [
+      "To sell a product",
+      "To build a relationship and deliver value",
+      "To collect email addresses",
+      "To promote social media"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Weekly Newsletter's main goal is to build a relationship and deliver genuine value, not to sell or collect emails."
+  },
+  {
+    "question": "Which part of the newsletter formula is used to provide a specific action for the reader to take?",
+    "options": [
+      "The Story",
+      "The Lesson",
+      "The Action",
+      "The P.S."
+    ],
+    "correctIndex": 2,
+    "explanation": "The Action section gives the reader a specific task to do with what they learned, making it actionable and practical."
+  }
+]

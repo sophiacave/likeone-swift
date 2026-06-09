@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary purpose of the persistent memory store in the AI's brain?",
+    "options": [
+      "To store temporary session data only",
+      "To ensure the AI's knowledge survives beyond a single conversation",
+      "To manage user authentication credentials",
+      "To handle real-time communication with external services"
+    ],
+    "correctIndex": 1,
+    "explanation": "The persistent memory store is designed to retain the AI's knowledge and state across sessions, ensuring continuity and long-term learning."
+  },
+  {
+    "question": "Which of the following is NOT a component of the AI's directives?",
+    "options": [
+      "Autonomy level definitions",
+      "Communication style preferences",
+      "User's favorite color",
+      "Privacy boundaries"
+    ],
+    "correctIndex": 2,
+    "explanation": "Directives are focused on operational rules, autonomy, communication, and privacy. Personal preferences like favorite color are not part of the AI's encoded directives."
+  },
+  {
+    "question": "What is the main function of the three-strike rule in the agent loop?",
+    "options": [
+      "To allow the AI to ask the human for input at every step",
+      "To ensure the AI only surfaces to the human when all three autonomy checks fail",
+      "To increase the AI's autonomy level automatically",
+      "To reset the AI's memory after three failed attempts"
+    ],
+    "correctIndex": 1,
+    "explanation": "The three-strike rule ensures the AI only seeks human input when it has failed to resolve an issue through its own judgment and course correction."
+  },
+  {
+    "question": "Which layer of the convergence system is responsible for reading the brain, making decisions, and taking actions?",
+    "options": [
+      "Layer 1: Storage",
+      "Layer 2: Agent Engine",
+      "Layer 3: Interface",
+      "Layer 4: Integrations"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Agent Engine (Layer 2) is responsible for the perceive-plan-execute-verify loop, which reads the brain and executes tasks."
+  },
+  {
+    "question": "What is the correct order of steps in the agent's operating cycle?",
+    "options": [
+      "Plan the work, read brain state, execute tasks, verify results, write progress back to brain",
+      "Read brain state, plan the work, execute tasks, verify results, write progress back to brain",
+      "Execute tasks, verify results, read brain state, plan the work, write progress back to brain",
+      "Write progress back to brain, read brain state, plan the work, execute tasks, verify results"
+    ],
+    "correctIndex": 1,
+    "explanation": "The correct sequence is: Read brain state, plan the work, execute tasks, verify results, and write progress back to brain."
+  }
+]

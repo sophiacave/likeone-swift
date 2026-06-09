@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which of the following is a key indicator that an AI initiative is based on hype rather than value?",
+    "options": [
+      "The vendor provides specific examples of where AI fails in their product",
+      "The initiative focuses on reducing claims processing time by 40%",
+      "The problem being solved is clearly defined with measurable outcomes",
+      "The initiative is tied to a specific business outcome"
+    ],
+    "correctIndex": 0,
+    "explanation": "Hype often lacks transparency about AI's limitations. Honest vendors will disclose where their AI fails, which is a sign of value, not hype."
+  },
+  {
+    "question": "Which of the following is an area where AI is currently strong and reliable in 2026?",
+    "options": [
+      "Novel strategy development",
+      "High-stakes decision-making",
+      "Language tasks such as drafting and summarizing",
+      "Relationship judgment in stakeholder management"
+    ],
+    "correctIndex": 2,
+    "explanation": "AI is currently strong in language tasks like drafting and summarizing, but it is not reliable in areas like novel strategy or high-stakes decisions."
+  },
+  {
+    "question": "What is a critical question to ask before greenlighting an AI initiative?",
+    "options": [
+      "What is the AI vendor's market share?",
+      "What is the expected ROI in the first 30 days?",
+      "What specific business problem are we solving?",
+      "How many competitors are using AI?"
+    ],
+    "correctIndex": 2,
+    "explanation": "The most important question is identifying the specific business problem being solved, as AI should serve a strategy, not be the goal itself."
+  },
+  {
+    "question": "Which of the following is a common signal of AI hype?",
+    "options": [
+      "The initiative is tied to a clear success metric",
+      "The vendor discusses where AI fails in their product",
+      "The goal is to 'implement AI' as a strategy",
+      "The initiative targets high-volume, repetitive processes"
+    ],
+    "correctIndex": 2,
+    "explanation": "Focusing on 'implementing AI' as a strategy is a common hype signal, as AI should be a tool to solve a specific problem, not an end goal."
+  },
+  {
+    "question": "Which of the following is a typical area where AI delivers measurable returns in 2026?",
+    "options": [
+      "High-stakes decision-making",
+      "Customer support triage",
+      "Novel strategy development",
+      "Relationship judgment in stakeholder management"
+    ],
+    "correctIndex": 1,
+    "explanation": "AI delivers measurable returns in areas like customer support triage, where it can handle a large volume of repetitive, language-based tasks efficiently."
+  }
+]

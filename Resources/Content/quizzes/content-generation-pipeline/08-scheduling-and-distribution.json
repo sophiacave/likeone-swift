@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary purpose of a content pipeline's distribution stage?",
+    "options": [
+      "To generate more content",
+      "To ensure content is seen by the audience",
+      "To improve content quality",
+      "To reduce the number of content formats"
+    ],
+    "correctIndex": 1,
+    "explanation": "The distribution stage ensures that content reaches the audience, as even high-quality content is ineffective if it is not seen."
+  },
+  {
+    "question": "Which of the following is a key benefit of using an AI-generated content calendar?",
+    "options": [
+      "It eliminates the need for human input",
+      "It ensures variety, format rotation, and audience coverage",
+      "It increases the number of content formats",
+      "It guarantees higher search engine rankings"
+    ],
+    "correctIndex": 1,
+    "explanation": "An AI-generated content calendar ensures variety, format rotation, and audience coverage across weeks and months, aligning with the pipeline's cadence."
+  },
+  {
+    "question": "What is the recommended posting time for email newsletters according to the lesson?",
+    "options": [
+      "Monday morning",
+      "Tuesday through Thursday, 9-10 AM",
+      "Friday afternoon",
+      "Saturday evening"
+    ],
+    "correctIndex": 1,
+    "explanation": "Email newsletters should be sent Tuesday through Thursday, 9-10 AM in the audience's primary time zone to avoid inbox overload and weekend mindset."
+  },
+  {
+    "question": "Which of the following is NOT a typical touchpoint in the 14-day distribution sequence for a blog post?",
+    "options": [
+      "Day 0: Blog post goes live",
+      "Day 1: LinkedIn post with a different angle",
+      "Day 7: Repurposed short-form video posts",
+      "Day 14: Performance review and optimization"
+    ],
+    "correctIndex": 2,
+    "explanation": "Repurposed short-form video posts typically occur on Day 7, not Day 14, which is reserved for performance review and optimization."
+  },
+  {
+    "question": "What is the main goal of automation in the pipeline-to-publish workflow?",
+    "options": [
+      "To eliminate the need for human oversight",
+      "To make the human's job an approve-or-adjust decision",
+      "To increase the number of content formats",
+      "To reduce the number of platforms used for distribution"
+    ],
+    "correctIndex": 1,
+    "explanation": "Automation aims to make the human's job an approve-or-adjust decision on pre-staged content, reducing creative pressure and ensuring consistency."
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary purpose of a scroll-stopping hook in short-form content?",
+    "options": [
+      "To make the content look more professional",
+      "To capture attention within the first few seconds",
+      "To increase the length of the content",
+      "To ensure the content is easy to understand"
+    ],
+    "correctIndex": 1,
+    "explanation": "A scroll-stopping hook is designed to capture attention quickly, as short-form content has only 1-3 seconds to earn someone's attention."
+  },
+  {
+    "question": "Which of the following is an example of a 'Specificity Hook'?",
+    "options": [
+      "I made $12,847 in 30 days by changing one thing about my content.",
+      "Here are some tips for better content creation that you might find useful.",
+      "Everyone says X. They're wrong.",
+      "What would change if you could create a week of content in 2 hours?"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Specificity Hook includes precise numbers or results, which make the claim feel real and credible."
+  },
+  {
+    "question": "Which platform format is most effective for Twitter?",
+    "options": [
+      "Carousel posts with multiple slides",
+      "Personal story + business lesson with line breaks",
+      "A thread with a hook tweet followed by value tweets",
+      "A single post with a hook line and CTA"
+    ],
+    "correctIndex": 2,
+    "explanation": "Twitter/X benefits most from a thread format, with a hook tweet followed by 4-7 value tweets and a closer, each standing alone."
+  },
+  {
+    "question": "What is the main purpose of the '1-to-20 Method' in content creation?",
+    "options": [
+      "To create 20 different versions of the same content for different platforms",
+      "To generate 20 variations of one core idea and curate the best ones",
+      "To write 20 long-form articles from one short-form idea",
+      "To increase the number of followers on social media"
+    ],
+    "correctIndex": 1,
+    "explanation": "The '1-to-20 Method' involves generating 20 variations of a single core idea to find the most effective ones for different formats and audiences."
+  },
+  {
+    "question": "Which of the following is a correct editing tip for short-form content?",
+    "options": [
+      "Add extra words to make the content more detailed",
+      "Keep every 'that' and adverb to maintain tone",
+      "Cut the first sentence if it's not the hook",
+      "Use long paragraphs to keep the reader engaged"
+    ],
+    "correctIndex": 2,
+    "explanation": "In short-form content, the first sentence is often throat-clearing, and the real hook is usually found later in the text."
+  }
+]

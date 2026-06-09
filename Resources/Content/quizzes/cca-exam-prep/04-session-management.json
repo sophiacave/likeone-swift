@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which persistence tier is best suited for storing project-level context such as user preferences and workflow patterns?",
+    "options": [
+      "Tier 1: Ephemeral",
+      "Tier 2: File-Backed",
+      "Tier 3: Database-Driven",
+      "None of the above"
+    ],
+    "correctIndex": 1,
+    "explanation": "Tier 2: File-Backed is designed for project-level context and user preferences, as it persists across sessions and can be loaded automatically."
+  },
+  {
+    "question": "What is the main limitation of using Tier 1: Ephemeral persistence?",
+    "options": [
+      "It is not suitable for large-scale state",
+      "It is only available within a single session",
+      "It cannot be used for privacy-sensitive tasks",
+      "It is too slow for real-time applications"
+    ],
+    "correctIndex": 1,
+    "explanation": "Tier 1: Ephemeral persistence is only available within a single session and is lost when the session ends."
+  },
+  {
+    "question": "Which context window management strategy involves compressing old context to preserve essential information?",
+    "options": [
+      "Selective Loading",
+      "Summarization",
+      "Retrieval-Augmented Generation (RAG)",
+      "Tiered Memory"
+    ],
+    "correctIndex": 1,
+    "explanation": "Summarization is the strategy where old context is compressed to keep essential information, especially when the conversation exceeds the context window."
+  },
+  {
+    "question": "What is the primary purpose of the 'Checkpoint on Exit' state handoff pattern?",
+    "options": [
+      "To allow multiple agents to share state",
+      "To ensure state is saved at the end of a session",
+      "To optimize the context window for large inputs",
+      "To reduce the need for user re-explanation in future sessions"
+    ],
+    "correctIndex": 1,
+    "explanation": "The 'Checkpoint on Exit' pattern ensures that state is saved at the end of a session so it can be recovered in future sessions."
+  },
+  {
+    "question": "Which of the following is a key benefit of using Retrieval-Augmented Generation (RAG) for context management?",
+    "options": [
+      "It eliminates the need for any persistence layer",
+      "It allows for semantic search over large historical data",
+      "It reduces the context window size significantly",
+      "It is the simplest and most cost-effective strategy"
+    ],
+    "correctIndex": 1,
+    "explanation": "RAG allows for semantic search over large historical data, making it useful for retrieving relevant context on demand."
+  }
+]

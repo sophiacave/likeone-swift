@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary focus of modern SEO according to the lesson?",
+    "options": [
+      "Keyword stuffing",
+      "Creating content that matches search intent",
+      "Using only long-tail keywords",
+      "Optimizing for search engines first"
+    ],
+    "correctIndex": 1,
+    "explanation": "Modern SEO focuses on creating content that matches search intent, as this is what Google rewards and what users are looking for."
+  },
+  {
+    "question": "Which type of search intent is most relevant for content creators targeting educational topics?",
+    "options": [
+      "Transactional",
+      "Navigational",
+      "Informational",
+      "Commercial"
+    ],
+    "correctIndex": 2,
+    "explanation": "Informational intent is most relevant for educational topics, as users are looking to learn and gain knowledge."
+  },
+  {
+    "question": "What is a long-tail keyword, and why is it important for solo creators?",
+    "options": [
+      "A keyword with high competition that is easy to rank for",
+      "A specific, niche phrase with lower competition that solo creators can realistically rank for",
+      "A keyword that is used by major publications",
+      "A keyword that is ignored by AI tools"
+    ],
+    "correctIndex": 1,
+    "explanation": "A long-tail keyword is a specific, niche phrase with lower competition, making it a realistic target for solo creators who may not compete with major sites."
+  },
+  {
+    "question": "What is the main purpose of a meta description in SEO?",
+    "options": [
+      "To include as many keywords as possible",
+      "To summarize the article and entice clicks in search results",
+      "To improve page load speed",
+      "To replace the title tag"
+    ],
+    "correctIndex": 1,
+    "explanation": "The main purpose of a meta description is to summarize the article and entice clicks in search results, acting as ad copy that includes the keyword."
+  },
+  {
+    "question": "Which step in the SEO content creation workflow emphasizes writing for humans first?",
+    "options": [
+      "Step 1 \u2014 Choose your keyword",
+      "Step 2 \u2014 Study the SERPs",
+      "Step 3 \u2014 Write for humans first",
+      "Step 4 \u2014 Optimize structure"
+    ],
+    "correctIndex": 2,
+    "explanation": "Step 3 \u2014 Write for humans first \u2014 emphasizes that your unique angle, stories, and expertise should come before SEO optimization."
+  }
+]

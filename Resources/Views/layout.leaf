@@ -18,7 +18,7 @@
     #if(ogImage):<meta name="twitter:image" content="#(ogImage)">#endif
     #if(canonicalUrl):<link rel="canonical" href="#(canonicalUrl)">#endif
     <link rel="alternate" type="application/rss+xml" title="Like One Blog RSS" href="https://likeone.ai/feed.xml">
-    <link rel="stylesheet" href="/css/style.css?v=268">
+    <link rel="stylesheet" href="/css/style.css?v=269">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -133,66 +133,7 @@
     var sp = document.querySelector('[name=sourcePage]');
     if (sp) sp.value = window.location.pathname;
 
-    // Auth state: swap Sign In → Account if authenticated
-    var isAuthed = document.cookie.indexOf('lo_authed=1') !== -1;
-    if (isAuthed) {
-        var authBtn = document.getElementById('auth-btn');
-        if (authBtn) { authBtn.href = '/account'; authBtn.textContent = 'Account'; }
-
-        // Cross-device sync: load all server progress once per session
-        if (!sessionStorage.getItem('progress_loaded')) {
-            fetch('/api/v1/progress/all', { credentials: 'same-origin' })
-            .then(function(r) { return r.ok ? r.json() : null; })
-            .then(function(serverProgress) {
-                if (!serverProgress) return;
-                var local = LOP.get();
-                var merged = false;
-                for (var course in serverProgress) {
-                    if (!local[course]) local[course] = [];
-                    serverProgress[course].forEach(function(ls) {
-                        if (local[course].indexOf(ls) === -1) {
-                            local[course].push(ls);
-                            merged = true;
-                        }
-                    });
-                }
-                if (merged) { LOP.save(local); LOP.refreshUI(); }
-                sessionStorage.setItem('progress_loaded', '1');
-            }).catch(function() {});
-        }
-
-        // Auth migration: upload orphaned localStorage progress to server
-        if (!sessionStorage.getItem('progress_synced')) {
-            var local = LOP.get();
-            var items = [];
-            for (var course in local) {
-                local[course].forEach(function(ls) {
-                    items.push({ courseSlug: course, lessonSlug: ls });
-                });
-            }
-            if (items.length > 0) {
-                fetch('/api/v1/progress/sync', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(items),
-                    credentials: 'same-origin'
-                }).then(function(r) {
-                    if (r.ok) sessionStorage.setItem('progress_synced', '1');
-                }).catch(function() {});
-            } else {
-                sessionStorage.setItem('progress_synced', '1');
-            }
-        }
-    }
-
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('.academy-filter-btn')) {
-            document.querySelectorAll('.academy-filter-btn').forEach(function(b) { b.classList.remove('active'); });
-            e.target.closest('.academy-filter-btn').classList.add('active');
-        }
-    });
-
-    /* Progress tracking: localStorage + server sync */
+    /* Progress tracking: localStorage + server sync — defined FIRST so auth code can use it */
     var LOP = {
         key: 'lo_progress',
         _authed: null,
@@ -220,7 +161,11 @@
                 body: JSON.stringify({ courseSlug: courseSlug, lessonSlug: lessonSlug }),
                 credentials: 'same-origin'
             }).then(function(r) {
-                if (!r.ok) return;
+                if (r.status === 401) {
+                    LOP.handleSessionExpired();
+                    return null;
+                }
+                if (!r.ok) return null;
                 LOP._authed = true;
                 return r.json();
             }).then(function(data) {
@@ -275,6 +220,18 @@
             setTimeout(function() { toast.classList.add('lo-toast-show'); }, 10);
             setTimeout(function() { toast.remove(); }, 6000);
         },
+        handleSessionExpired: function() {
+            if (LOP._expiredShown) return;
+            LOP._expiredShown = true;
+            document.cookie = 'lo_authed=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+            var toast = document.createElement('div');
+            toast.className = 'lo-toast lo-toast-success';
+            toast.innerHTML = 'Session expired. <a href="/signin" style="color:#c084fc;text-decoration:underline;font-weight:600;">Sign in again</a> to save your progress.';
+            document.body.appendChild(toast);
+            setTimeout(function() { toast.classList.add('lo-toast-show'); }, 10);
+            var authBtn = document.getElementById('auth-btn');
+            if (authBtn) { authBtn.href = '/signin'; authBtn.textContent = 'Sign In'; }
+        },
         refreshUI: function() {
             document.querySelectorAll('.lesson-row').forEach(function(row) {
                 var href = row.getAttribute('href');
@@ -293,6 +250,75 @@
             });
         }
     };
+
+    // Auth state: swap Sign In → Account if authenticated
+    var isAuthed = document.cookie.indexOf('lo_authed=1') !== -1;
+    if (isAuthed) {
+        var authBtn = document.getElementById('auth-btn');
+        if (authBtn) { authBtn.href = '/account'; authBtn.textContent = 'Account'; }
+
+        // Session validity check — verify lo_session cookie still works
+        if (!sessionStorage.getItem('session_checked')) {
+            fetch('/api/v1/progress/all', { credentials: 'same-origin' })
+            .then(function(r) {
+                if (r.status === 401) { LOP.handleSessionExpired(); return null; }
+                sessionStorage.setItem('session_checked', '1');
+                return r.ok ? r.json() : null;
+            }).catch(function() {});
+        }
+
+        // Cross-device sync: load all server progress once per session
+        if (!sessionStorage.getItem('progress_loaded')) {
+            fetch('/api/v1/progress/all', { credentials: 'same-origin' })
+            .then(function(r) { return r.ok ? r.json() : null; })
+            .then(function(serverProgress) {
+                if (!serverProgress) return;
+                var local = LOP.get();
+                var merged = false;
+                for (var course in serverProgress) {
+                    if (!local[course]) local[course] = [];
+                    serverProgress[course].forEach(function(ls) {
+                        if (local[course].indexOf(ls) === -1) {
+                            local[course].push(ls);
+                            merged = true;
+                        }
+                    });
+                }
+                if (merged) { LOP.save(local); LOP.refreshUI(); }
+                sessionStorage.setItem('progress_loaded', '1');
+            }).catch(function() {});
+        }
+
+        // Auth migration: upload orphaned localStorage progress to server
+        if (!sessionStorage.getItem('progress_synced')) {
+            var local = LOP.get();
+            var items = [];
+            for (var course in local) {
+                local[course].forEach(function(ls) {
+                    items.push({ courseSlug: course, lessonSlug: ls });
+                });
+            }
+            if (items.length > 0) {
+                fetch('/api/v1/progress/sync', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(items),
+                    credentials: 'same-origin'
+                }).then(function(r) {
+                    if (r.ok) sessionStorage.setItem('progress_synced', '1');
+                }).catch(function() {});
+            } else {
+                sessionStorage.setItem('progress_synced', '1');
+            }
+        }
+    }
+
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.academy-filter-btn')) {
+            document.querySelectorAll('.academy-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+            e.target.closest('.academy-filter-btn').classList.add('active');
+        }
+    });
 
     /* Count-up animation for stats */
     function countUp(el, target, duration) {
@@ -340,17 +366,21 @@
             if (path.length >= 4 && path[1] === 'academy') {
                 var cs = path[2], ls = path[3];
 
-                // Add "Mark Complete" button before nav
+                // Add completion bar before nav — quiz-aware
                 var bar = document.createElement('div');
                 bar.className = 'lesson-complete-bar';
+                var hasQuiz = document.querySelector('.quiz-block') !== null;
                 if (LOP.isDone(cs, ls)) {
-                    bar.innerHTML = '<span>&#x2714;</span> Lesson Complete';
+                    bar.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Lesson Complete';
                     bar.classList.add('completed');
+                } else if (hasQuiz) {
+                    bar.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r=".5"/></svg> Pass the quiz to complete this lesson';
+                    bar.classList.add('quiz-gate');
                 } else {
-                    bar.innerHTML = 'Mark as Complete &#x2714;';
+                    bar.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Mark as Complete';
                     bar.addEventListener('click', function() {
                         LOP.mark(cs, ls);
-                        bar.innerHTML = '<span>&#x2714;</span> Lesson Complete';
+                        bar.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Lesson Complete';
                         bar.classList.add('completed');
                     });
                 }
@@ -436,123 +466,150 @@
             statEls.forEach(function(el) { observer.observe(el); });
         }
 
-        // Initialize sequential quiz for each quiz block
-        document.querySelectorAll('.quiz-block').forEach(function(block) {
-            var questions = block.querySelectorAll('.quiz-question');
-            if (questions.length === 0) return;
+        // UNIFIED QUIZ ENGINE — merges ALL quiz-blocks into ONE sequential quiz
+        (function() {
+            var blocks = document.querySelectorAll('.quiz-block');
+            if (blocks.length === 0) return;
 
-            var title = block.querySelector('.quiz-title');
-            var currentIdx = 0, correct = 0, wrong = 0;
+            // Collect ALL questions from ALL quiz-blocks
+            var allQuestions = [];
+            blocks.forEach(function(block) {
+                block.querySelectorAll('.quiz-question').forEach(function(q) {
+                    allQuestions.push(q);
+                });
+            });
+            if (allQuestions.length === 0) return;
 
-            // Enable sequential mode
-            block.classList.add('quiz-sequential');
+            // Hide original quiz-blocks
+            blocks.forEach(function(block) { block.style.display = 'none'; });
 
-            // Progress bar with dots
+            // Create unified quiz container
+            var unified = document.createElement('div');
+            unified.className = 'quiz-block quiz-sequential quiz-unified';
+            unified.innerHTML = '<h3 class="quiz-title">Test Your Knowledge</h3>';
+
+            // Move all questions into unified container
+            allQuestions.forEach(function(q) { unified.appendChild(q); });
+
+            // Re-number questions
+            allQuestions.forEach(function(q, i) {
+                var num = q.querySelector('.quiz-num');
+                if (num) num.textContent = i + 1;
+            });
+
+            // Insert before lesson-complete-bar or lesson-nav
+            var anchor = document.querySelector('.lesson-complete-bar') || document.querySelector('.lesson-nav');
+            if (anchor && anchor.parentNode) {
+                anchor.parentNode.insertBefore(unified, anchor);
+            } else {
+                var content = document.querySelector('.lesson-content');
+                if (content) content.parentNode.insertBefore(unified, content.nextSibling);
+            }
+
+            // State
+            var currentIdx = 0, correct = 0, wrong = 0, answered = {};
+
+            // Progress dots
             var progressEl = document.createElement('div');
             progressEl.className = 'quiz-progress';
             var dotsHtml = '';
-            for (var d = 0; d < questions.length; d++) {
+            for (var d = 0; d < allQuestions.length; d++) {
                 dotsHtml += '<div class="quiz-dot' + (d === 0 ? ' dot-current' : '') + '"></div>';
             }
-            progressEl.innerHTML = '<span class="quiz-progress-text">Question 1 of ' + questions.length + '</span>' +
+            progressEl.innerHTML = '<span class="quiz-progress-text">Question 1 of ' + allQuestions.length + '</span>' +
                 '<div class="quiz-progress-dots">' + dotsHtml + '</div>';
-            if (title && title.nextSibling) {
-                title.parentNode.insertBefore(progressEl, title.nextSibling);
-            } else {
-                block.insertBefore(progressEl, block.firstChild);
-            }
+            unified.querySelector('.quiz-title').after(progressEl);
 
             var dots = progressEl.querySelectorAll('.quiz-dot');
             var progText = progressEl.querySelector('.quiz-progress-text');
 
-            // Score bar (below progress)
+            // Score bar
             var scoreEl = document.createElement('div');
             scoreEl.className = 'quiz-score';
             scoreEl.innerHTML = '<span class="quiz-score-label">Score</span>' +
                 '<span class="quiz-score-correct">0</span>' +
                 '<span class="quiz-score-divider">/</span>' +
                 '<span class="quiz-score-wrong">0</span>' +
-                '<span class="quiz-score-total">of ' + questions.length + '</span>' +
+                '<span class="quiz-score-total">of ' + allQuestions.length + '</span>' +
                 '<div class="quiz-score-bar"><div class="quiz-score-fill"></div></div>';
-            progressEl.parentNode.insertBefore(scoreEl, progressEl.nextSibling);
+            progressEl.after(scoreEl);
 
-            // Next button (appended after each question)
+            // Next button
             var nextBtn = document.createElement('button');
             nextBtn.className = 'quiz-next-btn';
             nextBtn.textContent = 'Next Question \u2192';
 
-            // Show first question
-            showQuestion(0);
-
             function showQuestion(idx) {
-                questions.forEach(function(q) { q.classList.remove('quiz-active'); });
-                if (idx < questions.length) {
-                    questions[idx].classList.add('quiz-active');
-                    progText.textContent = 'Question ' + (idx + 1) + ' of ' + questions.length;
-                    dots.forEach(function(dot, i) {
-                        dot.classList.toggle('dot-current', i === idx);
-                    });
+                allQuestions.forEach(function(q) { q.classList.remove('quiz-active'); });
+                if (idx < allQuestions.length) {
+                    allQuestions[idx].classList.add('quiz-active');
+                    progText.textContent = 'Question ' + (idx + 1) + ' of ' + allQuestions.length;
+                    dots.forEach(function(dot, i) { dot.classList.toggle('dot-current', i === idx); });
                     nextBtn.classList.remove('visible');
-                    // Move next button into current question
-                    questions[idx].appendChild(nextBtn);
+                    allQuestions[idx].appendChild(nextBtn);
                 } else {
                     // Quiz complete
-                    var pct = Math.round((correct / questions.length) * 100);
+                    var pct = Math.round((correct / allQuestions.length) * 100);
+                    var passed = pct >= 80;
                     var msg = document.createElement('div');
-                    msg.className = 'quiz-complete-msg';
-                    if (wrong === 0) {
-                        msg.innerHTML = '<strong>Perfect score!</strong> ' + correct + ' of ' + questions.length + ' correct.';
+                    msg.className = 'quiz-complete-msg' + (passed ? ' quiz-passed' : ' quiz-failed');
+
+                    if (passed) {
+                        var qpath = window.location.pathname.replace(/\/$/, '').split('/');
+                        if (qpath.length >= 4 && qpath[1] === 'academy') {
+                            LOP.mark(qpath[2], qpath[3]);
+                            var bar = document.querySelector('.lesson-complete-bar');
+                            if (bar) {
+                                bar.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Lesson Complete';
+                                bar.classList.add('completed');
+                            }
+                        }
+                        msg.innerHTML = '<div class="quiz-pass-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+                            (wrong === 0 ? '<strong>Perfect score!</strong> ' : '<strong>' + correct + ' of ' + allQuestions.length + '</strong> correct ') +
+                            '(' + pct + '%)<div class="quiz-pass-label">Lesson Complete</div>';
                     } else {
-                        msg.innerHTML = '<strong>' + correct + ' of ' + questions.length + '</strong> correct (' + pct + '%)';
+                        msg.innerHTML = '<div class="quiz-fail-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>' +
+                            '<strong>' + correct + ' of ' + allQuestions.length + '</strong> correct (' + pct + '%)<div class="quiz-fail-label">Score 80% or higher to complete this lesson</div>';
                     }
-                    // Retry button
+
                     var retryBtn = document.createElement('button');
                     retryBtn.className = 'quiz-next-btn visible';
-                    retryBtn.textContent = 'Try Again';
+                    retryBtn.textContent = passed ? 'Review Again' : 'Try Again';
                     retryBtn.style.marginTop = '12px';
                     retryBtn.addEventListener('click', function() {
-                        // Reset everything
-                        correct = 0; wrong = 0; currentIdx = 0;
-                        answered = {};
+                        correct = 0; wrong = 0; currentIdx = 0; answered = {};
                         scoreEl.querySelector('.quiz-score-correct').textContent = '0';
                         scoreEl.querySelector('.quiz-score-wrong').textContent = '0';
                         scoreEl.querySelector('.quiz-score-fill').style.width = '0%';
                         scoreEl.classList.remove('quiz-score-perfect');
-                        dots.forEach(function(dot) {
-                            dot.className = 'quiz-dot';
-                        });
-                        // Reset all question states
-                        questions.forEach(function(q) {
+                        dots.forEach(function(dot) { dot.className = 'quiz-dot'; });
+                        allQuestions.forEach(function(q) {
                             q.querySelectorAll('.quiz-option').forEach(function(opt) {
                                 opt.classList.remove('quiz-correct', 'quiz-wrong');
                                 opt.style.pointerEvents = '';
                             });
-                            q.querySelectorAll('.quiz-options').forEach(function(opts) {
-                                opts.classList.remove('revealed');
-                            });
-                            q.querySelectorAll('.quiz-explanation').forEach(function(exp) {
-                                exp.style.display = 'none';
-                            });
+                            q.querySelectorAll('.quiz-options').forEach(function(opts) { opts.classList.remove('revealed'); });
+                            q.querySelectorAll('.quiz-explanation').forEach(function(exp) { exp.style.display = 'none'; });
                         });
-                        // Remove complete message
-                        if (msg.parentNode) msg.parentNode.removeChild(msg);
-                        if (retryBtn.parentNode) retryBtn.parentNode.removeChild(retryBtn);
+                        if (msg.parentNode) msg.remove();
+                        if (retryBtn.parentNode) retryBtn.remove();
                         showQuestion(0);
                     });
-                    block.appendChild(msg);
-                    block.appendChild(retryBtn);
+                    unified.appendChild(msg);
+                    unified.appendChild(retryBtn);
                     progText.textContent = 'Complete';
                     if (wrong === 0) scoreEl.classList.add('quiz-score-perfect');
                 }
             }
+
+            showQuestion(0);
 
             nextBtn.addEventListener('click', function() {
                 currentIdx++;
                 showQuestion(currentIdx);
             });
 
-            var answered = {};
-            block.addEventListener('click', function(ev) {
+            unified.addEventListener('click', function(ev) {
                 var btn = ev.target.closest('.quiz-option');
                 if (!btn) return;
                 if (answered[currentIdx]) return;
@@ -571,19 +628,17 @@
 
                 scoreEl.querySelector('.quiz-score-correct').textContent = correct;
                 scoreEl.querySelector('.quiz-score-wrong').textContent = wrong;
-                var pct = Math.round((correct / questions.length) * 100);
+                var pct = Math.round((correct / allQuestions.length) * 100);
                 scoreEl.querySelector('.quiz-score-fill').style.width = pct + '%';
 
-                // Show next button (or auto-complete if last question)
-                if (currentIdx < questions.length - 1) {
+                if (currentIdx < allQuestions.length - 1) {
                     nextBtn.textContent = 'Next Question \u2192';
-                    nextBtn.classList.add('visible');
                 } else {
                     nextBtn.textContent = 'See Results';
-                    nextBtn.classList.add('visible');
                 }
+                nextBtn.classList.add('visible');
             });
-        });
+        })();
 
         // Flashcard study mode
         document.querySelectorAll('.flash-block').forEach(function(block) {

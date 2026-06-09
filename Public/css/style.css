@@ -1500,6 +1500,13 @@ a:focus-visible, button:focus-visible {
     font-size: 0.8rem;
     font-weight: 700;
 }
+.course-progress-header {
+    margin: 24px 0;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
 .course-progress-bar {
     height: 4px;
     background: rgba(255, 255, 255, 0.06);
@@ -1679,9 +1686,14 @@ a:focus-visible, button:focus-visible {
 }
 .quiz-options.revealed .quiz-option { pointer-events: none; }
 
-/* Sequential quiz mode — one question at a time */
+/* Sequential quiz mode — one question at a time, always */
 .quiz-block.quiz-sequential .quiz-question { display: none; }
 .quiz-block.quiz-sequential .quiz-question.quiz-active { display: block; }
+.quiz-unified {
+    margin-top: 40px;
+    border-radius: 16px;
+    padding: 28px;
+}
 .quiz-progress {
     display: flex;
     justify-content: space-between;
@@ -1732,11 +1744,57 @@ a:focus-visible, button:focus-visible {
 .quiz-next-btn.visible { display: block; }
 .quiz-complete-msg {
     text-align: center;
-    padding: 20px;
+    padding: 28px 20px;
     color: var(--text-secondary);
     font-size: 0.95rem;
+    border-radius: 16px;
+    animation: quizFadeIn 0.4s ease-out;
+}
+@keyframes quizFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.quiz-complete-msg.quiz-passed {
+    background: rgba(52, 211, 153, 0.06);
+    border: 1px solid rgba(52, 211, 153, 0.2);
+}
+.quiz-complete-msg.quiz-failed {
+    background: rgba(248, 113, 113, 0.04);
+    border: 1px solid rgba(248, 113, 113, 0.15);
 }
 .quiz-complete-msg strong { color: #34d399; }
+.quiz-failed strong { color: #f87171; }
+.quiz-pass-icon, .quiz-fail-icon {
+    margin-bottom: 12px;
+    animation: quizCheckPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes quizCheckPop {
+    0% { transform: scale(0); opacity: 0; }
+    60% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
+}
+.quiz-pass-label {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #34d399;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+.quiz-fail-label {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+.lesson-complete-bar.quiz-gate {
+    background: rgba(168, 85, 247, 0.04);
+    border-color: rgba(168, 85, 247, 0.15);
+    color: var(--purple-400);
+    cursor: default;
+}
+.lesson-complete-bar svg {
+    flex-shrink: 0;
+}
 
 /* Quiz Explanation */
 .quiz-explanation {

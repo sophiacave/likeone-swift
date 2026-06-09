@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is a key benefit of using chain-of-thought reasoning in agent systems?",
+    "options": [
+      "Faster execution time",
+      "Avoids wrong tool calls and wasted resources",
+      "Reduces the need for human oversight",
+      "Eliminates the need for verification steps"
+    ],
+    "correctIndex": 1,
+    "explanation": "Chain-of-thought reasoning helps agents make accurate decisions by avoiding incorrect actions, which prevents wasted resources and broken systems."
+  },
+  {
+    "question": "When should extended thinking be used in an agent?",
+    "options": [
+      "For simple variable renaming",
+      "For high-volume pipeline steps",
+      "For complex multi-step planning",
+      "For tasks where speed is more important than accuracy"
+    ],
+    "correctIndex": 2,
+    "explanation": "Extended thinking is appropriate for complex tasks that require careful planning and reasoning, such as multi-step planning or architectural decisions."
+  },
+  {
+    "question": "What is the purpose of task decomposition in reasoning patterns?",
+    "options": [
+      "To reduce the cost of thinking tokens",
+      "To break complex tasks into manageable steps",
+      "To eliminate the need for verification",
+      "To increase the speed of execution"
+    ],
+    "correctIndex": 1,
+    "explanation": "Task decomposition helps break down complex tasks into smaller, manageable steps that can be executed and verified individually, reducing the risk of errors."
+  },
+  {
+    "question": "Which reasoning pattern involves forming and testing multiple hypotheses to debug a problem?",
+    "options": [
+      "Task Decomposition",
+      "Pre-Action Verification",
+      "Hypothesis Testing",
+      "Planning Before Execution"
+    ],
+    "correctIndex": 2,
+    "explanation": "Hypothesis Testing involves forming multiple hypotheses about the cause of a problem and systematically testing each one to identify the root cause."
+  },
+  {
+    "question": "What is the main purpose of reasoning artifacts in multi-agent systems?",
+    "options": [
+      "To reduce the cost of thinking tokens",
+      "To allow agents to share their reasoning with others",
+      "To increase the speed of execution",
+      "To eliminate the need for verification"
+    ],
+    "correctIndex": 1,
+    "explanation": "Reasoning artifacts allow agents to share their reasoning with other agents, enabling better collaboration and informed decision-making."
+  }
+]

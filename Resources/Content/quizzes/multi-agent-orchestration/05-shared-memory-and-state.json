@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the main problem with using context passing in a multi-agent system?",
+    "options": [
+      "It requires external infrastructure",
+      "It scales poorly due to context window limitations",
+      "It prevents agents from accessing relevant data",
+      "It increases the risk of state corruption"
+    ],
+    "correctIndex": 1,
+    "explanation": "Context passing scales poorly because the context grows with each agent, quickly filling the context window and leaving little room for actual task processing."
+  },
+  {
+    "question": "Which model allows agents to access relevant context without carrying the entire history?",
+    "options": [
+      "Context passing",
+      "Vector store",
+      "Shared memory store",
+      "None of the above"
+    ],
+    "correctIndex": 2,
+    "explanation": "Shared memory store allows agents to query only what they need from a central store, avoiding the bloat of carrying the entire history."
+  },
+  {
+    "question": "What is a key advantage of using a vector store for shared state?",
+    "options": [
+      "It is the simplest to implement",
+      "It scales to massive amounts of context",
+      "It eliminates the need for any infrastructure",
+      "It guarantees no stale data"
+    ],
+    "correctIndex": 1,
+    "explanation": "A vector store can handle massive amounts of context and allows agents to retrieve only the most relevant information through semantic search."
+  },
+  {
+    "question": "What is a common cause of state corruption in shared memory systems?",
+    "options": [
+      "Using optimistic locking",
+      "Multiple agents updating the same state simultaneously",
+      "Storing data in separate namespaces",
+      "Using append-only logs"
+    ],
+    "correctIndex": 1,
+    "explanation": "State corruption often occurs when multiple agents update the same shared state simultaneously, leading to race conditions and data loss."
+  },
+  {
+    "question": "Which of the following is a best practice for preventing state corruption?",
+    "options": [
+      "Allowing all agents to write to the same namespace",
+      "Using append-only logs",
+      "Disabling shared memory entirely",
+      "Ignoring version numbers in state updates"
+    ],
+    "correctIndex": 1,
+    "explanation": "Using append-only logs helps prevent state corruption by ensuring that updates are not overwritten and can be tracked."
+  }
+]

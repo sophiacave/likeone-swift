@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which of the following is a key reason why agent conflicts are considered a feature rather than a bug?",
+    "options": [
+      "Agents are not trained properly",
+      "Agents always agree on everything",
+      "Agents are not specialized enough",
+      "Agents provide diverse perspectives that improve system accuracy"
+    ],
+    "correctIndex": 3,
+    "explanation": "Agent conflicts are a feature because they surface diverse perspectives, leading to more accurate and well-rounded system outputs."
+  },
+  {
+    "question": "Which strategy is best suited for high-stakes decisions where accuracy is more important than speed?",
+    "options": [
+      "Hierarchical Override",
+      "Debate and Synthesis",
+      "Voting and Consensus",
+      "Confidence-Weighted Resolution"
+    ],
+    "correctIndex": 2,
+    "explanation": "Voting and Consensus is best for high-stakes decisions because it leverages multiple agents' input to increase accuracy."
+  },
+  {
+    "question": "What is a signal that indicates an opinion conflict between agents?",
+    "options": [
+      "Timeout errors",
+      "Contradictory outputs from different agents",
+      "Rate limit exceptions",
+      "Conflicting priorities in the same task"
+    ],
+    "correctIndex": 1,
+    "explanation": "Contradictory outputs from different agents indicate an opinion conflict, as they analyze the same data and reach different conclusions."
+  },
+  {
+    "question": "Which resolution strategy involves integrating the best elements of conflicting positions into a stronger output?",
+    "options": [
+      "Hierarchical Override",
+      "Voting and Consensus",
+      "Debate and Synthesis",
+      "Confidence-Weighted Resolution"
+    ],
+    "correctIndex": 2,
+    "explanation": "Debate and Synthesis is the strategy where conflicting agents' positions are integrated into a stronger output by a synthesis agent."
+  },
+  {
+    "question": "What is a risk associated with the hierarchical override strategy?",
+    "options": [
+      "It increases system complexity",
+      "It may silence valuable dissent",
+      "It leads to inconsistent outputs",
+      "It reduces the speed of decision-making"
+    ],
+    "correctIndex": 1,
+    "explanation": "A risk of hierarchical override is that the authority agent may consistently override valuable dissent, leading to missed insights."
+  }
+]

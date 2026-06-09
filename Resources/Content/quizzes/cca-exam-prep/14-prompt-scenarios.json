@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary goal of the CCA Exam regarding prompt engineering?",
+    "options": [
+      "To test the ability to write effective prompts",
+      "To test the ability to design systematic prompt architectures",
+      "To evaluate knowledge of natural language processing",
+      "To assess creativity in prompt generation"
+    ],
+    "correctIndex": 1,
+    "explanation": "The CCA Exam focuses on designing systematic prompt architectures, not just writing effective prompts."
+  },
+  {
+    "question": "Which of the following is a common failure mode when instructions are too vague?",
+    "options": [
+      "Overly specific output",
+      "Inconsistent or ambiguous results",
+      "Too much detail in the response",
+      "Excessive use of markdown formatting"
+    ],
+    "correctIndex": 1,
+    "explanation": "Vague instructions lead to inconsistent or ambiguous results because the model doesn't know what is expected."
+  },
+  {
+    "question": "What is the main purpose of few-shot examples in prompt engineering?",
+    "options": [
+      "To reduce the length of the prompt",
+      "To show the desired output format by example",
+      "To increase the model's creativity",
+      "To make the prompt more general"
+    ],
+    "correctIndex": 1,
+    "explanation": "Few-shot examples are used to demonstrate the desired output format, helping the model produce consistent results."
+  },
+  {
+    "question": "Which of the following is a key benefit of constrained generation?",
+    "options": [
+      "It allows for more creative responses",
+      "It ensures the output adheres to specific formats or options",
+      "It increases the model's knowledge base",
+      "It reduces the need for user feedback"
+    ],
+    "correctIndex": 1,
+    "explanation": "Constrained generation ensures the output is limited to specific formats or options, making it more reliable and predictable."
+  },
+  {
+    "question": "What is a common issue with prompts that lack output format specifications?",
+    "options": [
+      "They are too verbose",
+      "They are too generic",
+      "They produce outputs that are hard to use downstream",
+      "They are difficult to understand"
+    ],
+    "correctIndex": 2,
+    "explanation": "Lack of output format specifications makes it difficult to integrate the model's output into downstream tools or processes."
+  }
+]

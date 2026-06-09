@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which strategy is most effective for reducing API costs in a multi-agent system without sacrificing quality?",
+    "options": [
+      "Using the same premium model for all agents",
+      "Using the smallest model that meets the task requirements",
+      "Increasing the number of agent calls",
+      "Disabling retries to avoid additional costs"
+    ],
+    "correctIndex": 1,
+    "explanation": "Using the smallest model that meets the task requirements ensures cost efficiency while maintaining quality, as described in the tiered model strategy."
+  },
+  {
+    "question": "What is the primary benefit of parallelizing agent workflows?",
+    "options": [
+      "Reducing the number of agents needed",
+      "Cutting total latency by 50-70% in pipeline architectures",
+      "Eliminating the need for retries",
+      "Increasing the cost per request"
+    ],
+    "correctIndex": 1,
+    "explanation": "Parallelizing agent workflows that do not depend on each other's output can significantly reduce latency, as stated in the throughput section."
+  },
+  {
+    "question": "Which of the following is a key component of building fault tolerance in multi-agent systems?",
+    "options": [
+      "Using only one agent for all tasks",
+      "Implementing retry with backoff and fallback agents",
+      "Disabling all error handling to prevent system slowdowns",
+      "Ignoring rate limits to maximize throughput"
+    ],
+    "correctIndex": 1,
+    "explanation": "Implementing retry with backoff and fallback agents is a key strategy for graceful failure and fault tolerance, as outlined in the reliability section."
+  },
+  {
+    "question": "What is the main purpose of a queue management system in a multi-agent architecture?",
+    "options": [
+      "To increase the number of agents",
+      "To prevent system crashes during burst traffic",
+      "To eliminate the need for load balancing",
+      "To reduce the number of API calls"
+    ],
+    "correctIndex": 1,
+    "explanation": "Queue management systems help prevent system crashes during burst traffic by managing backpressure, priority ordering, and dead-letter handling."
+  },
+  {
+    "question": "Which of the following is an example of vertical optimization in a multi-agent system?",
+    "options": [
+      "Adding more agent instances",
+      "Using caching to store common responses",
+      "Running agents in parallel",
+      "Increasing the number of retries"
+    ],
+    "correctIndex": 1,
+    "explanation": "Using caching to store common responses is an example of vertical optimization, which focuses on improving the efficiency of individual agents."
+  }
+]

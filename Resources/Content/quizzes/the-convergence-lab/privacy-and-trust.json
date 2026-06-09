@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary purpose of trust boundary layers in AI systems?",
+    "options": [
+      "To reduce the amount of data collected",
+      "To categorize data based on its sensitivity and usage context",
+      "To make AI systems faster",
+      "To replace human oversight with AI decisions"
+    ],
+    "correctIndex": 1,
+    "explanation": "Trust boundary layers categorize data based on sensitivity and usage context, ensuring that data is only used appropriately and securely."
+  },
+  {
+    "question": "Which of the following is a key benefit of self-hosted memory in AI systems?",
+    "options": [
+      "Lower costs",
+      "Increased data sharing with third parties",
+      "Greater control over data ownership and security",
+      "Faster processing speeds"
+    ],
+    "correctIndex": 2,
+    "explanation": "Self-hosted memory provides greater control over data ownership and security, which is essential for maintaining privacy and data sovereignty."
+  },
+  {
+    "question": "What is the main lesson from the Samsung ChatGPT leak incident?",
+    "options": [
+      "AI systems should be used only for public data",
+      "Data sent to AI services may be retained and used for training",
+      "AI systems are inherently secure",
+      "User consent is not important in AI systems"
+    ],
+    "correctIndex": 1,
+    "explanation": "The incident highlights that any data sent to an AI service may be retained and used for training unless explicitly opted out of."
+  },
+  {
+    "question": "Which of the following is NOT a method used to enforce trust boundaries in code?",
+    "options": [
+      "Tagging every memory entry with a trust layer",
+      "Using separate output pipelines for private and public data",
+      "Allowing AI to decide which data to use based on its own judgment",
+      "Implementing row-level security in the database"
+    ],
+    "correctIndex": 2,
+    "explanation": "Trust boundaries must be enforced by the system, not by the AI's judgment. Allowing AI to decide is not a valid method for enforcing trust boundaries."
+  },
+  {
+    "question": "What is the main implication of the convergence of AI systems?",
+    "options": [
+      "AI systems become less accurate",
+      "AI systems become more isolated",
+      "A breach of a converged AI system can be catastrophic",
+      "AI systems are easier to regulate"
+    ],
+    "correctIndex": 2,
+    "explanation": "Converged AI systems know more about users, making breaches more catastrophic, which is why data sovereignty and strong security measures are critical."
+  }
+]

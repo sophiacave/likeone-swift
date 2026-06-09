@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary purpose of Monday in the weekly content engine rhythm?",
+    "options": [
+      "To create long-form content",
+      "To review metrics and plan content ideas",
+      "To repurpose content for social media",
+      "To draft and send the email newsletter"
+    ],
+    "correctIndex": 1,
+    "explanation": "Monday is dedicated to strategy and planning, where you review last week's performance and generate this week's content ideas based on data and pillars."
+  },
+  {
+    "question": "Which day is focused on repurposing long-form content into short-form pieces?",
+    "options": [
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "correctIndex": 1,
+    "explanation": "Wednesday is designated for repurposing and short-form content creation, where the anchor long-form piece is transformed into social media posts and other short-form content."
+  },
+  {
+    "question": "What is the recommended approach to measuring content performance according to the lesson?",
+    "options": [
+      "Track all available metrics for comprehensive analysis",
+      "Track five key metrics: reach, engagement, clicks, subscribers, and revenue",
+      "Track only revenue and engagement",
+      "Track metrics only if they are directly tied to sales"
+    ],
+    "correctIndex": 1,
+    "explanation": "The lesson emphasizes tracking five key metrics to avoid being overwhelmed by data and to focus on what truly matters for content performance."
+  },
+  {
+    "question": "What is the main cause of 'voice drift' in an AI-powered content engine?",
+    "options": [
+      "Using too many different prompts",
+      "Failing to update the content pillars regularly",
+      "Not pasting the voice document in every session",
+      "Overusing AI without human oversight"
+    ],
+    "correctIndex": 2,
+    "explanation": "Voice drift occurs when the AI output becomes generic because the voice document is not consistently referenced, leading to a loss of brand consistency."
+  },
+  {
+    "question": "Which of the following is a key fix for 'metric blindness' in a content engine?",
+    "options": [
+      "Increasing the number of platforms used for content distribution",
+      "Reviewing metrics every Friday and using AI for analysis",
+      "Focusing only on revenue metrics",
+      "Skipping the review process to save time"
+    ],
+    "correctIndex": 1,
+    "explanation": "The lesson recommends a weekly review on Fridays, using AI to analyze metrics and identify what is working or needs improvement, to prevent metric blindness."
+  }
+]

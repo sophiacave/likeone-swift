@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary purpose of content pillars in a content architecture?",
+    "options": [
+      "To create a visual design for your website",
+      "To serve as the 3-5 core themes that all content traces back to",
+      "To organize your social media posts by platform",
+      "To track the performance of individual blog posts"
+    ],
+    "correctIndex": 1,
+    "explanation": "Content pillars are the 3-5 core themes that all content traces back to, forming the foundation of your content strategy."
+  },
+  {
+    "question": "Which of the following best describes 'atoms' in content architecture?",
+    "options": [
+      "The largest content pieces, such as full-length videos or books",
+      "Reusable content units like statistics, quotes, or frameworks",
+      "The process of publishing content across multiple platforms",
+      "The main topics or categories of content"
+    ],
+    "correctIndex": 1,
+    "explanation": "Atoms are the smallest reusable content units, such as a statistic, quote, or framework, that can be used across multiple pieces of content."
+  },
+  {
+    "question": "What is the main benefit of using the Content Matrix Model?",
+    "options": [
+      "It allows for the creation of a single, comprehensive guide",
+      "It helps identify content gaps visually by organizing content in a grid",
+      "It focuses on creating a hierarchy of content complexity",
+      "It ensures all content is published in a single format"
+    ],
+    "correctIndex": 1,
+    "explanation": "The Content Matrix Model organizes content in a two-dimensional grid, making it easy to spot gaps and plan content systematically."
+  },
+  {
+    "question": "What is the key advantage of treating content like structured data?",
+    "options": [
+      "It allows for more creative freedom in content creation",
+      "It enables AI to work with content systematically",
+      "It reduces the need for content planning",
+      "It makes content more difficult to repurpose"
+    ],
+    "correctIndex": 1,
+    "explanation": "Treating content like structured data with metadata allows AI to search, filter, and repurpose content intelligently."
+  },
+  {
+    "question": "Which model of content architecture is best suited for building topical authority through a central hub?",
+    "options": [
+      "The Content Ladder Model",
+      "The Content Matrix Model",
+      "The Hub-and-Spoke Model",
+      "The Database Model"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Hub-and-Spoke Model uses a central pillar piece (like a guide or whitepaper) that other content pieces link back to, building topical authority."
+  }
+]

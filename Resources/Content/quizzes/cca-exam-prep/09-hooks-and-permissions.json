@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which permission mode is recommended for CI/CD environments?",
+    "options": [
+      "Allowlist mode",
+      "Prompt mode",
+      "Trust mode",
+      "Read-only mode"
+    ],
+    "correctIndex": 0,
+    "explanation": "Allowlist mode is recommended for CI/CD because it restricts execution to only specified tools, ensuring no unexpected actions occur in the absence of human oversight."
+  },
+  {
+    "question": "Which tool category is considered high risk and should never be allowed unrestricted in CI/CD?",
+    "options": [
+      "Read-only tools",
+      "Write tools",
+      "Execution tools",
+      "MCP tools"
+    ],
+    "correctIndex": 2,
+    "explanation": "Execution tools, such as Bash, are high risk because they can perform arbitrary actions like deleting files or modifying system configurations, making them unsuitable for unrestricted use in CI/CD."
+  },
+  {
+    "question": "What is the purpose of a pre-tool hook?",
+    "options": [
+      "To run after a tool completes",
+      "To modify or block a prompt submission",
+      "To validate or block a tool call before it executes",
+      "To log all tool calls for audit purposes"
+    ],
+    "correctIndex": 2,
+    "explanation": "Pre-tool hooks run before a tool executes and can be used to validate or block the tool call based on predefined conditions, enhancing safety and governance."
+  },
+  {
+    "question": "Which permission mode allows all tools to run without prompting?",
+    "options": [
+      "Allowlist mode",
+      "Prompt mode",
+      "Trust mode",
+      "Read-only mode"
+    ],
+    "correctIndex": 2,
+    "explanation": "Trust mode grants full autonomy to the agent, allowing all tools to run without prompting. It should only be used in environments where the agent's judgment is trusted and consequences are reversible."
+  },
+  {
+    "question": "Which hook type is used to enforce code quality by running a linter after a file is edited?",
+    "options": [
+      "Pre-tool hook",
+      "Post-tool hook",
+      "Prompt submit hook",
+      "Audit logger hook"
+    ],
+    "correctIndex": 1,
+    "explanation": "Post-tool hooks run after a tool completes, making them ideal for enforcing code quality by running linters or formatters on modified files."
+  }
+]

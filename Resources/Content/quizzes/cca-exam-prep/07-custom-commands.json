@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Where should a project-level custom slash command be stored in a Claude Code project?",
+    "options": [
+      ".claude/commands/",
+      "~/.claude/commands/",
+      "src/commands/",
+      "node_modules/commands/"
+    ],
+    "correctIndex": 0,
+    "explanation": "Project-level commands are stored in the .claude/commands/ directory and are shared via git."
+  },
+  {
+    "question": "What is the correct syntax for using a parameter in a custom slash command?",
+    "options": [
+      "$ARGUMENTS",
+      "$arguments",
+      "@ARGUMENTS",
+      "arguments"
+    ],
+    "correctIndex": 0,
+    "explanation": "The $ARGUMENTS pattern is used to denote dynamic input in custom slash commands."
+  },
+  {
+    "question": "Which automation mechanism is best suited for tasks that require Claude to interact with external systems like GitHub or a database?",
+    "options": [
+      "Slash Commands",
+      "MCP Tools",
+      "Agents",
+      "None of the above"
+    ],
+    "correctIndex": 1,
+    "explanation": "MCP Tools are used when Claude needs to call external systems, as they expose functions via JSON-RPC."
+  },
+  {
+    "question": "Which command design pattern is best suited for creating a new API endpoint with predefined structure?",
+    "options": [
+      "Workflow Automation",
+      "Analysis & Reporting",
+      "Code Generation",
+      "Guardrails"
+    ],
+    "correctIndex": 2,
+    "explanation": "The Code Generation pattern is used for scaffolding new code from templates, such as creating a new API endpoint."
+  },
+  {
+    "question": "What is the primary difference between a slash command and an agent?",
+    "options": [
+      "Slash commands are used for complex tasks, agents are for simple shortcuts",
+      "Slash commands are human-initiated, agents are autonomous",
+      "Slash commands are stored in JSON, agents are stored in markdown",
+      "Slash commands require an MCP server, agents do not"
+    ],
+    "correctIndex": 1,
+    "explanation": "Slash commands are initiated by humans and are defined in markdown, while agents are autonomous instances that can be spawned on demand."
+  }
+]

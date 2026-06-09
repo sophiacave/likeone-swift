@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the most common reason AI initiatives fail according to the lesson?",
+    "options": [
+      "Poor data quality",
+      "No clear business problem defined",
+      "Lack of executive sponsorship",
+      "Inadequate change management"
+    ],
+    "correctIndex": 1,
+    "explanation": "The lesson states that the most common reason AI initiatives fail is the absence of a clear business problem defined, as initiatives often start with the goal of 'implementing AI' rather than solving a specific problem."
+  },
+  {
+    "question": "Which of the following is NOT a reason for AI project failure listed in the lesson?",
+    "options": [
+      "Inadequate change management",
+      "Poor data quality",
+      "Lack of user involvement in design",
+      "Inadequate technology implementation"
+    ],
+    "correctIndex": 3,
+    "explanation": "The lesson explicitly states that technology is not the main cause of AI project failure. The failure is typically due to human factors, not technical shortcomings."
+  },
+  {
+    "question": "What is the best way to address the fear that AI might take someone's job?",
+    "options": [
+      "Promise that no jobs will be lost",
+      "Ignore the question to avoid conflict",
+      "Explain that AI will handle repetitive tasks and people will focus on higher-value work",
+      "Fire the person who raises the concern"
+    ],
+    "correctIndex": 2,
+    "explanation": "The lesson emphasizes that being honest and transparent is key. Explaining that AI will handle repetitive tasks and people will focus on higher-value work builds trust and addresses concerns directly."
+  },
+  {
+    "question": "Which stakeholder group is most concerned with ROI and cost reduction when considering AI implementation?",
+    "options": [
+      "Frontline teams",
+      "Middle management",
+      "CFO",
+      "CTO/CIO"
+    ],
+    "correctIndex": 2,
+    "explanation": "The lesson explains that CFOs are most concerned with ROI, cost reduction, and risk, and should be presented with financial data and payback periods."
+  },
+  {
+    "question": "What is the primary role of 'champions' in the AI change management playbook?",
+    "options": [
+      "To provide funding for the AI project",
+      "To lead the project from the C-suite",
+      "To be early adopters and promote AI within their teams",
+      "To train all employees on AI tools"
+    ],
+    "correctIndex": 2,
+    "explanation": "Champions are identified as early adopters who are naturally curious about AI. Their authentic enthusiasm helps drive adoption and support within their teams."
+  }
+]

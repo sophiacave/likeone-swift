@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary purpose of the Content Waterfall system?",
+    "options": [
+      "To create multiple pieces of content from a single source",
+      "To increase the time spent on content creation",
+      "To reduce the number of platforms used for distribution",
+      "To eliminate the need for AI in content creation"
+    ],
+    "correctIndex": 0,
+    "explanation": "The Content Waterfall system is designed to maximize output by transforming one flagship piece into multiple platform-native content pieces."
+  },
+  {
+    "question": "Which of the following is considered a Level 1 (The Source) in the Content Waterfall?",
+    "options": [
+      "A 60-second video script",
+      "A Twitter thread",
+      "A blog post or podcast episode",
+      "A quote graphic for Instagram"
+    ],
+    "correctIndex": 2,
+    "explanation": "Level 1 is the flagship long-form content, such as a blog post or podcast episode, from which all other content is derived."
+  },
+  {
+    "question": "What is the main goal of Level 3 (The Snippets) in the Content Waterfall?",
+    "options": [
+      "To create in-depth analysis for long-form content",
+      "To generate platform-specific content from key quotes or stats",
+      "To summarize the source material for newsletters",
+      "To create a discussion prompt for community engagement"
+    ],
+    "correctIndex": 1,
+    "explanation": "Level 3 focuses on creating bite-sized, platform-specific content like quotes, carousels, and one-liners from the source material."
+  },
+  {
+    "question": "Which of the following is an example of a Level 4 (The Derivatives) content piece?",
+    "options": [
+      "A LinkedIn post summarizing the key insight",
+      "A 60-second video script",
+      "A Twitter thread listing main points",
+      "An Instagram carousel with seven slides"
+    ],
+    "correctIndex": 1,
+    "explanation": "Level 4 includes derivative content such as video scripts, discussion prompts, and Quora/Reddit answers, which are created from the source material."
+  },
+  {
+    "question": "What is the biggest mistake content creators make according to the lesson?",
+    "options": [
+      "Failing to use AI for content creation",
+      "Creating content that is not platform-native",
+      "Treating each piece of content as a standalone creation",
+      "Not repurposing content across multiple formats"
+    ],
+    "correctIndex": 2,
+    "explanation": "The lesson emphasizes that treating each content piece as a standalone effort is a major mistake, as the Content Waterfall system is designed to repurpose one source into multiple formats."
+  }
+]

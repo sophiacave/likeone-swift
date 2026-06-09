@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary benefit of batching content creation over creating content one at a time?",
+    "options": [
+      "Increased context switching",
+      "More time spent on editing",
+      "Higher output with better consistency",
+      "Fewer AI-assisted tools used"
+    ],
+    "correctIndex": 2,
+    "explanation": "Batching eliminates context switching and allows for more focused, efficient creation, resulting in higher output with better consistency."
+  },
+  {
+    "question": "Which of the following is NOT part of the 3-phase content production workflow?",
+    "options": [
+      "Ideation Day",
+      "Batch Creation",
+      "Real-Time Engagement",
+      "Schedule & Distribute"
+    ],
+    "correctIndex": 2,
+    "explanation": "Real-Time Engagement is not one of the three phases; the three phases are Ideation Day, Batch Creation, and Schedule & Distribute."
+  },
+  {
+    "question": "What is the recommended structure for a batching session?",
+    "options": [
+      "10 minutes setup, 60 minutes creation, 20 minutes editing, 10 minutes scheduling",
+      "30 minutes setup, 30 minutes creation, 30 minutes editing, 30 minutes scheduling",
+      "15 minutes setup, 45 minutes creation, 15 minutes editing, 15 minutes scheduling",
+      "5 minutes setup, 60 minutes creation, 25 minutes editing, 10 minutes scheduling"
+    ],
+    "correctIndex": 0,
+    "explanation": "The optimal batching session structure is 10 minutes setup, 45-60 minutes creation, 20 minutes editing, and 10 minutes scheduling."
+  },
+  {
+    "question": "When should content creation NOT be batched?",
+    "options": [
+      "For blog posts",
+      "For trend responses",
+      "For scheduled social media posts",
+      "For email newsletters"
+    ],
+    "correctIndex": 1,
+    "explanation": "Trend responses should not be batched because they require timely, real-time engagement to remain relevant."
+  },
+  {
+    "question": "What is the purpose of a prompt library in AI-assisted content creation?",
+    "options": [
+      "To replace human writers entirely",
+      "To store and reuse effective AI prompts",
+      "To increase the time spent on editing",
+      "To reduce the need for scheduling"
+    ],
+    "correctIndex": 1,
+    "explanation": "A prompt library stores and reuses effective AI prompts, improving efficiency and consistency across content creation sessions."
+  }
+]

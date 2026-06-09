@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which of the following is a key question to ask when assessing the risk category of 'Accuracy & Reliability' in AI systems?",
+    "options": [
+      "What is the legal position on AI-generated intellectual property?",
+      "What data flows through this system and where does it end up?",
+      "What's our error rate, who catches mistakes, and what's the cost of a wrong answer?",
+      "How do we test for bias in this system, and how often?"
+    ],
+    "correctIndex": 2,
+    "explanation": "The key question for 'Accuracy & Reliability' focuses on error rates and the cost of mistakes, which directly relates to the reliability of AI outputs."
+  },
+  {
+    "question": "Which risk category involves ensuring that AI systems do not perpetuate bias in decisions related to hiring, lending, or insurance?",
+    "options": [
+      "Accuracy & Reliability",
+      "Data Privacy & Security",
+      "Bias & Fairness",
+      "Regulatory & Legal"
+    ],
+    "correctIndex": 2,
+    "explanation": "The 'Bias & Fairness' category specifically addresses the risk of AI systems reflecting biases in training data, which can lead to legal and reputational issues in areas like hiring and lending."
+  },
+  {
+    "question": "Which AI risk category is most concerned with the legal and regulatory implications of AI use, such as compliance with the EU AI Act and evolving state-level legislation?",
+    "options": [
+      "Data Privacy & Security",
+      "Regulatory & Legal",
+      "Accuracy & Reliability",
+      "Bias & Fairness"
+    ],
+    "correctIndex": 1,
+    "explanation": "The 'Regulatory & Legal' category focuses on compliance with AI-related laws and regulations, including the EU AI Act and other evolving legislation."
+  },
+  {
+    "question": "Which tier of the AI governance framework requires human-in-the-loop for every consequential decision and ongoing bias testing?",
+    "options": [
+      "Tier 1: Open Use",
+      "Tier 2: Guided Use",
+      "Tier 3: Controlled Use",
+      "Tier 4: Restricted Use"
+    ],
+    "correctIndex": 2,
+    "explanation": "Tier 3: Controlled Use is the highest risk tier and requires the most oversight, including human-in-the-loop for critical decisions and continuous bias testing."
+  },
+  {
+    "question": "Which of the following is a key component of the AI risk assessment template provided in the lesson?",
+    "options": [
+      "A checklist for AI tool procurement",
+      "A one-page policy for each AI use case",
+      "A detailed audit of all AI vendors",
+      "A 15-minute assessment covering data, impact, bias, and operational risks"
+    ],
+    "correctIndex": 3,
+    "explanation": "The AI risk assessment template is described as a 15-minute assessment that covers data, impact, bias, and operational risks, helping to surface key risks before implementation."
+  }
+]

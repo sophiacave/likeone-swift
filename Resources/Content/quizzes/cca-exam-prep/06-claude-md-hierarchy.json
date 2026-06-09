@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which configuration file has the highest priority in the CLAUDE.md hierarchy?",
+    "options": [
+      "SYSTEM PROMPT",
+      "ENTERPRISE POLICY",
+      "CLAUDE.md (PROJECT ROOT)",
+      ".claude/rules/*.md"
+    ],
+    "correctIndex": 0,
+    "explanation": "The SYSTEM PROMPT is the highest priority and cannot be modified. It defines Claude's core behavior."
+  },
+  {
+    "question": "Where should project-specific coding standards and build commands be defined?",
+    "options": [
+      "~/.claude/rules/*.md",
+      "CLAUDE.md (PROJECT ROOT)",
+      "SESSION CONTEXT",
+      "ENTERPRISE POLICY"
+    ],
+    "correctIndex": 1,
+    "explanation": "CLAUDE.md (PROJECT ROOT) is the primary configuration file for any project and is used to define coding standards, build commands, and other project-specific rules."
+  },
+  {
+    "question": "What is the correct use of subdirectory CLAUDE.md files in a monorepo?",
+    "options": [
+      "To override all project-level rules",
+      "To define rules specific to a package",
+      "To store personal preferences",
+      "To set enterprise-wide policies"
+    ],
+    "correctIndex": 1,
+    "explanation": "Subdirectory CLAUDE.md files are used to define rules specific to a package in a monorepo, adding context without overriding the root file."
+  },
+  {
+    "question": "Which of the following should NOT be included in CLAUDE.md (PROJECT ROOT)?",
+    "options": [
+      "Build and test commands",
+      "Coding conventions",
+      "Personal preferences",
+      "File structure explanation"
+    ],
+    "correctIndex": 2,
+    "explanation": "Personal preferences should be included in ~/.claude/rules/*.md, not in CLAUDE.md (PROJECT ROOT), which is for project-specific rules."
+  },
+  {
+    "question": "What happens if a subdirectory CLAUDE.md file contains a rule that conflicts with the project root CLAUDE.md?",
+    "options": [
+      "The subdirectory rule is ignored",
+      "The project root rule is ignored",
+      "The subdirectory rule overrides the project root rule",
+      "Both rules are applied, with the project root rule taking precedence"
+    ],
+    "correctIndex": 3,
+    "explanation": "The project root CLAUDE.md has higher priority and takes precedence over subdirectory rules, even though subdirectory rules can add context."
+  }
+]

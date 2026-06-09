@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which quadrant of the AI Opportunity Matrix should be prioritized first for quick wins?",
+    "options": [
+      "Quadrant 1: High Impact + Data Ready",
+      "Quadrant 2: High Impact + Data Not Ready",
+      "Quadrant 3: Low Impact + Data Ready",
+      "Quadrant 4: Low Impact + Data Not Ready"
+    ],
+    "correctIndex": 0,
+    "explanation": "Quadrant 1 represents initiatives that are both high impact and data ready, making them ideal for quick wins and proving AI value."
+  },
+  {
+    "question": "Which of the following is a valid reason to build a custom AI solution?",
+    "options": [
+      "The problem is common across industries and many tools already exist",
+      "The AI capability is your core competitive advantage",
+      "You need a solution that can be implemented in days to weeks",
+      "The problem is not unique to your industry but is not industry-specific"
+    ],
+    "correctIndex": 1,
+    "explanation": "Custom AI is appropriate when the AI capability is central to your competitive advantage and requires full control over the model and data pipeline."
+  },
+  {
+    "question": "What is the best way to evaluate an AI vendor's reliability during a meeting?",
+    "options": [
+      "Ask them to show a failure case and how they handle it",
+      "Inquire about the number of patents they have",
+      "Ask for their company's revenue and valuation",
+      "Request a list of their competitors"
+    ],
+    "correctIndex": 0,
+    "explanation": "A serious vendor will be transparent about failure cases, error rates, and escalation paths, which indicates a mature and reliable product."
+  },
+  {
+    "question": "Which quadrant of the AI Opportunity Matrix is best suited for experimentation and learning?",
+    "options": [
+      "Quadrant 1: High Impact + Data Ready",
+      "Quadrant 2: High Impact + Data Not Ready",
+      "Quadrant 3: Low Impact + Data Ready",
+      "Quadrant 4: Low Impact + Data Not Ready"
+    ],
+    "correctIndex": 2,
+    "explanation": "Quadrant 3 is ideal for experimentation because the impact is lower, but the data is ready, allowing teams to learn without high risk."
+  },
+  {
+    "question": "When should an organization consider buying an off-the-shelf AI solution?",
+    "options": [
+      "When the problem is unique to their industry and no existing tool solves it",
+      "When the problem is common across industries and the solution is not central to their competitive advantage",
+      "When the AI capability is their core product and they need full control",
+      "When the problem is not ready for AI and data is not available"
+    ],
+    "correctIndex": 1,
+    "explanation": "Buying off-the-shelf is appropriate when the problem is common and the solution is not central to the organization's competitive advantage."
+  }
+]

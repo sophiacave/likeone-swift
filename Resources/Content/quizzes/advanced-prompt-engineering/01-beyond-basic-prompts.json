@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary reason why 'just asking' often fails when interacting with AI?",
+    "options": [
+      "AI lacks the ability to understand language",
+      "AI is too slow to process requests",
+      "AI doesn't know your context, standards, or what 'good' looks like for your specific situation",
+      "AI only works with specific types of queries"
+    ],
+    "correctIndex": 2,
+    "explanation": "The primary reason is that AI lacks the specific context, standards, and understanding of what 'good' looks like for your unique situation, which leads to vague or incorrect outputs."
+  },
+  {
+    "question": "Which of the following is NOT one of the five levers of a great prompt?",
+    "options": [
+      "Role",
+      "Context",
+      "Task",
+      "Emotion"
+    ],
+    "correctIndex": 3,
+    "explanation": "The five levers are Role, Context, Task, Format, and Constraints. 'Emotion' is not one of them and does not directly guide the AI toward precise output."
+  },
+  {
+    "question": "What is the purpose of the 'Constraints' lever in prompt engineering?",
+    "options": [
+      "To define what the AI should avoid",
+      "To describe the AI's role",
+      "To provide background information",
+      "To specify the desired format of the output"
+    ],
+    "correctIndex": 0,
+    "explanation": "Constraints define what the AI should avoid, setting boundaries that help shape accurate and on-target output."
+  },
+  {
+    "question": "Which of the following best describes the 'Search Engine Mindset' when interacting with AI?",
+    "options": [
+      "Treating AI as a collaborator that needs detailed instructions",
+      "Assuming AI understands context and can deliver precise output without guidance",
+      "Using vague prompts and expecting AI to guess the intent",
+      "Focusing on formatting rather than content"
+    ],
+    "correctIndex": 2,
+    "explanation": "The 'Search Engine Mindset' involves using vague prompts and expecting AI to guess the intent, which often leads to generic and imprecise outputs."
+  },
+  {
+    "question": "What is the main benefit of using the 'Five-Lever Approach' in prompt engineering?",
+    "options": [
+      "It reduces the need for AI",
+      "It removes ambiguity and directs the AI precisely",
+      "It increases the cost of using AI",
+      "It makes AI more unpredictable"
+    ],
+    "correctIndex": 1,
+    "explanation": "The main benefit of the Five-Lever Approach is that it removes ambiguity and directs the AI precisely, leading to ready-to-use output on the first try."
+  }
+]

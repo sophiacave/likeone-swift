@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary difference between an emotionally intelligent AI and an emotionally unintelligent AI when responding to a user's frustration?",
+    "options": [
+      "The emotionally intelligent AI provides a debugging checklist first.",
+      "The emotionally intelligent AI acknowledges the user's frustration before offering a solution.",
+      "The emotionally intelligent AI uses more technical jargon.",
+      "The emotionally intelligent AI ignores the user's emotional state."
+    ],
+    "correctIndex": 1,
+    "explanation": "An emotionally intelligent AI recognizes and acknowledges the user's emotional state before providing a solution, which fosters trust and better user experience."
+  },
+  {
+    "question": "Which of the following is NOT a dimension of AI emotional intelligence?",
+    "options": [
+      "Perception",
+      "Adaptation",
+      "Sympathy",
+      "Memory"
+    ],
+    "correctIndex": 2,
+    "explanation": "Sympathy is not a dimension of AI emotional intelligence. It is a human emotion and should be used sparingly in AI systems."
+  },
+  {
+    "question": "What is the purpose of emotional memory in AI systems?",
+    "options": [
+      "To store factual information only.",
+      "To remember emotional context across sessions.",
+      "To simulate human emotions.",
+      "To replace human empathy."
+    ],
+    "correctIndex": 1,
+    "explanation": "Emotional memory helps AI systems remember the emotional context of past interactions, allowing them to respond with appropriate care and understanding in future interactions."
+  },
+  {
+    "question": "Which of the following is an example of an AI using empathy in its response?",
+    "options": [
+      "'I feel sorry for your situation.'",
+      "'I understand this is frustrating \u2014 let's fix it together.'",
+      "'This is not my problem.'",
+      "'I can't help with that.'"
+    ],
+    "correctIndex": 1,
+    "explanation": "Empathy involves understanding and adapting to the user's emotional state. Acknowledging frustration and offering collaborative problem-solving is an example of empathetic behavior."
+  },
+  {
+    "question": "What is the key difference between empathy and simulation in AI systems?",
+    "options": [
+      "Empathy requires the AI to feel emotions, while simulation does not.",
+      "Empathy involves understanding and adapting to the user's needs, while simulation involves pretending to have emotions.",
+      "Empathy is used in high-stress situations, while simulation is used in low-stress situations.",
+      "Empathy is a luxury, while simulation is a technical requirement."
+    ],
+    "correctIndex": 1,
+    "explanation": "Empathy involves understanding and adapting to the user's needs without requiring the AI to feel emotions. Simulation involves pretending to have emotions, which can erode trust."
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which of the following is a correct description of the 'search_tasks' tool in Scenario 1?",
+    "options": [
+      "Search tasks by keyword, assignee, status, or label. Returns max 25 tasks sorted by priority then due date.",
+      "Search tasks by project ID only. Returns all tasks in the project.",
+      "Search tasks by task ID only. Returns the full task details.",
+      "Search tasks by team member roles. Returns tasks assigned to specific roles."
+    ],
+    "correctIndex": 0,
+    "explanation": "The 'search_tasks' tool allows searching by keyword, assignee, status, or label and returns up to 25 tasks sorted by priority and due date, as specified in the lesson."
+  },
+  {
+    "question": "Which of the following is a valid security measure implemented in the 'preview_migration' tool in Scenario 2?",
+    "options": [
+      "It is read-only and does not execute any SQL.",
+      "It allows execution of any SQL after preview.",
+      "It does not require a preview_token for execution.",
+      "It allows DROP DATABASE commands."
+    ],
+    "correctIndex": 0,
+    "explanation": "The 'preview_migration' tool is read-only and does not execute any SQL, ensuring that no changes are made to the database during the preview phase."
+  },
+  {
+    "question": "In Scenario 3, which of the following is a correct reason for splitting the MCP servers into four separate servers?",
+    "options": [
+      "To isolate different domains (infrastructure, monitoring, incidents, documentation) and enforce security and access controls.",
+      "To reduce the number of tools available to engineers.",
+      "To increase the number of API calls made to external services.",
+      "To allow all tools to share the same transport protocol."
+    ],
+    "correctIndex": 0,
+    "explanation": "Splitting into four servers isolates different domains and enforces security and access controls, which is a key design principle in the lesson."
+  },
+  {
+    "question": "Which of the following is a correct description of the 'notify_channel' tool in Scenario 1?",
+    "options": [
+      "Send notification to Slack channel. Links to task if provided. Rate limited: 10 notifications per minute.",
+      "Send notification to any Slack channel or DM. No rate limits.",
+      "Send notification only via email. No Slack integration.",
+      "Send notifications only to admin channels. No user-specific channels."
+    ],
+    "correctIndex": 0,
+    "explanation": "The 'notify_channel' tool sends notifications to pre-configured Slack channels only and is rate limited to 10 notifications per minute, as specified in the lesson."
+  },
+  {
+    "question": "Which of the following is a correct error example for the 'close_task' tool in Scenario 1?",
+    "options": [
+      "{ \"error\": \"FORBIDDEN\", \"message\": \"Cannot close task assigned to @jane. Reassign first or ask @jane to close.\", \"suggestion\": \"Use update_task to reassign, then close\" }",
+      "{ \"error\": \"NOT_FOUND\", \"message\": \"Task not found\", \"suggestion\": \"Check the task ID\" }",
+      "{ \"error\": \"INVALID_PARAMETER\", \"message\": \"Invalid project ID\", \"suggestion\": \"Use a valid project ID\" }",
+      "{ \"error\": \"UNAUTHORIZED\", \"message\": \"You are not a member of the project\", \"suggestion\": \"Contact the admin\" }"
+    ],
+    "correctIndex": 0,
+    "explanation": "The correct error example for 'close_task' includes a 'FORBIDDEN' error when the task is assigned to someone else, as described in the lesson."
+  }
+]

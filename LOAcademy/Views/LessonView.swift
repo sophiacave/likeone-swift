@@ -12,7 +12,14 @@ struct LessonView: View {
     var body: some View {
         VStack(spacing: 0) {
             if let html {
-                LessonWebView(html: html)
+                LessonWebView(
+                    html: html,
+                    courseSlug: courseSlug,
+                    lessonSlug: lesson.slug,
+                    onQuizPassed: {
+                        progress.markComplete(courseSlug: courseSlug, lessonSlug: lesson.slug)
+                    }
+                )
             } else if isLoading {
                 VStack(spacing: 16) {
                     Spacer()
@@ -37,13 +44,17 @@ struct LessonView: View {
                 }
             }
 
-            // Bottom bar
+            // Bottom bar — quiz-aware
             HStack {
                 if isDone {
                     Label("Complete", systemImage: "checkmark.circle.fill")
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .foregroundStyle(.green)
+                } else if hasQuiz {
+                    Label("Pass the quiz to complete", systemImage: "questionmark.circle")
+                        .font(.subheadline)
+                        .foregroundStyle(Color.loPurple400)
                 } else {
                     Button {
                         progress.markComplete(courseSlug: courseSlug, lessonSlug: lesson.slug)
@@ -73,8 +84,11 @@ struct LessonView: View {
         progress.isCompleted(courseSlug: courseSlug, lessonSlug: lesson.slug)
     }
 
+    private var hasQuiz: Bool {
+        html?.contains("quiz-block") ?? false
+    }
+
     private func loadLesson() async {
-        // Try bundle first
         if let path = Bundle.main.path(forResource: lesson.slug, ofType: "html", inDirectory: "Content/lessons/\(courseSlug)"),
            let content = try? String(contentsOfFile: path, encoding: .utf8) {
             html = content
@@ -82,7 +96,6 @@ struct LessonView: View {
             return
         }
 
-        // Fetch from server
         guard let url = URL(string: "https://likeone.ai/api/v1/lessons/\(courseSlug)/\(lesson.slug)/html") else {
             isLoading = false
             return

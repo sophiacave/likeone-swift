@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which of the following is a key rule for writing a good tool description?",
+    "options": [
+      "Describe the HTTP method used by the tool",
+      "Describe the purpose of the tool, not the implementation",
+      "Include the tool's API endpoint URL",
+      "List all parameters the tool uses"
+    ],
+    "correctIndex": 1,
+    "explanation": "The description should focus on the purpose of the tool, not the implementation details like HTTP methods or endpoints."
+  },
+  {
+    "question": "What is the main benefit of using enums in parameter design?",
+    "options": [
+      "They allow for unlimited input values",
+      "They make it easier for Claude to understand the tool's parameters",
+      "They increase the number of parameters required",
+      "They are only used for string parameters"
+    ],
+    "correctIndex": 1,
+    "explanation": "Enums restrict parameters to a predefined set of values, which helps Claude make valid tool calls and avoid incorrect inputs."
+  },
+  {
+    "question": "What is the recommended approach for handling optional parameters in a tool schema?",
+    "options": [
+      "Mark all parameters as required",
+      "Only mark parameters with no default as optional",
+      "Mark parameters with sensible defaults as optional",
+      "Never use optional parameters"
+    ],
+    "correctIndex": 2,
+    "explanation": "Optional parameters with sensible defaults reduce the burden on Claude and allow the tool to function with minimal input."
+  },
+  {
+    "question": "Which of the following is a best practice for designing nested objects in a tool schema?",
+    "options": [
+      "Nest as many levels as needed for clarity",
+      "Use nesting only when parameters are logically grouped",
+      "Avoid nesting entirely to simplify the schema",
+      "Always nest parameters to reduce the number of top-level fields"
+    ],
+    "correctIndex": 1,
+    "explanation": "Nesting should be used only when it logically groups parameters or when handling arrays of objects, and should not exceed two levels of depth."
+  },
+  {
+    "question": "What is the primary purpose of including error codes and suggestions in an error response?",
+    "options": [
+      "To make the error message longer",
+      "To help Claude recover from the error",
+      "To hide implementation details from the user",
+      "To increase the number of error types"
+    ],
+    "correctIndex": 1,
+    "explanation": "Including error codes and suggestions in the response helps Claude understand the problem and take corrective action, such as trying a different tool or input."
+  }
+]
