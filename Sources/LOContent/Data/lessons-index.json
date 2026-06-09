@@ -3967,147 +3967,147 @@
         "title": "Session Management & State Persistence",
         "order": 4,
         "free": false,
-        "content_length": 5000
+        "content_length": 13075
       },
       {
         "slug": "05-orchestration-scenarios",
         "title": "Orchestration: Exam Scenarios Practice",
         "order": 5,
         "free": false,
-        "content_length": 5000
+        "content_length": 13119
       },
       {
         "slug": "06-claude-md-hierarchy",
         "title": "CLAUDE.md Hierarchy & Configuration",
         "order": 6,
         "free": false,
-        "content_length": 5000
+        "content_length": 12270
       },
       {
         "slug": "07-custom-commands",
         "title": "Custom Slash Commands & Skills",
         "order": 7,
         "free": false,
-        "content_length": 5000
+        "content_length": 12647
       },
       {
         "slug": "08-cicd-integration",
         "title": "CI/CD Integration with Claude Code",
         "order": 8,
         "free": false,
-        "content_length": 5000
+        "content_length": 11257
       },
       {
         "slug": "09-hooks-and-permissions",
         "title": "Hooks, Permissions & Automation",
         "order": 9,
         "free": false,
-        "content_length": 5000
+        "content_length": 11906
       },
       {
         "slug": "10-code-config-scenarios",
         "title": "Code Config: Exam Scenarios Practice",
         "order": 10,
         "free": false,
-        "content_length": 5000
+        "content_length": 12704
       },
       {
         "slug": "11-system-prompts",
         "title": "System Prompts & Identity Design",
         "order": 11,
         "free": false,
-        "content_length": 5000
+        "content_length": 11198
       },
       {
         "slug": "12-structured-output",
         "title": "Structured Output & Schema Enforcement",
         "order": 12,
         "free": false,
-        "content_length": 5000
+        "content_length": 11497
       },
       {
         "slug": "13-chain-of-thought",
         "title": "Chain of Thought & Reasoning Patterns",
         "order": 13,
         "free": false,
-        "content_length": 5000
+        "content_length": 9886
       },
       {
         "slug": "14-prompt-scenarios",
         "title": "Prompt Engineering: Exam Scenarios Practice",
         "order": 14,
         "free": false,
-        "content_length": 5000
+        "content_length": 13093
       },
       {
         "slug": "15-mcp-protocol-deep-dive",
         "title": "MCP Protocol Deep Dive",
         "order": 15,
         "free": false,
-        "content_length": 5000
+        "content_length": 11432
       },
       {
         "slug": "16-tool-schema-design",
         "title": "Tool Schema Design & Validation",
         "order": 16,
         "free": false,
-        "content_length": 5000
+        "content_length": 11052
       },
       {
         "slug": "17-mcp-security",
         "title": "MCP Security & Input Sanitization",
         "order": 17,
         "free": false,
-        "content_length": 5000
+        "content_length": 11379
       },
       {
         "slug": "18-tool-mcp-scenarios",
         "title": "Tool & MCP: Exam Scenarios Practice",
         "order": 18,
         "free": false,
-        "content_length": 5000
+        "content_length": 11475
       },
       {
         "slug": "19-context-window-management",
         "title": "Context Window Management & Optimization",
         "order": 19,
         "free": false,
-        "content_length": 5000
+        "content_length": 9483
       },
       {
         "slug": "20-reliability-patterns",
         "title": "Reliability Patterns: Retries, Fallbacks, Guardrails",
         "order": 20,
         "free": false,
-        "content_length": 5000
+        "content_length": 10469
       },
       {
         "slug": "21-anti-hallucination",
         "title": "Anti-Hallucination & Grounding Strategies",
         "order": 21,
         "free": false,
-        "content_length": 5000
+        "content_length": 8904
       },
       {
         "slug": "22-reliability-scenarios",
         "title": "Context & Reliability: Exam Scenarios Practice",
         "order": 22,
         "free": false,
-        "content_length": 5000
+        "content_length": 10331
       },
       {
         "slug": "23-full-practice-exam",
         "title": "Full Practice Exam (60 Questions)",
         "order": 23,
         "free": false,
-        "content_length": 5000
+        "content_length": 19988
       },
       {
         "slug": "24-exam-strategy",
         "title": "Exam Strategy & Time Management",
         "order": 24,
         "free": false,
-        "content_length": 5000
+        "content_length": 8941
       }
     ]
   }
