@@ -29,6 +29,16 @@ func routes(_ app: Application) throws {
     try app.register(collection: RSSController(blog: blog))
     try app.register(collection: StripeController(catalog: catalog))
     try app.register(collection: SubscribeController())
-    try app.register(collection: RecommendController(courses: courses, blog: blog, brain: brain))
-    try app.register(collection: AdminController(brain: brain))
+    try app.register(collection: RecommendController(courses: courses, lessons: lessons, blog: blog, brain: brain))
+    try app.register(collection: AdminController(brain: brain, blog: blog, courses: courses))
+    try app.register(collection: CronController(brain: brain, blog: blog))
+    try app.register(collection: AIController(courses: courses, lessons: lessons))
+
+    // Legacy redirects for 404 paths found in GSC
+    app.get("courses") { req -> Response in
+        req.redirect(to: "/academy/", redirectType: .permanent)
+    }
+    app.get("artists") { req -> Response in
+        req.redirect(to: "/", redirectType: .permanent)
+    }
 }
