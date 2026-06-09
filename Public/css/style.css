@@ -1529,6 +1529,20 @@ a:focus-visible, button:focus-visible {
     margin: 0 0 var(--space-12);
 }
 
+/* Nested ghost classes — strip frames, flatten */
+.lesson-content .demo-container .demo-container,
+.lesson-content .demo-container .card,
+.lesson-content .card .card,
+.lesson-content .demo-block .demo-block,
+.lesson-content [class*="card"] [class*="card"],
+.lesson-content [class*="container"] [class*="container"],
+.lesson-content [class*="box"] [class*="box"] {
+    background: rgba(255, 255, 255, 0.02);
+    border: none;
+    padding: var(--space-12) var(--space-16);
+    margin: var(--space-8) 0;
+}
+
 /* ═══════════════════════════════════════════════
    P2: APPLE-NATIVE LESSON OVERRIDE LAYER
    Typography-driven hierarchy. No color for emphasis.
@@ -1557,14 +1571,34 @@ a:focus-visible, button:focus-visible {
     color: var(--text-secondary) !important;
 }
 
-/* Neutralize inline background colors on divs — use card bg */
-.lesson-content div[style*="background:#"],
-.lesson-content div[style*="background: #"],
-.lesson-content div[style*="background:rgba"],
-.lesson-content div[style*="background: rgba"] {
+/* Neutralize inline background colors — flat, no frames-within-frames.
+   Top-level: subtle bg tint only, no border.
+   Nested: transparent, content flows freely. */
+.lesson-content > div[style*="background"],
+.lesson-content .section-text + div[style*="background"],
+.lesson-content .lesson-section > div[style*="background"] {
     background: var(--bg-card) !important;
     border: 1px solid var(--border) !important;
     border-radius: var(--radius-card) !important;
+    padding: var(--space-20) !important;
+    margin: var(--space-24) 0 !important;
+}
+
+/* Nested containers — strip the frame, just content */
+.lesson-content div[style*="background"] div[style*="background"] {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: none !important;
+    border-radius: var(--radius-sm) !important;
+    padding: var(--space-12) var(--space-16) !important;
+    margin: var(--space-8) 0 !important;
+}
+
+/* Triple-nested — completely flat */
+.lesson-content div[style*="background"] div[style*="background"] div[style*="background"] {
+    background: transparent !important;
+    border: none !important;
+    padding: var(--space-8) var(--space-12) !important;
+    margin: var(--space-4) 0 !important;
 }
 
 /* Preserve code block styling — don't override pre/code */

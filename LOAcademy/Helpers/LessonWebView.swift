@@ -87,7 +87,9 @@ struct LessonWebView: UIViewRepresentable {
         /* Apple-native overrides — typography-driven, no inline color */
         strong { color: #f5f5f7 !important; font-weight: 600; }
         [style*="border-left"] { border-left-color: #27272a !important; }
-        div[style*="background:#"], div[style*="background: #"], div[style*="background:rgba"], div[style*="background: rgba"] { background: #1a1a24 !important; border: 1px solid #27272a !important; border-radius: 14px !important; }
+        /* Nested containers: flat, no frames-within-frames */
+        div[style*="background"] div[style*="background"] { background: rgba(255,255,255,0.02) !important; border: none !important; border-radius: 8px !important; padding: 12px 16px !important; margin: 8px 0 !important; }
+        div[style*="background"] div[style*="background"] div[style*="background"] { background: transparent !important; border: none !important; padding: 8px 12px !important; }
 
         /* Quiz styles */
         .quiz-block { background: #1a1a24; border: 1px solid #27272a; border-radius: 16px; padding: 20px; margin: 1.25rem 0; }
