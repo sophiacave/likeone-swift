@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "TRUTH BIBLE — auto-synced from live systems. Never edit manually.",
-    "last_synced": "2026-06-09T13:21:03.960533",
+    "last_synced": "2026-06-09T14:38:14.584070",
     "sync_tool": "lo-verify-sync-facts",
     "verification_sources": {
       "revenue": "Stripe API via stripe-dashboard",
@@ -47,14 +47,14 @@
     "_note": "SEO stats require manual GSC update"
   },
   "infrastructure": {
-    "brain_entries": 1055,
-    "rag_vectors": 7769,
+    "brain_entries": 1059,
+    "rag_vectors": 7772,
     "rag_collections": 11,
     "rag_breakdown": {
       "academy": 53,
       "blog_content": 371,
       "blog_posts": 180,
-      "brain_entries": 1055,
+      "brain_entries": 1058,
       "episodes": 2121,
       "facts": 131,
       "faqs": 420,
