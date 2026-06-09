@@ -17,7 +17,8 @@
     <meta name="twitter:description" content="#(description)">
     #if(ogImage):<meta name="twitter:image" content="#(ogImage)">#endif
     #if(canonicalUrl):<link rel="canonical" href="#(canonicalUrl)">#endif
-    <link rel="stylesheet" href="/css/style.css?v=257p">
+    <link rel="alternate" type="application/rss+xml" title="Like One Blog RSS" href="https://likeone.ai/feed.xml">
+    <link rel="stylesheet" href="/css/style.css?v=268">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -26,7 +27,7 @@
         "alternateName": ["Like One Academy", "likeone.ai"],
         "url": "https://likeone.ai",
         "logo": "https://likeone.ai/images/logo.png",
-        "description": "AI education from a 501(c)(3) nonprofit. 52 courses, 520+ lessons. Start free.",
+        "description": "AI education from a 501(c)(3) nonprofit. 50+ courses, 590+ lessons. Start free.",
         "sameAs": [
             "https://github.com/sophiacave/likeone-swift",
             "https://github.com/sophiacave/sovereign-brain",

@@ -4,8 +4,8 @@ struct TrailingSlashMiddleware: AsyncMiddleware {
     func respond(to request: Request, chainingTo next: AsyncResponder) async throws -> Response {
         let path = request.url.path
 
-        // Only redirect GET requests; skip root, trailing-slash, static assets, API, health
-        guard request.method == .GET,
+        // Redirect GET and HEAD requests; skip root, trailing-slash, static assets, API, health
+        guard (request.method == .GET || request.method == .HEAD),
               !path.hasSuffix("/"),
               path != "/",
               !path.contains("."),

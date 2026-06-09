@@ -44,7 +44,7 @@ struct HomeController: RouteCollection {
         let context = HomeContext(
             title: "Like One — Free AI Courses & Certificates | 501(c)(3) Nonprofit Academy",
             description: "Learn AI free. \(allCourses.count) courses, \(totalLessons)+ lessons — from prompts to autonomous agents. Earn verified certificates. Built by a 501(c)(3) nonprofit.",
-            canonicalUrl: siteBaseURL,
+            canonicalUrl: siteBaseURL + "/",
             stats: [
                 Stat(number: "\(allCourses.count)", label: "Courses"),
                 Stat(number: "\(totalLessons)+", label: "Lessons"),

@@ -18,7 +18,7 @@ struct TracksController: RouteCollection {
         let context = TracksContext(
             title: "Learning Tracks | Like One",
             description: "Curated learning paths from AI foundations to agent architecture. Complete a track, earn a certificate.",
-            canonicalUrl: siteBaseURL + "/tracks",
+            canonicalUrl: siteBaseURL + "/tracks/",
             tracks: allTracks.map { t in
                 TrackCard(
                     slug: t.slug,
@@ -58,7 +58,7 @@ struct TracksController: RouteCollection {
         let context = TrackDetailContext(
             title: "\(track.title) | Like One",
             description: track.description,
-            canonicalUrl: siteBaseURL + "/tracks/\(track.slug)",
+            canonicalUrl: siteBaseURL + "/tracks/\(track.slug)/",
             track: TrackCard(
                 slug: track.slug,
                 title: track.title,

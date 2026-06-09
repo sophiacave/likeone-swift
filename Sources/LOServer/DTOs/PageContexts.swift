@@ -12,6 +12,6 @@ struct PageContext: Content {
         self.title = title
         self.heading = heading
         self.description = description
-        self.canonicalUrl = path.map { siteBaseURL + $0 }
+        self.canonicalUrl = path.map { siteBaseURL + ($0.hasSuffix("/") ? $0 : $0 + "/") }
     }
 }

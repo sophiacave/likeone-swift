@@ -34,7 +34,7 @@ struct AcademyController: RouteCollection {
 
         let context = AcademyContext(
             title: "Free AI Courses — Claude, Agents & Prompt Engineering | Like One Academy",
-            description: "52 courses, \(totalLessons)+ lessons. First 3 free on every course. From prompts to autonomous agents.",
+            description: "\(allCourses.count) courses, \(totalLessons)+ lessons. First 3 free on every course. From prompts to autonomous agents.",
             totalCourses: allCourses.count,
             totalLessons: totalLessons,
             tiers: tiers.map { TierInfo(name: $0.name, emoji: $0.emoji, count: $0.count) },
@@ -59,6 +59,7 @@ struct AcademyController: RouteCollection {
 
         let courseLessons = lessons.lessons(forCourse: slug)
 
+        let canonicalUrl = "https://likeone.ai/academy/\(slug)/"
         let context = CourseDetailContext(
             title: "\(course.title) | Like One Academy",
             course: courseCard(course),
@@ -69,7 +70,9 @@ struct AcademyController: RouteCollection {
                 isFree: isPro || $0.order <= 3,
                 courseSlug: slug
             )},
-            isPro: isPro
+            isPro: isPro,
+            canonicalUrl: canonicalUrl,
+            ogUrl: canonicalUrl
         )
         return try await req.view.render("course", context)
     }
@@ -104,6 +107,7 @@ struct AcademyController: RouteCollection {
             content = ""
         }
 
+        let canonicalUrl = "https://likeone.ai/academy/\(courseSlug)/\(lessonSlug)/"
         let context = LessonPageContext(
             title: "\(lesson.title) | \(course.title) | Like One Academy",
             description: course.description,
@@ -118,7 +122,9 @@ struct AcademyController: RouteCollection {
             prevTitle: prevLesson?.title,
             nextSlug: nextLesson?.slug,
             nextTitle: nextLesson?.title,
-            isLocked: !isFreeLesson && !isPro
+            isLocked: !isFreeLesson && !isPro,
+            canonicalUrl: canonicalUrl,
+            ogUrl: canonicalUrl
         )
         return try await req.view.render("lesson", context)
     }
@@ -188,6 +194,8 @@ struct CourseDetailContext: Content {
     let course: CourseCard
     let lessons: [LessonItem]
     let isPro: Bool
+    let canonicalUrl: String?
+    let ogUrl: String?
 }
 
 struct LessonItem: Content {
@@ -217,4 +225,6 @@ struct LessonPageContext: Content {
     let nextSlug: String?
     let nextTitle: String?
     let isLocked: Bool
+    let canonicalUrl: String?
+    let ogUrl: String?
 }
