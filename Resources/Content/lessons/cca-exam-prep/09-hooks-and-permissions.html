@@ -6,6 +6,7 @@
     <li>Claude Code's permission model: allow, deny, and approval flows</li>
     <li>Hook system: pre/post execution hooks for safety and automation</li>
     <li>How to design permission policies for teams and CI</li>
+    <li>Plan mode: review-before-execution for high-risk changes</li>
     <li>How the CCA exam tests safety and governance configurations</li>
   </ul>
 </div>
@@ -259,6 +260,30 @@ ENFORCEMENT:
   Enterprise policy sets the ceiling.
   Individual users cannot exceed their tier.
   Project CLAUDE.md can restrict further but never expand.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Plan Mode</h2>
+
+<p>Plan mode is a permission state, and the exam tests when to use it. In plan mode Claude reasons and writes a plan but makes <strong>no edits</strong> until the user approves.</p>
+
+<pre><code>PLAN MODE LIFECYCLE:
+  EnterPlanMode  → Claude explores, reasons, drafts a plan. Zero writes.
+  User reviews   → approve or revise
+  ExitPlanMode   → approval granted, execution begins
+
+USE PLAN MODE FOR:
+  High-blast-radius changes — schema migrations, large refactors
+  Unfamiliar codebases      — plan first, touch nothing
+  Anything hard to reverse  — deletions, deploys, data rewrites
+
+SKIP PLAN MODE FOR:
+  Trivial edits             — fixing a typo doesn't need a plan
+  Pure exploration          — reading code is already non-destructive</code></pre>
+
+<div class="callout">
+<strong>Exam framing:</strong> if a scenario mentions a risky or irreversible change and asks for the safest workflow, plan mode (review before execution) beats both "just edit carefully" and "add more hooks." Hooks gate individual tool calls; plan mode gates the whole approach.
+</div>
 </div>
 
 <div class="lesson-section">

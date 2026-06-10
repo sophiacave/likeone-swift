@@ -6,6 +6,7 @@
     <li>Context window mechanics: tokens, limits, and compression</li>
     <li>Optimization strategies for large-context applications</li>
     <li>Token budgeting for production agents</li>
+    <li>Prompt caching: the 0.1×/1.25× pricing rules and prefix matching</li>
     <li>How the CCA exam tests context management</li>
   </ul>
 </div>
@@ -147,6 +148,30 @@ SOLUTION:
 
   Each category fits in context. Combined results are small.
   Full 100 files never loaded simultaneously.</code></pre>
+</div>
+
+<div class="lesson-section">
+<h2>Prompt Caching</h2>
+
+<p>Prompt caching is the highest-leverage cost lever on the exam. The API caches a stable prefix of your prompt so repeated requests skip reprocessing it.</p>
+
+<pre><code>THE NUMBERS (memorize these):
+  Cache read:   0.1× input price  (~90% cost reduction)
+  Cache write:  1.25× input price (small premium to create)
+  Latency:      ~85% faster on cache hit
+  TTL:          5 minutes default — refreshes on every hit
+  Breakpoints:  up to 4 per request
+
+THE RULES:
+  1. Cache prefix must match EXACTLY — one changed byte breaks it
+  2. Order content stable-first:
+       system prompt → tool definitions → examples → variable user input
+  3. Anything before a breakpoint is cached; variable content goes last
+  4. Production hit-rate target: &gt;80%</code></pre>
+
+<div class="callout">
+<strong>Exam trap:</strong> putting variable content (timestamps, user names, request IDs) early in the system prompt silently kills the cache — every request becomes a cache write at 1.25×. If a scenario shows high costs despite caching, look for non-deterministic content in the prefix.
+</div>
 </div>
 
 <div class="lesson-section">

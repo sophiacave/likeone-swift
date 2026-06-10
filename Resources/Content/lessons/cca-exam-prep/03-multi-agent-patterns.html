@@ -6,6 +6,7 @@
     <li>When to use multi-agent vs single-agent (the decision framework)</li>
     <li>Four multi-agent topologies (supervisor, pipeline, debate, swarm)</li>
     <li>Inter-agent communication patterns</li>
+    <li>Claude Code subagents: isolated contexts and when to spawn them</li>
     <li>How the CCA exam evaluates multi-agent design decisions</li>
   </ul>
 </div>
@@ -143,6 +144,31 @@ async def handle_research(event):
 
 <div class="callout">
 <strong>Our production choice:</strong> Shared memory via brain (SQLite). All agents read/write brain keys. Loose coupling. Any agent can pick up where another left off. This is the pattern the CCA exam favors for persistent multi-agent systems.
+</div>
+</div>
+
+<div class="lesson-section">
+<h2>Claude Code Subagents</h2>
+
+<p>The exam tests subagents directly — Claude Code's built-in multi-agent primitive. A subagent is a separate agent spawned via the Agent tool, defined in <code>.claude/agents/&lt;name&gt;.md</code>.</p>
+
+<pre><code>SUBAGENT PROPERTIES:
+  Isolated context     — own conversation, starts fresh
+  Own tool allowlist   — can be narrower than the parent
+  Defined in markdown  — .claude/agents/researcher.md
+  Spawned via Agent tool — parent delegates, subagent reports back
+
+WHEN TO USE:
+  Parallel research      — 3 independent questions, 3 subagents at once
+  Scoped expertise       — a "security reviewer" with read-only tools
+  Context isolation      — protect the main window from huge search results
+
+WHEN NOT TO USE:
+  Sequential work in one domain — a single context beats handoffs
+  "Saving tokens" by chaining   — each handoff loses context and adds latency</code></pre>
+
+<div class="callout">
+<strong>Exam trap:</strong> a favorite wrong answer is "chain subagents to save tokens." Chaining subagents for sequential work adds latency and handoff loss. Subagents win only when tasks are truly parallel and isolatable. If the scenario describes one continuous task, the answer is a single context.
 </div>
 </div>
 
