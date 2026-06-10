@@ -9,6 +9,8 @@ struct GoogleAuthController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         let auth = routes.grouped("auth", "google")
         auth.post("token", use: verifyToken)
+        // GIS ux_mode=redirect login_uri (mobile Safari — popup flow unreliable, S271)
+        auth.post("callback", use: redirectCallback)
     }
 
     /// Verify a Google ID token from the client-side Sign In button
@@ -19,9 +21,43 @@ struct GoogleAuthController: RouteCollection {
         }
 
         let input = try req.content.decode(TokenInput.self)
+        let session = try await establishSession(req: req, credential: input.credential)
 
+        let response = Response(status: .ok)
+        setSessionCookies(on: response, session: session)
+        try response.content.encode(["status": "ok", "redirect": "/account/"])
+        return response
+    }
+
+    /// GIS ux_mode=redirect: Google POSTs form-encoded credential + g_csrf_token here.
+    /// Double-submit CSRF check (cookie must equal body value) per Google docs.
+    @Sendable
+    func redirectCallback(req: Request) async throws -> Response {
+        struct RedirectInput: Content {
+            let credential: String
+            let g_csrf_token: String?
+        }
+
+        let input = try req.content.decode(RedirectInput.self)
+
+        guard let bodyToken = input.g_csrf_token,
+              let cookieToken = req.cookies["g_csrf_token"]?.string,
+              !bodyToken.isEmpty,
+              bodyToken == cookieToken else {
+            throw Abort(.forbidden, reason: "CSRF token mismatch")
+        }
+
+        let session = try await establishSession(req: req, credential: input.credential)
+
+        let response = req.redirect(to: "/account/", redirectType: .normal)
+        setSessionCookies(on: response, session: session)
+        return response
+    }
+
+    /// Shared: verify Google ID token claims, find/create user, create session
+    private func establishSession(req: Request, credential: String) async throws -> SessionModel {
         // Decode JWT payload (Google ID token)
-        let parts = input.credential.split(separator: ".")
+        let parts = credential.split(separator: ".")
         guard parts.count >= 2,
               let payloadData = Data(base64URLDecoded: String(parts[1])) else {
             throw Abort(.unauthorized, reason: "Invalid token format")
@@ -77,10 +113,12 @@ struct GoogleAuthController: RouteCollection {
         let token = [UInt8].random(count: 32).map { String(format: "%02x", $0) }.joined()
         let session = SessionModel(userID: user.id!, token: token)
         try await session.save(on: req.db)
+        return session
+    }
 
-        let response = Response(status: .ok)
+    private func setSessionCookies(on response: Response, session: SessionModel) {
         response.cookies["lo_session"] = HTTPCookies.Value(
-            string: token,
+            string: session.token,
             expires: session.expiresAt,
             maxAge: 30 * 24 * 3600,
             domain: ".likeone.ai",
@@ -96,7 +134,5 @@ struct GoogleAuthController: RouteCollection {
             isHTTPOnly: false,
             sameSite: .lax
         )
-        try response.content.encode(["status": "ok", "redirect": "/account/"])
-        return response
     }
 }
