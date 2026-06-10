@@ -1,6 +1,10 @@
 import Vapor
+#if canImport(FoundationModels)
 import FoundationModels
+#endif
 import LOContent
+
+#if canImport(FoundationModels)
 
 /// AI endpoints powered by Apple Foundation Models (on-device, free, private).
 /// Phase 2: @Generable structured output, study notes, AI course search.
@@ -261,6 +265,26 @@ struct ContentClassification {
     @Guide(description: "Priority from 1 (low) to 10 (critical)")
     var priority: Int
 }
+
+#else
+
+/// Stub for platforms without FoundationModels (CI runners, older macOS).
+/// Keeps the route surface identical; every endpoint returns 503.
+struct AIController: RouteCollection {
+    let courses: CourseProvider
+    let lessons: LessonProvider
+
+    func boot(routes: RoutesBuilder) throws {
+        let ai = routes.grouped("api", "v1", "ai").grouped(AuthMiddleware())
+        for endpoint in ["generate", "summarize", "quiz", "notes", "search", "classify"] {
+            ai.post(.constant(endpoint)) { (_: Request) async throws -> Response in
+                throw Abort(.serviceUnavailable, reason: "Apple Foundation Models unavailable on this platform")
+            }
+        }
+    }
+}
+
+#endif
 
 // MARK: - Request/Response DTOs
 
