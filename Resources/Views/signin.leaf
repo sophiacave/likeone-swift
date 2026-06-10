@@ -5,11 +5,14 @@
                 <h1 class="site-section-title" style="margin-bottom: 8px;">Sign In</h1>
                 <p style="color: var(--text-secondary); margin-bottom: 40px;">Access your courses, track progress, and earn certificates.</p>
 
-                <!-- Google Sign In (official GIS button — popup credential flow,
-                     works under FedCM / blocked third-party cookies, unlike One Tap prompt()) -->
+                <!-- Google Sign In (official GIS button, ux_mode=redirect —
+                     Google POSTs credential to /auth/google/callback; popup
+                     flow was unreliable on iOS Safari, One Tap prompt() was
+                     suppressed under FedCM) -->
                 <div id="g_id_onload"
                      data-client_id="469463762089-i84flm8nn1spmk79qf5kp67pp8u0idlq.apps.googleusercontent.com"
-                     data-callback="handleGoogleSignIn"
+                     data-ux_mode="redirect"
+                     data-login_uri="https://likeone.ai/auth/google/callback"
                      data-auto_prompt="false">
                 </div>
                 <div class="g_id_signin signin-google-official"
@@ -47,27 +50,8 @@
 
         <script src="https://accounts.google.com/gsi/client" async defer></script>
         <script>
-        function handleGoogleSignIn(response) {
-            fetch('/auth/google/token', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ credential: response.credential }),
-                credentials: 'same-origin'
-            })
-            .then(function(r) {
-                if (r.ok) return r.json();
-                throw new Error('Sign in failed');
-            })
-            .then(function(data) {
-                window.location.href = data.redirect || '/account/';
-            })
-            .catch(function(err) {
-                var el = document.getElementById('signin-error');
-                el.textContent = 'Google sign in failed. Please try again.';
-                el.style.display = 'block';
-            });
-        }
-
+        // Google sign-in uses ux_mode=redirect: GIS POSTs the credential to
+        // /auth/google/callback server-side (reliable on iOS Safari — S271).
         function handleEmailSignIn(e) {
             e.preventDefault();
             var email = document.getElementById('email-input').value;
