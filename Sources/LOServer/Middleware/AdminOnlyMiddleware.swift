@@ -17,7 +17,7 @@ struct AdminOnlyMiddleware: AsyncMiddleware {
     func respond(to request: Request, chainingTo next: AsyncResponder) async throws -> Response {
         guard let user = request.authenticatedUser else {
             // AuthMiddleware should have redirected already, but defend in depth.
-            return request.redirect(to: "/signin")
+            return request.redirect(to: "/signin/")
         }
 
         // Founder bootstrap: auto-promote configured emails to admin.

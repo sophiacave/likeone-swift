@@ -77,7 +77,7 @@
                     <a class="header-site-link" href="/about">About</a>
                     <a class="header-site-link" href="/consulting">Consulting</a>
                     <a class="header-site-link" href="/search" aria-label="Search">&#x1F50D;</a>
-                    <a class="header-signin-btn" href="/signin" id="auth-btn">Sign In</a>
+                    <a class="header-signin-btn" href="/signin/" id="auth-btn">Sign In</a>
                 </div>
             </nav>
         </header>
@@ -91,7 +91,7 @@
                     <a href="/academy" class="footer-link">Courses</a>
                     <a href="/tracks" class="footer-link">Tracks</a>
                     <a href="/pricing" class="footer-link">Pricing</a>
-                    <a href="/signin" class="footer-link">Sign In</a>
+                    <a href="/signin/" class="footer-link">Sign In</a>
                 </div>
                 <div class="footer-col">
                     <div class="footer-col-title">Company</div>
@@ -226,11 +226,11 @@
             document.cookie = 'lo_authed=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
             var toast = document.createElement('div');
             toast.className = 'lo-toast lo-toast-success';
-            toast.innerHTML = 'Session expired. <a href="/signin" style="color:#c084fc;text-decoration:underline;font-weight:600;">Sign in again</a> to save your progress.';
+            toast.innerHTML = 'Session expired. <a href="/signin/" style="color:#c084fc;text-decoration:underline;font-weight:600;">Sign in again</a> to save your progress.';
             document.body.appendChild(toast);
             setTimeout(function() { toast.classList.add('lo-toast-show'); }, 10);
             var authBtn = document.getElementById('auth-btn');
-            if (authBtn) { authBtn.href = '/signin'; authBtn.textContent = 'Sign In'; }
+            if (authBtn) { authBtn.href = '/signin/'; authBtn.textContent = 'Sign In'; }
         },
         refreshUI: function() {
             document.querySelectorAll('.lesson-row').forEach(function(row) {
@@ -255,7 +255,7 @@
     var isAuthed = document.cookie.indexOf('lo_authed=1') !== -1;
     if (isAuthed) {
         var authBtn = document.getElementById('auth-btn');
-        if (authBtn) { authBtn.href = '/account'; authBtn.textContent = 'Account'; }
+        if (authBtn) { authBtn.href = '/account/'; authBtn.textContent = 'Account'; }
 
         // Session validity check — verify lo_session cookie still works
         if (!sessionStorage.getItem('session_checked')) {

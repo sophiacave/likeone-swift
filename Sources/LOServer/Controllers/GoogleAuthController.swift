@@ -96,7 +96,7 @@ struct GoogleAuthController: RouteCollection {
             isHTTPOnly: false,
             sameSite: .lax
         )
-        try response.content.encode(["status": "ok", "redirect": "/account"])
+        try response.content.encode(["status": "ok", "redirect": "/account/"])
         return response
     }
 }

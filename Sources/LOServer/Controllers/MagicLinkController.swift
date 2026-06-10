@@ -110,7 +110,7 @@ struct MagicLinkController: RouteCollection {
         let session = SessionModel(userID: user.id!, token: token)
         try await session.save(on: req.db)
 
-        let response = req.redirect(to: "/account")
+        let response = req.redirect(to: "/account/")
         response.cookies["lo_session"] = HTTPCookies.Value(
             string: token,
             expires: session.expiresAt,

@@ -7,7 +7,7 @@ struct AuthMiddleware: AsyncMiddleware {
               let session = try await SessionModel.query(on: request.db).filter(\.$token == token).first(),
               !session.isExpired,
               let user = try await UserModel.find(session.userID, on: request.db) else {
-            return request.redirect(to: "/signin")
+            return request.redirect(to: "/signin/")
         }
         request.storage[AuthenticatedUserKey.self] = user
         return try await next.respond(to: request)

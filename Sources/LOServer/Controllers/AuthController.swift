@@ -110,7 +110,7 @@ struct AuthController: RouteCollection {
         try await session.save(on: req.db)
 
         // Set session cookie
-        let response = req.redirect(to: "/account")
+        let response = req.redirect(to: "/account/")
         response.cookies["lo_session"] = HTTPCookies.Value(
             string: token,
             expires: session.expiresAt,

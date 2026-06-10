@@ -34,9 +34,9 @@
                         <p style="color:var(--text-secondary);margin-bottom:24px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.6;">The first 3 lessons in every course are free. Upgrade to Pro to unlock all 520+ lessons, earn certificates, and support free AI education.</p>
                         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
                             <a href="/pricing" class="site-btn-primary" style="text-decoration:none;">Upgrade to Pro &mdash; $19/mo</a>
-                            <a href="/signin" class="site-btn-secondary" style="text-decoration:none;">Sign In</a>
+                            <a href="/signin/" class="site-btn-secondary" style="text-decoration:none;">Sign In</a>
                         </div>
-                        <p style="font-size:.75rem;color:var(--text-muted);margin-top:16px;">Already Pro? <a href="/signin" style="color:var(--purple-400);">Sign in</a> to access this lesson.</p>
+                        <p style="font-size:.75rem;color:var(--text-muted);margin-top:16px;">Already Pro? <a href="/signin/" style="color:var(--purple-400);">Sign in</a> to access this lesson.</p>
                     </div>
                 #else:
                     <h2 class="sr-only">Lesson Content</h2>

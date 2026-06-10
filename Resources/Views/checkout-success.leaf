@@ -7,7 +7,7 @@
                 <p style="color:var(--text-muted); margin-bottom:24px; line-height:1.6;">Your subscription is active. You now have full access to all 520+ lessons across 52 courses &mdash; plus verified certificates and PDF downloads.</p>
                 <div style="display:flex; gap:12px; justify-content:center;">
                     <a href="/academy" class="cert-share-btn" style="text-decoration:none;">Start Learning</a>
-                    <a href="/account" class="cert-share-btn cert-share-copy" style="text-decoration:none;">My Account</a>
+                    <a href="/account/" class="cert-share-btn cert-share-copy" style="text-decoration:none;">My Account</a>
                 </div>
             </div>
         </section>

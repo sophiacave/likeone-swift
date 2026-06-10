@@ -59,7 +59,7 @@
                 throw new Error('Sign in failed');
             })
             .then(function(data) {
-                window.location.href = data.redirect || '/account';
+                window.location.href = data.redirect || '/account/';
             })
             .catch(function(err) {
                 var el = document.getElementById('signin-error');

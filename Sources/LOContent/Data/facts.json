@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "TRUTH BIBLE — auto-synced from live systems. Never edit manually.",
-    "last_synced": "2026-06-09T20:05:47.992139",
+    "last_synced": "2026-06-10T04:16:07.642464",
     "sync_tool": "lo-verify-sync-facts",
     "verification_sources": {
       "revenue": "Stripe API via stripe-dashboard",
@@ -32,7 +32,7 @@
     "posts_at_target": 40,
     "target_words": 2000,
     "target_faqs": 10,
-    "word_range": "1797-3738"
+    "word_range": "1797-3810"
   },
   "academy": {
     "courses": 53,
@@ -47,14 +47,14 @@
     "_note": "SEO stats require manual GSC update"
   },
   "infrastructure": {
-    "brain_entries": 1082,
-    "rag_vectors": 7799,
+    "brain_entries": 1092,
+    "rag_vectors": 7809,
     "rag_collections": 11,
     "rag_breakdown": {
       "academy": 53,
       "blog_content": 373,
       "blog_posts": 180,
-      "brain_entries": 1082,
+      "brain_entries": 1092,
       "episodes": 2121,
       "facts": 131,
       "faqs": 421,
@@ -83,7 +83,7 @@
     "ein": "41-5319318",
     "status": "501(c)(3) tax-exempt",
     "granted_date": "2026-04-28",
-    "grants_in_pipeline": 285,
+    "grants_in_pipeline": 286,
     "grant_pipeline_value": 11497500,
     "giving_recipient": "UCSF HIV Cure Research Fund",
     "monthly_donation": 10,
