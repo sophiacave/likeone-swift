@@ -6,6 +6,8 @@ import LOAuth
 struct AuthController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         routes.get("signin", use: signinPage)
+        // Common alias users type directly; avoid 404 (no canonical conflict — 303)
+        routes.get("login") { $0.redirect(to: "/signin/", redirectType: .normal) }
         let auth = routes.grouped("auth")
         auth.get("apple", use: appleSignIn)
         auth.post("apple", "callback", use: appleCallback)
