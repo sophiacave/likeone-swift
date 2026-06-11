@@ -9,6 +9,7 @@ struct GoogleAuthController: RouteCollection {
 
     func boot(routes: RoutesBuilder) throws {
         let auth = routes.grouped("auth", "google")
+            .grouped(RateLimitMiddleware(maxRequests: 20, perSeconds: 60))
         auth.post("token", use: verifyToken)
         // GIS ux_mode=redirect login_uri (mobile Safari — popup flow unreliable, S271)
         auth.post("callback", use: redirectCallback)

@@ -10,6 +10,7 @@ struct AuthController: RouteCollection {
         // Common alias users type directly; avoid 404 (no canonical conflict — 303)
         routes.get("login") { $0.redirect(to: "/signin/", redirectType: .normal) }
         let auth = routes.grouped("auth")
+            .grouped(RateLimitMiddleware(maxRequests: 20, perSeconds: 60))
         auth.get("apple", use: appleSignIn)
         auth.post("apple", "callback", use: appleCallback)
         auth.post("apple", "mobile", use: appleMobile)
