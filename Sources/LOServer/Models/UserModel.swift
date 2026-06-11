@@ -15,6 +15,10 @@ final class UserModel: Model, Content, @unchecked Sendable {
     @OptionalField(key: "last_active_at") var lastActiveAt: Date?
     @OptionalField(key: "interests") var interests: String?
     @Field(key: "role") var role: String
+    // Stable provider identity — verified token `sub` claims. Matched before
+    // email so a provider-side email change doesn't fork the account. S273.
+    @OptionalField(key: "google_sub") var googleSub: String?
+    @OptionalField(key: "apple_sub") var appleSub: String?
     @Timestamp(key: "created_at", on: .create) var createdAt: Date?
 
     /// True when this user has admin privileges (dashboard, metrics).

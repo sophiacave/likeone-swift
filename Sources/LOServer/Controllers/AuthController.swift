@@ -115,12 +115,19 @@ struct AuthController: RouteCollection {
             throw Abort(.unauthorized, reason: "No email in Apple ID token")
         }
 
-        // Find or create user
+        // Find or create user — stable `sub` first, then email (backfill sub).
+        // An email change (or Hide My Email toggle) must not fork the account. S273.
+        let sub = claims.subject.value
         let user: UserModel
-        if let existing = try await UserModel.query(on: req.db).filter(\.$email == email).first() {
-            user = existing
+        if let bySub = try await UserModel.query(on: req.db).filter(\.$appleSub == sub).first() {
+            user = bySub
+        } else if let byEmail = try await UserModel.query(on: req.db).filter(\.$email == email).first() {
+            user = byEmail
+            user.appleSub = sub
+            try await user.update(on: req.db)
         } else {
             user = UserModel(from: User(email: email, provider: .apple))
+            user.appleSub = sub
             try await user.save(on: req.db)
         }
 
@@ -179,16 +186,23 @@ struct AuthController: RouteCollection {
             throw Abort(.unauthorized, reason: "No email in identity token")
         }
 
-        // Find or create user
+        // Find or create user — stable `sub` first, then email (backfill sub). S273.
+        let sub = claims.subject.value
         let user: UserModel
-        if let existing = try await UserModel.query(on: req.db).filter(\.$email == email).first() {
-            user = existing
+        if let bySub = try await UserModel.query(on: req.db).filter(\.$appleSub == sub).first() {
+            user = bySub
             if let name = input.name, user.name == nil {
                 user.name = name
                 try await user.save(on: req.db)
             }
+        } else if let byEmail = try await UserModel.query(on: req.db).filter(\.$email == email).first() {
+            user = byEmail
+            user.appleSub = sub
+            if let name = input.name, user.name == nil { user.name = name }
+            try await user.save(on: req.db)
         } else {
             user = UserModel(from: User(email: email, name: input.name, provider: .apple))
+            user.appleSub = sub
             try await user.save(on: req.db)
         }
 

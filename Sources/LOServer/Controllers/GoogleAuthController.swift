@@ -81,13 +81,15 @@ struct GoogleAuthController: RouteCollection {
             throw Abort(.unauthorized, reason: "No email in Google token")
         }
 
-        // Find or create user
+        // Find or create user — stable `sub` first, then email (backfill sub).
+        // An email change at Google must not fork the account. S273.
+        let sub = claims.subject.value
         let user: UserModel
-        if let existing = try await UserModel.query(on: req.db).filter(\.$email == email).first() {
-            user = existing
-            if user.name == nil, let name = claims.name { user.name = name }
-            if user.avatarURL == nil, let picture = claims.picture { user.avatarURL = picture }
-            try await user.update(on: req.db)
+        if let bySub = try await UserModel.query(on: req.db).filter(\.$googleSub == sub).first() {
+            user = bySub
+        } else if let byEmail = try await UserModel.query(on: req.db).filter(\.$email == email).first() {
+            user = byEmail
+            user.googleSub = sub
         } else {
             user = UserModel(from: User(
                 email: email,
@@ -95,8 +97,14 @@ struct GoogleAuthController: RouteCollection {
                 avatarURL: claims.picture,
                 provider: .google
             ))
+            user.googleSub = sub
             try await user.save(on: req.db)
+            return try await req.createSession(for: user)
         }
+
+        if user.name == nil, let name = claims.name { user.name = name }
+        if user.avatarURL == nil, let picture = claims.picture { user.avatarURL = picture }
+        try await user.update(on: req.db)
 
         return try await req.createSession(for: user)
     }
