@@ -17,6 +17,27 @@ extension Request {
 }
 
 extension Response {
+    /// 200 HTML interstitial that JS-navigates to /auth/complete/?c=<code>.
+    /// An HTTP redirect does NOT work here: Safari attributes the whole
+    /// redirect chain to the cross-site OAuth POST and drops cookies on every
+    /// response in it. A client-side navigation starts a fresh first-party
+    /// navigation, so cookies set on /auth/complete stick. S273.
+    static func authHandoffInterstitial(code: String) -> Response {
+        let url = "/auth/complete/?c=\(code)"
+        let html = """
+        <!doctype html><html><head><meta charset="utf-8"><title>Signing in…</title>
+        <meta http-equiv="refresh" content="1;url=\(url)">
+        </head><body style="font-family:-apple-system,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#0a0a0f;color:#e8e8f0">
+        <p>Signing you in…</p>
+        <script>location.replace('\(url)')</script>
+        </body></html>
+        """
+        let response = Response(status: .ok, body: .init(string: html))
+        response.headers.replaceOrAdd(name: .contentType, value: "text/html; charset=utf-8")
+        response.headers.replaceOrAdd(name: .cacheControl, value: "no-store")
+        return response
+    }
+
     /// Set the auth session cookies: lo_session (httpOnly) + lo_authed (JS-readable).
     func setSessionCookies(token: String, expires: Date) {
         cookies["lo_session"] = HTTPCookies.Value(

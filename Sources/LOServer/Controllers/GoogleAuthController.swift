@@ -51,12 +51,13 @@ struct GoogleAuthController: RouteCollection {
 
         let session = try await establishSession(req: req, credential: input.credential)
 
-        // iOS Safari drops cookies set on cross-site POST responses (ITP), so
-        // hand off to a first-party GET that sets them in a clean context. S273.
+        // iOS Safari drops cookies on the entire redirect chain of a cross-site
+        // POST, so return a 200 interstitial whose JS starts a fresh first-party
+        // navigation to /auth/complete, which sets the cookies. S273.
         let handoff = AuthHandoffModel(sessionToken: session.token)
         try await handoff.save(on: req.db)
 
-        let response = req.redirect(to: "/auth/complete/?c=\(handoff.code)", redirectType: .normal)
+        let response = Response.authHandoffInterstitial(code: handoff.code)
         // Belt-and-suspenders: also set cookies here for browsers that accept them.
         response.setSessionCookies(token: session.token, expires: session.expiresAt)
         return response
