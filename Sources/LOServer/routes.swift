@@ -21,7 +21,7 @@ func routes(_ app: Application) throws {
     try app.register(collection: GoogleAuthController())
     try app.register(collection: AccountController(courses: courses, lessons: lessons, brain: brain))
     try app.register(collection: PagesController())
-    try app.register(collection: TracksController(tracks: tracks, courses: courses))
+    try app.register(collection: TracksController(tracks: tracks, courses: courses, lessons: lessons))
     try app.register(collection: ProgressController(courses: courses, lessons: lessons, tracks: tracks))
     try app.register(collection: CertController(tracks: tracks))
     try app.register(collection: MagicLinkController())

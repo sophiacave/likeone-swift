@@ -436,6 +436,8 @@
         document.querySelectorAll('.course-card').forEach(function(card) {
             var href = card.getAttribute('href');
             if (!href) return;
+            // Server already rendered progress (authed) — don't double-render
+            if (card.querySelector('.course-progress-bar')) return;
             var slug = href.replace('/academy/', '').replace('/', '');
             var done = LOP.count(slug);
             if (done > 0) {

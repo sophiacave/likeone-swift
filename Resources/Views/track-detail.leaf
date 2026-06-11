@@ -20,17 +20,17 @@
 
         <section class="site-section" style="padding-top:24px;">
             <div class="site-container" style="max-width:800px;">
-                <!-- Track progress bar (filled by JS) -->
-                <div class="track-progress-wrap" id="track-progress" style="display:none;">
-                    <div class="track-progress-label"><span id="track-done">0</span> of #(track.courseCount) courses complete</div>
+                <!-- Track progress bar (server-rendered when authed; JS fills for anonymous) -->
+                <div class="track-progress-wrap" id="track-progress" style="display:#if(hasProgress):block#else:none#endif;">
+                    <div class="track-progress-label"><span id="track-done">#(completedCourses)</span> of #(track.courseCount) courses complete</div>
                     <div class="track-progress-bar">
-                        <div class="track-progress-fill" id="track-fill" style="width:0%;background:#(track.badgeColor);"></div>
+                        <div class="track-progress-fill" id="track-fill" style="width:#(trackPct)%;background:#(track.badgeColor);"></div>
                     </div>
                 </div>
 
                 <div class="track-courses-list">
                     #for(course in courses):
-                        <a href="/academy/#(course.slug)" class="track-course-row" data-course="#(course.slug)">
+                        <a href="/academy/#(course.slug)" class="track-course-row#if(course.isComplete): track-course-done#endif" data-course="#(course.slug)">
                             <div class="track-course-num">#(course.order)</div>
                             <div class="track-course-info">
                                 <span class="track-course-emoji">#(course.emoji)</span>
@@ -39,7 +39,7 @@
                                     <div class="track-course-desc">#(course.description)</div>
                                 </div>
                             </div>
-                            <div class="track-course-status"></div>
+                            <div class="track-course-status">#if(course.isComplete):<span style="color:var(--green,#34d399);font-weight:700;">&#x2714;</span>#elseif(course.pct > 0):<span style="font-size:.75rem;color:var(--text-muted);">#(course.pct)%</span>#endif</div>
                             <div class="track-course-arrow">&rarr;</div>
                         </a>
                     #endfor

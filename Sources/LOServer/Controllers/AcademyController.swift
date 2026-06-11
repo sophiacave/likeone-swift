@@ -10,12 +10,13 @@ struct AcademyController: RouteCollection {
 
     func boot(routes: RoutesBuilder) throws {
         let academy = routes.grouped("academy")
-        academy.get(use: index)
-        // Course detail and lessons use optional auth for Pro gating
+        // Optional auth: Pro gating + server-rendered progress (S273 — account
+        // and academy must show DB truth, not localStorage)
         let authAcademy = academy.grouped(OptionalAuthMiddleware())
+        authAcademy.get(use: index)
+        authAcademy.get("filter", use: filterCourses)
         authAcademy.get(":slug", use: courseDetail)
         authAcademy.get(":slug", ":lessonSlug", use: lessonPage)
-        academy.get("filter", use: filterCourses)
     }
 
     @Sendable
@@ -32,6 +33,7 @@ struct AcademyController: RouteCollection {
 
         let tiers = courses.tierSummary
         let totalLessons = allCourses.reduce(0) { $0 + realLessonCount($1.slug) }
+        let progress = try await progressByCourse(req: req)
 
         let context = AcademyContext(
             title: "Free AI Courses — Claude, Agents & Prompt Engineering | Like One Academy",
@@ -39,7 +41,7 @@ struct AcademyController: RouteCollection {
             totalCourses: allCourses.count,
             totalLessons: totalLessons,
             tiers: tiers.map { TierInfo(name: $0.name, emoji: $0.emoji, count: $0.count) },
-            courses: filtered.map { courseCard($0) },
+            courses: filtered.map { courseCard($0, completed: progress[$0.slug] ?? 0) },
             activeTier: tierFilter ?? "all",
             canonicalUrl: "https://likeone.ai/academy/"
         )
@@ -152,21 +154,36 @@ struct AcademyController: RouteCollection {
         } else {
             filtered = courses.allCourses()
         }
+        let progress = try await progressByCourse(req: req)
         let context = CourseGridContext(
-            courses: filtered.map { courseCard($0) }
+            courses: filtered.map { courseCard($0, completed: progress[$0.slug] ?? 0) }
         )
         return try await req.view.render("partials/course-grid", context)
     }
 
-    private func courseCard(_ course: Course) -> CourseCard {
-        CourseCard(
+    /// Per-course completed-lesson counts for the authenticated user (server truth).
+    private func progressByCourse(req: Request) async throws -> [String: Int] {
+        guard let user = req.authenticatedUser else { return [:] }
+        let all = try await ProgressModel.query(on: req.db)
+            .filter(\.$userID == user.id!)
+            .all()
+        return Dictionary(grouping: all, by: \.courseSlug)
+            .mapValues { Set($0.map(\.lessonSlug)).count }
+    }
+
+    private func courseCard(_ course: Course, completed: Int = 0) -> CourseCard {
+        let total = realLessonCount(course.slug)
+        let done = min(completed, total)
+        return CourseCard(
             slug: course.slug,
             title: course.title,
             description: course.description,
             emoji: course.emoji,
             level: course.level.tierName,
-            lessonCount: realLessonCount(course.slug),
-            tier: course.tier.rawValue
+            lessonCount: total,
+            tier: course.tier.rawValue,
+            completedCount: done > 0 ? done : nil,
+            progressPct: done > 0 ? Int(Double(done) / Double(total) * 100) : nil
         )
     }
 
@@ -201,6 +218,9 @@ struct CourseCard: Content {
     let level: String
     let lessonCount: Int
     let tier: String
+    // Server-rendered progress (nil when anonymous or no progress)
+    let completedCount: Int?
+    let progressPct: Int?
 }
 
 struct CourseDetailContext: Content {

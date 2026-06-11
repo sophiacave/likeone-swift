@@ -8,5 +8,8 @@
             <span class="course-card-lessons">#(course.lessonCount) lessons</span>
             <span class="course-card-tier">#(course.tier)</span>
         </div>
+        #if(course.progressPct):
+        <div><div class="course-progress-bar"><div class="course-progress-fill" style="width:#(course.progressPct)%"></div></div><div class="course-progress-text">#(course.completedCount) of #(course.lessonCount) complete</div></div>
+        #endif
     </a>
 #endfor

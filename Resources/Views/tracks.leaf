@@ -24,7 +24,7 @@
                                 <span class="track-card-hours">~#(track.estimatedHours)h</span>
                             </div>
                             <div class="track-card-bar">
-                                <div class="track-card-bar-fill" style="width:0%;background:var(--track-color);"></div>
+                                <div class="track-card-bar-fill" style="width:#(track.progressPct)%;background:var(--track-color);"></div>
                             </div>
                         </a>
                     #endfor
@@ -47,6 +47,9 @@
             if (!cards.length) return;
 
             cards.forEach(function(card) {
+                // Server already rendered progress (authed) — don't overwrite DB truth
+                var ssrFill = card.querySelector('.track-card-bar-fill');
+                if (ssrFill && parseInt(ssrFill.style.width) > 0) return;
                 var slug = card.getAttribute('data-track-slug');
                 fetch('/api/v1/tracks/' + slug, { credentials: 'same-origin' })
                 .then(function(r) { return r.ok ? r.json() : null; })
