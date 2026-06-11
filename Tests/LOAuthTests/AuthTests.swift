@@ -11,7 +11,7 @@ struct AuthTests {
 
     @Test("Apple auth config has correct key ID")
     func keyID() {
-        #expect(AppleAuthConfig.keyID == "B9DSKAL85T")
+        #expect(AppleAuthConfig.keyID == "LN2HDCXL6U")
     }
 
     @Test("Apple auth client ID is web services ID")

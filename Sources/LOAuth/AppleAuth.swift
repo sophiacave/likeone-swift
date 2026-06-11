@@ -5,7 +5,7 @@ import Crypto
 
 public struct AppleAuthConfig: Sendable {
     public static let teamID = "MW42T97LV9"
-    public static let keyID = "B9DSKAL85T"
+    public static let keyID = "LN2HDCXL6U"
     public static let clientID = "ai.likeone.web"
     public static let bundleID = "ai.likeone.app"
 

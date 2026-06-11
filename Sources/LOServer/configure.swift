@@ -23,6 +23,7 @@ func configure(_ app: Application) async throws {
     app.migrations.add(AddSubscriberPreferences())
     app.migrations.add(CreatePageViews())
     app.migrations.add(AddUserRole())
+    app.migrations.add(CreateAuthHandoffs())
     try await app.autoMigrate()
 
     // Leaf templates

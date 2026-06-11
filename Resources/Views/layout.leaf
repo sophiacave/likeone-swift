@@ -223,14 +223,24 @@
         handleSessionExpired: function() {
             if (LOP._expiredShown) return;
             LOP._expiredShown = true;
-            document.cookie = 'lo_authed=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
-            var toast = document.createElement('div');
-            toast.className = 'lo-toast lo-toast-success';
-            toast.innerHTML = 'Session expired. <a href="/signin/" style="color:#c084fc;text-decoration:underline;font-weight:600;">Sign in again</a> to save your progress.';
-            document.body.appendChild(toast);
-            setTimeout(function() { toast.classList.add('lo-toast-show'); }, 10);
-            var authBtn = document.getElementById('auth-btn');
-            if (authBtn) { authBtn.href = '/signin/'; authBtn.textContent = 'Sign In'; }
+            // Confirm with the server before declaring the session dead —
+            // a single failed fetch must not nuke the auth UI (S273)
+            fetch('/auth/me', { credentials: 'same-origin', cache: 'no-store' })
+            .then(function(r) {
+                if (r.ok) { LOP._authed = true; LOP._expiredShown = false; return; }
+                if (r.status !== 401) { LOP._expiredShown = false; return; }
+                // Anonymous visitor (never signed in here) — stay quiet
+                if (document.cookie.indexOf('lo_authed=1') === -1) return;
+                document.cookie = 'lo_authed=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=.likeone.ai';
+                document.cookie = 'lo_authed=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+                var toast = document.createElement('div');
+                toast.className = 'lo-toast lo-toast-success';
+                toast.innerHTML = 'Session expired. <a href="/signin/" style="color:#c084fc;text-decoration:underline;font-weight:600;">Sign in again</a> to save your progress.';
+                document.body.appendChild(toast);
+                setTimeout(function() { toast.classList.add('lo-toast-show'); }, 10);
+                var authBtn = document.getElementById('auth-btn');
+                if (authBtn) { authBtn.href = '/signin/'; authBtn.textContent = 'Sign In'; }
+            }).catch(function() { LOP._expiredShown = false; });
         },
         refreshUI: function() {
             document.querySelectorAll('.lesson-row').forEach(function(row) {

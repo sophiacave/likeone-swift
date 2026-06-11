@@ -26,7 +26,9 @@ struct MagicLinkController: RouteCollection {
 
         // Generate HMAC token: email + timestamp + secret
         let timestamp = String(Int(Date().timeIntervalSince1970))
-        let secret = Environment.get("MAGIC_LINK_SECRET") ?? "lo-magic-link-default-secret-change-me"
+        guard let secret = Environment.get("MAGIC_LINK_SECRET") else {
+            throw Abort(.internalServerError, reason: "Server configuration error")
+        }
         let payload = "\(email):\(timestamp)"
         let key = SymmetricKey(data: Data(secret.utf8))
         let signature = HMAC<SHA256>.authenticationCode(for: Data(payload.utf8), using: key)
@@ -86,7 +88,9 @@ struct MagicLinkController: RouteCollection {
         }
 
         // Verify HMAC
-        let secret = Environment.get("MAGIC_LINK_SECRET") ?? "lo-magic-link-default-secret-change-me"
+        guard let secret = Environment.get("MAGIC_LINK_SECRET") else {
+            throw Abort(.internalServerError, reason: "Server configuration error")
+        }
         let payload = "\(email):\(timestamp)"
         let key = SymmetricKey(data: Data(secret.utf8))
         let expectedSig = HMAC<SHA256>.authenticationCode(for: Data(payload.utf8), using: key)
@@ -101,7 +105,7 @@ struct MagicLinkController: RouteCollection {
         if let existing = try await UserModel.query(on: req.db).filter(\.$email == email).first() {
             user = existing
         } else {
-            user = UserModel(from: User(email: email, provider: .google))
+            user = UserModel(from: User(email: email, provider: .magicLink))
             try await user.save(on: req.db)
         }
 

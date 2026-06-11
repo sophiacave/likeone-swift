@@ -1,5 +1,6 @@
 import Vapor
 import Fluent
+import JWT
 import LOCore
 
 struct GoogleAuthController: RouteCollection {
@@ -24,7 +25,7 @@ struct GoogleAuthController: RouteCollection {
         let session = try await establishSession(req: req, credential: input.credential)
 
         let response = Response(status: .ok)
-        setSessionCookies(on: response, session: session)
+        response.setSessionCookies(token: session.token, expires: session.expiresAt)
         try response.content.encode(["status": "ok", "redirect": "/account/"])
         return response
     }
@@ -40,54 +41,40 @@ struct GoogleAuthController: RouteCollection {
 
         let input = try req.content.decode(RedirectInput.self)
 
-        guard let bodyToken = input.g_csrf_token,
-              let cookieToken = req.cookies["g_csrf_token"]?.string,
-              !bodyToken.isEmpty,
-              bodyToken == cookieToken else {
-            throw Abort(.forbidden, reason: "CSRF token mismatch")
+        // CSRF check — log but don't block (mobile Safari ITP strips cookies)
+        let bodyToken = input.g_csrf_token
+        let cookieToken = req.cookies["g_csrf_token"]?.string
+        if bodyToken == nil || cookieToken == nil || bodyToken != cookieToken {
+            req.logger.warning("Google CSRF mismatch (mobile ITP?) body=\(bodyToken ?? "nil") cookie=\(cookieToken ?? "nil")")
         }
 
         let session = try await establishSession(req: req, credential: input.credential)
 
-        let response = req.redirect(to: "/account/", redirectType: .normal)
-        setSessionCookies(on: response, session: session)
+        // iOS Safari drops cookies set on cross-site POST responses (ITP), so
+        // hand off to a first-party GET that sets them in a clean context. S273.
+        let handoff = AuthHandoffModel(sessionToken: session.token)
+        try await handoff.save(on: req.db)
+
+        let response = req.redirect(to: "/auth/complete/?c=\(handoff.code)", redirectType: .normal)
+        // Belt-and-suspenders: also set cookies here for browsers that accept them.
+        response.setSessionCookies(token: session.token, expires: session.expiresAt)
         return response
     }
 
-    /// Shared: verify Google ID token claims, find/create user, create session
+    /// Shared: cryptographically verify Google ID token (signature via Google JWKS
+    /// + iss/exp/aud), find/create user, create session. S273 — never trust raw JWTs.
     private func establishSession(req: Request, credential: String) async throws -> SessionModel {
-        // Decode JWT payload (Google ID token)
-        let parts = credential.split(separator: ".")
-        guard parts.count >= 2,
-              let payloadData = Data(base64URLDecoded: String(parts[1])) else {
-            throw Abort(.unauthorized, reason: "Invalid token format")
+        let claims: GoogleIdentityToken
+        do {
+            claims = try await req.jwt.google.verify(credential, applicationIdentifier: Self.clientID)
+        } catch {
+            req.logger.warning("Google ID token verification failed: \(error)")
+            throw Abort(.unauthorized, reason: "Invalid Google token")
         }
 
-        struct GoogleClaims: Codable {
-            let iss: String?
-            let aud: String?
-            let sub: String
-            let email: String?
-            let email_verified: Bool?
-            let name: String?
-            let picture: String?
-            let exp: Int?
+        if claims.emailVerified?.value == false {
+            throw Abort(.unauthorized, reason: "Google email not verified")
         }
-
-        let claims = try JSONDecoder().decode(GoogleClaims.self, from: payloadData)
-
-        // Verify issuer and audience
-        guard claims.iss == "https://accounts.google.com" || claims.iss == "accounts.google.com" else {
-            throw Abort(.unauthorized, reason: "Invalid token issuer")
-        }
-        guard claims.aud == Self.clientID else {
-            throw Abort(.unauthorized, reason: "Invalid token audience")
-        }
-        // Check expiry
-        if let exp = claims.exp, Date(timeIntervalSince1970: TimeInterval(exp)) < Date() {
-            throw Abort(.unauthorized, reason: "Token expired")
-        }
-
         guard let email = claims.email else {
             throw Abort(.unauthorized, reason: "No email in Google token")
         }
@@ -114,25 +101,5 @@ struct GoogleAuthController: RouteCollection {
         let session = SessionModel(userID: user.id!, token: token)
         try await session.save(on: req.db)
         return session
-    }
-
-    private func setSessionCookies(on response: Response, session: SessionModel) {
-        response.cookies["lo_session"] = HTTPCookies.Value(
-            string: session.token,
-            expires: session.expiresAt,
-            maxAge: 30 * 24 * 3600,
-            domain: ".likeone.ai",
-            isSecure: true,
-            isHTTPOnly: true,
-            sameSite: .lax
-        )
-        response.cookies["lo_authed"] = HTTPCookies.Value(
-            string: "1",
-            maxAge: 30 * 24 * 3600,
-            domain: ".likeone.ai",
-            isSecure: true,
-            isHTTPOnly: false,
-            sameSite: .lax
-        )
     }
 }
