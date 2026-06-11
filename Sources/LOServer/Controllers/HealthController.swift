@@ -7,6 +7,12 @@ struct HealthController: RouteCollection {
 
     @Sendable
     func health(req: Request) async -> String {
-        "ok"
+        // DEPLOY_SHA is injected by lo-swift-deploy so the canary can verify
+        // WHICH build is serving, not just that something answers. S273:
+        // a stale orphan process passed canary while new code never bound.
+        if let sha = Environment.get("DEPLOY_SHA") {
+            return "ok \(sha)"
+        }
+        return "ok"
     }
 }
