@@ -644,9 +644,8 @@ a:focus-visible, button:focus-visible {
     color: #000;
 }
 .signin-google {
-    background: var(--bg-card);
-    color: var(--text-primary);
-    border: 1px solid var(--border);
+    background: #fff;
+    color: #1f1f1f;
 }
 .signin-email {
     background: var(--purple-400);
