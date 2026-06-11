@@ -124,20 +124,17 @@ struct AuthController: RouteCollection {
             try await user.save(on: req.db)
         }
 
-        // Create session
-        let token = [UInt8].random(count: 32).map { String(format: "%02x", $0) }.joined()
-        let session = SessionModel(userID: user.id!, token: token)
-        try await session.save(on: req.db)
+        let session = try await req.createSession(for: user)
 
         // iOS Safari drops cookies on the entire redirect chain of a cross-site
         // POST, so return a 200 interstitial whose JS starts a fresh first-party
         // navigation to /auth/complete, which sets the cookies. S273.
-        let handoff = AuthHandoffModel(sessionToken: token)
+        let handoff = AuthHandoffModel(sessionToken: session.token)
         try await handoff.save(on: req.db)
 
         let response = Response.authHandoffInterstitial(code: handoff.code)
         // Belt-and-suspenders: also set cookies here for browsers that accept them.
-        response.setSessionCookies(token: token, expires: session.expiresAt)
+        response.setSessionCookies(token: session.token, expires: session.expiresAt)
         // Clear used OAuth state cookie
         response.cookies["apple_oauth_state"] = HTTPCookies.Value(
             string: "",
@@ -195,13 +192,10 @@ struct AuthController: RouteCollection {
             try await user.save(on: req.db)
         }
 
-        // Create session token
-        let token = [UInt8].random(count: 32).map { String(format: "%02x", $0) }.joined()
-        let session = SessionModel(userID: user.id!, token: token)
-        try await session.save(on: req.db)
+        let session = try await req.createSession(for: user)
 
         let responseBody = MobileAuthResponse(
-            token: token,
+            token: session.token,
             email: user.email,
             subscription: user.subscription ?? "free"
         )
@@ -253,7 +247,7 @@ struct AuthController: RouteCollection {
 
     @Sendable
     func logout(req: Request) async throws -> Response {
-        if let token = req.cookies["lo_session"]?.string {
+        if let token = req.sessionToken {
             try await SessionModel.query(on: req.db).filter(\.$token == token).delete()
         }
         let response = req.redirect(to: "/")
@@ -273,12 +267,6 @@ struct AuthController: RouteCollection {
 
     @Sendable
     func me(req: Request) async throws -> UserModel {
-        guard let token = req.cookies["lo_session"]?.string,
-              let session = try await SessionModel.query(on: req.db).filter(\.$token == token).first(),
-              !session.isExpired,
-              let user = try await UserModel.find(session.userID, on: req.db) else {
-            throw Abort(.unauthorized)
-        }
-        return user
+        try await req.requireUser()
     }
 }

@@ -2,14 +2,36 @@ import Vapor
 import Fluent
 
 extension Request {
+    /// Session token from `Authorization: Bearer` (iOS app) or `lo_session`
+    /// cookie (web). The native app stores the token from /auth/apple/mobile
+    /// and sends it as a Bearer header — it never has the cookie. S273.
+    var sessionToken: String? {
+        if let bearer = headers.bearerAuthorization?.token, !bearer.isEmpty {
+            return bearer
+        }
+        return cookies["lo_session"]?.string
+    }
+
+    /// Create a session for the user. Opportunistically prunes expired
+    /// sessions so the table doesn't grow unbounded (sign-in is a cheap,
+    /// low-frequency place to do this).
+    func createSession(for user: UserModel) async throws -> SessionModel {
+        try await SessionModel.query(on: db)
+            .filter(\.$expiresAt < Date())
+            .delete()
+        let token = [UInt8].random(count: 32).map { String(format: "%02x", $0) }.joined()
+        let session = SessionModel(userID: user.id!, token: token)
+        try await session.save(on: db)
+        return session
+    }
+
     func requireUser() async throws -> UserModel {
-        guard let token = cookies["lo_session"]?.string,
+        guard let token = sessionToken,
               let session = try await SessionModel.query(on: db).filter(\.$token == token).first(),
               !session.isExpired,
               let user = try await UserModel.find(session.userID, on: db) else {
-            // Diagnostic: distinguish missing cookie vs unknown/expired session (S273)
-            let hasCookie = cookies["lo_session"]?.string != nil
-            logger.info("auth 401: path=\(url.path) hasSessionCookie=\(hasCookie) ua=\(headers.first(name: .userAgent) ?? "-")")
+            // Diagnostic: distinguish missing token vs unknown/expired session (S273)
+            logger.info("auth 401: path=\(url.path) hasToken=\(sessionToken != nil) ua=\(headers.first(name: .userAgent) ?? "-")")
             throw Abort(.unauthorized, reason: "Sign in required")
         }
         return user

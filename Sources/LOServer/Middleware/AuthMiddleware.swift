@@ -3,7 +3,7 @@ import Fluent
 
 struct AuthMiddleware: AsyncMiddleware {
     func respond(to request: Request, chainingTo next: AsyncResponder) async throws -> Response {
-        guard let token = request.cookies["lo_session"]?.string,
+        guard let token = request.sessionToken,
               let session = try await SessionModel.query(on: request.db).filter(\.$token == token).first(),
               !session.isExpired,
               let user = try await UserModel.find(session.userID, on: request.db) else {
@@ -18,7 +18,7 @@ struct AuthMiddleware: AsyncMiddleware {
 /// Also updates lastActiveAt for brain memory (Phase 3).
 struct OptionalAuthMiddleware: AsyncMiddleware {
     func respond(to request: Request, chainingTo next: AsyncResponder) async throws -> Response {
-        if let token = request.cookies["lo_session"]?.string,
+        if let token = request.sessionToken,
            let session = try await SessionModel.query(on: request.db).filter(\.$token == token).first(),
            !session.isExpired,
            let user = try await UserModel.find(session.userID, on: request.db) {

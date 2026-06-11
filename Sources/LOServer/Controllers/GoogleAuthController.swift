@@ -98,10 +98,6 @@ struct GoogleAuthController: RouteCollection {
             try await user.save(on: req.db)
         }
 
-        // Create session
-        let token = [UInt8].random(count: 32).map { String(format: "%02x", $0) }.joined()
-        let session = SessionModel(userID: user.id!, token: token)
-        try await session.save(on: req.db)
-        return session
+        return try await req.createSession(for: user)
     }
 }

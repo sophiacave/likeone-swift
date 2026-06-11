@@ -7,6 +7,7 @@ import Crypto
 struct MagicLinkController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         let auth = routes.grouped("auth")
+            .grouped(RateLimitMiddleware(maxRequests: 5, perSeconds: 60))
         auth.post("magic-link", use: sendMagicLink)
         auth.get("verify", use: verifyMagicLink)
     }
@@ -109,29 +110,12 @@ struct MagicLinkController: RouteCollection {
             try await user.save(on: req.db)
         }
 
-        // Create session
-        let token = [UInt8].random(count: 32).map { String(format: "%02x", $0) }.joined()
-        let session = SessionModel(userID: user.id!, token: token)
-        try await session.save(on: req.db)
+        let session = try await req.createSession(for: user)
 
+        // Magic link verify is a same-site GET — cookies set on a redirect
+        // stick here (unlike the cross-site OAuth POST chain, S273).
         let response = req.redirect(to: "/account/")
-        response.cookies["lo_session"] = HTTPCookies.Value(
-            string: token,
-            expires: session.expiresAt,
-            maxAge: 30 * 24 * 3600,
-            domain: ".likeone.ai",
-            isSecure: true,
-            isHTTPOnly: true,
-            sameSite: .lax
-        )
-        response.cookies["lo_authed"] = HTTPCookies.Value(
-            string: "1",
-            maxAge: 30 * 24 * 3600,
-            domain: ".likeone.ai",
-            isSecure: true,
-            isHTTPOnly: false,
-            sameSite: .lax
-        )
+        response.setSessionCookies(token: session.token, expires: session.expiresAt)
         return response
     }
 }
