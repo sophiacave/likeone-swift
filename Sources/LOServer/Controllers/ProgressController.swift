@@ -55,7 +55,7 @@ struct ProgressController: RouteCollection {
         let courseComplete = try await checkCourseCompletion(
             userID: user.id!,
             courseSlug: input.courseSlug,
-            recipientName: user.name ?? user.email,
+            recipientName: certName(for: user),
             isPro: isPro,
             db: req.db
         )
@@ -65,6 +65,7 @@ struct ProgressController: RouteCollection {
         if courseComplete {
             trackCompleted = try await checkTrackCompletion(
                 userID: user.id!,
+                recipientName: certName(for: user),
                 isPro: isPro,
                 db: req.db
             )
@@ -116,7 +117,7 @@ struct ProgressController: RouteCollection {
             let _ = try await checkCourseCompletion(
                 userID: user.id!,
                 courseSlug: courseSlug,
-                recipientName: user.name ?? user.email,
+                recipientName: certName(for: user),
                 isPro: isPro,
                 db: req.db
             )
@@ -276,7 +277,14 @@ struct ProgressController: RouteCollection {
         return false
     }
 
-    private func checkTrackCompletion(userID: UUID, isPro: Bool, db: Database) async throws -> String? {
+    /// Name printed on certificates: trimmed display name, falling back to email
+    /// (Apple sign-in can supply an empty-string name, not nil).
+    private func certName(for user: UserModel) -> String {
+        let trimmed = (user.name ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmed.isEmpty ? user.email : trimmed
+    }
+
+    private func checkTrackCompletion(userID: UUID, recipientName: String, isPro: Bool, db: Database) async throws -> String? {
         for track in tracks.allTracks() {
             let courseSlugs = track.courses.isEmpty ? courses.allCourses().map(\.slug) : track.courses
 
@@ -303,7 +311,7 @@ struct ProgressController: RouteCollection {
                         type: "track",
                         trackSlug: track.slug,
                         title: track.title,
-                        recipientName: ""
+                        recipientName: recipientName
                     )
                     try await cert.save(on: db)
                     return track.slug

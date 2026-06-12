@@ -72,6 +72,16 @@ struct CertController: RouteCollection {
               let cert = try await CertificateModel.find(id, on: req.db) else {
             throw Abort(.notFound, reason: "Certificate not found")
         }
+
+        // Self-heal certs issued with an empty recipient name (pre-S275 bug):
+        // backfill from the owning user's current name and persist.
+        if cert.recipientName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty,
+           let user = try await UserModel.find(cert.userID, on: req.db) {
+            let trimmed = (user.name ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+            cert.recipientName = trimmed.isEmpty ? user.email : trimmed
+            try await cert.save(on: req.db)
+        }
+
         return (cert, id)
     }
 
