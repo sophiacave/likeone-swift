@@ -11,7 +11,7 @@ settings:
     DEVELOPMENT_TEAM: MW42T97LV9
     SWIFT_VERSION: "6.0"
     MARKETING_VERSION: "1.0.0"
-    CURRENT_PROJECT_VERSION: "1"
+    CURRENT_PROJECT_VERSION: "4"
 
 packages:
   LikeOneSwift:
@@ -26,6 +26,8 @@ targets:
         excludes:
           - project.yml
           - "*.xcodeproj"
+          - build
+          - Screenshots
     dependencies:
       - package: LikeOneSwift
         product: LOCore
@@ -43,7 +45,10 @@ targets:
       properties:
         CFBundleDisplayName: Like One Academy
         CFBundleName: LOAcademy
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         UILaunchScreen: {}
+        ITSAppUsesNonExemptEncryption: false
         UIRequiresFullScreen: false
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
@@ -61,6 +66,7 @@ targets:
         CODE_SIGN_STYLE: Automatic
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         SUPPORTS_MACCATALYST: false
+        TARGETED_DEVICE_FAMILY: "1"
       configs:
         Release:
           CODE_SIGN_STYLE: Automatic

@@ -10,3 +10,5 @@ DerivedData/
 db.sqlite
 likeone.db
 *.sqlite
+LOAcademy/build/
+LOAcademy/Screenshots/

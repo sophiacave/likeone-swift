@@ -11,7 +11,7 @@ Primary: Education
 Secondary: Productivity
 
 ## Description
-Learn AI, prompt engineering, and autonomous agents — completely free. Like One Academy is a 501(c)(3) nonprofit delivering 53 expert-crafted courses with 540+ lessons designed for real-world application.
+Learn AI, prompt engineering, and autonomous agents — completely free. Like One Academy is a 501(c)(3) nonprofit delivering 53 expert-crafted courses with 595+ lessons designed for real-world application.
 
 Whether you're exploring AI foundations, mastering Claude, building MCP servers, or architecting autonomous agents — our academy meets you where you are. Every course features hands-on lessons, progress tracking, and professional certificates upon completion.
 

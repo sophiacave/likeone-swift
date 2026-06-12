@@ -19,6 +19,8 @@ struct StripeController: RouteCollection {
 
         // Webhook (no auth — Stripe calls this)
         routes.post("stripe", "webhook", use: handleWebhook)
+        // Legacy path — Stripe dashboard was configured with this URL
+        routes.post("api", "stripe-webhook", use: handleWebhook)
     }
 
     // MARK: - Create Checkout Session
