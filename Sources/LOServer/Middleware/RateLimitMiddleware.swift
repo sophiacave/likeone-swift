@@ -24,10 +24,19 @@ final class RateLimitMiddleware: AsyncMiddleware, @unchecked Sendable {
     }
 
     func respond(to request: Request, chainingTo next: any AsyncResponder) async throws -> Response {
-        let ip = request.headers.first(name: "CF-Connecting-IP")
-            ?? request.headers.first(name: "X-Forwarded-For")?.split(separator: ",").first.map(String.init)
-            ?? request.remoteAddress?.ipAddress
-            ?? "unknown"
+        // Split into distinct statements: the chained ?? expression times out
+        // the type-checker on CI's debug builds (swift build, GitHub runner).
+        let ip: String
+        if let cfIP = request.headers.first(name: "CF-Connecting-IP") {
+            ip = cfIP
+        } else if let forwarded = request.headers.first(name: "X-Forwarded-For"),
+                  let firstHop = forwarded.split(separator: ",").first {
+            ip = String(firstHop)
+        } else if let remote = request.remoteAddress?.ipAddress {
+            ip = remote
+        } else {
+            ip = "unknown"
+        }
 
         let now = Date()
 
