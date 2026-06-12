@@ -4,7 +4,7 @@
             <div class="site-container text-center">
                 <span class="site-section-tag">PRICING</span>
                 <h1 class="page-hero-title">Learn free.<br><span class="accent-gradient">Prove it with Pro.</span></h1>
-                <p class="page-hero-desc">Preview every course with 3 free lessons. Pro unlocks all 520+ lessons, verified certificates, and LinkedIn credentials.</p>
+                <p class="page-hero-desc">Preview every course with 3 free lessons. Pro unlocks all 595+ lessons, verified certificates, and LinkedIn credentials.</p>
             </div>
         </section>
 
@@ -17,7 +17,7 @@
                         <div class="pricing-price">$0</div>
                         <div class="pricing-period">forever</div>
                         <ul class="pricing-features">
-                            <li>52 courses, beginner to advanced</li>
+                            <li>53 courses, beginner to advanced</li>
                             <li>First 3 lessons per course</li>
                             <li>Interactive quizzes &amp; visual aids</li>
                             <li>Flashcard study mode</li>
@@ -34,8 +34,8 @@
                         <div class="pricing-price">$19</div>
                         <div class="pricing-period">per month</div>
                         <ul class="pricing-features">
-                            <li>Full access to all 520+ lessons</li>
-                            <li>52 complete courses, beginner to advanced</li>
+                            <li>Full access to all 595+ lessons</li>
+                            <li>53 complete courses, beginner to advanced</li>
                             <li>Verified certificates on completion</li>
                             <li>PDF downloads &amp; LinkedIn sharing</li>
                             <li>Learning track certifications</li>
@@ -92,7 +92,7 @@
                     <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;text-align:center;">
                         <div style="font-size:2rem;margin-bottom:8px;">&#x1F513;</div>
                         <div style="font-size:1rem;font-weight:600;color:var(--text-primary);margin-bottom:6px;">Full Access</div>
-                        <div style="font-size:.85rem;color:var(--text-secondary);line-height:1.5;">All 520+ lessons across 52 courses. Learn at your pace from beginner to advanced.</div>
+                        <div style="font-size:.85rem;color:var(--text-secondary);line-height:1.5;">All 595+ lessons across 53 courses. Learn at your pace from beginner to advanced.</div>
                     </div>
                     <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;text-align:center;">
                         <div style="font-size:2rem;margin-bottom:8px;">&#x1F4DC;</div>
@@ -126,7 +126,7 @@
                     </div>
                     <div class="pricing-faq-item">
                         <h3 class="pricing-faq-q">How is this different from free AI tutorials?</h3>
-                        <p class="pricing-faq-a">Structure. Our 52 courses build on each other &mdash; from basics to autonomous agents. Every lesson has quizzes, flashcards, and visual aids. Pro adds verified certificates you can share on LinkedIn.</p>
+                        <p class="pricing-faq-a">Structure. Our 53 courses build on each other &mdash; from basics to autonomous agents. Every lesson has quizzes, flashcards, and visual aids. Pro adds verified certificates you can share on LinkedIn.</p>
                     </div>
                 </div>
             </div>
@@ -137,7 +137,7 @@
                 <h2 style="font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:12px;color:var(--text-primary);">Start now. Decide later.</h2>
                 <p style="font-size:1rem;color:var(--text-secondary);max-width:440px;margin:0 auto 28px;line-height:1.6;">Preview any course with 3 free lessons. If you want full access and certificates, upgrade whenever you're ready.</p>
                 <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-                    <a class="site-btn-primary" href="/academy">Browse 52 Free Courses</a>
+                    <a class="site-btn-primary" href="/academy">Browse 53 Free Courses</a>
                 </div>
             </div>
         </section>

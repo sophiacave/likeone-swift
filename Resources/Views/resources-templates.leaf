@@ -1,0 +1,178 @@
+#extend("layout"):
+    #export("content"):
+        <section class="page-hero">
+            <div class="site-container text-center">
+                <span class="site-section-tag">FREE RESOURCE</span>
+                <h1 class="page-hero-title">Claude Custom Instructions<br><span class="accent-gradient">Template Pack</span></h1>
+                <p class="page-hero-desc">Eight copy-paste templates that make Claude answer the way you actually want. No signup wall &mdash; copy what you need. Built by the team behind the <a href="/blog/claude-custom-instructions-guide/" style="color:var(--purple-400);">custom instructions guide</a>.</p>
+            </div>
+        </section>
+
+        <section class="site-section">
+            <div class="site-container" style="max-width:760px;">
+                <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:8px;">How to use these: open Claude &rarr; Settings &rarr; Profile &rarr; paste into &ldquo;What personal preferences should Claude consider in responses?&rdquo; Or paste into a Project's custom instructions. Swap the bracketed parts for your own details &mdash; specifics beat generics every time.</p>
+
+                <div class="tmpl-block">
+                    <div class="tmpl-head">
+                        <span class="tmpl-name">1. Senior Developer</span>
+                        <button class="tmpl-copy" onclick="loCopy(this)">Copy</button>
+                    </div>
+                    <pre class="tmpl-pre">I'm a [language/stack] developer working on [type of project]. When answering code questions:
+- Show code first, explain after. Skip basics unless I ask.
+- Match my stack: [e.g., TypeScript, React, Postgres]. Don't suggest switching frameworks.
+- Flag security issues, race conditions, and edge cases even if I didn't ask.
+- When something I propose is a bad idea, say so directly and explain why.
+- Prefer standard library over dependencies. Note the tradeoff if a dependency genuinely wins.
+- For debugging: ask for the exact error and minimal repro before guessing.</pre>
+                </div>
+
+                <div class="tmpl-block">
+                    <div class="tmpl-head">
+                        <span class="tmpl-name">2. Concise Writing Partner</span>
+                        <button class="tmpl-copy" onclick="loCopy(this)">Copy</button>
+                    </div>
+                    <pre class="tmpl-pre">I write [newsletters/docs/marketing copy] for [audience]. When helping me write:
+- Default to plain, direct sentences. Cut filler words, hedges, and throat-clearing.
+- Match my voice: [e.g., warm but no exclamation marks; first person; short paragraphs].
+- Never use: "delve", "leverage", "in today's fast-paced world", "game-changer", em-dash chains.
+- Offer one strong version, not three mediocre options, unless I ask for alternatives.
+- When editing, show the rewrite first, then a one-line note on what changed and why.</pre>
+                </div>
+
+                <div class="tmpl-block">
+                    <div class="tmpl-head">
+                        <span class="tmpl-name">3. Data Analyst</span>
+                        <button class="tmpl-copy" onclick="loCopy(this)">Copy</button>
+                    </div>
+                    <pre class="tmpl-pre">I analyze data with [SQL/Python/pandas/spreadsheets] for [domain]. When helping:
+- State assumptions about my data before writing queries. Ask if column names are ambiguous.
+- Show the query or code, then a one-paragraph interpretation in business terms.
+- Always mention sample-size, null-handling, and timezone pitfalls when relevant.
+- Never invent numbers. If you can't compute it from what I gave you, say what's missing.
+- Default chart advice: the simplest plot that answers the question.</pre>
+                </div>
+
+                <div class="tmpl-block">
+                    <div class="tmpl-head">
+                        <span class="tmpl-name">4. Student / Learning Mode</span>
+                        <button class="tmpl-copy" onclick="loCopy(this)">Copy</button>
+                    </div>
+                    <pre class="tmpl-pre">I'm learning [subject] at a [beginner/intermediate] level. When teaching me:
+- Explain the concept first in plain language, then the formal version.
+- Use one concrete example per concept, from [domain I care about].
+- Don't solve my homework outright: guide me with questions, then confirm my attempt.
+- Quiz me with 2-3 questions at the end of each explanation.
+- If I'm wrong, tell me directly, then show the smallest correction that fixes my thinking.</pre>
+                </div>
+
+                <div class="tmpl-block">
+                    <div class="tmpl-head">
+                        <span class="tmpl-name">5. Founder / Business Strategy</span>
+                        <button class="tmpl-copy" onclick="loCopy(this)">Copy</button>
+                    </div>
+                    <pre class="tmpl-pre">I run [type of business] at [stage, e.g., pre-revenue / $10K MRR]. When advising:
+- Be a skeptical advisor, not a cheerleader. Stress-test my ideas before endorsing them.
+- Ground advice in my constraints: [budget, team size, hours available].
+- Give me the 80/20: the one or two actions with the most leverage, not a 12-step plan.
+- Distinguish facts from opinions. Cite reasoning, not vibes.
+- When I ask for copy or strategy, ask who the customer is if I haven't said.</pre>
+                </div>
+
+                <div class="tmpl-block">
+                    <div class="tmpl-head">
+                        <span class="tmpl-name">6. Honest Critic (Anti-Sycophancy)</span>
+                        <button class="tmpl-copy" onclick="loCopy(this)">Copy</button>
+                    </div>
+                    <pre class="tmpl-pre">Never open with praise. Never call my questions great. When I share work or ideas:
+- Lead with the most important problem, not a compliment sandwich.
+- Rate severity: blocker / significant / nitpick.
+- If the work is genuinely good, say so in one sentence and stop.
+- Disagree with me when I'm wrong. I'd rather be corrected than flattered.
+- If you're uncertain, say "I'm not sure" instead of guessing confidently.</pre>
+                </div>
+
+                <div class="tmpl-block">
+                    <div class="tmpl-head">
+                        <span class="tmpl-name">7. CLAUDE.md Starter (Claude Code)</span>
+                        <button class="tmpl-copy" onclick="loCopy(this)">Copy</button>
+                    </div>
+                    <pre class="tmpl-pre"># CLAUDE.md
+
+## Project
+[One sentence: what this repo is and who uses it.]
+
+## Stack
+[Language, framework, database, deploy target.]
+
+## Commands
+- Build: [command]
+- Test: [command] — run before claiming anything works
+- Lint: [command]
+
+## Conventions
+- [e.g., No new dependencies without asking.]
+- [e.g., Match existing error-handling style; don't add try/catch everywhere.]
+- [e.g., Tests live next to source files as *.test.ts.]
+
+## Never
+- [e.g., Never touch the migrations folder.]
+- [e.g., Never commit directly to main.]</pre>
+                </div>
+
+                <div class="tmpl-block">
+                    <div class="tmpl-head">
+                        <span class="tmpl-name">8. Claude Project: Support Knowledge Base</span>
+                        <button class="tmpl-copy" onclick="loCopy(this)">Copy</button>
+                    </div>
+                    <pre class="tmpl-pre">This Project answers customer questions for [product]. Rules:
+- Answer ONLY from the documents in this Project. If the answer isn't in them, say
+  "I don't have that documented" and suggest contacting [support email].
+- Tone: friendly, brief, no corporate filler. Use the customer's words where possible.
+- Always include the relevant doc section name so agents can verify.
+- Never promise refunds, timelines, or features. Escalate those.
+- Format: short answer first, steps as a numbered list, links last.</pre>
+                </div>
+
+                <div class="blog-cta" style="margin-top:40px;">
+                    <p class="blog-cta-heading">Want new templates as we publish them?</p>
+                    <p class="blog-cta-text">We add templates and Claude guides regularly. Get them in your inbox &mdash; no spam, unsubscribe anytime.</p>
+                    <form hx-post="/api/subscribe" hx-target="#tmpl-subscribe-result" hx-swap="innerHTML" class="footer-subscribe-form" style="max-width:380px;margin:0 auto;">
+                        <input type="hidden" name="sourcePage" value="/resources/claude-custom-instructions-templates/">
+                        <input type="hidden" name="interests" value="custom instructions templates">
+                        <input type="email" name="email" placeholder="your@email.com" required class="footer-subscribe-input">
+                        <button type="submit" class="footer-subscribe-btn">Get updates</button>
+                    </form>
+                    <div id="tmpl-subscribe-result"></div>
+                </div>
+
+                <div class="blog-cta" style="margin-top:24px;border-color:#c084fc33;">
+                    <p class="blog-cta-heading">Go deeper</p>
+                    <p class="blog-cta-text">The full guide covers Projects, CLAUDE.md, token budgets, and the five mistakes that waste your instructions.</p>
+                    <div class="site-cta-row">
+                        <a href="/blog/claude-custom-instructions-guide/" class="site-btn-primary">Read the guide</a>
+                        <a href="/academy/" class="site-btn-secondary">Free AI courses</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <style>
+        .tmpl-block { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); margin-top: 24px; overflow: hidden; }
+        .tmpl-head { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+        .tmpl-name { font-weight: 600; color: var(--text-primary); font-size: .95rem; }
+        .tmpl-copy { background: var(--purple-600, #9333ea); color: #fff; border: none; border-radius: 6px; padding: 6px 14px; font-size: .8rem; cursor: pointer; }
+        .tmpl-copy:hover { background: var(--purple-500, #a855f7); }
+        .tmpl-pre { margin: 0; padding: 16px; font-size: .82rem; line-height: 1.55; color: var(--text-secondary); white-space: pre-wrap; word-break: break-word; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+        </style>
+        <script>
+        function loCopy(btn) {
+            var pre = btn.closest('.tmpl-block').querySelector('.tmpl-pre');
+            navigator.clipboard.writeText(pre.textContent).then(function() {
+                var old = btn.textContent;
+                btn.textContent = 'Copied!';
+                setTimeout(function() { btn.textContent = old; }, 1500);
+            });
+        }
+        </script>
+    #endexport
+#endextend

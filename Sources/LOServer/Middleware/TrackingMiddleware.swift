@@ -24,9 +24,11 @@ struct TrackingMiddleware: AsyncMiddleware {
             return response
         }
 
-        // Skip common bots
+        // Skip bots and our own tooling (curl canary, lo-verify, scripts)
         let ua = request.headers.first(name: .userAgent)?.lowercased() ?? ""
-        guard !ua.contains("bot") && !ua.contains("crawler") && !ua.contains("spider") else {
+        let botMarkers = ["bot", "crawler", "spider", "curl/", "wget/", "lo-verify",
+                          "python-requests", "python-urllib", "go-http-client", "headless"]
+        guard !ua.isEmpty, !botMarkers.contains(where: { ua.contains($0) }) else {
             return response
         }
 

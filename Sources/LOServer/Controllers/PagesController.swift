@@ -9,6 +9,7 @@ struct PagesController: RouteCollection {
         routes.get("consulting", use: consulting)
         routes.get("privacy", use: privacy)
         routes.get("terms", use: terms)
+        routes.get("resources", "claude-custom-instructions-templates", use: ciTemplates)
     }
 
     @Sendable
@@ -27,7 +28,7 @@ struct PagesController: RouteCollection {
         let context = PageContext(
             title: "Pricing | Like One",
             heading: "Pricing",
-            description: "50+ courses, 590+ lessons. First 3 free on every course. Pro unlocks full access and certificates.",
+            description: "53 courses, 595+ lessons. First 3 free on every course. Pro unlocks full access and certificates.",
             path: "/pricing"
         )
         return try await req.view.render("pricing", context)
@@ -67,11 +68,22 @@ struct PagesController: RouteCollection {
     }
 
     @Sendable
+    func ciTemplates(req: Request) async throws -> View {
+        let context = PageContext(
+            title: "Claude Custom Instructions Templates | Like One",
+            heading: "Custom Instructions Templates",
+            description: "Eight copy-paste Claude custom instruction templates: developer, writer, analyst, student, CLAUDE.md, and more. Free, no signup required.",
+            path: "/resources/claude-custom-instructions-templates"
+        )
+        return try await req.view.render("resources-templates", context)
+    }
+
+    @Sendable
     func consulting(req: Request) async throws -> View {
         let context = PageContext(
             title: "AI Consulting: MCP Servers & Claude Agents | Like One",
             heading: "Consulting",
-            description: "Custom MCP servers, persistent memory systems, and autonomous AI agents that ship work. 7 open source tools in production. From $150/hr.",
+            description: "Custom MCP servers, persistent memory systems, and autonomous AI agents that ship work. 8 open source tools in production. From $150/hr.",
             path: "/consulting"
         )
         return try await req.view.render("consulting", context)

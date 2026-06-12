@@ -73,6 +73,19 @@
                 <hr class="article-divider">
 
                 <div class="blog-cta">
+                    <p class="blog-cta-heading">Free: Claude custom instructions template pack</p>
+                    <p class="blog-cta-text">Eight copy-paste templates — developer, writer, analyst, CLAUDE.md starter, and more. Plus new guides in your inbox. No spam, unsubscribe anytime.</p>
+                    <form hx-post="/api/subscribe" hx-target="#blog-subscribe-result" hx-swap="innerHTML" class="footer-subscribe-form" style="max-width:380px;margin:0 auto;">
+                        <input type="hidden" name="sourcePage" value="/blog/#(slug)/">
+                        <input type="hidden" name="interests" value="claude guides">
+                        <input type="email" name="email" placeholder="your@email.com" required class="footer-subscribe-input">
+                        <button type="submit" class="footer-subscribe-btn">Send me the pack</button>
+                    </form>
+                    <div id="blog-subscribe-result"></div>
+                    <p class="blog-cta-text" style="margin-top:10px;font-size:.8rem;"><a href="/resources/claude-custom-instructions-templates/" style="color:var(--purple-400,#c084fc);">Or grab the templates directly — no email needed</a></p>
+                </div>
+
+                <div class="blog-cta" style="margin-top:24px;">
                     <p class="blog-cta-heading">Keep learning — for free</p>
                     <p class="blog-cta-text">50+ AI courses. 590+ lessons. No paywall for starters.</p>
                     <div class="site-cta-row">

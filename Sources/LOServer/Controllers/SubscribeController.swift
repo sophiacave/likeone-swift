@@ -23,7 +23,7 @@ struct SubscribeController: RouteCollection {
 
         if existing != nil {
             // Silent success — don't reveal if email exists
-            return htmlResponse("<p class=\"subscribe-success\">You're in! Check your inbox.</p>")
+            return htmlResponse(successHTML)
         }
 
         // Create new subscriber with interests
@@ -46,7 +46,14 @@ struct SubscribeController: RouteCollection {
         }
 
         req.logger.info("New subscriber: \(subscriber.email) from \(subscriber.sourcePage)")
-        return htmlResponse("<p class=\"subscribe-success\">You're in! Check your inbox.</p>")
+        return htmlResponse(successHTML)
+    }
+
+    private var successHTML: String {
+        """
+        <p class="subscribe-success">You're in! Check your inbox — or grab the \
+        <a href="/resources/claude-custom-instructions-templates/" style="color:inherit;text-decoration:underline;">template pack now</a>.</p>
+        """
     }
 
     @Sendable

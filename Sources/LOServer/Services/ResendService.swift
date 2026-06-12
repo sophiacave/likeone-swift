@@ -29,6 +29,8 @@ struct ResendService {
             <div style="font-size:20px;font-weight:800;margin-bottom:24px;">like<span style="color:#c084fc;">one</span></div>
             <p style="color:#d4d4dc;line-height:1.6;margin-bottom:16px;">Hey \(displayName),</p>
             <p style="color:#d4d4dc;line-height:1.6;margin-bottom:16px;">Welcome to Like One. You'll get updates on new courses, AI insights, and what we're building — no spam, ever.</p>
+            <p style="color:#d4d4dc;line-height:1.6;margin-bottom:16px;">Here's your free Claude custom instructions template pack — eight copy-paste templates for developers, writers, analysts, and more:</p>
+            <p style="margin-bottom:24px;"><a href="https://likeone.ai/resources/claude-custom-instructions-templates/" style="color:#c084fc;font-weight:600;">Get the template pack &rarr;</a></p>
             <p style="color:#d4d4dc;line-height:1.6;margin-bottom:24px;">Start learning: <a href="https://likeone.ai/academy" style="color:#c084fc;">likeone.ai/academy</a></p>
             <p style="color:#828288;font-size:12px;margin-top:40px;border-top:1px solid #27272a;padding-top:16px;">
                 <a href="\(unsubURL)" style="color:#828288;">Unsubscribe</a> &bull; Like One &bull; hello@likeone.ai
