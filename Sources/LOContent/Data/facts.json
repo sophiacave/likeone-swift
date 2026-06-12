@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "TRUTH BIBLE — auto-synced from live systems. Never edit manually.",
-    "last_synced": "2026-06-10T04:16:07.642464",
+    "last_synced": "2026-06-12T02:47:27.862325",
     "sync_tool": "lo-verify-sync-facts",
     "verification_sources": {
       "revenue": "Stripe API via stripe-dashboard",
@@ -26,8 +26,8 @@
     }
   },
   "content": {
-    "blog_posts": 42,
-    "total_faqs": 421,
+    "blog_posts": 43,
+    "total_faqs": 433,
     "all_posts_at_target": false,
     "posts_at_target": 40,
     "target_words": 2000,
@@ -42,19 +42,19 @@
     "weekly_impressions": 701,
     "record_day_impressions": 205,
     "record_day_date": "2026-05-31",
-    "sitemap_urls": 657,
+    "sitemap_urls": 658,
     "gsc_property": "sc-domain:likeone.ai",
     "_note": "SEO stats require manual GSC update"
   },
   "infrastructure": {
-    "brain_entries": 1092,
-    "rag_vectors": 7809,
+    "brain_entries": 1128,
+    "rag_vectors": 7845,
     "rag_collections": 11,
     "rag_breakdown": {
       "academy": 53,
       "blog_content": 373,
       "blog_posts": 180,
-      "brain_entries": 1092,
+      "brain_entries": 1128,
       "episodes": 2121,
       "facts": 131,
       "faqs": 421,
@@ -83,8 +83,8 @@
     "ein": "41-5319318",
     "status": "501(c)(3) tax-exempt",
     "granted_date": "2026-04-28",
-    "grants_in_pipeline": 286,
-    "grant_pipeline_value": 11497500,
+    "grants_in_pipeline": 318,
+    "grant_pipeline_value": 8487500,
     "giving_recipient": "UCSF HIV Cure Research Fund",
     "monthly_donation": 10,
     "total_donated": 20
