@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "TRUTH BIBLE — auto-synced from live systems. Never edit manually.",
-    "last_synced": "2026-06-12T02:47:27.862325",
+    "last_synced": "2026-06-12T08:21:42.774445",
     "sync_tool": "lo-verify-sync-facts",
     "verification_sources": {
       "revenue": "Stripe API via stripe-dashboard",
@@ -26,13 +26,13 @@
     }
   },
   "content": {
-    "blog_posts": 43,
-    "total_faqs": 433,
+    "blog_posts": 44,
+    "total_faqs": 445,
     "all_posts_at_target": false,
     "posts_at_target": 40,
     "target_words": 2000,
     "target_faqs": 10,
-    "word_range": "1797-3810"
+    "word_range": "1414-3810"
   },
   "academy": {
     "courses": 53,
@@ -42,22 +42,22 @@
     "weekly_impressions": 701,
     "record_day_impressions": 205,
     "record_day_date": "2026-05-31",
-    "sitemap_urls": 658,
+    "sitemap_urls": 659,
     "gsc_property": "sc-domain:likeone.ai",
     "_note": "SEO stats require manual GSC update"
   },
   "infrastructure": {
-    "brain_entries": 1128,
-    "rag_vectors": 7845,
+    "brain_entries": 1134,
+    "rag_vectors": 7871,
     "rag_collections": 11,
     "rag_breakdown": {
       "academy": 53,
-      "blog_content": 373,
+      "blog_content": 381,
       "blog_posts": 180,
-      "brain_entries": 1128,
+      "brain_entries": 1134,
       "episodes": 2121,
       "facts": 131,
-      "faqs": 421,
+      "faqs": 433,
       "lessons": 3291,
       "memory_files": 67,
       "sessions": 13,
@@ -83,7 +83,7 @@
     "ein": "41-5319318",
     "status": "501(c)(3) tax-exempt",
     "granted_date": "2026-04-28",
-    "grants_in_pipeline": 318,
+    "grants_in_pipeline": 324,
     "grant_pipeline_value": 8487500,
     "giving_recipient": "UCSF HIV Cure Research Fund",
     "monthly_donation": 10,
