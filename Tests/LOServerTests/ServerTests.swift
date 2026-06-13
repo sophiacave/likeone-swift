@@ -2,6 +2,7 @@ import Testing
 import Foundation
 
 @testable import LOServer
+import LOContent
 import Vapor
 import XCTVapor
 import Leaf
@@ -101,6 +102,53 @@ struct ServerTests {
                 let lessons = try res.content.decode([CodableLesson].self)
                 #expect(lessons.count == 9)
                 #expect(lessons.first?.title == "What Is a Neuron?")
+            }
+        }
+    }
+
+    @Test("API lesson HTML returns content for free lesson")
+    func apiLessonHTMLFree() async throws {
+        try await withApp { app in
+            try await app.test(.GET, "api/v1/lessons/ai-foundations/what-is-a-neuron/html") { res async in
+                #expect(res.status == .ok)
+                #expect(res.headers.contentType?.subType == "html")
+                #expect(res.body.string.contains("lesson-section") || res.body.string.contains("learn-card"))
+                #expect(!res.body.string.contains("Academy Pro</span>"))
+            }
+        }
+    }
+
+    @Test("API lesson HTML returns paywall for gated lesson without auth")
+    func apiLessonHTMLGated() async throws {
+        try await withApp { app in
+            // ai-foundations lesson 9 of 9 — beyond the free first 3
+            let lessons = LessonProvider().lessons(forCourse: "ai-foundations")
+            let gated = try #require(lessons.first(where: { $0.order > 3 }))
+            try await app.test(.GET, "api/v1/lessons/ai-foundations/\(gated.slug)/html") { res async in
+                #expect(res.status == .ok)
+                #expect(res.body.string.contains("Academy Pro"))
+                #expect(res.body.string.contains("likeone.ai/pricing"))
+            }
+        }
+    }
+
+    @Test("API lesson HTML returns 404 for unknown lesson")
+    func apiLessonHTMLMissing() async throws {
+        try await withApp { app in
+            try await app.test(.GET, "api/v1/lessons/ai-foundations/not-a-lesson/html") { res async in
+                #expect(res.status == .notFound)
+            }
+        }
+    }
+
+    @Test("Mobile signin page serves GIS button and sets mobile flag cookie")
+    func mobileSigninPage() async throws {
+        try await withApp { app in
+            try await app.test(.GET, "signin/mobile") { res async in
+                #expect(res.status == .ok)
+                #expect(res.body.string.contains("g_id_onload"))
+                #expect(res.body.string.contains("auth/google/callback"))
+                #expect(res.headers.setCookie?.all["lo_auth_mobile"]?.string == "1")
             }
         }
     }

@@ -9,11 +9,14 @@ struct AuthController: RouteCollection {
         routes.get("signin", use: signinPage)
         // Common alias users type directly; avoid 404 (no canonical conflict — 303)
         routes.get("login") { $0.redirect(to: "/signin/", redirectType: .normal) }
+        // Minimal Google sign-in page for the native app's ASWebAuthenticationSession
+        routes.get("signin", "mobile", use: mobileSigninPage)
         let auth = routes.grouped("auth")
             .grouped(RateLimitMiddleware(maxRequests: 20, perSeconds: 60))
         auth.get("apple", use: appleSignIn)
         auth.post("apple", "callback", use: appleCallback)
         auth.post("apple", "mobile", use: appleMobile)
+        auth.post("mobile", "exchange", use: mobileExchange)
         auth.get("complete", use: authComplete)
         auth.get("logout", use: logout)
         auth.get("me", use: me)
@@ -22,6 +25,90 @@ struct AuthController: RouteCollection {
     @Sendable
     func signinPage(req: Request) async throws -> View {
         try await req.view.render("signin", ["title": "Sign In | Like One"])
+    }
+
+    /// Google sign-in page for the native app, opened inside
+    /// ASWebAuthenticationSession. Reuses the registered GIS redirect flow;
+    /// the `lo_auth_mobile` cookie tells /auth/complete to hand the session
+    /// back to the app via the likeoneacademy:// callback scheme instead of
+    /// setting web cookies and going to /account/. S280.
+    @Sendable
+    func mobileSigninPage(req: Request) async throws -> Response {
+        let html = """
+        <!doctype html><html lang="en"><head><meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noindex">
+        <title>Sign In | Like One Academy</title>
+        <style>
+        body { font-family: -apple-system, system-ui, sans-serif; background: #0a0a0f; color: #e8e8f0;
+               display: flex; flex-direction: column; align-items: center; justify-content: center;
+               min-height: 100vh; margin: 0; gap: 20px; padding: 24px; text-align: center; }
+        h1 { font-size: 1.3rem; font-weight: 600; margin: 0; }
+        p { color: #a1a1aa; font-size: 0.95rem; margin: 0; max-width: 320px; }
+        </style></head><body>
+        <h1>Sign in to Like One Academy</h1>
+        <p>Use your Google account to sync progress and unlock your subscription.</p>
+        <div id="g_id_onload"
+             data-client_id="\(GoogleAuthController.clientID)"
+             data-ux_mode="redirect"
+             data-login_uri="https://likeone.ai/auth/google/callback"
+             data-auto_prompt="false"></div>
+        <div class="g_id_signin" data-type="standard" data-size="large"
+             data-theme="filled_black" data-text="signin_with" data-width="280"></div>
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+        </body></html>
+        """
+        let response = Response(status: .ok, body: .init(string: html))
+        response.headers.replaceOrAdd(name: .contentType, value: "text/html; charset=utf-8")
+        response.headers.replaceOrAdd(name: .cacheControl, value: "no-store")
+        // First-party Lax cookie — sent on the same-site JS navigation to
+        // /auth/complete, where it flips the flow to the app handoff.
+        response.cookies["lo_auth_mobile"] = HTTPCookies.Value(
+            string: "1",
+            maxAge: 600,
+            domain: ".likeone.ai",
+            isSecure: true,
+            isHTTPOnly: true,
+            sameSite: .lax
+        )
+        return response
+    }
+
+    /// Exchange a one-time handoff code for a bearer token — the native app
+    /// calls this after ASWebAuthenticationSession returns
+    /// likeoneacademy://auth?c=<code>. Mirrors /auth/apple/mobile's response. S280.
+    @Sendable
+    func mobileExchange(req: Request) async throws -> Response {
+        struct ExchangeInput: Content {
+            let code: String
+        }
+        struct MobileAuthResponse: Content {
+            let token: String
+            let email: String
+            let subscription: String
+        }
+
+        let input = try req.content.decode(ExchangeInput.self)
+
+        guard let handoff = try await AuthHandoffModel.query(on: req.db)
+                  .filter(\.$code == input.code).first(),
+              !handoff.isExpired,
+              let session = try await SessionModel.query(on: req.db)
+                  .filter(\.$token == handoff.sessionToken).first(),
+              !session.isExpired,
+              let user = try await UserModel.find(session.userID, on: req.db) else {
+            throw Abort(.unauthorized, reason: "Invalid or expired code")
+        }
+
+        // Single-use: burn the code
+        try await handoff.delete(on: req.db)
+
+        let response = Response(status: .ok)
+        try response.content.encode(
+            MobileAuthResponse(token: session.token, email: user.email, subscription: user.subscription),
+            as: .json
+        )
+        return response
     }
 
     @Sendable
@@ -211,7 +298,7 @@ struct AuthController: RouteCollection {
         let responseBody = MobileAuthResponse(
             token: session.token,
             email: user.email,
-            subscription: user.subscription ?? "free"
+            subscription: user.subscription
         )
 
         let response = Response(status: .ok)
@@ -243,6 +330,33 @@ struct AuthController: RouteCollection {
 
         // Single-use: burn the code
         try await handoff.delete(on: req.db)
+
+        // Native app flow (ASWebAuthenticationSession): hand the session back
+        // to the app via the callback scheme with a fresh one-time code, which
+        // the app exchanges at /auth/mobile/exchange. S280.
+        if req.cookies["lo_auth_mobile"]?.string == "1" {
+            let appHandoff = AuthHandoffModel(sessionToken: session.token)
+            try await appHandoff.save(on: req.db)
+            let appURL = "likeoneacademy://auth?c=\(appHandoff.code)"
+            let mobileHTML = """
+            <!doctype html><html><head><meta charset="utf-8"><title>Signing in…</title>
+            </head><body style="font-family:-apple-system,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#0a0a0f;color:#e8e8f0">
+            <p>Returning to the app…</p>
+            <script>location.replace('\(appURL)')</script>
+            </body></html>
+            """
+            let response = Response(status: .ok, body: .init(string: mobileHTML))
+            response.headers.replaceOrAdd(name: .contentType, value: "text/html; charset=utf-8")
+            response.headers.replaceOrAdd(name: .cacheControl, value: "no-store")
+            // Burn the mobile flag so a later web sign-in isn't misrouted
+            response.cookies["lo_auth_mobile"] = HTTPCookies.Value(
+                string: "",
+                expires: Date(timeIntervalSince1970: 0),
+                domain: ".likeone.ai",
+                isHTTPOnly: true
+            )
+            return response
+        }
 
         let html = """
         <!doctype html><html><head><meta charset="utf-8"><title>Signing in…</title>

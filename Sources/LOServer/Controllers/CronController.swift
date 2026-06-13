@@ -34,7 +34,7 @@ struct CronController: RouteCollection {
 
         var sent = 0
         var skipped = 0
-        var errors = 0
+        let errors = 0  // sendDigest is fire-and-forget; Resend failures are logged inside ResendService
 
         for sub in weekly {
             let items = await service.generateDigest(for: sub)

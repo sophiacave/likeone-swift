@@ -78,6 +78,17 @@ struct AccountView: View {
             .tint(.white)
             .foregroundStyle(.black)
             .listRowBackground(Color.loBgCard)
+
+            Button {
+                auth.signInWithGoogle()
+            } label: {
+                Label("Sign in with Google", systemImage: "globe")
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(Color.loBgCard)
+            .foregroundStyle(.white)
+            .listRowBackground(Color.loBgCard)
         }
     }
 

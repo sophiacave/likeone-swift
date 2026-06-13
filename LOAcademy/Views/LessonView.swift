@@ -6,6 +6,7 @@ struct LessonView: View {
     let courseSlug: String
     let lesson: LessonSummary
     @EnvironmentObject var progress: ProgressViewModel
+    @EnvironmentObject var auth: AuthService
     @State private var html: String?
     @State private var isLoading = true
 
@@ -89,19 +90,19 @@ struct LessonView: View {
     }
 
     private func loadLesson() async {
-        if let path = Bundle.main.path(forResource: lesson.slug, ofType: "html", inDirectory: "Content/lessons/\(courseSlug)"),
-           let content = try? String(contentsOfFile: path, encoding: .utf8) {
-            html = content
-            isLoading = false
-            return
-        }
-
         guard let url = URL(string: "https://likeone.ai/api/v1/lessons/\(courseSlug)/\(lesson.slug)/html") else {
             isLoading = false
             return
         }
 
-        guard let (data, response) = try? await URLSession.shared.data(from: url),
+        // Bearer token unlocks pro lessons; without it the server returns the
+        // free content or an upgrade card. S280.
+        var request = URLRequest(url: url)
+        if let token = auth.sessionToken {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+
+        guard let (data, response) = try? await URLSession.shared.data(for: request),
               (response as? HTTPURLResponse)?.statusCode == 200,
               let content = String(data: data, encoding: .utf8) else {
             isLoading = false

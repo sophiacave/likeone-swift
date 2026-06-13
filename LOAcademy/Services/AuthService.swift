@@ -34,6 +34,46 @@ final class AuthService: NSObject, ObservableObject {
         controller.performRequests()
     }
 
+    /// Google sign-in via ASWebAuthenticationSession: opens /signin/mobile/
+    /// (GIS redirect flow), receives likeoneacademy://auth?c=<one-time code>,
+    /// then exchanges the code for a bearer token at /auth/mobile/exchange. S280.
+    private var webAuthSession: ASWebAuthenticationSession?
+
+    func signInWithGoogle() {
+        guard let url = URL(string: "\(baseURL)/signin/mobile/") else { return }
+
+        let session = ASWebAuthenticationSession(
+            url: url,
+            callbackURLScheme: "likeoneacademy"
+        ) { [weak self] callbackURL, _ in
+            guard let callbackURL,
+                  let code = URLComponents(url: callbackURL, resolvingAgainstBaseURL: false)?
+                      .queryItems?.first(where: { $0.name == "c" })?.value else { return }
+            Task { @MainActor in
+                await self?.exchangeHandoffCode(code)
+            }
+        }
+        session.presentationContextProvider = self
+        session.prefersEphemeralWebBrowserSession = false
+        webAuthSession = session
+        session.start()
+    }
+
+    private func exchangeHandoffCode(_ code: String) async {
+        guard let url = URL(string: "\(baseURL)/auth/mobile/exchange") else { return }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONEncoder().encode(["code": code])
+
+        guard let (data, response) = try? await URLSession.shared.data(for: request),
+              (response as? HTTPURLResponse)?.statusCode == 200,
+              let result = try? JSONDecoder().decode(AuthResponse.self, from: data) else { return }
+
+        storeSession(result)
+    }
+
     func signOut() {
         UserDefaults.standard.removeObject(forKey: tokenKey)
         UserDefaults.standard.removeObject(forKey: emailKey)
@@ -41,6 +81,22 @@ final class AuthService: NSObject, ObservableObject {
         isSignedIn = false
         email = nil
         subscription = "free"
+    }
+
+    struct AuthResponse: Decodable {
+        let token: String
+        let email: String
+        let subscription: String
+    }
+
+    private func storeSession(_ result: AuthResponse) {
+        UserDefaults.standard.set(result.token, forKey: tokenKey)
+        UserDefaults.standard.set(result.email, forKey: emailKey)
+        UserDefaults.standard.set(result.subscription, forKey: subKey)
+
+        isSignedIn = true
+        email = result.email
+        subscription = result.subscription
     }
 
     private func authenticate(identityToken: String, name: String?) async {
@@ -58,23 +114,21 @@ final class AuthService: NSObject, ObservableObject {
         request.httpBody = try? JSONEncoder().encode(AuthBody(identityToken: identityToken, name: name))
 
         guard let (data, response) = try? await URLSession.shared.data(for: request),
-              (response as? HTTPURLResponse)?.statusCode == 200 else { return }
+              (response as? HTTPURLResponse)?.statusCode == 200,
+              let result = try? JSONDecoder().decode(AuthResponse.self, from: data) else { return }
 
-        struct AuthResponse: Decodable {
-            let token: String
-            let email: String
-            let subscription: String
+        storeSession(result)
+    }
+}
+
+extension AuthService: ASWebAuthenticationPresentationContextProviding {
+    nonisolated func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+        MainActor.assumeIsolated {
+            UIApplication.shared.connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .flatMap(\.windows)
+                .first(where: \.isKeyWindow) ?? ASPresentationAnchor()
         }
-
-        guard let result = try? JSONDecoder().decode(AuthResponse.self, from: data) else { return }
-
-        UserDefaults.standard.set(result.token, forKey: tokenKey)
-        UserDefaults.standard.set(result.email, forKey: emailKey)
-        UserDefaults.standard.set(result.subscription, forKey: subKey)
-
-        isSignedIn = true
-        email = result.email
-        subscription = result.subscription
     }
 }
 

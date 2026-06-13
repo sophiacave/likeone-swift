@@ -34,6 +34,11 @@ struct APIController: RouteCollection {
         // Tracks
         v1.get("tracks", use: allTracks)
         v1.get("tracks", ":slug", use: getTrack)
+
+        // Lesson HTML for the iOS app — raw fragment, gated like the web.
+        // The app sends `Authorization: Bearer <token>` for pro access.
+        v1.grouped(OptionalAuthMiddleware())
+            .get("lessons", ":course", ":lesson", "html", use: lessonHTML)
     }
 
     @Sendable
@@ -112,6 +117,49 @@ struct APIController: RouteCollection {
         }
         let response = Response(status: .ok)
         try response.content.encode(product)
+        return response
+    }
+
+    /// Raw lesson HTML fragment for the native app's WKWebView, which applies
+    /// its own styling and quiz engine. Same gate as the web: first 3 lessons
+    /// free, the rest require pro/founding. Gated lessons return 200 with an
+    /// upgrade card so the app renders a clean paywall instead of an error.
+    @Sendable
+    func lessonHTML(req: Request) async throws -> Response {
+        guard let courseSlug = req.parameters.get("course"),
+              let lessonSlug = req.parameters.get("lesson"),
+              courses.course(slug: courseSlug) != nil,
+              let lesson = lessons.lesson(courseSlug: courseSlug, lessonSlug: lessonSlug) else {
+            throw Abort(.notFound, reason: "Lesson not found")
+        }
+
+        let isFreeLesson = lesson.order <= 3
+        var isPro = false
+        if let user = req.authenticatedUser {
+            isPro = user.subscription == "pro" || user.subscription == "founding"
+        }
+
+        let html: String
+        if isFreeLesson || isPro {
+            // Slugs are validated against the catalog above, so they cannot
+            // contain path traversal — only known lesson files are reachable.
+            let contentPath = req.application.directory.resourcesDirectory + "Content/lessons/\(courseSlug)/\(lessonSlug).html"
+            html = (try? String(contentsOfFile: contentPath, encoding: .utf8)) ?? "<p>Lesson content coming soon.</p>"
+        } else {
+            html = """
+            <div class="learn-card">
+                <span class="section-label">Academy Pro</span>
+                <h3>\(lesson.title)</h3>
+                <p>This lesson is part of Academy Pro. The first 3 lessons of every course are free — upgrade to unlock all 595+ lessons, certificates, and learning tracks.</p>
+                <p><a href="https://likeone.ai/pricing">Upgrade at likeone.ai/pricing</a>, then sign in here to unlock everything.</p>
+            </div>
+            """
+        }
+
+        let response = Response(status: .ok)
+        response.headers.replaceOrAdd(name: .contentType, value: "text/html; charset=utf-8")
+        response.headers.replaceOrAdd(name: .cacheControl, value: "no-store")
+        response.body = .init(string: html)
         return response
     }
 
