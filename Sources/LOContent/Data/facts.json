@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "TRUTH BIBLE — auto-synced from live systems. Never edit manually.",
-    "last_synced": "2026-06-12T08:21:42.774445",
+    "last_synced": "2026-06-12T17:31:54.581096",
     "sync_tool": "lo-verify-sync-facts",
     "verification_sources": {
       "revenue": "Stripe API via stripe-dashboard",
@@ -42,22 +42,22 @@
     "weekly_impressions": 701,
     "record_day_impressions": 205,
     "record_day_date": "2026-05-31",
-    "sitemap_urls": 659,
+    "sitemap_urls": 660,
     "gsc_property": "sc-domain:likeone.ai",
     "_note": "SEO stats require manual GSC update"
   },
   "infrastructure": {
-    "brain_entries": 1134,
-    "rag_vectors": 7871,
+    "brain_entries": 1154,
+    "rag_vectors": 7909,
     "rag_collections": 11,
     "rag_breakdown": {
       "academy": 53,
-      "blog_content": 381,
+      "blog_content": 387,
       "blog_posts": 180,
-      "brain_entries": 1134,
+      "brain_entries": 1154,
       "episodes": 2121,
       "facts": 131,
-      "faqs": 433,
+      "faqs": 445,
       "lessons": 3291,
       "memory_files": 67,
       "sessions": 13,
@@ -83,7 +83,7 @@
     "ein": "41-5319318",
     "status": "501(c)(3) tax-exempt",
     "granted_date": "2026-04-28",
-    "grants_in_pipeline": 324,
+    "grants_in_pipeline": 333,
     "grant_pipeline_value": 8487500,
     "giving_recipient": "UCSF HIV Cure Research Fund",
     "monthly_donation": 10,
