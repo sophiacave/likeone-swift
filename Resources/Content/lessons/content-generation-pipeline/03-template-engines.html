@@ -260,7 +260,7 @@ v4 → v4.1: Changed body target from 1500 to 1200 words (reader data)
 <div class="quiz-options">
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">A</span>[VARIABLE]</button>
 <button class="quiz-option" onclick="this.classList.add('quiz-correct');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">B</span>{{VARIABLE}}</button>
-<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span><VARIABLE></button>
+<button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">C</span>&lt;VARIABLE&gt;</button>
 <button class="quiz-option" onclick="this.classList.add('quiz-wrong');this.parentElement.classList.add('revealed');this.parentElement.nextElementSibling.style.display='block'"><span class="quiz-letter">D</span>VARIABLE()</button>
 </div>
 <div class="quiz-explanation" style="display:none">Variables in a template are wrapped in double curly brackets, {{VARIABLE}}, to clearly indicate where content should be inserted.</div>
