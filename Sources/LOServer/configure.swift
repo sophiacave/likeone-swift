@@ -25,6 +25,7 @@ func configure(_ app: Application) async throws {
     app.migrations.add(AddUserRole())
     app.migrations.add(CreateAuthHandoffs())
     app.migrations.add(AddUserProviderSubjects())
+    app.migrations.add(AddAuthHandoffMobile())
     try await app.autoMigrate()
 
     // Leaf templates

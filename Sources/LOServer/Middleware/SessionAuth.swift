@@ -48,7 +48,6 @@ extension Response {
         let url = "/auth/complete/?c=\(code)"
         let html = """
         <!doctype html><html><head><meta charset="utf-8"><title>Signing in…</title>
-        <meta http-equiv="refresh" content="1;url=\(url)">
         </head><body style="font-family:-apple-system,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#0a0a0f;color:#e8e8f0">
         <p>Signing you in…</p>
         <script>location.replace('\(url)')</script>

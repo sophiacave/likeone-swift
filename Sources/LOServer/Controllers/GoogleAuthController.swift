@@ -51,10 +51,15 @@ struct GoogleAuthController: RouteCollection {
 
         let session = try await establishSession(req: req, credential: input.credential)
 
+        // lo_app=1 in login_uri query param (set in /signin/mobile GIS config)
+        // survives the Google POST — replaces lo_auth_mobile cookie which iOS 17+
+        // ITP strips during cross-site redirect. S273+.
+        let isApp = req.query[String.self, at: "lo_app"] == "1"
+
         // iOS Safari drops cookies on the entire redirect chain of a cross-site
         // POST, so return a 200 interstitial whose JS starts a fresh first-party
         // navigation to /auth/complete, which sets the cookies. S273.
-        let handoff = AuthHandoffModel(sessionToken: session.token)
+        let handoff = AuthHandoffModel(sessionToken: session.token, mobile: isApp)
         try await handoff.save(on: req.db)
 
         let response = Response.authHandoffInterstitial(code: handoff.code)

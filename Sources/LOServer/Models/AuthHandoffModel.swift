@@ -13,13 +13,15 @@ final class AuthHandoffModel: Model, @unchecked Sendable {
     @Field(key: "code") var code: String
     @Field(key: "session_token") var sessionToken: String
     @Field(key: "expires_at") var expiresAt: Date
+    @Field(key: "mobile") var mobile: Bool
 
     init() {}
 
-    init(sessionToken: String, expiresIn: TimeInterval = 60) {
+    init(sessionToken: String, mobile: Bool = false, expiresIn: TimeInterval = 60) {
         self.id = UUID()
         self.code = [UInt8].random(count: 32).map { String(format: "%02x", $0) }.joined()
         self.sessionToken = sessionToken
+        self.mobile = mobile
         self.expiresAt = Date().addingTimeInterval(expiresIn)
     }
 

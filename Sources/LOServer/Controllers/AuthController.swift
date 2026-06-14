@@ -51,7 +51,7 @@ struct AuthController: RouteCollection {
         <div id="g_id_onload"
              data-client_id="\(GoogleAuthController.clientID)"
              data-ux_mode="redirect"
-             data-login_uri="https://likeone.ai/auth/google/callback"
+             data-login_uri="https://likeone.ai/auth/google/callback?lo_app=1"
              data-auto_prompt="false"></div>
         <div class="g_id_signin" data-type="standard" data-size="large"
              data-theme="filled_black" data-text="signin_with" data-width="280"></div>
@@ -334,7 +334,7 @@ struct AuthController: RouteCollection {
         // Native app flow (ASWebAuthenticationSession): hand the session back
         // to the app via the callback scheme with a fresh one-time code, which
         // the app exchanges at /auth/mobile/exchange. S280.
-        if req.cookies["lo_auth_mobile"]?.string == "1" {
+        if handoff.mobile {
             let appHandoff = AuthHandoffModel(sessionToken: session.token)
             try await appHandoff.save(on: req.db)
             let appURL = "likeoneacademy://auth?c=\(appHandoff.code)"
@@ -358,17 +358,11 @@ struct AuthController: RouteCollection {
             return response
         }
 
-        let html = """
-        <!doctype html><html><head><meta charset="utf-8"><title>Signing in…</title>
-        <meta http-equiv="refresh" content="1;url=/account/">
-        </head><body style="font-family:-apple-system,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#0a0a0f;color:#e8e8f0">
-        <p>Signing you in…</p>
-        <script>setTimeout(function(){location.replace('/account/')},150)</script>
-        </body></html>
-        """
-        let response = Response(status: .ok, body: .init(string: html))
-        response.headers.replaceOrAdd(name: .contentType, value: "text/html; charset=utf-8")
-        response.headers.replaceOrAdd(name: .cacheControl, value: "no-store")
+        // Server-side 302 to /account/ with Set-Cookie. The interstitial already
+        // broke the cross-site chain (Google POST → 200 interstitial → GET here),
+        // so this is a first-party same-site redirect — identical to how magic
+        // links set cookies, which works reliably on iOS Safari. S273+.
+        let response = req.redirect(to: "/account/")
         response.setSessionCookies(token: session.token, expires: session.expiresAt)
         return response
     }
