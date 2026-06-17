@@ -4,6 +4,8 @@
       "description": "How to define tools, handle function calls, and build reliable tool-use workflows with the Claude API. Production patterns included.",
       "author": "Sophie Cave",
       "date": "2026-06-16",
+      "status": "scheduled",
+      "publish_date": "2026-06-16",
       "category": "AI Engineering",
       "tags": [
             "claude tool use",
