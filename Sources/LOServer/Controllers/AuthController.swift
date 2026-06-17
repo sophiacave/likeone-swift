@@ -18,6 +18,7 @@ struct AuthController: RouteCollection {
         auth.post("apple", "mobile", use: appleMobile)
         auth.post("mobile", "exchange", use: mobileExchange)
         auth.get("complete", use: authComplete)
+        auth.post("set-session", use: setSession)
         auth.get("logout", use: logout)
         auth.get("me", use: me)
     }
@@ -358,12 +359,44 @@ struct AuthController: RouteCollection {
             return response
         }
 
-        // Server-side 302 to /account/ with Set-Cookie. The interstitial already
-        // broke the cross-site chain (Google POST → 200 interstitial → GET here),
-        // so this is a first-party same-site redirect — identical to how magic
-        // links set cookies, which works reliably on iOS Safari. S273+.
-        let response = req.redirect(to: "/account/")
-        response.setSessionCookies(token: session.token, expires: session.expiresAt)
+        // ITP (iOS 18.7+) blocks both HTTP Set-Cookie on redirect chains AND
+        // document.cookie from JS in that context. Same-origin fetch() responses
+        // are pure first-party and never restricted by ITP. We POST the token to
+        // /auth/set-session which sets the HttpOnly cookie cleanly. S273++.
+        let token = session.token  // 64-char hex — XSS-safe, safe to inline
+        let html = """
+        <!doctype html><html><head><meta charset="utf-8"><title>Signing in\u{2026}</title>
+        </head><body style="font-family:-apple-system,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#0a0a0f;color:#e8e8f0">
+        <p>Signing you in\u{2026}</p>
+        <script>
+        fetch('/auth/set-session',{method:'POST',headers:{'Content-Type':'application/json'},body:'{"token":"\(token)"}'})
+        .then(function(r){r.ok?location.replace('/account/'):location.replace('/signin/?error=auth');})
+        .catch(function(){location.replace('/signin/?error=auth');});
+        </script>
+        </body></html>
+        """
+        let response = Response(status: .ok, body: .init(string: html))
+        response.headers.replaceOrAdd(name: .contentType, value: "text/html; charset=utf-8")
+        response.headers.replaceOrAdd(name: .cacheControl, value: "no-store")
+        return response
+    }
+
+    /// Promote a valid session token to a first-party HttpOnly cookie.
+    /// Called via same-origin fetch() from /auth/complete — same-origin
+    /// fetch responses are never subject to ITP cookie restrictions. S273++.
+    @Sendable
+    func setSession(req: Request) async throws -> Response {
+        struct SetSessionInput: Content {
+            let token: String
+        }
+        let input = try req.content.decode(SetSessionInput.self)
+        guard let session = try await SessionModel.query(on: req.db)
+                  .filter(\.$token == input.token).first(),
+              !session.isExpired else {
+            throw Abort(.unauthorized, reason: "Invalid or expired session")
+        }
+        let response = Response(status: .ok)
+        response.setSessionCookies(token: input.token, expires: session.expiresAt)
         return response
     }
 
