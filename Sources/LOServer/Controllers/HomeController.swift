@@ -42,7 +42,7 @@ struct HomeController: RouteCollection {
         let totalLessons = allCourses.reduce(0) { $0 + max(lessons.lessonCount(forCourse: $1.slug), 1) }
 
         let context = HomeContext(
-            title: "Like One — Free AI Courses & Certificates | 501(c)(3) Nonprofit Academy",
+            title: "Like One — Free AI Courses & Certificates",
             description: "Learn AI free. \(allCourses.count) courses, \(totalLessons)+ lessons — from prompts to autonomous agents. Earn verified certificates. Built by a 501(c)(3) nonprofit.",
             canonicalUrl: siteBaseURL + "/",
             stats: [
