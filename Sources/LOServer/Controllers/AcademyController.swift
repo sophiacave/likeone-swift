@@ -58,7 +58,7 @@ struct AcademyController: RouteCollection {
         var isPro = false
         var completedSlugs: Set<String> = []
         if let user = req.authenticatedUser {
-            isPro = user.subscription == "pro" || user.subscription == "founding"
+            isPro = user.subscription == "pro" || user.subscription == "founding" || user.role == "admin"
             let progress = try await ProgressModel.query(on: req.db)
                 .filter(\.$userID == user.id!)
                 .filter(\.$courseSlug == slug)
@@ -111,7 +111,7 @@ struct AcademyController: RouteCollection {
         let isFreeLesson = lesson.order <= 3
         var isPro = false
         if let user = req.authenticatedUser {
-            isPro = user.subscription == "pro" || user.subscription == "founding"
+            isPro = user.subscription == "pro" || user.subscription == "founding" || user.role == "admin"
         }
 
         let content: String

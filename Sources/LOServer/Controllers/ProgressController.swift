@@ -51,7 +51,7 @@ struct ProgressController: RouteCollection {
         }
 
         // Check if course is now complete
-        let isPro = user.subscription == "pro" || user.subscription == "founding"
+        let isPro = user.subscription == "pro" || user.subscription == "founding" || user.role == "admin"
         let courseComplete = try await checkCourseCompletion(
             userID: user.id!,
             courseSlug: input.courseSlug,
@@ -89,7 +89,7 @@ struct ProgressController: RouteCollection {
         let user = try await req.requireUser()
         let items = try req.content.decode([SyncItem].self)
 
-        let isPro = user.subscription == "pro" || user.subscription == "founding"
+        let isPro = user.subscription == "pro" || user.subscription == "founding" || user.role == "admin"
         var synced = 0
 
         for item in items {

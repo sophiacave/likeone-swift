@@ -136,7 +136,7 @@ struct APIController: RouteCollection {
         let isFreeLesson = lesson.order <= 3
         var isPro = false
         if let user = req.authenticatedUser {
-            isPro = user.subscription == "pro" || user.subscription == "founding"
+            isPro = user.subscription == "pro" || user.subscription == "founding" || user.role == "admin"
         }
 
         let html: String
