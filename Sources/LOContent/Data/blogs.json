@@ -1030,8 +1030,8 @@
     },
     {
       "slug": "claude-custom-instructions-guide",
-      "title": "Claude Custom Instructions Guide (2026)",
-      "description": "Claude's 'Instructions for Claude' has a 1,500-char limit. Projects support ~8,000 chars. Templates, examples, and CLAUDE.md best practices.",
+      "title": "Claude Custom Instructions: Character Limits + Templates",
+      "description": "The exact character limits for Instructions for Claude vs Projects, why most people waste half their budget, and copy-paste templates that don't.",
       "author": "Sophie Cave",
       "date": "2026-05-30",
       "category": "AI Tools",
@@ -2652,8 +2652,8 @@
     },
     {
       "slug": "claude-temperature-settings-guide",
-      "title": "Claude Temperature: 0.0 to 1.0 Explained",
-      "description": "Temp 0.0 = deterministic, factual answers. Temp 1.0 = creative, unpredictable output. When to use each value, API examples, and CCA exam prep guide.",
+      "title": "Claude Temperature Guide + Every Exam Question Answered",
+      "description": "Factual Q&A app, creative story, document extraction — every Claude temperature quiz question explained, not just answered. API code, top_p vs temperature, and production defaults inside.",
       "author": "Sophie Cave",
       "date": "2026-06-12",
       "category": "AI Engineering",
@@ -3105,6 +3105,14 @@
         {
           "question": "What quantization level should I use for coding tasks?",
           "answer": "Q4_K_M or higher is recommended for code generation. Below Q4 (Q3, Q2), the model becomes more likely to generate plausible but incorrect code. The RAM savings below Q4 are typically not worth the quality tradeoff for coding tasks specifically."
+        },
+        {
+          "question": "Is the 70B model worth it for coding vs the 32B model — what's the practical difference?",
+          "answer": "The practical difference concentrates in ambiguous, multi-file, or long-context tasks — refactors that touch several files, debugging across layers, and vague requests that require judgment. For bounded, well-specified tasks like scaffolding, CRUD, or test generation, a good code-specialized 32B model performs at near-parity with 70B. The upgrade is worth it if your workload skews toward the ambiguous end and you already have hardware that runs 70B at usable speed; otherwise the RAM and latency cost rarely pays off."
+        },
+        {
+          "question": "What's the practical quality difference between 32B and 70B models for coding?",
+          "answer": "Model quality scales sub-linearly with parameter count past a certain threshold, so the real-world gap is smaller than the 2x parameter count suggests. A well-trained, code-specialized 32B model like Qwen2.5-Coder-32B can match or beat older 70B general-purpose models on coding benchmarks. Where 70B still pulls ahead: multi-file reasoning, tracing bugs across abstraction layers, and underspecified requests that lean on judgment rather than pattern-matching."
         }
       ]
     },
@@ -4619,6 +4627,182 @@
         {
           "question": "Can I use Claude Code headless mode for automated code review in GitHub Actions?",
           "answer": "Yes — pipe the PR diff into claude -p with --output-format json and --allowedTools scoped to read-only tools like Read and Grep (never give a review step Edit or Bash access). Cap it with --max-turns, parse the JSON result with jq, and post it as a PR comment via the GitHub API."
+        }
+      ]
+    },
+    {
+      "slug": "claude-code-keyboard-shortcuts-guide-2026",
+      "title": "Claude Code Keyboard Shortcuts & Keybindings (2026)",
+      "description": "Claude Code's default keyboard shortcuts, how to customize keybindings.json, chord bindings, vim mode, and rebinding the submit key.",
+      "author": "Sophie Cave",
+      "date": "2026-07-10",
+      "category": "AI Engineering",
+      "tags": [
+        "claude code keyboard shortcuts",
+        "claude code keybindings",
+        "keybindings.json",
+        "claude code vim mode",
+        "claude code customization",
+        "anthropic claude code",
+        "claude code cli",
+        "claude code productivity",
+        "claude code tips",
+        "claude code chord bindings"
+      ],
+      "image": "/blog/claude-code-keyboard-shortcuts-guide-2026.webp",
+      "content": "<p>Claude Code ships with a full keyboard-driven interface, but almost nobody uses more than four or five shortcuts out of the box. Part of that is discoverability &mdash; there's no menu bar to hover over. Part of it is that the defaults conflict with muscle memory from tmux, vim, or whatever terminal multiplexer you already live in.</p>\n\n<p>As of v2.1.18, every shortcut is customizable. Run <code>/keybindings</code> and Claude Code opens <code>~/.claude/keybindings.json</code>, a config file that controls every keystroke in the app &mdash; chat input, permission dialogs, the diff viewer, background task management, all of it. Here's what's bound by default, how to remap it, and the gotchas that trip people up.</p>\n\n<h2>The Shortcuts You Actually Need First</h2>\n\n<p>Before touching the config file, these are the defaults worth memorizing:</p>\n\n<pre><code>Shift+Tab       Cycle permission modes (default → auto-accept → plan mode)\nCtrl+R          Search command history\nCtrl+O          Toggle verbose transcript\nCtrl+T          Toggle the to-do checklist\nCtrl+L          Redraw screen (press twice fast to run /clear)\nCtrl+J          Insert a newline without submitting\nCtrl+_          Undo last action\nCtrl+B          Background the current task\nCtrl+C          Interrupt / cancel (hardcoded, can't rebind)\nCtrl+D          Exit Claude Code (hardcoded, can't rebind)</code></pre>\n\n<p>The one that changes how you work day to day is <code>Shift+Tab</code>. It cycles between permission modes mid-conversation &mdash; useful when you start in default mode to review a risky change, then flip to auto-accept once you trust what the agent is doing. Our <a href=\"/blog/claude-code-permission-modes-guide-2026/\">permission modes guide</a> covers what each mode actually restricts.</p>\n\n<h2>The Config File Structure</h2>\n\n<p>The keybindings file is a single JSON object with a <code>bindings</code> array. Each entry in that array targets a specific <strong>context</strong> &mdash; the part of the UI where the binding applies &mdash; and maps keystrokes to actions:</p>\n\n<pre><code>{\n  \"$schema\": \"https://www.schemastore.org/claude-code-keybindings.json\",\n  \"$docs\": \"https://code.claude.com/docs/en/keybindings\",\n  \"bindings\": [\n    {\n      \"context\": \"Chat\",\n      \"bindings\": {\n        \"ctrl+e\": \"chat:externalEditor\",\n        \"ctrl+u\": null\n      }\n    }\n  ]\n}</code></pre>\n\n<p>Setting an action to <code>null</code> unbinds the default shortcut without assigning a replacement. Changes are detected and applied automatically &mdash; no restart, no <code>/reload</code>. Edit, save, and the new binding is live on your next keystroke.</p>\n\n<p>Actions follow a <code>namespace:action</code> naming pattern &mdash; <code>chat:submit</code>, <code>app:toggleTodos</code>, <code>history:search</code>. The namespace tells you which context owns it. The 18 available contexts cover everything from <code>Global</code> (applies everywhere) down to narrow ones like <code>DiffDialog</code>, <code>ThemePicker</code>, and <code>MessageSelector</code> (the rewind/summarize dialog).</p>\n\n<h2>Chord Bindings</h2>\n\n<p>Chords are multi-key sequences separated by spaces &mdash; press one key, release, then press the next:</p>\n\n<pre><code>\"ctrl+x ctrl+k\": \"chat:killAgents\"</code></pre>\n\n<p>That's actually a default: <code>Ctrl+X Ctrl+K</code> stops all running background subagents in the current session. The default chord set also includes <code>Ctrl+X Ctrl+E</code> (open in external editor) and <code>Ctrl+X Ctrl+B</code> (background the current task, added in v2.1.169 specifically to dodge the tmux prefix conflict on plain <code>Ctrl+B</code>).</p>\n\n<p>If you want to reclaim a prefix key for single-key use, you have to unbind <em>every</em> chord that uses it &mdash; a chord in any active context keeps the prefix reserved for chord-wait mode. To free up <code>Ctrl+X</code> as a plain newline shortcut, for example, you need to unbind all three defaults across two contexts:</p>\n\n<pre><code>{\n  \"bindings\": [\n    {\n      \"context\": \"Task\",\n      \"bindings\": { \"ctrl+x ctrl+b\": null }\n    },\n    {\n      \"context\": \"Chat\",\n      \"bindings\": {\n        \"ctrl+x ctrl+k\": null,\n        \"ctrl+x ctrl+e\": null,\n        \"ctrl+x\": \"chat:newline\"\n      }\n    }\n  ]\n}</code></pre>\n\n<h2>Changing the Submit Key</h2>\n\n<p>The most common rebind request: Enter submits, but you want Enter to insert a newline and something else to submit &mdash; the Slack/Discord pattern reversed. Do it by swapping what <code>chat:submit</code> and <code>chat:newline</code> point to:</p>\n\n<pre><code>{\n  \"bindings\": [\n    {\n      \"context\": \"Chat\",\n      \"bindings\": {\n        \"enter\": \"chat:newline\",\n        \"ctrl+enter\": \"chat:submit\"\n      }\n    }\n  ]\n}</code></pre>\n\n<p>Note the two reserved shortcuts you <em>can't</em> touch: <code>Ctrl+C</code> and <code>Ctrl+D</code> are hardcoded (interrupt and exit), and <code>Ctrl+M</code> is unusable because most terminals send an identical signal to Enter. Caps Lock isn't delivered to terminal apps at all, so it's not an option either.</p>\n\n<h2>Vim Mode Doesn't Fight Your Keybindings</h2>\n\n<p>Enable vim mode via <code>/config</code> → Editor mode, and it operates independently from the keybindings system. Vim mode handles input-level behavior &mdash; cursor motion, INSERT/NORMAL modes, standard vim commands. Keybindings handle component-level actions &mdash; submit, toggle todos, background a task.</p>\n\n<p>The one place this matters in practice: in vim mode, <strong>Escape switches INSERT to NORMAL, it does not trigger <code>chat:cancel</code></strong>. If you've rebound Escape expecting it to cancel the current operation, it won't fire while you're in INSERT mode. Most Ctrl+key shortcuts pass through vim mode fine and reach the keybinding system as normal. In vim NORMAL mode, <code>?</code> opens the help menu and <code>/</code> opens history search &mdash; both vim-native behaviors, not remappable through the keybindings file.</p>\n\n<h2>Syntax Reference</h2>\n\n<p>Modifiers use <code>+</code> as a separator: <code>ctrl</code>/<code>control</code>, <code>shift</code>, <code>alt</code>/<code>opt</code>/<code>option</code>/<code>meta</code> (Alt on Windows/Linux, Option on macOS), and <code>cmd</code>/<code>command</code>/<code>super</code>/<code>win</code> (only detected in terminals that report the Super modifier &mdash; most don't, so stick to <code>ctrl</code> or <code>meta</code> for portable bindings).</p>\n\n<p>A standalone uppercase letter implies Shift &mdash; <code>K</code> is the same as <code>shift+k</code>, which is what makes vim-style bindings like <code>K</code> for \"jump up\" vs. <code>k</code> for \"move up one\" work. But uppercase with a modifier is purely stylistic: <code>ctrl+K</code> and <code>ctrl+k</code> are identical.</p>\n\n<p>Special keys: <code>escape</code>/<code>esc</code>, <code>enter</code>/<code>return</code>, <code>tab</code>, <code>space</code>, arrow keys (<code>up</code>/<code>down</code>/<code>left</code>/<code>right</code>), <code>backspace</code>/<code>delete</code>.</p>\n\n<h2>Terminal Multiplexer Conflicts</h2>\n\n<p>If you run Claude Code inside tmux, screen, or a similar multiplexer, a few defaults collide with your terminal's own prefix keys:</p>\n\n<pre><code>Ctrl+B   tmux prefix (press twice to send through to Claude Code)\nCtrl+A   GNU screen prefix\nCtrl+Z   Unix process suspend (SIGTSTP)</code></pre>\n\n<p>Claude Code's built-in validator flags these when the config loads. Start with <code>--debug</code> to see the full warning list &mdash; it also catches parse errors, invalid context names, reserved-shortcut conflicts, and duplicate bindings within the same context before they silently fail to apply.</p>\n\n<h2>A Practical Starting Config</h2>\n\n<p>If you're setting this up for the first time, this covers the highest-value changes without touching anything load-bearing:</p>\n\n<pre><code>{\n  \"$schema\": \"https://www.schemastore.org/claude-code-keybindings.json\",\n  \"bindings\": [\n    {\n      \"context\": \"Chat\",\n      \"bindings\": {\n        \"ctrl+e\": \"chat:externalEditor\",\n        \"meta+p\": \"chat:modelPicker\"\n      }\n    }\n  ]\n}</code></pre>\n\n<p>Start small, run <code>--debug</code> to confirm it loaded clean, and layer in chords or a submit-key swap once the basics feel right. Because changes apply live, there's no cost to iterating &mdash; edit, save, test, adjust.</p>\n\n<h2>The Takeaway</h2>\n\n<p>Most Claude Code users never open <code>keybindings.json</code> because the defaults are good enough to get by. But if you're running it inside tmux, coming from a vim-heavy workflow, or just tired of Shift+Tab firing when you meant something else, the config file gives you full control &mdash; 18 contexts, chord support, and a validator that catches mistakes before they cost you a debugging session.</p>\n\n<p>---</p>\n\n<p><em>Want your team's Claude Code setup dialed in &mdash; keybindings, hooks, and permission modes configured for how you actually work? <a href=\"/consulting\">Our consulting team</a> builds custom Claude Code workflows. Or start learning the fundamentals at <a href=\"/academy\">Like One Academy</a>.</em></p>",
+      "faqs": [
+        {
+          "question": "How do I customize Claude Code keyboard shortcuts?",
+          "answer": "Run /keybindings inside Claude Code to create or open ~/.claude/keybindings.json. This file defines an array of binding blocks, each targeting a context (like Chat or Global) with a map of keystrokes to actions. Changes are detected and applied automatically — no restart needed."
+        },
+        {
+          "question": "What version of Claude Code supports custom keybindings?",
+          "answer": "Customizable keyboard shortcuts require Claude Code v2.1.18 or later. Check your installed version with claude --version before trying to edit keybindings.json."
+        },
+        {
+          "question": "How do I unbind a default Claude Code shortcut?",
+          "answer": "Set the action to null in your keybindings.json. For example, {\"ctrl+u\": null} in the Chat context removes that default binding without assigning a replacement. This also works for chord bindings, but you must unbind every chord sharing a prefix to free that prefix for single-key use."
+        },
+        {
+          "question": "What is a chord binding in Claude Code?",
+          "answer": "A chord is a sequence of keystrokes separated by spaces, like ctrl+x ctrl+k — press the first key, release, then press the second. Claude Code uses chords by default for actions like killing background subagents (Ctrl+X Ctrl+K) and backgrounding tasks (Ctrl+X Ctrl+B)."
+        },
+        {
+          "question": "How do I change the Enter key behavior in Claude Code to insert a newline instead of submitting?",
+          "answer": "Remap chat:submit and chat:newline in the Chat context: set \"enter\": \"chat:newline\" and bind another key like \"ctrl+enter\": \"chat:submit\". This reverses the default so Enter adds a line break and your chosen combination sends the message."
+        },
+        {
+          "question": "Which Claude Code shortcuts can't be rebound?",
+          "answer": "Ctrl+C (hardcoded interrupt/cancel) and Ctrl+D (hardcoded exit) are reserved and cannot be remapped. Ctrl+M can't be used either because most terminals send the same signal as Enter, and Caps Lock isn't delivered to terminal applications at all."
+        },
+        {
+          "question": "Does vim mode conflict with Claude Code's keybindings system?",
+          "answer": "No, they operate independently. Vim mode handles text-input-level behavior (cursor movement, INSERT/NORMAL modes), while keybindings handle component-level actions like submit or toggling todos. The one exception: in vim mode, Escape switches INSERT to NORMAL and does not trigger the chat:cancel action."
+        },
+        {
+          "question": "Why does Ctrl+B not work as expected in Claude Code inside tmux?",
+          "answer": "Ctrl+B is the default tmux prefix key, so tmux intercepts it before Claude Code sees it. Press it twice to pass it through, or rebind Claude Code's task:background action to a different key combination in your keybindings.json."
+        },
+        {
+          "question": "How do I see what keybinding contexts exist in Claude Code?",
+          "answer": "Claude Code has 18 contexts including Global, Chat, Autocomplete, Confirmation, Transcript, HistorySearch, Task, DiffDialog, ModelPicker, and Settings. Each context has its own set of available actions listed in the official keybindings documentation at code.claude.com/docs/en/keybindings."
+        },
+        {
+          "question": "How do I debug a keybindings.json file that isn't loading correctly?",
+          "answer": "Start Claude Code with the --debug flag. It validates your keybindings file on load and writes warnings to the debug log for parse errors, invalid context names, reserved-shortcut conflicts, terminal multiplexer conflicts, and duplicate bindings within the same context."
+        }
+      ]
+    },
+    {
+      "slug": "claude-code-cron-jobs-guide-2026",
+      "title": "Claude Code Cron Jobs: Scheduling Recurring Prompts (2026)",
+      "description": "How Claude Code's cron tools schedule prompts inside a session — syntax, jitter, the 3-day expiry, and where session cron ends and real crontab begins.",
+      "author": "Sophie Cave",
+      "date": "2026-07-10",
+      "category": "AI Engineering",
+      "tags": [
+        "claude code cron",
+        "claude code scheduling",
+        "claude code automation",
+        "anthropic claude code",
+        "claude code recurring tasks",
+        "claude code cli",
+        "cron jobs ai agent",
+        "claude code loop",
+        "ai agent automation",
+        "claude code best practices"
+      ],
+      "image": "/blog/claude-code-cron-jobs-guide-2026.webp",
+      "content": "<p>Claude Code can now schedule its own future work. Give it a cron expression and a prompt, and it will enqueue that prompt to fire later — once, or on a recurring schedule — without you sitting there waiting.</p>\n\n<p>That sounds like real crontab. It isn't. The distinction matters, because using session cron where you needed system crontab (or vice versa) is the fastest way to build automation that silently stops working.</p>\n\n<h2>What Claude Code Cron Actually Is</h2>\n\n<p>Three tools handle it: one to create a job, one to list what's scheduled, one to cancel a job.</p>\n\n<p>Creating a job takes a standard 5-field cron expression — minute, hour, day-of-month, month, day-of-week — plus the prompt to run when it fires, plus a flag for whether it repeats:</p>\n\n<pre><code># Recurring: every 5 minutes\ncron: \"*/5 * * * *\"  prompt: \"check the deploy status and report any failures\"  recurring: true\n\n# One-shot: fire once at a specific time, then auto-delete\ncron: \"30 14 9 7 *\"  prompt: \"remind me to check the PR before EOD\"  recurring: false</code></pre>\n\n<p>The cron expression is evaluated in your local timezone — no UTC conversion to do in your head. <code>0 9 * * *</code> means 9am local, every day. <code>0 9 * * 1-5</code> means 9am local, weekdays only.</p>\n\n<p>Listing jobs shows everything currently scheduled in the session. Deleting a job takes the ID that creation returned and removes it. That's the entire surface area — three tools, no config file, no daemon to manage.</p>\n\n<h2>The One Gotcha That Matters: Session-Only</h2>\n\n<p>Here's the part that trips people up. These jobs live in the session's memory. Nothing is written to disk. When the Claude Code session ends — you close the terminal, the process exits, the context resets — every scheduled job is gone with it.</p>\n\n<p>That's fine for \"check on this build in 10 minutes\" or \"remind me at 2:30 to review that diff.\" It's the wrong tool for \"post to Bluesky every Tuesday at 9:15am forever,\" because the job doesn't survive past the session that created it, and recurring jobs auto-expire after 3 days regardless.</p>\n\n<p>If you need automation that outlives a single Claude Code session — a job that fires next month, or one that has to survive a laptop reboot — that's what system-level crontab (or a proper scheduler like <code>launchd</code>) is for. We run both in production: Claude Code session cron for in-conversation timing (\"check back in 20 minutes\"), and real crontab entries wrapped around <code>claude -p</code> headless calls for anything that needs to persist for weeks. Our <a href=\"/blog/claude-code-headless-mode-guide-2026/\">headless mode guide</a> covers how to script Claude Code from an actual crontab entry.</p>\n\n<h2>Recurring vs One-Shot</h2>\n\n<p>The <code>recurring</code> flag decides the job's whole lifecycle:</p>\n\n<ul>\n<li><strong>Recurring (default: true)</strong> — fires on every cron match until you delete it or it hits the 3-day auto-expiry. Use this for \"every N minutes,\" \"hourly,\" \"weekdays at 9am\" style requests.</li>\n<li><strong>One-shot (false)</strong> — fires once at the next matching time, then deletes itself automatically. Use this for \"remind me at X\" or \"tomorrow morning, do Y.\" Pin the minute, hour, day-of-month, and month to exact values so it can't accidentally match again next month.</li>\n</ul>\n\n<p>The 3-day expiry on recurring jobs isn't a bug to route around — it's a deliberate bound on session lifetime. If your automation genuinely needs to run for months, session cron is the wrong layer; move it to real crontab.</p>\n\n<h2>Jitter: Why Your Job Doesn't Fire at Exactly :00</h2>\n\n<p>The scheduler intentionally avoids letting every Claude Code session on the planet hit the same infrastructure at the same instant. Two mechanisms create spread:</p>\n\n<ul>\n<li><strong>Recurring jobs</strong> can fire up to 10% of their period late, capped at 15 minutes. A job scheduled for every hour might fire up to 6 minutes after the hour; that's expected, not a malfunction.</li>\n<li><strong>One-shot jobs</strong> landing exactly on <code>:00</code> or <code>:30</code> can fire up to 90 seconds early.</li>\n</ul>\n\n<p>The bigger lever is picking an off-minute yourself. Every request for \"9am\" becomes <code>0 9 * * *</code>, and every \"hourly\" request becomes <code>0 * * * *</code> — which means the whole fleet of scheduled jobs converges on the same second. Pick something that isn't <code>:00</code> or <code>:30</code> unless the user named that exact time on purpose: <code>3 9 * * *</code> instead of <code>0 9 * * *</code>, <code>7 * * * *</code> instead of <code>0 * * * *</code>. Small shift, no meaningful difference to a human reading the schedule, real difference to whatever's on the receiving end.</p>\n\n<h2>Runtime Behavior: Jobs Only Fire When Idle</h2>\n\n<p>A scheduled job doesn't interrupt Claude Code mid-task. It fires only when the session is idle — between turns, not during one. If you schedule a check-in for every 5 minutes and then kick off a long-running build that takes 20 minutes, the job queues up and fires as soon as the session goes idle again, not exactly on the 5-minute mark. Design around this: session cron is for lightweight check-ins and reminders layered on top of interactive work, not a hard real-time scheduler.</p>\n\n<h2>Session Cron vs the /loop Skill</h2>\n\n<p>If your Claude Code setup has a <code>/loop</code> command available, it's a thin wrapper over the same idea: <code>/loop 5m /some-command</code> re-runs a prompt or slash command on a fixed interval for the rest of the session, defaulting to 10 minutes if you don't specify one. Same session-only lifetime, same underlying constraint — it stops the moment the session ends. Use <code>/loop</code> when you want a simple \"keep checking this every N minutes\" without touching the cron tools directly; use the cron tools directly when you need a specific cron expression, a one-shot reminder at an exact time, or the ability to list and cancel jobs individually.</p>\n\n<h2>Practical Patterns That Work</h2>\n\n<pre><code># Check-in during a long deploy\ncron: \"*/10 * * * *\"  prompt: \"check if the canary deploy has finished, report status\"  recurring: true\n\n# One-time reminder pinned to today's date\ncron: \"47 16 9 7 *\"  prompt: \"remind me to review the PR before end of day\"  recurring: false\n\n# Weekday standup prep, off the :00 mark\ncron: \"53 8 * * 1-5\"  prompt: \"summarize what changed since yesterday's standup\"  recurring: true</code></pre>\n\n<p>Each of these is scoped to \"things worth checking on while I'm still working in this session\" — not \"automation that has to survive after I close my laptop.\" That's the line to hold.</p>\n\n<h2>The Takeaway</h2>\n\n<p>Claude Code's cron tools give you real scheduling primitives — standard cron syntax, one-shot and recurring modes, jitter that's designed on purpose, not a bug — but they're scoped to the life of the session. Nothing persists to disk, and even recurring jobs cap out at 3 days. That's the right tradeoff for in-session reminders and check-ins. For anything that needs to outlive the session — a weekly social post, a nightly report, a monthly backup check — pair Claude Code's <a href=\"/blog/claude-code-headless-mode-guide-2026/\">headless mode</a> with a real crontab entry instead. Know which layer you're on before you schedule the job, and you won't get surprised when it quietly disappears in three days.</p>\n\n<p>---</p>\n\n<p><em>Want automation that actually survives past a single session? <a href=\"/consulting\">Our consulting team</a> builds Claude Code and Agent SDK pipelines that run in real production schedulers, not just session memory. Or start with the fundamentals at <a href=\"/academy\">Like One Academy</a>.</em></p>",
+      "faqs": [
+        {
+          "question": "What is Claude Code cron and how is it different from real crontab?",
+          "answer": "Claude Code cron is a set of native tools (create, list, delete) that let a Claude Code session schedule a prompt to fire later, once or on a recurring basis, using standard 5-field cron syntax. Unlike real crontab, these jobs live only in the session's memory — nothing is written to disk, and every job disappears when the session ends. Use real crontab (wrapped around Claude Code's headless -p mode) for anything that needs to survive past a single session."
+        },
+        {
+          "question": "Do Claude Code cron jobs survive if I close the session?",
+          "answer": "No. Session cron jobs are in-memory only. Closing the terminal, ending the process, or the context resetting all destroy every scheduled job with it. If you need a job that persists across sessions or reboots, schedule it with system-level crontab or launchd instead, calling Claude Code in headless mode."
+        },
+        {
+          "question": "How long can a recurring Claude Code cron job run?",
+          "answer": "Recurring jobs auto-expire after 3 days: they fire one final time, then are automatically deleted. This is a deliberate bound on session lifetime, not a bug. For automation that needs to run longer than 3 days, use real crontab instead of session cron."
+        },
+        {
+          "question": "Why doesn't my Claude Code cron job fire at exactly the time I scheduled?",
+          "answer": "The scheduler adds intentional jitter to avoid every session hitting the same infrastructure at the same instant. Recurring jobs can fire up to 10% of their period late (capped at 15 minutes), and one-shot jobs landing on :00 or :30 can fire up to 90 seconds early. Picking a non-round minute (e.g. 3 9 * * * instead of 0 9 * * *) reduces contention more than the jitter alone."
+        },
+        {
+          "question": "Can I schedule a one-time reminder in Claude Code instead of a recurring job?",
+          "answer": "Yes. Set recurring to false and pin the minute, hour, day-of-month, and month to the exact date and time you want. The job fires once at that match and then deletes itself automatically — no manual cleanup needed."
+        },
+        {
+          "question": "Do Claude Code cron jobs interrupt what I'm currently doing?",
+          "answer": "No. Jobs only fire while the session is idle, between turns — never mid-task. If a long-running operation is in progress when a job is due, the job queues and fires as soon as the session goes idle again, which may be later than the scheduled time."
+        },
+        {
+          "question": "What's the difference between Claude Code cron tools and the /loop skill?",
+          "answer": "The /loop skill (e.g. /loop 5m /some-command) is a simpler wrapper that re-runs a prompt or command on a fixed interval for the rest of the session, defaulting to 10 minutes. It shares the same session-only lifetime as the cron tools. Use /loop for a quick recurring check without specifying cron syntax; use the cron tools directly when you need an exact cron expression, a one-shot reminder, or the ability to list and cancel individual jobs."
+        },
+        {
+          "question": "Should I use Claude Code cron for production automation like social media posting?",
+          "answer": "No. Session cron is scoped to the life of a single Claude Code session and expires after 3 days at most. Production automation that needs to run indefinitely — scheduled social posts, nightly reports, recurring backups — belongs in real system crontab or a task scheduler, calling Claude Code in headless mode (-p flag) from that persistent schedule instead."
+        }
+      ]
+    },
+    {
+      "slug": "claude-cowork-guide-2026",
+      "title": "Claude Cowork: Complete Guide (2026)",
+      "description": "What Claude Cowork actually is, how the new web and mobile rollout works, and when to use it instead of Claude Code or a one-off chat.",
+      "author": "Sophie Cave",
+      "date": "2026-07-11",
+      "category": "AI Engineering",
+      "tags": [
+        "claude cowork",
+        "claude cowork guide",
+        "anthropic claude cowork",
+        "claude ai agent",
+        "claude mobile app",
+        "claude background tasks",
+        "claude vs claude code",
+        "ai knowledge work agent",
+        "claude scheduled tasks",
+        "claude.ai features 2026"
+      ],
+      "image": "/blog/claude-cowork-guide-2026.webp",
+      "content": "<p>Every Claude launch this year has been about coding. Cowork isn't. It's Anthropic's answer to a different question: what does an agent look like when it's doing your job instead of your job's codebase?</p>\n\n<p>As of July 2026, Cowork is expanding from a desktop-only feature to web and mobile, with background task execution that doesn't need a device online. Here's what it actually does, how the rollout works, and when it beats just opening a chat.</p>\n\n<h2>What Claude Cowork Actually Is</h2>\n\n<p>Cowork is an agent mode inside Claude that works across your connected tools &mdash; files, calendar, email, messaging, web browsers &mdash; to complete multi-step tasks, not just answer a single question. The framing matters: it's built for knowledge work, not development. Anthropic has said more than 90% of Cowork usage isn't software development at all &mdash; the largest categories are business operations and content creation.</p>\n\n<p>That's the opposite profile of Claude Code, which is almost entirely developers. If Claude Code is \"an engineer inside your terminal,\" Cowork is closer to \"an operator inside your inbox and calendar.\"</p>\n\n<h2>What's New: Web and Mobile</h2>\n\n<p>Cowork launched desktop-first. The July 2026 update brings it to claude.ai in the browser and to native iOS and Android apps, with three concrete changes:</p>\n\n<h3>Sessions sync across devices</h3>\n<p>Start a task on desktop, check progress on your phone, pick up the finished output on the web &mdash; same session, same files, no re-explaining the task. Chat and Cowork now share one home tab on web and desktop: one sidebar, one search, one place for Projects and Artifacts.</p>\n\n<h3>Background execution with no device online</h3>\n<p>This is the actual unlock. Scheduled tasks now run without any device connected. Anthropic's example: set a Monday 6am client-prep task, and Claude works through email threads, transcripts, and recent news, builds the briefing doc, and leaves a follow-up email drafted &mdash; unsent, waiting for review &mdash; before you're even awake.</p>\n\n<h3>Human-in-the-loop, pushed to your phone</h3>\n<p>When Claude hits a decision only a person can make, it doesn't guess. It surfaces the question on your phone mid-task and waits. Nothing publishes, sends, or finalizes without your review.</p>\n\n<h2>How It's Rolling Out</h2>\n\n<p>Mobile and web access to Cowork started as a beta with a gradual rollout, beginning with Max plan subscribers and expanding to other paid plans over the following weeks. Desktop remains positioned as the deepest experience &mdash; it keeps access to local files and browser integration that web and mobile don't have yet. Anthropic also extended doubled Cowork usage limits through August 5, 2026, which suggests they're actively pushing adoption during the rollout window rather than gating it hard.</p>\n\n<p>Access points: claude.ai on web, the Claude mobile app sidebar, or the Claude desktop app for the full feature set.</p>\n\n<h2>Cowork vs. Claude Code vs. Regular Chat</h2>\n\n<p>These three modes look similar from the outside &mdash; you type a prompt, Claude does work &mdash; but they solve different problems:</p>\n\n<ul>\n<li><strong>Regular chat</strong>: single-turn or short back-and-forth, no persistent task, no background execution. Best for questions, drafts, and one-off analysis you'll review immediately.</li>\n<li><strong>Claude Code</strong>: a coding agent that operates on a codebase through a terminal or IDE, with file edits, tool calls, and (in headless mode) CI/CD scriptability. Built for developers.</li>\n<li><strong>Cowork</strong>: a longer-running agent across non-code tools &mdash; calendar, email, docs, messaging &mdash; that can run on a schedule, continue without a device online, and hand off between devices. Built for operational and content work.</li>\n</ul>\n\n<p>If your task is \"write this function\" or \"explain this error,\" that's chat or Claude Code. If your task is \"every Monday, pull last week's client emails and drafts a briefing,\" that's Cowork &mdash; it's the only one of the three designed to run unattended on a recurring schedule.</p>\n\n<h2>Where Cowork Actually Fits</h2>\n\n<p>Based on Anthropic's own usage breakdown, the two biggest categories are business operations and content creation &mdash; things like status reports, meeting prep, research summaries, and first-draft content that gets human review before it ships. It's not positioned as a replacement for judgment calls; the human-in-the-loop design is explicit about that. It's positioned as removing the busywork that sits between \"I have an idea\" and \"this is ready for someone to review.\"</p>\n\n<p>The background execution is the feature that changes behavior, not the mobile app itself. A task that runs at 6am and hands you a finished draft by the time you check your phone is a different value proposition than a chatbot you have to actively drive turn by turn.</p>\n\n<h2>The Bottom Line</h2>\n\n<p>Cowork's web/mobile expansion isn't a UI refresh &mdash; it's Anthropic decoupling agent execution from having a device open. That's the same shift Claude Code went through with headless mode and scheduled automation, just applied to non-technical work. If you've been treating Claude as a chat window you have to babysit, this is the point where that stops being necessary for recurring, well-scoped tasks.</p>",
+      "faqs": [
+        {
+          "question": "What is Claude Cowork?",
+          "answer": "Claude Cowork is an agent mode in Claude that completes multi-step tasks across connected tools — files, calendar, email, messaging, and web browsers — rather than answering a single question in chat. Anthropic reports over 90% of Cowork usage is knowledge work, not software development, with business operations and content creation as the largest categories."
+        },
+        {
+          "question": "Is Claude Cowork available on mobile?",
+          "answer": "Yes, as of July 2026. Cowork expanded from desktop-only to native iOS and Android apps plus the web at claude.ai, with sessions syncing across devices. The rollout started as a beta on the Max plan, expanding to other paid plans over subsequent weeks."
+        },
+        {
+          "question": "Can Claude Cowork run tasks without my device being on?",
+          "answer": "Yes — this is the core feature of the July 2026 update. Scheduled Cowork tasks now execute in the background with no device connected. You can set a task for a specific time and Claude works through it autonomously, surfacing a finished result (or a question, if it needs your input) when you next check in."
+        },
+        {
+          "question": "What's the difference between Claude Cowork and Claude Code?",
+          "answer": "Claude Code is a coding agent built for developers, operating on a codebase through a terminal, IDE, or headless CI/CD pipeline. Cowork is built for non-technical, operational work — email, calendar, documents, research — and is designed to run on a schedule across multiple devices. They're separate products for separate audiences, not two modes of the same tool."
+        },
+        {
+          "question": "Does Claude Cowork ask for approval before taking action?",
+          "answer": "Yes. When Cowork hits a decision that requires human judgment — sending an email, publishing content, or any irreversible action — it surfaces the question to your phone and waits for a response instead of guessing. Anthropic's stated design principle is that nothing sends or publishes without review."
+        },
+        {
+          "question": "Which Claude plan do I need for Cowork on mobile and web?",
+          "answer": "The beta rollout started with Max plan subscribers, with access expanding to other paid plans over the following weeks. Desktop remains the most complete experience, with access to local files and browser integration that web and mobile don't yet have."
+        },
+        {
+          "question": "What kinds of tasks is Claude Cowork best for?",
+          "answer": "Recurring, well-scoped operational and content work: meeting prep, status briefings, research summaries, and first-draft content that a human reviews before it ships. It's not designed to replace judgment calls — the human-in-the-loop approval step is built in specifically for decisions that need a person."
+        },
+        {
+          "question": "How is Claude Cowork different from just chatting with Claude?",
+          "answer": "Regular chat is single-turn or short back-and-forth with no persistent task and no background execution — you drive it turn by turn. Cowork runs longer, multi-step tasks that can continue unattended, execute on a schedule, and hand off between your desktop, phone, and browser without you re-explaining the task each time."
         }
       ]
     }
