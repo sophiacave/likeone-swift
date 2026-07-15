@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "TRUTH BIBLE — auto-synced from live systems. Never edit manually.",
-    "last_synced": "2026-07-08T09:44:39.725984",
+    "last_synced": "2026-07-15T02:00:08.630594",
     "sync_tool": "lo-verify-sync-facts",
     "verification_sources": {
       "revenue": "Stripe API via stripe-dashboard",
@@ -26,8 +26,8 @@
     }
   },
   "content": {
-    "blog_posts": 73,
-    "total_faqs": 684,
+    "blog_posts": 81,
+    "total_faqs": 746,
     "all_posts_at_target": false,
     "posts_at_target": 42,
     "target_words": 2000,
@@ -42,27 +42,15 @@
     "weekly_impressions": 701,
     "record_day_impressions": 205,
     "record_day_date": "2026-05-31",
-    "sitemap_urls": 689,
+    "sitemap_urls": 696,
     "gsc_property": "sc-domain:likeone.ai",
     "_note": "SEO stats require manual GSC update"
   },
   "infrastructure": {
-    "brain_entries": 1273,
-    "rag_vectors": 8468,
-    "rag_collections": 11,
-    "rag_breakdown": {
-      "academy": 53,
-      "blog_content": 567,
-      "blog_posts": 180,
-      "brain_entries": 1272,
-      "episodes": 2121,
-      "facts": 131,
-      "faqs": 706,
-      "lessons": 3291,
-      "memory_files": 67,
-      "sessions": 13,
-      "skills": 17
-    },
+    "brain_entries": 1355,
+    "rag_vectors": 0,
+    "rag_collections": 0,
+    "rag_breakdown": {},
     "mcp_tools": "100+",
     "fleet_machines": 3,
     "ai_agents": 6
@@ -83,7 +71,7 @@
     "ein": "41-5319318",
     "status": "501(c)(3) tax-exempt",
     "granted_date": "2026-04-28",
-    "grants_in_pipeline": 574,
+    "grants_in_pipeline": 619,
     "grant_pipeline_value": 8487500,
     "giving_recipient": "UCSF HIV Cure Research Fund",
     "monthly_donation": 10,

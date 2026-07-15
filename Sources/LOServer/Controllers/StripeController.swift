@@ -98,11 +98,13 @@ struct StripeController: RouteCollection {
             return Response(status: .badRequest)
         }
 
-        if let sigHeader = req.headers.first(name: "Stripe-Signature") {
-            guard verifyStripeSignature(payload: rawBody, header: sigHeader) else {
-                req.logger.warning("Invalid Stripe webhook signature")
-                return Response(status: .unauthorized)
-            }
+        guard let sigHeader = req.headers.first(name: "Stripe-Signature") else {
+            req.logger.warning("Stripe webhook missing Stripe-Signature header")
+            return Response(status: .unauthorized)
+        }
+        guard verifyStripeSignature(payload: rawBody, header: sigHeader) else {
+            req.logger.warning("Invalid Stripe webhook signature")
+            return Response(status: .unauthorized)
         }
 
         let event: StripeWebhookEvent
