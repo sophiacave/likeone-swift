@@ -4897,6 +4897,54 @@
           "answer": "Yes. Tool names and descriptions become the discoverability surface — a model searches for tools by keyword before it ever sees the full schema. Name tools with the verbs and nouns a search query would use, and don't assume the model already has context your schema would normally provide."
         }
       ]
+    },
+    {
+      "slug": "claude-code-fast-mode-guide-2026",
+      "title": "Claude Code Fast Mode: Complete Guide (2026)",
+      "description": "How Claude Code Fast Mode works: same Opus model, faster output, toggled with /fast. What changes, what doesn't, and when to actually use it.",
+      "author": "Sophie Cave",
+      "date": "2026-07-15",
+      "category": "AI Engineering",
+      "tags": [
+        "claude code fast mode",
+        "claude code /fast",
+        "claude code speed",
+        "claude opus",
+        "anthropic claude code",
+        "claude code cli",
+        "claude code tips",
+        "claude code performance",
+        "claude code toggle",
+        "ai coding assistant"
+      ],
+      "image": "/blog/claude-code-fast-mode-guide-2026.webp",
+      "content": "<p>Claude Code ships a toggle called Fast Mode, activated with the <code>/fast</code> command. The name invites an obvious assumption: you're trading quality for speed, dropping down to a lighter model so responses come back quicker. That assumption is wrong, and it matters because it changes when you should actually flip the switch.</p>\n\n<p>Fast Mode uses the same Claude Opus model — it does not switch you to a smaller or weaker model. What changes is output speed, not model capability. Here's what that means in practice and how to use it.</p>\n\n<h2>What Fast Mode Actually Is</h2>\n\n<p>The core fact, and the one most people get wrong: Fast Mode for Claude Code uses the same model as your default session — currently Opus — just with faster output. It is not a model swap. You are not downgrading to a smaller, cheaper, less capable model to save time. You're getting the identical reasoning and agentic capability, delivered faster.</p>\n\n<p>That distinction matters because the mental model for most \"fast\" toggles in AI products is a quality-speed tradeoff — a smaller model that answers quicker but misses more, hallucinates more, or handles agentic tool-use less reliably. Claude Code's Fast Mode isn't that. It's the same brain, just talking faster.</p>\n\n<h2>How to Toggle It</h2>\n\n<p>Fast Mode is a session-level toggle, not a config file setting or a CLI flag you pass at launch:</p>\n\n<pre><code>/fast</code></pre>\n\n<p>Run <code>/fast</code> inside an active Claude Code session to toggle Fast Mode on or off. It behaves like other in-session toggles — no restart required, no separate installation, no plan upgrade. It's a switch you flip mid-session based on what you're doing right now.</p>\n\n<h2>What Changes, What Doesn't</h2>\n\n<p>This is the part worth being precise about, because \"faster output\" is doing a lot of work in that sentence:</p>\n\n<ul>\n<li><strong>What changes:</strong> output speed. Responses stream back to you quicker.</li>\n<li><strong>What doesn't change:</strong> the model itself. Same Opus, same reasoning depth, same agentic tool-use quality.</li>\n</ul>\n\n<p>Compare this to genuinely different levers you already have in Claude Code. Switching models entirely (say, from Opus to a Haiku-class model for a throwaway task) is a real quality tradeoff — you're intentionally giving up depth for cost and latency. <a href=\"/blog/claude-code-output-styles-guide-2026/\">Output styles</a> change how verbose or structured the response is, not how it's generated. Fast Mode sits in neither category: it's not a smaller model, and it's not a formatting change. It's the same model, delivered faster.</p>\n\n<h2>When to Actually Use It</h2>\n\n<p>Because Fast Mode doesn't cost you model quality, the decision to use it is simpler than most speed/quality toggles: there's no real downside to leaving it on for the kind of work where you're reading output quickly and moving on.</p>\n\n<p><strong>Good fits:</strong> quick lookups, straightforward edits, iterative back-and-forth where you're watching the terminal and want the next turn faster, any workflow where you're the bottleneck on reading speed rather than the model being the bottleneck on reasoning speed.</p>\n\n<p><strong>Where it matters less:</strong> long-running autonomous tasks where you've walked away and aren't watching output stream in real time — a <a href=\"/blog/claude-code-headless-mode-guide-2026/\">headless mode</a> CI job doesn't care how fast tokens stream, only that the final result is correct. Speed-of-output only pays off when a human is actually watching the response arrive.</p>\n\n<h2>Fast Mode vs. Model Selection</h2>\n\n<p>Don't confuse Fast Mode with choosing a different model for a task. If you genuinely want a lighter, faster, cheaper model for simple work — formatting a file, running a trivial search — that's a model selection decision, and a real quality tradeoff you're choosing to make. Fast Mode is not that. It's a way to get the same Opus-level output quality without the model-selection tradeoff, just with quicker delivery of the same answer.</p>\n\n<p>The practical rule: reach for Fast Mode by default when you're actively watching a session and want less waiting. Reach for a different, smaller model only when you've decided the task genuinely doesn't need Opus-level reasoning and you're intentionally trading depth for speed and cost.</p>\n\n<h2>The Takeaway</h2>\n\n<p>Fast Mode is a free upgrade to how quickly Claude Code delivers Opus-quality output — not a quality tradeoff dressed up as a speed toggle. Toggle it on with <code>/fast</code> for interactive sessions where you're reading along in real time, and don't confuse it with actually switching to a different, lighter model when you want to intentionally trade reasoning depth for cost.</p>\n\n<p>---</p>\n\n<p><em>Want to get the most out of Claude Code in your team's workflow? <a href=\"/consulting\">Our consulting team</a> builds Claude Code automation and agentic workflows for production engineering teams. Or start learning the fundamentals at <a href=\"/academy\">Like One Academy</a>.</em></p>",
+      "faqs": [
+        {
+          "question": "What is Claude Code Fast Mode?",
+          "answer": "Fast Mode is a Claude Code toggle, activated with /fast, that delivers faster output using the same underlying model (currently Opus) rather than switching to a smaller or weaker model. It speeds up delivery, not the model doing the reasoning."
+        },
+        {
+          "question": "How do I turn on Fast Mode in Claude Code?",
+          "answer": "Type /fast inside an active Claude Code session. It's a session-level toggle you switch on or off mid-session — no restart, config change, or plan upgrade required."
+        },
+        {
+          "question": "Does Fast Mode use a different, weaker model?",
+          "answer": "No. Fast Mode uses the same Claude Opus model as your default session. It does NOT switch you to a smaller or lower-capability model — the reasoning and agentic quality stay identical, only the output speed changes."
+        },
+        {
+          "question": "Is there a downside to leaving Fast Mode on all the time?",
+          "answer": "Since Fast Mode doesn't reduce model capability, there's little reason not to leave it on for interactive work where you're watching output stream in real time. It matters less for headless/CI tasks where no one is watching the output arrive."
+        },
+        {
+          "question": "What's the difference between Fast Mode and switching to a smaller model?",
+          "answer": "Fast Mode keeps the same model and just speeds up output delivery — no quality tradeoff. Switching to a genuinely smaller model (e.g. a Haiku-class model) is a real tradeoff: faster and cheaper, but with less reasoning depth. Use Fast Mode for speed without compromise; switch models only when you intentionally want to trade depth for cost."
+        },
+        {
+          "question": "Does Fast Mode affect Claude Code's output formatting or verbosity?",
+          "answer": "No — that's a separate feature. Output styles control how verbose or structured responses are. Fast Mode only affects how quickly output is delivered, not its format or content."
+        }
+      ]
     }
   ]
 }
